@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Request {
+  id          String   @id @default(uuid())
+  protocol    String   @unique
+  status      RequestStatus @default(PENDING)
+  
+  // Dados do solicitante
+  requesterName     String
+  requesterEmail    String
+  requesterPhone    String?
+  requesterDocument String?
+  
+  // Dados do estabelecimento (CNES)
+  cnes              String
+  cnpj              String?
+  establishmentName String
+  establishmentType String?
+  uf                String
+  municipality      String
+  address           String?
+  phone             String?
+  
+  // Detalhes da solicitação
+  requestType       RequestType
+  description       String    @db.Text
+  priority          Priority  @default(NORMAL)
+  
+  // Token de validação
+  emailToken        String?
+  tokenExpiresAt    DateTime?
+  emailVerified     Boolean   @default(false)
+  
+  // Timestamps
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  completedAt       DateTime?
+  
+  // Relações
+  logs              RequestLog[]
+  
+  @@index([protocol])
+  @@index([requesterEmail])
+  @@index([cnes])
+  @@index([status])
+  @@map("requests")
+}
+
+model RequestLog {
+  id          String   @id @default(uuid())
+  requestId   String
+  status      RequestStatus
+  message     String   @db.Text
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  createdBy   String?  // Sistema ou usuário
+  
+  // Relação
+  request     Request  @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  
+  @@index([requestId])
+  @@index([createdAt])
+  @@map("request_logs")
+}
+
+enum RequestStatus {
+  PENDING          // Aguardando validação de email
+  EMAIL_VERIFIED   // Email validado, aguardando análise
+  IN_ANALYSIS      // Em análise pela equipe
+  WAITING_INFO     // Aguardando informações adicionais
+  APPROVED         // Aprovado
+  REJECTED         // Rejeitado
+  COMPLETED        // Concluído
+  CANCELLED        // Cancelado
+}
+
+enum RequestType {
+  ACCESS_REQUEST      // Solicitação de acesso
+  DATA_CORRECTION     // Correção de dados
+  TECHNICAL_SUPPORT   // Suporte técnico
+  INTEGRATION_REQUEST // Solicitação de integração
+  OTHER               // Outros
+}
+
+enum Priority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
