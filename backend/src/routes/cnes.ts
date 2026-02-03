@@ -97,22 +97,36 @@ export async function cnesRoutes(app: FastifyInstance) {
       const { cnes } = cnesValidationSchema.parse(request.params);
 
       // Consulta API do Ministério da Saúde
+      // Aumentamos o limit pois a API nem sempre respeita o filtro codigo_cnes
       const response = await axios.get(`${CNES_API_URL}/estabelecimentos`, {
         params: {
           codigo_cnes: cnes,
-          limit: 1
+          limit: 100
         },
-        timeout: 10000
+        timeout: 15000
       });
 
-      if (!response.data || response.data.length === 0) {
+      // A API retorna { estabelecimentos: [...] } ou array direto
+      const establishments = response.data?.estabelecimentos || response.data || [];
+
+      if (!establishments || establishments.length === 0) {
         return reply.status(404).send({
           success: false,
           error: 'Estabelecimento não encontrado'
         });
       }
 
-      const establishment = response.data[0];
+      // Filtra pelo CNES exato (a API nem sempre respeita o filtro)
+      const establishment = establishments.find(
+        (e: any) => String(e.codigo_cnes) === cnes || String(e.codigo_cnes).padStart(7, '0') === cnes
+      );
+
+      if (!establishment) {
+        return reply.status(404).send({
+          success: false,
+          error: 'Estabelecimento não encontrado para o CNES informado'
+        });
+      }
 
       // Formata resposta
       return {

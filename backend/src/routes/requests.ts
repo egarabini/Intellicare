@@ -93,20 +93,35 @@ export async function requestRoutes(app: FastifyInstance) {
         },
       });
       
-      // Enviar email com token
-      await sendEmail({
-        to: data.requesterEmail,
-        subject: 'IntelliCare - Validação de Email',
-        html: getVerificationEmailTemplate(token, protocol),
-      });
-      
+      // Enviar email com token (opcional em desenvolvimento)
+      let emailSent = false;
+      try {
+        await sendEmail({
+          to: data.requesterEmail,
+          subject: 'IntelliCare - Validação de Email',
+          html: getVerificationEmailTemplate(token, protocol),
+        });
+        emailSent = true;
+      } catch (emailError) {
+        // Em desenvolvimento, loga o token para teste manual
+        if (process.env.NODE_ENV === 'development') {
+          request.log.info(`[DEV] Token para ${protocol}: ${token}`);
+        } else {
+          throw emailError;
+        }
+      }
+
       return reply.status(201).send({
         success: true,
         data: {
           id: newRequest.id,
           protocol: newRequest.protocol,
           status: newRequest.status,
-          message: 'Solicitação criada. Verifique seu email para validação.',
+          message: emailSent
+            ? 'Solicitação criada. Verifique seu email para validação.'
+            : 'Solicitação criada. (Dev: email não enviado)',
+          // Em dev, inclui token para testes
+          ...(process.env.NODE_ENV === 'development' && { devToken: token }),
         },
       });
     } catch (error) {
