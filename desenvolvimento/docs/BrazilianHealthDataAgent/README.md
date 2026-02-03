@@ -1,8 +1,8 @@
 # 📚 Documentação - Brazilian Health Data Agent
 
-**Projeto:** IntelliCare - Integração com Dados Públicos de Saúde Brasileiros  
-**Versão:** 1.0  
-**Data:** 2025-02-02  
+**Projeto:** IntelliCare - Integração com Dados Públicos de Saúde Brasileiros
+**Versão:** 1.1
+**Data:** 2025-02-02
 **Status:** 📋 Pronto para Desenvolvimento
 
 ---
@@ -10,7 +10,7 @@
 ## 📖 Índice de Documentação
 
 ### 1. 📋 Resumo Executivo
-**Arquivo:** [V0-202502021900-RESUMO-BrazilianHealthDataAgent.md](./V0-202502021900-RESUMO-BrazilianHealthDataAgent.md)
+**Arquivo:** [V1.1-202502021900-RESUMO-BrazilianHealthDataAgent.md](./V1.1-202502021900-RESUMO-BrazilianHealthDataAgent.md)
 
 **Conteúdo:**
 - Visão geral do projeto
@@ -26,7 +26,7 @@
 ---
 
 ### 2. 📄 Especificação Funcional (EF)
-**Arquivo:** [V0-202502021900-EF-BrazilianHealthDataAgent.md](./V0-202502021900-EF-BrazilianHealthDataAgent.md)
+**Arquivo:** [V1.1-202502021900-EF-BrazilianHealthDataAgent.md](./V1.1-202502021900-EF-BrazilianHealthDataAgent.md)
 
 **Conteúdo:**
 - Visão e contexto do negócio
@@ -51,7 +51,7 @@
 ---
 
 ### 3. 🔧 Especificação Técnica (ET)
-**Arquivo:** [V0-202502021900-ET-BrazilianHealthDataAgent.md](./V0-202502021900-ET-BrazilianHealthDataAgent.md)
+**Arquivo:** [V1.1-202502021900-ET-BrazilianHealthDataAgent.md](./V1.1-202502021900-ET-BrazilianHealthDataAgent.md)
 
 **Conteúdo:**
 - Arquitetura detalhada (diagramas)
