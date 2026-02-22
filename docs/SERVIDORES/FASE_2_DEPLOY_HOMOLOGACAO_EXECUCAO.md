@@ -168,6 +168,19 @@ error TS6133: 'Users' is declared but its value is never read.
 - ZildaPage.tsx: Removidos Activity e Users
 **Status**: ✅ RESOLVIDO
 
+### Problema 8: ENVIRONMENT Inválido no .env
+**Erro**:
+```
+ValidationError: 1 validation error for FlorenceConfig
+environment
+  Input should be 'development', 'staging' or 'production' [type=enum, input_value='homologacao', input_type=str]
+```
+**Causa**: Arquivo `.env` configurado com `ENVIRONMENT=homologacao` mas código Pydantic só aceita: `development`, `staging` ou `production`
+**Impacto**: Todos os backends falhavam ao iniciar (Restarting loop)
+**Solução**: Alterar `.env` de `ENVIRONMENT=homologacao` para `ENVIRONMENT=staging`
+**Comando**: `sed -i 's/ENVIRONMENT=homologacao/ENVIRONMENT=staging/g' .env`
+**Status**: ⏳ AGUARDANDO EXECUÇÃO NO SERVIDOR
+
 ---
 
 ## 4. ALTERAÇÕES REALIZADAS
@@ -298,7 +311,9 @@ Arquivos:
 - **Resultado**: Sucesso
 
 ### Containers Backend
-- **Status**: ⏳ Sendo iniciados
+- **Status**: ⚠️ Restarting (ENVIRONMENT inválido)
+- **Problema**: .env com `homologacao` ao invés de `staging`
+- **Solução**: Alterar .env e reiniciar containers
 
 ### Frontend (Portal)
 - **Status**: ✅ CORRIGIDO
@@ -311,11 +326,21 @@ Arquivos:
 
 ## 7. PRÓXIMOS PASSOS
 
-1. ⏳ Corrigir erro do portal
-2. ⏳ Verificar backends rodando
-3. ⏳ Testar health checks
-4. ⏳ Testar endpoints APIs
-5. ⏳ Configurar monitoramento
+### Imediato (NO SERVIDOR)
+1. ⏳ Alterar `.env`: `ENVIRONMENT=homologacao` → `ENVIRONMENT=staging`
+2. ⏳ Reiniciar backends: `docker-compose -f docker-compose.full.yml restart florence oswaldo donabedian wanda comunicacao geralda`
+3. ⏳ Verificar todos os containers healthy
+
+### Validação
+4. ⏳ Testar health checks de cada módulo
+5. ⏳ Testar endpoints APIs (8001-8006)
+6. ⏳ Testar acesso ao portal (3001)
+7. ⏳ Verificar logs de todos os serviços
+
+### Monitoramento
+8. ⏳ Configurar alertas no Prometheus
+9. ⏳ Criar dashboards no Grafana
+10. ⏳ Documentar status final
 
 ---
 
