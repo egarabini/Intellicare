@@ -1,0 +1,32 @@
+"""Configuration for intellicare-admin module."""
+
+from intellicare_core.config import BaseModuleConfig
+
+
+class AdminConfig(BaseModuleConfig):
+    """Platform administration configuration."""
+
+    module_name: str = "intellicare-admin"
+    module_version: str = "1.0.0"
+
+    # Database (schema platform)
+    platform_schema: str = "platform"
+
+    # Keycloak Admin
+    keycloak_admin_url: str = "https://keycloak.gsi.srv.br"
+    keycloak_admin_realm: str = "master"
+    keycloak_admin_username: str = ""
+    keycloak_admin_password: str = ""
+    keycloak_target_realm: str = "bemcuidar"
+
+    # Provisioning
+    migration_script_path: str = "./migrations"
+
+    # Trial
+    trial_duration_days: int = 30
+
+    # Billing
+    billing_grace_period_days: int = 15
+
+    class Config:
+        env_prefix = "ADMIN_"

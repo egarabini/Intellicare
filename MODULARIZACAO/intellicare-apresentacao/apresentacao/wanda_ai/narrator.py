@@ -255,6 +255,41 @@ class WandaNarrator:
     # Backend: pyttsx3 (Offline)
     # =========================================================================
 
+    @staticmethod
+    def _select_female_voice(voices) -> Optional[str]:
+        """Seleciona voz feminina preferencial para Wanda (evita vozes masculinas).
+
+        Prioridade: Maria (PT-BR) > Helena (PT-BR) > Zira (EN) > qualquer com 'female'
+        Evita: David, Mark, James, etc.
+        """
+        if not voices:
+            return None
+        name_lower = lambda v: (getattr(v, "name", "") or str(v)).lower()
+        male_keywords = ("david", "mark", "james", "paul", "george", "male", "daniel")
+        female_keywords_pt = ("maria", "helena")  # Vozes PT-BR femininas
+        female_keywords_en = ("zira",)  # Windows EN feminina
+        female_keywords_any = ("female", "feminin", "mulher")
+
+        # 1. Preferir Maria ou Helena (PT-BR)
+        for v in voices:
+            n = name_lower(v)
+            if any(k in n for k in female_keywords_pt) and not any(k in n for k in male_keywords):
+                return v.id
+
+        # 2. Zira (EN) ou qualquer com 'female'
+        for v in voices:
+            n = name_lower(v)
+            if any(k in n for k in female_keywords_en + female_keywords_any) and not any(k in n for k in male_keywords):
+                return v.id
+
+        # 3. Qualquer voz que nao seja claramente masculina
+        for v in voices:
+            n = name_lower(v)
+            if not any(k in n for k in male_keywords):
+                return v.id
+
+        return None
+
     def _init_pyttsx3(self) -> None:
         """Inicializa engine pyttsx3 (lazy)."""
         if self._pyttsx3_available is False:
@@ -266,13 +301,13 @@ class WandaNarrator:
         try:
             import pyttsx3
             self._pyttsx3_engine = pyttsx3.init()
-            # Configurar voz feminina se disponivel
             voices = self._pyttsx3_engine.getProperty("voices")
-            for v in voices:
-                if "female" in v.name.lower() or "zira" in v.name.lower():
-                    self._pyttsx3_engine.setProperty("voice", v.id)
-                    break
-            # Velocidade moderada
+            voice_id = self._select_female_voice(voices)
+            if voice_id:
+                self._pyttsx3_engine.setProperty("voice", voice_id)
+                logger.info("pyttsx3: voz feminina selecionada")
+            else:
+                logger.warning("pyttsx3: nenhuma voz feminina encontrada, usando padrao do sistema")
             self._pyttsx3_engine.setProperty("rate", 160)
             self._pyttsx3_available = True
             logger.info("pyttsx3 inicializado")
@@ -299,7 +334,8 @@ class WandaNarrator:
             if self._stop_event.is_set():
                 return True
 
-            cache_key = f"{rate}:{text}"
+            # Inclui "female" no cache para invalidar cache antigo com voz masculina
+            cache_key = f"female:{rate}:{text}"
             wav_path = self._cache_dir / f"_offline_{hashlib.md5(cache_key.encode()).hexdigest()}.wav"
 
             # Gerar WAV apenas se nao estiver em cache
@@ -308,10 +344,9 @@ class WandaNarrator:
 
                 engine = pyttsx3.init()
                 voices = engine.getProperty("voices")
-                for v in voices:
-                    if any(k in v.name.lower() for k in ("maria", "female", "zira")):
-                        engine.setProperty("voice", v.id)
-                        break
+                voice_id = self._select_female_voice(voices)
+                if voice_id:
+                    engine.setProperty("voice", voice_id)
                 engine.setProperty("rate", rate)
 
                 engine.save_to_file(text, str(wav_path))

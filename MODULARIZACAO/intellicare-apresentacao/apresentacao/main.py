@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from core.presentation_engine import PresentationEngine
 from versoes.v1_visao_geral.slides import create_v1_slides
 from versoes.v2_agentes.slides import create_v2_slides
+from versoes.v2_0_0_palestra.slides import create_v2_0_0_palestra_slides
 from versoes.v3_agentes_completo.slides import create_v3_slides
 from versoes.v3_investidores.slides import create_v3_investidores_slides
 
@@ -26,7 +27,7 @@ def main():
     parser.add_argument(
         "--versao",
         default="v1_visao_geral",
-        choices=["v1_visao_geral", "v2_agentes", "v3_agentes_completo", "v3_investidores"],
+        choices=["v1_visao_geral", "v2_agentes", "v2_0_0_palestra", "v3_agentes_completo", "v3_investidores"],
         help="Versão da apresentação"
     )
     parser.add_argument(
@@ -82,6 +83,10 @@ def main():
                 engine.add_slide(slide)
         elif args.versao == "v3_agentes_completo":
             slides = create_v3_slides(image_style=args.agente_imagem)
+            for slide in slides:
+                engine.add_slide(slide)
+        elif args.versao == "v2_0_0_palestra":
+            slides = create_v2_0_0_palestra_slides()
             for slide in slides:
                 engine.add_slide(slide)
         elif args.versao == "v3_investidores":

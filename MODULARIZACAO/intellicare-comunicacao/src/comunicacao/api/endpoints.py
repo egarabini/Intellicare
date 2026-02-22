@@ -2,7 +2,24 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from typing import List, Optional
-from intellicare_auth.fastapi import configure_auth, require_role, get_current_user
+
+# Integração intellicare-auth (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth, require_role, get_current_user
+    AUTH_AVAILABLE = True
+except ImportError:
+    AUTH_AVAILABLE = False
+
+    async def get_current_user():
+        """Fallback: retorna usuário anônimo quando auth não está disponível."""
+        return {"sub": "anonymous", "preferred_username": "anonymous"}
+
+    def require_role(role: str):
+        """Fallback: no-op decorator quando auth não está disponível."""
+        def decorator(func):
+            return func
+        return decorator
+
 
 
 from comunicacao.routing.engine import RoutingEngine

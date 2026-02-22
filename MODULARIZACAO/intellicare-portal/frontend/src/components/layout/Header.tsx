@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import OrgSwitcher from '../tenant/OrgSwitcher';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,6 +66,7 @@ const Header = () => {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-4">
+            <OrgSwitcher />
             <Link
               to="/solicitacao"
               className="px-4 py-2 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-600 hover:text-white transition-all duration-200"

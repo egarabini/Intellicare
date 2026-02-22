@@ -10,8 +10,16 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Instalar intellicare-core
+COPY ./intellicare-core /tmp/intellicare-core
+RUN pip install --no-cache-dir -e /tmp/intellicare-core
+
+# Instalar intellicare-auth (opcional)
+COPY ./intellicare-auth /tmp/intellicare-auth
+RUN pip install --no-cache-dir -e /tmp/intellicare-auth || true
+
 # Copy requirements
-COPY pyproject.toml ./
+COPY ./intellicare-nise/pyproject.toml ./
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
@@ -45,8 +53,8 @@ USER nise
 EXPOSE 8000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD curl -f http://localhost:8000/api/v1/health || exit 1
 
 # Run application
 CMD ["uvicorn", "nise.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
