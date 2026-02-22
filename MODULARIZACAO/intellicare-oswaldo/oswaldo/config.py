@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from pydantic import Field, field_validator
-from pydantic_settings import AliasChoices, SettingsConfigDict
+from pydantic import AliasChoices, Field, field_validator
+from pydantic_settings import SettingsConfigDict
 
 from intellicare_core.config import BaseModuleConfig
 
