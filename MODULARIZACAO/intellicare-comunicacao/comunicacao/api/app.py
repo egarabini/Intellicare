@@ -612,3 +612,7 @@ def _require_matrix_service() -> MatrixClientService:
             detail="stack Matrix legada desabilitada",
         )
     return matrix
+
+
+# Create the app instance
+app = create_app()

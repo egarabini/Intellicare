@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -29,7 +30,10 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
     config = OswaldoConfig()
     datastore = FHIRDataStore(db_url=config.database_url)
-    datastore.ensure_schema()
+
+    # Run sync database operations in thread pool to avoid blocking async event loop
+    loop = asyncio.get_event_loop()
+    await loop.run_in_executor(None, datastore.ensure_schema)
 
     registry = DiseaseProfileRegistry(config.profiles_dir)
     registry.load_all()
