@@ -9,7 +9,7 @@
  */
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
-import { decodeJwt, tokenExchange, getStoredToken, storeToken, type DecodedToken } from '../services/tokenExchange';
+import { decodeJwt, tokenExchange, getStoredToken, storeToken, type DecodedToken } from '../../services/tokenExchange';
 
 // ─── Types ──────────────────────────────────────────────────
 
