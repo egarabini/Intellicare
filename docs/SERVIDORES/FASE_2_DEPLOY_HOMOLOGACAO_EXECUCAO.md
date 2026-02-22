@@ -202,8 +202,12 @@ environment
 - `production` = Ambiente de produção (futuro)
 **Impacto**: Todos os backends falhavam ao iniciar (Restarting loop)
 **Solução**: Alterar `.env` de `ENVIRONMENT=homologacao` para `ENVIRONMENT=staging` (correto para este servidor)
-**Comando**: `sed -i 's/ENVIRONMENT=homologacao/ENVIRONMENT=staging/g' .env`
-**Status**: ⏳ AGUARDANDO EXECUÇÃO NO SERVIDOR
+**Comando Executado**:
+```bash
+sed -i 's/ENVIRONMENT=homologacao/ENVIRONMENT=staging/g' .env
+docker-compose -f docker-compose.full.yml restart florence oswaldo donabedian wanda comunicacao geralda
+```
+**Status**: ✅ EXECUTADO - Containers reiniciados, aguardando estabilização
 
 ---
 
@@ -335,9 +339,12 @@ Arquivos:
 - **Resultado**: Sucesso
 
 ### Containers Backend
-- **Status**: ⚠️ Restarting (ENVIRONMENT inválido)
-- **Problema**: .env com `homologacao` ao invés de `staging`
-- **Solução**: Alterar .env e reiniciar containers
+- **Status**: ⏳ REINICIADOS - Aguardando estabilização
+- **Ação Executada**:
+  - ✅ .env alterado: `ENVIRONMENT=staging`
+  - ✅ Containers reiniciados
+  - ⏳ Aguardando health checks (1-2 minutos)
+- **Observação**: Geralda já em "health: starting" (bom sinal)
 
 ### Frontend (Portal)
 - **Status**: ✅ CORRIGIDO
