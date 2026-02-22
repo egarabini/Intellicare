@@ -6,8 +6,8 @@ FROM node:22-alpine AS build
 WORKDIR /app
 
 # Install dependencies
-COPY package.json pnpm-lock.yaml ./
-RUN corepack enable && pnpm install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Copy source code
 COPY . .
@@ -35,7 +35,7 @@ ENV VITE_ENABLE_ANALYTICS=$VITE_ENABLE_ANALYTICS
 ENV VITE_APP_VERSION=$VITE_APP_VERSION
 
 # Build application
-RUN pnpm build
+RUN npm run build
 
 # ============================================================================
 # Stage 2: Production
