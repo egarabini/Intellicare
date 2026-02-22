@@ -3,15 +3,15 @@ FROM python:3.11-slim AS base
 WORKDIR /app
 
 # Instalar intellicare-core primeiro
-COPY ../intellicare-core /tmp/intellicare-core
+COPY ./intellicare-core /tmp/intellicare-core
 RUN pip install --no-cache-dir -e /tmp/intellicare-core
 
 # Instalar o módulo
-COPY pyproject.toml README.md* ./
+COPY ./intellicare-florence/pyproject.toml ./intellicare-florence/README.md* ./
 
 RUN pip install --no-cache-dir . || true
 
-COPY . .
+COPY ./intellicare-florence .
 
 RUN pip install --no-cache-dir -e .
 

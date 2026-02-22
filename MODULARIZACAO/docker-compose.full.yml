@@ -133,8 +133,8 @@ services:
   # ==========================================================================
   florence:
     build:
-      context: ./intellicare-florence
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-florence/Dockerfile
       target: api
     container_name: intellicare-florence
     hostname: florence
@@ -174,8 +174,8 @@ services:
   # ==========================================================================
   oswaldo:
     build:
-      context: ./intellicare-oswaldo
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-oswaldo/Dockerfile
       target: api
     container_name: intellicare-oswaldo
     hostname: oswaldo
@@ -215,8 +215,8 @@ services:
   # ==========================================================================
   donabedian:
     build:
-      context: ./intellicare-donabedian
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-donabedian/Dockerfile
       target: api
     container_name: intellicare-donabedian
     hostname: donabedian
@@ -256,8 +256,8 @@ services:
   # ==========================================================================
   wanda:
     build:
-      context: ./intellicare-wanda
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-wanda/Dockerfile
       target: api
     container_name: intellicare-wanda
     hostname: wanda
@@ -309,8 +309,9 @@ services:
   # ==========================================================================
   comunicacao:
     build:
-      context: ./intellicare-comunicacao
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-comunicacao/Dockerfile
+      target: api
     container_name: intellicare-comunicacao
     hostname: comunicacao
     environment:
@@ -372,8 +373,8 @@ services:
   # ==========================================================================
   geralda:
     build:
-      context: ./intellicare-geralda
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-geralda/Dockerfile
       target: api
     container_name: intellicare-geralda
     hostname: geralda
