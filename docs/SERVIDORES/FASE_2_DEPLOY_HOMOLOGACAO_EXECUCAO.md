@@ -1,9 +1,10 @@
 # FASE 2 - DEPLOY NO SERVIDOR DE HOMOLOGAÇÃO - RELATÓRIO DE EXECUÇÃO
 
-**Data**: 2026-02-22  
-**Servidor**: 167.86.97.142 (Contabo VPS)  
-**Objetivo**: Deploy completo do IntelliCare no ambiente de homologação  
-**Status**: ⚠️ EM ANDAMENTO (Build concluído, subindo containers)
+**Data**: 2026-02-22
+**Servidor**: 167.86.97.142 (Contabo VPS)
+**Ambiente**: STAGING (Homologação)
+**Objetivo**: Deploy completo do IntelliCare no ambiente de staging/homologação
+**Status**: ⚠️ EM ANDAMENTO (Build concluído, corrigindo configuração ENVIRONMENT)
 
 ---
 
@@ -41,7 +42,26 @@ Realizar o deploy completo do sistema IntelliCare modular no servidor de homolog
 
 ## 2. INFRAESTRUTURA
 
-### Servidor de Homologação
+### Ambientes do Projeto
+O IntelliCare possui 3 ambientes distintos:
+
+1. **development** (Desenvolvimento)
+   - Máquina local do desenvolvedor
+   - Usado para desenvolvimento e testes locais
+   - Configurações relaxadas, debug habilitado
+
+2. **staging** (Homologação) ← **ESTE SERVIDOR**
+   - Servidor: 167.86.97.142 (Contabo VPS)
+   - Ambiente de testes e validação
+   - Configurações próximas à produção
+   - Usado para homologação antes do deploy final
+
+3. **production** (Produção)
+   - Servidor de produção (futuro)
+   - Ambiente final para usuários
+   - Configurações otimizadas e seguras
+
+### Servidor de Staging (Homologação)
 ```
 IP: 167.86.97.142
 Provedor: Contabo VPS
@@ -176,8 +196,12 @@ environment
   Input should be 'development', 'staging' or 'production' [type=enum, input_value='homologacao', input_type=str]
 ```
 **Causa**: Arquivo `.env` configurado com `ENVIRONMENT=homologacao` mas código Pydantic só aceita: `development`, `staging` ou `production`
+**Contexto**:
+- `development` = Ambiente local (máquina do desenvolvedor)
+- `staging` = Ambiente de homologação (servidor 167.86.97.142)
+- `production` = Ambiente de produção (futuro)
 **Impacto**: Todos os backends falhavam ao iniciar (Restarting loop)
-**Solução**: Alterar `.env` de `ENVIRONMENT=homologacao` para `ENVIRONMENT=staging`
+**Solução**: Alterar `.env` de `ENVIRONMENT=homologacao` para `ENVIRONMENT=staging` (correto para este servidor)
 **Comando**: `sed -i 's/ENVIRONMENT=homologacao/ENVIRONMENT=staging/g' .env`
 **Status**: ⏳ AGUARDANDO EXECUÇÃO NO SERVIDOR
 
