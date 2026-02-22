@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Database, Search, FileJson, Activity, User, Code, CheckCircle, AlertCircle, Flame } from 'lucide-react';
+import { Search, FileJson, Activity, User, Code, CheckCircle, Flame } from 'lucide-react';
 
 interface FhirResource {
     resourceType: string;

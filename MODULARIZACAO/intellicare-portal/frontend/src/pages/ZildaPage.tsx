@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Map, Search, Building2, MapPin, CheckCircle, AlertTriangle, Database, Activity, BarChart3, Users } from 'lucide-react';
+import { Map, Search, Building2, MapPin, CheckCircle, AlertTriangle, Database, BarChart3 } from 'lucide-react';
 
 interface Establishment {
     cnes_code: string;
