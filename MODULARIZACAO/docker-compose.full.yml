@@ -216,7 +216,8 @@ services:
   donabedian:
     build:
       context: ./intellicare-donabedian
-      dockerfile: docker/Dockerfile.api
+      dockerfile: Dockerfile
+      target: api
     container_name: intellicare-donabedian
     hostname: donabedian
     environment:
