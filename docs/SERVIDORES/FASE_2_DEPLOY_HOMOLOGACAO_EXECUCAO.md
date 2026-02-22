@@ -109,6 +109,35 @@ Specs:
 
 ## 3. PROBLEMAS ENCONTRADOS E SOLUÇÕES
 
+### Problema 9: Oswaldo - DATABASE_URL não encontrada
+**Erro**:
+```
+sqlalchemy.exc.ArgumentError: Could not parse SQLAlchemy URL from given URL string
+```
+**Causa**: `BaseModuleConfig` espera `INTELLICARE_DATABASE_URL` mas o `.env` tem `INTELLICARE_OSWALDO_DATABASE_URL`. Oswaldo não tinha `validation_alias` para aceitar ambos.
+**Solução**: Adicionar `validation_alias` no `OswaldoConfig`:
+```python
+database_url: str = Field(
+    default="",
+    validation_alias=AliasChoices("INTELLICARE_OSWALDO_DATABASE_URL", "INTELLICARE_DATABASE_URL"),
+)
+```
+**Status**: ✅ CORRIGIDO - Commit 0fdf515
+
+### Problema 10: Donabedian - Estrutura de diretórios incorreta
+**Erro**:
+```
+ERROR: Error loading ASGI app. Could not import module "donabedian.api.app".
+```
+**Causa**: Código do Donabedian está em `src/donabedian/` mas Dockerfile não copiava a pasta `src/`. Também tentava importar `donabedian.api.app` ao invés de `donabedian.api.main`.
+**Solução**: Corrigir Dockerfile:
+```dockerfile
+COPY ./intellicare-donabedian/src ./src
+COPY ./intellicare-donabedian/migrations ./migrations
+CMD ["uvicorn", "donabedian.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+```
+**Status**: ✅ CORRIGIDO - Commits 0fdf515 e 2023e8c
+
 ### Problema 1: Módulo Comunicacao sem Dockerfile
 **Erro**: `intellicare-comunicacao` não tinha Dockerfile  
 **Impacto**: Impossível fazer build do módulo  
