@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from pydantic import field_validator
-from pydantic_settings import SettingsConfigDict
+from pydantic import Field, field_validator
+from pydantic_settings import AliasChoices, SettingsConfigDict
 
 from intellicare_core.config import BaseModuleConfig
 
@@ -25,6 +25,12 @@ class OswaldoConfig(BaseModuleConfig):
 
     module_name: str = "intellicare-oswaldo"
     module_version: str = "1.0.0"
+
+    # Database URL - aceita INTELLICARE_OSWALDO_DATABASE_URL ou INTELLICARE_DATABASE_URL
+    database_url: str = Field(
+        default="",
+        validation_alias=AliasChoices("INTELLICARE_OSWALDO_DATABASE_URL", "INTELLICARE_DATABASE_URL"),
+    )
 
     # Diretorio com perfis YAML de doencas
     profiles_dir: str = str(Path(__file__).parent / "profiles" / "diseases")

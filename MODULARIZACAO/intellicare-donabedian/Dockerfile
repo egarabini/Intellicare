@@ -11,7 +11,10 @@ COPY ./intellicare-donabedian/pyproject.toml ./intellicare-donabedian/README.md*
 
 RUN pip install --no-cache-dir . || true
 
-COPY ./intellicare-donabedian .
+# Copiar código fonte (está em src/donabedian)
+COPY ./intellicare-donabedian/src ./src
+COPY ./intellicare-donabedian/migrations ./migrations
+COPY ./intellicare-donabedian/alembic.ini ./alembic.ini
 
 RUN pip install --no-cache-dir -e .
 
@@ -20,5 +23,5 @@ EXPOSE 8000
 # ── API ────────────────────────────────────────────────────────
 FROM base AS api
 
-CMD ["uvicorn", "donabedian.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "donabedian.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
