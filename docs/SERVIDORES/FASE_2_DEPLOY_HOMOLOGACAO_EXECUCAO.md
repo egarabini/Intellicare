@@ -138,6 +138,36 @@ ERROR: failed to compute cache key: "/pyproject.toml": not found
 - Exemplo: `COPY pyproject.toml` → `COPY ./intellicare-florence/pyproject.toml`
 **Status**: ✅ RESOLVIDO
 
+### Problema 6: Portal Usando pnpm ao Invés de npm
+**Erro**:
+```
+failed to compute cache key: "/pnpm-lock.yaml": not found
+```
+**Causa**: Dockerfile do portal tentava usar pnpm mas o projeto usa npm
+**Impacto**: Build do portal falhava ao tentar copiar `pnpm-lock.yaml` inexistente
+**Solução**:
+- Alterado Dockerfile para usar `package-lock.json` ao invés de `pnpm-lock.yaml`
+- Alterado `pnpm install` para `npm ci`
+- Alterado `pnpm build` para `npm run build`
+**Status**: ✅ RESOLVIDO
+
+### Problema 7: Erros TypeScript no Portal
+**Erro**:
+```
+error TS6133: 'HomePage' is declared but its value is never read.
+error TS6133: 'Database' is declared but its value is never read.
+error TS6133: 'AlertCircle' is declared but its value is never read.
+error TS6133: 'Activity' is declared but its value is never read.
+error TS6133: 'Users' is declared but its value is never read.
+```
+**Causa**: Imports não utilizados em App.tsx, GrahamePage.tsx e ZildaPage.tsx
+**Impacto**: Build do portal falhava na compilação TypeScript
+**Solução**: Removidos imports não utilizados:
+- App.tsx: Comentado import de HomePage
+- GrahamePage.tsx: Removidos Database e AlertCircle
+- ZildaPage.tsx: Removidos Activity e Users
+**Status**: ✅ RESOLVIDO
+
 ---
 
 ## 4. ALTERAÇÕES REALIZADAS
@@ -239,6 +269,25 @@ Mensagem: fix: ajusta contexto do Docker e paths nos Dockerfiles para incluir in
 Arquivos: docker-compose.full.yml + 6 Dockerfiles + create_schemas.sh
 ```
 
+### Commit 7: Portal npm + Documentação
+```
+Hash: 94db371
+Mensagem: fix: corrige Dockerfile do portal para usar npm ao invés de pnpm + adiciona documentação completa da Fase 2
+Arquivos:
+  - MODULARIZACAO/intellicare-portal/frontend/Dockerfile
+  - docs/SERVIDORES/FASE_2_DEPLOY_HOMOLOGACAO_EXECUCAO.md
+```
+
+### Commit 8: TypeScript Errors
+```
+Hash: abd2525
+Mensagem: fix: remove imports não utilizados no portal (TypeScript errors)
+Arquivos:
+  - MODULARIZACAO/intellicare-portal/frontend/src/App.tsx
+  - MODULARIZACAO/intellicare-portal/frontend/src/pages/GrahamePage.tsx
+  - MODULARIZACAO/intellicare-portal/frontend/src/pages/ZildaPage.tsx
+```
+
 ---
 
 ## 6. STATUS ATUAL
@@ -252,9 +301,11 @@ Arquivos: docker-compose.full.yml + 6 Dockerfiles + create_schemas.sh
 - **Status**: ⏳ Sendo iniciados
 
 ### Frontend (Portal)
-- **Status**: ❌ ERRO
-- **Erro**: `pnpm-lock.yaml not found`
-- **Próximo**: Corrigir contexto do portal
+- **Status**: ✅ CORRIGIDO
+- **Problemas resolvidos**:
+  - pnpm → npm
+  - TypeScript imports não utilizados
+- **Próximo**: Build e deploy
 
 ---
 
