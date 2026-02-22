@@ -1,0 +1,152 @@
+# Padroes de correlacao entre exames laboratoriais
+# Cada padrao define quais labs sao necessarios e as regras de deteccao
+
+patterns:
+  - id: renal_impairment
+    name: "Comprometimento Renal"
+    description: "Padrao sugestivo de insuficiencia renal"
+    labs_required:
+      - creatinine
+      - urea
+    labs_optional:
+      - potassium
+      - egfr
+    rules:
+      - condition: "creatinine > 1.3 AND urea > 40"
+        significance: urgent
+        message: "Elevacao conjunta de creatinina e ureia sugere comprometimento renal"
+        recommendations:
+          - "Solicitar eGFR se nao disponivel"
+          - "Verificar potassio e bicarbonato"
+          - "Avaliar causas pre-renais (desidratacao, IC)"
+          - "Considerar encaminhamento a nefrologia"
+
+  - id: hepatic_injury
+    name: "Lesao Hepatica"
+    description: "Padrao sugestivo de lesao hepatocelular"
+    labs_required:
+      - ast
+      - alt
+    labs_optional:
+      - total_bilirubin
+      - ggt
+      - albumin
+    rules:
+      - condition: "ast > 120 AND alt > 120"
+        significance: urgent
+        message: "Elevacao significativa de transaminases sugere lesao hepatocelular aguda"
+        recommendations:
+          - "Investigar etiologia (viral, medicamentosa, toxica)"
+          - "Solicitar sorologia para hepatites"
+          - "Revisar medicacoes hepatotoxicas"
+          - "Monitorar INR e albumina"
+
+  - id: metabolic_syndrome
+    name: "Sindrome Metabolica"
+    description: "Perfil sugestivo de sindrome metabolica"
+    labs_required:
+      - glucose_fasting
+      - triglycerides
+    labs_optional:
+      - hdl
+      - hba1c
+    rules:
+      - condition: "glucose_fasting > 100 AND triglycerides > 150"
+        significance: attention
+        message: "Glicemia e triglicerides elevados sugerem componentes de sindrome metabolica"
+        recommendations:
+          - "Avaliar circunferencia abdominal e PA"
+          - "Solicitar HbA1c se nao disponivel"
+          - "Orientar mudancas de estilo de vida"
+          - "Considerar avaliacao cardiologica"
+
+  - id: anemia_investigation
+    name: "Anemia"
+    description: "Padrao sugestivo de anemia com indicacao de investigacao"
+    labs_required:
+      - hemoglobin
+    labs_optional:
+      - hematocrit
+      - creatinine
+    rules:
+      - condition: "hemoglobin < 10"
+        significance: urgent
+        message: "Anemia moderada a severa detectada"
+        recommendations:
+          - "Classificar anemia (micro/normo/macrocitica)"
+          - "Solicitar ferritina, ferro serico, TIBC"
+          - "Verificar funcao renal (anemia de doenca cronica)"
+          - "Solicitar reticulocitos"
+
+  - id: thyroid_dysfunction
+    name: "Disfuncao Tireoidiana"
+    description: "Padrao sugestivo de disfuncao tireoidiana"
+    labs_required:
+      - tsh
+    labs_optional:
+      - free_t4
+    rules:
+      - condition: "tsh > 10"
+        significance: urgent
+        message: "TSH significativamente elevado sugere hipotireoidismo"
+        recommendations:
+          - "Solicitar T4 livre se nao disponivel"
+          - "Pesquisar anti-TPO e anti-tireoglobulina"
+          - "Avaliar necessidade de reposicao de levotiroxina"
+      - condition: "tsh < 0.1"
+        significance: urgent
+        message: "TSH suprimido sugere hipertireoidismo"
+        recommendations:
+          - "Solicitar T4 e T3 livres"
+          - "Pesquisar TRAb"
+          - "Considerar cintilografia de tireoide"
+
+  - id: hyperkalemia_risk
+    name: "Risco de Hipercalemia"
+    description: "Potassio elevado com comprometimento renal"
+    labs_required:
+      - potassium
+      - creatinine
+    rules:
+      - condition: "potassium > 5.5 AND creatinine > 1.5"
+        significance: critical
+        message: "Hipercalemia com funcao renal comprometida - risco cardiaco"
+        recommendations:
+          - "ECG urgente"
+          - "Considerar gluconato de calcio se K > 6.5"
+          - "Avaliar medicacoes que elevam potassio (IECA, BRA, espironolactona)"
+          - "Monitoramento cardiaco continuo"
+
+  - id: cholestatic_pattern
+    name: "Padrao Colestatico"
+    description: "Elevacao de marcadores colestaticos"
+    labs_required:
+      - ggt
+      - alkaline_phosphatase
+    labs_optional:
+      - total_bilirubin
+    rules:
+      - condition: "ggt > 120 AND alkaline_phosphatase > 294"
+        significance: urgent
+        message: "Elevacao de GGT e fosfatase alcalina sugere padrao colestatico"
+        recommendations:
+          - "Solicitar ultrassonografia de abdome"
+          - "Investigar obstrucao biliar"
+          - "Avaliar medicacoes colestaticas"
+
+  - id: coagulation_risk
+    name: "Risco de Coagulacao"
+    description: "INR elevado com risco de sangramento"
+    labs_required:
+      - inr
+    labs_optional:
+      - platelets
+    rules:
+      - condition: "inr > 4.0"
+        significance: critical
+        message: "INR muito elevado - risco significativo de sangramento"
+        recommendations:
+          - "Avaliar sinais de sangramento ativo"
+          - "Considerar suspensao/reducao de anticoagulante"
+          - "Vitamina K se INR > 9 ou sangramento"
+          - "Monitorar hemoglobina"

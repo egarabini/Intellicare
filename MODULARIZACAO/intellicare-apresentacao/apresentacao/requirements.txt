@@ -1,0 +1,17 @@
+# IntelliCare Apresentacao - Dependencias base
+# Observacao: usar ambiente virtual dedicado (apresentacao/.venv)
+
+# Core
+# pygame-ce ainda nao oferece wheel estável para alguns ambientes Python recentes.
+# Fallback: usar pygame para Python >= 3.14.
+pygame-ce>=2.5.2,<2.6.0; python_version < "3.14"
+pygame>=2.5.2,<3.0.0; python_version >= "3.14"
+python-dotenv>=1.0.1,<2.0.0
+
+# IA e TTS
+openai>=1.40.0,<2.0.0
+pyttsx3>=2.90,<3.0.0
+
+# Utilitarios
+pillow>=10.4.0,<11.0.0
+rich>=13.8.0,<14.0.0

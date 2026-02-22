@@ -1,0 +1,154 @@
+{
+  "dashboard": {
+    "title": "IntelliCare - Comunicação por Canal",
+    "tags": ["intellicare", "comunicacao", "channels"],
+    "timezone": "browser",
+    "schemaVersion": 16,
+    "version": 1,
+    "refresh": "30s",
+    "templating": {
+      "list": [
+        {
+          "name": "channel",
+          "type": "query",
+          "query": "label_values(comm_messages_total, channel)",
+          "current": {"text": "All", "value": "$__all"},
+          "includeAll": true,
+          "multi": true
+        }
+      ]
+    },
+    "panels": [
+      {
+        "id": 1,
+        "title": "Latência por Canal (p50, p95, p99)",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.50, sum by(channel, le)(rate(comm_message_latency_seconds_bucket{channel=~\"$channel\"}[5m])))",
+            "legendFormat": "{{channel}} (p50)"
+          },
+          {
+            "expr": "histogram_quantile(0.95, sum by(channel, le)(rate(comm_message_latency_seconds_bucket{channel=~\"$channel\"}[5m])))",
+            "legendFormat": "{{channel}} (p95)"
+          },
+          {
+            "expr": "histogram_quantile(0.99, sum by(channel, le)(rate(comm_message_latency_seconds_bucket{channel=~\"$channel\"}[5m])))",
+            "legendFormat": "{{channel}} (p99)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth"}
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Taxa de Falha por Canal (%)",
+        "type": "timeseries",
+        "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "sum by(channel)(rate(comm_messages_total{status=\"failed\",channel=~\"$channel\"}[5m])) / sum by(channel)(rate(comm_messages_total{channel=~\"$channel\"}[5m])) * 100",
+            "legendFormat": "{{channel}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 5, "color": "yellow"},
+                {"value": 10, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Fallbacks de Canal (24h)",
+        "type": "table",
+        "gridPos": {"x": 0, "y": 8, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "sum by(from_channel, to_channel, reason)(increase(comm_channel_fallback_total[24h]))",
+            "format": "table",
+            "instant": true
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {"Time": true},
+              "renameByName": {
+                "from_channel": "De",
+                "to_channel": "Para",
+                "reason": "Motivo",
+                "Value": "Total"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Health Status dos Dispatchers",
+        "type": "stat",
+        "gridPos": {"x": 12, "y": 8, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "comm_dispatcher_health{channel=~\"$channel\"}",
+            "legendFormat": "{{channel}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [
+              {"type": "value", "value": 1, "text": "Healthy", "color": "green"},
+              {"type": "value", "value": 0, "text": "Unhealthy", "color": "red"}
+            ],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 1, "color": "green"}
+              ]
+            }
+          }
+        },
+        "options": {
+          "orientation": "horizontal",
+          "textMode": "value_and_name"
+        }
+      },
+      {
+        "id": 5,
+        "title": "Throughput por Canal (msg/s)",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 16, "w": 24, "h": 6},
+        "targets": [
+          {
+            "expr": "sum by(channel)(rate(comm_messages_total{channel=~\"$channel\"}[5m]))",
+            "legendFormat": "{{channel}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth", "fillOpacity": 10}
+          }
+        }
+      }
+    ]
+  }
+}
+

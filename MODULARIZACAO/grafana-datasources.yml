@@ -1,0 +1,44 @@
+apiVersion: 1
+
+datasources:
+  # =========================================================================
+  # Prometheus Datasource
+  # =========================================================================
+  - name: Prometheus
+    type: prometheus
+    url: http://prometheus:9090
+    access: proxy
+    isDefault: true
+    jsonData:
+      timeInterval: 15s
+      alertManagerUid: 'prometheus'
+
+  # =========================================================================
+  # Optional: InfluxDB for long-term storage
+  # =========================================================================
+  # - name: InfluxDB
+  #   type: influxdb
+  #   url: http://influxdb:8086
+  #   access: proxy
+  #   jsonData:
+  #     database: 'prometheus'
+  #     httpMode: 'GET'
+
+  # =========================================================================
+  # Optional: PostgreSQL for direct query
+  # =========================================================================
+  # - name: PostgreSQL
+  #   type: postgres
+  #   url: postgres:5432
+  #   access: proxy
+  #   database: intellicare_db
+  #   user: intellicare_admin
+  #   jsonData:
+  #     sslmode: 'disable'
+  #     postgresVersion: 1500
+  #     tlsAuth: false
+  #     tlsAuthWithCACert: false
+  #   secureJsonData:
+  #     password: 'intellicare_dev_pwd'
+
+deleteDataSourcesNotPresentProvisioning: false

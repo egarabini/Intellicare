@@ -1,0 +1,39 @@
+services:
+  intellicare-ocr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: intellicare-ocr
+    ports:
+      - "8008:8008"
+    environment:
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+      OCR_VISION_MODEL: ${OCR_VISION_MODEL:-llama4:scout}
+      OCR_VISION_TIMEOUT_SECONDS: ${OCR_VISION_TIMEOUT_SECONDS:-60}
+      OCR_SURYA_DEVICE: ${OCR_SURYA_DEVICE:-cpu}
+      LLAMAPARSE_API_KEY: ${LLAMAPARSE_API_KEY:-}
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: 8000
+      CHROMA_COLLECTION: ${CHROMA_COLLECTION:-ocr_documents}
+      OCR_LGPD_SALT: ${OCR_LGPD_SALT:-change-me}
+      OCR_MAX_FILE_SIZE_MB: ${OCR_MAX_FILE_SIZE_MB:-50}
+      OCR_MAX_PAGES: ${OCR_MAX_PAGES:-100}
+      OCR_CONFIDENCE_WARN: ${OCR_CONFIDENCE_WARN:-0.60}
+    depends_on:
+      chromadb:
+        condition: service_started
+    restart: unless-stopped
+
+  chromadb:
+    image: chromadb/chroma:0.5.23
+    container_name: ocr-chromadb
+    ports:
+      - "8200:8000"
+    volumes:
+      - ocr_chroma_data:/chroma/chroma
+    environment:
+      ANONYMIZED_TELEMETRY: "false"
+    restart: unless-stopped
+
+volumes:
+  ocr_chroma_data:

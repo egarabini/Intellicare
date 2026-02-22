@@ -1,0 +1,168 @@
+{
+  "dashboard": {
+    "title": "IntelliCare - Comunicação Overview",
+    "tags": ["intellicare", "comunicacao", "overview"],
+    "timezone": "browser",
+    "schemaVersion": 16,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Mensagens Totais (24h)",
+        "type": "stat",
+        "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4},
+        "targets": [
+          {
+            "expr": "sum(increase(comm_messages_total[24h]))",
+            "legendFormat": "Total"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 1000, "color": "yellow"},
+                {"value": 5000, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Taxa de Sucesso (%)",
+        "type": "gauge",
+        "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4},
+        "targets": [
+          {
+            "expr": "sum(increase(comm_messages_total{status=\"delivered\"}[24h])) / sum(increase(comm_messages_total[24h])) * 100",
+            "legendFormat": "Success Rate"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 80, "color": "yellow"},
+                {"value": 95, "color": "green"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Canais Mais Usados (24h)",
+        "type": "piechart",
+        "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4},
+        "targets": [
+          {
+            "expr": "sum by(channel)(increase(comm_messages_total[24h]))",
+            "legendFormat": "{{channel}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Alertas por Severidade (24h)",
+        "type": "bargauge",
+        "gridPos": {"x": 18, "y": 0, "w": 6, "h": 4},
+        "targets": [
+          {
+            "expr": "sum by(severity)(increase(comm_messages_total[24h]))",
+            "legendFormat": "{{severity}}"
+          }
+        ],
+        "options": {
+          "orientation": "horizontal",
+          "displayMode": "gradient"
+        }
+      },
+      {
+        "id": 5,
+        "title": "Mensagens por Canal (Últimas 6h)",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "sum by(channel)(rate(comm_messages_total[5m]))",
+            "legendFormat": "{{channel}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "fillOpacity": 10
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Taxa de Falha por Canal (%)",
+        "type": "timeseries",
+        "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "sum by(channel)(rate(comm_messages_total{status=\"failed\"}[5m])) / sum by(channel)(rate(comm_messages_total[5m])) * 100",
+            "legendFormat": "{{channel}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth"
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 5, "color": "yellow"},
+                {"value": 10, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Latência Média por Canal (p95)",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 12, "w": 24, "h": 6},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, sum by(channel, le)(rate(comm_message_latency_seconds_bucket[5m])))",
+            "legendFormat": "{{channel}} (p95)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,42 @@
+metadata:
+  id: proto-onco-seguimento-001
+  version: 1.0.0
+  title: Protocolo de Seguimento Oncologico Ambulatorial
+  specialty: oncologia
+  condition: oncology_followup
+  status: review
+  created_at: "2026-02-17T00:00:00"
+  updated_at: "2026-02-17T00:00:00"
+  author: Comissao de Oncologia
+  author_email:
+  reviewer: Revisor Onco
+  approver:
+  approved_at:
+  tags: [oncologia, seguimento, linha_de_cuidado]
+  keywords: [toxicidade, recidiva, seguimento]
+  references: ["NCCN Follow-up"]
+summary: Diretrizes para seguimento de pacientes oncologicos em acompanhamento.
+sections:
+  - title: Sinais de alerta
+    content: Monitorar sintomas B, dor persistente e perda de peso.
+    order: 1
+  - title: Frequencia de consultas
+    content: Definir frequencia por risco de recidiva.
+    order: 2
+criteria:
+  - name: Risco alto de recidiva
+    description: Marcadores e estadiamento de alto risco
+    condition: risco_recidiva == alto
+    action: consultas bimestrais
+interventions:
+  - code: int-onco-001
+    name: Monitoramento de toxicidade
+    description: Avaliar efeitos adversos tardios.
+    indication: Pos tratamento sistemico
+    monitoring: Trimestral
+pathways:
+  line_of_care: Oncologia Ambulatorial
+  transitions:
+    - from: Oncologia
+      to: Cuidados_Paliativos
+      when: progressao_refrataria

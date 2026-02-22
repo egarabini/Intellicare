@@ -1,0 +1,235 @@
+id: acompanhamento-periodico
+namespace: intellicare
+
+description: |
+  Workflow para acompanhamento periódico de pacientes crônicos.
+  
+  **Fluxo**:
+  1. Busca pacientes que precisam de acompanhamento
+  2. Verifica última consulta/exame
+  3. Identifica pacientes em atraso
+  4. Envia lembretes (email, SMS, WhatsApp)
+  5. Registra tentativa de contato
+
+labels:
+  module: oswaldo
+  priority: medium
+  version: "1.0.0"
+
+inputs:
+  - id: periodo
+    type: STRING
+    required: true
+    description: Período de acompanhamento (diario, semanal, mensal)
+    defaults: mensal
+  
+  - id: condicao
+    type: STRING
+    required: false
+    description: Condição a acompanhar (diabetes, has, drc, todas)
+    defaults: todas
+  
+  - id: dias_atraso_minimo
+    type: INT
+    required: false
+    description: Dias de atraso mínimo para enviar lembrete
+    defaults: 7
+
+tasks:
+  # ── Buscar Pacientes para Acompanhamento ────────────────────────────────────────────────────
+  
+  - id: buscar_pacientes_acompanhamento
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://oswaldo:8002/api/v1/pacientes/acompanhamento/pendentes"
+    method: GET
+    headers:
+      Content-Type: application/json
+    queryParameters:
+      periodo: "{{ inputs.periodo }}"
+      condicao: "{{ inputs.condicao }}"
+      dias_atraso_minimo: "{{ inputs.dias_atraso_minimo }}"
+    description: Busca pacientes que precisam de acompanhamento
+
+  # ── Processar Cada Paciente ─────────────────────────────────────────────────────────────────
+  
+  - id: processar_pacientes_acompanhamento
+    type: io.kestra.plugin.core.flow.EachSequential
+    value: "{{ outputs.buscar_pacientes_acompanhamento.body.pacientes }}"
+    tasks:
+      # Verificar última consulta
+      - id: verificar_ultima_consulta
+        type: io.kestra.plugin.core.http.Request
+        uri: "http://core:8000/api/v1/pacientes/{{ taskrun.value.paciente_id }}/consultas/ultima"
+        method: GET
+        headers:
+          Content-Type: application/json
+        description: Verifica data da última consulta
+      
+      # Verificar últimos exames
+      - id: verificar_ultimos_exames
+        type: io.kestra.plugin.core.http.Request
+        uri: "http://florence:8001/api/v1/exames/paciente/{{ taskrun.value.paciente_id }}/ultimos"
+        method: GET
+        headers:
+          Content-Type: application/json
+        queryParameters:
+          limite: 5
+        description: Verifica últimos exames realizados
+      
+      # Calcular dias de atraso
+      - id: calcular_atraso
+        type: io.kestra.plugin.core.http.Request
+        uri: "http://oswaldo:8002/api/v1/acompanhamento/calcular-atraso"
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "paciente_id": "{{ taskrun.value.paciente_id }}",
+            "condicao": "{{ taskrun.value.condicao }}",
+            "ultima_consulta": "{{ outputs.verificar_ultima_consulta.body.data }}",
+            "ultimos_exames": {{ outputs.verificar_ultimos_exames.body | json }},
+            "plano_cuidado_id": "{{ taskrun.value.plano_id }}"
+          }
+        description: Calcula dias de atraso baseado no plano de cuidado
+      
+      # Verificar se precisa enviar lembrete
+      - id: verificar_envio_lembrete
+        type: io.kestra.plugin.core.flow.If
+        condition: "{{ outputs.calcular_atraso.body.dias_atraso >= inputs.dias_atraso_minimo }}"
+        then:
+          # Buscar dados de contato
+          - id: buscar_contato
+            type: io.kestra.plugin.core.http.Request
+            uri: "http://core:8000/api/v1/pacientes/{{ taskrun.value.paciente_id }}/contato"
+            method: GET
+            headers:
+              Content-Type: application/json
+            description: Busca dados de contato do paciente
+          
+          # Enviar email
+          - id: enviar_email_lembrete
+            type: io.kestra.plugin.notifications.mail.MailSend
+            from: noreply@intellicare.com
+            to: "{{ outputs.buscar_contato.body.email }}"
+            subject: "📅 Lembrete: Acompanhamento de {{ taskrun.value.condicao }}"
+            htmlTextContent: |
+              <h2>Olá, {{ outputs.buscar_contato.body.nome }}!</h2>
+              
+              <p>Este é um lembrete sobre seu acompanhamento de <strong>{{ taskrun.value.condicao }}</strong>.</p>
+              
+              <h3>Informações:</h3>
+              <ul>
+                <li><strong>Última consulta:</strong> {{ outputs.verificar_ultima_consulta.body.data }}</li>
+                <li><strong>Dias de atraso:</strong> {{ outputs.calcular_atraso.body.dias_atraso }} dias</li>
+                <li><strong>Próxima ação recomendada:</strong> {{ outputs.calcular_atraso.body.proxima_acao }}</li>
+              </ul>
+              
+              <p>Por favor, entre em contato com sua unidade de saúde para agendar:</p>
+              <ul>
+                <li>{{ outputs.calcular_atraso.body.acoes_pendentes | join('</li><li>') }}</li>
+              </ul>
+              
+              <p><a href="http://portal:3000/agendamento">Agendar Consulta</a></p>
+              
+              <p>Atenciosamente,<br>Equipe IntelliCare</p>
+            description: Envia email de lembrete
+          
+          # Enviar SMS (se telefone disponível)
+          - id: enviar_sms_lembrete
+            type: io.kestra.plugin.core.http.Request
+            uri: "http://sms-gateway:8080/api/v1/sms/send"
+            method: POST
+            headers:
+              Content-Type: application/json
+              Authorization: "Bearer {{ secret('SMS_API_KEY') }}"
+            body: |
+              {
+                "to": "{{ outputs.buscar_contato.body.telefone }}",
+                "message": "📅 IntelliCare: Lembrete de acompanhamento de {{ taskrun.value.condicao }}. Você está com {{ outputs.calcular_atraso.body.dias_atraso }} dias de atraso. Agende sua consulta: http://portal:3000/agendamento"
+              }
+            description: Envia SMS de lembrete
+          
+          # Registrar tentativa de contato
+          - id: registrar_contato
+            type: io.kestra.plugin.core.http.Request
+            uri: "http://oswaldo:8002/api/v1/acompanhamento/registrar-contato"
+            method: POST
+            headers:
+              Content-Type: application/json
+            body: |
+              {
+                "paciente_id": "{{ taskrun.value.paciente_id }}",
+                "condicao": "{{ taskrun.value.condicao }}",
+                "tipo_contato": "lembrete_automatico",
+                "canais": ["email", "sms"],
+                "dias_atraso": {{ outputs.calcular_atraso.body.dias_atraso }},
+                "acoes_pendentes": {{ outputs.calcular_atraso.body.acoes_pendentes | json }},
+                "workflow_execution_id": "{{ execution.id }}",
+                "data_contato": "{{ execution.startDate }}"
+              }
+            description: Registra tentativa de contato no banco de dados
+
+  # ── Gerar Relatório Final ──────────────────────────────────────────────────────────────────
+  
+  - id: gerar_relatorio_acompanhamento
+    type: io.kestra.plugin.core.log.Log
+    message: |
+      Acompanhamento periódico concluído:
+      - Período: {{ inputs.periodo }}
+      - Condição: {{ inputs.condicao }}
+      - Total de pacientes verificados: {{ outputs.buscar_pacientes_acompanhamento.body.total }}
+      - Lembretes enviados: {{ outputs.processar_pacientes_acompanhamento.numberOfSuccessful }}
+      - Falhas: {{ outputs.processar_pacientes_acompanhamento.numberOfFailed }}
+    level: INFO
+
+# ── Triggers ────────────────────────────────────────────────────────────────────────────────
+
+triggers:
+  # Executa diariamente às 08:00 (acompanhamento diário)
+  - id: schedule_diario
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 8 * * *"
+    description: Acompanhamento diário de pacientes críticos
+    inputs:
+      periodo: diario
+      condicao: todas
+      dias_atraso_minimo: 3
+  
+  # Executa semanalmente às segundas-feiras às 09:00
+  - id: schedule_semanal
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 9 * * 1"
+    description: Acompanhamento semanal de pacientes
+    inputs:
+      periodo: semanal
+      condicao: todas
+      dias_atraso_minimo: 7
+  
+  # Executa mensalmente no dia 1 às 10:00
+  - id: schedule_mensal
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 10 1 * *"
+    description: Acompanhamento mensal completo
+    inputs:
+      periodo: mensal
+      condicao: todas
+      dias_atraso_minimo: 30
+
+# ── Error Handling ──────────────────────────────────────────────────────────────────────────
+
+errors:
+  - id: notificar_erro_acompanhamento
+    type: io.kestra.plugin.notifications.mail.MailSend
+    from: noreply@intellicare.com
+    to: admin@intellicare.com
+    subject: "❌ Erro no Workflow: Acompanhamento Periódico"
+    htmlTextContent: |
+      <h2>Erro no Workflow</h2>
+      <p><strong>Workflow:</strong> acompanhamento-periodico</p>
+      <p><strong>Execution ID:</strong> {{ execution.id }}</p>
+      <p><strong>Período:</strong> {{ inputs.periodo }}</p>
+      <p><strong>Erro:</strong> {{ task.error }}</p>
+      <p><strong>Pacientes processados:</strong> {{ outputs.processar_pacientes_acompanhamento.numberOfSuccessful }}</p>
+      <p><strong>Falhas:</strong> {{ outputs.processar_pacientes_acompanhamento.numberOfFailed }}</p>
+

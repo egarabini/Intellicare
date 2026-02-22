@@ -1,0 +1,11 @@
+services:
+  api:
+    build:
+      context: .
+      target: api
+    ports:
+      - "${ZILDA_PORT:-8003}:8000"
+    environment:
+      - INTELLICARE_CNES_BASE_URL=${CNES_BASE_URL:-https://apidadosabertos.saude.gov.br}
+      - INTELLICARE_CNES_TIMEOUT=${CNES_TIMEOUT:-30}
+    restart: unless-stopped

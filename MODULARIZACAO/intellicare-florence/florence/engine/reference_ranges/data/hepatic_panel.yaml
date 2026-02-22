@@ -1,0 +1,62 @@
+# Painel Hepatico — Reference Ranges
+# Fontes: SBH, AASLD, UpToDate
+
+id: hepatic_panel
+name: "Painel Hepatico"
+description: "Exames de funcao hepatica"
+
+labs:
+  - id: ast
+    name: "AST (TGO)"
+    loinc_code: "1920-8"
+    unit: "U/L"
+    normal_min: 0.0
+    normal_max: 40.0
+    high_max: 120.0
+    critical_high: 1000.0
+
+  - id: alt
+    name: "ALT (TGP)"
+    loinc_code: "1742-6"
+    unit: "U/L"
+    normal_min: 0.0
+    normal_max: 41.0
+    high_max: 120.0
+    critical_high: 1000.0
+
+  - id: total_bilirubin
+    name: "Bilirrubina Total"
+    loinc_code: "1975-2"
+    unit: "mg/dL"
+    normal_min: 0.1
+    normal_max: 1.2
+    high_max: 3.0
+    critical_high: 12.0
+    panic_high: 20.0
+
+  - id: albumin
+    name: "Albumina"
+    loinc_code: "1751-7"
+    unit: "g/dL"
+    normal_min: 3.5
+    normal_max: 5.5
+    low_min: 2.5
+    critical_low: 2.0
+
+  - id: ggt
+    name: "GGT (Gama-GT)"
+    loinc_code: "2324-2"
+    unit: "U/L"
+    normal_min: 0.0
+    normal_max: 60.0
+    high_max: 200.0
+    critical_high: 500.0
+
+  - id: alkaline_phosphatase
+    name: "Fosfatase Alcalina"
+    loinc_code: "6768-6"
+    unit: "U/L"
+    normal_min: 44.0
+    normal_max: 147.0
+    high_max: 300.0
+    critical_high: 1000.0

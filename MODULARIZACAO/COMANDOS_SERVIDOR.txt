@@ -1,0 +1,114 @@
+# ========================================
+# COMANDOS PARA EXECUTAR NO SERVIDOR
+# Copie e cole BLOCO POR BLOCO no terminal SSH
+# ========================================
+
+# ========================================
+# BLOCO 1: PREPARAÇÃO DO SISTEMA
+# ========================================
+
+apt update && \
+DEBIAN_FRONTEND=noninteractive apt upgrade -y && \
+apt install -y curl wget git vim htop net-tools ufw && \
+echo "✅ Sistema atualizado"
+
+# ========================================
+# BLOCO 2: FIREWALL
+# ========================================
+
+ufw allow 22/tcp && \
+ufw allow 80/tcp && \
+ufw allow 443/tcp && \
+ufw allow 3001/tcp && \
+ufw allow 8001:8006/tcp && \
+ufw allow 3000/tcp && \
+ufw allow 9090/tcp && \
+echo "y" | ufw enable && \
+ufw status && \
+echo "✅ Firewall configurado"
+
+# ========================================
+# BLOCO 3: DOCKER
+# ========================================
+
+curl -fsSL https://get.docker.com -o get-docker.sh && \
+sh get-docker.sh && \
+rm get-docker.sh && \
+docker --version && \
+echo "✅ Docker instalado"
+
+# ========================================
+# BLOCO 4: DOCKER COMPOSE
+# ========================================
+
+curl -L "https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+chmod +x /usr/local/bin/docker-compose && \
+docker-compose --version && \
+echo "✅ Docker Compose instalado"
+
+# ========================================
+# BLOCO 5: CLONAR REPOSITÓRIO
+# ========================================
+
+mkdir -p /opt/intellicare && \
+cd /opt/intellicare && \
+rm -rf intellicare && \
+git clone git@github.com:egarabini/intellicare.git && \
+cd intellicare && \
+ls -la && \
+echo "✅ Repositório clonado"
+
+# ========================================
+# BLOCO 6: CONFIGURAR .ENV
+# ========================================
+
+cd /opt/intellicare/intellicare/MODULARIZACAO && \
+cp .env.homologacao .env && \
+head -n 10 .env && \
+echo "✅ .env configurado"
+
+# ========================================
+# BLOCO 7: SUBIR INFRAESTRUTURA
+# ========================================
+
+cd /opt/intellicare/intellicare/MODULARIZACAO && \
+docker-compose -f docker-compose.full.yml up -d postgres redis && \
+echo "Aguardando 30 segundos..." && \
+sleep 30 && \
+docker-compose -f docker-compose.full.yml ps && \
+echo "✅ Containers iniciados"
+
+# ========================================
+# BLOCO 8: CRIAR SCHEMAS
+# ========================================
+
+cd /opt/intellicare/intellicare/MODULARIZACAO && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "CREATE SCHEMA IF NOT EXISTS intellicare_florence;" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "CREATE SCHEMA IF NOT EXISTS intellicare_oswaldo;" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "CREATE SCHEMA IF NOT EXISTS intellicare_donabedian;" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "CREATE SCHEMA IF NOT EXISTS intellicare_wanda;" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "CREATE SCHEMA IF NOT EXISTS intellicare_comunicacao;" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "CREATE SCHEMA IF NOT EXISTS intellicare_geralda;" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "\dn" && \
+echo "✅ Schemas criados"
+
+# ========================================
+# BLOCO 9: VALIDAÇÃO FINAL
+# ========================================
+
+cd /opt/intellicare/intellicare/MODULARIZACAO && \
+echo "========================================" && \
+echo "✅ CONFIGURAÇÃO CONCLUÍDA!" && \
+echo "========================================" && \
+echo "" && \
+echo "Containers rodando:" && \
+docker-compose -f docker-compose.full.yml ps && \
+echo "" && \
+echo "Schemas criados:" && \
+docker exec -i $(docker-compose -f docker-compose.full.yml ps -q postgres) psql -U intellicare_admin -d intellicare_db -c "\dn" && \
+echo "" && \
+echo "URLs de acesso:" && \
+echo "  - Portal: http://167.86.97.142:3001" && \
+echo "  - Florence: http://167.86.97.142:8001/docs" && \
+echo "  - Oswaldo: http://167.86.97.142:8002/docs"
+

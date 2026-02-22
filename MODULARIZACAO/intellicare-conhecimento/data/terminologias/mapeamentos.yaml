@@ -1,0 +1,13 @@
+items:
+  - source_code: "2160-0"
+    source_system: loinc
+    target_code: N18.3
+    target_system: cid10
+    equivalence: narrower
+    comments: Creatinina elevada pode apoiar diagnostico de DRC.
+  - source_code: "709044004"
+    source_system: snomed
+    target_code: N18.3
+    target_system: cid10
+    equivalence: equivalent
+

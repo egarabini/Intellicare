@@ -1,0 +1,175 @@
+id: reclassificacao-plano
+namespace: intellicare
+
+description: |
+  Workflow para reclassificação automática de planos de cuidado.
+  
+  **Fluxo**:
+  1. Busca pacientes com novos exames/diagnósticos
+  2. Calcula novo estadiamento (CKD, DM2, HAS)
+  3. Verifica se houve mudança de classificação
+  4. Atualiza plano de cuidado automaticamente
+  5. Notifica equipe sobre mudanças
+
+labels:
+  module: oswaldo
+  priority: high
+  version: "1.0.0"
+
+inputs:
+  - id: paciente_id
+    type: STRING
+    required: false
+    description: ID do paciente (se vazio, processa todos)
+  
+  - id: condicao
+    type: STRING
+    required: false
+    description: Condição a reclassificar (diabetes, has, drc, todas)
+    defaults: todas
+
+tasks:
+  # ── Buscar Pacientes para Reclassificação ─────────────────────────────────
+  
+  - id: buscar_pacientes
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://oswaldo:8002/api/v1/pacientes/reclassificacao/pendentes"
+    method: GET
+    headers:
+      Content-Type: application/json
+    queryParameters:
+      paciente_id: "{{ inputs.paciente_id }}"
+      condicao: "{{ inputs.condicao }}"
+    description: Busca pacientes com reclassificação pendente
+  
+  # ── Processar Cada Paciente ────────────────────────────────────────────────
+  
+  - id: processar_pacientes
+    type: io.kestra.plugin.core.flow.EachSequential
+    value: "{{ outputs.buscar_pacientes.body.pacientes }}"
+    tasks:
+      # Calcular novo estadiamento
+      - id: calcular_estadiamento
+        type: io.kestra.plugin.core.http.Request
+        uri: "http://oswaldo:8002/api/v1/estadiamento/calcular"
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "paciente_id": "{{ taskrun.value.paciente_id }}",
+            "condicao": "{{ taskrun.value.condicao }}",
+            "dados_clinicos": {{ taskrun.value.dados_clinicos | json }}
+          }
+        description: Calcula novo estadiamento baseado em dados clínicos
+      
+      # Verificar se houve mudança
+      - id: verificar_mudanca
+        type: io.kestra.plugin.core.flow.If
+        condition: "{{ outputs.calcular_estadiamento.body.estadiamento_novo != outputs.calcular_estadiamento.body.estadiamento_atual }}"
+        then:
+          # Atualizar plano de cuidado
+          - id: atualizar_plano
+            type: io.kestra.plugin.core.http.Request
+            uri: "http://oswaldo:8002/api/v1/planos-cuidado/{{ taskrun.value.plano_id }}/reclassificar"
+            method: PUT
+            headers:
+              Content-Type: application/json
+            body: |
+              {
+                "estadiamento_novo": "{{ outputs.calcular_estadiamento.body.estadiamento_novo }}",
+                "estadiamento_anterior": "{{ outputs.calcular_estadiamento.body.estadiamento_atual }}",
+                "motivo": "Reclassificação automática baseada em novos dados clínicos",
+                "data_reclassificacao": "{{ execution.startDate }}"
+              }
+            description: Atualiza plano de cuidado com novo estadiamento
+          
+          # Notificar equipe
+          - id: notificar_equipe
+            type: io.kestra.plugin.core.http.Request
+            uri: "http://nise:8000/api/v1/notificacoes/reclassificacao"
+            method: POST
+            headers:
+              Content-Type: application/json
+            body: |
+              {
+                "paciente_id": "{{ taskrun.value.paciente_id }}",
+                "condicao": "{{ taskrun.value.condicao }}",
+                "estadiamento_anterior": "{{ outputs.calcular_estadiamento.body.estadiamento_atual }}",
+                "estadiamento_novo": "{{ outputs.calcular_estadiamento.body.estadiamento_novo }}",
+                "plano_id": "{{ taskrun.value.plano_id }}",
+                "canal": "email"
+              }
+            description: Notifica equipe sobre reclassificação
+          
+          # Registrar auditoria
+          - id: registrar_auditoria
+            type: io.kestra.plugin.core.http.Request
+            uri: "http://oswaldo:8002/api/v1/auditoria/reclassificacao"
+            method: POST
+            headers:
+              Content-Type: application/json
+            body: |
+              {
+                "paciente_id": "{{ taskrun.value.paciente_id }}",
+                "condicao": "{{ taskrun.value.condicao }}",
+                "estadiamento_anterior": "{{ outputs.calcular_estadiamento.body.estadiamento_atual }}",
+                "estadiamento_novo": "{{ outputs.calcular_estadiamento.body.estadiamento_novo }}",
+                "plano_id": "{{ taskrun.value.plano_id }}",
+                "workflow_execution_id": "{{ execution.id }}",
+                "data": "{{ execution.startDate }}"
+              }
+            description: Registra auditoria de reclassificação
+  
+  # ── Gerar Relatório Final ─────────────────────────────────────────────────
+  
+  - id: gerar_relatorio
+    type: io.kestra.plugin.core.log.Log
+    message: |
+      Reclassificação concluída:
+      - Total de pacientes processados: {{ outputs.buscar_pacientes.body.total }}
+      - Reclassificações realizadas: {{ outputs.processar_pacientes.numberOfSuccessful }}
+      - Falhas: {{ outputs.processar_pacientes.numberOfFailed }}
+    level: INFO
+
+# ── Triggers ────────────────────────────────────────────────────────────────
+
+triggers:
+  # Executa diariamente às 02:00 (horário de baixo uso)
+  - id: schedule_diario
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 2 * * *"
+    description: Reclassificação automática diária
+    inputs:
+      condicao: todas
+  
+  # Executa semanalmente aos domingos às 03:00 (reclassificação completa)
+  - id: schedule_semanal
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 3 * * 0"
+    description: Reclassificação completa semanal
+    inputs:
+      condicao: todas
+  
+  # Trigger manual via webhook
+  - id: webhook_manual
+    type: io.kestra.plugin.core.trigger.Webhook
+    key: "{{ secret('WEBHOOK_KEY') }}"
+    description: Reclassificação manual via webhook
+
+# ── Error Handling ──────────────────────────────────────────────────────────
+
+errors:
+  - id: notificar_erro
+    type: io.kestra.plugin.notifications.mail.MailSend
+    from: noreply@intellicare.com
+    to: admin@intellicare.com
+    subject: "❌ Erro no Workflow: Reclassificação de Planos"
+    htmlTextContent: |
+      <h2>Erro no Workflow</h2>
+      <p><strong>Workflow:</strong> reclassificacao-plano</p>
+      <p><strong>Execution ID:</strong> {{ execution.id }}</p>
+      <p><strong>Erro:</strong> {{ task.error }}</p>
+      <p><strong>Pacientes processados:</strong> {{ outputs.processar_pacientes.numberOfSuccessful }}</p>
+      <p><strong>Falhas:</strong> {{ outputs.processar_pacientes.numberOfFailed }}</p>
+

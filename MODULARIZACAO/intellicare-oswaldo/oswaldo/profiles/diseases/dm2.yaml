@@ -1,0 +1,316 @@
+# Perfil de Diabetes Mellitus Tipo 2 (DM2)
+# Baseado em ADA Standards of Medical Care in Diabetes
+# Versão: 1.0.0
+# Data: 2026-02-08
+
+id: dm2
+name: Diabetes Mellitus Type 2
+description: Diabetes Mellitus Tipo 2 - Monitoramento baseado em ADA Standards
+version: 1.0.0
+snomed_code: "44054006"
+
+# Observações monitoradas
+observations:
+  # HbA1c - Hemoglobina Glicada
+  - id: hba1c
+    name: Hemoglobina Glicada
+    name_short: HbA1c
+    loinc_code: "4548-4"
+    unit: "%"
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: null
+        max: 5.7
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 7.0
+
+  # Glicemia de Jejum
+  - id: fasting_glucose
+    name: Glicemia de Jejum
+    name_short: GJ
+    loinc_code: "1558-6"
+    unit: mg/dL
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: 70.0
+        max: 100.0
+    trend_direction: lower_is_better
+    target:
+      min: 80.0
+      max: 130.0
+
+  # Glicemia Pós-Prandial
+  - id: postprandial_glucose
+    name: Glicemia Pós-Prandial (2h)
+    name_short: GPP
+    loinc_code: "1521-4"
+    unit: mg/dL
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: null
+        max: 140.0
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 180.0
+
+  # Pressão Arterial
+  - id: bp
+    name: Pressão Arterial
+    name_short: PA
+    loinc_code: "85354-9"
+    unit: mmHg
+    type: panel
+    category: vital_sign
+    reference_ranges:
+      adult:
+        min: null
+        max: null
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 130.0
+    components:
+      - id: bp_systolic
+        name: Pressão Arterial Sistólica
+        name_short: PAS
+        loinc_code: "8480-6"
+        unit: mmHg
+        type: numeric
+        category: vital_sign
+        reference_ranges:
+          adult:
+            min: 90.0
+            max: 120.0
+        trend_direction: lower_is_better
+        target:
+          min: null
+          max: 130.0
+      
+      - id: bp_diastolic
+        name: Pressão Arterial Diastólica
+        name_short: PAD
+        loinc_code: "8462-4"
+        unit: mmHg
+        type: numeric
+        category: vital_sign
+        reference_ranges:
+          adult:
+            min: 60.0
+            max: 80.0
+        trend_direction: lower_is_better
+        target:
+          min: null
+          max: 80.0
+
+  # LDL Colesterol
+  - id: ldl
+    name: LDL Colesterol
+    name_short: LDL
+    loinc_code: "18262-6"
+    unit: mg/dL
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: null
+        max: 100.0
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 100.0
+
+  # IMC (Índice de Massa Corporal)
+  - id: bmi
+    name: Índice de Massa Corporal
+    name_short: IMC
+    loinc_code: "39156-5"
+    unit: kg/m²
+    type: numeric
+    category: lifestyle
+    reference_ranges:
+      adult:
+        min: 18.5
+        max: 24.9
+    trend_direction: target_range
+    target:
+      min: 18.5
+      max: 24.9
+
+  # eGFR (para monitorar complicações renais)
+  - id: egfr
+    name: Taxa de Filtração Glomerular Estimada
+    name_short: eGFR
+    loinc_code: "33914-3"
+    unit: mL/min/1.73m²
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: 90.0
+        max: null
+    trend_direction: higher_is_better
+    target:
+      min: 60.0
+      max: null
+
+# Configuração de Estadiamento ADA
+staging:
+  strategy: ada
+  combine_method: worst
+  axes:
+    # Eixo HbA1c (controle glicêmico)
+    - id: hba1c_control
+      name: Glycemic Control
+      observation_id: hba1c
+      stages:
+        - stage: CONTROLLED
+          label: Controlado
+          min: null
+          max: 7.0
+          severity: info
+
+        - stage: SUBOPTIMAL
+          label: Controle Subótimo
+          min: 7.0
+          max: 8.0
+          severity: warning
+
+        - stage: POOR
+          label: Controle Inadequado
+          min: 8.0
+          max: 9.0
+          severity: warning
+
+        - stage: VERY_POOR
+          label: Descontrolado
+          min: 9.0
+          max: null
+          severity: critical
+
+# Alertas
+alerts:
+  # Alertas de HbA1c
+  - id: hba1c_critical
+    type: threshold
+    observation_id: hba1c
+    condition: gt
+    threshold: 9.0
+    severity: critical
+    message: "HbA1c > 9% - Diabetes descontrolada, risco de complicações"
+
+  - id: hba1c_poor
+    type: threshold
+    observation_id: hba1c
+    condition: gt
+    threshold: 8.0
+    severity: warning
+    message: "HbA1c > 8% - Controle inadequado, ajustar tratamento"
+
+  - id: hba1c_target
+    type: threshold
+    observation_id: hba1c
+    condition: gt
+    threshold: 7.0
+    severity: info
+    message: "HbA1c > 7% - Acima do alvo ADA"
+
+  # Alertas de Glicemia de Jejum
+  - id: fasting_glucose_high
+    type: threshold
+    observation_id: fasting_glucose
+    condition: gt
+    threshold: 180.0
+    severity: warning
+    message: "Glicemia de jejum > 180 mg/dL - Hiperglicemia"
+
+  - id: fasting_glucose_low
+    type: threshold
+    observation_id: fasting_glucose
+    condition: lt
+    threshold: 70.0
+    severity: critical
+    message: "Glicemia de jejum < 70 mg/dL - Hipoglicemia"
+
+  # Alertas de Glicemia Pós-Prandial
+  - id: postprandial_glucose_high
+    type: threshold
+    observation_id: postprandial_glucose
+    condition: gt
+    threshold: 250.0
+    severity: warning
+    message: "Glicemia pós-prandial > 250 mg/dL - Hiperglicemia pós-prandial"
+
+  # Alertas de Pressão Arterial
+  - id: bp_uncontrolled
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 140.0
+    severity: warning
+    message: "PA não controlada > 140/90 mmHg - Ajustar medicação"
+
+  - id: bp_target_dm2
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 130.0
+    severity: info
+    message: "PA acima do alvo DM2 (130/80 mmHg) - Considerar ajuste"
+
+  # Alertas de LDL
+  - id: ldl_high
+    type: threshold
+    observation_id: ldl
+    condition: gt
+    threshold: 100.0
+    severity: warning
+    message: "LDL > 100 mg/dL - Considerar estatina ou ajuste de dose"
+
+  # Alertas de IMC
+  - id: bmi_obesity
+    type: threshold
+    observation_id: bmi
+    condition: gt
+    threshold: 30.0
+    severity: warning
+    message: "IMC > 30 kg/m² - Obesidade, intensificar orientação nutricional"
+
+  - id: bmi_overweight
+    type: threshold
+    observation_id: bmi
+    condition: gt
+    threshold: 25.0
+    severity: info
+    message: "IMC > 25 kg/m² - Sobrepeso, orientar perda de peso"
+
+  # Alertas de eGFR (complicação renal)
+  - id: egfr_ckd
+    type: threshold
+    observation_id: egfr
+    condition: lt
+    threshold: 60.0
+    severity: warning
+    message: "eGFR < 60 mL/min/1.73m² - Doença renal crônica, avaliar nefropatia diabética"
+
+# Metadados
+metadata:
+  guideline: ADA Standards of Medical Care in Diabetes 2024
+  guideline_url: https://diabetesjournals.org/care/issue/47/Supplement_1
+  last_updated: "2026-02-08"
+  author: Augment Agent
+  notes: |
+    Perfil baseado em ADA Standards of Medical Care in Diabetes 2024.
+
+    Estadiamento baseado em HbA1c (controle glicêmico).
+    Alertas configurados para valores críticos de glicemia, HbA1c, PA, LDL e IMC.
+    Monitoramento de complicações (eGFR para nefropatia diabética).
+

@@ -1,0 +1,42 @@
+metadata:
+  id: proto-ic-linha-cuidado-001
+  version: 1.0.0
+  title: Linha de Cuidado de Insuficiencia Cardiaca
+  specialty: cardiologia
+  condition: heart_failure
+  status: published
+  created_at: "2026-02-17T00:00:00"
+  updated_at: "2026-02-17T00:00:00"
+  author: Comissao de Cardiologia
+  reviewer: Revisor Cardio
+  approver: Diretor Clinico
+  approved_at: "2026-02-17T00:00:00"
+  tags: [ic, cardiologia, linha_de_cuidado]
+  keywords: [nyha, fracao_ejecao, desconpensacao]
+  references: ["Diretriz SBC IC"]
+summary: Protocolo para estratificacao e manejo da insuficiencia cardiaca.
+sections:
+  - title: Estratificacao NYHA
+    content: Classificar sintomas NYHA I-IV para orientar conduta.
+    order: 1
+  - title: Manejo
+    content: Ajuste terapeutico, educacao e seguimento multiprofissional.
+    order: 2
+criteria:
+  - name: Sinais de descompensacao
+    description: Ganho ponderal e dispneia progressiva
+    condition: peso > 2kg_em_72h OR dispneia_em_reposo
+    action: avaliacao urgente
+interventions:
+  - code: int-cardio-001
+    name: Revisao de medicacao
+    description: Revisar IECA/ARNI, beta-bloqueador e diuretico.
+    indication: IC cronica sintomatica
+    monitoring: Mensal ate estabilizacao
+pathways:
+  line_of_care: Insuficiencia Cardiaca Adulto
+  transitions:
+    - from: APS
+      to: Cardiologia
+      when: nyha_iii_ou_iv
+

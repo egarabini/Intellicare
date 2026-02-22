@@ -1,0 +1,175 @@
+version: "3.9"
+
+# Production-ready infrastructure for STEP 1.4
+# Includes: PostgreSQL 15, Redis 7, Prometheus
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  prometheus-data:
+    driver: local
+
+services:
+  # ========================================================================
+  # PostgreSQL 15 - Primary data store with Row-Level Security
+  # ========================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: intellicare-postgres
+    hostname: postgres
+    environment:
+      POSTGRES_USER: intellicare_admin
+      POSTGRES_PASSWORD: intellicare_dev_pwd
+      POSTGRES_DB: intellicare_db
+      POSTGRES_INITDB_ARGS: |
+        --auth-local=trust 
+        --log-statement=all
+        --log-min-duration-statement=1000
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./MODULARIZACAO/migrations/init-db.sql:/docker-entrypoint-initdb.d/01-init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U intellicare_admin -d intellicare_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - intellicare-network
+    command:
+      - "postgres"
+      - "-c"
+      - "max_connections=200"
+      - "-c"
+      - "log_statement=all"
+      - "-c"
+      - "log_min_duration_statement=100"
+      - "-c"
+      - "shared_preload_libraries=pg_stat_statements"
+    labels:
+      com.intellicare.service: "postgres"
+      com.intellicare.phase: "1.4"
+
+  # ========================================================================
+  # Redis 7 - Event streams + Consumer groups + Cache
+  # ========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: intellicare-redis
+    hostname: redis
+    command: 
+      - redis-server
+      - "--appendonly"
+      - "yes"
+      - "--appendfsync"
+      - "everysec"
+      - "--maxmemory"
+      - "512mb"
+      - "--maxmemory-policy"
+      - "allkeys-lru"
+      - "--loglevel"
+      - "debug"
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - intellicare-network
+    labels:
+      com.intellicare.service: "redis"
+      com.intellicare.phase: "1.4"
+
+  # ========================================================================
+  # Prometheus - Metrics collection for monitoring
+  # ========================================================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: intellicare-prometheus
+    hostname: prometheus
+    volumes:
+      - ./MODULARIZACAO/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./MODULARIZACAO/alerts.yml:/etc/prometheus/alerts.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=30d"
+      - "--web.enable-lifecycle"
+    networks:
+      - intellicare-network
+    depends_on:
+      - postgres
+      - redis
+    labels:
+      com.intellicare.service: "prometheus"
+      com.intellicare.phase: "1.4"
+
+  # ========================================================================
+  # Grafana - Visualization and dashboards (Optional)
+  # ========================================================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: intellicare-grafana
+    hostname: grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: intellicare_grafana
+      GF_INSTALL_PLUGINS: redis-datasource
+    volumes:
+      - ./MODULARIZACAO/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - ./MODULARIZACAO/grafana-dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+    ports:
+      - "3000:3000"
+    networks:
+      - intellicare-network
+    depends_on:
+      - prometheus
+    labels:
+      com.intellicare.service: "grafana"
+      com.intellicare.phase: "1.4"
+
+networks:
+  intellicare-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+# ============================================================================
+# Environment Setup Instructions
+# ============================================================================
+# 1. Start infrastructure:
+#    docker-compose up -d
+#
+# 2. Verify services:
+#    docker ps
+#    docker-compose logs -f
+#
+# 3. Database connection:
+#    psql -h localhost -U intellicare_admin -d intellicare_db
+#
+# 4. Redis connection:
+#    redis-cli -h localhost -p 6379
+#
+# 5. Prometheus:
+#    http://localhost:9090
+#
+# 6. Grafana:
+#    http://localhost:3000 (admin/intellicare_grafana)
+#
+# 7. Stop infrastructure:
+#    docker-compose down
+#
+# 8. Clean volumes (reset all data):
+#    docker-compose down -v
+# ============================================================================

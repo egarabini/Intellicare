@@ -1,0 +1,331 @@
+# Perfil de Hipertensão Arterial Sistêmica (HAS)
+# Baseado em ESC/ESH 2018 Guidelines
+# Versão: 1.0.0
+# Data: 2026-02-08
+
+id: has
+name: Hypertension
+description: Hipertensão Arterial Sistêmica - Monitoramento baseado em ESC/ESH 2018
+version: 1.0.0
+snomed_code: "38341003"
+
+# Observações monitoradas
+observations:
+  # Pressão Arterial
+  - id: bp
+    name: Pressão Arterial
+    name_short: PA
+    loinc_code: "85354-9"
+    unit: mmHg
+    type: panel
+    category: vital_sign
+    reference_ranges:
+      adult:
+        min: null
+        max: null
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 130.0
+    components:
+      - id: bp_systolic
+        name: Pressão Arterial Sistólica
+        name_short: PAS
+        loinc_code: "8480-6"
+        unit: mmHg
+        type: numeric
+        category: vital_sign
+        reference_ranges:
+          adult:
+            min: 90.0
+            max: 120.0
+        trend_direction: lower_is_better
+        target:
+          min: null
+          max: 130.0
+      
+      - id: bp_diastolic
+        name: Pressão Arterial Diastólica
+        name_short: PAD
+        loinc_code: "8462-4"
+        unit: mmHg
+        type: numeric
+        category: vital_sign
+        reference_ranges:
+          adult:
+            min: 60.0
+            max: 80.0
+        trend_direction: lower_is_better
+        target:
+          min: null
+          max: 80.0
+
+  # Frequência Cardíaca
+  - id: heart_rate
+    name: Frequência Cardíaca
+    name_short: FC
+    loinc_code: "8867-4"
+    unit: bpm
+    type: numeric
+    category: vital_sign
+    reference_ranges:
+      adult:
+        min: 60.0
+        max: 100.0
+    trend_direction: target_range
+    target:
+      min: 60.0
+      max: 100.0
+
+  # Creatinina (para avaliar função renal)
+  - id: creatinine
+    name: Creatinina Sérica
+    name_short: Cr
+    loinc_code: "2160-0"
+    unit: mg/dL
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult_male:
+        min: 0.7
+        max: 1.3
+      adult_female:
+        min: 0.6
+        max: 1.1
+    trend_direction: lower_is_better
+
+  # Potássio (importante para pacientes em uso de diuréticos/IECA)
+  - id: potassium
+    name: Potássio Sérico
+    name_short: K+
+    loinc_code: "2823-3"
+    unit: mEq/L
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: 3.5
+        max: 5.0
+    trend_direction: target_range
+    target:
+      min: 3.5
+      max: 5.0
+
+  # IMC (fator de risco cardiovascular)
+  - id: bmi
+    name: Índice de Massa Corporal
+    name_short: IMC
+    loinc_code: "39156-5"
+    unit: kg/m²
+    type: numeric
+    category: lifestyle
+    reference_ranges:
+      adult:
+        min: 18.5
+        max: 24.9
+    trend_direction: target_range
+    target:
+      min: 18.5
+      max: 24.9
+
+  # Tabagismo (fator de risco)
+  - id: smoking_status
+    name: Status de Tabagismo
+    name_short: Tabagismo
+    loinc_code: "72166-2"
+    unit: ""
+    type: text
+    category: lifestyle
+    reference_ranges:
+      adult:
+        min: null
+        max: null
+    trend_direction: lower_is_better
+
+  # Atividade Física
+  - id: physical_activity
+    name: Atividade Física (min/semana)
+    name_short: Atividade Física
+    loinc_code: "68516-4"
+    unit: min/week
+    type: numeric
+    category: lifestyle
+    reference_ranges:
+      adult:
+        min: 150.0
+        max: null
+    trend_direction: higher_is_better
+    target:
+      min: 150.0
+      max: null
+
+# Configuração de Estadiamento ESC/ESH 2018
+staging:
+  strategy: escesh
+  combine_method: worst
+  axes:
+    # Eixo de Pressão Arterial
+    - id: bp_category
+      name: Blood Pressure Category
+      observation_id: bp_systolic
+      stages:
+        - stage: OPTIMAL
+          label: Ótima
+          min: null
+          max: 120.0
+          severity: info
+
+        - stage: NORMAL
+          label: Normal
+          min: 120.0
+          max: 130.0
+          severity: info
+
+        - stage: HIGH_NORMAL
+          label: Limítrofe
+          min: 130.0
+          max: 140.0
+          severity: info
+
+        - stage: GRADE1
+          label: Hipertensão Grau 1
+          min: 140.0
+          max: 160.0
+          severity: warning
+
+        - stage: GRADE2
+          label: Hipertensão Grau 2
+          min: 160.0
+          max: 180.0
+          severity: warning
+
+        - stage: GRADE3
+          label: Hipertensão Grau 3
+          min: 180.0
+          max: null
+          severity: critical
+
+# Alertas
+alerts:
+  # Alertas de Pressão Arterial
+  - id: hypertensive_crisis
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 180.0
+    severity: critical
+    message: "Crise hipertensiva (PA > 180/120 mmHg) - Avaliar emergência hipertensiva"
+
+  - id: bp_grade2
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 160.0
+    severity: warning
+    message: "Hipertensão Grau 2 (PA > 160/100 mmHg) - Intensificar tratamento"
+
+  - id: bp_grade1
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 140.0
+    severity: warning
+    message: "Hipertensão Grau 1 (PA > 140/90 mmHg) - Ajustar medicação"
+
+  - id: bp_high_normal
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 130.0
+    severity: info
+    message: "PA limítrofe (130-139/85-89 mmHg) - Monitorar e orientar mudanças de estilo de vida"
+
+  - id: bp_diastolic_high
+    type: threshold
+    observation_id: bp_diastolic
+    condition: gt
+    threshold: 120.0
+    severity: critical
+    message: "PAD > 120 mmHg - Crise hipertensiva diastólica"
+
+  - id: hypotension
+    type: threshold
+    observation_id: bp_systolic
+    condition: lt
+    threshold: 90.0
+    severity: warning
+    message: "Hipotensão (PA < 90/60 mmHg) - Avaliar causas e ajustar medicação"
+
+  # Alertas de Frequência Cardíaca
+  - id: tachycardia
+    type: threshold
+    observation_id: heart_rate
+    condition: gt
+    threshold: 100.0
+    severity: warning
+    message: "Taquicardia (FC > 100 bpm) - Investigar causas"
+
+  - id: bradycardia
+    type: threshold
+    observation_id: heart_rate
+    condition: lt
+    threshold: 60.0
+    severity: warning
+    message: "Bradicardia (FC < 60 bpm) - Avaliar medicações (beta-bloqueadores)"
+
+  # Alertas de Potássio
+  - id: hyperkalemia_critical
+    type: threshold
+    observation_id: potassium
+    condition: gt
+    threshold: 6.0
+    severity: critical
+    message: "Hipercalemia crítica > 6.0 mEq/L - Risco de arritmia"
+
+  - id: hyperkalemia_warning
+    type: threshold
+    observation_id: potassium
+    condition: gt
+    threshold: 5.5
+    severity: warning
+    message: "Hipercalemia > 5.5 mEq/L - Monitorar (IECA/BRA)"
+
+  - id: hypokalemia_warning
+    type: threshold
+    observation_id: potassium
+    condition: lt
+    threshold: 3.0
+    severity: warning
+    message: "Hipocalemia < 3.0 mEq/L - Risco de arritmia (diuréticos)"
+
+  # Alertas de IMC
+  - id: bmi_obesity
+    type: threshold
+    observation_id: bmi
+    condition: gt
+    threshold: 30.0
+    severity: warning
+    message: "IMC > 30 kg/m² - Obesidade, fator de risco cardiovascular"
+
+  # Alertas de Atividade Física
+  - id: sedentary_lifestyle
+    type: threshold
+    observation_id: physical_activity
+    condition: lt
+    threshold: 150.0
+    severity: info
+    message: "Atividade física < 150 min/semana - Orientar exercícios regulares"
+
+# Metadados
+metadata:
+  guideline: ESC/ESH 2018 Guidelines for the management of arterial hypertension
+  guideline_url: https://academic.oup.com/eurheartj/article/39/33/3021/5079119
+  last_updated: "2026-02-08"
+  author: Augment Agent
+  notes: |
+    Perfil baseado em ESC/ESH 2018 Guidelines for the management of arterial hypertension.
+
+    Estadiamento baseado em pressão arterial sistólica (Ótima, Normal, Limítrofe, Grau 1-3).
+    Alertas configurados para valores críticos de PA, FC, K+ e fatores de risco (IMC, sedentarismo).
+    Monitoramento de função renal (creatinina) e eletrólitos (potássio) para pacientes em uso de anti-hipertensivos.
+

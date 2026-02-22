@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intellicare-core"
+version = "1.0.0"
+description = "SDK compartilhado para modulos IntelliCare — FHIR client, config, logging, contratos"
+readme = "README.md"
+license = {text = "Proprietary"}
+requires-python = ">=3.11"
+authors = [
+    {name = "IntelliCare Team"},
+]
+
+dependencies = [
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.0.0",
+    "httpx>=0.27.0",
+    "fhir.resources>=7.0.0",
+    "structlog>=24.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+events = ["redis>=5.0.0"]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+    "respx>=0.21.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["intellicare_core*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
+]

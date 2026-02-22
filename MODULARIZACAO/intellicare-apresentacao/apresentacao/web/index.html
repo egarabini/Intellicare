@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntelliCare - Galeria de Agentes</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="stylesheet" href="css/intellicare.css">
+</head>
+<body>
+
+<nav class="version-nav">
+  <a href="index.html" class="active">V2 Agentes</a>
+  <a href="v1.html">V1 Geral</a>
+  <a href="architecture-3d.html" target="_blank">3D</a>
+</nav>
+
+<!-- Narration toggle button -->
+<button id="narration-toggle" title="Ativar/desativar narração da Wanda">
+  <span id="narration-icon">&#x1f507;</span>
+</button>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 1: Titulo
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Olá. Eu sou a Wanda. Nesta sessão, vou apresentar nossos agentes e o papel de cada um no cuidado em saúde."
+  data-narration-rate="1.03">
+  <h1>IntelliCare</h1>
+  <p class="subtitle">V2 - Galeria de Agentes com a Wanda</p>
+  <p style="color: var(--text-secondary); margin-top: 2em; font-size: 0.7em;">
+    Use as setas ou ESPA&Ccedil;O para navegar &bull; Seta para baixo abre o Deep Dive
+  </p>
+  <p id="narration-hint" style="color: var(--warning); margin-top: 1em; font-size: 0.8em; opacity: 0.9;">
+    &#x1f50a; Clique no bot&atilde;o de som (canto inferior direito) para ativar a narra&ccedil;&atilde;o da Wanda
+  </p>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 2: Publico-alvo
+     ══════════════════════════════════════════════════════════ -->
+<section>
+  <section
+    data-narration="Esta apresentação foi planejada para públicos diferentes, com linguagem clara para cada perfil e foco em valor prático."
+    data-narration-rate="1.03">
+    <h2>Para Quem Esta Apresenta&ccedil;&atilde;o Foi Desenhada</h2>
+    <ul>
+      <li>Equipes cl&iacute;nicas: seguran&ccedil;a e decis&atilde;o no ponto de cuidado</li>
+      <li>Gestores p&uacute;blicos: rede assistencial e qualidade</li>
+      <li>Times t&eacute;cnicos: arquitetura, integra&ccedil;&atilde;o e governan&ccedil;a</li>
+      <li>Cidad&atilde;os e parceiros: clareza e confian&ccedil;a no sistema</li>
+    </ul>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Estrat&eacute;gia de Comunica&ccedil;&atilde;o por P&uacute;blico</h3>
+      <ul>
+        <li>Cl&iacute;nico: risco, seguran&ccedil;a, continuidade de cuidado</li>
+        <li>Gest&atilde;o: capacidade de rede, indicadores e prioriza&ccedil;&atilde;o</li>
+        <li>T&eacute;cnico: interoperabilidade, padr&otilde;es e rastreabilidade</li>
+        <li>Institucional: impacto social, transpar&ecirc;ncia e confian&ccedil;a</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 3: Orquestracao
+     ══════════════════════════════════════════════════════════ -->
+<section>
+  <section
+    data-narration="Como orquestradora, eu aciono especialistas conforme a necessidade clínica, operacional e de gestão. Assim, a resposta final é integrada."
+    data-narration-rate="1.03">
+    <h2>WANDA: A Apresentadora e Orquestradora</h2>
+    <ul>
+      <li>Wanda coordena especialistas por inten&ccedil;&atilde;o cl&iacute;nica e operacional</li>
+      <li>Florence aprofunda an&aacute;lise cl&iacute;nica e exames</li>
+      <li>Oswaldo monitora qualquer doen&ccedil;a cr&ocirc;nica via motor gen&eacute;rico</li>
+      <li>Zilda organiza contexto CNES e territ&oacute;rio assistencial</li>
+      <li>Geralda sustenta continuidade da jornada do paciente</li>
+      <li>Donabedian conecta qualidade assistencial e gest&atilde;o</li>
+    </ul>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Fluxo de Orquestra&ccedil;&atilde;o da Wanda</h3>
+      <ul>
+        <li>1) Entender pergunta e contexto</li>
+        <li>2) Selecionar especialista mais adequado</li>
+        <li>3) Consolidar respostas e riscos</li>
+        <li>4) Entregar orienta&ccedil;&atilde;o acion&aacute;vel ao p&uacute;blico certo</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 4: WANDA
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Eu sou a Wanda. Minha função é integrar dados e especialistas, com foco em segurança e decisão clínica."
+  data-narration-rate="1.05">
+  <div class="agent-slide">
+    <div class="agent-image">
+      <img src="images/wanda_cartoon.png" alt="Wanda">
+    </div>
+    <div class="agent-info">
+      <h2>WANDA</h2>
+      <h3>Orquestradora Cl&iacute;nica Inteligente</h3>
+      <p class="agent-represents">Integra&ccedil;&atilde;o cl&iacute;nica, seguran&ccedil;a e decis&atilde;o coordenada</p>
+      <div class="agent-meta">
+        <span class="agent-tag origin">Wanda de Aguiar Horta</span>
+        <span class="agent-tag activation">Racioc&iacute;nio multi-dom&iacute;nio</span>
+      </div>
+      <ul class="agent-highlights">
+        <li>Coordeno subagentes e ferramentas MCP</li>
+        <li>Conecto cl&iacute;nica, gest&atilde;o e territ&oacute;rio</li>
+        <li>Consolido resposta &uacute;nica e rastre&aacute;vel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 5: FLORENCE
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Eu sou Florence. Eu aprofundo a análise clínica para apoiar a tomada de decisão médica com evidências."
+  data-narration-rate="0.95">
+  <div class="agent-slide">
+    <div class="agent-image">
+      <img src="images/Florence_cartoon.png" alt="Florence">
+    </div>
+    <div class="agent-info">
+      <h2>FLORENCE</h2>
+      <h3>Intelig&ecirc;ncia Cl&iacute;nica Profunda</h3>
+      <p class="agent-represents">An&aacute;lise cl&iacute;nica baseada em evid&ecirc;ncias</p>
+      <div class="agent-meta">
+        <span class="agent-tag origin">Florence Nightingale</span>
+        <span class="agent-tag activation">Exames e evolu&ccedil;&atilde;o cl&iacute;nica complexa</span>
+      </div>
+      <ul class="agent-highlights">
+        <li>Leio tend&ecirc;ncias e sinais cr&iacute;ticos</li>
+        <li>Cruzo hist&oacute;rico cl&iacute;nico e contexto atual</li>
+        <li>Apoio decis&atilde;o m&eacute;dica com objetividade</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 6: OSWALDO (V4)
+     ══════════════════════════════════════════════════════════ -->
+<section>
+  <section
+    data-narration="Eu sou Oswaldo. Sou um motor genérico de doenças crônicas. Hoje monitoro doença renal, diabetes e hipertensão, e novas doenças entram apenas com um arquivo de configuração."
+    data-narration-rate="1.00">
+    <div class="agent-slide">
+      <div class="agent-image">
+        <img src="images/oswaldo_cartoon.png" alt="Oswaldo">
+      </div>
+      <div class="agent-info">
+        <h2>OSWALDO</h2>
+        <h3>Motor Gen&eacute;rico de Doen&ccedil;as Cr&ocirc;nicas</h3>
+        <p class="agent-represents">Monitoramento longitudinal extens&iacute;vel via Disease Profiles YAML</p>
+        <div class="agent-meta">
+          <span class="agent-tag origin">Oswaldo Cruz</span>
+          <span class="agent-tag activation">Progress&atilde;o, estadiamento e alertas</span>
+        </div>
+        <ul class="agent-highlights">
+          <li>Motor gen&eacute;rico: CKD, Diabetes e Hipertens&atilde;o via configura&ccedil;&atilde;o</li>
+          <li>Estadiamento plug&aacute;vel: KDIGO, ADA, ESC/ESH por doen&ccedil;a</li>
+          <li>Tend&ecirc;ncias, alertas e confian&ccedil;a em resposta estruturada</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>OSWALDO V4 &mdash; Motor Gen&eacute;rico de Doen&ccedil;as Cr&ocirc;nicas</h3>
+      <p><strong>Arquitetura V4 (EF pronta):</strong></p>
+      <ul>
+        <li>Disease Profiles em YAML: adicionar doen&ccedil;a = novo arquivo</li>
+        <li>Strategy Pattern: algoritmo de estadiamento plug&aacute;vel</li>
+        <li>3 perfis prontos: CKD (KDIGO), DM2 (ADA), HAS (ESC/ESH)</li>
+      </ul>
+      <p style="margin-top:0.8em"><strong>Exemplo de resposta estruturada:</strong></p>
+      <ul>
+        <li>CKD: G3a/A2 &mdash; eGFR 48, queda de 8% em 90 dias</li>
+        <li>HAS: Est&aacute;gio 1 &mdash; PA 138/88, tend&ecirc;ncia est&aacute;vel</li>
+        <li>Alertas com severidade + recomenda&ccedil;&otilde;es acion&aacute;veis</li>
+        <li>Confidence score baseado em volume de dados</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 7: ZILDA
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Eu sou Zilda. Eu trago contexto de rede assistencial brasileira para decisões mais realistas no território."
+  data-narration-rate="1.08">
+  <div class="agent-slide">
+    <div class="agent-image">
+      <img src="images/zilda_cartoon.png" alt="Zilda">
+    </div>
+    <div class="agent-info">
+      <h2>ZILDA</h2>
+      <h3>Dados de Sa&uacute;de Brasileira</h3>
+      <p class="agent-represents">Contexto territorial e rede assistencial brasileira</p>
+      <div class="agent-meta">
+        <span class="agent-tag origin">Zilda Arns</span>
+        <span class="agent-tag activation">CNES, tipo de unidade e regi&atilde;o</span>
+      </div>
+      <ul class="agent-highlights">
+        <li>Estruturo vis&atilde;o de territ&oacute;rio assistencial</li>
+        <li>Apoio valida&ccedil;&atilde;o e enriquecimento de CNES</li>
+        <li>Conecto decis&atilde;o cl&iacute;nica ao contexto real de rede</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 8: GERALDA
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Eu sou Geralda. Minha missão é manter o cuidado vivo entre consulta, tratamento e acompanhamento."
+  data-narration-rate="1.02">
+  <div class="agent-slide">
+    <div class="agent-image">
+      <img src="images/geralda_cartoon.png" alt="Geralda">
+    </div>
+    <div class="agent-info">
+      <h2>GERALDA</h2>
+      <h3>Acompanhamento do Paciente</h3>
+      <p class="agent-represents">Continuidade de cuidado e v&iacute;nculo com o paciente</p>
+      <div class="agent-meta">
+        <span class="agent-tag origin">Geralda Lopes da Silva</span>
+        <span class="agent-tag activation">Orienta&ccedil;&atilde;o e seguimento</span>
+      </div>
+      <ul class="agent-highlights">
+        <li>Traduzo orienta&ccedil;&atilde;o em a&ccedil;&otilde;es pr&aacute;ticas</li>
+        <li>Sustento comunica&ccedil;&atilde;o entre equipe e paciente</li>
+        <li>Fortale&ccedil;o ades&atilde;o ao plano terap&ecirc;utico</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 9: DONABEDIAN
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Eu sou Donabedian. Minha função é transformar dados em gestão de qualidade e melhoria contínua."
+  data-narration-rate="0.93">
+  <div class="agent-slide">
+    <div class="agent-image">
+      <img src="images/donabedian_cartoon.png" alt="Donabedian">
+    </div>
+    <div class="agent-info">
+      <h2>DONABEDIAN</h2>
+      <h3>Qualidade em Sa&uacute;de</h3>
+      <p class="agent-represents">Qualidade assistencial e governan&ccedil;a por indicadores</p>
+      <div class="agent-meta">
+        <span class="agent-tag origin">Avedis Donabedian</span>
+        <span class="agent-tag activation">Estrutura, processo e resultado</span>
+      </div>
+      <ul class="agent-highlights">
+        <li>Conecto qualidade cl&iacute;nica e gest&atilde;o</li>
+        <li>Oriento melhoria cont&iacute;nua baseada em dados</li>
+        <li>Apoio decis&otilde;es com vis&atilde;o de efici&ecirc;ncia e valor</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 10: Arquitetura 3D Interativa
+     ══════════════════════════════════════════════════════════ -->
+<section
+  data-narration="Aqui vocês podem explorar a arquitetura do IntelliCare em três dimensões. Cada esfera representa um componente: agentes, sistemas externos e infraestrutura. Clique nos nós para ver detalhes, ou abra em tela cheia para interagir livremente."
+  data-narration-rate="1.00">
+  <h2>Arquitetura 3D Interativa</h2>
+  <p class="subtitle">Explore os agentes, sistemas e conex&otilde;es do IntelliCare</p>
+  <div class="arch3d-container">
+    <iframe src="architecture-3d.html" class="arch3d-iframe" loading="lazy"></iframe>
+    <a href="architecture-3d.html" target="_blank" class="arch3d-fullscreen" title="Abrir em tela cheia">&#x26F6; Tela cheia</a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SLIDE 11: Ecossistema / Encerramento
+     ══════════════════════════════════════════════════════════ -->
+<section>
+  <section
+    data-narration="Encerramos com uma visão integrada: seis agentes especializados, quatro pilares de arquitetura, interoperabilidade FHIR e uma visão trezentos e sessenta graus do cuidado. Eu coordeno esse ecossistema para gerar valor clínico, operacional e institucional."
+    data-narration-rate="1.00">
+    <h2>Ecossistema IntelliCare</h2>
+    <p class="subtitle">Intelig&ecirc;ncia artificial coordenada para o cuidado em sa&uacute;de</p>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-icon c1">A</div>
+        <div class="metric-value">6</div>
+        <div class="metric-label">Agentes Especializados</div>
+        <div class="metric-desc">Cada um com papel cl&iacute;nico definido</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon c2">P</div>
+        <div class="metric-value">4</div>
+        <div class="metric-label">Pilares de Arquitetura</div>
+        <div class="metric-desc">Rules, Skills, MCPs, Subagents</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon c3">F</div>
+        <div class="metric-value">FHIR</div>
+        <div class="metric-label">Padr&atilde;o de Sa&uacute;de</div>
+        <div class="metric-desc">Interoperabilidade HL7 R4</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon c4">V</div>
+        <div class="metric-value">360&deg;</div>
+        <div class="metric-label">Vis&atilde;o Integrada</div>
+        <div class="metric-desc">Cl&iacute;nica, gest&atilde;o e territ&oacute;rio</div>
+      </div>
+    </div>
+    <p class="tagline">Coordena&ccedil;&atilde;o inteligente para decis&otilde;es mais seguras</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Mensagem Final para Stakeholders</h3>
+      <ul>
+        <li>Cl&iacute;nicos: decis&atilde;o mais segura no ponto de cuidado</li>
+        <li>Gestores: melhor governan&ccedil;a e qualidade assistencial</li>
+        <li>T&eacute;cnicos: arquitetura modular para evolu&ccedil;&atilde;o cont&iacute;nua</li>
+        <li>Institucional: narrativa clara de impacto e confian&ccedil;a</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+// ── Reveal.js init ──
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  transitionSpeed: 'default',
+  backgroundTransition: 'fade',
+  center: false,
+  width: 1920,
+  height: 1080,
+  margin: 0.04,
+  minScale: 0.2,
+  maxScale: 1.5,
+});
+
+// ── Wanda Narration System (Web Speech API) ──
+(function() {
+  var synth = window.speechSynthesis;
+  if (!synth) return;
+
+  var narrationEnabled = false;
+  var ptVoice = null;
+  var toggleBtn = document.getElementById('narration-toggle');
+  var iconEl = document.getElementById('narration-icon');
+  var hintEl = document.getElementById('narration-hint');
+
+  // Find best Portuguese voice
+  function loadVoices() {
+    var voices = synth.getVoices();
+    ptVoice = voices.find(function(v) { return v.lang === 'pt-BR'; })
+           || voices.find(function(v) { return v.lang.startsWith('pt'); })
+           || null;
+  }
+
+  loadVoices();
+  if (synth.onvoiceschanged !== undefined) {
+    synth.onvoiceschanged = loadVoices;
+  }
+
+  function speak(text, rate) {
+    synth.cancel();
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'pt-BR';
+    utterance.rate = rate || 1.0;
+    utterance.pitch = 1.0;
+    if (ptVoice) utterance.voice = ptVoice;
+
+    utterance.onstart = function() {
+      toggleBtn.classList.add('speaking');
+    };
+    utterance.onend = function() {
+      toggleBtn.classList.remove('speaking');
+    };
+    utterance.onerror = function() {
+      toggleBtn.classList.remove('speaking');
+    };
+
+    synth.speak(utterance);
+  }
+
+  function getNarration(slide) {
+    if (slide.dataset.narration) {
+      return {
+        text: slide.dataset.narration,
+        rate: parseFloat(slide.dataset.narrationRate || '1.0')
+      };
+    }
+    return null;
+  }
+
+  // Toggle narration on/off
+  toggleBtn.addEventListener('click', function() {
+    narrationEnabled = !narrationEnabled;
+    iconEl.innerHTML = narrationEnabled ? '&#x1f50a;' : '&#x1f507;';
+    toggleBtn.classList.toggle('active', narrationEnabled);
+
+    if (hintEl) hintEl.style.display = 'none';
+
+    if (narrationEnabled) {
+      var currentSlide = Reveal.getCurrentSlide();
+      var narration = getNarration(currentSlide);
+      if (narration) {
+        speak(narration.text, narration.rate);
+      }
+    } else {
+      synth.cancel();
+      toggleBtn.classList.remove('speaking');
+    }
+  });
+
+  // Auto-narrate on slide change
+  Reveal.on('slidechanged', function(event) {
+    if (!narrationEnabled) return;
+    var narration = getNarration(event.currentSlide);
+    if (narration) {
+      speak(narration.text, narration.rate);
+    } else {
+      synth.cancel();
+      toggleBtn.classList.remove('speaking');
+    }
+  });
+
+  // Stop narration on overview mode (ESC)
+  Reveal.on('overviewshown', function() {
+    synth.cancel();
+    toggleBtn.classList.remove('speaking');
+  });
+})();
+</script>
+
+</body>
+</html>

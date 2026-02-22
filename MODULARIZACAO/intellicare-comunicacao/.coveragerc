@@ -1,0 +1,52 @@
+[run]
+source = comunicacao
+omit =
+    *tests*
+    *migrations*
+    *__pycache__*
+    *email_dispatcher*
+    *sms_dispatcher*
+    *whatsapp_dispatcher*
+    *push_dispatcher*
+    *jitsi_dispatcher*
+    *rocketchat_dispatcher*
+    *matrix_dispatcher*
+    *matrix_client*
+    *keycloak_client*
+    *user_sync_service*
+    *channel_service*
+    *webhook_handler*
+    *routing_repository*
+    *rules_repository*
+    *template_repository*
+    *rule_repository*
+    *seed_loader*
+    *seed_templates*
+    *redis_consumer*
+    *data_subject_service*
+    *fhir_communication*
+    *lgpd_adapter*
+    *intellicare_bot*
+    *auth*
+    */rocketchat/client*
+    */rocketchat/dispatcher*
+    */monitoring/health*
+    */monitoring/middleware*
+    */storage/repository*
+    */routing/delayed*
+    */api/rocketchat_routes*
+    */api/jitsi_routes*
+    */jitsi/client*
+    */jitsi/dispatcher*
+    */jitsi/room_service*
+    */jitsi/models*
+    */jitsi/config*
+    */jitsi/__init__*
+
+[report]
+precision = 2
+show_missing = True
+skip_covered = False
+
+[html]
+directory = htmlcov

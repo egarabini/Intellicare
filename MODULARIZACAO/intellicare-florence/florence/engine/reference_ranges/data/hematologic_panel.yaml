@@ -1,0 +1,64 @@
+# Painel Hematologico — Reference Ranges
+# Fontes: SBH, UpToDate
+
+id: hematologic_panel
+name: "Painel Hematologico"
+description: "Hemograma e coagulacao"
+
+labs:
+  - id: hemoglobin
+    name: "Hemoglobina"
+    loinc_code: "718-7"
+    unit: "g/dL"
+    normal_min: 13.5
+    normal_max: 17.5
+    low_min: 10.0
+    critical_low: 7.0
+    panic_low: 5.0
+    gender_specific: true
+    notes: "Feminino: 12.0-16.0"
+
+  - id: hematocrit
+    name: "Hematocrito"
+    loinc_code: "4544-3"
+    unit: "%"
+    normal_min: 40.0
+    normal_max: 54.0
+    low_min: 30.0
+    critical_low: 20.0
+    gender_specific: true
+    notes: "Feminino: 36-48%"
+
+  - id: wbc
+    name: "Leucocitos"
+    loinc_code: "6690-2"
+    unit: "/uL"
+    normal_min: 4000.0
+    normal_max: 11000.0
+    low_min: 2000.0
+    high_max: 15000.0
+    critical_low: 1000.0
+    critical_high: 30000.0
+
+  - id: platelets
+    name: "Plaquetas"
+    loinc_code: "777-3"
+    unit: "/uL"
+    normal_min: 150000.0
+    normal_max: 400000.0
+    low_min: 100000.0
+    high_max: 500000.0
+    critical_low: 50000.0
+    critical_high: 1000000.0
+    panic_low: 20000.0
+
+  - id: inr
+    name: "INR"
+    loinc_code: "6301-6"
+    unit: ""
+    normal_min: 0.8
+    normal_max: 1.2
+    high_max: 3.5
+    critical_high: 5.0
+    panic_high: 8.0
+    notes: "Pacientes em anticoagulacao: alvo 2.0-3.0"

@@ -1,0 +1,10 @@
+items:
+  - code: "709044004"
+    system: snomed
+    display: Chronic kidney disease stage 3
+    synonyms: [CKD stage 3]
+  - code: "84114007"
+    system: snomed
+    display: Heart failure
+    synonyms: [cardiac failure]
+

@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: intellicare-donabedian-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-intellicare}
+      POSTGRES_USER: ${POSTGRES_USER:-intellicare}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-intellicare_dev}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-intellicare}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+
+  # FastAPI REST API
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: intellicare-donabedian-api
+    ports:
+      - "${API_PORT:-8003}:8000"
+    environment:
+      # Database
+      INTELLICARE_DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-intellicare}:${POSTGRES_PASSWORD:-intellicare_dev}@db:5432/${POSTGRES_DB:-intellicare}
+      DATABASE_SCHEMA: ${DATABASE_SCHEMA:-intellicare_donabedian}
+      
+      # API Configuration
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      API_RELOAD: ${API_RELOAD:-false}
+      API_WORKERS: ${API_WORKERS:-4}
+      
+      # Environment
+      ENVIRONMENT: ${ENVIRONMENT:-development}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      
+      # CORS
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000,http://localhost:8501}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./alembic:/app/alembic
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dashboard
+    container_name: intellicare-donabedian-dashboard
+    ports:
+      - "${DASHBOARD_PORT:-8501}:8501"
+    environment:
+      # API Configuration
+      DASHBOARD_API_URL: ${DASHBOARD_API_URL:-http://api:8000/api/v1}
+      
+      # Dashboard Configuration
+      DASHBOARD_HOST: 0.0.0.0
+      DASHBOARD_PORT: 8501
+    depends_on:
+      api:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  intellicare-network:
+    driver: bridge
+

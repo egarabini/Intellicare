@@ -1,0 +1,118 @@
+# Prometheus Configuration for IntelliCare STEP 1.4
+# Monitoring infrastructure for production readiness
+
+global:
+  scrape_interval: 15s      # How often to scrape targets
+  evaluation_interval: 15s  # How often to evaluate rules
+  external_labels:
+    monitor: 'intellicare-phase-1.4'
+    environment: 'development'
+
+# Alerting configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - "alerts.yml"
+
+# Scrape configurations
+scrape_configs:
+  # =========================================================================
+  # Prometheus self-monitoring
+  # =========================================================================
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # =========================================================================
+  # PostgreSQL Exporter
+  # Note: Run postgres_exporter container to enable this
+  # docker run --net intellicare-network -p 9187:9187 \
+  #   prometheuscommunity/postgres-exporter \
+  #   --web.listen-address=:9187 \
+  #   --collector.database_wraparound \
+  #   DATA_SOURCE_NAME="postgresql://intellicare_admin:password@postgres:5432/intellicare_db"
+  # =========================================================================
+  - job_name: 'postgresql'
+    static_configs:
+      - targets: ['localhost:9187']
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # =========================================================================
+  # Redis Exporter
+  # Note: Run redis_exporter container to enable this
+  # docker run --net intellicare-network -p 9121:9121 \
+  #   oliver006/redis_exporter \
+  #   -redis.addr redis:6379
+  # =========================================================================
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['localhost:9121']
+    scrape_interval: 15s
+    scrape_timeout: 5s
+
+  # =========================================================================
+  # Application Metrics (when running app)
+  # The FastAPI application exposes metrics on /metrics
+  # =========================================================================
+  - job_name: 'intellicare-api'
+    static_configs:
+      - targets: ['localhost:8000']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+
+  # =========================================================================
+  # Node Exporter (System metrics - optional)
+  # docker run --net intellicare-network -p 9100:9100 \
+  #   prom/node-exporter
+  # =========================================================================
+  - job_name: 'system'
+    static_configs:
+      - targets: ['localhost:9100']
+
+# ============================================================================
+# Remote storage configuration (optional for production)
+# ============================================================================
+# remote_write:
+#   - url: "http://influxdb:8086/api/v1/prom/write?db=prometheus"
+#     queue_config:
+#       capacity: 10000
+#       max_shards: 200
+#       min_shards: 1
+#       max_samples_per_send: 500
+#       batch_send_wait_time: 5s
+#       min_backoff: 30ms
+#       max_backoff: 100ms
+
+# ============================================================================
+# Documentation
+# ============================================================================
+# Access Prometheus dashboard:
+#   http://localhost:9090
+#
+# Available metric endpoints:
+#   - PostgreSQL: http://localhost:9187/metrics
+#   - Redis: http://localhost:9121/metrics
+#   - Application: http://localhost:8000/metrics
+#   - System: http://localhost:9100/metrics
+#
+# Useful Prometheus queries:
+#   - Uptime: up
+#   - Rate: rate(metric_name[5m])
+#   - Histogram: histogram_quantile(0.95, request_duration_seconds_bucket)
+#   - Gauge: metric_name{job="job_name"}
+#
+# Graph exploration:
+#   http://localhost:9090/graph
+#
+# Query examples:
+#   - up{job="postgresql"}
+#   - pg_stat_user_tables_seq_scan{datname="intellicare_db"}
+#   - redis_memory_used_bytes
+#   - process_resident_memory_bytes{job="intellicare-api"}
+# ============================================================================
