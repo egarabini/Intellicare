@@ -6,6 +6,10 @@ WORKDIR /app
 COPY ./intellicare-core /tmp/intellicare-core
 RUN pip install --no-cache-dir -e /tmp/intellicare-core
 
+# Instalar intellicare-auth (opcional, mas necessário se usado no código)
+COPY ./intellicare-auth /tmp/intellicare-auth
+RUN pip install --no-cache-dir -e /tmp/intellicare-auth
+
 # Instalar o módulo
 COPY ./intellicare-donabedian/pyproject.toml ./intellicare-donabedian/README.md* ./
 

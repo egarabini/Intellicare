@@ -48,3 +48,4 @@ venv/
 *.temp
 .cache/
 nul
+.claude/settings.local.json
