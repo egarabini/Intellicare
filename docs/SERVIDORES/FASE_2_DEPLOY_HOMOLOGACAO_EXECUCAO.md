@@ -207,7 +207,14 @@ environment
 sed -i 's/ENVIRONMENT=homologacao/ENVIRONMENT=staging/g' .env
 docker-compose -f docker-compose.full.yml restart florence oswaldo donabedian wanda comunicacao geralda
 ```
-**Status**: ✅ EXECUTADO - Containers reiniciados, aguardando estabilização
+**Status**: ✅ RESOLVIDO - Containers recriados com down+up, erro de ENVIRONMENT corrigido
+**Resultado**:
+- ✅ Florence: UP (unhealthy) - Sem mais erro de ValidationError!
+- ✅ Geralda: UP (unhealthy)
+- ✅ Wanda: UP (unhealthy)
+- ✅ Comunicacao: UP (health: starting)
+- ⚠️ Donabedian: Restarting (verificar logs)
+- ⚠️ Oswaldo: Restarting (verificar logs)
 
 ---
 
@@ -339,12 +346,16 @@ Arquivos:
 - **Resultado**: Sucesso
 
 ### Containers Backend
-- **Status**: ⏳ REINICIADOS - Aguardando estabilização
-- **Ação Executada**:
-  - ✅ .env alterado: `ENVIRONMENT=staging`
-  - ✅ Containers reiniciados
-  - ⏳ Aguardando health checks (1-2 minutos)
-- **Observação**: Geralda já em "health: starting" (bom sinal)
+- **Status**: 🎉 PARCIALMENTE FUNCIONANDO!
+- **UP (unhealthy - inicializando)**:
+  - ✅ Florence (8001) - Sem mais erro de ENVIRONMENT!
+  - ✅ Geralda (8006)
+  - ✅ Wanda (8004)
+  - ✅ Comunicacao (8005) - health: starting
+- **Restarting (investigar)**:
+  - ⚠️ Donabedian (8003)
+  - ⚠️ Oswaldo (8002)
+- **Observação**: "unhealthy" é normal nos primeiros minutos. Aguardar estabilização.
 
 ### Frontend (Portal)
 - **Status**: ✅ CORRIGIDO
