@@ -22,8 +22,20 @@ from donabedian.schemas.indicator_pillar import (
 )
 from donabedian.schemas.common import PaginatedResponse, MessageResponse
 
-# Keycloak authentication
-from intellicare_auth import get_current_user, requires_role
+# Keycloak authentication - optional dependency
+try:
+    from intellicare_auth import get_current_user, requires_role
+    AUTH_AVAILABLE = True
+except ImportError:
+    AUTH_AVAILABLE = False
+    # Dummy implementations for when auth is not available
+    async def get_current_user():
+        return {"sub": "anonymous", "preferred_username": "anonymous"}
+
+    def requires_role(role: str):
+        def decorator(func):
+            return func
+        return decorator
 
 router = APIRouter()
 

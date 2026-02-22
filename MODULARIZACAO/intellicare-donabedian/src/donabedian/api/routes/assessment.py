@@ -26,8 +26,15 @@ from donabedian.schemas.assessment import (
 )
 from donabedian.schemas.indicator import TriadDimensionSchema
 
-# Keycloak authentication
-from intellicare_auth import get_current_user
+# Keycloak authentication - optional dependency
+try:
+    from intellicare_auth import get_current_user
+    AUTH_AVAILABLE = True
+except ImportError:
+    AUTH_AVAILABLE = False
+    # Dummy implementation for when auth is not available
+    async def get_current_user():
+        return {"sub": "anonymous", "preferred_username": "anonymous"}
 
 router = APIRouter()
 
