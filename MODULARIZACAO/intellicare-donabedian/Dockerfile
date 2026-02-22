@@ -14,7 +14,6 @@ RUN pip install --no-cache-dir . || true
 # Copiar código fonte (está em src/donabedian)
 COPY ./intellicare-donabedian/src ./src
 COPY ./intellicare-donabedian/migrations ./migrations
-COPY ./intellicare-donabedian/alembic.ini ./alembic.ini
 
 RUN pip install --no-cache-dir -e .
 
