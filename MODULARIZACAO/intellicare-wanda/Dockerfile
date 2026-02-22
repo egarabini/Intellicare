@@ -2,9 +2,9 @@ FROM python:3.11-slim AS base
 
 WORKDIR /app
 
-COPY pyproject.toml .
+COPY pyproject.toml README.md* ./
 
-RUN pip install --no-cache-dir -e ".[dev]" 2>/dev/null || pip install --no-cache-dir .
+RUN pip install --no-cache-dir . || true
 
 COPY . .
 
