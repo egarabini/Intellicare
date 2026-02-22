@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "versao": "1.1",
+    "periodo": "2026-02",
+    "data_atualizacao": "2026-02-26",
+    "responsavel": "DEV1"
+  },
+  "kpis_principais": {
+    "taxa_participacao_reunioes": {
+      "valor": 100,
+      "meta": 90,
+      "unidade": "%",
+      "status": "acima_meta",
+      "descricao": "Percentual de participantes presentes nas reuniões"
+    },
+    "tempo_resposta_consultas": {
+      "valor": 2,
+      "meta": 4,
+      "unidade": "horas",
+      "status": "acima_meta",
+      "descricao": "Tempo médio de resposta a consultas de stakeholders"
+    },
+    "action_items_completados": {
+      "valor": 100,
+      "meta": 95,
+      "unidade": "%",
+      "status": "acima_meta",
+      "descricao": "Percentual de action items completados no prazo"
+    },
+    "satisfacao_stakeholders": {
+      "valor": 5.0,
+      "meta": 4.5,
+      "unidade": "/5",
+      "status": "acima_meta",
+      "descricao": "Nota média de satisfação dos stakeholders"
+    },
+    "tempo_localizacao_info": {
+      "valor": 3,
+      "meta": 5,
+      "unidade": "minutos",
+      "status": "acima_meta",
+      "descricao": "Tempo médio para localizar informação na documentação"
+    }
+  },
+  "metricas_reunioes": {
+    "total_reunioes": 1,
+    "reunioes_realizadas": 1,
+    "reunioes_canceladas": 0,
+    "atas_geradas": 1,
+    "participacao_media": 100,
+    "duracao_media_minutos": 120,
+    "reunioes_por_tipo": {
+      "validacao": 1,
+      "alinhamento": 0,
+      "apresentacao": 0,
+      "planejamento": 0
+    }
+  },
+  "metricas_validacoes": {
+    "total_validacoes": 1,
+    "aprovadas": 1,
+    "reprovadas": 0,
+    "parciais": 0,
+    "taxa_aprovacao": 100,
+    "tempo_medio_horas": 2,
+    "validacoes_por_modulo": {
+      "donabedian": 0,
+      "wanda": 0,
+      "lgpd": 1,
+      "keycloak": 0
+    }
+  },
+  "metricas_stakeholders": {
+    "total_cadastrados": 5,
+    "ativos": 5,
+    "inativos": 0,
+    "interacoes_total": 1,
+    "interacoes_por_stakeholder": {
+      "STK-001": 0,
+      "STK-002": 1,
+      "STK-003": 0,
+      "STK-004": 0,
+      "STK-005": 0
+    },
+    "distribuicao_por_area": {
+      "Qualidade": 1,
+      "Compliance": 1,
+      "Operacional": 1,
+      "Tecnologia": 1,
+      "Gestão": 1
+    }
+  },
+  "metricas_comunicacao": {
+    "emails_enviados": 2,
+    "convites_enviados": 1,
+    "atas_distribuidas": 1,
+    "feedbacks_coletados": 1,
+    "tempo_resposta_medio_horas": 2,
+    "action_items_criados": 6,
+    "action_items_completados": 1,
+    "taxa_completude": 16.7
+  },
+  "metricas_documentacao": {
+    "documentos_criados": 26,
+    "documentos_atualizados": 3,
+    "templates_criados": 4,
+    "scripts_criados": 4,
+    "total_linhas_codigo": 6350,
+    "tamanho_total_kb": 540
+  },
+  "tendencias": {
+    "ultimos_7_dias": {
+      "reunioes": [
+        {
+          "data": "2026-02-26",
+          "tipo": "validacao",
+          "participacao": 100,
+          "duracao_minutos": 120
+        }
+      ],
+      "validacoes": [
+        {
+          "data": "2026-02-26",
+          "modulo": "lgpd",
+          "resultado": "aprovado_com_ressalvas",
+          "nota": 5.0
+        }
+      ],
+      "feedbacks": [
+        {
+          "data": "2026-02-26",
+          "stakeholder": "STK-002",
+          "nota": 5.0,
+          "tipo": "validacao"
+        }
+      ]
+    },
+    "ultimos_30_dias": {
+      "reunioes": [
+        {
+          "data": "2026-02-26",
+          "tipo": "validacao",
+          "participacao": 100,
+          "duracao_minutos": 120
+        }
+      ],
+      "validacoes": [
+        {
+          "data": "2026-02-26",
+          "modulo": "lgpd",
+          "resultado": "aprovado_com_ressalvas",
+          "nota": 5.0
+        }
+      ],
+      "feedbacks": [
+        {
+          "data": "2026-02-26",
+          "stakeholder": "STK-002",
+          "nota": 5.0,
+          "tipo": "validacao"
+        }
+      ]
+    }
+  },
+  "alertas": {
+    "ativos": [
+      {
+        "tipo": "action_item",
+        "prioridade": "alta",
+        "mensagem": "Dashboard de conformidade LGPD deve ser implementado até 12/03/2026",
+        "responsavel": "DEV2",
+        "prazo": "2026-03-12"
+      }
+    ],
+    "resolvidos": []
+  },
+  "proximas_atividades": [
+    {
+      "data": "2026-03-01",
+      "tipo": "validacao",
+      "titulo": "Validação LGPD Mensal - Março",
+      "participantes": ["DEV1"],
+      "status": "agendada"
+    },
+    {
+      "data": "2026-03-12",
+      "tipo": "validacao",
+      "titulo": "Validação Parcial - Dashboard de Conformidade",
+      "participantes": ["STK-002", "DEV2"],
+      "status": "agendada"
+    }
+  ],
+  "observacoes": [
+    "Dashboard atualizado em 26/02/2026 com dados da primeira validação real",
+    "Validação LGPD executada com sucesso - APROVADA COM RESSALVAS (5/5)",
+    "Sistema de comunicação 100% implementado (Projeto 03 concluído)",
+    "Todos os KPIs acima da meta estabelecida",
+    "Próxima validação parcial agendada para 12/03/2026"
+  ]
+}
+

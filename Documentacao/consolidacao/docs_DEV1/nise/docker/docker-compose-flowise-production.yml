@@ -1,0 +1,149 @@
+############################################################################
+# FLOWISE + OLLAMA - PRODUCTION CONFIGURATION
+############################################################################
+# Projeto: NISE - Treinamento Assistido
+# Módulo: Configuração de produção para Flowise + Ollama
+# Versão: 1.0
+# Data: 11/03/2026
+# Responsável: DEV2
+#
+# SUBSTITUI: N8N (conforme especificação funcional)
+# ADICIONA: Flowise (RAG + Chatbots) + Ollama (LLM Engine)
+############################################################################
+
+# ============================================================================
+# ADICIONE ESTAS SEÇÕES AO SEU docker-compose.yml PRINCIPAL
+# ============================================================================
+
+services:
+  # ==========================================================================
+  # FLOWISE - RAG + Chatbots + LLM Workflows
+  # ==========================================================================
+  flowise:
+    container_name: flowise
+    image: flowiseai/flowise:latest
+    restart: unless-stopped
+    user: "1000:1000"
+    environment:
+      # Database PostgreSQL (compartilhado)
+      DATABASE_TYPE: "postgres"
+      DATABASE_HOST: "postgres"
+      DATABASE_PORT: "5432"
+      DATABASE_USER: "admin_flowise"
+      DATABASE_PASSWORD: "${FLOWISE_DB_PASSWORD}"  # Usar variável do .env
+      DATABASE_NAME: "flowise_db"
+      
+      # Flowise Configuration
+      PORT: "3000"
+      FLOWISE_USERNAME: "${FLOWISE_USERNAME:-admin}"
+      FLOWISE_PASSWORD: "${FLOWISE_PASSWORD}"  # Usar variável do .env
+      FLOWISE_SECRETKEY_OVERWRITE: "${FLOWISE_SECRET_KEY}"  # Usar variável do .env
+      
+      # Ollama Integration
+      OLLAMA_BASE_URL: "http://ollama:11434"
+      
+      # Storage
+      BLOB_STORAGE_PATH: "/root/.flowise/storage"
+      LOG_PATH: "/root/.flowise/logs"
+      
+      # Security
+      CORS_ORIGINS: "*"
+      IFRAME_ORIGINS: "*"
+      
+      # Features
+      DISABLE_FLOWISE_TELEMETRY: "true"
+      DEBUG: "false"
+      
+      # Production URL
+      FLOWISE_URL: "https://flowise.gsi.srv.br/"
+    
+    volumes:
+      - flowise_data:/root/.flowise
+      - ../flowise_storage:/root/.flowise/storage
+      - ../flowise_logs:/root/.flowise/logs
+    
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    
+    networks:
+      - gsi_network
+    
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.flowise.rule=Host(`flowise.gsi.srv.br`)"
+      - "traefik.http.routers.flowise.entrypoints=websecure"
+      - "traefik.http.routers.flowise.tls.certresolver=myresolver"
+      - "traefik.http.services.flowise.loadbalancer.server.port=3000"
+      - "traefik.http.routers.flowise-http.rule=Host(`flowise.gsi.srv.br`)"
+      - "traefik.http.routers.flowise-http.entrypoints=web"
+      - "traefik.http.routers.flowise-http.middlewares=redirect-to-https"
+
+  # ==========================================================================
+  # OLLAMA - Local LLM Engine
+  # ==========================================================================
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    environment:
+      OLLAMA_HOST: "0.0.0.0"
+      OLLAMA_ORIGINS: "*"
+    
+    ports:
+      - "11434:11434"  # API Ollama (interno)
+    
+    volumes:
+      - ollama_data:/root/.ollama
+      - ../ollama_models:/root/.ollama/models
+    
+    networks:
+      - gsi_network
+    
+    # GPU support (descomente se tiver GPU NVIDIA)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+# ============================================================================
+# VOLUMES (adicione ao seu docker-compose.yml)
+# ============================================================================
+volumes:
+  flowise_data:
+    driver: local
+  ollama_data:
+    driver: local
+
+# ============================================================================
+# VARIÁVEIS DE AMBIENTE (.env)
+# ============================================================================
+# Adicione ao seu arquivo .env:
+#
+# # Flowise
+# FLOWISE_DB_PASSWORD=sua_senha_segura_aqui
+# FLOWISE_USERNAME=admin
+# FLOWISE_PASSWORD=sua_senha_admin_aqui
+# FLOWISE_SECRET_KEY=sua_chave_secreta_aqui_min_32_chars
+#
+# ============================================================================
+

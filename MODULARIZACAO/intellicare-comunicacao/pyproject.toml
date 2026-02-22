@@ -23,6 +23,7 @@ httpx = "^0.26.0"
 redis = "^5.0.0"
 prometheus-client = "^0.19.0"
 tenacity = "^8.2.0"
+email-validator = "^2.0.0"
 # Note: intellicare-auth and intellicare-core are in MODULARIZACAO root
 # Add local path: pip install -e ../intellicare-auth ../intellicare-core
 

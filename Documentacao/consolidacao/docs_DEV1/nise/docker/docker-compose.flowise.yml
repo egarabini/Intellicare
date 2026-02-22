@@ -1,0 +1,146 @@
+############################################################################
+# NISE TRAINING MODULE - FLOWISE + OLLAMA DOCKER COMPOSE
+############################################################################
+# Projeto: NISE - Treinamento Assistido
+# Módulo: Docker Compose para Flowise + Ollama
+# Versão: 1.0
+# Data: 11/03/2026
+# Responsável: DEV2
+############################################################################
+
+version: '3.8'
+
+services:
+  # ========================================================================
+  # FLOWISE - RAG + Chatbots + LLM Workflows
+  # ========================================================================
+  flowise:
+    image: flowiseai/flowise:latest
+    container_name: nise-flowise
+    restart: unless-stopped
+    environment:
+      # Database
+      - DATABASE_TYPE=postgres
+      - DATABASE_HOST=${DB_HOST:-postgres}
+      - DATABASE_PORT=${DB_PORT:-5432}
+      - DATABASE_USER=${DB_USER:-postgres}
+      - DATABASE_PASSWORD=${DB_PASSWORD:-postgres}
+      - DATABASE_NAME=${DB_NAME:-intellicare}
+      - DATABASE_SCHEMA=${FLOWISE_SCHEMA:-flowise}
+      
+      # Flowise Configuration
+      - PORT=3000
+      - FLOWISE_USERNAME=${FLOWISE_USERNAME:-admin}
+      - FLOWISE_PASSWORD=${FLOWISE_PASSWORD:-admin123}
+      - FLOWISE_SECRETKEY_OVERWRITE=${FLOWISE_SECRET:-nise-flowise-secret-key-2026}
+      
+      # Ollama Integration
+      - OLLAMA_BASE_URL=http://ollama:11434
+      
+      # Storage
+      - BLOB_STORAGE_PATH=/root/.flowise/storage
+      - LOG_PATH=/root/.flowise/logs
+      
+      # Security
+      - CORS_ORIGINS=*
+      - IFRAME_ORIGINS=*
+      
+      # Features
+      - DISABLE_FLOWISE_TELEMETRY=true
+      - DEBUG=false
+    
+    ports:
+      - "3000:3000"
+    
+    volumes:
+      - flowise_data:/root/.flowise
+      - ./flowise/storage:/root/.flowise/storage
+      - ./flowise/logs:/root/.flowise/logs
+    
+    networks:
+      - nise-network
+    
+    depends_on:
+      - ollama
+    
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ========================================================================
+  # OLLAMA - Local LLM Engine
+  # ========================================================================
+  ollama:
+    image: ollama/ollama:latest
+    container_name: nise-ollama
+    restart: unless-stopped
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_ORIGINS=*
+    
+    ports:
+      - "11434:11434"
+    
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./ollama/models:/root/.ollama/models
+    
+    networks:
+      - nise-network
+    
+    # GPU support (optional - uncomment if GPU available)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ========================================================================
+  # POSTGRES - Database (if not already running)
+  # ========================================================================
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: nise-postgres
+  #   restart: unless-stopped
+  #   environment:
+  #     - POSTGRES_USER=${DB_USER:-postgres}
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+  #     - POSTGRES_DB=${DB_NAME:-intellicare}
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - nise-network
+
+# ============================================================================
+# VOLUMES
+# ============================================================================
+volumes:
+  flowise_data:
+    driver: local
+  ollama_data:
+    driver: local
+  # postgres_data:
+  #   driver: local
+
+# ============================================================================
+# NETWORKS
+# ============================================================================
+networks:
+  nise-network:
+    driver: bridge
+    name: nise-network
+

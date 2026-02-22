@@ -1,0 +1,325 @@
+"""Prometheus metrics para o módulo de comunicação."""
+
+from __future__ import annotations
+
+import functools
+import logging
+import time
+from typing import Any, Callable
+
+from prometheus_client import Counter, Gauge, Histogram
+from prometheus_client import REGISTRY as _PROM_REGISTRY
+
+
+def _get_or_create_counter(name, description, labelnames=()):
+    """Returns existing or creates new Counter (safe for multiple imports)."""
+    try:
+        return Counter(name, description, labelnames=list(labelnames))
+    except ValueError:
+        # Already registered - find and return existing collector
+        for collector in _PROM_REGISTRY._collectors:
+            try:
+                if hasattr(collector, "_name") and collector._name == name:
+                    return collector
+            except Exception:
+                pass
+        return Counter(name, description, labelnames=list(labelnames))
+
+
+def _get_or_create_histogram(name, description, labelnames=(), buckets=None):
+    """Returns existing or creates new Histogram (safe for multiple imports)."""
+    kwargs = {"labelnames": list(labelnames)}
+    if buckets is not None:
+        kwargs["buckets"] = buckets
+    try:
+        return Histogram(name, description, **kwargs)
+    except ValueError:
+        for collector in _PROM_REGISTRY._collectors:
+            try:
+                if hasattr(collector, "_name") and collector._name == name:
+                    return collector
+            except Exception:
+                pass
+        return Histogram(name, description, **kwargs)
+
+
+def _get_or_create_gauge(name, description, labelnames=()):
+    """Returns existing or creates new Gauge (safe for multiple imports)."""
+    try:
+        return Gauge(name, description, labelnames=list(labelnames))
+    except ValueError:
+        for collector in _PROM_REGISTRY._collectors:
+            try:
+                if hasattr(collector, "_name") and collector._name == name:
+                    return collector
+            except Exception:
+                pass
+        return Gauge(name, description, labelnames=list(labelnames))
+
+
+logger = logging.getLogger(__name__)
+
+
+# ============================================================================
+# COUNTERS - Sempre aumentam
+# ============================================================================
+
+# Intents recebidos
+comm_intent_received_total = Counter(
+    "comm_intent_received_total",
+    "Total de communication intents recebidos",
+    labelnames=["source_module", "severity", "category"],
+)
+
+# Intents completados com sucesso
+comm_intent_completed_total = Counter(
+    "comm_intent_completed_total",
+    "Total de communication intents completados com sucesso",
+    labelnames=["source_module", "severity", "category"],
+)
+
+# Intents que falharam
+comm_intent_failed_total = Counter(
+    "comm_intent_failed_total",
+    "Total de communication intents que falharam",
+    labelnames=["source_module", "severity", "category", "reason"],
+)
+
+# Tentativas de entrega por canal
+comm_delivery_attempt_total = Counter(
+    "comm_delivery_attempt_total",
+    "Total de tentativas de entrega por canal",
+    labelnames=["channel", "status"],
+)
+
+# Fallbacks entre canais
+comm_channel_fallback_total = Counter(
+    "comm_channel_fallback_total",
+    "Total de fallbacks entre canais",
+    labelnames=["from_channel", "to_channel", "reason"],
+)
+
+# Eventos Redis processados
+comm_redis_event_total = Counter(
+    "comm_redis_event_total",
+    "Total de eventos Redis processados",
+    labelnames=["event_type", "status"],
+)
+
+# Templates renderizados
+comm_template_render_total = Counter(
+    "comm_template_render_total",
+    "Total de templates renderizados",
+    labelnames=["template_id", "channel", "status"],
+)
+
+
+# ============================================================================
+# HISTOGRAMS - Distribuição de valores
+# ============================================================================
+
+# Latência de roteamento (ms)
+comm_routing_latency_seconds = Histogram(
+    "comm_routing_latency_seconds",
+    "Latência do pipeline de roteamento (segundos)",
+    labelnames=["severity", "category"],
+    buckets=(0.001, 0.005, 0.010, 0.025, 0.050, 0.100, 0.250, 0.500, 1.0, 2.5, 5.0),
+)
+
+# Latência de entrega por canal
+comm_delivery_latency_seconds = Histogram(
+    "comm_delivery_latency_seconds",
+    "Latência de entrega por canal (segundos)",
+    labelnames=["channel"],
+    buckets=(0.010, 0.050, 0.100, 0.250, 0.500, 1.0, 2.0, 5.0, 10.0),
+)
+
+# Latência de renderização de template
+comm_template_render_latency_seconds = Histogram(
+    "comm_template_render_latency_seconds",
+    "Latência de renderização de template (segundos)",
+    labelnames=["template_id"],
+    buckets=(0.001, 0.005, 0.010, 0.025, 0.050, 0.100),
+)
+
+
+# ============================================================================
+# GAUGES - Valores instantâneos
+# ============================================================================
+
+# Intents em processamento
+comm_intents_in_progress = Gauge(
+    "comm_intents_in_progress",
+    "Número de intents em processamento neste momento",
+    labelnames=["status"],
+)
+
+# Intents agendados (scheduled)
+comm_intents_scheduled = Gauge(
+    "comm_intents_scheduled",
+    "Número de intents agendados para o futuro",
+)
+
+# Delayed tasks pendentes
+comm_delayed_tasks_pending = Gauge(
+    "comm_delayed_tasks_pending",
+    "Número de delayed tasks pendentes",
+)
+
+# Redis consumer status
+comm_redis_consumer_status = Gauge(
+    "comm_redis_consumer_status",
+    "Status do Redis consumer (1=running, 0=stopped)",
+)
+
+# Dispatcher health
+comm_dispatcher_health = Gauge(
+    "comm_dispatcher_health",
+    "Health status dos dispatchers (1=healthy, 0=unhealthy)",
+    labelnames=["channel"],
+)
+
+
+# ============================================================================
+# DECORATORS - Instrumentação automática
+# ============================================================================
+
+
+def track_intent_processing(func: Callable) -> Callable:
+    """
+    Decorator para rastrear processamento de intents.
+    
+    Coleta:
+    - comm_intent_received_total: +1
+    - comm_routing_latency_seconds: latência
+    - comm_intent_completed_total ou comm_intent_failed_total: +1
+    """
+
+    @functools.wraps(func)
+    async def wrapper(*args: Any, **kwargs: Any) -> Any:
+        # Extrair intent_create do primeiro argumento
+        intent_create = args[0] if args else kwargs.get("intent_create")
+        if not intent_create:
+            return await func(*args, **kwargs)
+
+        # Incrementar contador de recebidos
+        comm_intent_received_total.labels(
+            source_module=getattr(intent_create, "source_module", "unknown"),
+            severity=getattr(intent_create, "severity", "unknown"),
+            category=getattr(intent_create, "category", "unknown"),
+        ).inc()
+
+        # Medir latência
+        start_time = time.time()
+        try:
+            result = await func(*args, **kwargs)
+
+            # Sucesso: registrar latência e incrementar contador
+            latency = time.time() - start_time
+            comm_routing_latency_seconds.labels(
+                severity=getattr(intent_create, "severity", "unknown"),
+                category=getattr(intent_create, "category", "unknown"),
+            ).observe(latency)
+
+            comm_intent_completed_total.labels(
+                source_module=getattr(intent_create, "source_module", "unknown"),
+                severity=getattr(intent_create, "severity", "unknown"),
+                category=getattr(intent_create, "category", "unknown"),
+            ).inc()
+
+            logger.debug(
+                "Intent processado em %.3fs: source=%s, severity=%s, category=%s",
+                latency,
+                getattr(intent_create, "source_module", "unknown"),
+                getattr(intent_create, "severity", "unknown"),
+                getattr(intent_create, "category", "unknown"),
+            )
+            return result
+
+        except Exception as exc:
+            # Falha: registrar latência e incrementar contador de falhas
+            latency = time.time() - start_time
+            comm_routing_latency_seconds.labels(
+                severity=getattr(intent_create, "severity", "unknown"),
+                category=getattr(intent_create, "category", "unknown"),
+            ).observe(latency)
+
+            comm_intent_failed_total.labels(
+                source_module=getattr(intent_create, "source_module", "unknown"),
+                severity=getattr(intent_create, "severity", "unknown"),
+                category=getattr(intent_create, "category", "unknown"),
+                reason=type(exc).__name__,
+            ).inc()
+
+            logger.error(
+                "Intent falhou após %.3fs: source=%s, severity=%s, error=%s",
+                latency,
+                getattr(intent_create, "source_module", "unknown"),
+                getattr(intent_create, "severity", "unknown"),
+                exc,
+            )
+            raise
+
+    return wrapper
+
+
+def track_delivery_attempt(channel: str, status: str) -> None:
+    """Registra tentativa de entrega por canal."""
+    comm_delivery_attempt_total.labels(channel=channel, status=status).inc()
+
+
+def track_channel_fallback(from_channel: str, to_channel: str, reason: str) -> None:
+    """Registra fallback entre canais."""
+    comm_channel_fallback_total.labels(
+        from_channel=from_channel, to_channel=to_channel, reason=reason
+    ).inc()
+
+
+def track_redis_event(event_type: str, status: str) -> None:
+    """Registra evento Redis processado."""
+    comm_redis_event_total.labels(event_type=event_type, status=status).inc()
+
+
+def track_template_render(template_id: str, channel: str, status: str) -> None:
+    """Registra renderização de template."""
+    comm_template_render_total.labels(
+        template_id=template_id, channel=channel, status=status
+    ).inc()
+
+
+def observe_delivery_latency(channel: str, latency_seconds: float) -> None:
+    """Registra latência de entrega."""
+    comm_delivery_latency_seconds.labels(channel=channel).observe(latency_seconds)
+
+
+def observe_template_render_latency(template_id: str, latency_seconds: float) -> None:
+    """Registra latência de renderização de template."""
+    comm_template_render_latency_seconds.labels(template_id=template_id).observe(
+        latency_seconds
+    )
+
+
+def set_intents_in_progress(status: str, count: int) -> None:
+    """Atualiza gauge de intents em progresso."""
+    comm_intents_in_progress.labels(status=status).set(count)
+
+
+def set_intents_scheduled(count: int) -> None:
+    """Atualiza gauge de intents agendados."""
+    comm_intents_scheduled.set(count)
+
+
+def set_delayed_tasks_pending(count: int) -> None:
+    """Atualiza gauge de delayed tasks pendentes."""
+    comm_delayed_tasks_pending.set(count)
+
+
+def set_redis_consumer_status(running: bool) -> None:
+    """Atualiza status do Redis consumer."""
+    comm_redis_consumer_status.set(1 if running else 0)
+
+
+def set_dispatcher_health(channel: str, healthy: bool) -> None:
+    """Atualiza health status de um dispatcher."""
+    comm_dispatcher_health.labels(channel=channel).set(1 if healthy else 0)
+

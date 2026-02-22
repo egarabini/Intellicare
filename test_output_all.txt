@@ -1,0 +1,960 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0
+rootdir: c:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.12.1, asyncio-1.3.0, cov-7.0.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 173 items
+
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py F [  0%]
+FFFFFFFFF.......FFFFFF....                                               [ 15%]
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py F [ 16%]
+FF                                                                       [ 17%]
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_e2e_event_pipeline.py s [ 17%]
+                                                                         [ 17%]
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py E [ 18%]
+EEEEE.EEEEF.EE                                                           [ 26%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_api.py F............... [ 35%]
+.....                                                                    [ 38%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py FFFFFFFF [ 43%]
+.                                                                        [ 43%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_channels_and_lgpd.py .. [ 45%]
+.F                                                                       [ 46%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_event_consumer.py ..    [ 47%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_fallback_monitor.py ... [ 49%]
+..........................                                               [ 64%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py FFF. [ 66%]
+                                                                         [ 66%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py EEEEF     [ 69%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py EEEE [ 71%]
+EEEEEEE                                                                  [ 75%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_preferences.py ... [ 77%]
+F...F                                                                    [ 80%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py .......s [ 84%]
+....                                                                     [ 87%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_engine.py ..... [ 90%]
+......                                                                   [ 93%]
+MODULARIZACAO\intellicare-comunicacao\tests\test_templates_api.py ...... [ 97%]
+.....                                                                    [100%]
+
+=================================== ERRORS ====================================
+_ ERROR at setup of TestPhase5Integration.test_e2e_api_send_intent_with_auth __
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+_ ERROR at setup of TestPhase5Integration.test_e2e_api_list_intents_with_auth _
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+_ ERROR at setup of TestPhase5Integration.test_e2e_api_get_metrics_with_auth __
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+_ ERROR at setup of TestPhase5Integration.test_e2e_prometheus_metrics_endpoint _
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+__ ERROR at setup of TestPhase5Integration.test_e2e_template_list_with_auth ___
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+___ ERROR at setup of TestPhase5Integration.test_e2e_template_get_with_auth ___
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+____ ERROR at setup of TestPhase5Integration.test_e2e_batch_send_with_auth ____
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+_ ERROR at setup of TestPhase5Integration.test_e2e_scheduler_status_with_auth _
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+____ ERROR at setup of TestPhase5Integration.test_e2e_rules_list_with_auth ____
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+______ ERROR at setup of TestPhase5Metrics.test_metrics_endpoint_format _______
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+_ ERROR at setup of TestPhase5ErrorHandling.test_api_send_intent_invalid_payload _
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+__ ERROR at setup of TestPhase5ErrorHandling.test_api_get_nonexistent_intent __
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:46: in test_client
+    with patch("comunicacao.api.app.create_db_session", return_value=mock_db_session):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1503: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\unittest\mock.py:1473: in get_original
+    raise AttributeError(
+E   AttributeError: <module 'comunicacao.api.app' from 'C:\\DOCSHARE\\INTELLICARE\\MODULARIZACAO\\intellicare-comunicacao\\comunicacao\\api\\app.py'> does not have the attribute 'create_db_session'
+___________ ERROR at setup of test_log_communication_creates_entry ____________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py:43: in sample_intent
+    return CommunicationIntentRecord(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentRecord
+E   id
+E     Input should be a valid UUID, invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1 [type=uuid_parsing, input_value='intent-123', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/uuid_parsing
+____________ ERROR at setup of test_log_communication_chains_hash _____________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py:43: in sample_intent
+    return CommunicationIntentRecord(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentRecord
+E   id
+E     Input should be a valid UUID, invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1 [type=uuid_parsing, input_value='intent-123', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/uuid_parsing
+_________ ERROR at setup of test_log_communication_pseudonymizes_ids __________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py:43: in sample_intent
+    return CommunicationIntentRecord(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentRecord
+E   id
+E     Input should be a valid UUID, invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1 [type=uuid_parsing, input_value='intent-123', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/uuid_parsing
+______________ ERROR at setup of test_log_lgpd_decision_blocked _______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py:43: in sample_intent
+    return CommunicationIntentRecord(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentRecord
+E   id
+E     Input should be a valid UUID, invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1 [type=uuid_parsing, input_value='intent-123', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/uuid_parsing
+_______________ ERROR at setup of test_critical_always_allowed ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_____________ ERROR at setup of test_critical_ignores_quiet_hours _____________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_______________ ERROR at setup of test_critical_ignores_opt_out _______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_____________ ERROR at setup of test_high_clinical_alert_allowed ______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_______________ ERROR at setup of test_high_escalation_allowed ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_______________ ERROR at setup of test_medium_requires_consent ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_____________ ERROR at setup of test_medium_with_consent_allowed ______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_______________ ERROR at setup of test_expired_consent_blocked ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+______________ ERROR at setup of test_quiet_hours_defers_medium _______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_____________ ERROR at setup of test_outside_quiet_hours_allowed ______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+_______________ ERROR at setup of test_opt_out_channel_blocked ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py:26: in lgpd_config
+    return LGPDConfig(
+E   pydantic_core._pydantic_core.ValidationError: 2 validation errors for LGPDConfig
+E   default_quiet_hours_start
+E     Input should be a valid string [type=string_type, input_value=datetime.time(22, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+E   default_quiet_hours_end
+E     Input should be a valid string [type=string_type, input_value=datetime.time(7, 0), input_type=time]
+E       For further information visit https://errors.pydantic.dev/2.12/v/string_type
+================================== FAILURES ===================================
+_______________ TestRocketChatClient.test_send_message_success ________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:26: in test_send_message_success
+    client = RocketChatClient()
+             ^^^^^^^^^^^^^^^^^^
+E   TypeError: RocketChatClient.__init__() missing 1 required positional argument: 'config'
+______________ TestRocketChatClient.test_create_channel_success _______________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:54: in test_create_channel_success
+    client = RocketChatClient()
+             ^^^^^^^^^^^^^^^^^^
+E   TypeError: RocketChatClient.__init__() missing 1 required positional argument: 'config'
+_______________ TestRocketChatClient.test_health_check_success ________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:80: in test_health_check_success
+    client = RocketChatClient()
+             ^^^^^^^^^^^^^^^^^^
+E   TypeError: RocketChatClient.__init__() missing 1 required positional argument: 'config'
+____________ TestRocketChatChannelService.test_create_case_channel ____________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:107: in test_create_case_channel
+    with patch.object(service.rc_client, "create_private_group", new_callable=AsyncMock) as mock_create:
+                      ^^^^^^^^^^^^^^^^^
+E   AttributeError: 'RocketChatChannelService' object has no attribute 'rc_client'. Did you mean: 'client'?
+____________ TestRocketChatChannelService.test_create_team_channel ____________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:132: in test_create_team_channel
+    with patch.object(service.rc_client, "create_private_group", new_callable=AsyncMock) as mock_create:
+                      ^^^^^^^^^^^^^^^^^
+E   AttributeError: 'RocketChatChannelService' object has no attribute 'rc_client'. Did you mean: 'client'?
+____ TestRocketChatChannelService.test_get_or_create_case_channel_existing ____
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:156: in test_get_or_create_case_channel_existing
+    with patch.object(service.rc_client, "get_group_info", new_callable=AsyncMock) as mock_get:
+                      ^^^^^^^^^^^^^^^^^
+E   AttributeError: 'RocketChatChannelService' object has no attribute 'rc_client'. Did you mean: 'client'?
+_________________ TestUserSyncService.test_sync_user_new_user _________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:175: in test_sync_user_new_user
+    service = UserSyncService()
+              ^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\sync\user_sync_service.py:62: in __init__
+    self.rc_client = rocketchat_client or RocketChatClient(rocketchat_config)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+______________ TestUserSyncService.test_sync_user_existing_user _______________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:206: in test_sync_user_existing_user
+    service = UserSyncService()
+              ^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\sync\user_sync_service.py:62: in __init__
+    self.rc_client = rocketchat_client or RocketChatClient(rocketchat_config)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+___________ TestUserSyncService.test_handle_keycloak_event_register ___________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:240: in test_handle_keycloak_event_register
+    service = UserSyncService()
+              ^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\sync\user_sync_service.py:62: in __init__
+    self.rc_client = rocketchat_client or RocketChatClient(rocketchat_config)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+________________ TestUserSyncService.test_reconcile_all_users _________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:261: in test_reconcile_all_users
+    service = UserSyncService()
+              ^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\sync\user_sync_service.py:62: in __init__
+    self.rc_client = rocketchat_client or RocketChatClient(rocketchat_config)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+____________________ TestIntelliCareBot.test_handle_ajuda _____________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:429: in test_handle_ajuda
+    bot = IntelliCareBot()
+          ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\bot\intellicare_bot.py:39: in __init__
+    self.rc_client = rc_client or RocketChatClient(rc_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+___________________ TestIntelliCareBot.test_handle_paciente ___________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:445: in test_handle_paciente
+    bot = IntelliCareBot()
+          ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\bot\intellicare_bot.py:39: in __init__
+    self.rc_client = rc_client or RocketChatClient(rc_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+_____________________ TestIntelliCareBot.test_handle_lab ______________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:467: in test_handle_lab
+    bot = IntelliCareBot()
+          ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\bot\intellicare_bot.py:39: in __init__
+    self.rc_client = rc_client or RocketChatClient(rc_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+____________________ TestIntelliCareBot.test_handle_alerta ____________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:483: in test_handle_alerta
+    bot = IntelliCareBot()
+          ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\bot\intellicare_bot.py:39: in __init__
+    self.rc_client = rc_client or RocketChatClient(rc_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+___________________ TestIntelliCareBot.test_handle_escalar ____________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:498: in test_handle_escalar
+    bot = IntelliCareBot()
+          ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\bot\intellicare_bot.py:39: in __init__
+    self.rc_client = rc_client or RocketChatClient(rc_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+_________________ TestIntelliCareBot.test_handle_teleconsulta _________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py:514: in test_handle_teleconsulta
+    bot = IntelliCareBot()
+          ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\bot\intellicare_bot.py:39: in __init__
+    self.rc_client = rc_client or RocketChatClient(rc_config)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\rocketchat\client.py:48: in __init__
+    self._rate_limiter = asyncio.Semaphore(config.max_requests_per_second)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'max_requests_per_second'
+___________________ test_critical_bypasses_lgpd_and_routes ____________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py:123: in test_critical_bypasses_lgpd_and_routes
+    intent_create = CommunicationIntentCreate(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentCreate
+E   correlation_id
+E     Field required [type=missing, input_value={'source_module': 'test',...rta crítico de saúde'}, input_type=dict]
+E       For further information visit https://errors.pydantic.dev/2.12/v/missing
+_____________________ test_medium_without_consent_blocked _____________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py:151: in test_medium_without_consent_blocked
+    intent_create = CommunicationIntentCreate(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentCreate
+E   correlation_id
+E     Field required [type=missing, input_value={'source_module': 'test',... 'Lembrete de consulta'}, input_type=dict]
+E       For further information visit https://errors.pydantic.dev/2.12/v/missing
+_______________________ test_medium_with_consent_routes _______________________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py:193: in test_medium_with_consent_routes
+    intent_create = CommunicationIntentCreate(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentCreate
+E   correlation_id
+E     Field required [type=missing, input_value={'source_module': 'test',... 'Lembrete de consulta'}, input_type=dict]
+E       For further information visit https://errors.pydantic.dev/2.12/v/missing
+________ TestPhase5Metrics.test_metrics_tracking_on_intent_processing _________
+MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py:366: in test_metrics_tracking_on_intent_processing
+    engine = RoutingEngine(
+E   TypeError: RoutingEngine.__init__() got an unexpected keyword argument 'repository'
+________________ test_health_endpoint_returns_module_metadata _________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_api.py:9: in test_health_endpoint_returns_module_metadata
+    response = client.get("/api/v1/health")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:473: in get
+    return super().get(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:1053: in get
+    return self.request(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:445: in request
+    return super().request(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:348: in handle_request
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:345: in handle_request
+    portal.call(self.app, scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:191: in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:162: in __exit__
+    self.gen.throw(value)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_utils.py:87: in collapse_excgroups
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\middleware.py:36: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:121: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:107: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:426: in app
+    raw_response = await run_endpoint_function(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:314: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\health_routes.py:53: in get_overall_health
+    health = await service.check_overall_health()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\health.py:78: in check_overall_health
+    channels_health = await self.check_all_channels()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\health.py:193: in check_all_channels
+    from comunicacao.dispatchers.base import get_default_dispatcher_manager
+E   ImportError: cannot import name 'get_default_dispatcher_manager' from 'comunicacao.dispatchers.base' (C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py)
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP GET /api/v1/health -> ERROR (0.004s): cannot import name 'get_default_dispatcher_manager' from 'comunicacao.dispatchers.base' (C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py)
+__________________ test_list_channels_returns_all_registered __________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:132: in test_list_channels_returns_all_registered
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+____________________ test_list_channels_shows_capabilities ____________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:149: in test_list_channels_shows_capabilities
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+_____________________ test_channel_health_returns_status ______________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:170: in test_channel_health_returns_status
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+________________________ test_channel_health_for_email ________________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:188: in test_channel_health_for_email
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+__________________ test_channel_health_not_found_returns_404 __________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:202: in test_channel_health_not_found_returns_404
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+_______________________ test_channel_test_sends_message _______________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:212: in test_channel_test_sends_message
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+___________________ test_channel_test_with_default_message ____________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:234: in test_channel_test_with_default_message
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+___________________ test_channel_test_not_found_returns_404 ___________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:250: in test_channel_test_not_found_returns_404
+    _override_dispatcher_manager()
+MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py:123: in _override_dispatcher_manager
+    manager.register(_FakeRocketchatDispatcher())
+MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py:150: in register
+    self._dispatchers[dispatcher.channel] = dispatcher
+                      ^^^^^^^^^^^^^^^^^^
+E   AttributeError: '_FakeRocketchatDispatcher' object has no attribute 'channel'. Did you mean: 'cancel'?
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+_______________ test_routing_engine_uses_lgpd_gateway_contract ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_channels_and_lgpd.py:98: in test_routing_engine_uses_lgpd_gateway_contract
+    engine = RoutingEngine()
+             ^^^^^^^^^^^^^^^
+E   TypeError: RoutingEngine.__init__() missing 6 required positional arguments: 'routing_store', 'template_store', 'rule_matcher', 'recipient_resolver', 'lgpd_gateway', and 'dispatcher_manager'
+_________________ TestHealthEndpoint.test_health_returns_200 __________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py:21: in test_health_returns_200
+    response = client.get("/api/v1/health")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:473: in get
+    return super().get(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:1053: in get
+    return self.request(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:445: in request
+    return super().request(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:348: in handle_request
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:345: in handle_request
+    portal.call(self.app, scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:191: in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:162: in __exit__
+    self.gen.throw(value)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_utils.py:87: in collapse_excgroups
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\middleware.py:36: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:121: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:107: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:426: in app
+    raw_response = await run_endpoint_function(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:314: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\health_routes.py:53: in get_overall_health
+    health = await service.check_overall_health()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\health.py:78: in check_overall_health
+    channels_health = await self.check_all_channels()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\health.py:193: in check_all_channels
+    from comunicacao.dispatchers.base import get_default_dispatcher_manager
+E   ImportError: cannot import name 'get_default_dispatcher_manager' from 'comunicacao.dispatchers.base' (C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py)
+------------------------------ Captured log call ------------------------------
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP GET /api/v1/health -> ERROR (0.003s): cannot import name 'get_default_dispatcher_manager' from 'comunicacao.dispatchers.base' (C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py)
+_______________ TestHealthEndpoint.test_health_body_has_status ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py:25: in test_health_body_has_status
+    response = client.get("/api/v1/health")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:473: in get
+    return super().get(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:1053: in get
+    return self.request(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:445: in request
+    return super().request(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:914: in send
+    response = self._send_handling_auth(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\httpx\_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:348: in handle_request
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:345: in handle_request
+    portal.call(self.app, scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:191: in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:162: in __exit__
+    self.gen.throw(value)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_utils.py:87: in collapse_excgroups
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\middleware.py:36: in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:121: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:107: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:426: in app
+    raw_response = await run_endpoint_function(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:314: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\health_routes.py:53: in get_overall_health
+    health = await service.check_overall_health()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\health.py:78: in check_overall_health
+    channels_health = await self.check_all_channels()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\comunicacao\monitoring\health.py:193: in check_all_channels
+    from comunicacao.dispatchers.base import get_default_dispatcher_manager
+E   ImportError: cannot import name 'get_default_dispatcher_manager' from 'comunicacao.dispatchers.base' (C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py)
+------------------------------ Captured log call ------------------------------
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP GET /api/v1/health -> ERROR (0.003s): cannot import name 'get_default_dispatcher_manager' from 'comunicacao.dispatchers.base' (C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao\comunicacao\dispatchers\base.py)
+_________ TestProtectedEndpoints.test_send_without_token_returns_4xx __________
+MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py:44: in test_send_without_token_returns_4xx
+    assert response.status_code in (200, 201, 401, 403, 422)
+E   assert 405 in (200, 201, 401, 403, 422)
+E    +  where 405 = <Response [405 Method Not Allowed]>.status_code
+_______________________ test_log_lgpd_decision_override _______________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py:193: in test_log_lgpd_decision_override
+    intent = CommunicationIntentRecord(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for CommunicationIntentRecord
+E   id
+E     Input should be a valid UUID, invalid character: expected an optional prefix of `urn:uuid:` followed by [0-9a-fA-F-], found `i` at 1 [type=uuid_parsing, input_value='intent-critical', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/uuid_parsing
+__________________ test_update_preferences_updates_existing ___________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_preferences.py:118: in test_update_preferences_updates_existing
+    assert result.rocketchat_enabled is True
+E   AssertionError: assert {'email_enabled': True, 'rocketchat_enabled': True} is True
+E    +  where {'email_enabled': True, 'rocketchat_enabled': True} = <CommunicationPreference(patient_id=PAT-123, consent=False)>.rocketchat_enabled
+____________________________ test_withdraw_consent ____________________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_preferences.py:206: in test_withdraw_consent
+    assert result.consent_given_at is None
+E   assert datetime.datetime(2026, 2, 18, 6, 17, 50, 228574) is None
+E    +  where datetime.datetime(2026, 2, 18, 6, 17, 50, 228574) = <CommunicationPreference(patient_id=PAT-123, consent=False)>.consent_given_at
+=========================== short test summary info ===========================
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestRocketChatClient::test_send_message_success
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestRocketChatClient::test_create_channel_success
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestRocketChatClient::test_health_check_success
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestRocketChatChannelService::test_create_case_channel
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestRocketChatChannelService::test_create_team_channel
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestRocketChatChannelService::test_get_or_create_case_channel_existing
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestUserSyncService::test_sync_user_new_user
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestUserSyncService::test_sync_user_existing_user
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestUserSyncService::test_handle_keycloak_event_register
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestUserSyncService::test_reconcile_all_users
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestIntelliCareBot::test_handle_ajuda
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestIntelliCareBot::test_handle_paciente
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestIntelliCareBot::test_handle_lab
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestIntelliCareBot::test_handle_alerta
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestIntelliCareBot::test_handle_escalar
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d2_rocketchat.py::TestIntelliCareBot::test_handle_teleconsulta
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py::test_critical_bypasses_lgpd_and_routes
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py::test_medium_without_consent_blocked
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_d6_lgpd_integration.py::test_medium_with_consent_routes
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Metrics::test_metrics_tracking_on_intent_processing
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_api.py::test_health_endpoint_returns_module_metadata
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_list_channels_returns_all_registered
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_list_channels_shows_capabilities
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_channel_health_returns_status
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_channel_health_for_email
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_channel_health_not_found_returns_404
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_channel_test_sends_message
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_channel_test_with_default_message
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channel_api.py::test_channel_test_not_found_returns_404
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_channels_and_lgpd.py::test_routing_engine_uses_lgpd_gateway_contract
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py::TestHealthEndpoint::test_health_returns_200
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py::TestHealthEndpoint::test_health_body_has_status
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_iam_integration.py::TestProtectedEndpoints::test_send_without_token_returns_4xx
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py::test_log_lgpd_decision_override
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_preferences.py::test_update_preferences_updates_existing
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_preferences.py::test_withdraw_consent
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_api_send_intent_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_api_list_intents_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_api_get_metrics_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_prometheus_metrics_endpoint
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_template_list_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_template_get_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_batch_send_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_scheduler_status_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Integration::test_e2e_rules_list_with_auth
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5Metrics::test_metrics_endpoint_format
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5ErrorHandling::test_api_send_intent_invalid_payload
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\integration\test_fase5_integration.py::TestPhase5ErrorHandling::test_api_get_nonexistent_intent
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py::test_log_communication_creates_entry
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py::test_log_communication_chains_hash
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py::test_log_communication_pseudonymizes_ids
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_audit.py::test_log_lgpd_decision_blocked
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_critical_always_allowed
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_critical_ignores_quiet_hours
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_critical_ignores_opt_out
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_high_clinical_alert_allowed
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_high_escalation_allowed
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_medium_requires_consent
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_medium_with_consent_allowed
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_expired_consent_blocked
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_quiet_hours_defers_medium
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_outside_quiet_hours_allowed
+ERROR MODULARIZACAO\intellicare-comunicacao\tests\test_lgpd_compliance.py::test_opt_out_channel_blocked
+============ 36 failed, 108 passed, 2 skipped, 27 errors in 45.07s ============

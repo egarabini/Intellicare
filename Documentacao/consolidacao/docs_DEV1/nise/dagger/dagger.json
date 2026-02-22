@@ -1,0 +1,14 @@
+{
+  "name": "nise",
+  "sdk": "python",
+  "source": ".",
+  "exclude": [
+    "node_modules",
+    "__pycache__",
+    "*.pyc",
+    ".pytest_cache",
+    ".venv",
+    "venv"
+  ]
+}
+

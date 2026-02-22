@@ -1,0 +1,166 @@
+{
+  "metadata": {
+    "versao": "1.0",
+    "ultima_atualizacao": "2026-02-20",
+    "responsavel": "DEV1",
+    "total_stakeholders": 5
+  },
+  "stakeholders": [
+    {
+      "id": "STK-001",
+      "nome": "Dr. João Silva",
+      "cargo": "Especialista em Qualidade Hospitalar",
+      "area": "Qualidade",
+      "email": "joao.silva@hospital.com",
+      "telefone": "+55 11 98765-4321",
+      "preferencias_comunicacao": {
+        "canal_preferido": "email",
+        "horario_preferido": "manhã (9h-12h)",
+        "frequencia": "semanal",
+        "idioma": "pt-BR"
+      },
+      "expertise": [
+        "Indicadores Donabedian",
+        "Acreditação hospitalar",
+        "Gestão de qualidade"
+      ],
+      "disponibilidade": {
+        "dias": ["segunda", "quarta", "sexta"],
+        "horarios": ["09:00-12:00", "14:00-17:00"]
+      },
+      "historico_interacoes": [
+        {
+          "data": "2026-02-15",
+          "tipo": "reuniao",
+          "assunto": "Apresentação inicial do projeto",
+          "resultado": "Aprovado para participar das validações"
+        }
+      ],
+      "status": "ativo",
+      "prioridade": "alta"
+    },
+    {
+      "id": "STK-002",
+      "nome": "Dra. Maria Santos",
+      "cargo": "Especialista em LGPD e Privacidade",
+      "area": "Compliance",
+      "email": "maria.santos@hospital.com",
+      "telefone": "+55 11 98765-1234",
+      "preferencias_comunicacao": {
+        "canal_preferido": "videochamada",
+        "horario_preferido": "tarde (14h-17h)",
+        "frequencia": "quinzenal",
+        "idioma": "pt-BR"
+      },
+      "expertise": [
+        "LGPD",
+        "Anonimização de dados",
+        "Segurança da informação"
+      ],
+      "disponibilidade": {
+        "dias": ["terça", "quinta"],
+        "horarios": ["14:00-17:00"]
+      },
+      "historico_interacoes": [
+        {
+          "data": "2026-02-18",
+          "tipo": "consulta",
+          "assunto": "Validação de anonimização LGPD",
+          "resultado": "Agendada validação para 26/02"
+        }
+      ],
+      "status": "ativo",
+      "prioridade": "alta"
+    },
+    {
+      "id": "STK-003",
+      "nome": "Enf. Carlos Oliveira",
+      "cargo": "Coordenador de Enfermagem",
+      "area": "Operacional",
+      "email": "carlos.oliveira@hospital.com",
+      "telefone": "+55 11 98765-5678",
+      "preferencias_comunicacao": {
+        "canal_preferido": "whatsapp",
+        "horario_preferido": "manhã (7h-10h)",
+        "frequencia": "conforme necessário",
+        "idioma": "pt-BR"
+      },
+      "expertise": [
+        "Gestão de leitos",
+        "Ocupação hospitalar",
+        "Processos assistenciais"
+      ],
+      "disponibilidade": {
+        "dias": ["segunda", "terça", "quarta", "quinta", "sexta"],
+        "horarios": ["07:00-10:00"]
+      },
+      "historico_interacoes": [],
+      "status": "ativo",
+      "prioridade": "média"
+    },
+    {
+      "id": "STK-004",
+      "nome": "Prof. Ana Costa",
+      "cargo": "Gestora de TI Hospitalar",
+      "area": "Tecnologia",
+      "email": "ana.costa@hospital.com",
+      "telefone": "+55 11 98765-9012",
+      "preferencias_comunicacao": {
+        "canal_preferido": "email",
+        "horario_preferido": "qualquer",
+        "frequencia": "semanal",
+        "idioma": "pt-BR"
+      },
+      "expertise": [
+        "Arquitetura de sistemas",
+        "Integração de dados",
+        "Infraestrutura hospitalar"
+      ],
+      "disponibilidade": {
+        "dias": ["segunda", "quarta", "sexta"],
+        "horarios": ["09:00-18:00"]
+      },
+      "historico_interacoes": [],
+      "status": "ativo",
+      "prioridade": "média"
+    },
+    {
+      "id": "STK-005",
+      "nome": "Dr. Pedro Almeida",
+      "cargo": "Diretor Clínico",
+      "area": "Gestão",
+      "email": "pedro.almeida@hospital.com",
+      "telefone": "+55 11 98765-3456",
+      "preferencias_comunicacao": {
+        "canal_preferido": "reuniao_presencial",
+        "horario_preferido": "tarde (15h-17h)",
+        "frequencia": "mensal",
+        "idioma": "pt-BR"
+      },
+      "expertise": [
+        "Gestão hospitalar",
+        "Decisões estratégicas",
+        "Qualidade assistencial"
+      ],
+      "disponibilidade": {
+        "dias": ["quinta"],
+        "horarios": ["15:00-17:00"]
+      },
+      "historico_interacoes": [],
+      "status": "ativo",
+      "prioridade": "alta"
+    }
+  ],
+  "categorias": {
+    "areas": ["Qualidade", "Compliance", "Operacional", "Tecnologia", "Gestão"],
+    "prioridades": ["alta", "média", "baixa"],
+    "status": ["ativo", "inativo", "pendente"]
+  },
+  "notas": [
+    "Cadastro inicial criado em 20/02/2026",
+    "Stakeholders identificados para Projeto 02 (Separação de Dados)",
+    "Validações agendadas conforme disponibilidade",
+    "Atualizar histórico após cada interação"
+  ]
+}
+

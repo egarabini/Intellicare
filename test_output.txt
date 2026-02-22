@@ -1,0 +1,1204 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0
+rootdir: c:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-comunicacao
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.12.1, asyncio-1.3.0, cov-7.0.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 12 items
+
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py FFFFFFFs [ 66%]
+FFFF                                                                     [100%]
+
+================================== FAILURES ===================================
+__________________ test_routing_send_and_get_intent_success ___________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:162: in test_routing_send_and_get_intent_success
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.004s): Duplicated timeseries in CollectorRegistry: {'comm_channel_fallback', 'comm_channel_fallback_created', 'comm_channel_fallback_total'}
+_________________ test_routing_send_respects_excluded_channel _________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:192: in test_routing_send_respects_excluded_channel
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.010s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+_______________ test_routing_send_is_idempotent_by_source_event _______________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:215: in test_routing_send_is_idempotent_by_source_event
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.006s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+_____________________ test_routing_batch_list_and_metrics _____________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:237: in test_routing_batch_list_and_metrics
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+____________ test_routing_cancel_completed_intent_returns_conflict ____________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:280: in test_routing_cancel_completed_intent_returns_conflict
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.015s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+__________ test_routing_fallback_to_second_channel_when_first_fails ___________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:303: in test_routing_fallback_to_second_channel_when_first_fails
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.006s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+________________ test_routing_rules_endpoints_list_and_upsert _________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:336: in test_routing_rules_endpoints_list_and_upsert
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+_____________________ test_routing_send_with_template_id ______________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:408: in test_routing_send_with_template_id
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.010s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+_________________ test_routing_send_with_content_raw_fallback _________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:457: in test_routing_send_with_content_raw_fallback
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.006s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+________________ test_routing_send_with_invalid_template_fails ________________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:488: in test_routing_send_with_invalid_template_fails
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.005s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+____________ test_routing_send_with_missing_template_params_fails _____________
+MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py:523: in test_routing_send_with_missing_template_params_fails
+    with TestClient(app) as client:
+         ^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:699: in __exit__
+    self.exit_stack.close()
+C:\Python314\Lib\contextlib.py:627: in close
+    self.__exit__(None, None, None)
+C:\Python314\Lib\contextlib.py:619: in __exit__
+    raise exc
+C:\Python314\Lib\contextlib.py:604: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:482: in _exit_wrapper
+    callback(*args, **kwds)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:692: in wait_shutdown
+    portal.call(self.wait_shutdown)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:334: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:450: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:739: in wait_shutdown
+    await receive()
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:729: in receive
+    self.task.result()
+C:\Python314\Lib\concurrent\futures\_base.py:443: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\concurrent\futures\_base.py:395: in __get_result
+    raise self._exception
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\anyio\from_thread.py:259: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\testclient.py:704: in lifespan
+    await self.app(scope, self.stream_receive.receive, self.stream_send.send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\applications.py:1138: in __call__
+    await super().__call__(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\errors.py:151: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\base.py:103: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\middleware\exceptions.py:49: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:725: in app
+    await self.lifespan(scope, receive, send)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\starlette\routing.py:694: in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\fastapi\routing.py:203: in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+               ^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:221: in __aexit__
+    await anext(self.gen)
+MODULARIZACAO\intellicare-comunicacao\comunicacao\api\app.py:204: in lifespan
+    from comunicacao.metrics import set_redis_consumer_status
+MODULARIZACAO\intellicare-comunicacao\comunicacao\metrics.py:20: in <module>
+    comm_intent_received_total = Counter(
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\metrics.py:136: in __init__
+    registry.register(self)
+MODULARIZACAO\intellicare-comunicacao\.venv\Lib\site-packages\prometheus_client\registry.py:40: in register
+    raise ValueError(
+E   ValueError: Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+------------------------------ Captured log call ------------------------------
+WARNING  comunicacao.storage.repository:repository.py:169 DATABASE_URL vazio; usando repositorio em memoria para patient-room links
+WARNING  comunicacao.storage.routing_repository:routing_repository.py:212 DATABASE_URL vazio; usando store em memoria para roteamento
+WARNING  comunicacao.auth:auth.py:85 Autenticação desabilitada - retornando usuário mock
+ERROR    comunicacao.monitoring.middleware:middleware.py:72 HTTP POST /api/v1/routing/send -> ERROR (0.005s): Duplicated timeseries in CollectorRegistry: {'comm_intent_received', 'comm_intent_received_total', 'comm_intent_received_created'}
+=========================== short test summary info ===========================
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_and_get_intent_success
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_respects_excluded_channel
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_is_idempotent_by_source_event
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_batch_list_and_metrics
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_cancel_completed_intent_returns_conflict
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_fallback_to_second_channel_when_first_fails
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_rules_endpoints_list_and_upsert
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_with_template_id
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_with_content_raw_fallback
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_with_invalid_template_fails
+FAILED MODULARIZACAO\intellicare-comunicacao\tests\test_routing_api.py::test_routing_send_with_missing_template_params_fails
+======================= 11 failed, 1 skipped in 19.71s ========================
