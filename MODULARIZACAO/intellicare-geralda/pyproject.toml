@@ -22,6 +22,10 @@ python-dotenv = "^1.0.0"
 httpx = "^0.26.0"
 redis = "^5.0.0"
 prometheus-client = "^0.19.0"
+# LangChain for AI (version set compatível entre providers)
+langchain-core = ">=1.2.0,<2.0.0"
+langchain-ollama = ">=1.0.0,<2.0.0"
+langchain-openai = ">=1.1.0,<2.0.0"
 # Note: intellicare-auth and intellicare-core are in MODULARIZACAO root
 # Add local path: pip install -e ../intellicare-auth ../intellicare-core
 
@@ -29,6 +33,7 @@ prometheus-client = "^0.19.0"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 pytest-asyncio = "^0.23.0"
+aiosqlite = "^0.21.0"
 ruff = "^0.1.0"
 mypy = "^1.8.0"
 types-python-dotenv = "^1.0.0"
@@ -105,5 +110,3 @@ exclude_lines = [
     "class .*\\bProtocol\\):",
     "@(abc\\.)?abstractmethod",
 ]
-
-
