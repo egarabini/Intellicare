@@ -1,0 +1,228 @@
+# ============================================================================
+# Traefik Dynamic Configuration — Routes for intellicare.ia.br
+# ============================================================================
+# File: traefik/dynamic/routes-intellicare.yml
+#
+# Subdomain routing:
+#   admin.intellicare.ia.br   → intellicare-admin:8010
+#   portal.intellicare.ia.br  → intellicare-portal:80
+#   api.intellicare.ia.br     → path-based → modules
+
+http:
+  routers:
+
+    # ── Admin Panel ───────────────────────────────────────────
+    admin:
+      rule: "Host(`admin.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: admin-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # ── Portal (Frontend SPA) ─────────────────────────────────
+    portal:
+      rule: "Host(`portal.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: portal-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - frontend-chain
+
+    # ── Apresentação (Reveal.js Slides) ───────────────────────
+    apresentacao:
+      rule: "Host(`apresentacao.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: apresentacao-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - frontend-chain
+
+    # ── API Gateway — Path-based routing to modules ───────────
+
+    # Florence (RAG + Protocolos)
+    api-florence:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/florence`)"
+      entryPoints:
+        - websecure
+      service: florence-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Oswaldo (Análise Clínica)
+    api-oswaldo:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/oswaldo`)"
+      entryPoints:
+        - websecure
+      service: oswaldo-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Donabedian (Qualidade)
+    api-donabedian:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/donabedian`)"
+      entryPoints:
+        - websecure
+      service: donabedian-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Wanda (Orquestração IA)
+    api-wanda:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/wanda`)"
+      entryPoints:
+        - websecure
+      service: wanda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Comunicacao (Notificações)
+    api-comunicacao:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/comunicacao`)"
+      entryPoints:
+        - websecure
+      service: comunicacao-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Geralda (Gestão)
+    api-geralda:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/geralda`)"
+      entryPoints:
+        - websecure
+      service: geralda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Gestor (Admin per-tenant) — porta 8011
+    api-gestor:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/gestor`)"
+      entryPoints:
+        - websecure
+      service: gestor-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # ── Traefik Dashboard (protected) ─────────────────────────
+    traefik-dashboard:
+      rule: "Host(`traefik.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: api@internal
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - security-headers
+
+  # ── Services ────────────────────────────────────────────────
+  services:
+
+    admin-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-admin:8010"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    portal-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-portal:80"
+        healthCheck:
+          path: /
+          interval: 30s
+          timeout: 5s
+
+    apresentacao-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-apresentacao:80"
+        healthCheck:
+          path: /
+          interval: 30s
+          timeout: 5s
+
+    florence-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-florence:8001"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    oswaldo-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-oswaldo:8002"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    donabedian-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-donabedian:8003"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    wanda-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-wanda:8004"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    comunicacao-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-comunicacao:8005"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    geralda-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-geralda:8006"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    gestor-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-gestor:8011"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
