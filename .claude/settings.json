@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(git checkout -b chore/v1-close-staging-standard)",
+      "Bash(git checkout chore/v1-close-staging-standard)",
+      "Bash(git commit:*)",
+      "Bash(npm --version)",
+      "Bash(node --version)"
     ]
   }
 }
