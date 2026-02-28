@@ -9,12 +9,12 @@ name: Docker Scan
 
 on:
   push:
-    branches: [main, develop]
+    branches: [master, staging, develop]
     paths:
       - '**/Dockerfile'
       - '.github/workflows/docker-scan.yml'
   pull_request:
-    branches: [main, develop]
+    branches: [master, staging]
     paths:
       - '**/Dockerfile'
       - '.github/workflows/docker-scan.yml'

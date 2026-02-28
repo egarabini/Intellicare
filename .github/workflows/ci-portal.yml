@@ -1,0 +1,64 @@
+# ============================================================================
+# CI — Portal IntelliCare (Build + Lint)
+# ============================================================================
+# Roda em todo push/PR para garantir que o portal compila sem erros.
+# ============================================================================
+
+name: CI — Portal
+
+on:
+  push:
+    branches: [develop, staging, master]
+    paths:
+      - 'intellicare-portal/frontend/**'
+      - '.github/workflows/ci-portal.yml'
+  pull_request:
+    branches: [staging, master]
+    paths:
+      - 'intellicare-portal/frontend/**'
+
+jobs:
+  build:
+    name: Build & Lint
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: intellicare-portal/frontend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: intellicare-portal/frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build (verifica se compila)
+        run: npm run build
+        env:
+          VITE_API_FLORENCE_URL: https://staging.intellicare.ia.br/v1/florence
+          VITE_API_OSWALDO_URL: https://staging.intellicare.ia.br/v1/oswaldo
+          VITE_API_DONABEDIAN_URL: https://staging.intellicare.ia.br/v1/donabedian
+          VITE_API_WANDA_URL: https://staging.intellicare.ia.br/v1/wanda
+          VITE_API_COMUNICACAO_URL: https://staging.intellicare.ia.br/v1/comunicacao
+          VITE_API_GERALDA_URL: https://staging.intellicare.ia.br/v1/geralda
+          VITE_APP_VERSION: ${{ github.sha }}
+
+      - name: Upload dist como artefato
+        uses: actions/upload-artifact@v4
+        if: github.ref == 'refs/heads/staging' || github.ref == 'refs/heads/master'
+        with:
+          name: portal-dist-${{ github.sha }}
+          path: intellicare-portal/frontend/dist/
+          retention-days: 7
+
