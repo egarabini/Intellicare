@@ -1,0 +1,231 @@
+{
+  "realm": "bemcuidar",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "registrationEmailAsUsername": false,
+  "rememberMe": true,
+  "verifyEmail": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "permanentLockout": false,
+  "maxFailureWaitSeconds": 900,
+  "minimumQuickLoginWaitSeconds": 60,
+  "waitIncrementSeconds": 60,
+  "quickLoginCheckMilliSeconds": 1000,
+  "maxDeltaTimeSeconds": 43200,
+  "failureFactor": 30,
+  "roles": {
+    "realm": [
+      {
+        "name": "PLATFORM_ADMIN",
+        "description": "Administrador da plataforma IntelliCare (super-admin)",
+        "clientRole": false,
+        "composite": false,
+        "attributes": {}
+      },
+      {
+        "name": "PLATFORM_SUPPORT",
+        "description": "Equipe de suporte ao cliente",
+        "clientRole": false,
+        "composite": false,
+        "attributes": {}
+      },
+      {
+        "name": "PLATFORM_BILLING",
+        "description": "Equipe financeira e cobrança",
+        "clientRole": false,
+        "composite": false,
+        "attributes": {}
+      }
+    ]
+  },
+  "groups": [
+    {
+      "name": "platform_admins",
+      "path": "/platform_admins",
+      "attributes": {
+        "type": ["platform"],
+        "descricao": ["Administradores globais da plataforma"]
+      }
+    }
+  ],
+  "defaultRoles": [
+    "offline_access"
+  ],
+  "requiredCredentials": [
+    "password"
+  ],
+  "users": [
+    {
+      "username": "admin@intellicare.ia.br",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@intellicare.ia.br",
+      "firstName": "IntelliCare",
+      "lastName": "Admin",
+      "attributes": {
+        "tenant_id": ["platform"],
+        "role": ["PLATFORM_ADMIN"]
+      },
+      "credentials": [
+        {
+          "type": "password",
+          "value": "changeme-admin",
+          "temporary": true
+        }
+      ],
+      "realmRoles": [
+        "PLATFORM_ADMIN"
+      ],
+      "clientRoles": {},
+      "groups": [
+        "/platform_admins"
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "intellicare-admin",
+      "name": "IntelliCare Admin Platform",
+      "description": "Painel de administração da plataforma (super-admins)",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "admin-secret-change-in-production",
+      "redirectUris": [
+        "http://localhost:8010/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8010"
+      ],
+      "bearerOnly": true,
+      "consentRequired": false,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "publicClient": false,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "3600"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "nodeReRegistrationEnabled": false,
+      "defaultClientScopes": [
+        "web-origins",
+        "roles"
+      ],
+      "optionalClientScopes": [],
+      "protocolMappers": [
+        {
+          "name": "role",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "consentText": "",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "attributeName": "role",
+          "addToIdToken": true,
+          "addToAccessToken": true
+        }
+      ]
+    },
+    {
+      "clientId": "intellicare-portal",
+      "name": "IntelliCare Portal",
+      "description": "Portal de acesso para tenants e usuários",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "portal-secret-change-in-production",
+      "redirectUris": [
+        "http://localhost:3000/*",
+        "http://localhost:5173/*"
+      ],
+      "webOrigins": [
+        "http://localhost:3000",
+        "http://localhost:5173"
+      ],
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "publicClient": false,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "7200"
+      },
+      "fullScopeAllowed": true,
+      "defaultClientScopes": [
+        "web-origins",
+        "roles"
+      ],
+      "protocolMappers": [
+        {
+          "name": "tenant_id",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "attributeName": "tenant_id",
+          "addToIdToken": true,
+          "addToAccessToken": true
+        },
+        {
+          "name": "name",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "attributeName": "nome",
+          "addToIdToken": true,
+          "addToAccessToken": true
+        }
+      ]
+    },
+    {
+      "clientId": "intellicare-api",
+      "name": "IntelliCare API Services",
+      "description": "Client para serviços Python (módulos)",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "api-secret-change-in-production",
+      "redirectUris": [],
+      "bearerOnly": true,
+      "consentRequired": false,
+      "standardFlowEnabled": false,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "3600"
+      },
+      "serviceAccountsEnabled": true,
+      "fullScopeAllowed": true,
+      "defaultClientScopes": [
+        "web-origins",
+        "roles"
+      ]
+    }
+  ],
+  "browserSecurityHeaders": {
+    "contentSecurityPolicyReportOnly": false,
+    "xContentTypeOptions": "nosniff",
+    "xRobotsTag": "none",
+    "xFrameOptions": "SAMEORIGIN",
+    "xXSSProtection": "1; mode=block",
+    "strictTransportSecurity": "max-age=31536000; includeSubDomains"
+  },
+  "smtpServer": {},
+  "eventsEnabled": false,
+  "eventsListeners": [],
+  "enabledEventTypes": [],
+  "adminEventsEnabled": false,
+  "adminEventsDetailsEnabled": false
+}
