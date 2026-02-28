@@ -5,7 +5,7 @@
 # Conecta via SSH no servidor e executa o deploy do portal.
 #
 # Secrets necessários (Settings → Secrets → Actions):
-#   STAGING_HOST     = 167.86.97.142
+#   STAGING_HOST     = 167.86.97.142  ← IP confirmado via DNS portal.intellicare.ia.br
 #   STAGING_USER     = root
 #   STAGING_SSH_KEY  = chave privada ed25519
 # ============================================================================
