@@ -1,0 +1,61 @@
+version: "3.9"
+
+# ============================================================================
+# intellicare-gestor — Standalone Dev
+# ============================================================================
+# Gestão de usuários, RBAC e setores por tenant
+# Porta: 8011
+# ============================================================================
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: gestor-postgres
+    environment:
+      POSTGRES_USER: gestor_user
+      POSTGRES_PASSWORD: gestor_pass
+      POSTGRES_DB: gestor_db
+    ports:
+      - "5440:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gestor_user -d gestor_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: gestor-redis
+    ports:
+      - "6389:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  gestor:
+    build:
+      context: ..
+      dockerfile: ./intellicare-gestor/Dockerfile
+      target: api
+    container_name: intellicare-gestor
+    environment:
+      - INTELLICARE_ENVIRONMENT=development
+      - INTELLICARE_LOG_LEVEL=INFO
+      - INTELLICARE_DATABASE_URL=postgresql+asyncpg://gestor_user:gestor_pass@postgres:5432/gestor_db
+      - INTELLICARE_REDIS_URL=redis://redis:6379
+      - INTELLICARE_MULTI_TENANT_ENABLED=false
+    ports:
+      - "8011:8011"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8011/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s

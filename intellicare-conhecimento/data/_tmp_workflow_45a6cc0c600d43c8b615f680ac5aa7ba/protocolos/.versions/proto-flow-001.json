@@ -1,0 +1,82 @@
+{
+  "items": [
+    {
+      "protocol_id": "proto-flow-001",
+      "version": "1.0.0",
+      "created_at": "2026-02-17T20:59:33.651293",
+      "author": "Autor",
+      "changelog": "Initial version",
+      "protocol_data": {
+        "metadata": {
+          "id": "proto-flow-001",
+          "version": "1.0.0",
+          "title": "Fluxo teste",
+          "specialty": "clinica",
+          "condition": "test",
+          "status": "draft",
+          "created_at": "2026-02-17T20:59:33.647028",
+          "updated_at": "2026-02-17T20:59:33.647071",
+          "author": "Autor",
+          "author_email": null,
+          "reviewer": null,
+          "approver": null,
+          "approved_at": null,
+          "tags": [],
+          "keywords": [],
+          "references": []
+        },
+        "summary": "Resumo",
+        "sections": [
+          {
+            "title": "S1",
+            "content": "Texto",
+            "order": 1,
+            "subsections": []
+          }
+        ],
+        "criteria": [],
+        "interventions": [],
+        "pathways": null
+      }
+    },
+    {
+      "protocol_id": "proto-flow-001",
+      "version": "1.0.0",
+      "created_at": "2026-02-17T20:59:33.690339",
+      "author": "Revisor",
+      "changelog": "Submetido",
+      "protocol_data": {
+        "metadata": {
+          "id": "proto-flow-001",
+          "version": "1.0.0",
+          "title": "Fluxo teste",
+          "specialty": "clinica",
+          "condition": "test",
+          "status": "review",
+          "created_at": "2026-02-17T20:59:33.647028",
+          "updated_at": "2026-02-17T20:59:33.688012",
+          "author": "Autor",
+          "author_email": null,
+          "reviewer": "Revisor",
+          "approver": null,
+          "approved_at": null,
+          "tags": [],
+          "keywords": [],
+          "references": []
+        },
+        "summary": "Resumo",
+        "sections": [
+          {
+            "title": "S1",
+            "content": "Texto",
+            "order": 1,
+            "subsections": []
+          }
+        ],
+        "criteria": [],
+        "interventions": [],
+        "pathways": null
+      }
+    }
+  ]
+}

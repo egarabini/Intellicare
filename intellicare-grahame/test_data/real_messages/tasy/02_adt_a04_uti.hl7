@@ -1,0 +1,15 @@
+MSH|^~\&|TASY|EINSTEIN|GRAHAME|INTELLICARE|20260225150000||ADT^A04|MSG0000002|P|2.5|||AL|NE|BRA
+EVN|A04|20260225150000|||ADMIN002^Oliveira^Pedro^J^^^Dr.
+PID|1||987654321^^^EINSTEIN^MR||Oliveira^Ana^Maria||19750320|F|||Av. Paulista, 1000^Conj 501^São Paulo^SP^01310-100^BR^H||11912345678^PRN^CP||PT|S|CAT|||987.654.321-00||||||BR
+PD1|||EINSTEIN - Unidade Morumbi||||987654^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^987654
+NK1|1|Oliveira^Carlos^Alberto|FTH^Father|Av. Paulista, 1000^Conj 501^São Paulo^SP^01310-100^BR|11912345679^PRN^CP
+PV1|1|I|UTI^201^02^EINSTEIN^R^02|||987654^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^987654|987654^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^987654|CAR||||1|||987654^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^987654|AMB|V987654|4||||||||||||||||||||EINSTEIN||||20260225150000
+PV2||Infarto agudo do miocárdio|||||20260225|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||36.8|Cel|36.0-37.5|N|||F|||20260225150000
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||110|bpm|60-100|H|||F|||20260225150000
+OBX|3|NM|9279-1^Frequência Respiratória^LN||24|irpm|12-20|H|||F|||20260225150000
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||90|mmHg|90-140|L|||F|||20260225150000
+OBX|5|NM|2339-0^Glicemia^LN||180|mg/dL|70-100|H|||F|||20260225150000
+AL1|1|DA|2670^AAS^L|MO|Gastrite
+DG1|1|ICD10|I21.9^Infarto agudo do miocárdio não especificado^ICD10|IAM||A
+

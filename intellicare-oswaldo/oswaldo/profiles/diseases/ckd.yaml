@@ -1,0 +1,329 @@
+# Perfil de Doença Renal Crônica (CKD)
+# Baseado em KDIGO 2012 Clinical Practice Guideline
+# Versão: 1.0.0
+# Data: 2026-02-08
+
+id: ckd
+name: Chronic Kidney Disease
+description: Doença Renal Crônica - Monitoramento baseado em KDIGO 2012
+version: 1.0.0
+snomed_code: "709044004"
+
+# Observações monitoradas
+observations:
+  # eGFR - Taxa de Filtração Glomerular Estimada
+  - id: egfr
+    name: Taxa de Filtração Glomerular Estimada
+    name_short: eGFR
+    loinc_code: "33914-3"
+    unit: mL/min/1.73m²
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: 90.0
+        max: null
+    trend_direction: higher_is_better
+    target:
+      min: 60.0
+      max: null
+
+  # ACR - Razão Albumina/Creatinina
+  - id: acr
+    name: Razão Albumina/Creatinina Urinária
+    name_short: ACR
+    loinc_code: "14958-3"
+    unit: mg/g
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: null
+        max: 30.0
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 30.0
+
+  # Potássio
+  - id: potassium
+    name: Potássio Sérico
+    name_short: K+
+    loinc_code: "2823-3"
+    unit: mEq/L
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: 3.5
+        max: 5.0
+    trend_direction: target_range
+    target:
+      min: 3.5
+      max: 5.0
+
+  # Pressão Arterial
+  - id: bp
+    name: Pressão Arterial
+    name_short: PA
+    loinc_code: "85354-9"
+    unit: mmHg
+    type: panel
+    category: vital_sign
+    reference_ranges:
+      adult:
+        min: null
+        max: null
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 130.0
+    components:
+      - id: bp_systolic
+        name: Pressão Arterial Sistólica
+        name_short: PAS
+        loinc_code: "8480-6"
+        unit: mmHg
+        type: numeric
+        category: vital_sign
+        reference_ranges:
+          adult:
+            min: 90.0
+            max: 120.0
+        trend_direction: lower_is_better
+        target:
+          min: null
+          max: 130.0
+      
+      - id: bp_diastolic
+        name: Pressão Arterial Diastólica
+        name_short: PAD
+        loinc_code: "8462-4"
+        unit: mmHg
+        type: numeric
+        category: vital_sign
+        reference_ranges:
+          adult:
+            min: 60.0
+            max: 80.0
+        trend_direction: lower_is_better
+        target:
+          min: null
+          max: 80.0
+
+  # HbA1c (para pacientes com diabetes)
+  - id: hba1c
+    name: Hemoglobina Glicada
+    name_short: HbA1c
+    loinc_code: "4548-4"
+    unit: "%"
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: null
+        max: 5.7
+    trend_direction: lower_is_better
+    target:
+      min: null
+      max: 7.0
+
+  # Creatinina Sérica
+  - id: creatinine
+    name: Creatinina Sérica
+    name_short: Cr
+    loinc_code: "2160-0"
+    unit: mg/dL
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult_male:
+        min: 0.7
+        max: 1.3
+      adult_female:
+        min: 0.6
+        max: 1.1
+    trend_direction: lower_is_better
+
+  # Ureia
+  - id: bun
+    name: Ureia (BUN)
+    name_short: BUN
+    loinc_code: "3094-0"
+    unit: mg/dL
+    type: numeric
+    category: lab
+    reference_ranges:
+      adult:
+        min: 7.0
+        max: 20.0
+    trend_direction: lower_is_better
+
+# Configuração de Estadiamento KDIGO
+staging:
+  strategy: kdigo
+  combine_method: worst
+  axes:
+    # Eixo GFR (G1-G5)
+    - id: gfr
+      name: GFR Category
+      observation_id: egfr
+      stages:
+        - stage: G1
+          label: Normal ou elevada
+          min: 90.0
+          max: null
+          severity: info
+
+        - stage: G2
+          label: Levemente diminuída
+          min: 60.0
+          max: 89.0
+          severity: info
+
+        - stage: G3a
+          label: Leve a moderadamente diminuída
+          min: 45.0
+          max: 59.0
+          severity: warning
+
+        - stage: G3b
+          label: Moderada a severamente diminuída
+          min: 30.0
+          max: 44.0
+          severity: warning
+
+        - stage: G4
+          label: Severamente diminuída
+          min: 15.0
+          max: 29.0
+          severity: critical
+
+        - stage: G5
+          label: Falência renal
+          min: null
+          max: 14.0
+          severity: critical
+
+    # Eixo Albuminúria (A1-A3)
+    - id: acr
+      name: Albuminuria Category
+      observation_id: acr
+      stages:
+        - stage: A1
+          label: Normal a levemente aumentada
+          min: null
+          max: 30.0
+          severity: info
+
+        - stage: A2
+          label: Moderadamente aumentada
+          min: 30.0
+          max: 300.0
+          severity: warning
+
+        - stage: A3
+          label: Severamente aumentada
+          min: 300.0
+          max: null
+          severity: critical
+
+# Alertas
+alerts:
+  # Alertas de eGFR
+  - id: egfr_critical
+    type: threshold
+    observation_id: egfr
+    condition: lt
+    threshold: 15.0
+    severity: critical
+    message: "eGFR crítico < 15 mL/min/1.73m² - Considerar diálise ou transplante"
+
+  - id: egfr_severe
+    type: threshold
+    observation_id: egfr
+    condition: lt
+    threshold: 30.0
+    severity: warning
+    message: "eGFR < 30 mL/min/1.73m² - DRC estágio 4"
+
+  - id: egfr_declining
+    type: trend
+    observation_id: egfr
+    condition: lt
+    threshold: -5.0
+    severity: warning
+    message: "eGFR em declínio > 5 mL/min/ano - Investigar causas"
+
+  # Alertas de ACR
+  - id: acr_severe
+    type: threshold
+    observation_id: acr
+    condition: gt
+    threshold: 300.0
+    severity: critical
+    message: "ACR > 300 mg/g - Albuminúria severa (A3)"
+
+  - id: acr_moderate
+    type: threshold
+    observation_id: acr
+    condition: gt
+    threshold: 30.0
+    severity: warning
+    message: "ACR > 30 mg/g - Albuminúria moderada (A2)"
+
+  # Alertas de Potássio
+  - id: hyperkalemia_critical
+    type: threshold
+    observation_id: potassium
+    condition: gt
+    threshold: 6.0
+    severity: critical
+    message: "Hipercalemia crítica > 6.0 mEq/L - Risco de arritmia"
+
+  - id: hyperkalemia_warning
+    type: threshold
+    observation_id: potassium
+    condition: gt
+    threshold: 5.5
+    severity: warning
+    message: "Hipercalemia > 5.5 mEq/L - Monitorar"
+
+  - id: hypokalemia_warning
+    type: threshold
+    observation_id: potassium
+    condition: lt
+    threshold: 3.0
+    severity: warning
+    message: "Hipocalemia < 3.0 mEq/L - Risco de arritmia"
+
+  # Alertas de Pressão Arterial
+  - id: bp_uncontrolled
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 140.0
+    severity: warning
+    message: "PA não controlada > 140/90 mmHg - Ajustar medicação"
+
+  - id: bp_target_ckd
+    type: threshold
+    observation_id: bp_systolic
+    condition: gt
+    threshold: 130.0
+    severity: info
+    message: "PA acima do alvo CKD (130/80 mmHg) - Considerar ajuste"
+
+# Metadados
+metadata:
+  guideline: KDIGO 2012
+  guideline_url: https://kdigo.org/guidelines/ckd-evaluation-and-management/
+  last_updated: "2026-02-08"
+  author: Augment Agent
+  notes: |
+    Perfil baseado em KDIGO 2012 Clinical Practice Guideline for the
+    Evaluation and Management of Chronic Kidney Disease.
+
+    Estadiamento combinado GFR + Albuminúria (matriz KDIGO).
+    Alertas configurados para valores críticos e tendências de declínio.
+

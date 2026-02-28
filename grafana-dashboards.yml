@@ -1,0 +1,82 @@
+apiVersion: 1
+
+providers:
+  # =========================================================================
+  # Dashboard Provider Configuration
+  # =========================================================================
+  - name: 'Default'
+    orgId: 1
+    folder: 'IntelliCare'
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /etc/grafana/provisioning/dashboards
+
+# ============================================================================
+# Dashboard Folder Structure
+# ============================================================================
+# /etc/grafana/provisioning/dashboards/
+#   ├── dashboards.json               # This file (provider config)
+#   ├── postgres-dashboard.json        # PostgreSQL metrics
+#   ├── redis-dashboard.json           # Redis metrics
+#   ├── application-dashboard.json     # App metrics
+#   └── consolidation-dashboard.json   # Consolidation service
+#
+# To add dashboards:
+# 1. Create new JSON files in /etc/grafana/provisioning/dashboards/
+# 2. Update this provider section to reference them
+# 3. Mount volumes in docker-compose.yml
+# 4. Restart grafana container
+# ============================================================================
+
+# Example dashboards to create (manual for now):
+# 
+# 1. PostgreSQL Dashboard:
+#    - Connections vs max connections
+#    - Transaction rate
+#    - Cache hit ratio
+#    - Slow queries
+#    - Disk usage
+#    - RLS enforcement
+#    
+# 2. Redis Dashboard:
+#    - Memory usage vs max
+#    - Key evictions
+#    - Commands per second
+#    - Network I/O
+#    - Stream consumer lag
+#    - Cache hit rate
+#    
+# 3. Application Dashboard:
+#    - Request rate
+#    - Error rate
+#    - Latency (P50, P95, P99) - Histogram
+#    - Memory usage
+#    - CPU usage
+#    - Database connection pool
+#    - Redis connection pool
+#    
+# 4. Consolidation Dashboard:
+#    - Events processed per second
+#    - Consolidation lag
+#    - Event distribution (CREATE/UPDATE/DELETE)
+#    - DLQ events
+#    - Consumer group lag
+#    - Throughput charts
+
+# ============================================================================
+# Dashboard URLs (after Grafana starts)
+# ============================================================================
+# http://localhost:3000/d/[dashboard-uid]/[dashboard-name]
+#
+# Builtin Dashboards:
+# - Home: http://localhost:3000/
+# - Manage: http://localhost:3000/dashboards
+# - Alerts: http://localhost:3000/alerting/list
+#
+# Default admin credentials:
+#   Username: admin
+#   Password: intellicare_grafana
+# ============================================================================

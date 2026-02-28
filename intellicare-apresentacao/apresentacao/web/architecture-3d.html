@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTELLICARE - Arquitetura 3D Interativa</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+    
+    #canvas-container {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    
+    #info-panel {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(10, 14, 39, 0.9);
+      border: 2px solid #4a9eff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 350px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(74, 158, 255, 0.3);
+    }
+    
+    #info-panel h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #4a9eff;
+      text-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+    }
+    
+    #info-panel p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #b0c4de;
+      margin-bottom: 15px;
+    }
+    
+    .legend {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(74, 158, 255, 0.3);
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+    
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 10px;
+      box-shadow: 0 0 10px currentColor;
+    }
+    
+    #controls {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(10, 14, 39, 0.9);
+      border: 2px solid #4a9eff;
+      border-radius: 12px;
+      padding: 15px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .control-btn {
+      background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+    }
+    
+    .control-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(74, 158, 255, 0.5);
+    }
+    
+    #detail-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(10, 14, 39, 0.95);
+      border: 2px solid #4a9eff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 400px;
+      backdrop-filter: blur(10px);
+      display: none;
+      box-shadow: 0 8px 32px rgba(74, 158, 255, 0.3);
+    }
+    
+    #detail-panel h2 {
+      color: #4a9eff;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+    
+    #detail-panel .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    
+    #detail-panel .close-btn:hover {
+      opacity: 1;
+    }
+    
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      color: #4a9eff;
+      text-shadow: 0 0 20px rgba(74, 158, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container">
+    <div class="loading" id="loading">Carregando Arquitetura 3D...</div>
+  </div>
+  
+  <div id="info-panel">
+    <h1>🏥 INTELLICARE</h1>
+    <p>Arquitetura 3D Interativa</p>
+    <p style="font-size: 12px;">
+      <strong>Wanda</strong> orquestra agentes especializados integrados ao sistema de saúde brasileiro.
+    </p>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color" style="background: #ff6b9d;"></div>
+        <span>Wanda (Orquestradora)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #4a9eff;"></div>
+        <span>Agentes Principais</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #00d4aa;"></div>
+        <span>Sistemas Externos</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #ffd93d;"></div>
+        <span>Infraestrutura</span>
+      </div>
+    </div>
+  </div>
+  
+  <div id="controls">
+    <button class="control-btn" onclick="resetCamera()">🎯 Resetar Câmera</button>
+    <button class="control-btn" onclick="toggleRotation()">🔄 Auto-Rotação</button>
+    <button class="control-btn" onclick="toggleConnections()">⚡ Conexões</button>
+  </div>
+  
+  <div id="detail-panel">
+    <button class="close-btn" onclick="closeDetail()">×</button>
+    <h2 id="detail-title"></h2>
+    <div id="detail-content"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <script>
+    // ============================================================================
+    // INTELLICARE 3D Architecture Visualization
+    // ============================================================================
+
+    let scene, camera, renderer, controls;
+    let nodes = [];
+    let connections = [];
+    let autoRotate = true;
+    let showConnections = true;
+    let raycaster, mouse;
+
+    // Node definitions
+    const nodeData = {
+      // Central orchestrator
+      wanda: {
+        name: 'WANDA',
+        fullName: 'Wanda - Orquestradora Clínica',
+        description: 'Cérebro do INTELLICARE. Coordena todos os agentes e ferramentas MCP (FHIR, RNDS) para auxiliar equipes de saúde.',
+        color: 0xff6b9d,
+        size: 1.5,
+        position: [0, 0, 0],
+        type: 'orchestrator',
+        responsibilities: [
+          'Supervisão de agentes especializados',
+          'Coordenação de ferramentas MCP',
+          'Agregação de respostas',
+          'Regra IPS-First (segurança clínica)'
+        ]
+      },
+
+      // Main agents
+      florence: {
+        name: 'FLORENCE',
+        fullName: 'Florence - Análise Clínica',
+        description: 'Especialista em análise clínica profunda, exames laboratoriais e evolução clínica complexa.',
+        color: 0x4a9eff,
+        size: 1.0,
+        position: [4, 2, 0],
+        type: 'agent',
+        responsibilities: [
+          'Análise de exames laboratoriais',
+          'Identificação de tendências clínicas',
+          'Cruzamento de histórico clínico',
+          'Apoio à decisão médica baseada em evidências'
+        ]
+      },
+
+      oswaldo: {
+        name: 'OSWALDO',
+        fullName: 'Oswaldo V4.0 - Doenças Crônicas',
+        description: 'Motor genérico de monitoramento de doenças crônicas (CKD, DM2, HAS) com estadiamento plugável.',
+        color: 0x4a9eff,
+        size: 1.0,
+        position: [4, -2, 0],
+        type: 'agent',
+        responsibilities: [
+          'Monitoramento longitudinal (CKD, DM2, HAS)',
+          'Estadiamento clínico (KDIGO, ADA, ESC/ESH)',
+          'Alertas sobre valores críticos',
+          'Sugestões de ajuste de medicação'
+        ]
+      },
+
+      zilda: {
+        name: 'ZILDA',
+        fullName: 'Zilda - Dados de Saúde Brasileira',
+        description: 'Especialista em contexto territorial e rede assistencial brasileira (CNES, DATASUS).',
+        color: 0x4a9eff,
+        size: 1.0,
+        position: [0, 3, -3],
+        type: 'agent',
+        responsibilities: [
+          'Análise de dados CNES',
+          'Contexto territorial assistencial',
+          'Validação de unidades de saúde',
+          'Enriquecimento de dados de rede'
+        ]
+      },
+
+      geralda: {
+        name: 'GERALDA',
+        fullName: 'Geralda - Acompanhamento do Paciente',
+        description: 'Responsável pela continuidade de cuidado e vínculo com o paciente.',
+        color: 0x4a9eff,
+        size: 1.0,
+        position: [-4, 2, 0],
+        type: 'agent',
+        responsibilities: [
+          'Continuidade de cuidado',
+          'Comunicação equipe-paciente',
+          'Orientação prática ao paciente',
+          'Fortalecimento de adesão terapêutica'
+        ]
+      },
+
+      donabedian: {
+        name: 'DONABEDIAN',
+        fullName: 'Donabedian - Qualidade em Saúde',
+        description: 'Especialista em qualidade assistencial e governança por indicadores.',
+        color: 0x4a9eff,
+        size: 1.0,
+        position: [-4, -2, 0],
+        type: 'agent',
+        responsibilities: [
+          'Qualidade clínica e gestão',
+          'Melhoria contínua baseada em dados',
+          'Estrutura, processo e resultado',
+          'Eficiência e valor assistencial'
+        ]
+      },
+
+      // External systems
+      fhir: {
+        name: 'FHIR Server',
+        fullName: 'HAPI FHIR R4',
+        description: 'Servidor FHIR para interoperabilidade de dados de saúde (padrão HL7 FHIR R4).',
+        color: 0x00d4aa,
+        size: 0.8,
+        position: [0, -3, 3],
+        type: 'external',
+        responsibilities: [
+          'Armazenamento de recursos FHIR',
+          'Interoperabilidade HL7 FHIR R4',
+          'API RESTful para dados clínicos',
+          'Validação de recursos'
+        ]
+      },
+
+      postgres: {
+        name: 'PostgreSQL',
+        fullName: 'PostgreSQL Database',
+        description: 'Banco de dados relacional principal com suporte a JSONB e pgvector.',
+        color: 0xffd93d,
+        size: 0.8,
+        position: [-3, 0, 3],
+        type: 'infrastructure',
+        responsibilities: [
+          'Armazenamento estruturado',
+          'Suporte a JSONB',
+          'Vector search (pgvector)',
+          'Auditoria e logs'
+        ]
+      },
+
+      keycloak: {
+        name: 'Keycloak',
+        fullName: 'Keycloak SSO',
+        description: 'Sistema de autenticação e autorização com SSO e RBAC.',
+        color: 0xffd93d,
+        size: 0.8,
+        position: [3, 0, 3],
+        type: 'infrastructure',
+        responsibilities: [
+          'Autenticação SSO',
+          'Controle de acesso (RBAC)',
+          'Integração LDAP',
+          'Gestão de identidades'
+        ]
+      },
+
+      rnds: {
+        name: 'RNDS',
+        fullName: 'Rede Nacional de Dados em Saúde',
+        description: 'Integração com a Rede Nacional de Dados em Saúde do Ministério da Saúde.',
+        color: 0x00d4aa,
+        size: 0.8,
+        position: [0, 3, 3],
+        type: 'external',
+        responsibilities: [
+          'Integração com RNDS',
+          'Envio de dados ao MS',
+          'Consulta de dados nacionais',
+          'Conformidade regulatória'
+        ]
+      }
+    };
+
+    // Connection definitions
+    const connectionData = [
+      // Wanda to agents
+      { from: 'wanda', to: 'florence', label: 'Análise Clínica' },
+      { from: 'wanda', to: 'oswaldo', label: 'Monitoramento Crônico' },
+      { from: 'wanda', to: 'zilda', label: 'Contexto Territorial' },
+      { from: 'wanda', to: 'geralda', label: 'Continuidade' },
+      { from: 'wanda', to: 'donabedian', label: 'Qualidade' },
+
+      // Wanda to external systems
+      { from: 'wanda', to: 'fhir', label: 'MCP FHIR' },
+      { from: 'wanda', to: 'rnds', label: 'MCP RNDS' },
+
+      // Agents to infrastructure
+      { from: 'florence', to: 'fhir', label: 'Dados Clínicos' },
+      { from: 'oswaldo', to: 'fhir', label: 'Observações' },
+      { from: 'oswaldo', to: 'postgres', label: 'Cache Local' },
+      { from: 'zilda', to: 'postgres', label: 'Dados CNES' },
+      { from: 'geralda', to: 'fhir', label: 'CarePlan' },
+      { from: 'donabedian', to: 'postgres', label: 'Métricas' },
+
+      // Infrastructure
+      { from: 'fhir', to: 'postgres', label: 'Persistência' },
+      { from: 'fhir', to: 'keycloak', label: 'Autenticação' },
+      { from: 'rnds', to: 'keycloak', label: 'Segurança' }
+    ];
+
+    // ============================================================================
+    // Initialization
+    // ============================================================================
+
+    function init() {
+      // Scene
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0a0e27);
+      scene.fog = new THREE.Fog(0x0a0e27, 10, 50);
+
+      // Camera
+      camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.set(10, 8, 10);
+      camera.lookAt(0, 0, 0);
+
+      // Renderer
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+      // Controls
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.autoRotate = autoRotate;
+      controls.autoRotateSpeed = 0.5;
+
+      // Raycaster for mouse interaction
+      raycaster = new THREE.Raycaster();
+      mouse = new THREE.Vector2();
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+      scene.add(ambientLight);
+
+      const pointLight1 = new THREE.PointLight(0x4a9eff, 1, 50);
+      pointLight1.position.set(10, 10, 10);
+      scene.add(pointLight1);
+
+      const pointLight2 = new THREE.PointLight(0xff6b9d, 0.8, 50);
+      pointLight2.position.set(-10, -10, -10);
+      scene.add(pointLight2);
+
+      // Create nodes
+      createNodes();
+
+      // Create connections
+      createConnections();
+
+      // Add stars background
+      createStars();
+
+      // Event listeners
+      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('click', onMouseClick);
+      window.addEventListener('mousemove', onMouseMove);
+
+      // Hide loading
+      document.getElementById('loading').style.display = 'none';
+
+      // Start animation
+      animate();
+    }
+
+    function createNodes() {
+      Object.keys(nodeData).forEach(key => {
+        const data = nodeData[key];
+
+        // Create sphere geometry
+        const geometry = new THREE.SphereGeometry(data.size, 32, 32);
+
+        // Create material with glow effect
+        const material = new THREE.MeshPhongMaterial({
+          color: data.color,
+          emissive: data.color,
+          emissiveIntensity: 0.3,
+          shininess: 100,
+          transparent: true,
+          opacity: 0.9
+        });
+
+        const sphere = new THREE.Mesh(geometry, material);
+        sphere.position.set(...data.position);
+        sphere.userData = { key, data };
+
+        // Add glow effect
+        const glowGeometry = new THREE.SphereGeometry(data.size * 1.2, 32, 32);
+        const glowMaterial = new THREE.MeshBasicMaterial({
+          color: data.color,
+          transparent: true,
+          opacity: 0.2,
+          side: THREE.BackSide
+        });
+        const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+        sphere.add(glow);
+
+        scene.add(sphere);
+        nodes.push(sphere);
+
+        // Create label
+        createLabel(data.name, sphere.position, data.color);
+      });
+    }
+
+    function createLabel(text, position, color) {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = 256;
+      canvas.height = 64;
+
+      context.fillStyle = `#${color.toString(16).padStart(6, '0')}`;
+      context.font = 'Bold 24px Arial';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillText(text, 128, 32);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.SpriteMaterial({ map: texture, transparent: true });
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(position.x, position.y + 2, position.z);
+      sprite.scale.set(2, 0.5, 1);
+
+      scene.add(sprite);
+    }
+
+    function createConnections() {
+      connectionData.forEach(conn => {
+        const fromNode = nodeData[conn.from];
+        const toNode = nodeData[conn.to];
+
+        if (!fromNode || !toNode) return;
+
+        const points = [];
+        points.push(new THREE.Vector3(...fromNode.position));
+        points.push(new THREE.Vector3(...toNode.position));
+
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        const material = new THREE.LineBasicMaterial({
+          color: 0x4a9eff,
+          transparent: true,
+          opacity: 0.3,
+          linewidth: 2
+        });
+
+        const line = new THREE.Line(geometry, material);
+        line.userData = { connection: conn };
+        scene.add(line);
+        connections.push(line);
+
+        // Add animated particles along connection
+        createParticle(fromNode.position, toNode.position);
+      });
+    }
+
+    function createParticle(from, to) {
+      const geometry = new THREE.SphereGeometry(0.1, 8, 8);
+      const material = new THREE.MeshBasicMaterial({
+        color: 0x4a9eff,
+        transparent: true,
+        opacity: 0.8
+      });
+
+      const particle = new THREE.Mesh(geometry, material);
+      particle.position.set(...from);
+      particle.userData = {
+        from: new THREE.Vector3(...from),
+        to: new THREE.Vector3(...to),
+        progress: Math.random()
+      };
+
+      scene.add(particle);
+    }
+
+    function createStars() {
+      const starsGeometry = new THREE.BufferGeometry();
+      const starsMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.1,
+        transparent: true,
+        opacity: 0.8
+      });
+
+      const starsVertices = [];
+      for (let i = 0; i < 1000; i++) {
+        const x = (Math.random() - 0.5) * 100;
+        const y = (Math.random() - 0.5) * 100;
+        const z = (Math.random() - 0.5) * 100;
+        starsVertices.push(x, y, z);
+      }
+
+      starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+      const stars = new THREE.Points(starsGeometry, starsMaterial);
+      scene.add(stars);
+    }
+
+    // ============================================================================
+    // Animation
+    // ============================================================================
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Update controls
+      controls.update();
+
+      // Animate nodes (pulsing effect)
+      nodes.forEach((node, index) => {
+        const time = Date.now() * 0.001;
+        const scale = 1 + Math.sin(time * 2 + index) * 0.05;
+        node.scale.set(scale, scale, scale);
+      });
+
+      // Animate particles
+      scene.children.forEach(child => {
+        if (child.userData.from && child.userData.to) {
+          child.userData.progress += 0.005;
+          if (child.userData.progress > 1) {
+            child.userData.progress = 0;
+          }
+
+          child.position.lerpVectors(
+            child.userData.from,
+            child.userData.to,
+            child.userData.progress
+          );
+        }
+      });
+
+      renderer.render(scene, camera);
+    }
+
+    // ============================================================================
+    // Event Handlers
+    // ============================================================================
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function onMouseMove(event) {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(nodes);
+
+      // Reset all nodes
+      nodes.forEach(node => {
+        node.material.emissiveIntensity = 0.3;
+      });
+
+      // Highlight hovered node
+      if (intersects.length > 0) {
+        intersects[0].object.material.emissiveIntensity = 0.6;
+        document.body.style.cursor = 'pointer';
+      } else {
+        document.body.style.cursor = 'default';
+      }
+    }
+
+    function onMouseClick(event) {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(nodes);
+
+      if (intersects.length > 0) {
+        const node = intersects[0].object;
+        showDetail(node.userData.data);
+      }
+    }
+
+    // ============================================================================
+    // UI Functions
+    // ============================================================================
+
+    function showDetail(data) {
+      const panel = document.getElementById('detail-panel');
+      const title = document.getElementById('detail-title');
+      const content = document.getElementById('detail-content');
+
+      title.textContent = data.fullName;
+
+      let html = `
+        <p style="color: #b0c4de; margin-bottom: 15px;">${data.description}</p>
+        <h3 style="color: #4a9eff; font-size: 16px; margin-top: 15px; margin-bottom: 10px;">
+          Responsabilidades:
+        </h3>
+        <ul style="color: #b0c4de; line-height: 1.8; padding-left: 20px;">
+      `;
+
+      data.responsibilities.forEach(resp => {
+        html += `<li>${resp}</li>`;
+      });
+
+      html += '</ul>';
+      content.innerHTML = html;
+      panel.style.display = 'block';
+    }
+
+    function closeDetail() {
+      document.getElementById('detail-panel').style.display = 'none';
+    }
+
+    function resetCamera() {
+      camera.position.set(10, 8, 10);
+      camera.lookAt(0, 0, 0);
+      controls.target.set(0, 0, 0);
+    }
+
+    function toggleRotation() {
+      autoRotate = !autoRotate;
+      controls.autoRotate = autoRotate;
+    }
+
+    function toggleConnections() {
+      showConnections = !showConnections;
+      connections.forEach(conn => {
+        conn.visible = showConnections;
+      });
+    }
+
+    // ============================================================================
+    // Start
+    // ============================================================================
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
+

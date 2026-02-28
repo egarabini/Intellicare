@@ -1,0 +1,29 @@
+# Painel Tireoidiano — Reference Ranges
+# Fontes: ATA, SBEM, UpToDate
+
+id: thyroid_panel
+name: "Painel Tireoidiano"
+description: "Exames de funcao tireoidiana"
+
+labs:
+  - id: tsh
+    name: "TSH"
+    loinc_code: "3016-3"
+    unit: "mIU/L"
+    normal_min: 0.4
+    normal_max: 4.0
+    low_min: 0.1
+    high_max: 10.0
+    critical_low: 0.01
+    critical_high: 50.0
+
+  - id: free_t4
+    name: "T4 Livre"
+    loinc_code: "3024-7"
+    unit: "ng/dL"
+    normal_min: 0.8
+    normal_max: 1.8
+    low_min: 0.5
+    high_max: 3.0
+    critical_low: 0.3
+    critical_high: 5.0

@@ -1,0 +1,11 @@
+MSH|^~\&|TASY|HSL|GRAHAME|INTELLICARE|20260203170048||ADT^A04|TASY0000008|P|2.5|||AL|NE|BRA
+EVN|A04|20260203170048|||659317^Costa^Roberto^L^^^Dr.
+PID|1||225324^^^HSL^MR||Oliveira^Pedro^José||19860323|M|||Rua Augusta, 8972^^São Paulo^SP^45182-481^BR^H||11990740468^PRN^PH||PT|W|CAT|||470.699.735-17||||||BR
+PD1|||HSL - Unidade Itaim||||659317^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678
+NK1|1|Souza^Carlos^Alberto|SPO|Rua Augusta, 8972^^São Paulo^SP^45182-481^BR^H|11921600091^PRN^PH
+PV1|1|I|UTI^394^B^HSL|||659317^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|659317^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|CIR||||1|||659317^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|AMB|V220025|4||||||||||||||||||||HSL||||20260203170048
+PV2||DPOC com exacerbação|||||20260203170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||36.7|Cel|36.0-37.5|N|||F|||20260217170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||92|bpm|60-100|L|||F|||20260217170048
+
+DG1|1|ICD10|J44.1^DPOC com exacerbação^ICD10|DPOC com exacerbação||A

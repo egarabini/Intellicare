@@ -1,0 +1,164 @@
+{
+  "dashboard": {
+    "title": "IntelliCare - SLA por Equipe",
+    "tags": ["intellicare", "comunicacao", "sla", "teams"],
+    "timezone": "browser",
+    "schemaVersion": 16,
+    "version": 1,
+    "refresh": "1m",
+    "panels": [
+      {
+        "id": 1,
+        "title": "SLA Response Time por Equipe (24h)",
+        "type": "table",
+        "gridPos": {"x": 0, "y": 0, "w": 12, "h": 10},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT team_id, team_name, AVG(response_time_seconds) AS avg_response_time, COUNT(*) AS total_messages, SUM(CASE WHEN within_sla THEN 1 ELSE 0 END)::float / COUNT(*)::float * 100 AS sla_compliance FROM comunicacao_analitico.team_communication_sla WHERE created_at > NOW() - INTERVAL '24 hours' GROUP BY team_id, team_name ORDER BY sla_compliance DESC",
+            "format": "table"
+          }
+        ],
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "team_id": "Team ID",
+                "team_name": "Equipe",
+                "avg_response_time": "Tempo Médio (s)",
+                "total_messages": "Total Msgs",
+                "sla_compliance": "SLA (%)"
+              }
+            }
+          }
+        ],
+        "fieldConfig": {
+          "overrides": [
+            {
+              "matcher": {"id": "byName", "options": "SLA (%)"},
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {"type": "color-background"}
+                },
+                {
+                  "id": "thresholds",
+                  "value": {
+                    "mode": "absolute",
+                    "steps": [
+                      {"value": 0, "color": "red"},
+                      {"value": 80, "color": "yellow"},
+                      {"value": 95, "color": "green"}
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "title": "Tendência de SLA (30 dias)",
+        "type": "timeseries",
+        "gridPos": {"x": 12, "y": 0, "w": 12, "h": 10},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT DATE_TRUNC('day', created_at) AS time, team_name, SUM(CASE WHEN within_sla THEN 1 ELSE 0 END)::float / COUNT(*)::float * 100 AS sla_compliance FROM comunicacao_analitico.team_communication_sla WHERE created_at > NOW() - INTERVAL '30 days' GROUP BY time, team_name ORDER BY time",
+            "format": "time_series"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth"}
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Canais Mais Usados por Equipe (24h)",
+        "type": "heatmap",
+        "gridPos": {"x": 0, "y": 10, "w": 12, "h": 8},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT team_name, channel, COUNT(*) AS message_count FROM comunicacao_analitico.team_communication_sla WHERE created_at > NOW() - INTERVAL '24 hours' GROUP BY team_name, channel ORDER BY team_name, channel",
+            "format": "table"
+          }
+        ],
+        "options": {
+          "calculate": false,
+          "cellGap": 2,
+          "color": {
+            "mode": "scheme",
+            "scheme": "Spectral"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Alertas CRITICAL por Equipe (24h)",
+        "type": "bargauge",
+        "gridPos": {"x": 12, "y": 10, "w": 12, "h": 8},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT team_name, COUNT(*) AS critical_alerts FROM comunicacao_analitico.team_communication_sla WHERE severity = 'CRITICAL' AND created_at > NOW() - INTERVAL '24 hours' GROUP BY team_name ORDER BY critical_alerts DESC",
+            "format": "table"
+          }
+        ],
+        "options": {
+          "orientation": "horizontal",
+          "displayMode": "gradient"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 10, "color": "yellow"},
+                {"value": 50, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Mensagens Dentro do SLA (%)",
+        "type": "gauge",
+        "gridPos": {"x": 0, "y": 18, "w": 12, "h": 6},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT SUM(CASE WHEN within_sla THEN 1 ELSE 0 END)::float / COUNT(*)::float * 100 AS value FROM comunicacao_analitico.team_communication_sla WHERE created_at > NOW() - INTERVAL '24 hours'",
+            "format": "table"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 80, "color": "yellow"},
+                {"value": 95, "color": "green"}
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+

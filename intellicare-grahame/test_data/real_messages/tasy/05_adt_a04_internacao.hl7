@@ -1,0 +1,13 @@
+MSH|^~\&|TASY|HSL|GRAHAME|INTELLICARE|20260223170048||ADT^A04|TASY0000005|P|2.5|||AL|NE|BRA
+EVN|A04|20260223170048|||705147^Silva^Maria^A^^^Dra.
+PID|1||294175^^^HSL^MR||Rodrigues^Patricia^Maria||19481220|M|||Rua das Flores, 9050^^São Paulo^SP^61652-607^BR^H||11963918110^PRN^PH||PT|D|CAT|||522.802.270-60||||||BR
+PD1|||HSL - Unidade Morumbi||||705147^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456
+NK1|1|Oliveira^Pedro^José|DAU|Rua das Flores, 9050^^São Paulo^SP^61652-607^BR^H|11907432894^PRN^PH
+PV1|1|I|SEMI^140^01^HSL|||705147^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456|705147^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456|CIR||||1|||705147^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456|AMB|V970108|4||||||||||||||||||||HSL||||20260223170048
+PV2||Infarto agudo do miocárdio|||||20260223170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||36.4|Cel|36.0-37.5|N|||F|||20260204170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||81|bpm|60-100|H|||F|||20260204170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||15|irpm|12-20|H|||F|||20260204170048
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||142|mmHg|90-140|L|||F|||20260204170048
+
+DG1|1|ICD10|I21.9^Infarto agudo do miocárdio^ICD10|Infarto agudo do miocárdio||A

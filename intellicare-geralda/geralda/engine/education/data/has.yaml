@@ -1,0 +1,97 @@
+condition_code: "I10"
+condition_name: "Hipertensao Arterial Sistemica"
+materials:
+  - id: "has-001"
+    title: "O que e Pressao Alta?"
+    reading_level: "basic"
+    tags: ["hipertensao", "pressao", "introducao"]
+    content: |
+      A pressao arterial e a forca que o sangue faz nas paredes
+      dos vasos sanguineos. Quando essa forca fica alta demais
+      por muito tempo, chamamos de hipertensao.
+
+      A pressao normal e ate 120/80 mmHg (12 por 8).
+      Pressao alta e a partir de 140/90 mmHg (14 por 9).
+
+      A hipertensao e perigosa porque geralmente nao da sintomas,
+      mas pode causar infarto, AVC, problemas nos rins e na visao.
+
+      O que voce pode fazer:
+      - Tomar os remedios todos os dias, no mesmo horario
+      - Medir a pressao regularmente
+      - Reduzir o sal na comida
+      - Fazer caminhadas ou exercicios leves
+
+  - id: "has-002"
+    title: "Alimentacao para controlar a Pressao"
+    reading_level: "basic"
+    tags: ["dieta", "alimentacao", "sal", "sodio"]
+    content: |
+      A alimentacao tem grande impacto na pressao arterial.
+
+      Reduza o sal (maximo 5g por dia):
+      - Evite temperos prontos, embutidos e enlatados
+      - Nao coloque o saleiro na mesa
+      - Use ervas e especiarias para temperar
+      - Cozinhe com pouco sal
+
+      Alimentos que ajudam:
+      - Frutas e verduras (banana, beterraba, espinafre)
+      - Alimentos ricos em potassio (feijao, abobora)
+      - Laticinios com pouca gordura
+      - Peixes e azeite de oliva
+
+      Evite:
+      - Alimentos ultraprocessados
+      - Bebidas alcoolicas em excesso
+      - Frituras e gorduras saturadas
+
+  - id: "has-003"
+    title: "Medicamentos para Hipertensao"
+    reading_level: "intermediate"
+    tags: ["medicamentos", "tratamento", "adesao"]
+    content: |
+      Os medicamentos para pressao alta precisam ser tomados
+      todos os dias, mesmo quando a pressao parece normal.
+
+      Tipos comuns de remedios:
+      - Diureticos: ajudam o corpo a eliminar sodio e agua
+      - Inibidores da ECA: relaxam os vasos sanguineos
+      - Bloqueadores de calcio: relaxam os musculos dos vasos
+      - Betabloqueadores: diminuem os batimentos cardiacos
+
+      Dicas importantes:
+      - Nunca pare o remedio por conta propria
+      - Tome sempre no mesmo horario
+      - Nao dobre a dose se esquecer
+      - Informe o medico sobre efeitos colaterais
+
+      Efeitos colaterais possiveis:
+      - Tontura ao levantar rapido
+      - Tosse seca (em alguns tipos)
+      - Inchaço nos pes
+      Converse com seu medico se sentir algo diferente.
+
+  - id: "has-004"
+    title: "Como medir a Pressao em casa"
+    reading_level: "basic"
+    tags: ["monitoramento", "medicao", "aparelho"]
+    content: |
+      Medir a pressao em casa ajuda no controle da hipertensao.
+
+      Antes de medir:
+      - Descanse 5 minutos sentado
+      - Nao fume nem tome cafe 30 minutos antes
+      - Esvazie a bexiga
+      - Nao fale durante a medicao
+
+      Como medir:
+      - Sente com as costas apoiadas
+      - Coloque o braco na altura do coracao
+      - Posicione a bracadeira 2 dedos acima do cotovelo
+      - Faca 2 medicoes com 1 minuto de intervalo
+
+      Anote os valores:
+      - Data, horario e valores (ex: 130/85)
+      - Leve as anotacoes na consulta medica
+      - Valores acima de 180/110: procure emergencia

@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: oswaldo
+      POSTGRES_USER: oswaldo
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-oswaldo_dev}
+    ports:
+      - "5433:5432"
+    volumes:
+      - oswaldo_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oswaldo"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      target: api
+    environment:
+      INTELLICARE_DATABASE_URL: postgresql://oswaldo:${DB_PASSWORD:-oswaldo_dev}@db:5432/oswaldo
+      INTELLICARE_FHIR_SERVER_URL: ${FHIR_SERVER_URL:-http://localhost:8080/fhir}
+      INTELLICARE_LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      target: ui
+    environment:
+      INTELLICARE_DATABASE_URL: postgresql://oswaldo:${DB_PASSWORD:-oswaldo_dev}@db:5432/oswaldo
+      INTELLICARE_FHIR_SERVER_URL: ${FHIR_SERVER_URL:-http://localhost:8080/fhir}
+    ports:
+      - "8501:8501"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  oswaldo_db:

@@ -1,0 +1,146 @@
+{
+  "dashboard": {
+    "title": "IntelliCare - Teleconsultas",
+    "tags": ["intellicare", "comunicacao", "teleconsulta", "jitsi"],
+    "timezone": "browser",
+    "schemaVersion": 16,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Salas Criadas (24h)",
+        "type": "stat",
+        "gridPos": {"x": 0, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "sum(increase(comm_teleconsult_created_total[24h]))",
+            "legendFormat": "Total"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 100, "color": "yellow"},
+                {"value": 500, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Salas Ativas Agora",
+        "type": "gauge",
+        "gridPos": {"x": 6, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "comm_active_teleconsult_rooms",
+            "legendFormat": "Active Rooms"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 50, "color": "yellow"},
+                {"value": 80, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Salas por Tipo (24h)",
+        "type": "piechart",
+        "gridPos": {"x": 12, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "sum by(room_type)(increase(comm_teleconsult_created_total[24h]))",
+            "legendFormat": "{{room_type}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Provider Utilizado (24h)",
+        "type": "piechart",
+        "gridPos": {"x": 18, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "sum by(provider)(increase(comm_teleconsult_created_total[24h]))",
+            "legendFormat": "{{provider}}"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Criação de Salas ao Longo do Tempo",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 6, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "sum by(room_type)(rate(comm_teleconsult_created_total[5m]))",
+            "legendFormat": "{{room_type}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps",
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth", "fillOpacity": 10}
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Duração Média das Salas (estimada)",
+        "type": "timeseries",
+        "gridPos": {"x": 12, "y": 6, "w": 12, "h": 8},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT created_at AS time, AVG(EXTRACT(EPOCH FROM (ended_at - created_at))) AS avg_duration FROM teleconsult_rooms WHERE ended_at IS NOT NULL AND created_at > NOW() - INTERVAL '6 hours' GROUP BY time ORDER BY time",
+            "format": "time_series"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth"}
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Participantes por Sala (média)",
+        "type": "stat",
+        "gridPos": {"x": 0, "y": 14, "w": 12, "h": 4},
+        "targets": [
+          {
+            "datasource": "PostgreSQL",
+            "rawSql": "SELECT AVG(participant_count) AS value FROM teleconsult_rooms WHERE created_at > NOW() - INTERVAL '24 hours'",
+            "format": "table"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "decimals": 1
+          }
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,66 @@
+# ============================================================================
+# INTELLICARE-WANDA — Hardened Multi-Stage Dockerfile
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# BUILD STAGE — Runs as root, has build tools
+# ----------------------------------------------------------------------------
+FROM python:3.13-slim AS builder
+
+WORKDIR /build
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install intellicare-core to /root/.local
+COPY ./intellicare-core /intellicare-core
+RUN pip install --no-cache-dir --user -e /intellicare-core
+
+# Install intellicare-auth (optional)
+COPY ./intellicare-auth /intellicare-auth
+RUN pip install --no-cache-dir --user -e /intellicare-auth || true
+
+# Install wanda dependencies
+COPY ./intellicare-wanda/pyproject.toml ./intellicare-wanda/README.md* /build/
+RUN pip install --no-cache-dir --user . || true
+
+# Copy wanda source and install to /root/.local
+COPY ./intellicare-wanda /build/intellicare-wanda
+RUN pip install --no-cache-dir --user -e /build/intellicare-wanda
+
+# ----------------------------------------------------------------------------
+# RUNTIME STAGE — Distroless, runs as nobody
+# ----------------------------------------------------------------------------
+FROM gcr.io/distroless/python3-debian12 AS runtime
+
+# Copy Python packages from builder
+COPY --from=builder /root/.local /root/.local
+
+# Copy app
+COPY --from=builder /build/intellicare-wanda /app/intellicare-wanda
+
+# Ensure Python finds user-installed packages
+ENV PATH=/root/.local/bin:$PATH
+ENV PYTHONPATH=/root/.local/lib/python3.13/site-packages:$PYTHONPATH
+
+# Run as non-root user
+USER nobody
+
+# Expose port
+EXPOSE 8000
+
+# Health check (uses wget from distroless)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8000/api/v1/health || exit 1
+
+# ----------------------------------------------------------------------------
+# API TARGET — Runs uvicorn server
+# ----------------------------------------------------------------------------
+FROM runtime AS api
+
+# Run uvicorn from /root/.local/bin
+CMD ["python3", "-m", "uvicorn", "wanda.api.app:app", "--host", "0.0.0.0", "--port", "8000"]

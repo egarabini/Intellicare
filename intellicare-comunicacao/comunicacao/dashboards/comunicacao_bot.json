@@ -1,0 +1,162 @@
+{
+  "dashboard": {
+    "title": "IntelliCare - Bot @intellicare",
+    "tags": ["intellicare", "comunicacao", "bot", "rocketchat"],
+    "timezone": "browser",
+    "schemaVersion": 16,
+    "version": 1,
+    "refresh": "30s",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Comandos Executados (24h)",
+        "type": "stat",
+        "gridPos": {"x": 0, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "sum(increase(comm_bot_commands_total[24h]))",
+            "legendFormat": "Total"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 500, "color": "yellow"},
+                {"value": 2000, "color": "red"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Taxa de Sucesso (%)",
+        "type": "gauge",
+        "gridPos": {"x": 6, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "sum(increase(comm_bot_commands_total{status=\"success\"}[24h])) / sum(increase(comm_bot_commands_total[24h])) * 100",
+            "legendFormat": "Success Rate"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "red"},
+                {"value": 80, "color": "yellow"},
+                {"value": 95, "color": "green"}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Comandos por Tipo (24h)",
+        "type": "piechart",
+        "gridPos": {"x": 12, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "sum by(command)(increase(comm_bot_commands_total[24h]))",
+            "legendFormat": "{{command}}"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Comandos Mais Usados (24h)",
+        "type": "bargauge",
+        "gridPos": {"x": 18, "y": 0, "w": 6, "h": 6},
+        "targets": [
+          {
+            "expr": "topk(5, sum by(command)(increase(comm_bot_commands_total[24h])))",
+            "legendFormat": "{{command}}"
+          }
+        ],
+        "options": {
+          "orientation": "horizontal",
+          "displayMode": "gradient"
+        }
+      },
+      {
+        "id": 5,
+        "title": "Throughput de Comandos (comandos/min)",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 6, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "sum by(command)(rate(comm_bot_commands_total[5m])) * 60",
+            "legendFormat": "{{command}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "cpm",
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth", "fillOpacity": 10}
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Tempo de Resposta do Bot (estimado)",
+        "type": "timeseries",
+        "gridPos": {"x": 12, "y": 6, "w": 12, "h": 8},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.50, sum by(command, le)(rate(comm_api_request_duration_seconds_bucket{endpoint=~\"/api/v1/webhooks/rocketchat\"}[5m])))",
+            "legendFormat": "p50"
+          },
+          {
+            "expr": "histogram_quantile(0.95, sum by(command, le)(rate(comm_api_request_duration_seconds_bucket{endpoint=~\"/api/v1/webhooks/rocketchat\"}[5m])))",
+            "legendFormat": "p95"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s",
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth"}
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Taxa de Erro por Comando (%)",
+        "type": "timeseries",
+        "gridPos": {"x": 0, "y": 14, "w": 24, "h": 6},
+        "targets": [
+          {
+            "expr": "sum by(command)(rate(comm_bot_commands_total{status=\"error\"}[5m])) / sum by(command)(rate(comm_bot_commands_total[5m])) * 100",
+            "legendFormat": "{{command}}"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "custom": {"drawStyle": "line", "lineInterpolation": "smooth"},
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {"value": 0, "color": "green"},
+                {"value": 5, "color": "yellow"},
+                {"value": 10, "color": "red"}
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,483 @@
+version: "3.9"
+
+# ============================================================================
+# IntelliCare - Full Stack Deployment
+# ============================================================================
+# Includes: Infrastructure + 6 Backend Modules + 1 Frontend
+# Phase: 3 - Deploy Mínimo
+# ============================================================================
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  prometheus-data:
+    driver: local
+
+networks:
+  intellicare-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+services:
+  # ==========================================================================
+  # INFRASTRUCTURE - PostgreSQL 15
+  # ==========================================================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: intellicare-postgres
+    hostname: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-intellicare_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-CHANGE_ME}
+      POSTGRES_DB: ${POSTGRES_DB:-intellicare_db}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-intellicare_admin} -d ${POSTGRES_DB:-intellicare_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    labels:
+      com.intellicare.service: "postgres"
+      com.intellicare.tier: "infrastructure"
+
+  # ==========================================================================
+  # INFRASTRUCTURE - Redis 7
+  # ==========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: intellicare-redis
+    hostname: redis
+    command: 
+      - redis-server
+      - "--appendonly"
+      - "yes"
+      - "--maxmemory"
+      - "512mb"
+      - "--maxmemory-policy"
+      - "allkeys-lru"
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    labels:
+      com.intellicare.service: "redis"
+      com.intellicare.tier: "infrastructure"
+
+  # ==========================================================================
+  # INFRASTRUCTURE - Prometheus
+  # ==========================================================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: intellicare-prometheus
+    hostname: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--storage.tsdb.retention.time=30d"
+    networks:
+      - intellicare-network
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    labels:
+      com.intellicare.service: "prometheus"
+      com.intellicare.tier: "infrastructure"
+
+  # ==========================================================================
+  # INFRASTRUCTURE - Grafana
+  # ==========================================================================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: intellicare-grafana
+    hostname: grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-CHANGE_ME}
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    networks:
+      - intellicare-network
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    labels:
+      com.intellicare.service: "grafana"
+      com.intellicare.tier: "infrastructure"
+
+  # ==========================================================================
+  # BACKEND - Florence (8001) - RAG + Protocolos Clínicos
+  # ==========================================================================
+  florence:
+    build:
+      context: .
+      dockerfile: ./intellicare-florence/Dockerfile
+      target: api
+    container_name: intellicare-florence
+    hostname: florence
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - FLORENCE_PORT=${FLORENCE_PORT:-8001}
+      - INTELLICARE_FLORENCE_DATABASE_URL=${INTELLICARE_FLORENCE_DATABASE_URL}
+      - FLORENCE_DATABASE_SCHEMA=${FLORENCE_DATABASE_SCHEMA:-intellicare_florence}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+      - INTELLICARE_ENABLE_RAG=${INTELLICARE_ENABLE_RAG:-true}
+      - INTELLICARE_ENABLE_DIAGNOSTIC_SUPPORT=${INTELLICARE_ENABLE_DIAGNOSTIC_SUPPORT:-true}
+    ports:
+      - "${FLORENCE_PORT:-8001}:8001"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "florence"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "rag-protocolos"
+
+  # ==========================================================================
+  # BACKEND - Oswaldo (8002) - Análise Clínica + FHIR
+  # ==========================================================================
+  oswaldo:
+    build:
+      context: .
+      dockerfile: ./intellicare-oswaldo/Dockerfile
+      target: api
+    container_name: intellicare-oswaldo
+    hostname: oswaldo
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - OSWALDO_PORT=${OSWALDO_PORT:-8002}
+      - INTELLICARE_OSWALDO_DATABASE_URL=${INTELLICARE_OSWALDO_DATABASE_URL}
+      - OSWALDO_DATABASE_SCHEMA=${OSWALDO_DATABASE_SCHEMA:-intellicare_oswaldo}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+      - INTELLICARE_ENABLE_MEDICATION_ADVISOR=${INTELLICARE_ENABLE_MEDICATION_ADVISOR:-false}
+      - INTELLICARE_ENABLE_CV_RISK_CALCULATOR=${INTELLICARE_ENABLE_CV_RISK_CALCULATOR:-false}
+    ports:
+      - "${OSWALDO_PORT:-8002}:8002"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "oswaldo"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "analise-clinica"
+
+  # ==========================================================================
+  # BACKEND - Donabedian (8003) - Qualidade + Indicadores
+  # ==========================================================================
+  donabedian:
+    build:
+      context: .
+      dockerfile: ./intellicare-donabedian/Dockerfile
+      target: api
+    container_name: intellicare-donabedian
+    hostname: donabedian
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DONABEDIAN_PORT=${DONABEDIAN_PORT:-8003}
+      - INTELLICARE_DONABEDIAN_DATABASE_URL=${INTELLICARE_DONABEDIAN_DATABASE_URL}
+      - DONABEDIAN_DATABASE_SCHEMA=${DONABEDIAN_DATABASE_SCHEMA:-intellicare_donabedian}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+      - API_HOST=0.0.0.0
+      - API_PORT=8003
+    ports:
+      - "${DONABEDIAN_PORT:-8003}:8003"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "donabedian"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "qualidade-indicadores"
+
+  # ==========================================================================
+  # BACKEND - Wanda (8004) - Orquestração + Workflows
+  # ==========================================================================
+  wanda:
+    build:
+      context: .
+      dockerfile: ./intellicare-wanda/Dockerfile
+      target: api
+    container_name: intellicare-wanda
+    hostname: wanda
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - WANDA_PORT=${WANDA_PORT:-8004}
+      - INTELLICARE_WANDA_DATABASE_URL=${INTELLICARE_WANDA_DATABASE_URL}
+      - WANDA_DATABASE_SCHEMA=${WANDA_DATABASE_SCHEMA:-intellicare_wanda}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+      - INTELLICARE_OSWALDO_URL=http://oswaldo:8002
+      - INTELLICARE_FLORENCE_URL=http://florence:8001
+      - INTELLICARE_DONABEDIAN_URL=http://donabedian:8003
+      - INTELLICARE_COMUNICACAO_URL=http://comunicacao:8005
+      - INTELLICARE_GERALDA_URL=http://geralda:8006
+      - INTELLICARE_DISCOVERY_TIMEOUT_SECONDS=${INTELLICARE_DISCOVERY_TIMEOUT_SECONDS:-5}
+      - INTELLICARE_MAX_MODULES_PER_QUERY=${INTELLICARE_MAX_MODULES_PER_QUERY:-3}
+      - INTELLICARE_ENABLE_IPS_FIRST=${INTELLICARE_ENABLE_IPS_FIRST:-true}
+    ports:
+      - "${WANDA_PORT:-8004}:8004"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      florence:
+        condition: service_started
+      oswaldo:
+        condition: service_started
+      donabedian:
+        condition: service_started
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8004/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "wanda"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "orquestracao"
+
+  # ==========================================================================
+  # BACKEND - Comunicacao (8005) - Comunicação + Notificações
+  # ==========================================================================
+  comunicacao:
+    build:
+      context: .
+      dockerfile: ./intellicare-comunicacao/Dockerfile
+      target: api
+    container_name: intellicare-comunicacao
+    hostname: comunicacao
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - COMUNICACAO_PORT=${COMUNICACAO_PORT:-8005}
+      - INTELLICARE_COMUNICACAO_DATABASE_URL=${INTELLICARE_COMUNICACAO_DATABASE_URL}
+      - COMUNICACAO_DATABASE_SCHEMA=${COMUNICACAO_DATABASE_SCHEMA:-intellicare_comunicacao}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+      # Rocket.Chat
+      - ROCKETCHAT_URL=${ROCKETCHAT_URL}
+      - ROCKETCHAT_ADMIN_USERNAME=${ROCKETCHAT_ADMIN_USERNAME}
+      - ROCKETCHAT_ADMIN_PASSWORD=${ROCKETCHAT_ADMIN_PASSWORD}
+      # Jitsi
+      - JITSI_DOMAIN=${JITSI_DOMAIN}
+      - JITSI_URL=${JITSI_URL}
+      - JITSI_APP_ID=${JITSI_APP_ID}
+      - JITSI_APP_SECRET=${JITSI_APP_SECRET}
+      # External Channels
+      - PUSH_ENABLED=${PUSH_ENABLED:-true}
+      - VAPID_PRIVATE_KEY=${VAPID_PRIVATE_KEY}
+      - VAPID_PUBLIC_KEY=${VAPID_PUBLIC_KEY}
+      - WHATSAPP_ENABLED=${WHATSAPP_ENABLED:-true}
+      - WHATSAPP_PROVIDER=${WHATSAPP_PROVIDER:-meta}
+      - WHATSAPP_ACCESS_TOKEN=${WHATSAPP_ACCESS_TOKEN}
+      - SMS_ENABLED=${SMS_ENABLED:-true}
+      - SMS_PROVIDER=${SMS_PROVIDER:-twilio}
+      - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
+      - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
+      - EMAIL_ENABLED=${EMAIL_ENABLED:-true}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+    ports:
+      - "${COMUNICACAO_PORT:-8005}:8005"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8005/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "comunicacao"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "comunicacao-notificacoes"
+
+  # ==========================================================================
+  # BACKEND - Geralda (8006) - Gestão + Administrativo
+  # ==========================================================================
+  geralda:
+    build:
+      context: .
+      dockerfile: ./intellicare-geralda/Dockerfile
+      target: api
+    container_name: intellicare-geralda
+    hostname: geralda
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - GERALDA_PORT=${GERALDA_PORT:-8006}
+      - INTELLICARE_GERALDA_DATABASE_URL=${INTELLICARE_GERALDA_DATABASE_URL}
+      - GERALDA_DATABASE_SCHEMA=${GERALDA_DATABASE_SCHEMA:-intellicare_geralda}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${GERALDA_PORT:-8006}:8006"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8006/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "geralda"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "gestao-administrativo"
+
+  # ==========================================================================
+  # FRONTEND - Portal (3001) - Interface Web
+  # ==========================================================================
+  portal:
+    build:
+      context: ./intellicare-portal/frontend
+      dockerfile: Dockerfile
+      target: production
+    container_name: intellicare-portal
+    hostname: portal
+    environment:
+      - VITE_API_FLORENCE_URL=${VITE_API_FLORENCE_URL:-http://localhost:8001}
+      - VITE_API_OSWALDO_URL=${VITE_API_OSWALDO_URL:-http://localhost:8002}
+      - VITE_API_DONABEDIAN_URL=${VITE_API_DONABEDIAN_URL:-http://localhost:8003}
+      - VITE_API_WANDA_URL=${VITE_API_WANDA_URL:-http://localhost:8004}
+      - VITE_API_COMUNICACAO_URL=${VITE_API_COMUNICACAO_URL:-http://localhost:8005}
+      - VITE_API_GERALDA_URL=${VITE_API_GERALDA_URL:-http://localhost:8006}
+      - VITE_API_TIMEOUT=${VITE_API_TIMEOUT:-30000}
+      - VITE_ENABLE_ANALYTICS=${VITE_ENABLE_ANALYTICS:-false}
+      - VITE_APP_VERSION=${VITE_APP_VERSION:-0.1.0-demo}
+    ports:
+      - "${PORTAL_PORT:-3001}:80"
+    networks:
+      - intellicare-network
+    depends_on:
+      - florence
+      - oswaldo
+      - donabedian
+      - wanda
+      - comunicacao
+      - geralda
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    labels:
+      com.intellicare.service: "portal"
+      com.intellicare.tier: "frontend"
+      com.intellicare.module: "interface-web"
+
+# ============================================================================
+# Usage Instructions
+# ============================================================================
+# 1. Copy .env.example to .env and configure your environment variables
+#
+# 2. Start all services:
+#    docker-compose -f docker-compose.full.yml up -d
+#
+# 3. Check service status:
+#    docker-compose -f docker-compose.full.yml ps
+#
+# 4. View logs:
+#    docker-compose -f docker-compose.full.yml logs -f [service_name]
+#
+# 5. Stop all services:
+#    docker-compose -f docker-compose.full.yml down
+#
+# 6. Stop and remove volumes (WARNING: deletes all data):
+#    docker-compose -f docker-compose.full.yml down -v
+#
+# 7. Access services:
+#    - Portal:       http://localhost:3001
+#    - Florence:     http://localhost:8001
+#    - Oswaldo:      http://localhost:8002
+#    - Donabedian:   http://localhost:8003
+#    - Wanda:        http://localhost:8004
+#    - Comunicacao:  http://localhost:8005
+#    - Geralda:      http://localhost:8006
+#    - Prometheus:   http://localhost:9090
+#    - Grafana:      http://localhost:3000
+# ============================================================================

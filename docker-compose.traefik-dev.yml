@@ -1,0 +1,80 @@
+# ============================================================================
+# Docker Compose Overlay — Traefik LOCAL DEV (sem TLS)
+# ============================================================================
+# Usage (development):
+#   docker-compose -f docker-compose.full.yml -f docker-compose.traefik-dev.yml up -d
+#
+# Local subdomains via /etc/hosts:
+#   127.0.0.1 admin.localhost portal.localhost api.localhost traefik.localhost
+# ============================================================================
+
+services:
+
+  traefik:
+    image: traefik:v3.2
+    container_name: intellicare-traefik
+    hostname: traefik
+    ports:
+      - "80:80"
+      - "8080:8080"  # Dashboard (insecure for dev)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      # Static config inline for dev
+      - "--api.dashboard=true"
+      - "--api.insecure=true"
+      - "--entrypoints.web.address=:80"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--providers.docker.network=intellicare_intellicare-network"
+      - "--log.level=DEBUG"
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    labels:
+      com.intellicare.service: "traefik"
+      com.intellicare.tier: "infrastructure"
+
+  # ── Modules with Traefik labels (Dev: localhost subdomains) ──
+
+  florence:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.florence.rule=Host(`api.localhost`) && PathPrefix(`/v1/florence`)"
+      - "traefik.http.services.florence.loadbalancer.server.port=8001"
+
+  oswaldo:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.oswaldo.rule=Host(`api.localhost`) && PathPrefix(`/v1/oswaldo`)"
+      - "traefik.http.services.oswaldo.loadbalancer.server.port=8002"
+
+  donabedian:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.donabedian.rule=Host(`api.localhost`) && PathPrefix(`/v1/donabedian`)"
+      - "traefik.http.services.donabedian.loadbalancer.server.port=8003"
+
+  wanda:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wanda.rule=Host(`api.localhost`) && PathPrefix(`/v1/wanda`)"
+      - "traefik.http.services.wanda.loadbalancer.server.port=8004"
+
+  comunicacao:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.comunicacao.rule=Host(`api.localhost`) && PathPrefix(`/v1/comunicacao`)"
+      - "traefik.http.services.comunicacao.loadbalancer.server.port=8005"
+
+  geralda:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.geralda.rule=Host(`api.localhost`) && PathPrefix(`/v1/geralda`)"
+      - "traefik.http.services.geralda.loadbalancer.server.port=8006"
+
+  portal:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portal.rule=Host(`portal.localhost`)"
+      - "traefik.http.services.portal.loadbalancer.server.port=80"

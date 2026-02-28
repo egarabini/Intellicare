@@ -1,0 +1,2 @@
+"""NISE tests module."""
+

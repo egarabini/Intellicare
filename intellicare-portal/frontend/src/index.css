@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-primary-50: #e6f0ff;
+  --color-primary-100: #b3d1ff;
+  --color-primary-200: #80b3ff;
+  --color-primary-300: #4d94ff;
+  --color-primary-400: #1a75ff;
+  --color-primary-500: #0056e0;
+  --color-primary-600: #0047bd;
+  --color-primary-700: #00389a;
+  --color-primary-800: #002977;
+  --color-primary-900: #001a54;
+
+  --color-secondary-50: #e6f9f5;
+  --color-secondary-100: #b3ede0;
+  --color-secondary-200: #80e1cb;
+  --color-secondary-300: #4dd5b6;
+  --color-secondary-400: #1ac9a1;
+  --color-secondary-500: #00b88d;
+  --color-secondary-600: #009e78;
+  --color-secondary-700: #008463;
+  --color-secondary-800: #006a4e;
+  --color-secondary-900: #005039;
+
+  --color-accent-50: #fff4e6;
+  --color-accent-100: #ffd9b3;
+  --color-accent-200: #ffbe80;
+  --color-accent-300: #ffa34d;
+  --color-accent-400: #ff881a;
+  --color-accent-500: #ff6d00;
+  --color-accent-600: #e66200;
+  --color-accent-700: #cc5700;
+  --color-accent-800: #b34c00;
+  --color-accent-900: #994100;
+
+  /* Shadcn/ui theme colors */
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-card: #ffffff;
+  --color-card-foreground: #171717;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #171717;
+  --color-primary: #0047bd;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #171717;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #737373;
+  --color-accent: #f5f5f5;
+  --color-accent-foreground: #171717;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #0047bd;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: white;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-primary-600);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-700);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-600);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}

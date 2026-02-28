@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Relatório Diário - IntelliCare{% endblock %}
+
+{% block header_title %}📊 Relatório Diário{% endblock %}
+
+{% block content %}
+<h2>Relatório de {{ report_date|format_date }}</h2>
+
+<p>Olá <strong>{{ recipient_name }}</strong>,</p>
+
+<p>Segue o resumo das atividades do dia:</p>
+
+<h3>Resumo Geral</h3>
+<table>
+    <tr>
+        <th>Métrica</th>
+        <th>Valor</th>
+    </tr>
+    {% if total_patients %}
+    <tr>
+        <td>Total de Pacientes Atendidos</td>
+        <td><strong>{{ total_patients }}</strong></td>
+    </tr>
+    {% endif %}
+    {% if total_consultations %}
+    <tr>
+        <td>Consultas Realizadas</td>
+        <td><strong>{{ total_consultations }}</strong></td>
+    </tr>
+    {% endif %}
+    {% if total_alerts %}
+    <tr>
+        <td>Alertas Gerados</td>
+        <td><strong>{{ total_alerts }}</strong></td>
+    </tr>
+    {% endif %}
+    {% if critical_alerts %}
+    <tr>
+        <td>Alertas Críticos</td>
+        <td><strong style="color: #f44336;">{{ critical_alerts }}</strong></td>
+    </tr>
+    {% endif %}
+</table>
+
+{% if pending_actions %}
+<h3>Ações Pendentes</h3>
+<div class="alert alert-warning">
+    Você tem <strong>{{ pending_actions|length }}</strong> ação(ões) pendente(s):
+</div>
+<ul>
+    {% for action in pending_actions %}
+    <li>{{ action.description }} - <em>{{ action.patient_name }}</em></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if upcoming_appointments %}
+<h3>Próximas Consultas</h3>
+<table>
+    <tr>
+        <th>Horário</th>
+        <th>Paciente</th>
+        <th>Tipo</th>
+    </tr>
+    {% for apt in upcoming_appointments %}
+    <tr>
+        <td>{{ apt.time }}</td>
+        <td>{{ apt.patient_name }}</td>
+        <td>{{ apt.type }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% if dashboard_url %}
+<p style="text-align: center; margin: 30px 0;">
+    <a href="{{ dashboard_url }}" class="button">Ver Dashboard Completo</a>
+</p>
+{% endif %}
+
+<p style="margin-top: 30px; font-size: 14px; color: #6c757d;">
+    Este relatório é gerado automaticamente todos os dias às {{ report_time|default('18:00') }}.
+</p>
+{% endblock %}
+

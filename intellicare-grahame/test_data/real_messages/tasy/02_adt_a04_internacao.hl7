@@ -1,0 +1,13 @@
+MSH|^~\&|TASY|EINSTEIN|GRAHAME|INTELLICARE|20260203170048||ADT^A04|TASY0000002|P|2.5|||AL|NE|BRA
+EVN|A04|20260203170048|||608834^Silva^Maria^A^^^Dra.
+PID|1||307252^^^EINSTEIN^MR||Santos^Maria^Ana||19991216|M|||Rua das Flores, 2954^^São Paulo^SP^55771-521^BR^H||11971647208^PRN^PH||PT|D|CAT|||677.906.745-61||||||BR
+PD1|||EINSTEIN - Unidade Morumbi||||608834^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456
+NK1|1|Ferreira^Roberto^Luiz|FTH|Rua das Flores, 2954^^São Paulo^SP^55771-521^BR^H|11966042631^PRN^PH
+PV1|1|I|UTI^260^B^EINSTEIN|||608834^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456|608834^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456|CIR||||1|||608834^Silva^Maria^A^^^Dra.^^^^^CRMSP^123456|AMB|V689510|4||||||||||||||||||||EINSTEIN||||20260203170048
+PV2||Acidente vascular cerebral|||||20260203170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||36.4|Cel|36.0-37.5|N|||F|||20260219170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||90|bpm|60-100|N|||F|||20260219170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||24|irpm|12-20|N|||F|||20260219170048
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||116|mmHg|90-140|N|||F|||20260219170048
+
+DG1|1|ICD10|I63.9^Acidente vascular cerebral^ICD10|Acidente vascular cerebral||A

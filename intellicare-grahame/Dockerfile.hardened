@@ -1,0 +1,87 @@
+# ===================================================================
+# IntelliCare Grahame - Hardened Docker Image
+# Multi-stage build with distroless runtime for production security
+#
+# Build from repository root: docker build -f intellicare-grahame/Dockerfile.hardened .
+# ===================================================================
+
+# --------------------------------------------------------------------------
+# Build Stage — Compilação e instalação de dependências
+# --------------------------------------------------------------------------
+FROM python:3.11-slim AS builder
+
+# Metadados de build
+ARG BUILD_DATE
+ARG VCS_REF
+LABEL maintainer="IntelliCare <dev@intellicare.com.br>" \
+      version="1.0.0" \
+      description="IntelliCare Grahame - FHIR R4 Interoperability (Build Stage)"
+
+# Instalar dependências do sistema para compilação
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Configurar PYTHONPATH para incluir /app/lib
+ENV PYTHONPATH="/app/lib/python3.11/site-packages:${PYTHONPATH}"
+
+# Criar diretório para bibliotecas Python
+RUN mkdir -p /app/lib/python3.11/site-packages
+
+# Copiar e instalar intellicare-core (sem --user, instala em /app/lib)
+COPY ./intellicare-core /intellicare-core
+RUN pip install --no-cache-dir -e /intellicare-core
+
+# Copiar e instalar o módulo grahame
+COPY ./intellicare-grahame/pyproject.toml ./intellicare-grahame/README.md* ./
+RUN pip install --no-cache-dir poetry || true
+COPY ./intellicare-grahame .
+RUN pip install --no-cache-dir . || true
+# Garantir que uvicorn[standard] seja instalado
+RUN pip install --no-cache-dir uvicorn[standard]
+
+# Criar diretório para logs com permissões adequadas
+RUN mkdir -p /app/logs && chmod 755 /app/logs
+
+# --------------------------------------------------------------------------
+# Runtime Stage — Imagem hardened minimalista (distroless)
+# --------------------------------------------------------------------------
+FROM gcr.io/distroless/python3-debian12
+
+# Labels de metadados (Open Container Initiative)
+LABEL maintainer="IntelliCare <dev@intellicare.com.br>" \
+      version="1.0.0" \
+      description="IntelliCare Grahame - FHIR R4 Interoperability" \
+      org.opencontainers.image.source="https://github.com/intellicare/intellicare-grahame" \
+      org.opencontainers.image.revision="${VCS_REF:-main}" \
+      org.opencontainers.image.created="${BUILD_DATE:-}" \
+      org.opencontainers.image.documentation="https://docs.intellicare.com.br/grahame" \
+      org.opencontainers.image.licenses="Apache-2.0" \
+      org.opencontainers.image.title="Grahame FHIR Server" \
+      org.opencontainers.image.vendor="IntelliCare"
+
+# Copiar aplicação e bibliotecas do builder
+COPY --from=builder /app /app
+
+# PYTHONPATH já configurado no builder para incluir /app/lib
+ENV PYTHONPATH="/app/lib/python3.11/site-packages"
+
+# Usar usuário não-root (nobody já existe no distroless)
+USER nobody
+
+# Expor porta API
+EXPOSE 8012
+
+# Health check usando Python puro (distroless não tem curl)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8012/api/v1/health').read()"
+
+# Working directory
+WORKDIR /app
+
+# Executar aplicação
+CMD ["python", "-m", "grahame.api"]

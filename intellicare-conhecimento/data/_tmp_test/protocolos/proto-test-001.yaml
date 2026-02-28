@@ -1,0 +1,26 @@
+metadata:
+  id: proto-test-001
+  version: 1.0.1
+  title: Protocolo de Teste
+  specialty: clinica
+  condition: test
+  status: draft
+  created_at: '2026-02-17T20:58:27.214725'
+  updated_at: '2026-02-17T20:58:27.244651'
+  author: Autor2
+  author_email: null
+  reviewer: null
+  approver: null
+  approved_at: null
+  tags: []
+  keywords: []
+  references: []
+summary: Resumo atualizado
+sections:
+- title: S1
+  content: Texto
+  order: 1
+  subsections: []
+criteria: []
+interventions: []
+pathways: null

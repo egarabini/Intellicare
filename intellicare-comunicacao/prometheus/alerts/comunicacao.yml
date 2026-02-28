@@ -1,0 +1,172 @@
+groups:
+  - name: comunicacao_alerts
+    interval: 30s
+    rules:
+      # Service Down
+      - alert: ComunicacaoServiceDown
+        expr: up{job="comunicacao"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: comunicacao
+        annotations:
+          summary: "Serviço de Comunicação está DOWN"
+          description: "O serviço de comunicação não está respondendo há mais de 1 minuto."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-service-down"
+
+      # High Failure Rate
+      - alert: ComunicacaoHighFailureRate
+        expr: |
+          sum(rate(comm_messages_total{status="failed"}[5m])) / sum(rate(comm_messages_total[5m])) * 100 > 10
+        for: 5m
+        labels:
+          severity: critical
+          component: comunicacao
+        annotations:
+          summary: "Taxa de falha de mensagens muito alta ({{ $value | humanize }}%)"
+          description: "Mais de 10% das mensagens estão falhando nos últimos 5 minutos."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-high-failure-rate"
+
+      # High Channel Latency
+      - alert: HighChannelLatency
+        expr: |
+          histogram_quantile(0.95, sum by(channel, le)(rate(comm_message_latency_seconds_bucket[5m]))) > 30
+        for: 10m
+        labels:
+          severity: warning
+          component: comunicacao
+        annotations:
+          summary: "Latência alta no canal {{ $labels.channel }} ({{ $value | humanize }}s)"
+          description: "O canal {{ $labels.channel }} está com latência p95 acima de 30 segundos."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-high-latency"
+
+      # LGPD Blocked Spike
+      - alert: LGPDBlockedSpike
+        expr: |
+          sum(rate(comm_lgpd_blocked_total[5m])) > 10
+        for: 5m
+        labels:
+          severity: warning
+          component: comunicacao
+          compliance: lgpd
+        annotations:
+          summary: "Pico de bloqueios LGPD detectado ({{ $value | humanize }}/s)"
+          description: "Mais de 10 comunicações por segundo estão sendo bloqueadas por LGPD."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-lgpd-blocked-spike"
+
+      # High CRITICAL Override Rate
+      - alert: HighCriticalOverrideRate
+        expr: |
+          sum(rate(comm_lgpd_override_total{severity="CRITICAL"}[5m])) > 5
+        for: 5m
+        labels:
+          severity: critical
+          component: comunicacao
+          compliance: lgpd
+        annotations:
+          summary: "Taxa alta de overrides CRITICAL LGPD ({{ $value | humanize }}/s)"
+          description: "Mais de 5 overrides CRITICAL por segundo estão sendo executados. Isso pode indicar uso inadequado."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-critical-override-rate"
+
+      # Audit Chain Integrity Broken
+      - alert: AuditChainIntegrityBroken
+        expr: comm_audit_chain_integrity == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: comunicacao
+          compliance: lgpd
+        annotations:
+          summary: "Integridade da hash chain de auditoria quebrada"
+          description: "A hash chain de auditoria LGPD está com integridade comprometida. Investigação urgente necessária."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-audit-chain-broken"
+
+      # Redis Consumer Lag
+      - alert: RedisConsumerLag
+        expr: comm_redis_consumer_lag > 1000
+        for: 5m
+        labels:
+          severity: warning
+          component: comunicacao
+        annotations:
+          summary: "Lag alto no consumer Redis ({{ $value | humanize }} mensagens)"
+          description: "O consumer Redis está com lag acima de 1000 mensagens."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-redis-lag"
+
+      # Dispatcher Unhealthy
+      - alert: DispatcherUnhealthy
+        expr: comm_dispatcher_health == 0
+        for: 3m
+        labels:
+          severity: warning
+          component: comunicacao
+        annotations:
+          summary: "Dispatcher {{ $labels.channel }} está unhealthy"
+          description: "O dispatcher do canal {{ $labels.channel }} não está respondendo corretamente."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-dispatcher-unhealthy"
+
+      # High Pending Intents
+      - alert: HighPendingIntents
+        expr: comm_pending_intents > 500
+        for: 10m
+        labels:
+          severity: warning
+          component: comunicacao
+        annotations:
+          summary: "Muitos intents pendentes ({{ $value | humanize }})"
+          description: "Há mais de 500 intents pendentes de processamento há mais de 10 minutos."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-high-pending-intents"
+
+      # Database Connection Pool Exhausted
+      - alert: DatabaseConnectionPoolExhausted
+        expr: comm_db_connections_active > 90
+        for: 5m
+        labels:
+          severity: critical
+          component: comunicacao
+        annotations:
+          summary: "Pool de conexões do banco quase esgotado ({{ $value | humanize }} conexões)"
+          description: "O pool de conexões do PostgreSQL está quase esgotado."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-db-pool-exhausted"
+
+      # High API Error Rate
+      - alert: HighAPIErrorRate
+        expr: |
+          sum(rate(comm_api_request_duration_seconds_count{status_code=~"5.."}[5m])) / sum(rate(comm_api_request_duration_seconds_count[5m])) * 100 > 5
+        for: 5m
+        labels:
+          severity: warning
+          component: comunicacao
+        annotations:
+          summary: "Taxa alta de erros 5xx na API ({{ $value | humanize }}%)"
+          description: "Mais de 5% das requisições da API estão retornando erros 5xx."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-high-api-error-rate"
+
+      # Bot Command Failure Rate
+      - alert: BotCommandFailureRate
+        expr: |
+          sum(rate(comm_bot_commands_total{status="error"}[5m])) / sum(rate(comm_bot_commands_total[5m])) * 100 > 10
+        for: 5m
+        labels:
+          severity: warning
+          component: comunicacao
+          feature: bot
+        annotations:
+          summary: "Taxa alta de falha em comandos do bot ({{ $value | humanize }}%)"
+          description: "Mais de 10% dos comandos do bot @intellicare estão falhando."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-bot-failure-rate"
+
+      # Teleconsult Room Creation Failure
+      - alert: TeleconsultRoomCreationFailure
+        expr: |
+          sum(rate(comm_teleconsult_created_total{status="failed"}[5m])) > 1
+        for: 5m
+        labels:
+          severity: warning
+          component: comunicacao
+          feature: teleconsulta
+        annotations:
+          summary: "Falhas na criação de salas de teleconsulta ({{ $value | humanize }}/s)"
+          description: "Há falhas recorrentes na criação de salas de teleconsulta."
+          runbook_url: "https://docs.intellicare.local/runbooks/comunicacao-teleconsult-failure"
+

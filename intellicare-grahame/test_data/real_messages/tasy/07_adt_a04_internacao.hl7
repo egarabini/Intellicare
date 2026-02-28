@@ -1,0 +1,12 @@
+MSH|^~\&|TASY|SAMARITANO|GRAHAME|INTELLICARE|20260131170048||ADT^A04|TASY0000007|P|2.5|||AL|NE|BRA
+EVN|A04|20260131170048|||753804^Costa^Roberto^L^^^Dr.
+PID|1||316040^^^SAMARITANO^MR||Costa^Ana^Paula||19770214|M|||Rua Paulista, 5977^^São Paulo^SP^53532-463^BR^H||11959448044^PRN^PH||PT|C|CAT|||376.443.552-82||||||BR
+PD1|||SAMARITANO - Unidade Itaim||||753804^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678
+NK1|1|Costa^Ana^Paula|SPO|Rua Paulista, 5977^^São Paulo^SP^53532-463^BR^H|11941123221^PRN^PH
+PV1|1|I|ENFER^908^02^SAMARITANO|||753804^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|753804^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|CLI||||1|||753804^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|AMB|V903088|4||||||||||||||||||||SAMARITANO||||20260131170048
+PV2||Insuficiência cardíaca congestiva|||||20260131170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||37.7|Cel|36.0-37.5|H|||F|||20260215170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||112|bpm|60-100|N|||F|||20260215170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||23|irpm|12-20|N|||F|||20260215170048
+
+DG1|1|ICD10|I50.0^Insuficiência cardíaca congestiva^ICD10|Insuficiência cardíaca congestiva||A

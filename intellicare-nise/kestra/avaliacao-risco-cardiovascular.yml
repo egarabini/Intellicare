@@ -1,0 +1,212 @@
+id: avaliacao-risco-cardiovascular
+namespace: intellicare.nise
+
+description: |
+  Workflow de Avaliação de Risco Cardiovascular (Framingham)
+  
+  Fluxo:
+  1. Recebe ID do paciente
+  2. Busca dados do paciente no Oswaldo
+  3. Calcula risco Framingham
+  4. Classifica risco (baixo/intermediário/alto)
+  5. Aciona ações baseadas no risco:
+     - Alto: Alerta crítico + notificação urgente
+     - Intermediário: Agendamento de consulta
+     - Baixo: Registro de avaliação
+  6. Atualiza plano de cuidado no Oswaldo
+  7. Envia notificação ao paciente
+
+inputs:
+  - id: paciente_id
+    type: STRING
+    description: ID do paciente no Oswaldo
+    required: true
+  
+  - id: avaliacao_periodica
+    type: BOOLEAN
+    description: Se é uma avaliação periódica (true) ou pontual (false)
+    defaults: false
+
+variables:
+  nise_api_url: "http://nise-api:8000"
+  oswaldo_api_url: "http://oswaldo-api:8002"
+  rocketchat_webhook: "{{ secret('ROCKETCHAT_WEBHOOK_URL') }}"
+
+tasks:
+  # ────────────────────────────────────────────────────────────────
+  # ETAPA 1: Buscar dados do paciente
+  # ────────────────────────────────────────────────────────────────
+  
+  - id: buscar_paciente
+    type: io.kestra.plugin.core.http.Request
+    description: Busca dados do paciente no Oswaldo
+    uri: "{{ vars.oswaldo_api_url }}/api/v1/pacientes/{{ inputs.paciente_id }}/resumo"
+    method: GET
+    headers:
+      Content-Type: application/json
+    
+  # ────────────────────────────────────────────────────────────────
+  # ETAPA 2: Calcular risco Framingham
+  # ────────────────────────────────────────────────────────────────
+  
+  - id: calcular_risco_framingham
+    type: io.kestra.plugin.core.http.Request
+    description: Calcula risco cardiovascular usando Framingham
+    uri: "{{ vars.nise_api_url }}/api/v1/framingham/paciente/{{ inputs.paciente_id }}"
+    method: GET
+    headers:
+      Content-Type: application/json
+    
+  # ────────────────────────────────────────────────────────────────
+  # ETAPA 3: Processar resultado e classificar risco
+  # ────────────────────────────────────────────────────────────────
+  
+  - id: processar_resultado
+    type: io.kestra.plugin.scripts.python.Script
+    description: Processa resultado do Framingham e extrai informações
+    script: |
+      import json
+      
+      # Parse do resultado
+      resultado = json.loads("""{{ outputs.calcular_risco_framingham.body }}""")
+      
+      # Extrair informações
+      risco_percentual = resultado['risco_10_anos']
+      classificacao = resultado['classificacao']
+      pontos_totais = resultado['pontos_totais']
+      recomendacoes = resultado['recomendacoes']
+      
+      # Determinar ação
+      if classificacao == 'alto':
+          acao = 'alerta_critico'
+          prioridade = 'URGENTE'
+      elif classificacao == 'intermediario':
+          acao = 'agendar_consulta'
+          prioridade = 'ALTA'
+      else:
+          acao = 'registrar_avaliacao'
+          prioridade = 'NORMAL'
+      
+      # Output
+      print(json.dumps({
+          'risco_percentual': risco_percentual,
+          'classificacao': classificacao,
+          'pontos_totais': pontos_totais,
+          'acao': acao,
+          'prioridade': prioridade,
+          'recomendacoes_count': len(recomendacoes)
+      }))
+  
+  # ────────────────────────────────────────────────────────────────
+  # ETAPA 4: Acionar ações baseadas no risco
+  # ────────────────────────────────────────────────────────────────
+  
+  - id: acionar_acao_risco_alto
+    type: io.kestra.plugin.core.flow.If
+    description: Aciona alerta crítico se risco alto
+    condition: "{{ outputs.processar_resultado.vars.classificacao == 'alto' }}"
+    then:
+      - id: trigger_alerta_critico
+        type: io.kestra.plugin.core.flow.Trigger
+        description: Dispara workflow de alerta crítico
+        flowId: alerta-critico-notificacao
+        namespace: intellicare.nise
+        inputs:
+          paciente_id: "{{ inputs.paciente_id }}"
+          tipo_alerta: "RISCO_CARDIOVASCULAR_ALTO"
+          severidade: "CRITICO"
+          mensagem: "Risco cardiovascular alto detectado: {{ outputs.processar_resultado.vars.risco_percentual }}%"
+  
+  - id: acionar_acao_risco_intermediario
+    type: io.kestra.plugin.core.flow.If
+    description: Agenda consulta se risco intermediário
+    condition: "{{ outputs.processar_resultado.vars.classificacao == 'intermediario' }}"
+    then:
+      - id: agendar_consulta_cardiologia
+        type: io.kestra.plugin.core.http.Request
+        description: Agenda consulta de cardiologia
+        uri: "{{ vars.oswaldo_api_url }}/api/v1/pacientes/{{ inputs.paciente_id }}/consultas"
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: |
+          {
+            "especialidade": "Cardiologia",
+            "prioridade": "ALTA",
+            "motivo": "Avaliação de risco cardiovascular intermediário ({{ outputs.processar_resultado.vars.risco_percentual }}%)",
+            "prazo_dias": 30
+          }
+  
+  # ────────────────────────────────────────────────────────────────
+  # ETAPA 5: Atualizar plano de cuidado
+  # ────────────────────────────────────────────────────────────────
+  
+  - id: atualizar_plano_cuidado
+    type: io.kestra.plugin.core.http.Request
+    description: Atualiza plano de cuidado com resultado Framingham
+    uri: "{{ vars.oswaldo_api_url }}/api/v1/pacientes/{{ inputs.paciente_id }}/plano-cuidado"
+    method: PATCH
+    headers:
+      Content-Type: application/json
+    body: |
+      {
+        "avaliacao_risco_cardiovascular": {
+          "data_avaliacao": "{{ execution.startDate }}",
+          "risco_framingham_10_anos": {{ outputs.processar_resultado.vars.risco_percentual }},
+          "classificacao": "{{ outputs.processar_resultado.vars.classificacao }}",
+          "pontos_totais": {{ outputs.processar_resultado.vars.pontos_totais }},
+          "proxima_avaliacao": "{{ execution.startDate | dateAdd(1, 'YEARS') }}"
+        }
+      }
+  
+  # ────────────────────────────────────────────────────────────────
+  # ETAPA 6: Notificar paciente
+  # ────────────────────────────────────────────────────────────────
+  
+  - id: notificar_paciente
+    type: io.kestra.plugin.notifications.slack.SlackIncomingWebhook
+    description: Envia notificação ao paciente via Rocket.Chat
+    url: "{{ vars.rocketchat_webhook }}"
+    payload: |
+      {
+        "text": "🩺 *Avaliação de Risco Cardiovascular*",
+        "attachments": [
+          {
+            "color": "{{ outputs.processar_resultado.vars.classificacao == 'alto' ? 'danger' : (outputs.processar_resultado.vars.classificacao == 'intermediario' ? 'warning' : 'good') }}",
+            "fields": [
+              {
+                "title": "Paciente",
+                "value": "{{ inputs.paciente_id }}",
+                "short": true
+              },
+              {
+                "title": "Risco em 10 anos",
+                "value": "{{ outputs.processar_resultado.vars.risco_percentual }}%",
+                "short": true
+              },
+              {
+                "title": "Classificação",
+                "value": "{{ outputs.processar_resultado.vars.classificacao | upper }}",
+                "short": true
+              },
+              {
+                "title": "Ação",
+                "value": "{{ outputs.processar_resultado.vars.acao }}",
+                "short": true
+              }
+            ]
+          }
+        ]
+      }
+
+# ══════════════════════════════════════════════════════════════════
+# TRIGGERS
+# ══════════════════════════════════════════════════════════════════
+
+triggers:
+  # Trigger periódico (mensal) para pacientes de risco
+  - id: avaliacao_mensal
+    type: io.kestra.plugin.core.trigger.Schedule
+    description: Avaliação mensal automática de pacientes de risco
+    cron: "0 8 1 * *"  # Todo dia 1 do mês às 8h
+

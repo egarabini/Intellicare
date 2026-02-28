@@ -1,0 +1,14 @@
+MSH|^~\&|TASY|SAMARITANO|GRAHAME|INTELLICARE|20260213170048||ADT^A04|TASY0000009|P|2.5|||AL|NE|BRA
+EVN|A04|20260213170048|||666506^Costa^Roberto^L^^^Dr.
+PID|1||576047^^^SAMARITANO^MR||Costa^Ana^Paula||19530908|F|||Rua Paulista, 3334^^São Paulo^SP^51657-496^BR^H||11968893743^PRN^PH||PT|S|CAT|||609.876.315-57||||||BR
+PD1|||SAMARITANO - Unidade Itaim||||666506^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678
+NK1|1|Ferreira^Roberto^Luiz|SON|Rua Paulista, 3334^^São Paulo^SP^51657-496^BR^H|11973213930^PRN^PH
+PV1|1|I|UTI^844^02^SAMARITANO|||666506^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|666506^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|CLI||||1|||666506^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|AMB|V956601|4||||||||||||||||||||SAMARITANO||||20260213170048
+PV2||DPOC com exacerbação|||||20260213170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||38.5|Cel|36.0-37.5|L|||F|||20260207170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||120|bpm|60-100|H|||F|||20260207170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||21|irpm|12-20|N|||F|||20260207170048
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||94|mmHg|90-140|N|||F|||20260207170048
+OBX|5|NM|2339-0^Glicemia^LN||163|mg/dL|70-100|L|||F|||20260207170048
+
+DG1|1|ICD10|J44.1^DPOC com exacerbação^ICD10|DPOC com exacerbação||A

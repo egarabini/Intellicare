@@ -1,0 +1,11 @@
+MSH|^~\&|TASY|SAMARITANO|GRAHAME|INTELLICARE|20260224170048||ADT^A04|TASY0000010|P|2.5|||AL|NE|BRA
+EVN|A04|20260224170048|||150037^Costa^Roberto^L^^^Dr.
+PID|1||655765^^^SAMARITANO^MR||Santos^Maria^Ana||19980602|M|||Rua das Flores, 7741^^São Paulo^SP^38443-651^BR^H||11963386140^PRN^PH||PT|D|CAT|||277.723.853-67||||||BR
+PD1|||SAMARITANO - Unidade Paulista||||150037^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678
+NK1|1|Rodrigues^Patricia^Maria|DAU|Rua das Flores, 7741^^São Paulo^SP^38443-651^BR^H|11983028204^PRN^PH
+PV1|1|I|UTI^211^B^SAMARITANO|||150037^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|150037^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|CLI||||1|||150037^Costa^Roberto^L^^^Dr.^^^^^CRMSP^345678|AMB|V197477|4||||||||||||||||||||SAMARITANO||||20260224170048
+PV2||Colelitíase|||||20260224170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||38.9|Cel|36.0-37.5|N|||F|||20260130170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||78|bpm|60-100|L|||F|||20260130170048
+
+DG1|1|ICD10|K80.2^Colelitíase^ICD10|Colelitíase||A

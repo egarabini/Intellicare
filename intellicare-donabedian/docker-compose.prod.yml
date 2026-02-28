@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # FastAPI REST API (Production)
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    container_name: intellicare-donabedian-api-prod
+    ports:
+      - "${API_PORT:-8003}:8000"
+    environment:
+      # Database
+      INTELLICARE_DATABASE_URL: ${INTELLICARE_DATABASE_URL}
+      DATABASE_SCHEMA: ${DATABASE_SCHEMA:-intellicare_donabedian}
+      
+      # API Configuration
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      API_RELOAD: false
+      API_WORKERS: ${API_WORKERS:-8}
+      
+      # Environment
+      ENVIRONMENT: production
+      LOG_LEVEL: ${LOG_LEVEL:-WARNING}
+      
+      # CORS
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      
+      # Security
+      SECRET_KEY: ${SECRET_KEY}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      JWT_EXPIRATION_MINUTES: ${JWT_EXPIRATION_MINUTES:-30}
+    networks:
+      - intellicare-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  # Streamlit Dashboard (Production)
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dashboard
+    container_name: intellicare-donabedian-dashboard-prod
+    ports:
+      - "${DASHBOARD_PORT:-8501}:8501"
+    environment:
+      # API Configuration
+      DASHBOARD_API_URL: ${DASHBOARD_API_URL}
+      
+      # Dashboard Configuration
+      DASHBOARD_HOST: 0.0.0.0
+      DASHBOARD_PORT: 8501
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - intellicare-network
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+networks:
+  intellicare-network:
+    driver: bridge
+

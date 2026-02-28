@@ -1,0 +1,9 @@
+MSH|^~\&|MV2000|HCFMUSP|GRAHAME|INTELLICARE|20260224170048||ADT^A04|MV0000004|P|2.3|||AL|NE|BRA
+EVN|A04|20260224170048
+PID|1||749070^^^HCFMUSP^MR||Silva^João^Carlos||19810214|M|||Rua das Flores, 922^^São Paulo^SP^49895-505^BR^H||11905299294^PRN^PH||PT|W|CAT|||539.124.833-42
+NK1|1|Rodrigues^Patricia^Maria|MTH|Rua das Flores, 922^^São Paulo^SP^49895-505^BR^H|11918464268^PRN^PH
+PV1|1|I|UTI^661^02^HCFMUSP||||307037^Santos^Ana^P^^^Dra.||||||CLI||||V227717|4||||||||||||||||||||HCFMUSP||||20260224170048
+PV2||Diabetes mellitus não especificado
+OBX|1|NM|8310-5^Temperatura^LN||37.7|Cel|36.0-37.5|L|||F|||20260127170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||77|bpm|60-100|N|||F|||20260127170048
+DG1|1|ICD10|E14.9^Diabetes mellitus não especificado^ICD10|Diabetes mellitus não especificado||A

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmação de Teleconsulta - IntelliCare{% endblock %}
+
+{% block header_title %}📹 Teleconsulta Agendada{% endblock %}
+
+{% block content %}
+<h2>Sua teleconsulta foi agendada!</h2>
+
+<p>Olá <strong>{{ patient_name }}</strong>,</p>
+
+<p>Sua teleconsulta foi confirmada com sucesso. Veja os detalhes abaixo:</p>
+
+<table>
+    <tr>
+        <th>Data</th>
+        <td>{{ appointment_date|format_date }}</td>
+    </tr>
+    <tr>
+        <th>Horário</th>
+        <td>{{ appointment_time }}</td>
+    </tr>
+    <tr>
+        <th>Profissional</th>
+        <td>{{ professional_name }}</td>
+    </tr>
+    <tr>
+        <th>Especialidade</th>
+        <td>{{ specialty }}</td>
+    </tr>
+    {% if duration %}
+    <tr>
+        <th>Duração</th>
+        <td>{{ duration }} minutos</td>
+    </tr>
+    {% endif %}
+</table>
+
+<div class="alert alert-info">
+    <strong>Como participar:</strong><br>
+    No horário agendado, clique no botão abaixo para entrar na sala de teleconsulta.
+    Certifique-se de que sua câmera e microfone estejam funcionando.
+</div>
+
+<p style="text-align: center; margin: 30px 0;">
+    <a href="{{ room_url }}" class="button">Entrar na Teleconsulta</a>
+</p>
+
+{% if preparation_notes %}
+<h3>Preparação para a consulta</h3>
+<ul>
+    {% for note in preparation_notes %}
+    <li>{{ note }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<p style="margin-top: 30px; font-size: 14px; color: #6c757d;">
+    <strong>Precisa remarcar?</strong> Entre em contato conosco pelo telefone 
+    {{ contact_phone|default('(11) 1234-5678') }} ou email 
+    {{ contact_email|default('contato@intellicare.com.br') }}.
+</p>
+{% endblock %}
+

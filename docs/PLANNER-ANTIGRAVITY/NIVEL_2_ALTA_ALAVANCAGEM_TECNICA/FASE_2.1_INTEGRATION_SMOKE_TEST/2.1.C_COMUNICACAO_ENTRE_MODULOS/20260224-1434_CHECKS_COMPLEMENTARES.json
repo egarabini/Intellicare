@@ -1,0 +1,130 @@
+{
+  "timestamp": "20260224-1434",
+  "wanda_discover": {
+    "success": true,
+    "data": {
+      "total": 6,
+      "online": 5,
+      "modules": [
+        {
+          "name": "intellicare-oswaldo",
+          "base_url": "http://oswaldo:8000",
+          "version": "1.0.0",
+          "description": "Motor generico de doencas cronicas",
+          "capabilities": [
+            "chronic-disease-monitoring",
+            "staging",
+            "alerts"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:30:08.121916"
+        },
+        {
+          "name": "intellicare-florence",
+          "base_url": "http://florence:8000",
+          "version": "1.0.0",
+          "description": "Deep Clinical Intelligence Agent",
+          "capabilities": [
+            "lab-interpretation",
+            "trend-detection",
+            "clinical-correlation"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:30:08.128274"
+        },
+        {
+          "name": "intellicare-zilda",
+          "base_url": "http://zilda:8000",
+          "version": "1.0.0",
+          "description": "Agente de dados de saude publica brasileira (CNES/DATASUS)",
+          "capabilities": [
+            "cnes-lookup",
+            "cnes-validation",
+            "territorial-analysis",
+            "health-region-context"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:30:08.136166"
+        },
+        {
+          "name": "intellicare-donabedian",
+          "base_url": "http://donabedian:8000",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:30:08.138445"
+        },
+        {
+          "name": "intellicare-comunicacao",
+          "base_url": "http://comunicacao:8000",
+          "version": "0.1.0",
+          "description": "Comunicacao omnichannel para pacientes, equipe e agentes",
+          "capabilities": [
+            "routing-engine",
+            "rocketchat",
+            "email",
+            "sms",
+            "whatsapp",
+            "push",
+            "geralda-bot",
+            "patient-room-linking",
+            "clinical-alert-routing",
+            "redis-stream-consumer",
+            "matrix-login",
+            "matrix-room-send",
+            "matrix-room-create",
+            "matrix-room-invite"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:30:08.207733"
+        },
+        {
+          "name": "intellicare-geralda",
+          "base_url": "http://geralda:8000",
+          "version": "",
+          "description": "",
+          "capabilities": [
+            "care-plans",
+            "reminders",
+            "education"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:30:08.219679"
+        }
+      ]
+    },
+    "online_count": 5
+  },
+  "flow_geralda_route": {
+    "success": true,
+    "data": {
+      "target_modules": [
+        "intellicare-geralda"
+      ],
+      "reason": "Keyword match: 4 hit(s) para intellicare-geralda",
+      "confidence": 1.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow_geralda_chat": {
+    "success": true,
+    "data": {
+      "response": "Modulos com falha:\n- Geralda (Acompanhamento do Paciente): {\"detail\":\"Not Found\"}",
+      "modules_used": [],
+      "safety_warnings": [],
+      "routing": {
+        "target_modules": [
+          "intellicare-geralda"
+        ],
+        "reason": "Keyword match: 4 hit(s) para intellicare-geralda",
+        "confidence": 1.0,
+        "routing_method": "keyword"
+      }
+    }
+  },
+  "donabedian_info_status": 500,
+  "donabedian_health_status": 200,
+  "wanda_fhir_proxy_status": 404,
+  "grahame_careplan_status": 500
+}

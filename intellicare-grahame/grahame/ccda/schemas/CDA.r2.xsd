@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="urn:hl7-org:v3"
+    xmlns="urn:hl7-org:v3"
+    elementFormDefault="qualified"
+>
+    <!-- Wrapper file to keep a stable local entrypoint for CDA R2 validation. -->
+    <xs:include schemaLocation="cda-r2/infrastructure/cda/CDA.xsd" />
+</xs:schema>

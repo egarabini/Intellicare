@@ -1,0 +1,11 @@
+MSH|^~\&|MV2000|BENEFICENCIA|GRAHAME|INTELLICARE|20260208170048||ADT^A04|WARELINE0000002|P|2.3|||AL|NE|BRA
+EVN|A04|20260208170048
+PID|1||323810^^^BENEFICENCIA^MR||Almeida^Ricardo^José||19610127|F|||Rua das Flores, 3004^^São Paulo^SP^49080-776^BR^H||11915296313^PRN^PH||PT|W|CAT|||739.108.380-33
+NK1|1|Rodrigues^Patricia^Maria|FTH|Rua das Flores, 3004^^São Paulo^SP^49080-776^BR^H|11922991096^PRN^PH
+PV1|1|I|UTI^785^01^BENEFICENCIA||||614347^Oliveira^Pedro^J^^^Dr.||||||CAR||||V578281|4||||||||||||||||||||BENEFICENCIA||||20260208170048
+PV2||Insuficiência cardíaca congestiva
+OBX|1|NM|8310-5^Temperatura^LN||37.2|Cel|36.0-37.5|H|||F|||20260202170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||113|bpm|60-100|L|||F|||20260202170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||19|irpm|12-20|H|||F|||20260202170048
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||146|mmHg|90-140|N|||F|||20260202170048
+DG1|1|ICD10|I50.0^Insuficiência cardíaca congestiva^ICD10|Insuficiência cardíaca congestiva||A

@@ -1,0 +1,827 @@
+name: modularizacao
+services:
+  admin:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-admin/Dockerfile
+    container_name: intellicare-admin
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      ADMIN_PORT: "8010"
+      INTELLICARE_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+    hostname: admin
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8010/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: administracao
+      com.intellicare.service: admin
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8010
+        published: "8010"
+        protocol: tcp
+    restart: unless-stopped
+  comunicacao:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-comunicacao/Dockerfile
+      target: api
+    container_name: intellicare-comunicacao
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      COMUNICACAO_DATABASE_SCHEMA: intellicare_comunicacao
+      COMUNICACAO_PORT: "8005"
+      EMAIL_ENABLED: "true"
+      INTELLICARE_COMUNICACAO_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+      JITSI_APP_ID: intellicare
+      JITSI_APP_SECRET: dev-secret
+      JITSI_DOMAIN: meet.jitsi
+      JITSI_URL: https://meet.jitsi
+      PUSH_ENABLED: "true"
+      ROCKETCHAT_ADMIN_PASSWORD: admin
+      ROCKETCHAT_ADMIN_USERNAME: admin
+      ROCKETCHAT_URL: http://rocketchat:3000
+      SMS_ENABLED: "true"
+      SMS_PROVIDER: twilio
+      SMTP_HOST: smtp.example.com
+      SMTP_PASSWORD: dev-smtp-pass
+      SMTP_PORT: "587"
+      SMTP_USERNAME: intellicare@example.com
+      TWILIO_ACCOUNT_SID: dev-twilio-sid
+      TWILIO_AUTH_TOKEN: dev-twilio-token
+      VAPID_PRIVATE_KEY: dev-vapid-private
+      VAPID_PUBLIC_KEY: dev-vapid-public
+      WAHA_API_KEY: ""
+      WAHA_BASE_URL: http://waha:3000
+      WAHA_SESSION: default
+      WAHA_TIMEOUT_SECONDS: "30"
+      WHATSAPP_ACCESS_TOKEN: dev-whatsapp-token
+      WHATSAPP_ENABLED: "true"
+      WHATSAPP_PROVIDER: meta
+    hostname: comunicacao
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: comunicacao-notificacoes
+      com.intellicare.service: comunicacao
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8005"
+        protocol: tcp
+    restart: unless-stopped
+  donabedian:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-donabedian/Dockerfile
+      target: api
+    container_name: intellicare-donabedian
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      API_HOST: 0.0.0.0
+      API_PORT: "8003"
+      DONABEDIAN_DATABASE_SCHEMA: intellicare_donabedian
+      DONABEDIAN_PORT: "8003"
+      INTELLICARE_DONABEDIAN_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+    hostname: donabedian
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: qualidade-indicadores
+      com.intellicare.service: donabedian
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8003"
+        protocol: tcp
+    restart: unless-stopped
+  florence:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-florence/Dockerfile
+      target: api
+    container_name: intellicare-florence
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      FLORENCE_DATABASE_SCHEMA: intellicare_florence
+      FLORENCE_PORT: "8001"
+      INTELLICARE_ENABLE_DIAGNOSTIC_SUPPORT: "true"
+      INTELLICARE_ENABLE_RAG: "true"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_FLORENCE_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+    hostname: florence
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: rag-protocolos
+      com.intellicare.service: florence
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8001"
+        protocol: tcp
+    restart: unless-stopped
+  geralda:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-geralda/Dockerfile
+      target: api
+    container_name: intellicare-geralda
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      GERALDA_DATABASE_SCHEMA: intellicare_geralda
+      GERALDA_PORT: "8006"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_GERALDA_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+    hostname: geralda
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: gestao-administrativo
+      com.intellicare.service: geralda
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8006"
+        protocol: tcp
+    restart: unless-stopped
+  gestor:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-gestor/Dockerfile
+    container_name: intellicare-gestor
+    depends_on:
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      GESTOR_PORT: "8011"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+    hostname: gestor
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8011/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: gestao-modulos
+      com.intellicare.service: gestor
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8011
+        published: "8011"
+        protocol: tcp
+    restart: unless-stopped
+  grafana:
+    container_name: intellicare-grafana
+    depends_on:
+      prometheus:
+        condition: service_started
+        required: true
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_SECURITY_ADMIN_USER: admin
+    hostname: grafana
+    image: grafana/grafana:latest
+    labels:
+      com.intellicare.service: grafana
+      com.intellicare.tier: infrastructure
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\DOCSHARE\INTELLICARE\grafana-datasources.yml
+        target: /etc/grafana/provisioning/datasources/datasources.yml
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\DOCSHARE\INTELLICARE\grafana-dashboards.yml
+        target: /etc/grafana/provisioning/dashboards/dashboards.yml
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\DOCSHARE\INTELLICARE\grafana-dashboards
+        target: /etc/grafana/provisioning/dashboards
+        bind:
+          create_host_path: true
+  grahame:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-grahame/Dockerfile
+      target: api
+    container_name: intellicare-grahame
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      GRAHAME_PORT: "8012"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_GRAHAME_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+    hostname: grahame
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: fhir-interoperabilidade
+      com.intellicare.service: grahame
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8012"
+        protocol: tcp
+    restart: unless-stopped
+  nise:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-nise/Dockerfile
+      target: runtime
+    container_name: intellicare-nise
+    depends_on:
+      oswaldo:
+        condition: service_started
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      FLOWISE_API_KEY: ""
+      FLOWISE_URL: http://flowise:3000
+      INTELLICARE_ENVIRONMENT: development
+      KESTRA_URL: http://kestra:8080
+      LOG_LEVEL: INFO
+      NISE_PORT: "8013"
+      OLLAMA_URL: http://ollama:11434
+      OSWALDO_BASE_URL: http://oswaldo:8002
+      REDIS_URL: redis://redis:6379/0
+    hostname: nise
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: chatbot-treinamento
+      com.intellicare.service: nise
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8013"
+        protocol: tcp
+    restart: unless-stopped
+  ocr:
+    build:
+      context: C:\DOCSHARE\INTELLICARE\intellicare-ocr
+      dockerfile: Dockerfile
+    container_name: intellicare-ocr
+    depends_on:
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      CHROMA_HOST: localhost
+      CHROMA_PORT: "8200"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+      LLAMAPARSE_API_KEY: ""
+      OCR_LGPD_SALT: change-me
+      OCR_MAX_FILE_SIZE_MB: "50"
+      OCR_PORT: "8008"
+      OCR_VISION_MODEL: llama4:scout
+      OCR_WORKERS: "2"
+      OLLAMA_URL: http://ollama:11434
+    hostname: ocr
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8008/api/v1/health
+      timeout: 10s
+      interval: 30s
+      retries: 3
+      start_period: 30s
+    labels:
+      com.intellicare.module: ocr-documentos
+      com.intellicare.service: ocr
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8008
+        published: "8008"
+        protocol: tcp
+    restart: unless-stopped
+  oswaldo:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-oswaldo/Dockerfile
+      target: api
+    container_name: intellicare-oswaldo
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      INTELLICARE_ENABLE_CV_RISK_CALCULATOR: "false"
+      INTELLICARE_ENABLE_MEDICATION_ADVISOR: "false"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_OSWALDO_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+      OSWALDO_DATABASE_SCHEMA: intellicare_oswaldo
+      OSWALDO_PORT: "8002"
+    hostname: oswaldo
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: analise-clinica
+      com.intellicare.service: oswaldo
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8002"
+        protocol: tcp
+    restart: unless-stopped
+  pierre:
+    build:
+      context: C:\DOCSHARE\INTELLICARE\intellicare-pierre
+      dockerfile: Dockerfile
+    container_name: intellicare-pierre
+    depends_on:
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+      NCBI_API_KEY: ""
+      OLLAMA_URL: http://ollama:11434
+      PIERRE_LLM_MODEL: qwen2.5:72b
+      PIERRE_LLM_MODEL_FALLBACK: qwen2.5:7b
+      PIERRE_PORT: "8009"
+      PIERRE_WORKERS: "2"
+      REDIS_URL: redis://redis:6379/0
+      TAVILY_API_KEY: dev-tavily-key
+    hostname: pierre
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8009/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: scientific-search
+      com.intellicare.service: pierre
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8009
+        published: "8009"
+        protocol: tcp
+    restart: unless-stopped
+  portal:
+    build:
+      context: C:\DOCSHARE\INTELLICARE\intellicare-portal\frontend
+      dockerfile: Dockerfile
+      target: production
+    container_name: intellicare-portal
+    depends_on:
+      comunicacao:
+        condition: service_started
+        required: true
+      donabedian:
+        condition: service_started
+        required: true
+      florence:
+        condition: service_started
+        required: true
+      geralda:
+        condition: service_started
+        required: true
+      oswaldo:
+        condition: service_started
+        required: true
+      wanda:
+        condition: service_started
+        required: true
+    environment:
+      VITE_API_COMUNICACAO_URL: http://localhost:8005
+      VITE_API_DONABEDIAN_URL: http://localhost:8003
+      VITE_API_FLORENCE_URL: http://localhost:8001
+      VITE_API_GERALDA_URL: http://localhost:8006
+      VITE_API_OSWALDO_URL: http://localhost:8002
+      VITE_API_TIMEOUT: "30000"
+      VITE_API_WANDA_URL: http://localhost:8004
+      VITE_APP_VERSION: 0.1.0-demo
+      VITE_ENABLE_ANALYTICS: "false"
+    hostname: portal
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:80/
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: interface-web
+      com.intellicare.service: portal
+      com.intellicare.tier: frontend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "3001"
+        protocol: tcp
+    restart: unless-stopped
+  postgres:
+    container_name: intellicare-postgres
+    environment:
+      POSTGRES_DB: intellicare_db
+      POSTGRES_PASSWORD: intellicare_dev
+      POSTGRES_USER: intellicare_admin
+    hostname: postgres
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U intellicare_admin -d intellicare_db
+      timeout: 5s
+      interval: 10s
+      retries: 5
+    image: postgres:15-alpine
+    labels:
+      com.intellicare.service: postgres
+      com.intellicare.tier: infrastructure
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+        volume: {}
+  prometheus:
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=30d
+    container_name: intellicare-prometheus
+    depends_on:
+      postgres:
+        condition: service_started
+        required: true
+      redis:
+        condition: service_started
+        required: true
+    hostname: prometheus
+    image: prom/prometheus:latest
+    labels:
+      com.intellicare.service: prometheus
+      com.intellicare.tier: infrastructure
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 9090
+        published: "9090"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\DOCSHARE\INTELLICARE\prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        bind:
+          create_host_path: true
+      - type: volume
+        source: prometheus-data
+        target: /prometheus
+        volume: {}
+  redis:
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --maxmemory
+      - 512mb
+      - --maxmemory-policy
+      - allkeys-lru
+    container_name: intellicare-redis
+    hostname: redis
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      timeout: 5s
+      interval: 10s
+      retries: 5
+    image: redis:7-alpine
+    labels:
+      com.intellicare.service: redis
+      com.intellicare.tier: infrastructure
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "6379"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: redis-data
+        target: /data
+        volume: {}
+  wanda:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-wanda/Dockerfile
+      target: api
+    container_name: intellicare-wanda
+    depends_on:
+      donabedian:
+        condition: service_started
+        required: true
+      florence:
+        condition: service_started
+        required: true
+      oswaldo:
+        condition: service_started
+        required: true
+      postgres:
+        condition: service_healthy
+        required: true
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      INTELLICARE_COMUNICACAO_URL: http://comunicacao:8005
+      INTELLICARE_DISCOVERY_TIMEOUT_SECONDS: "5"
+      INTELLICARE_DONABEDIAN_URL: http://donabedian:8003
+      INTELLICARE_ENABLE_IPS_FIRST: "true"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_FHIR_SERVER_URL: http://grahame:8000/api/v1/fhir
+      INTELLICARE_FLORENCE_URL: http://florence:8001
+      INTELLICARE_GERALDA_URL: http://geralda:8006
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_MAX_MODULES_PER_QUERY: "3"
+      INTELLICARE_OSWALDO_URL: http://oswaldo:8002
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+      INTELLICARE_WANDA_DATABASE_URL: postgresql+asyncpg://intellicare_admin:intellicare_dev@postgres:5432/intellicare_db
+      WANDA_DATABASE_SCHEMA: intellicare_wanda
+      WANDA_PORT: "8004"
+    hostname: wanda
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: orquestracao
+      com.intellicare.service: wanda
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8004"
+        protocol: tcp
+    restart: unless-stopped
+  zilda:
+    build:
+      context: C:\DOCSHARE\INTELLICARE
+      dockerfile: ./intellicare-zilda/Dockerfile
+      target: api
+    container_name: intellicare-zilda
+    depends_on:
+      redis:
+        condition: service_healthy
+        required: true
+    environment:
+      INTELLICARE_CNES_BASE_URL: https://apidadosabertos.saude.gov.br
+      INTELLICARE_CNES_TIMEOUT: "30"
+      INTELLICARE_ENVIRONMENT: development
+      INTELLICARE_LOG_LEVEL: INFO
+      INTELLICARE_REDIS_URL: redis://redis:6379/0
+      ZILDA_PORT: "8007"
+    hostname: zilda
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/api/v1/health
+      timeout: 5s
+      interval: 30s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.module: dados-saude-brasil
+      com.intellicare.service: zilda
+      com.intellicare.tier: backend
+    networks:
+      intellicare-network: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "8007"
+        protocol: tcp
+    restart: unless-stopped
+networks:
+  intellicare-network:
+    name: modularizacao_intellicare-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+volumes:
+  postgres-data:
+    name: modularizacao_postgres-data
+    driver: local
+  prometheus-data:
+    name: modularizacao_prometheus-data
+    driver: local
+  redis-data:
+    name: modularizacao_redis-data
+    driver: local

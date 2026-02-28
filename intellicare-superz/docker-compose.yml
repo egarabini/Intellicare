@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  intellicare-superz:
+    build: .
+    container_name: intellicare-superz
+    ports:
+      - "8009:8009"
+    environment:
+      - TAVILY_API_KEY=${TAVILY_API_KEY:-}
+      - NCBI_API_KEY=${NCBI_API_KEY:-}
+      - OLLAMA_URL=${OLLAMA_URL:-http://host.docker.internal:11434}
+      - SUPERZ_LLM_MODEL=${SUPERZ_LLM_MODEL:-qwen2.5:72b}
+      - SUPERZ_LLM_MODEL_FALLBACK=${SUPERZ_LLM_MODEL_FALLBACK:-qwen2.5:7b}
+      - REDIS_URL=redis://redis:6379/1
+      - SUPERZ_PORT=8009
+      - SUPERZ_TAVILY_RATE_LIMIT_PER_HOUR=${SUPERZ_TAVILY_RATE_LIMIT_PER_HOUR:-100}
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8009/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - intellicare-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: superz-redis
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    networks:
+      - intellicare-network
+
+networks:
+  intellicare-network:
+    name: intellicare-network

@@ -1,0 +1,85 @@
+version: "3.9"
+
+# ============================================================================
+# Docker Compose Overlay — Traefik Reverse Proxy
+# ============================================================================
+# Usage:
+#   docker-compose -f docker-compose.full.yml -f docker-compose.traefik.yml up -d
+#
+# Adds Traefik as reverse proxy with:
+#   - HTTPS termination (Let's Encrypt)
+#   - Subdomain routing (admin, portal, api)
+#   - Security headers, CORS, rate limiting
+#   - Prometheus metrics
+# ============================================================================
+
+volumes:
+  letsencrypt-data:
+    driver: local
+
+services:
+
+  # ==========================================================================
+  # Traefik 3.x — Reverse Proxy + Load Balancer
+  # ==========================================================================
+  traefik:
+    image: traefik:v3.2
+    container_name: intellicare-traefik
+    hostname: traefik
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Traefik config
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/dynamic/:/etc/traefik/dynamic/:ro
+      # Docker socket (read-only)
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Let's Encrypt certificates
+      - letsencrypt-data:/letsencrypt
+    environment:
+      # AWS Route 53 for wildcard certs (set in .env or .env.traefik)
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+      AWS_HOSTED_ZONE_ID: ${AWS_HOSTED_ZONE_ID:-}
+      # Force Docker API version to auto-detect (fixes "client version 1.24 too old" error)
+      DOCKER_API_VERSION: ""
+    networks:
+      - intellicare-network
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    labels:
+      com.intellicare.service: "traefik"
+      com.intellicare.tier: "infrastructure"
+
+  # ==========================================================================
+  # Override modules: remove direct port mappings (Traefik proxies them)
+  # ==========================================================================
+  florence:
+    ports: []
+
+  oswaldo:
+    ports: []
+
+  donabedian:
+    ports: []
+
+  wanda:
+    ports: []
+
+  comunicacao:
+    ports: []
+
+  geralda:
+    ports: []
+
+  portal:
+    ports: []

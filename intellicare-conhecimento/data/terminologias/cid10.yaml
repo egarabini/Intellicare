@@ -1,0 +1,13 @@
+items:
+  - code: N18.3
+    system: cid10
+    display: Doenca renal cronica estagio 3
+    definition: DRC com TFG entre 30 e 59 mL/min/1.73m2
+    synonyms: [DRC G3, insuficiencia renal moderada]
+    parent_code: N18
+    children_codes: [N18.30, N18.31]
+  - code: I50.9
+    system: cid10
+    display: Insuficiencia cardiaca nao especificada
+    synonyms: [IC]
+

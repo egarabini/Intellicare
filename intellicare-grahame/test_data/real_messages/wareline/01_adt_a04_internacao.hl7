@@ -1,0 +1,11 @@
+MSH|^~\&|MV2000|MOINHOS|GRAHAME|INTELLICARE|20260211170048||ADT^A04|WARELINE0000001|P|2.3|||AL|NE|BRA
+EVN|A04|20260211170048
+PID|1||374546^^^MOINHOS^MR||Silva^João^Carlos||19600421|F|||Rua Paulista, 2641^^São Paulo^SP^71234-750^BR^H||11930311601^PRN^PH||PT|W|CAT|||155.578.217-86
+NK1|1|Oliveira^Pedro^José|MTH|Rua Paulista, 2641^^São Paulo^SP^71234-750^BR^H|11900074987^PRN^PH
+PV1|1|I|UTI^372^A^MOINHOS||||615864^Santos^Ana^P^^^Dra.||||||NEU||||V752114|4||||||||||||||||||||MOINHOS||||20260211170048
+PV2||Diabetes mellitus não especificado
+OBX|1|NM|8310-5^Temperatura^LN||38.4|Cel|36.0-37.5|L|||F|||20260219170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||67|bpm|60-100|H|||F|||20260219170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||12|irpm|12-20|L|||F|||20260219170048
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||152|mmHg|90-140|H|||F|||20260219170048
+DG1|1|ICD10|E14.9^Diabetes mellitus não especificado^ICD10|Diabetes mellitus não especificado||A

@@ -1,0 +1,99 @@
+# ============================================================================
+# Traefik Dynamic Configuration — Routes for saudeplanner.com.br
+# ============================================================================
+# File: traefik/dynamic/routes-saudeconectada.yml
+#
+# Standalone module access:
+#   oswaldo.saudeplanner.com.br   → intellicare-oswaldo:8002
+#   florence.saudeplanner.com.br  → intellicare-florence:8001
+#   zilda.saudeplanner.com.br    → intellicare-zilda:8000
+#   etc.
+#
+# White-label tenant subdomains:
+#   {tenant}.saudeplanner.com.br  → intellicare-portal:80 (+ X-Tenant-ID header)
+
+http:
+  routers:
+
+    # ── Module-specific subdomains ────────────────────────────
+
+    sc-oswaldo:
+      rule: "Host(`oswaldo.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: oswaldo-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-florence:
+      rule: "Host(`florence.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: florence-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-zilda:
+      rule: "Host(`zilda.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: zilda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-donabedian:
+      rule: "Host(`donabedian.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: donabedian-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-comunicacao:
+      rule: "Host(`comunicacao.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: comunicacao-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # ── Wildcard: White-label tenant subdomains ───────────────
+    # Catch-all for {tenant}.saudeplanner.com.br
+    # Routes to portal with X-Tenant-ID header injection
+    sc-whitelabel:
+      rule: "HostRegexp(`{tenant:[a-z0-9_]+}.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: portal-svc
+      tls:
+        certResolver: letsencrypt-wildcard
+        domains:
+          - main: "saudeplanner.com.br"
+            sans:
+              - "*.saudeplanner.com.br"
+      middlewares:
+        - frontend-chain
+      priority: 1  # Lower priority than explicit module routes above
+
+  # ── Services (reuse intellicare services) ───────────────────
+  # Services already defined in routes-intellicare.yml
+  # Additional service for zilda:
+  services:
+    zilda-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-zilda:8000"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s

@@ -1,0 +1,42 @@
+metadata:
+  id: proto-drc-kdigo-001
+  version: 1.0.0
+  title: Protocolo DRC - Diretrizes KDIGO
+  specialty: nefrologia
+  condition: ckd
+  status: published
+  created_at: "2026-02-17T00:00:00"
+  updated_at: "2026-02-17T00:00:00"
+  author: Comissao de Nefrologia
+  reviewer: Revisor Nefro
+  approver: Diretor Clinico
+  approved_at: "2026-02-17T00:00:00"
+  tags: [drc, kdigo, nefrologia]
+  keywords: [egfr, albuminuria, estadiamento]
+  references: ["KDIGO 2024"]
+summary: Diretrizes de classificacao e manejo de doenca renal cronica.
+sections:
+  - title: Classificacao
+    content: Estadiamento por eGFR e albuminuria.
+    order: 1
+  - title: Conduta
+    content: Monitorar trimestralmente G3a e encaminhar nefrologia em progressao.
+    order: 2
+criteria:
+  - name: DRC G3a
+    description: eGFR entre 45 e 59
+    condition: eGFR >= 45 AND eGFR < 60
+    action: monitoramento semestral
+interventions:
+  - code: int-nefro-001
+    name: Monitoramento de creatinina
+    description: Dosar creatinina e albuminuria.
+    indication: Diagnostico de DRC
+    monitoring: Trimestral
+pathways:
+  line_of_care: DRC Adulto
+  transitions:
+    - from: APS
+      to: Nefrologia
+      when: declinio_egfr
+

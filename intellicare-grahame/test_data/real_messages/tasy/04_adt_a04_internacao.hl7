@@ -1,0 +1,12 @@
+MSH|^~\&|TASY|HSL|GRAHAME|INTELLICARE|20260222170048||ADT^A04|TASY0000004|P|2.5|||AL|NE|BRA
+EVN|A04|20260222170048|||170466^Oliveira^Pedro^J^^^Dr.
+PID|1||659626^^^HSL^MR||Costa^Ana^Paula||19730913|F|||Rua Augusta, 838^^São Paulo^SP^28929-864^BR^H||11979420169^PRN^PH||PT|C|CAT|||355.702.487-86||||||BR
+PD1|||HSL - Unidade Itaim||||170466^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567
+NK1|1|Lima^Fernanda^Silva|SON|Rua Augusta, 838^^São Paulo^SP^28929-864^BR^H|11950129731^PRN^PH
+PV1|1|I|UTI^480^A^HSL|||170466^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567|170466^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567|CIR||||1|||170466^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567|AMB|V552461|4||||||||||||||||||||HSL||||20260222170048
+PV2||Diabetes mellitus não especificado|||||20260222170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||37.1|Cel|36.0-37.5|N|||F|||20260205170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||88|bpm|60-100|N|||F|||20260205170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||17|irpm|12-20|L|||F|||20260205170048
+AL1|1|DA|1191^Penicilina^L|SV|Anafilaxia
+DG1|1|ICD10|E14.9^Diabetes mellitus não especificado^ICD10|Diabetes mellitus não especificado||A

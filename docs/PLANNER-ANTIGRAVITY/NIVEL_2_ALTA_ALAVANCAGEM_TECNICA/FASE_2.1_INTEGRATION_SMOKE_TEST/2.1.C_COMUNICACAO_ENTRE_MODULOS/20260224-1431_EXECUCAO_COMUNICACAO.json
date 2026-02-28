@@ -1,0 +1,337 @@
+{
+  "timestamp": "20260224-1431",
+  "wanda_discover": {
+    "success": true,
+    "data": {
+      "total": 6,
+      "online": 5,
+      "modules": [
+        {
+          "name": "intellicare-oswaldo",
+          "base_url": "http://oswaldo:8000",
+          "version": "1.0.0",
+          "description": "Motor generico de doencas cronicas",
+          "capabilities": [
+            "chronic-disease-monitoring",
+            "staging",
+            "alerts"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:54.796489"
+        },
+        {
+          "name": "intellicare-florence",
+          "base_url": "http://florence:8000",
+          "version": "1.0.0",
+          "description": "Deep Clinical Intelligence Agent",
+          "capabilities": [
+            "lab-interpretation",
+            "trend-detection",
+            "clinical-correlation"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:54.865693"
+        },
+        {
+          "name": "intellicare-zilda",
+          "base_url": "http://zilda:8000",
+          "version": "1.0.0",
+          "description": "Agente de dados de saude publica brasileira (CNES/DATASUS)",
+          "capabilities": [
+            "cnes-lookup",
+            "cnes-validation",
+            "territorial-analysis",
+            "health-region-context"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:54.913373"
+        },
+        {
+          "name": "intellicare-donabedian",
+          "base_url": "http://donabedian:8000",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:28:54.917227"
+        },
+        {
+          "name": "intellicare-comunicacao",
+          "base_url": "http://comunicacao:8000",
+          "version": "0.1.0",
+          "description": "Comunicacao omnichannel para pacientes, equipe e agentes",
+          "capabilities": [
+            "routing-engine",
+            "rocketchat",
+            "email",
+            "sms",
+            "whatsapp",
+            "push",
+            "geralda-bot",
+            "patient-room-linking",
+            "clinical-alert-routing",
+            "redis-stream-consumer",
+            "matrix-login",
+            "matrix-room-send",
+            "matrix-room-create",
+            "matrix-room-invite"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:55.18348"
+        },
+        {
+          "name": "intellicare-geralda",
+          "base_url": "http://geralda:8000",
+          "version": "",
+          "description": "",
+          "capabilities": [
+            "care-plans",
+            "reminders",
+            "education"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:55.198247"
+        }
+      ]
+    },
+    "online_count": 5
+  },
+  "wanda_modules": {
+    "success": true,
+    "data": {
+      "total": 6,
+      "online": 5,
+      "modules": [
+        {
+          "name": "intellicare-oswaldo",
+          "base_url": "http://oswaldo:8000",
+          "version": "1.0.0",
+          "description": "Motor generico de doencas cronicas",
+          "capabilities": [
+            "chronic-disease-monitoring",
+            "staging",
+            "alerts"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:54.796489"
+        },
+        {
+          "name": "intellicare-florence",
+          "base_url": "http://florence:8000",
+          "version": "1.0.0",
+          "description": "Deep Clinical Intelligence Agent",
+          "capabilities": [
+            "lab-interpretation",
+            "trend-detection",
+            "clinical-correlation"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:54.865693"
+        },
+        {
+          "name": "intellicare-zilda",
+          "base_url": "http://zilda:8000",
+          "version": "1.0.0",
+          "description": "Agente de dados de saude publica brasileira (CNES/DATASUS)",
+          "capabilities": [
+            "cnes-lookup",
+            "cnes-validation",
+            "territorial-analysis",
+            "health-region-context"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:54.913373"
+        },
+        {
+          "name": "intellicare-donabedian",
+          "base_url": "http://donabedian:8000",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:28:54.917227"
+        },
+        {
+          "name": "intellicare-comunicacao",
+          "base_url": "http://comunicacao:8000",
+          "version": "0.1.0",
+          "description": "Comunicacao omnichannel para pacientes, equipe e agentes",
+          "capabilities": [
+            "routing-engine",
+            "rocketchat",
+            "email",
+            "sms",
+            "whatsapp",
+            "push",
+            "geralda-bot",
+            "patient-room-linking",
+            "clinical-alert-routing",
+            "redis-stream-consumer",
+            "matrix-login",
+            "matrix-room-send",
+            "matrix-room-create",
+            "matrix-room-invite"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:55.18348"
+        },
+        {
+          "name": "intellicare-geralda",
+          "base_url": "http://geralda:8000",
+          "version": "",
+          "description": "",
+          "capabilities": [
+            "care-plans",
+            "reminders",
+            "education"
+          ],
+          "status": "online",
+          "last_check": "2026-02-24T17:28:55.198247"
+        }
+      ]
+    }
+  },
+  "flow1_oswaldo_route": {
+    "success": true,
+    "data": {
+      "target_modules": [
+        "intellicare-oswaldo"
+      ],
+      "reason": "Keyword match: 3 hit(s) para intellicare-oswaldo",
+      "confidence": 1.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow1_oswaldo_chat": {
+    "success": true,
+    "data": {
+      "response": "**Oswaldo (Doencas Cronicas)**\n- Chronic Kidney Disease\n- Diabetes Mellitus Type 2\n- Hypertension",
+      "modules_used": [
+        "intellicare-oswaldo"
+      ],
+      "safety_warnings": [
+        "IPS-First: Consulta clinica sem patient_id. Recomenda-se carregar o contexto do paciente (IPS) antes da analise."
+      ],
+      "routing": {
+        "target_modules": [
+          "intellicare-oswaldo"
+        ],
+        "reason": "Keyword match: 3 hit(s) para intellicare-oswaldo",
+        "confidence": 1.0,
+        "routing_method": "keyword"
+      }
+    }
+  },
+  "flow2_florence_route": {
+    "success": true,
+    "data": {
+      "target_modules": [
+        "intellicare-florence"
+      ],
+      "reason": "Keyword match: 3 hit(s) para intellicare-florence",
+      "confidence": 1.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow2_florence_chat": {
+    "success": true,
+    "data": {
+      "response": "**Florence (Inteligencia Clinica)**\n- hematologic_panel\n- hepatic_panel\n- inflammatory_panel\n- metabolic_panel\n- renal_panel\n- thyroid_panel",
+      "modules_used": [
+        "intellicare-florence"
+      ],
+      "safety_warnings": [],
+      "routing": {
+        "target_modules": [
+          "intellicare-florence"
+        ],
+        "reason": "Keyword match: 3 hit(s) para intellicare-florence",
+        "confidence": 1.0,
+        "routing_method": "keyword"
+      }
+    }
+  },
+  "flow3_donabedian_route": {
+    "success": true,
+    "data": {
+      "target_modules": [
+        "intellicare-florence"
+      ],
+      "reason": "Keyword match: 1 hit(s) para intellicare-florence",
+      "confidence": 0.3333333333333333,
+      "routing_method": "keyword"
+    }
+  },
+  "flow3_donabedian_chat": {
+    "success": true,
+    "data": {
+      "response": "**Florence (Inteligencia Clinica)**\n- hematologic_panel\n- hepatic_panel\n- inflammatory_panel\n- metabolic_panel\n- renal_panel\n- thyroid_panel",
+      "modules_used": [
+        "intellicare-florence"
+      ],
+      "safety_warnings": [],
+      "routing": {
+        "target_modules": [
+          "intellicare-florence"
+        ],
+        "reason": "Keyword match: 1 hit(s) para intellicare-florence",
+        "confidence": 0.3333333333333333,
+        "routing_method": "keyword"
+      }
+    }
+  },
+  "flow4_zilda_route": {
+    "success": true,
+    "data": {
+      "target_modules": [
+        "intellicare-zilda"
+      ],
+      "reason": "Keyword match: 3 hit(s) para intellicare-zilda",
+      "confidence": 1.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow4_zilda_chat": {
+    "success": true,
+    "data": {
+      "response": "**Zilda (Dados de Saude Brasileiros)**\n- city_code=, city_name=, state_code=",
+      "modules_used": [
+        "intellicare-zilda"
+      ],
+      "safety_warnings": [],
+      "routing": {
+        "target_modules": [
+          "intellicare-zilda"
+        ],
+        "reason": "Keyword match: 3 hit(s) para intellicare-zilda",
+        "confidence": 1.0,
+        "routing_method": "keyword"
+      }
+    }
+  },
+  "portal_http_status": 200,
+  "wanda_health": {
+    "status": "healthy",
+    "module_name": "intellicare-wanda",
+    "version": "3.0.0",
+    "modules_online": 5
+  },
+  "wanda_fhir_proxy_status": 404,
+  "geralda_create_plan": {
+    "success": true,
+    "data": {
+      "id": "7399b9fd-c9dd-45e4-86a2-8bc0c76951f1",
+      "patient_id": "demo-001",
+      "conditions": [
+        "I10"
+      ],
+      "goals": [
+        "Controlar PA"
+      ],
+      "patient_name": "Paciente Demo",
+      "created_at": "2026-02-24T17:28:57.015095",
+      "status": "active"
+    }
+  },
+  "grahame_careplan_bundle": null
+}

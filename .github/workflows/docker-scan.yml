@@ -1,0 +1,94 @@
+# ============================================================================
+# Docker Image Security Scan — Trivy
+# ============================================================================
+# Scans Docker images for vulnerabilities (HIGH+ severity)
+# Fails build if critical vulnerabilities are found
+# ============================================================================
+
+name: Docker Scan
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - '**/Dockerfile'
+      - '.github/workflows/docker-scan.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - '**/Dockerfile'
+      - '.github/workflows/docker-scan.yml'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  scan:
+    name: Scan Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      packages: read
+
+    strategy:
+      matrix:
+        module:
+          - intellicare-grahame
+          - intellicare-oswaldo
+          - intellicare-florence
+          - intellicare-donabedian
+          - intellicare-zilda
+          - intellicare-geralda
+          - intellicare-wanda
+          - intellicare-portal
+          - intellicare-comunicacao
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.module }}:${{ github.sha }} ./${{ matrix.module }}
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.module }}:${{ github.sha }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: Check for HIGH+ vulnerabilities
+        run: |
+          # Get count of HIGH+ vulnerabilities
+          VULNS=$(trivy image --severity HIGH,CRITICAL --format json ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.module }}:${{ github.sha }} | jq '.Results | length')
+
+          if [ "$VULNS" -gt 0 ]; then
+            echo "❌ Found $VULNS HIGH+ vulnerabilities!"
+            echo "Please fix before merging."
+            exit 1
+          else
+            echo "✅ No HIGH+ vulnerabilities found!"
+          fi
+
+      - name: Generate SBOM
+        run: |
+          trivy image --format cyclonedx --output sbom.json ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-${{ matrix.module }}:${{ github.sha }}
+
+      - name: Upload SBOM as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sbom-${{ matrix.module }}
+          path: sbom.json

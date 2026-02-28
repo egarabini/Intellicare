@@ -1,0 +1,30 @@
+id: careplan-ckd-g3a
+condition: ckd
+title: Plano de Cuidado DRC G3a
+description: Template para manejo de DRC em estagio G3a.
+specialty: nefrologia
+stage: G3a
+goals:
+  - code: goal-egfr
+    description: Manter eGFR estavel
+    target_value: eGFR > 45
+    priority: high
+activities:
+  - code: act-creatinina
+    category: exame
+    title: Dosagem de creatinina
+    description: Monitorar funcao renal
+    frequency: quarterly
+    monitoring: Comparar tendencia de eGFR
+  - code: act-educacao
+    category: educacao
+    title: Educacao em autocuidado
+    description: Orientar hidratacao e adesao terapeutica
+    frequency: monthly
+education_materials:
+  - cartilha_drc_basico.pdf
+triggers:
+  - egfr_entre_45_59
+metadata:
+  source: protocolo-drc-kdigo
+

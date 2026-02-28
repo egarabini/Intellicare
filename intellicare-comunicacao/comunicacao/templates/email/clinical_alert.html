@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Alerta Clínico - IntelliCare{% endblock %}
+
+{% block header_title %}⚠️ Alerta Clínico{% endblock %}
+
+{% block content %}
+<h2>Alerta de {{ severity|upper }}</h2>
+
+<div class="alert alert-{{ 'danger' if severity == 'critical' else 'warning' if severity == 'high' else 'info' }}">
+    <strong>{{ title }}</strong><br>
+    {{ message }}
+</div>
+
+<table>
+    <tr>
+        <th>Paciente</th>
+        <td>{{ patient_name }}</td>
+    </tr>
+    <tr>
+        <th>Prontuário</th>
+        <td>{{ patient_id }}</td>
+    </tr>
+    <tr>
+        <th>Data/Hora</th>
+        <td>{{ timestamp|format_datetime }}</td>
+    </tr>
+    {% if alert_type %}
+    <tr>
+        <th>Tipo de Alerta</th>
+        <td>{{ alert_type }}</td>
+    </tr>
+    {% endif %}
+</table>
+
+{% if recommendations %}
+<h3>Recomendações</h3>
+<ul>
+    {% for rec in recommendations %}
+    <li>{{ rec }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if action_url %}
+<p style="text-align: center; margin-top: 30px;">
+    <a href="{{ action_url }}" class="button">Ver Detalhes no Sistema</a>
+</p>
+{% endif %}
+
+<p style="margin-top: 30px; font-size: 14px; color: #6c757d;">
+    <strong>Atenção:</strong> Este alerta requer ação imediata. 
+    Por favor, avalie o paciente o mais breve possível.
+</p>
+{% endblock %}
+

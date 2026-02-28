@@ -1,0 +1,13 @@
+MSH|^~\&|TASY|SAMARITANO|GRAHAME|INTELLICARE|20260207170048||ADT^A04|TASY0000003|P|2.5|||AL|NE|BRA
+EVN|A04|20260207170048|||547787^Oliveira^Pedro^J^^^Dr.
+PID|1||289653^^^SAMARITANO^MR||Almeida^Ricardo^José||19700628|M|||Rua Augusta, 6735^^São Paulo^SP^83644-511^BR^H||11968775453^PRN^PH||PT|S|CAT|||650.127.780-93||||||BR
+PD1|||SAMARITANO - Unidade Morumbi||||547787^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567
+NK1|1|Ferreira^Roberto^Luiz|SON|Rua Augusta, 6735^^São Paulo^SP^83644-511^BR^H|11941635679^PRN^PH
+PV1|1|I|ENFER^521^A^SAMARITANO|||547787^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567|547787^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567|CAR||||1|||547787^Oliveira^Pedro^J^^^Dr.^^^^^CRMSP^234567|AMB|V950587|4||||||||||||||||||||SAMARITANO||||20260207170048
+PV2||Insuficiência cardíaca congestiva|||||20260207170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||37.7|Cel|36.0-37.5|L|||F|||20260203170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||84|bpm|60-100|H|||F|||20260203170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||21|irpm|12-20|N|||F|||20260203170048
+OBX|4|NM|8480-6^Pressão Arterial Sistólica^LN||111|mmHg|90-140|L|||F|||20260203170048
+
+DG1|1|ICD10|I50.0^Insuficiência cardíaca congestiva^ICD10|Insuficiência cardíaca congestiva||A

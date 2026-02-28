@@ -1,0 +1,11 @@
+MSH|^~\&|TASY|EINSTEIN|GRAHAME|INTELLICARE|20260209170048||ADT^A04|TASY0000001|P|2.5|||AL|NE|BRA
+EVN|A04|20260209170048|||541676^Lima^Carlos^A^^^Dr.
+PID|1||740819^^^EINSTEIN^MR||Ferreira^Roberto^Luiz||19980421|M|||Rua Paulista, 1004^^São Paulo^SP^77074-566^BR^H||11915167295^PRN^PH||PT|C|CAT|||506.439.589-50||||||BR
+PD1|||EINSTEIN - Unidade Paulista||||541676^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890
+NK1|1|Ferreira^Roberto^Luiz|FTH|Rua Paulista, 1004^^São Paulo^SP^77074-566^BR^H|11986282865^PRN^PH
+PV1|1|I|ENFER^309^02^EINSTEIN|||541676^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890|541676^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890|CIR||||1|||541676^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890|AMB|V985865|4||||||||||||||||||||EINSTEIN||||20260209170048
+PV2||Diabetes mellitus não especificado|||||20260209170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||38.2|Cel|36.0-37.5|N|||F|||20260218170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||111|bpm|60-100|L|||F|||20260218170048
+
+DG1|1|ICD10|E14.9^Diabetes mellitus não especificado^ICD10|Diabetes mellitus não especificado||A

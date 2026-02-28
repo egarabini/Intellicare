@@ -1,0 +1,86 @@
+condition_code: "E11"
+condition_name: "Diabetes Mellitus Tipo 2"
+materials:
+  - id: "dm2-001"
+    title: "O que e Diabetes Tipo 2?"
+    reading_level: "basic"
+    tags: ["diabetes", "glicose", "introducao"]
+    content: |
+      O diabetes tipo 2 acontece quando o corpo nao consegue usar bem
+      a insulina que produz. A insulina e um hormonio que ajuda o acucar
+      do sangue a entrar nas celulas para gerar energia.
+
+      Quando isso nao funciona direito, o acucar fica alto no sangue.
+      Com o tempo, isso pode prejudicar os rins, olhos, nervos e coracao.
+
+      O que voce pode fazer:
+      - Tomar os remedios no horario certo
+      - Medir a glicose conforme orientacao medica
+      - Manter uma alimentacao equilibrada
+      - Fazer atividade fisica regularmente
+
+  - id: "dm2-002"
+    title: "Alimentacao para quem tem Diabetes"
+    reading_level: "basic"
+    tags: ["dieta", "alimentacao", "carboidratos", "acucar"]
+    content: |
+      A alimentacao e a base do controle do diabetes.
+
+      Reduza o acucar:
+      - Evite refrigerantes, sucos de caixinha e doces
+      - Troque acucar por adocante se necessario
+      - Leia rotulos para identificar acucar escondido
+
+      Controle os carboidratos:
+      - Prefira arroz integral, pao integral e aveia
+      - Coma porcoes menores de carboidratos por refeicao
+      - Combine carboidratos com proteinas e fibras
+
+      Aumente fibras e vegetais:
+      - Coma salada todos os dias
+      - Inclua legumes nas refeicoes
+      - Frutas com moderacao (prefira maca, pera, morango)
+
+  - id: "dm2-003"
+    title: "Exames importantes no Diabetes"
+    reading_level: "intermediate"
+    tags: ["exames", "hemoglobina-glicada", "glicemia", "monitoramento"]
+    content: |
+      Alguns exames sao fundamentais para acompanhar o diabetes:
+
+      Glicemia de jejum: Mede o acucar no sangue apos 8 horas sem comer.
+      O ideal e ficar entre 70 e 100 mg/dL.
+
+      Hemoglobina Glicada (HbA1c): Mostra a media do acucar nos ultimos
+      3 meses. O ideal e ficar abaixo de 7%.
+
+      Funcao renal (creatinina e microalbuminuria): O diabetes pode
+      afetar os rins. Esses exames detectam problemas precocemente.
+
+      Perfil lipidico: Mede colesterol e triglicerides.
+      Diabetes aumenta o risco cardiovascular.
+
+      Exame de fundo de olho: Verifica se o diabetes esta afetando
+      a visao. Deve ser feito pelo menos uma vez por ano.
+
+  - id: "dm2-004"
+    title: "Hipoglicemia: quando o acucar cai demais"
+    reading_level: "basic"
+    tags: ["hipoglicemia", "emergencia", "sintomas"]
+    content: |
+      Hipoglicemia e quando o acucar no sangue fica muito baixo
+      (abaixo de 70 mg/dL). Pode acontecer se voce:
+      - Pular refeicoes
+      - Tomar mais remedio do que o indicado
+      - Fazer exercicio intenso sem se alimentar
+
+      Sintomas de alerta:
+      - Tremedeira e suor frio
+      - Tontura e confusao mental
+      - Fome intensa
+      - Coracao acelerado
+
+      O que fazer imediatamente:
+      - Coma algo doce (suco, mel, bala)
+      - Espere 15 minutos e meca a glicose novamente
+      - Se nao melhorar, procure atendimento medico

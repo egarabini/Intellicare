@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # ── GRAHAME API ─────────────────────────────────────────────────
+  grahame:
+    build:
+      context: ..
+      dockerfile: ./intellicare-grahame/Dockerfile
+      target: api
+    container_name: intellicare-grahame
+    ports:
+      - "${GRAHAME_PORT:-8012}:8000"
+    environment:
+      - INTELLICARE_GRAHAME_DATABASE_URL=postgresql+asyncpg://intellicare:intellicare@postgres:5432/intellicare_grahame
+      - INTELLICARE_REDIS_URL=redis://redis:6379/0
+      - INTELLICARE_LOG_LEVEL=INFO
+      - INTELLICARE_ENVIRONMENT=development
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ── PostgreSQL Database ─────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: intellicare-grahame-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=intellicare
+      - POSTGRES_PASSWORD=intellicare
+      - POSTGRES_DB=intellicare_grahame
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U intellicare"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis Cache ─────────────────────────────────────────────────
+  redis:
+    image: redis:7.2-alpine
+    container_name: intellicare-grahame-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# ── Networks ────────────────────────────────────────────────────
+networks:
+  intellicare-network:
+    external: true
+    name: intellicare-network
+
+# ── Volumes ─────────────────────────────────────────────────────
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local

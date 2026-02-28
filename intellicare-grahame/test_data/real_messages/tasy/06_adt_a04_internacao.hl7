@@ -1,0 +1,12 @@
+MSH|^~\&|TASY|EINSTEIN|GRAHAME|INTELLICARE|20260217170048||ADT^A04|TASY0000006|P|2.5|||AL|NE|BRA
+EVN|A04|20260217170048|||886091^Lima^Carlos^A^^^Dr.
+PID|1||263136^^^EINSTEIN^MR||Ferreira^Roberto^Luiz||19970409|F|||Rua Paulista, 156^^São Paulo^SP^85715-336^BR^H||11934675682^PRN^PH||PT|D|CAT|||536.853.617-80||||||BR
+PD1|||EINSTEIN - Unidade Morumbi||||886091^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890
+NK1|1|Ferreira^Roberto^Luiz|SPO|Rua Paulista, 156^^São Paulo^SP^85715-336^BR^H|11905264117^PRN^PH
+PV1|1|I|SEMI^890^B^EINSTEIN|||886091^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890|886091^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890|CIR||||1|||886091^Lima^Carlos^A^^^Dr.^^^^^CRMSP^567890|AMB|V872847|4||||||||||||||||||||EINSTEIN||||20260217170048
+PV2||DPOC com exacerbação|||||20260217170048|||||||||||||||||||||||||||||||||||
+OBX|1|NM|8310-5^Temperatura^LN||37.8|Cel|36.0-37.5|H|||F|||20260210170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||99|bpm|60-100|H|||F|||20260210170048
+OBX|3|NM|9279-1^Frequência Respiratória^LN||18|irpm|12-20|H|||F|||20260210170048
+AL1|1|DA|1191^Penicilina^L|SV|Anafilaxia
+DG1|1|ICD10|J44.1^DPOC com exacerbação^ICD10|DPOC com exacerbação||A

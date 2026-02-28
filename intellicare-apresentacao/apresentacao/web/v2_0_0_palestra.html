@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntelliCare V2.0.0 — Uma Visão Além do Tempo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="stylesheet" href="css/intellicare.css">
+  <style>
+    .palestra-subtitle { color: #00d4ff; font-size: 0.8em; margin-top: 1em; }
+    .palestra-hint { color: #ffbe0b; font-size: 0.6em; margin-top: 2em; }
+    .deep-dive { text-align: left; padding: 2em; }
+    .deep-dive h3 { color: #00d4ff; margin-bottom: 1em; }
+    .deep-dive pre { white-space: pre-wrap; font-size: 0.55em; line-height: 1.5; }
+    .diagram-pre { font-family: monospace; font-size: 0.5em; text-align: left; white-space: pre; }
+  </style>
+</head>
+<body>
+
+<nav class="version-nav">
+  <a href="index.html">V2 Agentes</a>
+  <a href="v1.html">V1 Geral</a>
+  <a href="v2_0_0_palestra.html" class="active">V2.0.0 Palestra</a>
+  <a href="architecture-3d.html" target="_blank">3D</a>
+</nav>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: Título -->
+<section data-narration="Bem-vindos. Eu sou a Wanda. Nos próximos minutos, vou mostrar uma visão ampla do avanço que estamos implementando no IntelliCare. Multi-tenancy, novos módulos, roadmap paralelo e uma demo que leva a plataforma a um patamar além do seu tempo. Pressione a seta para baixo em qualquer slide para aprofundar.">
+  <h1>IntelliCare</h1>
+  <p class="palestra-subtitle">Uma Visão Além do Tempo</p>
+  <p class="palestra-hint">Seta ↓ ou D = Deep Dive (detalhamento) &bull; Espaço = próximo</p>
+</section>
+
+<!-- SLIDE 2: O que temos hoje -->
+<section>
+  <section data-narration="Hoje o IntelliCare já possui sete agentes especializados, cada um inspirado em um gigante da saúde. A modularização é tipo LEGO: cada módulo funciona independente, mas integrado. Temos demo funcional com Portal, Pierre para IA e Minerva para OCR. Tudo em FHIR R4, com stack open-source e containerizada.">
+    <h2>O que temos hoje</h2>
+    <ul>
+      <li>7 agentes especializados (Wanda, Florence, Oswaldo, Zilda, Geralda, Nise, Donabedian)</li>
+      <li>Modularização LEGO: cada módulo funciona independente</li>
+      <li>Demo funcional: Portal + Pierre (IA) + Minerva (OCR)</li>
+      <li>Interoperabilidade FHIR R4 nativa, IPS Brasil</li>
+      <li>Stack: FastAPI, PostgreSQL, Redis, Keycloak, Docker</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Arquitetura LEGO</h3>
+      <ul>
+        <li>Cada módulo = deploy independente, API REST</li>
+        <li>Contratos padronizados: /health, /info</li>
+        <li>Comercialização individual ou ecossistema completo</li>
+        <li>Schemas separados: operacional e analítico</li>
+        <li>Zero vendor lock-in: stack 100% open-source</li>
+        <li>LGPD by design: pseudonimização, audit trail</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 3: Multi-Tenancy -->
+<section>
+  <section data-narration="A grande evolução é o multi-tenancy. Duas camadas: plataforma para admin e billing, tenant para dados clínicos. Cada organização tem seu schema isolado no PostgreSQL. Isolamento total para LGPD. Usuários podem trocar de organização via Token Exchange.">
+    <h2>Multi-Tenancy: A Evolução</h2>
+    <ul>
+      <li>2 camadas: Plataforma (admin, billing) + Tenant (clínico)</li>
+      <li>Schema por tenant: tenant_{id} no PostgreSQL</li>
+      <li>Isolamento LGPD: dados clínicos nunca vazam entre tenants</li>
+      <li>Token Exchange: usuário multi-org seleciona organização</li>
+      <li>Redis com prefixo tenant:{id}: para cache isolado</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Fluxo de Onboarding</h3>
+      <ol>
+        <li>SuperAdmin cadastra nova empresa no intellicare-admin</li>
+        <li>Admin cria schema tenant_{id} no PostgreSQL</li>
+        <li>Roda migrations no schema</li>
+        <li>Cria grupo no Keycloak + usuário admin</li>
+        <li>Registra em platform.tenants</li>
+        <li>Inicializa intellicare-gestor para o tenant</li>
+        <li>Seed data: roles padrão, configs</li>
+        <li>Tenant ativo e pronto para uso</li>
+      </ol>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 4: Novos Módulos -->
+<section>
+  <section data-narration="Dois novos módulos centrais: intellicare-admin para a plataforma SaaS, com cadastro de empresas, planos e billing. intellicare-gestor para cada organização gerenciar seus usuários, permissões e setores. O TenantContext, F0, já está pronto. F1 a F5 seguem no roadmap.">
+    <h2>Novos Módulos</h2>
+    <ul>
+      <li>intellicare-admin: gestão SaaS, cadastro de empresas, billing, planos</li>
+      <li>intellicare-gestor: gestão por tenant, usuários, RBAC, setores</li>
+      <li>F0 TenantContext: concluído. F1 a F5 em roadmap</li>
+      <li>Provisionamento automático de schemas e tenants</li>
+      <li>Auditoria global (plataforma) e local (tenant)</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Fases F0 a F5</h3>
+      <ul>
+        <li><strong>F0:</strong> TenantContext + Infra (DONE)</li>
+        <li><strong>F1:</strong> intellicare-admin (CRUD tenants, provisioning) — 2 sem</li>
+        <li><strong>F2:</strong> intellicare-gestor (RBAC, config tenant) — 1.5 sem</li>
+        <li><strong>F3:</strong> Portal multi-tenant (login, routing) — 1 sem</li>
+        <li><strong>F4:</strong> Módulos clínicos adaptados — 2 sem</li>
+        <li><strong>F5:</strong> Billing + dashboards + auditoria — 2 sem</li>
+      </ul>
+      <p><strong>Total estimado:</strong> 45-60 dias</p>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 5: Roadmap Paralelo -->
+<section>
+  <section data-narration="O roadmap é paralelo. Cinco trilhas: T1 para infraestrutura, T2 para multi-tenancy, T3 para domínios e DNS, T4 para hardening e testes, T5 para ferramentas de visualização. T1 e T4 podem iniciar agora. T2 depende do F0, que já está pronto.">
+    <h2>Roadmap Paralelo</h2>
+    <p class="subtitle">5 trilhas de implementação</p>
+    <ul>
+      <li><strong>T1:</strong> Infra (Docker, Traefik, monitoramento)</li>
+      <li><strong>T2:</strong> Multi-Tenancy (F1 a F5, admin, gestor)</li>
+      <li><strong>T3:</strong> Domínios (DNS, wildcard certs)</li>
+      <li><strong>T4:</strong> Hardening (auth opcional, testes)</li>
+      <li><strong>T5:</strong> Tooling (Excalidraw, visualização)</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Prioridades e Dependências</h3>
+      <ul>
+        <li><strong>URGENTE:</strong> T1 Segurança + Backup, T4 Auth opcional</li>
+        <li><strong>ALTA:</strong> T2 Multi-Tenancy (F1+F3 em paralelo)</li>
+        <li><strong>NORMAL:</strong> T3 Domínios (precisa Traefik), T5 Tooling</li>
+      </ul>
+      <p>Grafo T2: F0 → F1 → F2 → F5</p>
+      <p>F0 → F3 → F4</p>
+      <p>F1 e F3 podem ser feitos em paralelo por DEVs diferentes.</p>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 6: Demo Investidores -->
+<section>
+  <section data-narration="A demo para investidores ataca em três frentes. DEV 1 cria o portal com dashboard vivo e telas de chat e upload. DEV 2 entrega o Pierre com busca web e análise de texto. DEV 3 a Minerva com OCR de PDFs e anonimização. Wow factor visual, IA real e dados reais.">
+    <h2>Demo Investidores</h2>
+    <ul>
+      <li>DEV 1 (Portal): Dashboard vivo, telas Chat e Upload, mocks</li>
+      <li>DEV 2 (Pierre): MCP Server, web_search, analyze_text, API REST</li>
+      <li>DEV 3 (Minerva): Upload PDF, parse JSON, anonymizer, visualizador</li>
+      <li>Wow factor: visual + IA real + dados reais</li>
+      <li>Prazo: ASAP (sprints de 1 semana)</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Estratégia 3 DEVs</h3>
+      <ul>
+        <li><strong>DEV 1 — O Showman:</strong> casca visual, integração, mocks</li>
+        <li><strong>DEV 2 — O Cérebro:</strong> Tavily, Ollama, MCP Server</li>
+        <li><strong>DEV 3 — A Prova:</strong> Tesseract/Textract, pipeline OCR</li>
+      </ul>
+      <p>Dia 5: Integração localhost entre os 3</p>
+      <p>Recursos: Chave Tavily, PDFs anonimizados, protótipo</p>
+      <p>Foco: parecer integrado e completo na hora H</p>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 7: TenantContext (F0) -->
+<section>
+  <section data-narration="O TenantContext é a fundação. O JWT traz tenant_id e a lista de tenants do usuário. O contexto propaga tenant_id, schema e roles para toda a requisição. Cada tenant tem schema e cache Redis isolados. Em modo single-tenant, tudo funciona como antes.">
+    <h2>TenantContext (F0)</h2>
+    <ul>
+      <li>JWT com claim tenant_id e tenants (array)</li>
+      <li>TenantContext: tenant_id, tenant_schema, user_id, roles</li>
+      <li>Schema isolado: tenant_{id}.tabela no PostgreSQL</li>
+      <li>Redis: tenant:{id}:{module}:{key}</li>
+      <li>Modo single-tenant: tenant_id=default funciona sem alteração</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Requisitos F0</h3>
+      <ul>
+        <li>RF-F0-001: tenant_id no JWT, 403 se ausente</li>
+        <li>RF-F0-002: TenantContext injetável via Depends()</li>
+        <li>RF-F0-003: Schema tenant_{id}, nunca cross-tenant</li>
+        <li>RF-F0-004: Redis prefixo tenant:{id}:</li>
+        <li>RF-F0-005: Config por tenant em platform.tenant_configs</li>
+        <li>RF-F0-006: Fluxo multi-org: seleção + Token Exchange</li>
+      </ul>
+      <p>Módulos: intellicare-core, intellicare-auth</p>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 8: Stack e Arquitetura -->
+<section>
+  <section data-narration="A arquitetura separa plataforma e tenant. Na plataforma: admin, apresentação, portal e auth. Nos tenants: gestor e todos os agentes clínicos. Na base, Minerva e Pierre. PostgreSQL, Redis, Keycloak e FHIR R4 completam o stack.">
+    <h2>Stack e Arquitetura</h2>
+    <pre class="diagram-pre">         PLATAFORMA (Schema Default)
+    admin | apresentacao | portal | auth
+                    |
+              TENANT (Schema por Tenant)
+    gestor | zilda | oswaldo | florence
+    donabedian | comunicacao | geralda | wanda
+                    |
+         MCP: MINERVA (OCR) + PIERRE (SuperZ)
+                    |
+    PostgreSQL | Redis | Keycloak | FHIR R4</pre>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Princípios Arquiteturais</h3>
+      <ul>
+        <li>Modularidade: cada agente = deploy independente</li>
+        <li>Padronização: contratos LEGO (/health, /info)</li>
+        <li>Event-Driven: Redis Streams + RabbitMQ</li>
+        <li>Schema Separation: operacional vs analítico</li>
+        <li>Zero vendor lock-in: stack open-source</li>
+        <li>LGPD by design: pseudonimização, audit trail</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 9: Mercado e Oportunidade -->
+<section>
+  <section data-narration="O mercado está pronto. Quarenta e sete bilhões em saúde digital. RNDS e FHIR obrigatórios. Quarenta e oito milhões na ANS, cento e cinquenta no SUS. Modelo SaaS: por módulo ou ecossistema. Diferencial: único com sete agentes coordenados e FHIR nativo.">
+    <h2>Mercado e Oportunidade</h2>
+    <ul>
+      <li>Saúde digital Brasil: R$ 47 bi em 2025 (ANAHP)</li>
+      <li>RNDS e FHIR obrigatórios: regulamentação a favor</li>
+      <li>48M beneficiários ANS + 150M SUS = mercado massivo</li>
+      <li>Modelo SaaS: licenciamento por módulo ou ecossistema</li>
+      <li>Único com 7 agentes coordenados + FHIR R4 nativo</li>
+    </ul>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Modelo de Negócio</h3>
+      <ul>
+        <li><strong>Tier 1 — Clínica:</strong> Florence + Oswaldo</li>
+        <li><strong>Tier 2 — Rede:</strong> Ecossistema completo</li>
+        <li><strong>Tier 3 — Gestão Pública:</strong> Donabedian + Zilda</li>
+      </ul>
+      <p><strong>Diferenciais:</strong></p>
+      <ul>
+        <li>7 agentes coordenados (único)</li>
+        <li>FHIR R4 nativo (não adapter)</li>
+        <li>LLM local (sem custo de API)</li>
+        <li>Stack 100% open-source</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 10: Fechamento -->
+<section>
+  <section data-narration="IntelliCare: sete agentes, multi-tenancy, roadmap paralelo. Uma plataforma que evolui de modular para SaaS. Interoperabilidade nativa, LLM local, arquitetura que escala. Estamos prontos para transformar o cuidado em saúde no Brasil. Obrigada pela atenção. Vamos conversar?">
+    <h1>IntelliCare</h1>
+    <p class="palestra-subtitle">Inteligência coordenada. Cuidado integrado. Visão além do tempo.</p>
+    <p class="palestra-hint">↓ Deep Dive</p>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Próximos Passos</h3>
+      <ol>
+        <li>F1 intellicare-admin + F3 Portal Multi-Tenant</li>
+        <li>Demo investidores: Pierre, Minerva, Portal</li>
+        <li>T1 Infra: Segurança, Traefik, Healthchecks</li>
+        <li>Piloto em rede de atenção primária</li>
+        <li>Certificação SBIS / validação ANS</li>
+      </ol>
+      <p>Documentação: docs/PLANNER-ANTIGRAVITY</p>
+      <p>Contato: equipe@intellicare.com.br</p>
+    </div>
+  </section>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  center: true,
+  width: 1280,
+  height: 720,
+});
+</script>
+
+</body>
+</html>

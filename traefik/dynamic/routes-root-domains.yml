@@ -1,0 +1,134 @@
+# ============================================================================
+# Traefik Dynamic Configuration — Root Domain Redirects
+# ============================================================================
+# File: traefik/dynamic/routes-root-domains.yml
+#
+# Redireciona domínios raiz para subdomínios apropriados:
+#   intellicare.ia.br       → portal.intellicare.ia.br
+#   www.intellicare.ia.br   → portal.intellicare.ia.br
+#   saudeplanner.com.br     → portal.intellicare.ia.br
+#   www.saudeplanner.com.br → portal.intellicare.ia.br
+
+http:
+  routers:
+
+    # ── intellicare.ia.br (root) → portal.intellicare.ia.br ──────
+    root-intellicare:
+      rule: "Host(`intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: noop@internal
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - redirect-to-portal-intellicare
+      priority: 1  # Baixa prioridade (outras rotas têm precedência)
+
+    # ── www.intellicare.ia.br → portal.intellicare.ia.br ─────────
+    www-intellicare:
+      rule: "Host(`www.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: noop@internal
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - redirect-to-portal-intellicare
+      priority: 1
+
+    # ── saudeplanner.com.br (root) → portal.intellicare.ia.br ──
+    root-saudeplanner:
+      rule: "Host(`saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: noop@internal
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - redirect-to-portal-intellicare
+      priority: 1
+
+    # ── www.saudeplanner.com.br → portal.intellicare.ia.br ─────
+    www-saudeplanner:
+      rule: "Host(`www.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: noop@internal
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - redirect-to-portal-intellicare
+      priority: 1
+
+  # ── Middlewares ─────────────────────────────────────────────────
+  middlewares:
+
+    # Redirecionar para portal.intellicare.ia.br (301 Permanent)
+    redirect-to-portal-intellicare:
+      redirectRegex:
+        regex: "^https?://(?:www\\.)?(intellicare\\.ia\\.br|saudeplanner\\.com\\.br)/(.*)"
+        replacement: "https://portal.intellicare.ia.br/${2}"
+        permanent: true
+
+# ============================================================================
+# Alternativa: Servir Landing Page
+# ============================================================================
+# Se preferir servir uma landing page ao invés de redirecionar,
+# descomente as seções abaixo e crie o serviço intellicare-landing.
+#
+# http:
+#   routers:
+#     root-intellicare-landing:
+#       rule: "Host(`intellicare.ia.br`) || Host(`www.intellicare.ia.br`)"
+#       entryPoints:
+#         - websecure
+#       service: landing-svc
+#       tls:
+#         certResolver: letsencrypt
+#       middlewares:
+#         - security-headers
+#         - compress
+#
+#   services:
+#     landing-svc:
+#       loadBalancer:
+#         servers:
+#           - url: "http://intellicare-landing:80"
+#         healthCheck:
+#           path: /
+#           interval: 30s
+#           timeout: 5s
+# ============================================================================
+
+# ============================================================================
+# Notas de Implementação
+# ============================================================================
+#
+# 1. DNS Configuration Required:
+#    Adicione os seguintes registros DNS:
+#
+#    A    intellicare.ia.br           167.86.97.142
+#    A    www.intellicare.ia.br       167.86.97.142
+#    A    saudeplanner.com.br         167.86.97.142
+#    A    www.saudeplanner.com.br     167.86.97.142
+#
+# 2. Certificate Generation:
+#    Traefik irá gerar certificados Let's Encrypt automaticamente
+#    para os domínios raiz quando receberem a primeira requisição.
+#
+# 3. Testing:
+#    curl -I https://intellicare.ia.br
+#    # Deve retornar: HTTP/2 301 (redirect para portal.intellicare.ia.br)
+#
+#    curl -I https://www.intellicare.ia.br
+#    # Deve retornar: HTTP/2 301 (redirect para portal.intellicare.ia.br)
+#
+#    curl -I https://saudeplanner.com.br
+#    # Deve retornar: HTTP/2 301 (redirect para portal.intellicare.ia.br)
+#
+# 4. Priority:
+#    priority: 1 garante que rotas mais específicas (subdomínios)
+#    tenham precedência sobre estas rotas de fallback.
+#
+# ============================================================================
+

@@ -1,0 +1,68 @@
+services:
+  api:
+    build:
+      context: .
+      target: api
+    ports:
+      - "${WANDA_PORT:-8007}:8000"
+    env_file:
+      - .env
+    environment:
+      - INTELLICARE_MODULE_NAME=intellicare-wanda
+      - INTELLICARE_MODULE_VERSION=2.0.0
+      - INTELLICARE_OSWALDO_URL=http://oswaldo:8001
+      - INTELLICARE_FLORENCE_URL=http://florence:8002
+      - INTELLICARE_ZILDA_URL=http://zilda:8003
+      - INTELLICARE_DONABEDIAN_URL=http://donabedian:8004
+      - INTELLICARE_COMUNICACAO_URL=http://comunicacao:8005
+      - INTELLICARE_GERALDA_URL=http://geralda:8006
+      # EF-W001: PostgreSQL
+      - INTELLICARE_DATABASE_URL=postgresql+asyncpg://wanda:wanda@db:5432/intellicare
+      - INTELLICARE_DATABASE_SCHEMA=wanda
+      - INTELLICARE_ENABLE_PERSISTENCE=true
+      # EF-W002: Redis / IPS Cache
+      - INTELLICARE_REDIS_URL=redis://redis:6379/0
+      - INTELLICARE_ENABLE_REDIS=true
+      # EF-W011: MCP Servers
+      - INTELLICARE_MCP_OCR_URL=http://intellicare-ocr:8008
+      - INTELLICARE_MCP_SUPERZ_URL=http://intellicare-superz:8009
+      - INTELLICARE_ENABLE_MCP=false
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: wanda
+      POSTGRES_PASSWORD: wanda
+      POSTGRES_DB: intellicare
+    volumes:
+      - wanda_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "wanda", "-d", "intellicare"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - wanda_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  wanda_pgdata:
+  wanda_redis_data:

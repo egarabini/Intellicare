@@ -1,0 +1,13 @@
+services:
+  portal:
+    build:
+      context: ./frontend
+      target: production
+    ports:
+      - "${PORTAL_PORT:-3000}:80"
+    environment:
+      - VITE_OSWALDO_URL=${OSWALDO_URL:-http://localhost:8001}
+      - VITE_FLORENCE_URL=${FLORENCE_URL:-http://localhost:8002}
+      - VITE_ZILDA_URL=${ZILDA_URL:-http://localhost:8003}
+      - VITE_DONABEDIAN_URL=${DONABEDIAN_URL:-http://localhost:8004}
+    restart: unless-stopped

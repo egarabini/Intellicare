@@ -1,0 +1,9 @@
+MSH|^~\&|MV2000|MOINHOS|GRAHAME|INTELLICARE|20260209170048||ADT^A04|WARELINE0000005|P|2.3|||AL|NE|BRA
+EVN|A04|20260209170048
+PID|1||719520^^^MOINHOS^MR||Costa^Ana^Paula||19870310|F|||Rua das Flores, 9698^^São Paulo^SP^40953-821^BR^H||11961896097^PRN^PH||PT|S|CAT|||122.936.123-61
+NK1|1|Nascimento^Juliana^Cristina|SPO|Rua das Flores, 9698^^São Paulo^SP^40953-821^BR^H|11989046244^PRN^PH
+PV1|1|I|UTI^303^A^MOINHOS||||267266^Santos^Ana^P^^^Dra.||||||CAR||||V751533|4||||||||||||||||||||MOINHOS||||20260209170048
+PV2||Infarto agudo do miocárdio
+OBX|1|NM|8310-5^Temperatura^LN||38.4|Cel|36.0-37.5|N|||F|||20260212170048
+OBX|2|NM|8867-4^Frequência Cardíaca^LN||101|bpm|60-100|N|||F|||20260212170048
+DG1|1|ICD10|I21.9^Infarto agudo do miocárdio^ICD10|Infarto agudo do miocárdio||A

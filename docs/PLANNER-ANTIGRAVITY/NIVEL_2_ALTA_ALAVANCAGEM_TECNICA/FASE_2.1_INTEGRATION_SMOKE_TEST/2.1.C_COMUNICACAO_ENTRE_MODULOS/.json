@@ -1,0 +1,191 @@
+{
+  "timestamp": "20260224-1414",
+  "wanda_discover": {
+    "success": true,
+    "data": {
+      "total": 6,
+      "online": 0,
+      "modules": [
+        {
+          "name": "intellicare-oswaldo",
+          "base_url": "http://oswaldo:8002",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.510356"
+        },
+        {
+          "name": "intellicare-florence",
+          "base_url": "http://florence:8001",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.618102"
+        },
+        {
+          "name": "intellicare-zilda",
+          "base_url": "http://localhost:8003",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.621049"
+        },
+        {
+          "name": "intellicare-donabedian",
+          "base_url": "http://donabedian:8003",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.624966"
+        },
+        {
+          "name": "intellicare-comunicacao",
+          "base_url": "http://comunicacao:8005",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.627633"
+        },
+        {
+          "name": "intellicare-geralda",
+          "base_url": "http://geralda:8006",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.629084"
+        }
+      ]
+    },
+    "online_count": 0
+  },
+  "wanda_modules": {
+    "success": true,
+    "data": {
+      "total": 6,
+      "online": 0,
+      "modules": [
+        {
+          "name": "intellicare-oswaldo",
+          "base_url": "http://oswaldo:8002",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.510356"
+        },
+        {
+          "name": "intellicare-florence",
+          "base_url": "http://florence:8001",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.618102"
+        },
+        {
+          "name": "intellicare-zilda",
+          "base_url": "http://localhost:8003",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.621049"
+        },
+        {
+          "name": "intellicare-donabedian",
+          "base_url": "http://donabedian:8003",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.624966"
+        },
+        {
+          "name": "intellicare-comunicacao",
+          "base_url": "http://comunicacao:8005",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.627633"
+        },
+        {
+          "name": "intellicare-geralda",
+          "base_url": "http://geralda:8006",
+          "version": "",
+          "description": "",
+          "capabilities": [],
+          "status": "offline",
+          "last_check": "2026-02-24T17:13:47.629084"
+        }
+      ]
+    }
+  },
+  "flow1_oswaldo_route": {
+    "success": true,
+    "data": {
+      "target_modules": [],
+      "reason": "Nenhum modulo adequado encontrado para a consulta",
+      "confidence": 0.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow1_oswaldo_chat": {
+    "success": true,
+    "data": {
+      "response": "Nenhum modulo IntelliCare esta disponivel no momento.",
+      "modules_used": [],
+      "safety_warnings": [],
+      "routing": null
+    }
+  },
+  "flow2_florence_route": {
+    "success": true,
+    "data": {
+      "target_modules": [],
+      "reason": "Nenhum modulo adequado encontrado para a consulta",
+      "confidence": 0.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow2_florence_chat": {
+    "success": true,
+    "data": {
+      "response": "Nenhum modulo IntelliCare esta disponivel no momento.",
+      "modules_used": [],
+      "safety_warnings": [],
+      "routing": null
+    }
+  },
+  "flow3_donabedian_route": {
+    "success": true,
+    "data": {
+      "target_modules": [],
+      "reason": "Nenhum modulo adequado encontrado para a consulta",
+      "confidence": 0.0,
+      "routing_method": "keyword"
+    }
+  },
+  "flow3_donabedian_chat": {
+    "success": true,
+    "data": {
+      "response": "Nenhum modulo IntelliCare esta disponivel no momento.",
+      "modules_used": [],
+      "safety_warnings": [],
+      "routing": null
+    }
+  },
+  "portal_http_status": 200,
+  "wanda_health": {
+    "status": "healthy",
+    "module_name": "intellicare-wanda",
+    "version": "3.0.0",
+    "modules_online": 0
+  }
+}

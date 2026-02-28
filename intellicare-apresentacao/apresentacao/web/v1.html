@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntelliCare - Vis&atilde;o Geral</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <link rel="stylesheet" href="css/intellicare.css">
+</head>
+<body>
+
+<nav class="version-nav">
+  <a href="index.html">V2 Agentes</a>
+  <a href="v1.html" class="active">V1 Geral</a>
+  <a href="architecture-3d.html" target="_blank">3D</a>
+</nav>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: Titulo -->
+<section>
+  <h1>IntelliCare</h1>
+  <p class="subtitle">Sistema de Sa&uacute;de Inteligente com IA</p>
+</section>
+
+<!-- SLIDE 2: O Problema -->
+<section>
+  <section>
+    <h2>O Desafio da Sa&uacute;de no Brasil</h2>
+    <ul>
+      <li style="color: var(--error);">Dados isolados em silos</li>
+      <li style="color: var(--error);">Sem integra&ccedil;&atilde;o Hospital &harr; Governo</li>
+      <li style="color: var(--error);">Processos manuais e lentos</li>
+      <li style="color: var(--error);">Falta de vis&atilde;o 360&deg; do paciente</li>
+    </ul>
+  </section>
+  <section>
+    <div class="deep-dive">
+      <h3>Detalhes da Arquitetura IntelliCare</h3>
+      <p><strong>Microservices em Python + FastAPI</strong></p>
+      <ul>
+        <li>API Gateway com autentica&ccedil;&atilde;o JWT</li>
+        <li>Servi&ccedil;os independentes por dom&iacute;nio</li>
+        <li>Message Queue (RabbitMQ) para eventos</li>
+        <li>Cache distribu&iacute;do (Redis)</li>
+        <li>Banco de dados PostgreSQL</li>
+      </ul>
+      <p style="margin-top:0.8em"><strong>Integra&ccedil;&otilde;es:</strong> FHIR Server (HL7 FHIR R4), RNDS, Careplanner</p>
+      <p><strong>IA e Agentes:</strong> LangGraph, LangChain, OpenAI GPT-4, MCP</p>
+    </div>
+  </section>
+</section>
+
+<!-- SLIDE 3: Wanda Orquestrador -->
+<section>
+  <h2>Wanda: Orquestrador Inteligente</h2>
+  <div class="diagram">
+<pre>
+    +-----------------------------------------+
+    |       WANDA ORCHESTRATOR                |
+    |    (LangGraph + LangChain)              |
+    +--------------------+--------------------+
+                         |
+             +-----------+-----------+
+             |           |           |
+      +------+---+ +----+-----+ +---+------+
+      |   FHIR   | |   RNDS   | |  Care-   |
+      |  Server  | |   API    | | planner  |
+      +----------+ +----------+ +----------+
+</pre>
+  </div>
+</section>
+
+<!-- SLIDE 4: Metricas -->
+<section>
+  <h2>O que a Wanda Sabe Fazer</h2>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon c1">T</div>
+      <div class="metric-value">13</div>
+      <div class="metric-label">Ferramentas Integradas</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon c2">S</div>
+      <div class="metric-value">5</div>
+      <div class="metric-label">Sistemas Conectados</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon c3">R</div>
+      <div class="metric-value">2.6s</div>
+      <div class="metric-label">Tempo M&eacute;dio</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon c4">S</div>
+      <div class="metric-value">100%</div>
+      <div class="metric-label">Taxa de Sucesso</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: Demo -->
+<section>
+  <h2>Demonstra&ccedil;&atilde;o: Racioc&iacute;nio Multi-Dom&iacute;nio</h2>
+  <div class="diagram">
+<pre>
+  Query: "O paciente Jo&atilde;o Silva est&aacute; internado?
+          Se sim, ele tem cadastro no governo?"
+
+  Wanda:
+  &check; Analisando query...
+  &check; Consultando Careplanner (Hospital)...
+  &check; Consultando RNDS (Governo)...
+  &check; Cruzando informa&ccedil;&otilde;es...
+
+  Resultado:
+  Hospital: Jo&atilde;o Silva INTERNADO
+     Setor: UTI, Leito: 101
+
+  Governo: Jo&atilde;o Silva CADASTRADO
+     CNS: 123456789012345
+</pre>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  center: false,
+  width: 1920,
+  height: 1080,
+  margin: 0.04,
+  minScale: 0.2,
+  maxScale: 1.5,
+});
+</script>
+
+</body>
+</html>

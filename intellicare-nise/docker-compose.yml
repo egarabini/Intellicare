@@ -1,0 +1,207 @@
+version: '3.8'
+
+services:
+  # ── NISE API ────────────────────────────────────────────────────
+  nise:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: intellicare-nise
+    ports:
+      - "8000:8000"
+    environment:
+      # Database
+      - DATABASE_URL=postgresql://intellicare:intellicare@postgres:5432/intellicare_nise
+      
+      # Redis
+      - REDIS_URL=redis://redis:6379/0
+      
+      # Oswaldo Integration
+      - OSWALDO_BASE_URL=http://oswaldo:8002
+      
+      # Flowise Integration
+      - FLOWISE_URL=http://flowise:3000
+      - FLOWISE_API_KEY=${FLOWISE_API_KEY:-}
+      
+      # Ollama Integration
+      - OLLAMA_URL=http://ollama:11434
+
+      # Kestra Integration
+      - KESTRA_URL=http://kestra:8080
+      - KESTRA_API_KEY=${KESTRA_API_KEY:-}
+
+      # Keycloak
+      - KEYCLOAK_URL=http://keycloak:8080
+      - KEYCLOAK_REALM=bemcuidar
+      - KEYCLOAK_CLIENT_ID=intellicare-nise
+      - KEYCLOAK_CLIENT_SECRET=${KEYCLOAK_CLIENT_SECRET:-}
+      
+      # Logging
+      - LOG_LEVEL=INFO
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ── Redis Cache ─────────────────────────────────────────────────
+  redis:
+    image: redis:7.2-alpine
+    container_name: intellicare-nise-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── PostgreSQL Database ─────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: intellicare-nise-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=intellicare
+      - POSTGRES_PASSWORD=intellicare
+      - POSTGRES_DB=intellicare_nise
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U intellicare"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Flowise (Chatbot Builder) ───────────────────────────────────
+  flowise:
+    image: flowiseai/flowise:latest
+    container_name: intellicare-nise-flowise
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_TYPE=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=intellicare
+      - DATABASE_PASSWORD=intellicare
+      - DATABASE_NAME=intellicare_nise
+      - FLOWISE_USERNAME=admin
+      - FLOWISE_PASSWORD=${FLOWISE_PASSWORD:-admin123}
+      - APIKEY_PATH=/root/.flowise
+      - SECRETKEY_PATH=/root/.flowise
+      - LOG_LEVEL=info
+    volumes:
+      - flowise-data:/root/.flowise
+    depends_on:
+      - postgres
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ── Ollama (LLM Engine) ─────────────────────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: intellicare-nise-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    # GPU support (uncomment if you have NVIDIA GPU)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+  # ── Kestra Workflow Orchestration ───────────────────────────────
+  kestra:
+    image: kestra/kestra:latest
+    container_name: intellicare-kestra
+    ports:
+      - "8080:8080"
+    environment:
+      # Database
+      - KESTRA_CONFIGURATION_DATABASE_TYPE=postgres
+      - KESTRA_CONFIGURATION_DATABASE_URL=jdbc:postgresql://postgres:5432/intellicare_kestra
+      - KESTRA_CONFIGURATION_DATABASE_USERNAME=intellicare
+      - KESTRA_CONFIGURATION_DATABASE_PASSWORD=intellicare
+
+      # Queue
+      - KESTRA_CONFIGURATION_QUEUE_TYPE=postgres
+
+      # Repository
+      - KESTRA_CONFIGURATION_REPOSITORY_TYPE=postgres
+
+      # Server
+      - KESTRA_CONFIGURATION_SERVER_BASE_URL=http://localhost:8080
+
+      # Security (opcional)
+      - KESTRA_CONFIGURATION_SECURITY_BASIC_ENABLED=false
+    volumes:
+      # Mount workflows
+      - ./kestra:/app/workflows:ro
+
+      # Persistent data
+      - kestra-data:/app/storage
+    depends_on:
+      - postgres
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    command: server standalone --worker-thread=4
+
+# ── Networks ────────────────────────────────────────────────────
+networks:
+  intellicare-network:
+    external: true
+    name: intellicare-network
+
+# ── Volumes ─────────────────────────────────────────────────────
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  flowise-data:
+    driver: local
+  ollama-data:
+    driver: local
+  kestra-data:
+    driver: local
+

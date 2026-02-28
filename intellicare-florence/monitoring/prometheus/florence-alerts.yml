@@ -1,0 +1,210 @@
+groups:
+  - name: florence-alerts
+    interval: 30s  # Avaliar alertas a cada 30s
+    
+    rules:
+      # ========================================================================
+      # SLA Alertas
+      # ========================================================================
+      
+      - alert: FlorenceValidacaoLatenciaAlta
+        expr: histogram_quantile(0.99, rate(florence_validacao_latencia_segundos_bucket[5m])) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: florence
+          team: eng-data
+        annotations:
+          summary: "P99 latência Florence > 100ms ({{ .Labels.tipo_exame }})"
+          description: |
+            Validator {{ .Labels.tipo_exame }} com P99 latência acima do SLA.
+            
+            Valor: {{ $value | humanizeDuration }}
+            SLA: < 100ms
+            
+            Ações:
+            1. Verificar carga do sistema
+            2. Revisar logs em /var/log/florence/validacao.log
+            3. Executar: runbook/florence-latencia-alta.md
+          runbook_url: "http://wiki.example.com/runbooks/florence/latencia-alta"
+      
+      - alert: FlorenceThroughputBaixo
+        expr: rate(florence_validacoes_total[1h]) < 277  # < 1000/hora
+        for: 10m
+        labels:
+          severity: warning
+          service: florence
+        annotations:
+          summary: "Throughput Florence abaixo de SLA"
+          description: |
+            Taxa de validações está abaixo de 1000/hora.
+            
+            Valor: {{ $value | humanizeDuration }} validações/hora
+            SLA: >= 1000/hora
+      
+      # ========================================================================
+      # Taxa de Erros
+      # ========================================================================
+      
+      - alert: FlorenceErroElevado
+        expr: (rate(florence_validacoes_erros_total[5m]) / rate(florence_validacoes_total[5m])) > 0.001
+        for: 5m
+        labels:
+          severity: critical
+          service: florence
+        annotations:
+          summary: "Taxa de erro Florence > 0.1% (CRÍTICO)"
+          description: |
+            Taxa de erros nas validações acima de limite.
+            
+            Taxa: {{ $value | humanizePercentage }}
+            Limite: < 0.1%
+            
+            Erros detectados:
+            {{ $labels.tipo_erro }}
+          runbook_url: "http://wiki.example.com/runbooks/florence/error-rate"
+      
+      # ========================================================================
+      # Integração RabbitMQ
+      # ========================================================================
+      
+      - alert: FlorenceRabbitMQDown
+        expr: increase(florence_erros_rabbitmq[5m]) > 0
+        for: 2m
+        labels:
+          severity: critical
+          service: florence
+          component: rabbitmq
+        annotations:
+          summary: "RabbitMQ desconectado (Florence não consegue publicar eventos)"
+          description: |
+            Florence detectou erros de conexão com RabbitMQ.
+            
+            Implicações:
+            - Eventos não estão sendo publicados
+            - Oswaldo não recebe notificações
+            - Integração comprometida
+            
+            Ações:
+            1. Verificar status RabbitMQ: docker ps | grep rabbitmq
+            2. Logs RabbitMQ: docker logs intellicare-rabbitmq
+            3. Executar: docker restart intellicare-rabbitmq
+            4. Reenviar fila de retentativas após reconexão
+      
+      - alert: FilaRetentativaAlta
+        expr: florence_fila_retentativa_tamanho > 100
+        for: 10m
+        labels:
+          severity: warning
+          service: florence
+        annotations:
+          summary: "Fila de retentativa Florence com > 100 eventos pendentes"
+          description: |
+            Muitos eventos aguardando retentativa de publicação.
+            
+            Fila: {{ $value }} eventos
+            
+            Investigar:
+            1. Status RabbitMQ
+            2. Network entre Florence e RabbitMQ
+            3. Configuração de timeout
+      
+      # ========================================================================
+      # Anonimização / LGPD
+      # ========================================================================
+      
+      - alert: AcessoPIIDetectado
+        expr: increase(florence_acessos_pii_total{resultado="sucesso"}[1h]) > 10
+        for: 5m
+        labels:
+          severity: info
+          service: florence
+          compliance: lgpd
+        annotations:
+          summary: "{{ $value | humanize }} acessos a dados PII em 1 hora"
+          description: |
+            Múltiplos acessos a dados pessoais foram realizados.
+            
+            Usuários acessando dados:
+            {{ $labels.usuario_id }}
+            
+            Nota: Todos os acessos estão registrados em auditoria para LGPD.
+      
+      - alert: FalhaAnonimizacao
+        expr: increase(florence_anonimizacao_latencia_segundos_bucket{le="0.5"}[5m]) < 1
+        for: 5m
+        labels:
+          severity: warning
+          service: florence
+          compliance: lgpd
+        annotations:
+          summary: "Operação de anonimização lenta (> 500ms)"
+          description: |
+            {{ .Labels.operacao }} levando mais que 500ms.
+            Pode indicar problema com banco de dados.
+      
+      # ========================================================================
+      # Health Checks Gerais
+      # ========================================================================
+      
+      - alert: FlorenceAPIDown
+        expr: up{job="florence-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: florence
+        annotations:
+          summary: "Florence API indisponível"
+          description: |
+            Prometheus não consegue scrapear métricas de Florence por 1 minuto.
+            
+            Possíveis causas:
+            1. Processo Florence não está rodando
+            2. Porta 8001 não está respondendo
+            3. Firewall bloqueando
+            
+            Recuperação:
+            1. cd /opt/florence
+            2. docker restart intellicare-florence || ./run_api_8001.py
+      
+      - alert: FlorenceHighMemoryUsage
+        expr: container_memory_usage_bytes{name="intellicare-florence"} / (1024*1024) > 512
+        for: 10m
+        labels:
+          severity: warning
+          service: florence
+        annotations:
+          summary: "Florence usando > 512MB RAM"
+          description: |
+            Uso de memória acima do esperado.
+            
+            Memória: {{ $value | humanize }}MB
+            Limite: 512MB
+            
+            Ações:
+            1. Verificar queries em andamento
+            2. Revisar logs de memória
+            3. Considerar escalabilidade
+      
+# ========================================================================
+# Configuração de notificação (AlertManager integration)
+# ========================================================================
+
+# Exemplo para alertmanager.yml:
+# route:
+#   group_by: ['service', 'severity']
+#   group_wait: 30s
+#   group_interval: 5m
+#   receiver: 'florence-team'
+#
+# receivers:
+#   - name: 'florence-team'
+#     slack_configs:
+#       - api_url: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXX
+#         channel: '#florence-alerts'
+#         title: '🚨 Florence Alert'
+#         text: '{{ .GroupLabels.service }} - {{ .GroupLabels.severity }}'
+#
+#   - name: 'pagerduty-oncall'
+#     pagerduty_configs:
+#       - service_key: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'

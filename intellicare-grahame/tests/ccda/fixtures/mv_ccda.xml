@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <id extension="MV-20260225-001" root="1.2.392.200036.9125.30"/>
+  <recordTarget>
+    <patientRole>
+      <id extension="MV112233" root="2.16.840.1.113883.4.6"/>
+      <patient>
+        <name><given>Carla</given><family>Oliveira</family></name>
+        <administrativeGenderCode code="F"/>
+        <birthTime value="19920514"/>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" displayName="History of Encounters"/>
+          <entry>
+            <encounter classCode="ENC" moodCode="EVN">
+              <code code="AMB" codeSystem="2.16.840.1.113883.5.4" displayName="Ambulatorial"/>
+              <statusCode code="finished"/>
+              <effectiveTime>
+                <low value="20260220103000"/>
+                <high value="20260220110000"/>
+              </effectiveTime>
+              <participant typeCode="LOC">
+                <participantRole classCode="SDLOC">
+                  <playingEntity classCode="PLC">
+                    <name>Ambulatório Clínica Médica</name>
+                  </playingEntity>
+                </participantRole>
+              </participant>
+            </encounter>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

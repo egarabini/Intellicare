@@ -1,0 +1,50 @@
+version: "3.9"
+
+# Docker Compose for intellicare-admin module
+# Usage: docker-compose up -d
+# Depends on: postgres (from root docker-compose.yml)
+
+services:
+  # ========================================================================
+  # IntelliCare Admin — Platform Administration
+  # ========================================================================
+  intellicare-admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: intellicare-admin
+    hostname: intellicare-admin
+    ports:
+      - "8010:8010"
+    environment:
+      # Database
+      ADMIN_DATABASE_URL: "postgresql+asyncpg://intellicare_admin:intellicare_dev_pwd@postgres:5432/intellicare_db"
+      # Keycloak Admin
+      ADMIN_KEYCLOAK_ADMIN_URL: "https://keycloak.gsi.srv.br"
+      ADMIN_KEYCLOAK_ADMIN_USERNAME: "admin"
+      ADMIN_KEYCLOAK_ADMIN_PASSWORD: "${KEYCLOAK_ADMIN_PASSWORD:-}"
+      ADMIN_KEYCLOAK_TARGET_REALM: "bemcuidar"
+      # Trial
+      ADMIN_TRIAL_DURATION_DAYS: "30"
+      ADMIN_BILLING_GRACE_PERIOD_DAYS: "15"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8010/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - intellicare-network
+    labels:
+      com.intellicare.service: "admin"
+      com.intellicare.module: "intellicare-admin"
+      com.intellicare.phase: "F1"
+    restart: unless-stopped
+
+networks:
+  intellicare-network:
+    external: true
+    name: intellicare_intellicare-network

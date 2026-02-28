@@ -1,0 +1,61 @@
+condition_code: "N18"
+condition_name: "Doenca Renal Cronica"
+materials:
+  - id: "ckd-001"
+    title: "O que e Doenca Renal Cronica?"
+    reading_level: "basic"
+    tags: ["rim", "funcao-renal", "introducao"]
+    content: |
+      Seus rins sao dois orgaos em formato de feijao que ficam nas costas.
+      Eles filtram o sangue e eliminam toxinas pela urina.
+
+      Na Doenca Renal Cronica (DRC), os rins perdem essa capacidade aos poucos.
+      E uma condicao que pode ser controlada com tratamento e mudancas no dia a dia.
+
+      O que voce pode fazer:
+      - Tomar os remedios no horario certo
+      - Beber agua conforme orientacao medica
+      - Reduzir o sal na comida
+      - Fazer os exames de acompanhamento
+
+  - id: "ckd-002"
+    title: "Alimentacao para quem tem DRC"
+    reading_level: "basic"
+    tags: ["dieta", "alimentacao", "potassio", "sodio"]
+    content: |
+      A alimentacao e muito importante para proteger seus rins.
+
+      Reduza o sal:
+      - Evite temperos prontos e embutidos
+      - Use ervas naturais (salsa, cebolinha, oregano)
+      - Cozinhe sem sal e adicione pouco no prato
+
+      Cuidado com o potassio:
+      - Cozinhe legumes em bastante agua
+      - Evite banana, laranja e tomate em excesso
+      - Prefira maca, pera e morango
+
+      Controle as proteinas:
+      - Siga a quantidade indicada pelo nutricionista
+      - Prefira carnes magras em porcoes moderadas
+
+  - id: "ckd-003"
+    title: "Exames importantes na DRC"
+    reading_level: "intermediate"
+    tags: ["exames", "creatinina", "egfr", "albuminuria"]
+    content: |
+      Alguns exames sao fundamentais para acompanhar sua saude renal:
+
+      Creatinina: Substancia filtrada pelos rins. Quando sobe, indica que
+      os rins estao com dificuldade de filtrar.
+
+      TFG (Taxa de Filtracao Glomerular): Mostra quanto seus rins
+      conseguem filtrar por minuto. Quanto maior, melhor.
+
+      Albuminuria: Mede proteina na urina. Proteina na urina e sinal
+      de que os rins estao deixando escapar o que nao deviam.
+
+      Potassio e Sodio: Minerais que os rins controlam.
+      Desbalanco pode causar problemas no coracao.
+
+      Faca seus exames nos prazos indicados pelo medico.

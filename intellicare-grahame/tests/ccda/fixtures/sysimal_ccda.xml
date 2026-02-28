@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3">
+  <id extension="SYSIMAL-20260225-001" root="1.2.392.200036.9125.40"/>
+  <recordTarget>
+    <patientRole>
+      <id extension="SYS443322" root="2.16.840.1.113883.4.6"/>
+      <patient>
+        <name><given>Diego</given><family>Martins</family></name>
+        <administrativeGenderCode code="M"/>
+        <birthTime value="19641201"/>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.7"/>
+          <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" displayName="History of Procedures"/>
+          <entry>
+            <procedure classCode="PROC" moodCode="EVN">
+              <code code="45.13" codeSystem="2.16.840.1.113883.6.104" displayName="Endoscopia digestiva alta"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260118110000"/>
+            </procedure>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <templateId root="2.16.840.1.113883.10.20.22.2.2"/>
+          <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" displayName="Immunizations"/>
+          <entry>
+            <substanceAdministration classCode="SBADM" moodCode="EVN">
+              <statusCode code="completed"/>
+              <effectiveTime value="20250510"/>
+              <consumable>
+                <manufacturedProduct>
+                  <manufacturedMaterial>
+                    <code code="207" codeSystem="2.16.840.1.113883.12.292" displayName="Vacina Influenza Trivalente"/>
+                    <lotNumberText>LoteBR-7788</lotNumberText>
+                  </manufacturedMaterial>
+                </manufacturedProduct>
+              </consumable>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

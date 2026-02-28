@@ -1,0 +1,11 @@
+items:
+  - code: "2160-0"
+    system: loinc
+    display: Creatinina em soro ou plasma
+    definition: Dosagem laboratorial de creatinina
+    synonyms: [creatinina serica]
+  - code: "718-7"
+    system: loinc
+    display: Hemoglobina no sangue
+    synonyms: [hb]
+

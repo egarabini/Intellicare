@@ -1,0 +1,71 @@
+# Painel Renal — Reference Ranges
+# Fontes: KDIGO 2012, SBN, UpToDate
+
+id: renal_panel
+name: "Painel Renal"
+description: "Exames de funcao renal"
+
+labs:
+  - id: creatinine
+    name: "Creatinina"
+    loinc_code: "2160-0"
+    unit: "mg/dL"
+    normal_min: 0.7
+    normal_max: 1.3
+    high_max: 4.0
+    critical_high: 10.0
+    panic_high: 15.0
+    gender_specific: true
+    notes: "Referencia para adultos masculinos. Feminino: 0.6-1.1"
+
+  - id: urea
+    name: "Ureia"
+    loinc_code: "3091-6"
+    unit: "mg/dL"
+    normal_min: 15.0
+    normal_max: 40.0
+    high_max: 100.0
+    critical_high: 200.0
+
+  - id: egfr
+    name: "Taxa de Filtracao Glomerular Estimada"
+    loinc_code: "33914-3"
+    unit: "mL/min/1.73m2"
+    normal_min: 90.0
+    normal_max: 999.0
+    low_min: 60.0
+    critical_low: 15.0
+    panic_low: 5.0
+
+  - id: potassium
+    name: "Potassio"
+    loinc_code: "2823-3"
+    unit: "mEq/L"
+    normal_min: 3.5
+    normal_max: 5.0
+    low_min: 3.0
+    high_max: 6.0
+    critical_low: 2.5
+    critical_high: 6.5
+    panic_low: 2.0
+    panic_high: 7.0
+
+  - id: sodium
+    name: "Sodio"
+    loinc_code: "2951-2"
+    unit: "mEq/L"
+    normal_min: 136.0
+    normal_max: 145.0
+    low_min: 130.0
+    high_max: 150.0
+    critical_low: 120.0
+    critical_high: 160.0
+
+  - id: uric_acid
+    name: "Acido Urico"
+    loinc_code: "3084-1"
+    unit: "mg/dL"
+    normal_min: 3.5
+    normal_max: 7.2
+    high_max: 10.0
+    critical_high: 15.0

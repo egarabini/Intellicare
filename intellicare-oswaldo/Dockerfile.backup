@@ -1,0 +1,72 @@
+# ============================================================================
+# INTELLICARE-OSWALDO — Hardened Multi-Stage Dockerfile
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# BUILD STAGE — Runs as root, has build tools
+# ----------------------------------------------------------------------------
+FROM python:3.13-slim AS builder
+
+WORKDIR /build
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install intellicare-core to /root/.local
+COPY ./intellicare-core /intellicare-core
+RUN pip install --no-cache-dir --user -e /intellicare-core
+
+# Install intellicare-auth (optional)
+COPY ./intellicare-auth /intellicare-auth
+RUN pip install --no-cache-dir --user -e /intellicare-auth || true
+
+# Install oswaldo dependencies
+COPY ./intellicare-oswaldo/pyproject.toml ./intellicare-oswaldo/README.md* /build/
+RUN pip install --no-cache-dir --user . || true
+
+# Copy oswaldo source and install to /root/.local
+COPY ./intellicare-oswaldo /build/intellicare-oswaldo
+RUN pip install --no-cache-dir --user -e /build/intellicare-oswaldo
+
+# ----------------------------------------------------------------------------
+# RUNTIME STAGE — Distroless, runs as nobody
+# ----------------------------------------------------------------------------
+FROM gcr.io/distroless/python3-debian12 AS runtime
+
+# Copy Python packages from builder
+COPY --from=builder /root/.local /root/.local
+
+# Copy app
+COPY --from=builder /build/intellicare-oswaldo /app/intellicare-oswaldo
+
+# Ensure Python finds user-installed packages
+ENV PATH=/root/.local/bin:$PATH
+ENV PYTHONPATH=/root/.local/lib/python3.13/site-packages:$PYTHONPATH
+
+# Run as non-root user
+USER nobody
+
+# API Target (porta 8000)
+FROM runtime AS api
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8000/api/v1/health || exit 1
+CMD ["python3", "-m", "uvicorn", "oswaldo.api.app:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
+
+# Streamlit UI Target (porta 8501)
+# NOTE: Streamlit UI não pode usar distroless (precisa de shell)
+# Mantemos slim para este target específico
+FROM python:3.13-slim AS ui
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY --from=builder /build/intellicare-oswaldo /app/intellicare-oswaldo
+ENV PATH=/root/.local/bin:$PATH
+ENV PYTHONPATH=/root/.local/lib/python3.13/site-packages:$PYTHONPATH
+EXPOSE 8501
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+CMD ["streamlit", "run", "oswaldo/ui/main.py", "--server.port=8501", "--server.headless=true"]
