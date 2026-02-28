@@ -33,6 +33,7 @@ export function QuestionnaireForm({ questionnaire, onSubmit, className }: Questi
   };
 
   const buildResponseItems = (items: QuestionnaireItem[]): QuestionnaireResponseItem[] => {
+    // @ts-ignore - FHIR type compatibility with flatMap
     return items.flatMap(item => {
       if (item.type === 'group') {
         return [{

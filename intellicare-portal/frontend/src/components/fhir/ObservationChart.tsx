@@ -135,7 +135,9 @@ export function ObservationChart({
               fontSize: '0.75rem',
               color: '#e2e8f0',
             }}
+            // @ts-ignore - Recharts type compatibility issue
             formatter={(value: number) => [`${value} ${displayUnit}`, displayTitle]}
+            // @ts-ignore - Recharts type compatibility issue
             labelFormatter={(label: string) => `Data: ${label}`}
           />
           {refLow !== undefined && (
