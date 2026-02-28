@@ -5,9 +5,9 @@
 # Conecta via SSH no servidor e executa o deploy do portal.
 #
 # Secrets necessários (Settings → Secrets → Actions):
-#   STAGING_HOST     = 161.97.131.112
+#   STAGING_HOST     = 167.86.97.142
 #   STAGING_USER     = root
-#   STAGING_SSH_KEY  = chave privada ed25519 (gerada localmente)
+#   STAGING_SSH_KEY  = chave privada ed25519
 # ============================================================================
 
 name: Deploy — Portal IntelliCare
