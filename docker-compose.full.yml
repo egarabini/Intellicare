@@ -453,7 +453,6 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-minerva/Dockerfile
-      target: api
     container_name: intellicare-minerva
     hostname: minerva
     environment:
@@ -492,7 +491,6 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-pierre/Dockerfile
-      target: api
     container_name: intellicare-pierre
     hostname: pierre
     environment:
@@ -532,7 +530,6 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-admin/Dockerfile
-      target: api
     container_name: intellicare-admin
     hostname: admin
     environment:
@@ -649,7 +646,6 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-nise/Dockerfile
-      target: api
     container_name: intellicare-nise
     hostname: nise
     environment:
