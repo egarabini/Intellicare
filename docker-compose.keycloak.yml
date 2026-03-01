@@ -54,8 +54,8 @@ services:
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-changeme}
       KC_DB_SCHEMA: public
 
-      # Hostname (usar IP para HTTP em staging, domínio para HTTPS em produção)
-      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME:-167.86.97.142}
+      # Hostname (não definir para HTTP development)
+      # KC_HOSTNAME será determinado automaticamente
       KC_HTTP_ENABLED: "true"
 
       # Admin User (Criado automaticamente na primeira execução)
