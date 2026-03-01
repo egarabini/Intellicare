@@ -18,7 +18,7 @@ def mock_mcp_client():
             {"name": "web_search", "description": "Search"},
             {"name": "analyze_text", "description": "Analyze"},
         ],
-        "intellicare-ocr": [
+        "intellicare-minerva": [
             {"name": "parse_lab_result", "description": "Parse labs"},
         ],
     })
@@ -45,7 +45,7 @@ class TestToolDefinition:
 class TestMCPToolDescriptions:
     def test_all_tools_have_descriptions(self):
         expected_tools = [
-            "parse_lab_result", "extract_document", "ocr_image",
+            "parse_lab_result", "extract_document", "minerva_image",
             "parse_discharge_summary", "search_documents", "index_document",
             "web_search", "search_medical_literature", "check_regulatory",
             "analyze_text", "summarize_document", "translate_to_portuguese",
@@ -103,8 +103,8 @@ class TestWandaToolRegistry:
         await reg.build()
         superz_tools = reg.get_tools_by_module("intellicare-superz")
         assert len(superz_tools) == 2
-        ocr_tools = reg.get_tools_by_module("intellicare-ocr")
-        assert len(ocr_tools) == 1
+        minerva_tools = reg.get_tools_by_module("intellicare-minerva")
+        assert len(minerva_tools) == 1
 
     @pytest.mark.asyncio
     async def test_get_tool_descriptions(self, mock_mcp_client):

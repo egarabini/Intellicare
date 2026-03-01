@@ -28,5 +28,5 @@
 
 ### Observações
 
-- Houve conflito de nome de container legado (`intellicare-ocr`), removido com `docker rm -f`.
+- Houve conflito de nome de container legado (`intellicare-minerva`), removido com `docker rm -f`.
 - Docker exigiu execução com privilégios elevados em diversas etapas.

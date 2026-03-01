@@ -17,13 +17,13 @@ from wanda.mcp.exceptions import (
 class TestMCPClientConfig:
     def test_defaults(self):
         cfg = MCPClientConfig()
-        assert "intellicare-ocr" in cfg.mcp_servers
-        assert cfg.ocr_timeout_seconds == 30
+        assert "intellicare-minerva" in cfg.mcp_servers
+        assert cfg.minerva_timeout_seconds == 30
         assert cfg.max_retries == 2
 
-    def test_timeout_for_ocr(self):
+    def test_timeout_for_minerva(self):
         cfg = MCPClientConfig()
-        assert cfg.get_timeout_for_tool("intellicare-ocr", "anything") == 30
+        assert cfg.get_timeout_for_tool("intellicare-minerva", "anything") == 30
 
     def test_timeout_for_search_tool(self):
         cfg = MCPClientConfig()
@@ -56,7 +56,7 @@ class TestMCPToolInfo:
 class TestMCPModuleRecord:
     def test_tools_count(self):
         r = MCPModuleRecord(
-            module_name="ocr",
+            module_name="minerva",
             agent_name="MINERVA",
             base_url="http://localhost:8008",
             available_tools=[
@@ -110,19 +110,19 @@ class TestMCPCallRecord:
 
 class TestMCPExceptions:
     def test_module_unavailable(self):
-        e = MCPModuleUnavailableError("ocr", "down")
-        assert "ocr" in str(e)
+        e = MCPModuleUnavailableError("minerva", "down")
+        assert "minerva" in str(e)
 
     def test_tool_not_found(self):
         e = MCPToolNotFoundError("pierre", "bad_tool")
         assert "bad_tool" in str(e)
 
     def test_call_timeout(self):
-        e = MCPCallTimeoutError("ocr", "extract_document", 30)
+        e = MCPCallTimeoutError("minerva", "extract_document", 30)
         assert "30" in str(e)
 
     def test_call_error(self):
-        e = MCPCallError("ocr", "extract_document", "Internal error")
+        e = MCPCallError("minerva", "extract_document", "Internal error")
         assert "Internal error" in str(e)
 
     def test_hierarchy(self):

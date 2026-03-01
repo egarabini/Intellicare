@@ -167,7 +167,7 @@ LABEL maintainer="IntelliCare <dev@intellicare.com.br>" \
 | 11 | admin | 8010 | 🟡 Baixa (admin) |
 | 12 | gestor | 8011 | 🟡 Baixa (gestão) |
 | 13 | pierre | 8009 | 🟡 Baixa (busca) |
-| 14 | ocr | 8008 | 🟡 Baixa (OCR) |
+| 14 | ocr | 8008 | 🟡 Baixa (MINERVA) |
 
 ---
 

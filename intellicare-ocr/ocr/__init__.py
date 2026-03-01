@@ -1,2 +1,0 @@
-"""intellicare-ocr package."""
-

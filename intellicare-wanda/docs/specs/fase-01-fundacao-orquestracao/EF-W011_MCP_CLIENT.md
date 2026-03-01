@@ -12,7 +12,7 @@
 ## 1. Objetivo
 
 Habilitar a WANDA como **MCP Client** para consumir ferramentas dos MCP Servers do IntelliCare V5:
-- **MINERVA** (`intellicare-ocr`, :8008) — extrai dados de documentos medicos
+- **MINERVA** (`intellicare-minerva`, :8008) — extrai dados de documentos medicos
 - **PIERRE** (`intellicare-pierre`, :8009) — busca web, literatura medica, analise de textos
 
 Com esta EF, a WANDA passa a ter acesso a 12 ferramentas adicionais alem dos 6 modulos HTTP existentes.
@@ -26,7 +26,7 @@ WANDA (MCP Client)
     │
     ├── MINERVA :8008 (MCP Server)
     │     ├── extract_document(file_base64, file_type, document_type)
-    │     ├── ocr_image(image_base64, image_type, enhance_quality)
+    │     ├── minerva_image(image_base64, image_type, enhance_quality)
     │     ├── parse_lab_result(file_content_base64 | document_text)
     │     ├── parse_discharge_summary(file_content_base64, patient_id)
     │     ├── search_documents(query, patient_id, top_k, date_from)
@@ -52,7 +52,7 @@ class MCPModuleRecord(BaseModel):
     """Registro de um MCP Server no Module Registry."""
 
     id: UUID = Field(default_factory=uuid4)
-    module_name: str              # "intellicare-ocr" | "intellicare-pierre"
+    module_name: str              # "intellicare-minerva" | "intellicare-pierre"
     agent_name: str               # "MINERVA" | "PIERRE"
     base_url: str                 # "http://minerva:8008"
     mcp_transport: str = "sse"   # "sse" | "stdio"
@@ -76,7 +76,7 @@ class MCPToolInfo(BaseModel):
     name: str                     # "parse_lab_result"
     description: str              # Descricao para LLM usar no routing
     input_schema: Dict            # JSON Schema dos parametros
-    module_name: str              # "intellicare-ocr"
+    module_name: str              # "intellicare-minerva"
     last_validated: Optional[datetime]
 ```
 
@@ -89,7 +89,7 @@ class MCPCallRecord(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     correlation_id: str           # Propagado da requisicao original
 
-    module_name: str              # "intellicare-ocr"
+    module_name: str              # "intellicare-minerva"
     tool_name: str                # "parse_lab_result"
 
     input_params: Dict            # Parametros enviados (sem dados sensiveis)
@@ -134,7 +134,7 @@ class WandaMCPClient:
         Conecta a todos os MCP Servers configurados.
 
         Chamado na inicializacao da WANDA.
-        Retorna: { "intellicare-ocr": True, "intellicare-pierre": False (se indisponivel) }
+        Retorna: { "intellicare-minerva": True, "intellicare-pierre": False (se indisponivel) }
         """
         results = {}
         for module_name, mcp_url in self._config.mcp_servers.items():
@@ -172,7 +172,7 @@ class WandaMCPClient:
         Chama uma ferramenta MCP e retorna o resultado.
 
         Args:
-            module_name: "intellicare-ocr" ou "intellicare-pierre"
+            module_name: "intellicare-minerva" ou "intellicare-pierre"
             tool_name: Nome da ferramenta (ex: "parse_lab_result")
             params: Parametros da ferramenta
             correlation_id: Para rastreabilidade
@@ -253,7 +253,7 @@ class WandaMCPClient:
             module_name: None = todos os modulos
 
         Returns:
-            { "intellicare-ocr": [tools...], "intellicare-pierre": [tools...] }
+            { "intellicare-minerva": [tools...], "intellicare-pierre": [tools...] }
         """
         if module_name:
             return {module_name: self._tools_cache.get(module_name, [])}
@@ -284,12 +284,12 @@ class MCPClientConfig(BaseModel):
     """Configuracao do MCP Client."""
 
     mcp_servers: Dict[str, str] = {
-        "intellicare-ocr": "http://intellicare-ocr:8008",
+        "intellicare-minerva": "http://intellicare-minerva:8008",
         "intellicare-pierre": "http://intellicare-pierre:8009"
     }
 
     # Timeouts por tipo de ferramenta
-    ocr_timeout_seconds: int = 30      # OCR pode ser lento (PDFs)
+    minerva_timeout_seconds: int = 30      # OCR pode ser lento (PDFs)
     search_timeout_seconds: int = 15   # Busca web
     analysis_timeout_seconds: int = 60 # Qwen2.5-72B analise de texto
 
@@ -339,8 +339,8 @@ class WandaToolRegistry:
                 "interpretar exames de outro sistema. "
                 "Retorna dict compativel com Florence para interpretacao."
             ),
-            func=self._make_mcp_tool("intellicare-ocr", "parse_lab_result"),
-            coroutine=self._make_async_mcp_tool("intellicare-ocr", "parse_lab_result")
+            func=self._make_mcp_tool("intellicare-minerva", "parse_lab_result"),
+            coroutine=self._make_async_mcp_tool("intellicare-minerva", "parse_lab_result")
         ))
 
         tools.append(Tool(
@@ -350,8 +350,8 @@ class WandaToolRegistry:
                 "Use para encontrar laudos, prescricoes e sumarios de alta anteriores. "
                 "Requer patient_id."
             ),
-            func=self._make_mcp_tool("intellicare-ocr", "search_documents"),
-            coroutine=self._make_async_mcp_tool("intellicare-ocr", "search_documents")
+            func=self._make_mcp_tool("intellicare-minerva", "search_documents"),
+            coroutine=self._make_async_mcp_tool("intellicare-minerva", "search_documents")
         ))
 
         # PIERRE Tools
@@ -485,7 +485,7 @@ Se MINERVA ou PIERRE estiverem indisponiveis:
 
 ```python
 DEGRADATION_POLICY = {
-    "intellicare-ocr": {
+    "intellicare-minerva": {
         "fallback_message": (
             "Servico de OCR (MINERVA) indisponivel. "
             "Nao e possivel processar documentos no momento. "
@@ -518,7 +518,7 @@ GET /api/v1/mcp/modules
   Response 200: {
     modules: [
       {
-        module_name: "intellicare-ocr",
+        module_name: "intellicare-minerva",
         agent_name: "MINERVA",
         status: "healthy",
         tools_count: 6,
@@ -622,10 +622,10 @@ wanda/
 
 ```bash
 # MCP Servers
-MCP_OCR_URL=http://intellicare-ocr:8008
+MCP_MINERVA_URL=http://intellicare-minerva:8008
 MCP_PIERRE_URL=http://intellicare-pierre:8009
 MCP_CONNECTION_TIMEOUT=10
-MCP_OCR_TOOL_TIMEOUT=30
+MCP_MINERVA_TOOL_TIMEOUT=30
 MCP_SEARCH_TOOL_TIMEOUT=15
 MCP_ANALYSIS_TOOL_TIMEOUT=60
 MCP_MAX_RETRIES=2
@@ -664,7 +664,7 @@ test_mcp/
 ## 13. Criterios de Aceitacao
 
 - [ ] `WandaMCPClient.connect_all()` conecta a MINERVA e PIERRE sem erro
-- [ ] `WandaMCPClient.call_tool("intellicare-ocr", "parse_lab_result", ...)` retorna dict valido
+- [ ] `WandaMCPClient.call_tool("intellicare-minerva", "parse_lab_result", ...)` retorna dict valido
 - [ ] `WandaMCPClient.call_tool("intellicare-pierre", "web_search", ...)` retorna resultados
 - [ ] Se MINERVA indisponivel → WANDA continua funcionando, retorna mensagem de degradacao
 - [ ] Se PIERRE indisponivel → WANDA continua funcionando, retorna mensagem de degradacao

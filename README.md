@@ -25,7 +25,7 @@ IntelliCare é uma plataforma modular de saúde construída com microserviços P
 | **8005** | Comunicacao | — | WhatsApp + Email + SMS | 8005:8000 |
 | **8006** | Geralda | GERALDA | Gestão + Administrativo | 8006:8000 |
 | **8007** | Zilda | ZILDA | CNES + DATASUS | 8007:8000 |
-| **8008** | OCR/Minerva | MINERVA | Extração Documentos | 8008:8008 |
+| **8008** | MINERVA/Minerva | MINERVA | Extração Documentos | 8008:8008 |
 | **8009** | Pierre | PIERRE | Scientific Search | 8009:8009 |
 | **8010** | Admin | — | Administração Sistema | 8010:8010 |
 | **8011** | Gestor | — | Gestão Módulos Clínicos | 8011:8011 |

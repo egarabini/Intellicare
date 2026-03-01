@@ -1,0 +1,2 @@
+"""Utilitarios do modulo MINERVA."""
+

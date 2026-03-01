@@ -16,7 +16,7 @@ Criar uma documentação única das APIs internas IntelliCare, mantendo cada mó
   - `intellicare-geralda`
   - `intellicare-grahame`
   - `intellicare-nise`
-  - `intellicare-ocr`
+  - `intellicare-minerva`
   - `intellicare-oswaldo`
   - `intellicare-superz`
   - `intellicare-wanda`

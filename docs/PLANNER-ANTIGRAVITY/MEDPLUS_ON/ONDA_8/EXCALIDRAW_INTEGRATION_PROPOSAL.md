@@ -66,7 +66,7 @@
 │  ┌──────────────────────────────────────────────────────────────┐  │
 │  │   Excalidraw AI Agent (novo sub-agente do WANDA)           │  │
 │  │  - Gera diagramas a partir de texto (AI)                   │  │
-│  │  - Analisa diagramas (OCR, compreensão visual)             │  │
+│  │  - Analisa diagramas (MINERVA, compreensão visual)             │  │
 │  │  - Sugere melhorias (fluxo de tratamento otimizado)        │  │
 │  └──────────────────────────────────────────────────────────────┘  │
 │                              ↕                                      │
@@ -339,7 +339,7 @@ class ExcalidrawAgent:
 
     Capabilities:
     - Gerar diagrama a partir de texto (AI)
-    - Analisar diagrama existente (OCR)
+    - Analisar diagrama existente (MINERVA)
     - Sugerir melhorias (fluxo de tratamento otimizado)
     """
 

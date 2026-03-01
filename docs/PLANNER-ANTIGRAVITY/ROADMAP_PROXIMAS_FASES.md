@@ -450,7 +450,7 @@ O portal tem 15 páginas implementadas. A maioria provavelmente usa dados mock/h
 **Pré-requisitos:** MINERVA (8008) e PIERRE (8009) com implementação básica funcionando
 
 ### Contexto
-WANDA deve consumir MINERVA (OCR de documentos médicos) e PIERRE (busca científica PubMed+Tavily) como **ferramentas MCP**. Quando um médico perguntar "qual o protocolo para DRC estágio 3?", WANDA invoca PIERRE. Quando enviar um PDF de exame, WANDA invoca MINERVA.
+WANDA deve consumir MINERVA (MINERVA de documentos médicos) e PIERRE (busca científica PubMed+Tavily) como **ferramentas MCP**. Quando um médico perguntar "qual o protocolo para DRC estágio 3?", WANDA invoca PIERRE. Quando enviar um PDF de exame, WANDA invoca MINERVA.
 
 ### 3.1.A — MCP Client base
 

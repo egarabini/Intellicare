@@ -113,7 +113,7 @@ Mode                 LastWriteTime         Length Name
 ✅ intellicare-comunicacao   (8005)
 ✅ intellicare-geralda       (8006)
 ✅ intellicare-zilda         (8007)
-✅ intellicare-ocr           (8008)
+✅ intellicare-minerva           (8008)
 ✅ intellicare-pierre        (8009)
 ✅ intellicare-admin         (8010)
 ✅ intellicare-gestor        (8011)

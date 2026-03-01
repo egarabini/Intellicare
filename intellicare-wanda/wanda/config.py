@@ -39,10 +39,10 @@ class WandaConfig(BaseModuleConfig):
     ips_stale_ttl_seconds: int = 86400  # 24 hours
 
     # ── EF-W011: MCP Servers ──────────────────────────────────────
-    mcp_ocr_url: str = "http://localhost:8008"
+    mcp_minerva_url: str = "http://localhost:8008"
     mcp_superz_url: str = "http://localhost:8009"
     mcp_connection_timeout: int = 10
-    mcp_ocr_tool_timeout: int = 30
+    mcp_minerva_tool_timeout: int = 30
     mcp_search_tool_timeout: int = 15
     mcp_analysis_tool_timeout: int = 60
     mcp_max_retries: int = 2
@@ -132,6 +132,6 @@ class WandaConfig(BaseModuleConfig):
     @property
     def mcp_server_urls(self) -> dict[str, str]:
         return {
-            "intellicare-ocr": self.mcp_ocr_url,
+            "intellicare-minerva": self.mcp_minerva_url,
             "intellicare-superz": self.mcp_superz_url,
         }

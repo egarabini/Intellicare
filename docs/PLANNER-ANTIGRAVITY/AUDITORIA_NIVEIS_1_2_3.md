@@ -269,7 +269,7 @@ ERROR tests/test_events/test_event_types.py
 | Testes Geralda AI não rodam (3.2) | 🟠 ALTA | Código sem validação |
 | Bug Pydantic/SQLAlchemy (1.1.B) | 🟡 MÉDIA | 4 testes bloqueados |
 | Portal páginas restantes (2.2) | 🟡 MÉDIA | Experiência incompleta |
-| Falta FASE 3.1 (WANDA MCP) | 🟡 MÉDIA | OCR/Pierre não integrados |
+| Falta FASE 3.1 (WANDA MCP) | 🟡 MÉDIA | MINERVA/Pierre não integrados |
 
 ---
 

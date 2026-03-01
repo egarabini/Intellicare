@@ -17,7 +17,7 @@
 | **8005** | Comunicacao | Backend | WhatsApp + Email + SMS | 8000 | `.env.full` COMUNICACAO_PORT |
 | **8006** | Geralda | Backend | Gestão + Administrativo | 8000 | `.env.full` GERALDA_PORT |
 | **8007** | Zilda | Backend | CNES + DATASUS | 8000 | `.env.full` ZILDA_PORT |
-| **8008** | OCR/Minerva | Backend | Extração Documentos Médicos | 8008 | `.env.full` OCR_PORT |
+| **8008** | MINERVA/Minerva | Backend | Extração Documentos Médicos | 8008 | `.env.full` MINERVA_PORT |
 | **8009** | Pierre | Backend | Scientific Search (PubMed + Tavily) | 8009 | `.env.full` PIERRE_PORT |
 | **8010** | Admin | Backend | Administração do Sistema | 8010 | `.env.full` ADMIN_PORT |
 | **8011** | Gestor | Backend | Gestão de Módulos Clínicos | 8011 | `.env.full` GESTOR_PORT |
@@ -79,9 +79,9 @@
 - **Healthcheck:** `http://localhost:8000/api/v1/health`
 - **Docs:** `http://localhost:8007/api/docs`
 
-#### 8. OCR/Minerva (8008 → 8008)
+#### 8. MINERVA/Minerva (8008 → 8008)
 - **Função:** Extração de Documentos Médicos
-- **Container:** `intellicare-ocr`
+- **Container:** `intellicare-minerva`
 - **Healthcheck:** `http://localhost:8008/api/v1/health`
 - **Docs:** `http://localhost:8008/api/docs`
 - **Nota:** Porta interna também é 8008
@@ -198,7 +198,7 @@
 - Porta Externa: `800X` (onde X = 1-13)
 - Porta Interna: `8000` (padrão FastAPI/uvicorn)
 - **Exceções:**
-  - OCR/Minerva: `8008:8008`
+  - MINERVA/Minerva: `8008:8008`
   - Pierre: `8009:8009`
   - Admin: `8010:8010`
   - Gestor: `8011:8011`
@@ -222,7 +222,7 @@ WANDA_PORT=8004
 COMUNICACAO_PORT=8005
 GERALDA_PORT=8006
 ZILDA_PORT=8007
-OCR_PORT=8008
+MINERVA_PORT=8008
 PIERRE_PORT=8009
 ADMIN_PORT=8010
 GESTOR_PORT=8011
@@ -354,7 +354,7 @@ docker exec intellicare-florence curl http://localhost:8000/api/v1/health
 │  Comunicacao (8005)     → WhatsApp + Email                      │
 │  Geralda (8006)         → Gestão                                │
 │  Zilda (8007)           → CNES + DATASUS                        │
-│  OCR/Minerva (8008)     → Extração Docs                         │
+│  MINERVA/Minerva (8008)     → Extração Docs                         │
 │  Pierre (8009)          → Scientific Search                     │
 │  Admin (8010)           → Administração                         │
 │  Gestor (8011)          → Gestão Módulos                        │

@@ -461,7 +461,7 @@ class TestRegisterMCPModule:
 
         repo = ModuleRepository(make_session_factory(session))
         mcp_data = {
-            "module_name": "intellicare-ocr",
+            "module_name": "intellicare-minerva",
             "agent_name": "MINERVA",
             "base_url": "http://localhost:8008",
             "mcp_endpoint": "/mcp/sse",
@@ -476,7 +476,7 @@ class TestRegisterMCPModule:
     async def test_update_existing_mcp_module(self):
         session = make_mock_session()
         existing = MCPModuleModel(
-            module_name="intellicare-ocr",
+            module_name="intellicare-minerva",
             agent_name="MINERVA",
             base_url="http://localhost:8008",
             mcp_endpoint="/mcp/sse",
@@ -489,7 +489,7 @@ class TestRegisterMCPModule:
 
         repo = ModuleRepository(make_session_factory(session))
         mcp_data = {
-            "module_name": "intellicare-ocr",
+            "module_name": "intellicare-minerva",
             "agent_name": "MINERVA",
             "base_url": "http://localhost:8008",
             "status": "healthy",
@@ -508,7 +508,7 @@ class TestGetMCPModules:
         result_mock = MagicMock()
         result_mock.scalars.return_value.all.return_value = [
             MCPModuleModel(
-                module_name="intellicare-ocr",
+                module_name="intellicare-minerva",
                 agent_name="MINERVA",
                 base_url="http://localhost:8008",
                 mcp_endpoint="/mcp/sse",
@@ -567,7 +567,7 @@ class TestRegisterMCPTools:
         module_id = uuid.uuid4()
         tools = [
             {"name": "parse_lab", "description": "Parse lab results", "input_schema": {}},
-            {"name": "ocr_pdf", "description": "OCR a PDF", "input_schema": {}},
+            {"name": "minerva_pdf", "description": "OCR a PDF", "input_schema": {}},
         ]
         result = await repo.register_mcp_tools(module_id, tools)
         # session.add called twice (one per tool)
@@ -629,7 +629,7 @@ class TestLogMCPCall:
         repo = ModuleRepository(make_session_factory(session))
         call_data = {
             "correlation_id": "corr-abc-123",
-            "module_name": "intellicare-ocr",
+            "module_name": "intellicare-minerva",
             "tool_name": "parse_lab_result",
             "input_summary": "exame_abc.pdf",
             "status": "success",
@@ -647,7 +647,7 @@ class TestLogMCPCall:
         repo = ModuleRepository(make_session_factory(session))
         call_data = {
             "correlation_id": "corr-fail-999",
-            "module_name": "intellicare-ocr",
+            "module_name": "intellicare-minerva",
             "tool_name": "parse_lab_result",
             "input_summary": None,
             "status": "error",
