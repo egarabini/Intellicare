@@ -8,13 +8,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
-COPY pyproject.toml ./
+COPY ./intellicare-admin/pyproject.toml ./
 RUN pip install --no-cache-dir pip --upgrade && \
     pip install --no-cache-dir poetry && \
     poetry config virtualenvs.create false
 
 # Copy local dependencies first (for Docker layer caching)
-COPY . .
+COPY ./intellicare-admin ./
 
 # Install without dev deps
 RUN poetry install --no-dev --no-interaction 2>/dev/null || pip install -e .

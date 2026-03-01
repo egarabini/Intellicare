@@ -451,8 +451,8 @@ services:
   # ==========================================================================
   minerva:
     build:
-      context: ./intellicare-minerva
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-minerva/Dockerfile
     container_name: intellicare-minerva
     hostname: minerva
     environment:
@@ -489,8 +489,8 @@ services:
   # ==========================================================================
   pierre:
     build:
-      context: ./intellicare-pierre
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-pierre/Dockerfile
     container_name: intellicare-pierre
     hostname: pierre
     environment:
@@ -528,8 +528,8 @@ services:
   # ==========================================================================
   admin:
     build:
-      context: ./intellicare-admin
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-admin/Dockerfile
     container_name: intellicare-admin
     hostname: admin
     environment:
@@ -644,8 +644,8 @@ services:
   # ==========================================================================
   nise:
     build:
-      context: ./intellicare-nise
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./intellicare-nise/Dockerfile
     container_name: intellicare-nise
     hostname: nise
     environment:

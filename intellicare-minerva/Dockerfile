@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-COPY pyproject.toml README.md ./
-COPY minerva ./minerva
+COPY ./intellicare-minerva/pyproject.toml ./intellicare-minerva/README.md ./
+COPY ./intellicare-minerva/minerva ./minerva
 
 RUN pip install --no-cache-dir poetry && \
     poetry config virtualenvs.create false && \
