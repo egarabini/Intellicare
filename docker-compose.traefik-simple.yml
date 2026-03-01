@@ -42,3 +42,7 @@ services:
 networks:
   intellicare-network:
     external: true
+    # Docker Compose prefixes network names with the project name.
+    # When docker-compose.full.yml runs from /opt/intellicare, the project
+    # name is 'intellicare', so the actual network is 'intellicare_intellicare-network'.
+    name: ${INTELLICARE_NETWORK_NAME:-intellicare_intellicare-network}
