@@ -44,6 +44,10 @@ RUN pip install --no-cache-dir --user -e /build/intellicare-grahame
 # Remove build-only Python packages with known CVEs from runtime layer copy.
 RUN pip uninstall -y wheel jaraco.context || true
 
+# Create wrapper script to use correct Python
+RUN printf '#!/bin/sh\nexec /root/.local/bin/python3 "$@"' > /python-wrapper && \
+    chmod +x /python-wrapper
+
 # ----------------------------------------------------------------------------
 # RUNTIME STAGE � Distroless, runs as nobody
 # ----------------------------------------------------------------------------
@@ -55,13 +59,12 @@ COPY --from=builder /root/.local /root/.local
 # Copy app (if needed for static files, templates, etc.)
 COPY --from=builder /build/intellicare-grahame /app/intellicare-grahame
 
+# Copy Python wrapper from builder
+COPY --from=builder /python-wrapper /python-wrapper
+
 # Ensure Python finds user-installed packages
 ENV PATH=/root/.local/bin:$PATH
 ENV PYTHONPATH=/root/.local/lib/python3.11/site-packages:$PYTHONPATH
-
-# Create wrapper script to run correct Python
-RUN echo '#!/bin/sh\nexec /root/.local/bin/python3 "$@"' > /usr/local/bin/python3-wrapper && \
-    chmod +x /usr/local/bin/python3-wrapper
 
 # Run as non-root user (distroless creates 'nobody' user)
 USER nobody
@@ -78,5 +81,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 # ----------------------------------------------------------------------------
 FROM runtime AS api
 
-# Run uvicorn from /root/.local/bin
-CMD ["/usr/local/bin/python3-wrapper", "-m", "uvicorn", "grahame.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run uvicorn from /root/.local/bin using wrapper
+CMD ["/python-wrapper", "-m", "uvicorn", "grahame.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
