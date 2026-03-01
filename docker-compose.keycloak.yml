@@ -54,10 +54,9 @@ services:
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-changeme}
       KC_DB_SCHEMA: public
 
-      # Hostname
-      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME:-auth.intellicare.ia.br}
+      # Hostname (usar IP para HTTP em staging, domínio para HTTPS em produção)
+      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME:-167.86.97.142}
       KC_HTTP_ENABLED: "true"
-      KC_HTTPS_PORT: "8443"
 
       # Admin User (Criado automaticamente na primeira execução)
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN:-admin}
