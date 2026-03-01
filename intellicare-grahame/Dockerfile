@@ -57,8 +57,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=builder /usr/local/lib/python3.11 /usr/local/lib/python3.11
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy app
-COPY --from=builder /build/intellicare-grahame /app/intellicare-grahame
+# Copy app - copy the contents so grahame is at /app/grahame
+COPY --from=builder /build/intellicare-grahame /app/
 
 WORKDIR /app
 
