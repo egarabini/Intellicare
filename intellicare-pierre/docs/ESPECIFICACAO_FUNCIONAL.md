@@ -1,6 +1,6 @@
 # intellicare-pierre — Especificacao Funcional
 
-**Modulo:** `intellicare-pierre` (Super Z / PIERRE)
+**Modulo:** `intellicare-pierre` (PIERRE / PIERRE)
 **Versao:** 1.0 (IntelliCare V5)
 **Porta:** 8009
 **Data:** 2026-02-16

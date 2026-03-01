@@ -19,6 +19,10 @@ log_success() { echo -e "${GREEN}✅ $1${NC}"; }
 log_warning() { echo -e "${YELLOW}⚠️  $1${NC}"; }
 log_error() { echo -e "${RED}❌ $1${NC}"; }
 
+KEYCLOAK_CONTAINER="${KEYCLOAK_CONTAINER:-keycloak-intellicare}"
+KEYCLOAK_ADMIN_USER="${KEYCLOAK_ADMIN:-admin}"
+KEYCLOAK_ADMIN_PASS="${KEYCLOAK_ADMIN_PASSWORD:-changeme}"
+
 echo "╔═══════════════════════════════════════════════════════════╗"
 echo "║                                                           ║"
 echo "║   🔐 Setup Keycloak - IntelliCare Multi-Tenant         ║"
@@ -29,7 +33,7 @@ echo ""
 # 1. Verificar se Keycloak está rodando
 log_info "Verificando se Keycloak está rodando..."
 
-if ! docker ps | grep -q keycloak-intellicare; then
+if ! docker ps --format '{{.Names}}' | grep -q "^${KEYCLOAK_CONTAINER}$"; then
     log_error "Keycloak não está rodando!"
     log_info "Execute primeiro: docker-compose -f docker-compose.keycloak.yml up -d"
     exit 1
@@ -64,20 +68,33 @@ echo ""
 log_info "Verificando se realm bemcuidar já existe..."
 
 REALM_EXISTS=$(curl -s http://localhost:8080/realms/bemcuidar -w "%{http_code}" | tail -n1)
+RECREATE_REALM="false"
 
 if [ "$REALM_EXISTS" = "200" ]; then
     log_warning "Realm bemcuidar já existe!"
     read -p "Deseja recriar? (s/N) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Ss]$ ]]; then
-        log_info "Deletando realm existente..."
-        docker exec keycloak-intellicare /opt/keycloak/bin/kcadm.sh delete realms bemcuidar
+        RECREATE_REALM="true"
     else
         log_info "Mantendo realm existente"
     fi
 fi
 
-# 4. Criar realm via import (se existir arquivo)
+# 4. Login no kcadm
+log_info "Autenticando no kcadm..."
+docker exec "${KEYCLOAK_CONTAINER}" /opt/keycloak/bin/kcadm.sh config credentials \
+    --server http://localhost:8080 \
+    --realm master \
+    --user "${KEYCLOAK_ADMIN_USER}" \
+    --password "${KEYCLOAK_ADMIN_PASS}" > /dev/null
+
+if [ "${RECREATE_REALM}" = "true" ]; then
+    log_info "Deletando realm existente..."
+    docker exec "${KEYCLOAK_CONTAINER}" /opt/keycloak/bin/kcadm.sh delete realms/bemcuidar > /dev/null 2>&1 || true
+fi
+
+# 5. Criar realm via import (se existir arquivo)
 if [ -f "keycloak/import/bemcuidar-realm.json" ]; then
     log_info "Importando realm bemcuidar..."
 
@@ -88,9 +105,8 @@ if [ -f "keycloak/import/bemcuidar-realm.json" ]; then
     fi
 
     # Criar realm via import
-    docker exec keycloak-intellicare sh -c '
-        kcadm.sh create realms -s master -o < /opt/keycloak/data/import/bemcuidar-realm.json
-    ' 2>/dev/null || true
+    docker exec "${KEYCLOAK_CONTAINER}" /opt/keycloak/bin/kcadm.sh create realms \
+        -f /opt/keycloak/data/import/bemcuidar-realm.json > /dev/null 2>&1 || true
 
     log_success "Realm importado!"
 else
@@ -98,54 +114,51 @@ else
     log_info "Criando realm manualmente..."
 
     # Criar realm manualmente
-    docker exec keycloak-intellicare sh -c '
-        kcadm.sh create realm -s master -o << EOF
-{
-  "realm": "bemcuidar",
-  "enabled": true,
-  "sslRequired": "external"
-}
-EOF
-    ' 2>/dev/null || true
+    docker exec "${KEYCLOAK_CONTAINER}" /opt/keycloak/bin/kcadm.sh create realms \
+        -s realm=bemcuidar \
+        -s enabled=true \
+        -s sslRequired=external > /dev/null 2>&1 || true
 
     log_success "Realm criado!"
 fi
 
-# 5. Verificar clients
+# 6. Verificar clients
 log_info "Verificando clients..."
 
-CLIENTS=$(curl -s http://localhost:8080/realms/bemcuidar/clients | jq -r '.[] | .clientId')
+CLIENTS=$(docker exec "${KEYCLOAK_CONTAINER}" /opt/keycloak/bin/kcadm.sh get clients -r bemcuidar \
+    | jq -r '.[].clientId' 2>/dev/null || true)
 
-if echo "$CLIENTS" | grep -q "intellicare-admin"; then
-    log_success "✅ intellicare-admin existe"
+if echo "$CLIENTS" | grep -q "^intellicare-admin$"; then
+    log_success "intellicare-admin existe"
 else
-    log_warning "⚠️  intellicare-admin não encontrado - criando manualmente..."
+    log_warning "intellicare-admin não encontrado"
 fi
 
-if echo "$CLIENTS" | grep -q "intellicare-portal"; then
-    log_success "✅ intellicare-portal existe"
+if echo "$CLIENTS" | grep -q "^intellicare-portal$"; then
+    log_success "intellicare-portal existe"
 else
-    log_warning "⚠️  intellicare-portal não encontrado - criando manualmente..."
+    log_warning "intellicare-portal não encontrado"
 fi
 
-# 6. Verificar roles
+# 7. Verificar roles
 log_info "Verificando roles..."
 
-ROLES=$(curl -s http://localhost:8080/realms/bemcuidar/roles/PLATFORM_ADMIN | jq -r '.name' 2>/dev/null || "")
+ROLES=$(docker exec "${KEYCLOAK_CONTAINER}" /opt/keycloak/bin/kcadm.sh get roles/PLATFORM_ADMIN -r bemcuidar \
+    | jq -r '.name' 2>/dev/null || true)
 
 if [ -n "$ROLES" ]; then
-    log_success "✅ Roles configurados"
+    log_success "Roles configurados"
 else
-    log_warning "⚠️  Alguns roles podem não ter sido criados"
+    log_warning "Alguns roles podem não ter sido criados"
 fi
 
-# 7. Teste de autenticação
+# 8. Teste de autenticação
 log_info "Testando autenticação..."
 
 # Obter token de admin
 ADMIN_TOKEN=$(curl -s -X POST "http://localhost:8080/realms/master/protocol/openid-connect/token" \
     -H "Content-Type: application/x-www-form-urlencoded" \
-    -d "username=admin&password=changeme&grant_type=password&client_id=admin-cli" | jq -r '.access_token')
+    -d "username=${KEYCLOAK_ADMIN_USER}&password=${KEYCLOAK_ADMIN_PASS}&grant_type=password&client_id=admin-cli" | jq -r '.access_token')
 
 if [ -n "$ADMIN_TOKEN" ] && [ "$ADMIN_TOKEN" != "null" ]; then
     log_success "✅ Autenticação funcionando!"
@@ -159,7 +172,7 @@ else
     log_info "  Senha padrão: admin/changeme (MUDAR EM PRODUÇÃO)"
 fi
 
-# 8. Informações de acesso
+# 9. Informações de acesso
 echo ""
 log_success "═══════════════════════════════════════════════"
 log_success "   Keycloak configurado com sucesso!              "
@@ -170,8 +183,8 @@ echo "  • Keycloak: http://localhost:8080"
 echo "  • Admin Console: http://localhost:8080/admin/master/console"
 echo ""
 echo "🔑 Credenciais Padrão (MUDAR EM PRODUÇÃO):"
-echo "  • Usuário: admin"
-echo "  • Senha: changeme"
+echo "  • Usuário: ${KEYCLOAK_ADMIN_USER}"
+echo "  • Senha: <valor de KEYCLOAK_ADMIN_PASSWORD>"
 echo "  • Realm: bemcuidar"
 echo ""
 echo "📋 Clients Configurados:"

@@ -349,7 +349,7 @@ O seguinte NAO faz parte desta versao:
 - **Assinatura digital de documentos** — validacao de certificado ICP-Brasil
 - **Integracao direta HIS/HL7** — apenas upload de arquivos
 - **Reconhecimento de manuscrito muito degradado** — confidence < 0.5 = alerta ao usuario
-- **Traducao automatica** — responsabilidade do Super Z (intellicare-superz)
+- **Traducao automatica** — responsabilidade do PIERRE (intellicare-pierre)
 
 ---
 

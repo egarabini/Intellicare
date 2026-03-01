@@ -12,7 +12,7 @@ class MCPClientConfig(BaseModel):
     mcp_servers: dict[str, str] = Field(
         default_factory=lambda: {
             "intellicare-ocr": "http://intellicare-ocr:8008",
-            "intellicare-superz": "http://intellicare-superz:8009",
+            "intellicare-superz": "http://intellicare-pierre:8009",
         }
     )
 

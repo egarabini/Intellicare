@@ -32,13 +32,13 @@ class TestToolDefinition:
             name="web_search",
             description="Search the web",
             source_type="mcp",
-            module_name="superz",
+            module_name="pierre",
             invoke=lambda p: None,
         )
         d = td.to_dict()
         assert d["name"] == "web_search"
         assert d["source_type"] == "mcp"
-        assert d["module_name"] == "superz"
+        assert d["module_name"] == "pierre"
         assert "invoke" not in d
 
 

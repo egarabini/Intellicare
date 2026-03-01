@@ -45,9 +45,9 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
     container_name: keycloak-intellicare
-    # Em desenvolvimento: start-dev
-    # Em produção: start (sem '-dev')
-    command: start-dev
+    # Em desenvolvimento: start-dev --import-realm
+    # Em produção: start --import-realm
+    command: start-dev --import-realm
     environment:
       # Database Configuration
       KC_DB: postgres
@@ -99,9 +99,6 @@ services:
       # Health
       KC_HEALTH_ENABLED: "true"
       KC_METRICS_ENABLED: "true"
-
-      # Import
-      KC_IMPORT_FILE: /opt/keycloak/data/import/bemcuidar-realm.json
 
     volumes:
       # Import realm automaticamente

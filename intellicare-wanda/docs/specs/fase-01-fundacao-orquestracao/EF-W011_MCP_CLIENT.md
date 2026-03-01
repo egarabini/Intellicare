@@ -13,7 +13,7 @@
 
 Habilitar a WANDA como **MCP Client** para consumir ferramentas dos MCP Servers do IntelliCare V5:
 - **MINERVA** (`intellicare-ocr`, :8008) — extrai dados de documentos medicos
-- **PIERRE** (`intellicare-superz`, :8009) — busca web, literatura medica, analise de textos
+- **PIERRE** (`intellicare-pierre`, :8009) — busca web, literatura medica, analise de textos
 
 Com esta EF, a WANDA passa a ter acesso a 12 ferramentas adicionais alem dos 6 modulos HTTP existentes.
 
@@ -52,7 +52,7 @@ class MCPModuleRecord(BaseModel):
     """Registro de um MCP Server no Module Registry."""
 
     id: UUID = Field(default_factory=uuid4)
-    module_name: str              # "intellicare-ocr" | "intellicare-superz"
+    module_name: str              # "intellicare-ocr" | "intellicare-pierre"
     agent_name: str               # "MINERVA" | "PIERRE"
     base_url: str                 # "http://minerva:8008"
     mcp_transport: str = "sse"   # "sse" | "stdio"
@@ -134,7 +134,7 @@ class WandaMCPClient:
         Conecta a todos os MCP Servers configurados.
 
         Chamado na inicializacao da WANDA.
-        Retorna: { "intellicare-ocr": True, "intellicare-superz": False (se indisponivel) }
+        Retorna: { "intellicare-ocr": True, "intellicare-pierre": False (se indisponivel) }
         """
         results = {}
         for module_name, mcp_url in self._config.mcp_servers.items():
@@ -172,7 +172,7 @@ class WandaMCPClient:
         Chama uma ferramenta MCP e retorna o resultado.
 
         Args:
-            module_name: "intellicare-ocr" ou "intellicare-superz"
+            module_name: "intellicare-ocr" ou "intellicare-pierre"
             tool_name: Nome da ferramenta (ex: "parse_lab_result")
             params: Parametros da ferramenta
             correlation_id: Para rastreabilidade
@@ -253,7 +253,7 @@ class WandaMCPClient:
             module_name: None = todos os modulos
 
         Returns:
-            { "intellicare-ocr": [tools...], "intellicare-superz": [tools...] }
+            { "intellicare-ocr": [tools...], "intellicare-pierre": [tools...] }
         """
         if module_name:
             return {module_name: self._tools_cache.get(module_name, [])}
@@ -285,7 +285,7 @@ class MCPClientConfig(BaseModel):
 
     mcp_servers: Dict[str, str] = {
         "intellicare-ocr": "http://intellicare-ocr:8008",
-        "intellicare-superz": "http://intellicare-superz:8009"
+        "intellicare-pierre": "http://intellicare-pierre:8009"
     }
 
     # Timeouts por tipo de ferramenta
@@ -363,8 +363,8 @@ class WandaToolRegistry:
                 "noticias medicas, documentos regulatorios. "
                 "NAO use para conhecimento clinico geral (Oswaldo/Florence ja sabem)."
             ),
-            func=self._make_mcp_tool("intellicare-superz", "web_search"),
-            coroutine=self._make_async_mcp_tool("intellicare-superz", "web_search")
+            func=self._make_mcp_tool("intellicare-pierre", "web_search"),
+            coroutine=self._make_async_mcp_tool("intellicare-pierre", "web_search")
         ))
 
         tools.append(Tool(
@@ -375,8 +375,8 @@ class WandaToolRegistry:
                 "uma decisao clinica especifica. Prefira esta sobre web_search "
                 "para perguntas sobre evidencias cientificas."
             ),
-            func=self._make_mcp_tool("intellicare-superz", "search_medical_literature"),
-            coroutine=self._make_async_mcp_tool("intellicare-superz", "search_medical_literature")
+            func=self._make_mcp_tool("intellicare-pierre", "search_medical_literature"),
+            coroutine=self._make_async_mcp_tool("intellicare-pierre", "search_medical_literature")
         ))
 
         tools.append(Tool(
@@ -386,8 +386,8 @@ class WandaToolRegistry:
                 "Use para: aprovacoes ANVISA, cobertura ANS, resolucoes CFM. "
                 "Ex: 'empagliflozina aprovada para DRC no Brasil?'"
             ),
-            func=self._make_mcp_tool("intellicare-superz", "check_regulatory"),
-            coroutine=self._make_async_mcp_tool("intellicare-superz", "check_regulatory")
+            func=self._make_mcp_tool("intellicare-pierre", "check_regulatory"),
+            coroutine=self._make_async_mcp_tool("intellicare-pierre", "check_regulatory")
         ))
 
         tools.append(Tool(
@@ -397,8 +397,8 @@ class WandaToolRegistry:
                 "Use para: extrair pontos de um guideline extenso, comparar protocolos, "
                 "sintetizar multiplos resultados de busca. Custo: alto (LLM local)."
             ),
-            func=self._make_mcp_tool("intellicare-superz", "analyze_text"),
-            coroutine=self._make_async_mcp_tool("intellicare-superz", "analyze_text")
+            func=self._make_mcp_tool("intellicare-pierre", "analyze_text"),
+            coroutine=self._make_async_mcp_tool("intellicare-pierre", "analyze_text")
         ))
 
         return tools
@@ -494,7 +494,7 @@ DEGRADATION_POLICY = {
         "can_continue_without": True,  # WANDA continua sem MCP OCR
         "tools_affected": ["parse_lab_result", "extract_document", "search_documents"]
     },
-    "intellicare-superz": {
+    "intellicare-pierre": {
         "fallback_message": (
             "Servico de pesquisa externa (PIERRE) indisponivel. "
             "Usando apenas conhecimento dos agentes clinicos locais. "
@@ -623,7 +623,7 @@ wanda/
 ```bash
 # MCP Servers
 MCP_OCR_URL=http://intellicare-ocr:8008
-MCP_SUPERZ_URL=http://intellicare-superz:8009
+MCP_PIERRE_URL=http://intellicare-pierre:8009
 MCP_CONNECTION_TIMEOUT=10
 MCP_OCR_TOOL_TIMEOUT=30
 MCP_SEARCH_TOOL_TIMEOUT=15
@@ -665,7 +665,7 @@ test_mcp/
 
 - [ ] `WandaMCPClient.connect_all()` conecta a MINERVA e PIERRE sem erro
 - [ ] `WandaMCPClient.call_tool("intellicare-ocr", "parse_lab_result", ...)` retorna dict valido
-- [ ] `WandaMCPClient.call_tool("intellicare-superz", "web_search", ...)` retorna resultados
+- [ ] `WandaMCPClient.call_tool("intellicare-pierre", "web_search", ...)` retorna resultados
 - [ ] Se MINERVA indisponivel → WANDA continua funcionando, retorna mensagem de degradacao
 - [ ] Se PIERRE indisponivel → WANDA continua funcionando, retorna mensagem de degradacao
 - [ ] `GET /api/v1/mcp/modules` lista MINERVA e PIERRE com status correto

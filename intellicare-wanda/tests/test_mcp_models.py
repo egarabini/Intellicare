@@ -44,12 +44,12 @@ class TestMCPToolInfo:
             name="web_search",
             description="Search the web",
             input_schema={"type": "object"},
-            module_name="superz",
+            module_name="pierre",
             last_validated=datetime(2025, 1, 1),
         )
         d = t.to_dict()
         assert d["name"] == "web_search"
-        assert d["module_name"] == "superz"
+        assert d["module_name"] == "pierre"
         assert d["last_validated"] == "2025-01-01T00:00:00"
 
 
@@ -68,12 +68,12 @@ class TestMCPModuleRecord:
 
     def test_to_dict(self):
         r = MCPModuleRecord(
-            module_name="superz",
+            module_name="pierre",
             agent_name="PIERRE",
             base_url="http://localhost:8009",
         )
         d = r.to_dict()
-        assert d["module_name"] == "superz"
+        assert d["module_name"] == "pierre"
         assert d["agent_name"] == "PIERRE"
         assert d["tools_count"] == 0
 
@@ -82,7 +82,7 @@ class TestMCPCallRecord:
     def test_creation(self):
         r = MCPCallRecord(
             correlation_id="abc-123",
-            module_name="superz",
+            module_name="pierre",
             tool_name="web_search",
             status="success",
             duration_ms=150,
@@ -114,7 +114,7 @@ class TestMCPExceptions:
         assert "ocr" in str(e)
 
     def test_tool_not_found(self):
-        e = MCPToolNotFoundError("superz", "bad_tool")
+        e = MCPToolNotFoundError("pierre", "bad_tool")
         assert "bad_tool" in str(e)
 
     def test_call_timeout(self):

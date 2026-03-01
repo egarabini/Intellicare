@@ -779,9 +779,9 @@ CMD ["uvicorn", "pierre.api.app:app", "--host", "0.0.0.0", "--port", "8009", "--
 version: "3.9"
 
 services:
-  intellicare-superz:
+  intellicare-pierre:
     build: .
-    container_name: intellicare-superz
+    container_name: intellicare-pierre
     ports:
       - "8009:8009"
     environment:
@@ -806,7 +806,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: superz-redis
+    container_name: pierre-redis
     ports:
       - "6380:6379"      # Porta diferente para nao conflitar com redis de outros modulos
     healthcheck:
@@ -885,12 +885,12 @@ class NoResultsFoundError(SuperZError):
 @pytest.fixture
 def mock_tavily(mocker):
     """Mock TavilyClient para nao fazer chamadas reais."""
-    return mocker.patch("superz.search.tavily_client.TavilyClient")
+    return mocker.patch("pierre.search.tavily_client.TavilyClient")
 
 @pytest.fixture
 def mock_ollama(mocker):
     """Mock Ollama para nao depender de instancia local."""
-    return mocker.patch("superz.llm.qwen_client.httpx.AsyncClient")
+    return mocker.patch("pierre.llm.qwen_client.httpx.AsyncClient")
 ```
 
 ---

@@ -14,7 +14,9 @@ class TestProvisioningService:
     async def test_provision_creates_schema(self):
         """Provisioning should create schema and mark tenant as provisioned."""
         mock_session = AsyncMock()
-        mock_session.execute = AsyncMock()
+        migration_result = MagicMock()
+        migration_result.fetchall.return_value = []
+        mock_session.execute = AsyncMock(side_effect=[MagicMock(), migration_result])
         mock_session.flush = AsyncMock()
 
         mock_tenant = MagicMock(spec=Tenant)
@@ -34,7 +36,9 @@ class TestProvisioningService:
     async def test_provision_skips_keycloak_when_unavailable(self):
         """Without KC admin client, provisioning should skip KC steps gracefully."""
         mock_session = AsyncMock()
-        mock_session.execute = AsyncMock()
+        migration_result = MagicMock()
+        migration_result.fetchall.return_value = []
+        mock_session.execute = AsyncMock(side_effect=[MagicMock(), migration_result])
         mock_session.flush = AsyncMock()
 
         mock_tenant = MagicMock(spec=Tenant)

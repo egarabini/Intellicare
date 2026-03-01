@@ -126,11 +126,14 @@
           "protocol": "openid-connect",
           "protocolMapper": "oidc-usermodel-attribute-mapper",
           "consentRequired": false,
-          "consentText": "",
-          "protocolMapper": "oidc-usermodel-attribute-mapper",
-          "attributeName": "role",
-          "addToIdToken": true,
-          "addToAccessToken": true
+          "config": {
+            "user.attribute": "role",
+            "claim.name": "role",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
         }
       ]
     },
@@ -171,20 +174,28 @@
           "protocol": "openid-connect",
           "protocolMapper": "oidc-usermodel-attribute-mapper",
           "consentRequired": false,
-          "protocolMapper": "oidc-usermodel-attribute-mapper",
-          "attributeName": "tenant_id",
-          "addToIdToken": true,
-          "addToAccessToken": true
+          "config": {
+            "user.attribute": "tenant_id",
+            "claim.name": "tenant_id",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
         },
         {
           "name": "name",
           "protocol": "openid-connect",
           "protocolMapper": "oidc-usermodel-attribute-mapper",
           "consentRequired": false,
-          "protocolMapper": "oidc-usermodel-attribute-mapper",
-          "attributeName": "nome",
-          "addToIdToken": true,
-          "addToAccessToken": true
+          "config": {
+            "user.attribute": "nome",
+            "claim.name": "name",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
         }
       ]
     },
