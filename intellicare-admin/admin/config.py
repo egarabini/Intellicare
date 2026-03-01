@@ -1,5 +1,8 @@
 """Configuration for intellicare-admin module."""
 
+from pydantic import Field
+from pydantic.functional_validators import AliasChoices
+
 from intellicare_core.config import BaseModuleConfig
 
 
@@ -8,6 +11,12 @@ class AdminConfig(BaseModuleConfig):
 
     module_name: str = "intellicare-admin"
     module_version: str = "1.0.0"
+
+    # Database URL with validation alias for INTELLICARE_ADMIN_DATABASE_URL
+    database_url: str = Field(
+        default="",
+        validation_alias=AliasChoices("INTELLICARE_ADMIN_DATABASE_URL", "INTELLICARE_DATABASE_URL"),
+    )
 
     # Database (schema platform)
     platform_schema: str = "platform"
