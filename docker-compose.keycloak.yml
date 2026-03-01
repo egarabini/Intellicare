@@ -71,11 +71,9 @@ services:
       KC_LOG_CONSOLE_OUTPUT: json
       KC_LOG_FORMAT: json
 
-      # Proxy / HTTPS
-      KC_PROXY: edge
+      # Proxy / HTTPS (none para HTTP em staging, edge para HTTPS com proxy)
+      KC_PROXY: none
       KC_HOSTNAME_STRICT: "false"
-      KC_HTTPS_KEYSTORE_FILE: /opt/keycloak/conf/server.keystore
-      KC_HTTPS_KEYSTORE_PASSWORD: changeme
 
       # CORS (desenvolvimento)
       KC_HTTP_CORS: "true"
