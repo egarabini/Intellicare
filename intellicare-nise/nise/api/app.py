@@ -44,6 +44,7 @@ app.include_router(framingham.router, prefix="/api/v1")
 
 
 @app.get("/health")
+@app.get("/api/v1/health")
 async def health():
     """Health check endpoint."""
     return {
