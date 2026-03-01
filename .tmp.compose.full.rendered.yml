@@ -1,4 +1,4 @@
-name: modularizacao
+name: intellicare
 services:
   admin:
     build:
@@ -810,18 +810,18 @@ services:
     restart: unless-stopped
 networks:
   intellicare-network:
-    name: modularizacao_intellicare-network
+    name: intellicare-network
     driver: bridge
     ipam:
       config:
         - subnet: 172.28.0.0/16
 volumes:
   postgres-data:
-    name: modularizacao_postgres-data
+    name: postgres-data
     driver: local
   prometheus-data:
-    name: modularizacao_prometheus-data
+    name: prometheus-data
     driver: local
   redis-data:
-    name: modularizacao_redis-data
+    name: redis-data
     driver: local

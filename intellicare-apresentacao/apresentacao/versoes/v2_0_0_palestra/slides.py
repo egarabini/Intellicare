@@ -65,7 +65,7 @@ def create_v2_0_0_palestra_slides() -> List:
         ],
         narration=(
             "Hoje o IntelliCare ja possui sete agentes especializados, cada um "
-            "inspired em um gigante da saude. A modularizacao e tipo LEGO: "
+            "inspired em um gigante da saude. A arquitetura modular e tipo LEGO: "
             "cada modulo funciona independente, mas integrado. Temos demo "
             "funcional com Portal, Pierre para IA e Minerva para OCR. "
             "Tudo em FHIR R4, com stack open-source e containerizada."

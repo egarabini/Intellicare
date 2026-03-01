@@ -33,7 +33,7 @@ https://portal.intellicare.ia.br → 503 Service Unavailable
 ```bash
 docker run -d \
   --name intellicare-portal \
-  --network modularizacao_intellicare-network \
+  --network intellicare-network \
   -v /opt/intellicare/landing:/usr/share/nginx/html:ro \
   --restart unless-stopped \
   nginx:alpine
@@ -102,7 +102,7 @@ docker ps | grep portal
 intellicare-portal   Up 2 minutes   80/tcp   nginx:alpine
 ```
 
-**Rede:** `modularizacao_intellicare-network`  
+**Rede:** `intellicare-network`  
 **Volume:** `/opt/intellicare/landing:/usr/share/nginx/html:ro`  
 **Restart:** `unless-stopped`
 
@@ -129,7 +129,7 @@ docker rm intellicare-portal
 # Subir portal React
 docker run -d \
   --name intellicare-portal \
-  --network modularizacao_intellicare-network \
+  --network intellicare-network \
   --restart unless-stopped \
   intellicare-portal:react
 ```

@@ -67,6 +67,66 @@ http:
       middlewares:
         - api-chain
 
+    sc-geralda:
+      rule: "Host(`geralda.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: geralda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-wanda:
+      rule: "Host(`wanda.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: wanda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-grahame:
+      rule: "Host(`grahame.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: grahame-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-nise:
+      rule: "Host(`nise.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: nise-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-minerva:
+      rule: "Host(`minerva.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: minerva-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-pierre:
+      rule: "Host(`pierre.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: pierre-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
     # ── Wildcard: White-label tenant subdomains ───────────────
     # Catch-all for {tenant}.saudeplanner.com.br
     # Routes to portal with X-Tenant-ID header injection
@@ -87,12 +147,12 @@ http:
 
   # ── Services (reuse intellicare services) ───────────────────
   # Services already defined in routes-intellicare.yml
-  # Additional service for zilda:
+  # Additional services referenced in this file:
   services:
     zilda-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-zilda:8000"
+          - url: "http://intellicare-zilda:8007"
         healthCheck:
           path: /api/v1/health
           interval: 30s

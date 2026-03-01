@@ -69,7 +69,7 @@ jobs:
             INTELLICARE_PATH="/opt/intellicare/intellicare"
             PORTAL_PATH="${INTELLICARE_PATH}/intellicare-portal/frontend"
             BRANCH="${{ github.ref_name }}"
-            NETWORK_NAME="modularizacao_intellicare-network"
+            NETWORK_NAME="intellicare-network"
             CONTAINER_NAME="intellicare-portal"
             IMAGE_NAME="intellicare-portal:latest"
 
@@ -79,14 +79,6 @@ jobs:
             git fetch origin "$BRANCH"
             git reset --hard "origin/$BRANCH"
 
-            # 1b. Sincronizar rotas do Traefik (config legada fora do git)
-            TRAEFIK_DYNAMIC_SRC="${INTELLICARE_PATH}/traefik/dynamic"
-            TRAEFIK_DYNAMIC_DST="${INTELLICARE_PATH}/MODULARIZACAO/traefik/dynamic"
-            if [ -d "$TRAEFIK_DYNAMIC_DST" ]; then
-              echo "🔀 Sincronizando rotas Traefik..."
-              cp "$TRAEFIK_DYNAMIC_SRC/routes-intellicare.yml" "$TRAEFIK_DYNAMIC_DST/routes-intellicare.yml"
-              echo "✅ Rotas do Traefik atualizadas"
-            fi
 
             # 2. Parar container antigo
             echo "🛑 Parando container antigo..."
