@@ -44,9 +44,6 @@ RUN pip install --no-cache-dir --user -e /build/intellicare-grahame
 # Remove build-only Python packages with known CVEs from runtime layer copy.
 RUN pip uninstall -y wheel jaraco.context || true
 
-# Create a symlink to make python3 point to the correct Python
-RUN ln -sf /root/.local/bin/python3 /usr/local/bin/python3
-
 # ----------------------------------------------------------------------------
 # RUNTIME STAGE � Distroless, runs as nobody
 # ----------------------------------------------------------------------------
@@ -54,13 +51,12 @@ FROM gcr.io/distroless/python3-debian13 AS runtime
 
 # Copy Python packages from builder
 COPY --from=builder /root/.local /root/.local
-COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copy app (if needed for static files, templates, etc.)
 COPY --from=builder /build/intellicare-grahame /app/intellicare-grahame
 
 # Ensure Python finds user-installed packages
-ENV PATH=/root/.local/bin:/usr/local/bin:$PATH
+ENV PATH=/root/.local/bin:$PATH
 ENV PYTHONPATH=/root/.local/lib/python3.11/site-packages:$PYTHONPATH
 
 # Run as non-root user (distroless creates 'nobody' user)
@@ -78,5 +74,8 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 # ----------------------------------------------------------------------------
 FROM runtime AS api
 
-# Run uvicorn using the symlinked Python
-CMD ["python3", "-m", "uvicorn", "grahame.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use the distroless Python3-debian13 base image which provides Python 3.13
+# We need to use the Python from our user-installed packages (Python 3.11)
+# ENTRYPOINT will help us set up the right Python binary
+ENTRYPOINT ["/root/.local/bin/python3"]
+CMD ["-m", "uvicorn", "grahame.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
