@@ -39,10 +39,12 @@ venv.bak/
 
 # Environment variables (CRÍTICO - SEGURANÇA)
 .env
-.env.*
 .env.local
 .env.*.local
 *.env
+# Exception: .env.example and .env.full.example are allowed (templates only)
+!.env.example
+!.env.full.example
 
 # Testing
 .pytest_cache/
