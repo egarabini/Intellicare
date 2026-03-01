@@ -233,7 +233,7 @@ http:
     florence-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-florence:8001"
+          - url: "http://intellicare-florence:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -242,7 +242,7 @@ http:
     oswaldo-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-oswaldo:8002"
+          - url: "http://intellicare-oswaldo:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -251,7 +251,7 @@ http:
     donabedian-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-donabedian:8003"
+          - url: "http://intellicare-donabedian:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -260,7 +260,7 @@ http:
     wanda-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-wanda:8004"
+          - url: "http://intellicare-wanda:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -269,7 +269,7 @@ http:
     comunicacao-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-comunicacao:8005"
+          - url: "http://intellicare-comunicacao:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -278,7 +278,7 @@ http:
     geralda-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-geralda:8006"
+          - url: "http://intellicare-geralda:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s

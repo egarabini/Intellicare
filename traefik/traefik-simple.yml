@@ -9,14 +9,12 @@ global:
   checkNewVersion: true
   sendAnonymousUsage: false
 
-# Log configuration
+# Log configuration (stdout — no volume needed)
 log:
   level: INFO
-  filePath: /var/log/traefik/traefik.log
   format: json
 
 accessLog:
-  filePath: /var/log/traefik/access.log
   format: json
 
 # Entrypoints (portas que o Traefik escuta)
@@ -77,6 +75,15 @@ certificatesResolvers:
       #   resolvers:
       #     - "1.1.1.1:53"
       #     - "1.0.0.1:53"
+
+  # Alias para rotas que referenciam certResolver: letsencrypt-wildcard
+  # (httpChallenge funciona para subdomínios explícitos; wildcard real requer DNS challenge)
+  letsencrypt-wildcard:
+    acme:
+      email: ${TRAEFIK_ACME_EMAIL:-admin@intellicare.ia.br}
+      storage: /letsencrypt/acme-wildcard.json
+      httpChallenge:
+        entryPoint: web
 
   letsencrypt-staging:
     acme:

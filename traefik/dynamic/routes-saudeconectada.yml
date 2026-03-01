@@ -131,7 +131,7 @@ http:
     # Catch-all for {tenant}.saudeplanner.com.br
     # Routes to portal with X-Tenant-ID header injection
     sc-whitelabel:
-      rule: "HostRegexp(`{tenant:[a-z0-9_]+}.saudeplanner.com.br`)"
+      rule: "HostRegexp(`[a-z0-9_]+\\.saudeplanner\\.com\\.br`)"
       entryPoints:
         - websecure
       service: portal-svc
@@ -145,15 +145,6 @@ http:
         - frontend-chain
       priority: 1  # Lower priority than explicit module routes above
 
-  # ── Services (reuse intellicare services) ───────────────────
-  # Services already defined in routes-intellicare.yml
-  # Additional services referenced in this file:
-  services:
-    zilda-svc:
-      loadBalancer:
-        servers:
-          - url: "http://intellicare-zilda:8007"
-        healthCheck:
-          path: /api/v1/health
-          interval: 30s
-          timeout: 5s
+  # ── Services ────────────────────────────────────────────────
+  # All services (florence-svc, oswaldo-svc, etc.) are defined
+  # in routes-intellicare.yml and shared across both files.
