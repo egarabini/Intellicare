@@ -27,6 +27,3 @@ class AdminConfig(BaseModuleConfig):
 
     # Billing
     billing_grace_period_days: int = 15
-
-    class Config:
-        env_prefix = "ADMIN_"
