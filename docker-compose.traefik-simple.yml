@@ -4,8 +4,6 @@
 # Usa apenas file provider (não descobre containers automaticamente)
 # ============================================================================
 
-version: "3.9"
-
 volumes:
   letsencrypt-data:
     driver: local
