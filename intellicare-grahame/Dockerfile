@@ -75,4 +75,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 FROM runtime AS api
 
 # Run uvicorn from /root/.local/bin
-CMD ["python3", "-m", "uvicorn", "grahame.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/usr/bin/python3", "-m", "uvicorn", "grahame.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
