@@ -16,13 +16,18 @@ class FHIRDataStore:
 
     def __init__(self, db_url: str) -> None:
         # FHIRDataStore uses synchronous SQLAlchemy.
-        # If the URL uses an async driver (asyncpg, psycopg_async), replace it
-        # with the sync psycopg (v3) driver to avoid MissingGreenlet errors.
-        sync_url = (
-            db_url
-            .replace("postgresql+asyncpg://", "postgresql+psycopg://")
-            .replace("postgresql+psycopg_async://", "postgresql+psycopg://")
-        )
+        # Normalize the URL to use the psycopg v3 sync driver regardless of
+        # what driver was specified in the environment variable, since only
+        # psycopg (v3) is installed in this container (not psycopg2 or asyncpg).
+        sync_url = db_url
+        for async_prefix in (
+            "postgresql+asyncpg://",
+            "postgresql+psycopg_async://",
+            "postgresql+psycopg2://",
+        ):
+            if sync_url.startswith(async_prefix):
+                sync_url = "postgresql+psycopg://" + sync_url[len(async_prefix):]
+                break
         self._engine: Engine = create_engine(sync_url, future=True)
 
     def ensure_schema(self) -> None:
