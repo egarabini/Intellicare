@@ -104,7 +104,7 @@
 # 8004  | wanda        | WANDA         | Orquestrador IA                | /v1/wanda
 # 8005  | comunicacao  | —             | WhatsApp + Email + SMS         | /v1/comunicacao
 # 8006  | geralda      | GERALDA       | Gestão + Administrativo        | /v1/geralda
-# 8007  | zilda        | ZILDA         | CNES + DATASUS                  | /v1/zilda
+# 8007  | zilda        | ZILDA         | CNES + DATASUS                 | /v1/zilda
 # 8008  | minerva      | MINERVA       | Extração Documentos (MCP)      | /v1/minerva
 # 8009  | pierre       | PIERRE        | Scientific Search (MCP)        | /v1/pierre
 # 8010  | admin        | —             | Administração do Sistema       | admin.intellicare.ia.br
@@ -112,12 +112,12 @@
 # 8012  | grahame      | GRAHAME       | FHIR R4 + CDS Hooks            | /v1/grahame
 # 8013  | nise         | NISE          | Chatbot + Treinamento          | /v1/nise
 # 8080  | keycloak     | —             | Autenticação (Keycloak)        | keycloak.intellicare.ia.br
-# 3001  | portal       | —             | React 19 + Vite Portal          | portal.intellicare.ia.br
+# 3001  | portal       | —             | React 19 + Vite Portal         | portal.intellicare.ia.br
 # 5432  | postgres     | —             | Database Principal             | (internal only)
-# 6379  | redis        | —             | Cache + Pub/Sub                 | (internal only)
+# 6379  | redis        | —             | Cache + Pub/Sub                | (internal only)
 # 3000  | grafana      | —             | Dashboards de Monitoramento    | grafana.intellicare.ia.br
 # 9090  | prometheus   | —             | Métricas do Sistema            | (internal only)
-# 8080  | traefik      | —             | Reverse Proxy                   | traefik.intellicare.ia.br
+# 8080  | traefik      | —             | Reverse Proxy                  | traefik.intellicare.ia.br
 #
 # ============================================================================
 # URLs de Acesso aos Módulos
