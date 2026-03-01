@@ -1,0 +1,87 @@
+# ============================================================================
+# Traefik 3.x — Static Configuration (Simplificado)
+# ============================================================================
+# NÃO usa provider Docker (evita erro de versão da API)
+# Usa apenas file provider para rotas estáticas
+# ============================================================================
+
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+# Log configuration
+log:
+  level: INFO
+  filePath: /var/log/traefik/traefik.log
+  format: json
+
+accessLog:
+  filePath: /var/log/traefik/access.log
+  format: json
+
+# Entrypoints (portas que o Traefik escuta)
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+
+  websecure:
+    address: ":443"
+    http:
+      tls:
+        certResolver: letsencrypt
+        domains:
+          - main: "intellicare.ia.br"
+            sans:
+              - "*.intellicare.ia.br"
+        # Cloudflare DNS challenge (para wildcard)
+        # dnsChallenge:
+        #   provider: cloudflare
+
+# API (dashboard) - desabilitado em produção
+api:
+  dashboard: false
+  insecure: false
+
+# Providers (fontes de configuração)
+providers:
+  # File provider (rotas dinâmicas)
+  file:
+    directory: /etc/traefik/dynamic
+    watch: true
+    debugLogGeneratedTemplate: true
+
+  # Docker provider DESABILITADO (causa erro de versão da API)
+  # docker:
+  #   endpoint: "unix:///var/run/docker.sock"
+  #   exposedByDefault: false
+  #   network: intellicare-network
+
+# Certificate Resolvers (Let's Encrypt)
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: ${TRAEFIK_ACME_EMAIL:-admin@intellicare.ia.br}
+      storage: /letsencrypt/acme.json
+      httpChallenge:
+        entryPoint: web
+      # Para wildcard com Cloudflare (requer CF_DNS_API_TOKEN)
+      # dnsChallenge:
+      #   provider: cloudflare
+      #   delayBeforeCheck: 30
+      #   resolvers:
+      #     - "1.1.1.1:53"
+      #     - "1.0.0.1:53"
+
+  letsencrypt-staging:
+    acme:
+      email: ${TRAEFIK_ACME_EMAIL:-admin@intellicare.ia.br}
+      storage: /letsencrypt/acme-staging.json
+      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      httpChallenge:
+        entryPoint: web

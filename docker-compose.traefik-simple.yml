@@ -1,0 +1,44 @@
+# ============================================================================
+# Docker Compose — Traefik Simplificado (Sem Docker Provider)
+# ============================================================================
+# Usa apenas file provider (não descobre containers automaticamente)
+# ============================================================================
+
+version: "3.9"
+
+volumes:
+  letsencrypt-data:
+    driver: local
+
+services:
+  traefik:
+    image: traefik:v3.2
+    container_name: intellicare-traefik
+    hostname: traefik
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # Traefik config (sem provider docker)
+      - ./traefik/traefik-simple.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/dynamic/:/etc/traefik/dynamic/:ro
+      # Let's Encrypt certificates
+      - letsencrypt-data:/letsencrypt
+    environment:
+      # Cloudflare DNS API para wildcard (opcional)
+      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN:-}
+    networks:
+      - intellicare-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    labels:
+      com.intellicare.service: "traefik"
+      com.intellicare.tier: "infrastructure"
+
+networks:
+  intellicare-network:
+    external: true
