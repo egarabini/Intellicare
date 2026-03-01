@@ -15,7 +15,15 @@ class FHIRDataStore:
     """Armazena e recupera recursos FHIR em PostgreSQL."""
 
     def __init__(self, db_url: str) -> None:
-        self._engine: Engine = create_engine(db_url, future=True)
+        # FHIRDataStore uses synchronous SQLAlchemy.
+        # If the URL uses an async driver (asyncpg, psycopg_async), replace it
+        # with the sync psycopg (v3) driver to avoid MissingGreenlet errors.
+        sync_url = (
+            db_url
+            .replace("postgresql+asyncpg://", "postgresql+psycopg://")
+            .replace("postgresql+psycopg_async://", "postgresql+psycopg://")
+        )
+        self._engine: Engine = create_engine(sync_url, future=True)
 
     def ensure_schema(self) -> None:
         schema_sql = """
