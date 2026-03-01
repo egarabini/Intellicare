@@ -22,8 +22,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install to /usr/local (accessible by all users)
-# Install intellicare-core
+# Install intellicare-core to both /intellicare-core and /build for grahame's dependencies
 COPY ./intellicare-core /intellicare-core
+COPY ./intellicare-core /build/intellicare-core
 RUN pip install --no-cache-dir /intellicare-core
 
 # Install intellicare-auth (optional)
