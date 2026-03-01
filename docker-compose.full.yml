@@ -3,8 +3,8 @@ version: "3.9"
 # ============================================================================
 # IntelliCare - Full Stack Deployment
 # ============================================================================
-# Includes: Infrastructure + 6 Backend Modules + 1 Frontend
-# Phase: 3 - Deploy Mínimo
+# Includes: Infrastructure + 13 Backend Modules + 1 Frontend
+# Phase: 4 - Deploy Completo
 # ============================================================================
 
 volumes:
@@ -408,6 +408,280 @@ services:
       com.intellicare.module: "gestao-administrativo"
 
   # ==========================================================================
+  # BACKEND - Zilda (8007) - CNES + DATASUS
+  # ==========================================================================
+  zilda:
+    build:
+      context: .
+      dockerfile: ./intellicare-zilda/Dockerfile
+      target: api
+    container_name: intellicare-zilda
+    hostname: zilda
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - ZILDA_PORT=${ZILDA_PORT:-8007}
+      - INTELLICARE_ZILDA_DATABASE_URL=${INTELLICARE_ZILDA_DATABASE_URL}
+      - ZILDA_DATABASE_SCHEMA=${ZILDA_DATABASE_SCHEMA:-intellicare_zilda}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${ZILDA_PORT:-8007}:8007"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8007/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "zilda"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "cnes-datasus"
+
+  # ==========================================================================
+  # BACKEND - Minerva (8008) - OCR + Document Extraction (MCP Server)
+  # ==========================================================================
+  minerva:
+    build:
+      context: .
+      dockerfile: ./intellicare-minerva/Dockerfile
+      target: api
+    container_name: intellicare-minerva
+    hostname: minerva
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - MINERVA_PORT=${MINERVA_PORT:-8008}
+      - INTELLICARE_MINERVA_DATABASE_URL=${INTELLICARE_MINERVA_DATABASE_URL}
+      - MINERVA_DATABASE_SCHEMA=${MINERVA_DATABASE_SCHEMA:-intellicare_minerva}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${MINERVA_PORT:-8008}:8008"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8008/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "minerva"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "ocr-document-extraction"
+
+  # ==========================================================================
+  # BACKEND - Pierre (8009) - Scientific Search (MCP Server)
+  # ==========================================================================
+  pierre:
+    build:
+      context: .
+      dockerfile: ./intellicare-pierre/Dockerfile
+      target: api
+    container_name: intellicare-pierre
+    hostname: pierre
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - PIERRE_PORT=${PIERRE_PORT:-8009}
+      - INTELLICARE_PIERRE_DATABASE_URL=${INTELLICARE_PIERRE_DATABASE_URL}
+      - PIERRE_DATABASE_SCHEMA=${PIERRE_DATABASE_SCHEMA:-intellicare_pierre}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+      - TAVILY_API_KEY=${TAVILY_API_KEY}
+    ports:
+      - "${PIERRE_PORT:-8009}:8009"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8009/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "pierre"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "scientific-search"
+
+  # ==========================================================================
+  # BACKEND - Admin (8010) - System Administration
+  # ==========================================================================
+  admin:
+    build:
+      context: .
+      dockerfile: ./intellicare-admin/Dockerfile
+      target: api
+    container_name: intellicare-admin
+    hostname: admin
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - ADMIN_PORT=${ADMIN_PORT:-8010}
+      - INTELLICARE_ADMIN_DATABASE_URL=${INTELLICARE_ADMIN_DATABASE_URL}
+      - ADMIN_DATABASE_SCHEMA=${ADMIN_DATABASE_SCHEMA:-intellicare_admin}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${ADMIN_PORT:-8010}:8010"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8010/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "admin"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "system-administration"
+
+  # ==========================================================================
+  # BACKEND - Gestor (8011) - Clinical Module Management
+  # ==========================================================================
+  gestor:
+    build:
+      context: .
+      dockerfile: ./intellicare-gestor/Dockerfile
+      target: api
+    container_name: intellicare-gestor
+    hostname: gestor
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - GESTOR_PORT=${GESTOR_PORT:-8011}
+      - INTELLICARE_GESTOR_DATABASE_URL=${INTELLICARE_GESTOR_DATABASE_URL}
+      - GESTOR_DATABASE_SCHEMA=${GESTOR_DATABASE_SCHEMA:-intellicare_gestor}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${GESTOR_PORT:-8011}:8011"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8011/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "gestor"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "module-management"
+
+  # ==========================================================================
+  # BACKEND - Grahame (8012) - FHIR R4 + CDS Hooks + Terminology
+  # ==========================================================================
+  grahame:
+    build:
+      context: .
+      dockerfile: ./intellicare-grahame/Dockerfile
+      target: api
+    container_name: intellicare-grahame
+    hostname: grahame
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - GRAHAME_PORT=${GRAHAME_PORT:-8012}
+      - INTELLICARE_GRAHAME_DATABASE_URL=${INTELLICARE_GRAHAME_DATABASE_URL}
+      - GRAHAME_DATABASE_SCHEMA=${GRAHAME_DATABASE_SCHEMA:-intellicare_grahame}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${GRAHAME_PORT:-8012}:8000"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "grahame"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "fhir-cds-hooks"
+
+  # ==========================================================================
+  # BACKEND - Nise (8013) - Chatbot + Training (Flowise/Kestra)
+  # ==========================================================================
+  nise:
+    build:
+      context: .
+      dockerfile: ./intellicare-nise/Dockerfile
+      target: api
+    container_name: intellicare-nise
+    hostname: nise
+    environment:
+      - INTELLICARE_ENVIRONMENT=${ENVIRONMENT:-development}
+      - INTELLICARE_LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - NISE_PORT=${NISE_PORT:-8013}
+      - INTELLICARE_NISE_DATABASE_URL=${INTELLICARE_NISE_DATABASE_URL}
+      - NISE_DATABASE_SCHEMA=${NISE_DATABASE_SCHEMA:-intellicare_nise}
+      - INTELLICARE_FHIR_SERVER_URL=${INTELLICARE_FHIR_SERVER_URL}
+      - INTELLICARE_REDIS_URL=${REDIS_URL}
+    ports:
+      - "${NISE_PORT:-8013}:8000"
+    networks:
+      - intellicare-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      com.intellicare.service: "nise"
+      com.intellicare.tier: "backend"
+      com.intellicare.module: "chatbot-training"
+
+  # ==========================================================================
   # FRONTEND - Portal (3001) - Interface Web
   # ==========================================================================
   portal:
@@ -438,6 +712,13 @@ services:
       - wanda
       - comunicacao
       - geralda
+      - zilda
+      - minerva
+      - pierre
+      - admin
+      - gestor
+      - grahame
+      - nise
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
@@ -458,26 +739,39 @@ services:
 # 2. Start all services:
 #    docker-compose -f docker-compose.full.yml up -d
 #
-# 3. Check service status:
+# 3. Start only base services (6 modules + portal):
+#    docker-compose -f docker-compose.full.yml up -d florence oswaldo donabedian wanda comunicacao geralda portal
+#
+# 4. Start additional modules:
+#    docker-compose -f docker-compose.full.yml up -d zilda minerva pierre admin gestor grahame nise
+#
+# 5. Check service status:
 #    docker-compose -f docker-compose.full.yml ps
 #
-# 4. View logs:
+# 6. View logs:
 #    docker-compose -f docker-compose.full.yml logs -f [service_name]
 #
-# 5. Stop all services:
+# 7. Stop all services:
 #    docker-compose -f docker-compose.full.yml down
 #
-# 6. Stop and remove volumes (WARNING: deletes all data):
+# 8. Stop and remove volumes (WARNING: deletes all data):
 #    docker-compose -f docker-compose.full.yml down -v
 #
-# 7. Access services:
+# 9. Access services:
 #    - Portal:       http://localhost:3001
-#    - Florence:     http://localhost:8001
-#    - Oswaldo:      http://localhost:8002
-#    - Donabedian:   http://localhost:8003
-#    - Wanda:        http://localhost:8004
-#    - Comunicacao:  http://localhost:8005
-#    - Geralda:      http://localhost:8006
+#    - Florence:     http://localhost:8001 (RAG + Protocolos Clínicos)
+#    - Oswaldo:      http://localhost:8002 (Análise Clínica + FHIR)
+#    - Donabedian:   http://localhost:8003 (Qualidade + Indicadores)
+#    - Wanda:        http://localhost:8004 (Orquestração + Workflows)
+#    - Comunicacao:  http://localhost:8005 (Comunicação + Notificações)
+#    - Geralda:      http://localhost:8006 (Gestão + Administrativo)
+#    - Zilda:        http://localhost:8007 (CNES + DATASUS)
+#    - Minerva:      http://localhost:8008 (OCR + Document Extraction)
+#    - Pierre:       http://localhost:8009 (Scientific Search)
+#    - Admin:        http://localhost:8010 (System Administration)
+#    - Gestor:       http://localhost:8011 (Clinical Module Management)
+#    - Grahame:      http://localhost:8012 (FHIR R4 + CDS Hooks)
+#    - Nise:         http://localhost:8013 (Chatbot + Training)
 #    - Prometheus:   http://localhost:9090
 #    - Grafana:      http://localhost:3000
 # ============================================================================
