@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml README.md ./
-COPY ocr ./ocr
+COPY minerva ./minerva
 
 RUN pip install --no-cache-dir poetry && \
     poetry config virtualenvs.create false && \
@@ -21,4 +21,4 @@ EXPOSE 8008
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
   CMD curl -fsS http://localhost:8008/api/v1/health || exit 1
 
-CMD ["uvicorn", "ocr.api.app:app", "--host", "0.0.0.0", "--port", "8008"]
+CMD ["uvicorn", "minerva.api.app:app", "--host", "0.0.0.0", "--port", "8008"]
