@@ -1,7 +1,7 @@
 {
   "realm": "bemcuidar",
   "enabled": true,
-  "sslRequired": "external",
+  "sslRequired": "none",
   "registrationAllowed": false,
   "registrationEmailAsUsername": false,
   "rememberMe": true,
