@@ -25,6 +25,7 @@ intellicare-core = {path = "../intellicare-core", develop = true}
 lxml = "^5.1.0"
 xmlschema = "^3.0.0"
 chardet = "^5.2.0"
+python-multipart = "^0.0.20"
 
 
 [tool.poetry.group.dev.dependencies]
