@@ -82,7 +82,12 @@ echo "==========================================================================
 
 if docker network ls | grep -q "intellicare.*network"; then
     echo "Removing old intellicare networks..."
-    docker network ls | grep "intellicare.*network" | awk '{print $1}' | xargs -r docker network rm || true
+    # First disconnect containers if any
+    docker network ls | grep "intellicare.*network" | awk '{print $1}' | while read net_id; do
+        docker network inspect "$net_id" --format='{{range .Containers}}{{.Name}} {{end}}' 2>/dev/null | xargs -r -I {} docker network disconnect -f "$net_id" {} 2>/dev/null || true
+    done
+    # Then remove networks
+    docker network ls | grep "intellicare.*network" | awk '{print $1}' | xargs -r docker network rm -f 2>/dev/null || true
     echo "✓ Old networks removed"
 else
     echo "✓ No old networks to remove"
