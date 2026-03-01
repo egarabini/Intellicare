@@ -1,7 +1,6 @@
 """Configuration for intellicare-admin module."""
 
-from pydantic import Field
-from pydantic.functional_validators import AliasChoices
+from pydantic import AliasChoices, Field
 
 from intellicare_core.config import BaseModuleConfig
 
