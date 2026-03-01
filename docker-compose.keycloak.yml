@@ -124,8 +124,9 @@ services:
     # Labels para Traefik (produção)
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.keycloak.rule=Host(`auth.intellicare.ia.br`)"
-      - "traefik.http.routers.keycloak.entrypoints=websecure"
+      - "traefik.http.routers.keycloak.rule=Host(`167.86.97.142`) || Host(`auth.intellicare.ia.br`)"
+      - "traefik.http.routers.keycloak.entrypoints=web,websecure"
+      - "traefik.http.routers.keycloak.service=keycloak"
       - "traefik.http.routers.keycloak.tls.certresolver=letsencrypt"
       - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
 
