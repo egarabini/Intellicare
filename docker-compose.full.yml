@@ -683,17 +683,28 @@ services:
       context: ./intellicare-portal/frontend
       dockerfile: Dockerfile
       target: production
+      # IMPORTANTE: variáveis VITE_* são compiladas no bundle pelo Vite em tempo de build.
+      # Devem ser passadas como build.args, não como environment (que só vale em runtime).
+      args:
+        - VITE_API_FLORENCE_URL=${VITE_API_FLORENCE_URL:-http://localhost:8001}
+        - VITE_API_OSWALDO_URL=${VITE_API_OSWALDO_URL:-http://localhost:8002}
+        - VITE_API_DONABEDIAN_URL=${VITE_API_DONABEDIAN_URL:-http://localhost:8003}
+        - VITE_API_WANDA_URL=${VITE_API_WANDA_URL:-http://localhost:8004}
+        - VITE_API_COMUNICACAO_URL=${VITE_API_COMUNICACAO_URL:-http://localhost:8005}
+        - VITE_API_GERALDA_URL=${VITE_API_GERALDA_URL:-http://localhost:8006}
+        - VITE_API_ZILDA_URL=${VITE_API_ZILDA_URL:-http://localhost:8007}
+        - VITE_API_MINERVA_URL=${VITE_API_MINERVA_URL:-http://localhost:8008}
+        - VITE_API_PIERRE_URL=${VITE_API_PIERRE_URL:-http://localhost:8009}
+        - VITE_API_ADMIN_URL=${VITE_API_ADMIN_URL:-http://localhost:8010}
+        - VITE_API_GRAHAME_URL=${VITE_API_GRAHAME_URL:-http://localhost:8012}
+        - VITE_API_NISE_URL=${VITE_API_NISE_URL:-http://localhost:8013}
+        - VITE_API_WANDA_WS_URL=${VITE_API_WANDA_WS_URL:-ws://localhost:8004}
+        - VITE_API_TIMEOUT=${VITE_API_TIMEOUT:-30000}
+        - VITE_ENABLE_ANALYTICS=${VITE_ENABLE_ANALYTICS:-false}
+        - VITE_APP_VERSION=${VITE_APP_VERSION:-0.1.0-demo}
     container_name: intellicare-portal
     hostname: portal
     environment:
-      - VITE_API_FLORENCE_URL=${VITE_API_FLORENCE_URL:-http://localhost:8001}
-      - VITE_API_OSWALDO_URL=${VITE_API_OSWALDO_URL:-http://localhost:8002}
-      - VITE_API_DONABEDIAN_URL=${VITE_API_DONABEDIAN_URL:-http://localhost:8003}
-      - VITE_API_WANDA_URL=${VITE_API_WANDA_URL:-http://localhost:8004}
-      - VITE_API_COMUNICACAO_URL=${VITE_API_COMUNICACAO_URL:-http://localhost:8005}
-      - VITE_API_GERALDA_URL=${VITE_API_GERALDA_URL:-http://localhost:8006}
-      - VITE_API_TIMEOUT=${VITE_API_TIMEOUT:-30000}
-      - VITE_ENABLE_ANALYTICS=${VITE_ENABLE_ANALYTICS:-false}
       - VITE_APP_VERSION=${VITE_APP_VERSION:-0.1.0-demo}
     ports:
       - "${PORTAL_PORT:-3001}:80"
