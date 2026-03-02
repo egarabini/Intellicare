@@ -256,9 +256,14 @@ KEYCLOAK_ADMIN_PASSWORD=your_admin_password_here
 
   "roles": {
     "realm": [
+      // ── Roles de Plataforma (IntelliCare SaaS) ──────────────────────────
       {
         "name": "PLATFORM_ADMIN",
         "description": "Administrador da plataforma (super-admin)"
+      },
+      {
+        "name": "PLATFORM_GESTOR",
+        "description": "Administrador dos estabelecimentos do tenant"
       },
       {
         "name": "PLATFORM_SUPPORT",
@@ -267,6 +272,31 @@ KEYCLOAK_ADMIN_PASSWORD=your_admin_password_here
       {
         "name": "PLATFORM_BILLING",
         "description": "Equipe financeira"
+      },
+      // ── Roles de Saúde (usuários dentro de um tenant) ───────────────────
+      {
+        "name": "HEALTH_MANAGER",
+        "description": "Gestor clínico — coordenador médico, diretor técnico, chefe de enfermagem"
+      },
+      {
+        "name": "HEALTH_PROFESSIONAL",
+        "description": "Profissional de saúde — médico, enfermeiro, fisioterapeuta etc. (granularidade via PractitionerRole FHIR)"
+      },
+      {
+        "name": "HEALTH_RECEPTIONIST",
+        "description": "Recepcionista / atendente administrativo — agendamento e cadastro, sem acesso clínico"
+      },
+      {
+        "name": "HEALTH_AUDITOR",
+        "description": "Auditor médico / de qualidade — revisão de prontuários e indicadores (módulo Donabedian)"
+      },
+      {
+        "name": "HEALTH_CAREGIVER",
+        "description": "Cuidador / responsável — acesso limitado ao prontuário do dependente (menor de idade, idoso)"
+      },
+      {
+        "name": "HEALTH_PATIENT",
+        "description": "Paciente — acesso exclusivo ao próprio prontuário e histórico"
       }
     ]
   },
@@ -575,12 +605,19 @@ docker exec -it keycloak /opt/keycloak/bin/kcadm.sh create clients \
 }
 EOF
 
-# Criar roles
-echo "👥 Criando roles..."
-docker exec -it keycloak /opt/keycloak/bin/kcadm.sh create roles \
-  -r bemcuidar \
-  -s \
-  PLATFORM_ADMIN PLATFORM_SUPPORT PLATFORM_BILLING
+# Criar roles de plataforma
+echo "👥 Criando roles de plataforma..."
+for ROLE in PLATFORM_ADMIN PLATFORM_GESTOR PLATFORM_SUPPORT PLATFORM_BILLING; do
+  docker exec -it keycloak /opt/keycloak/bin/kcadm.sh create roles \
+    -r bemcuidar -s name=$ROLE
+done
+
+# Criar roles de saúde
+echo "🏥 Criando roles de saúde..."
+for ROLE in HEALTH_MANAGER HEALTH_PROFESSIONAL HEALTH_RECEPTIONIST HEALTH_AUDITOR HEALTH_CAREGIVER HEALTH_PATIENT; do
+  docker exec -it keycloak /opt/keycloak/bin/kcadm.sh create roles \
+    -r bemcuidar -s name=$ROLE
+done
 
 echo "✅ Keycloak configurado com sucesso!"
 ```
@@ -807,7 +844,8 @@ docker exec keycloak tail -f /opt/keycloak/data/log/server.log
 - [ ] Realm `bemcuidar` criado
 - [ ] Client `intellicare-admin` criado
 - [ ] Client `intellicare-portal` criado
-- [ ] Roles criados (PLATFORM_ADMIN, etc.)
+- [ ] Roles de plataforma criados (PLATFORM_ADMIN, PLATFORM_GESTOR, PLATFORM_SUPPORT, PLATFORM_BILLING)
+- [ ] Roles de saúde criados (HEALTH_MANAGER, HEALTH_PROFESSIONAL, HEALTH_RECEPTIONIST, HEALTH_AUDITOR, HEALTH_CAREGIVER, HEALTH_PATIENT)
 - [ ] Protocol mappers configurados
 - [ ] SSL configurado (produção)
 
