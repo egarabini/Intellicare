@@ -341,7 +341,7 @@ class WandaOrchestrator:
 
                 mcp_config = MCPClientConfig(
                     mcp_servers=self.config.mcp_server_urls,
-                    ocr_timeout_seconds=self.config.mcp_ocr_tool_timeout,
+                    minerva_timeout_seconds=self.config.mcp_minerva_tool_timeout,
                     search_timeout_seconds=self.config.mcp_search_tool_timeout,
                     analysis_timeout_seconds=self.config.mcp_analysis_tool_timeout,
                     connection_timeout_seconds=self.config.mcp_connection_timeout,

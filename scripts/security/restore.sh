@@ -85,7 +85,7 @@ VOLUMES_DIR="${RESTORE_PATH}/volumes"
 if [ -d "$VOLUMES_DIR" ]; then
     for VOL_ARCHIVE in "$VOLUMES_DIR"/*.tar.gz; do
         if [ -f "$VOL_ARCHIVE" ]; then
-            # Extract volume name from filename (e.g. modularizacao_postgres-data_20260222.tar.gz)
+            # Extract volume name from filename (e.g. postgres-data_20260222.tar.gz)
             VOL_BASENAME=$(basename "$VOL_ARCHIVE")
             VOL_NAME=$(echo "$VOL_BASENAME" | sed 's/_[0-9]\{8\}.*//')
 

@@ -1,0 +1,136 @@
+# ============================================================================
+# Deploy Automático — IntelliCare Portal
+# ============================================================================
+# Dispara quando há push em 'staging' ou 'master'.
+# Conecta via SSH no servidor e executa o deploy do portal.
+#
+# Secrets necessários (Settings → Secrets → Actions):
+#   STAGING_HOST     = 167.86.97.142  ← IP confirmado via DNS portal.intellicare.ia.br
+#   STAGING_USER     = root
+#   STAGING_SSH_KEY  = chave privada ed25519
+# ============================================================================
+
+name: Deploy — Portal IntelliCare
+
+on:
+  push:
+    branches:
+      - staging
+      - master
+    paths:
+      - 'intellicare-portal/frontend/**'
+      - 'scripts/deploy_staging_server.sh'
+      - '.github/workflows/deploy.yml'
+
+  # Permite disparar manualmente pelo GitHub UI
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Forçar deploy mesmo sem mudanças no portal'
+        required: false
+        default: 'false'
+
+jobs:
+  deploy:
+    name: 🚀 Deploy no Servidor
+    runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ github.ref_name == 'master' && 'production' || 'staging' }}
+      url: https://portal.intellicare.ia.br
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Info do deploy
+        run: |
+          echo "🔀 Branch: ${{ github.ref_name }}"
+          echo "📝 Commit: ${{ github.sha }}"
+          echo "👤 Autor: ${{ github.actor }}"
+          echo "🖥️  Servidor: ${{ secrets.STAGING_HOST }}"
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          port: 22
+          timeout: 300s
+          script: |
+            set -e
+            echo "=========================================="
+            echo "  Deploy IntelliCare Portal"
+            echo "  Branch: ${{ github.ref_name }}"
+            echo "  Commit: ${{ github.sha }}"
+            echo "=========================================="
+
+            INTELLICARE_PATH="/opt/intellicare/intellicare"
+            PORTAL_PATH="${INTELLICARE_PATH}/intellicare-portal/frontend"
+            BRANCH="${{ github.ref_name }}"
+            NETWORK_NAME="intellicare-network"
+            CONTAINER_NAME="intellicare-portal"
+            IMAGE_NAME="intellicare-portal:latest"
+
+            # 1. Atualizar código do git
+            echo "📥 Atualizando código (branch: $BRANCH)..."
+            cd "$INTELLICARE_PATH"
+            git fetch origin "$BRANCH"
+            git reset --hard "origin/$BRANCH"
+
+
+            # 2. Parar container antigo
+            echo "🛑 Parando container antigo..."
+            docker stop "$CONTAINER_NAME" 2>/dev/null || true
+            docker rm "$CONTAINER_NAME" 2>/dev/null || true
+
+            # 3. Build da imagem
+            echo "🔨 Fazendo build Docker..."
+            cd "$PORTAL_PATH"
+            docker build \
+              --build-arg VITE_API_FLORENCE_URL=https://api.intellicare.ia.br/v1/florence \
+              --build-arg VITE_API_OSWALDO_URL=https://api.intellicare.ia.br/v1/oswaldo \
+              --build-arg VITE_API_DONABEDIAN_URL=https://api.intellicare.ia.br/v1/donabedian \
+              --build-arg VITE_API_WANDA_URL=https://api.intellicare.ia.br/v1/wanda \
+              --build-arg VITE_API_COMUNICACAO_URL=https://api.intellicare.ia.br/v1/comunicacao \
+              --build-arg VITE_API_GERALDA_URL=https://api.intellicare.ia.br/v1/geralda \
+              --build-arg VITE_APP_VERSION=${{ github.sha }} \
+              --target production \
+              -t "$IMAGE_NAME" .
+
+            # 4. Garantir rede Docker
+            docker network inspect "$NETWORK_NAME" >/dev/null 2>&1 || \
+              docker network create "$NETWORK_NAME"
+
+            # 5. Subir novo container
+            echo "🚀 Subindo container..."
+            docker run -d \
+              --name "$CONTAINER_NAME" \
+              --network "$NETWORK_NAME" \
+              --restart unless-stopped \
+              "$IMAGE_NAME"
+
+            # 6. Health check
+            sleep 8
+            if docker ps | grep -q "$CONTAINER_NAME"; then
+              echo "✅ Deploy concluído com sucesso!"
+              echo "🌐 URL: https://portal.intellicare.ia.br"
+            else
+              echo "❌ Container não está rodando!"
+              docker logs "$CONTAINER_NAME" --tail 30
+              exit 1
+            fi
+
+      - name: Notificar sucesso
+        if: success()
+        run: |
+          echo "✅ Deploy finalizado!"
+          echo "Branch '${{ github.ref_name }}' → portal.intellicare.ia.br"
+
+      - name: Notificar falha
+        if: failure()
+        run: |
+          echo "❌ Deploy falhou para branch '${{ github.ref_name }}'"
+          echo "Verifique os logs acima para mais detalhes."
+

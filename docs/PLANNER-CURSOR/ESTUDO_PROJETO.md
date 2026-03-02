@@ -52,7 +52,7 @@ Demonstrar e integrar módulos de:
 ├── intellicare-geralda/           # Atenção primária / planos de cuidado
 ├── intellicare-grahame/           # FHIR / interoperabilidade
 ├── intellicare-nise/              # Orquestração e chatbot
-├── intellicare-ocr/               # OCR (MINERVA)
+├── intellicare-minerva/               # MINERVA (MINERVA)
 ├── intellicare-oswaldo/           # Cuidado crônico
 ├── intellicare-portal/            # Portal unificado (backend + frontend)
 ├── intellicare-superz/            # MCP / busca externa
@@ -76,7 +76,7 @@ Demonstrar e integrar módulos de:
 | **intellicare-conhecimento** | — | Base de conhecimento clínico (protocolos, terminologias, RAG) | — | 14 |
 | **intellicare-donabedian** | — | Qualidade assistencial (framework Donabedian) | — | 31 |
 | **intellicare-wanda** | — | Orquestrador de agentes (LangGraph) | — | 59 |
-| **intellicare-ocr** | MINERVA | OCR e extração de documentos | — | 5 |
+| **intellicare-minerva** | MINERVA | MINERVA e extração de documentos | — | 5 |
 | **intellicare-superz** | — | MCP, busca web, literatura médica | — | 5 |
 | **intellicare-auth** | — | SSO/RBAC com Keycloak | — | 0* |
 | **intellicare-core** | — | SDK compartilhado | — | 0* |

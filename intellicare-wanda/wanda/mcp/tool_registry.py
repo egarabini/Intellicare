@@ -53,7 +53,7 @@ MCP_TOOL_DESCRIPTIONS: dict[str, str] = {
         "Extrai texto e metadados de documentos medicos (PDF, DOCX, imagem). "
         "Use para documentos genericos que nao sao laudos laboratoriais."
     ),
-    "ocr_image": (
+    "minerva_image": (
         "OCR de imagem medica. Converte imagem em texto estruturado. "
         "Use para fotos de receitas, exames escritos a mao."
     ),

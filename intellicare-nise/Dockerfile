@@ -18,8 +18,9 @@ RUN pip install --no-cache-dir -e /tmp/intellicare-core
 COPY ./intellicare-auth /tmp/intellicare-auth
 RUN pip install --no-cache-dir -e /tmp/intellicare-auth || true
 
-# Copy requirements
+# Copy requirements and source
 COPY ./intellicare-nise/pyproject.toml ./
+COPY ./intellicare-nise/nise/ ./nise/
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
@@ -40,8 +41,8 @@ RUN apt-get update && apt-get install -y \
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy application code
-COPY nise/ ./nise/
+# Copy application code from builder
+COPY --from=builder /app/nise/ ./nise/
 
 # Create non-root user
 RUN useradd -m -u 1000 nise && \

@@ -24,8 +24,8 @@ services:
       - INTELLICARE_REDIS_URL=redis://redis:6379/0
       - INTELLICARE_ENABLE_REDIS=true
       # EF-W011: MCP Servers
-      - INTELLICARE_MCP_OCR_URL=http://intellicare-ocr:8008
-      - INTELLICARE_MCP_SUPERZ_URL=http://intellicare-superz:8009
+      - INTELLICARE_MCP_MINERVA_URL=http://intellicare-minerva:8008
+      - INTELLICARE_MCP_PIERRE_URL=http://intellicare-pierre:8009
       - INTELLICARE_ENABLE_MCP=false
     depends_on:
       db:

@@ -21,11 +21,11 @@ from wanda.mcp.models import MCPToolInfo
 def config():
     return MCPClientConfig(
         mcp_servers={
-            "intellicare-ocr": "http://localhost:8008",
+            "intellicare-minerva": "http://localhost:8008",
             "intellicare-superz": "http://localhost:8009",
         },
         mcp_agent_names={
-            "intellicare-ocr": "MINERVA",
+            "intellicare-minerva": "MINERVA",
             "intellicare-superz": "PIERRE",
         },
         max_retries=0,  # Faster tests
@@ -39,7 +39,7 @@ def client(config):
     return WandaMCPClient(config=config, db_repository=None)
 
 
-def _ocr_tools_response():
+def _minerva_tools_response():
     """MINERVA tool list — raw list format."""
     return [
         {
@@ -83,22 +83,22 @@ class TestMCPClientInit:
 
     def test_config_defaults(self):
         cfg = MCPClientConfig()
-        assert "intellicare-ocr" in cfg.mcp_servers
+        assert "intellicare-minerva" in cfg.mcp_servers
         assert "intellicare-superz" in cfg.mcp_servers
         assert cfg.max_retries == 2
 
     def test_config_per_module_paths(self):
         cfg = MCPClientConfig()
         # MINERVA paths
-        assert cfg.mcp_tool_list_paths["intellicare-ocr"] == "/mcp/tools"
-        assert cfg.mcp_tool_call_style["intellicare-ocr"] == "path_params"
+        assert cfg.mcp_tool_list_paths["intellicare-minerva"] == "/mcp/tools"
+        assert cfg.mcp_tool_call_style["intellicare-minerva"] == "path_params"
         # PIERRE paths
         assert cfg.mcp_tool_list_paths["intellicare-superz"] == "/api/v1/mcp/tools"
         assert cfg.mcp_tool_call_style["intellicare-superz"] == "body_named"
 
     def test_config_get_list_url(self):
         cfg = MCPClientConfig()
-        assert cfg.get_list_url("intellicare-ocr", "http://localhost:8008") == \
+        assert cfg.get_list_url("intellicare-minerva", "http://localhost:8008") == \
                "http://localhost:8008/mcp/tools"
         assert cfg.get_list_url("intellicare-superz", "http://localhost:8009") == \
                "http://localhost:8009/api/v1/mcp/tools"
@@ -106,7 +106,7 @@ class TestMCPClientInit:
     def test_config_get_call_url_and_body_minerva(self):
         cfg = MCPClientConfig()
         url, body = cfg.get_call_url_and_body(
-            "intellicare-ocr", "http://localhost:8008", "parse_lab_result", {"file_path": "/tmp/x.pdf"}
+            "intellicare-minerva", "http://localhost:8008", "parse_lab_result", {"file_path": "/tmp/x.pdf"}
         )
         assert url == "http://localhost:8008/mcp/tools/parse_lab_result"
         assert body == {"file_path": "/tmp/x.pdf"}
@@ -131,7 +131,7 @@ class TestMCPClientConnectAll:
             return_value=httpx.Response(200, json={"status": "healthy"})
         )
         respx.get("http://localhost:8008/mcp/tools").mock(
-            return_value=httpx.Response(200, json=_ocr_tools_response())
+            return_value=httpx.Response(200, json=_minerva_tools_response())
         )
         # PIERRE: health + /api/v1/mcp/tools
         respx.get("http://localhost:8009/api/v1/health").mock(
@@ -142,7 +142,7 @@ class TestMCPClientConnectAll:
         )
 
         results = await client.connect_all()
-        assert results["intellicare-ocr"] is True
+        assert results["intellicare-minerva"] is True
         assert results["intellicare-superz"] is True
         assert len(client.connected_modules) == 2
 
@@ -160,7 +160,7 @@ class TestMCPClientConnectAll:
         )
 
         results = await client.connect_all()
-        assert results["intellicare-ocr"] is False
+        assert results["intellicare-minerva"] is False
         assert results["intellicare-superz"] is True
         assert len(client.connected_modules) == 1
 
@@ -175,7 +175,7 @@ class TestMCPClientConnectAll:
         )
 
         results = await client.connect_all()
-        assert results["intellicare-ocr"] is False
+        assert results["intellicare-minerva"] is False
         assert results["intellicare-superz"] is False
         assert client.connected_modules == []
 
@@ -217,7 +217,7 @@ class TestMCPCallTool:
             return_value=httpx.Response(200, json={"status": "healthy"})
         )
         respx.get("http://localhost:8008/mcp/tools").mock(
-            return_value=httpx.Response(200, json=_ocr_tools_response())
+            return_value=httpx.Response(200, json=_minerva_tools_response())
         )
         respx.get("http://localhost:8009/api/v1/health").mock(
             side_effect=httpx.ConnectError("down")
@@ -229,7 +229,7 @@ class TestMCPCallTool:
         )
 
         result = await client.call_tool(
-            "intellicare-ocr", "parse_lab_result", {"file_path": "/tmp/laudo.pdf"}
+            "intellicare-minerva", "parse_lab_result", {"file_path": "/tmp/laudo.pdf"}
         )
         assert result["lab_data"]["glucose"] == 95
         assert client._call_log[0].status == "success"
@@ -237,7 +237,7 @@ class TestMCPCallTool:
     @pytest.mark.asyncio
     async def test_call_tool_module_not_connected(self, client):
         with pytest.raises(MCPModuleUnavailableError):
-            await client.call_tool("intellicare-ocr", "some_tool", {})
+            await client.call_tool("intellicare-minerva", "some_tool", {})
 
     @pytest.mark.asyncio
     @respx.mock
@@ -331,16 +331,16 @@ class TestMCPListTools:
             return_value=httpx.Response(200)
         )
         respx.get("http://localhost:8008/mcp/tools").mock(
-            return_value=httpx.Response(200, json=_ocr_tools_response())
+            return_value=httpx.Response(200, json=_minerva_tools_response())
         )
         respx.get("http://localhost:8009/api/v1/health").mock(
             side_effect=httpx.ConnectError("down")
         )
         await client.connect_all()
 
-        tools = await client.list_tools("intellicare-ocr")
-        assert "intellicare-ocr" in tools
-        assert len(tools["intellicare-ocr"]) == 2
+        tools = await client.list_tools("intellicare-minerva")
+        assert "intellicare-minerva" in tools
+        assert len(tools["intellicare-minerva"]) == 2
 
     @pytest.mark.asyncio
     async def test_list_tools_empty(self, client):
@@ -376,7 +376,7 @@ class TestMCPHealthCheck:
 
 class TestMCPDegradation:
     def test_degradation_message_minerva(self, client):
-        msg = client.get_degradation_message("intellicare-ocr")
+        msg = client.get_degradation_message("intellicare-minerva")
         assert "MINERVA" in msg
 
     def test_degradation_message_pierre(self, client):
@@ -384,12 +384,12 @@ class TestMCPDegradation:
         assert "PIERRE" in msg
 
     def test_can_continue_without(self, client):
-        assert client.can_continue_without("intellicare-ocr") is True
+        assert client.can_continue_without("intellicare-minerva") is True
         assert client.can_continue_without("intellicare-superz") is True
         assert client.can_continue_without("unknown-module") is True
 
     def test_degradation_policy_structure(self):
-        assert "intellicare-ocr" in DEGRADATION_POLICY
+        assert "intellicare-minerva" in DEGRADATION_POLICY
         assert "intellicare-superz" in DEGRADATION_POLICY
         for policy in DEGRADATION_POLICY.values():
             assert "fallback_message" in policy
@@ -397,7 +397,7 @@ class TestMCPDegradation:
             assert "tools_affected" in policy
 
     def test_minerva_tools_in_policy(self):
-        policy = DEGRADATION_POLICY["intellicare-ocr"]
+        policy = DEGRADATION_POLICY["intellicare-minerva"]
         assert "extract_document" in policy["tools_affected"]
         assert "parse_lab_result" in policy["tools_affected"]
 
@@ -458,7 +458,7 @@ class TestMCPModuleRecords:
             return_value=httpx.Response(200)
         )
         respx.get("http://localhost:8008/mcp/tools").mock(
-            return_value=httpx.Response(200, json=_ocr_tools_response())
+            return_value=httpx.Response(200, json=_minerva_tools_response())
         )
         respx.get("http://localhost:8009/api/v1/health").mock(
             return_value=httpx.Response(200)
@@ -471,7 +471,7 @@ class TestMCPModuleRecords:
         records = client.get_all_module_records()
         assert len(records) == 2
         names = {r.module_name for r in records}
-        assert "intellicare-ocr" in names
+        assert "intellicare-minerva" in names
         assert "intellicare-superz" in names
 
 

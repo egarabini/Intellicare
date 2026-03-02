@@ -1,5 +1,3 @@
-version: "3.9"
-
 # Docker Compose for intellicare-admin module
 # Usage: docker-compose up -d
 # Depends on: postgres (from root docker-compose.yml)

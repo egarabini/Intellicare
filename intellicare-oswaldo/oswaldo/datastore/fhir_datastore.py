@@ -15,7 +15,20 @@ class FHIRDataStore:
     """Armazena e recupera recursos FHIR em PostgreSQL."""
 
     def __init__(self, db_url: str) -> None:
-        self._engine: Engine = create_engine(db_url, future=True)
+        # FHIRDataStore uses synchronous SQLAlchemy.
+        # Normalize the URL to use the psycopg v3 sync driver regardless of
+        # what driver was specified in the environment variable, since only
+        # psycopg (v3) is installed in this container (not psycopg2 or asyncpg).
+        sync_url = db_url
+        for async_prefix in (
+            "postgresql+asyncpg://",
+            "postgresql+psycopg_async://",
+            "postgresql+psycopg2://",
+        ):
+            if sync_url.startswith(async_prefix):
+                sync_url = "postgresql+psycopg://" + sync_url[len(async_prefix):]
+                break
+        self._engine: Engine = create_engine(sync_url, future=True)
 
     def ensure_schema(self) -> None:
         schema_sql = """

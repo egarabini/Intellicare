@@ -30,7 +30,7 @@ Todos os outros módulos **mantiveram suas portas originais**:
 - Comunicacao: 8005
 - Geralda: 8006
 - Zilda: 8007
-- OCR/Minerva: 8008
+- MINERVA/Minerva: 8008
 - Pierre: 8009
 - Admin: 8010
 - Gestor: 8011

@@ -7,17 +7,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc libpq-dev curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
-COPY pyproject.toml ./
-RUN pip install --no-cache-dir pip --upgrade && \
-    pip install --no-cache-dir poetry && \
-    poetry config virtualenvs.create false
+# Install intellicare-core first
+COPY ./intellicare-core /tmp/intellicare-core
+RUN pip install --no-cache-dir -e /tmp/intellicare-core
 
-# Copy local dependencies first (for Docker layer caching)
-COPY . .
+# Install intellicare-auth (optional)
+COPY ./intellicare-auth /tmp/intellicare-auth
+RUN pip install --no-cache-dir -e /tmp/intellicare-auth || true
 
-# Install without dev deps
-RUN poetry install --no-dev --no-interaction 2>/dev/null || pip install -e .
+# Install the module
+COPY ./intellicare-admin/pyproject.toml ./intellicare-admin/README.md* ./
+RUN pip install --no-cache-dir . || true
+
+COPY ./intellicare-admin ./
+RUN pip install --no-cache-dir -e .
 
 # Port
 EXPOSE 8010

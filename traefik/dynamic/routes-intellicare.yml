@@ -123,6 +123,72 @@ http:
       middlewares:
         - api-chain
 
+    # Grahame (FHIR + Interoperabilidade) — porta 8012
+    api-grahame:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/grahame`)"
+      entryPoints:
+        - websecure
+      service: grahame-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Nise (Chatbot + Treinamento) — porta 8013
+    api-nise:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/nise`)"
+      entryPoints:
+        - websecure
+      service: nise-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Minerva (OCR + Documentos) — porta 8008
+    api-minerva:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/minerva`)"
+      entryPoints:
+        - websecure
+      service: minerva-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Pierre (Scientific Search) — porta 8009
+    api-pierre:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/pierre`)"
+      entryPoints:
+        - websecure
+      service: pierre-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # Zilda (CNES + DATASUS) — porta 8007
+    api-zilda:
+      rule: "Host(`api.intellicare.ia.br`) && PathPrefix(`/v1/zilda`)"
+      entryPoints:
+        - websecure
+      service: zilda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # ── Keycloak (Authentication) — auth.intellicare.ia.br ──
+    keycloak-auth:
+      rule: "Host(`auth.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: keycloak-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
     # ── Traefik Dashboard (protected) ─────────────────────────
     traefik-dashboard:
       rule: "Host(`traefik.intellicare.ia.br`)"
@@ -167,7 +233,7 @@ http:
     florence-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-florence:8001"
+          - url: "http://intellicare-florence:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -176,7 +242,7 @@ http:
     oswaldo-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-oswaldo:8002"
+          - url: "http://intellicare-oswaldo:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -185,7 +251,7 @@ http:
     donabedian-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-donabedian:8003"
+          - url: "http://intellicare-donabedian:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -194,7 +260,7 @@ http:
     wanda-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-wanda:8004"
+          - url: "http://intellicare-wanda:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -203,7 +269,7 @@ http:
     comunicacao-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-comunicacao:8005"
+          - url: "http://intellicare-comunicacao:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -212,7 +278,7 @@ http:
     geralda-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-geralda:8006"
+          - url: "http://intellicare-geralda:8000"
         healthCheck:
           path: /api/v1/health
           interval: 30s
@@ -224,5 +290,59 @@ http:
           - url: "http://intellicare-gestor:8011"
         healthCheck:
           path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    grahame-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-grahame:8012"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    nise-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-nise:8013"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    minerva-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-minerva:8008"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    pierre-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-pierre:8009"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    zilda-svc:
+      loadBalancer:
+        servers:
+          - url: "http://intellicare-zilda:8007"
+        healthCheck:
+          path: /api/v1/health
+          interval: 30s
+          timeout: 5s
+
+    keycloak-svc:
+      loadBalancer:
+        servers:
+          - url: "http://keycloak:8080"
+        healthCheck:
+          path: /health/ready
           interval: 30s
           timeout: 5s

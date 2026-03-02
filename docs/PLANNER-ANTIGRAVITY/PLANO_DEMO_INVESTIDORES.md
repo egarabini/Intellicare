@@ -26,9 +26,9 @@ Para maximizar o impacto com 3 desenvolvedores paralelos, vamos dividir em: **Fr
 2.  **Demo Flow**: Garantir que a pergunta "Qual o tratamento para X segundo o guideline 2025?" funcione ao vivo.
 3.  **API REST**: Expor endpoint simples para o DEV 1 consumir.
 
-### DEV 3: A Prova (OCR / Minerva)
+### DEV 3: A Prova (MINERVA / Minerva)
 **Responsabilidade:** Demonstrar utilidade prática imediata e redução de custo operacional.
-**Módulo:** `intellicare-ocr`
+**Módulo:** `intellicare-minerva`
 **Tarefas:**
 1.  **Upload & Parse**: Implementar o fluxo de enviar um PDF de exame e receber o JSON estruturado.
 2.  **Anonymizer**: Garantir que o dado sensível seja tratado (investidores olham LGPD).
@@ -38,7 +38,7 @@ Para maximizar o impacto com 3 desenvolvedores paralelos, vamos dividir em: **Fr
 
 ## Cronograma Sugerido (Sprints de 1 Semana)
 
-| Dia | DEV 1 (Portal) | DEV 2 (SuperZ) | DEV 3 (OCR) |
+| Dia | DEV 1 (Portal) | DEV 2 (SuperZ) | DEV 3 (MINERVA) |
 |---|---|---|---|
 | **1-2** | Setup React + Tailwind + Layout Base | Setup Python + Tavily + Hello World MCP | Setup Tesseract/Textract + Pipeline Básico |
 | **3-4** | Telas de "Chat" e "Upload" (estáticas) | Implementação `web_search` e `summarize` | Implementação `extract_document` (laudos) |

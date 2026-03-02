@@ -24,7 +24,7 @@ Base: varredura de código-fonte Python (`api/*.py`, `run_api_lite.py`, `fhir_sp
 - `intellicare-geralda`: 21
 - `intellicare-grahame`: 4
 - `intellicare-nise`: 17
-- `intellicare-ocr`: 5
+- `intellicare-minerva`: 5
 - `intellicare-oswaldo`: 10
 - `intellicare-superz`: 5
 - `intellicare-wanda`: 59

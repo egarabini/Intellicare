@@ -49,6 +49,13 @@ except ImportError:
 
 logger = structlog.get_logger(__name__)
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -155,6 +162,9 @@ try:
     app.add_middleware(OnBehalfOfMiddleware, enabled=getattr(config, "on_behalf_of_enabled", True))
 except ImportError:
     pass
+
+if _HAS_AUTH:
+    configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
 
 # ── Contrato do módulo ─────────────────────────────────────────────────────

@@ -1,2 +1,0 @@
-"""Utilitarios do modulo OCR."""
-

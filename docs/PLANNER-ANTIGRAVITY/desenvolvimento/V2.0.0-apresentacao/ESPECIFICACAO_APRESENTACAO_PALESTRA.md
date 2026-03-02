@@ -64,7 +64,7 @@ Criar apresentação interativa para palestra que mostre aos participantes uma *
 - **Deep Dive:** Dependências, prioridades, cronograma
 
 ### Slide 6 — Demo Investidores
-- **Resumo:** Pierre (IA), Minerva (OCR), Portal (UI) — 3 frentes
+- **Resumo:** Pierre (IA), Minerva (MINERVA), Portal (UI) — 3 frentes
 - **Deep Dive:** Estratégia 3 DEVs, wow factor, MVP visual
 
 ### Slide 7 — TenantContext (F0)

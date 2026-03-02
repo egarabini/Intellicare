@@ -39,7 +39,7 @@ class TestRegisteredModuleModel:
 
     def test_create_mcp_type(self):
         m = RegisteredModuleModel(
-            agent_name="intellicare-ocr",
+            agent_name="intellicare-minerva",
             base_url="http://localhost:8008",
             port=8008,
             module_type="MCP",
@@ -100,14 +100,14 @@ class TestMCPModuleModel:
 
     def test_create_mcp_module(self):
         m = MCPModuleModel(
-            module_name="intellicare-ocr",
+            module_name="intellicare-minerva",
             agent_name="MINERVA",
-            base_url="http://intellicare-ocr:8008",
+            base_url="http://intellicare-minerva:8008",
             mcp_endpoint="/mcp/sse",
             status="healthy",
             tools_count=0,
         )
-        assert m.module_name == "intellicare-ocr"
+        assert m.module_name == "intellicare-minerva"
         assert m.agent_name == "MINERVA"
         assert m.status == "healthy"
         assert m.tools_count == 0

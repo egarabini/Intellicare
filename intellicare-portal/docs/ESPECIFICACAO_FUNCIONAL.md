@@ -21,7 +21,7 @@ O Portal é a "vitrine" do IntelliCare. Para a apresentação aos investidores, 
 **Onde:** `/` (Home)
 **Comportamento:**
 - Exibir cards para cada um dos 8 módulos planejados.
-- **Status Visual:** Módulos ativos (SuperZ, OCR, Comunicação) devem ter indicador verde pulsante "ONLINE". Módulos inativos (Oswaldo, etc.) em estado "SLEEP" ou "CONNECTING".
+- **Status Visual:** Módulos ativos (SuperZ, MINERVA, Comunicação) devem ter indicador verde pulsante "ONLINE". Módulos inativos (Oswaldo, etc.) em estado "SLEEP" ou "CONNECTING".
 - **Animação:** Ao carregar, os cards devem aparecer em cascata (efeito de "sistema inicializando").
 
 **Mock Data Obrigatório:**
@@ -29,7 +29,7 @@ O Portal é a "vitrine" do IntelliCare. Para a apresentação aos investidores, 
 {
   "modules": [
     {"name": "Pierre (SuperZ)", "status": "active", "latency": "120ms"},
-    {"name": "Minerva (OCR)", "status": "active", "latency": "45ms"},
+    {"name": "Minerva (MINERVA)", "status": "active", "latency": "45ms"},
     {"name": "Oswaldo (Crônicos)", "status": "standby", "latency": "-"}
   ]
 }
@@ -46,7 +46,7 @@ O Portal é a "vitrine" do IntelliCare. Para a apresentação aos investidores, 
 - Tentar conectar com `http://localhost:8009/api/chat`.
 - **Fallback:** Se falhar, responder com uma resposta pré-gravada impressionante sobre "Tratamento de DRC estágio 3".
 
-### 2.3 Visualizador de Documentos (Minerva/OCR)
+### 2.3 Visualizador de Documentos (Minerva/MINERVA)
 **Onde:** `/minerva`
 **Comportamento:**
 - Layout de 2 colunas:
@@ -72,4 +72,4 @@ O Portal é a "vitrine" do IntelliCare. Para a apresentação aos investidores, 
 
 1.  Código React/Vite rodando em `http://localhost:3000`.
 2.  `docker-compose.yml` que sobe o portal.
-3.  Vídeo curto (screen capture) navegando pelas 3 telas (Dashboard, Chat, OCR).
+3.  Vídeo curto (screen capture) navegando pelas 3 telas (Dashboard, Chat, MINERVA).

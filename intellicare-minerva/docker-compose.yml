@@ -1,0 +1,39 @@
+services:
+  intellicare-minerva:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: intellicare-minerva
+    ports:
+      - "8008:8008"
+    environment:
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+      MINERVA_VISION_MODEL: ${MINERVA_VISION_MODEL:-llama4:scout}
+      MINERVA_VISION_TIMEOUT_SECONDS: ${MINERVA_VISION_TIMEOUT_SECONDS:-60}
+      MINERVA_SURYA_DEVICE: ${MINERVA_SURYA_DEVICE:-cpu}
+      LLAMAPARSE_API_KEY: ${LLAMAPARSE_API_KEY:-}
+      CHROMA_HOST: chromadb
+      CHROMA_PORT: 8000
+      CHROMA_COLLECTION: ${CHROMA_COLLECTION:-ocr_documents}
+      MINERVA_LGPD_SALT: ${MINERVA_LGPD_SALT:-change-me}
+      MINERVA_MAX_FILE_SIZE_MB: ${MINERVA_MAX_FILE_SIZE_MB:-50}
+      MINERVA_MAX_PAGES: ${MINERVA_MAX_PAGES:-100}
+      MINERVA_CONFIDENCE_WARN: ${MINERVA_CONFIDENCE_WARN:-0.60}
+    depends_on:
+      chromadb:
+        condition: service_started
+    restart: unless-stopped
+
+  chromadb:
+    image: chromadb/chroma:0.5.23
+    container_name: ocr-chromadb
+    ports:
+      - "8200:8000"
+    volumes:
+      - ocr_chroma_data:/chroma/chroma
+    environment:
+      ANONYMIZED_TELEMETRY: "false"
+    restart: unless-stopped
+
+volumes:
+  ocr_chroma_data:

@@ -11,15 +11,15 @@ class MCPClientConfig(BaseModel):
     # MCP Server URLs
     mcp_servers: dict[str, str] = Field(
         default_factory=lambda: {
-            "intellicare-ocr": "http://intellicare-ocr:8008",
-            "intellicare-superz": "http://intellicare-superz:8009",
+            "intellicare-minerva": "http://intellicare-minerva:8008",
+            "intellicare-superz": "http://intellicare-pierre:8009",
         }
     )
 
     # Agent names (for display)
     mcp_agent_names: dict[str, str] = Field(
         default_factory=lambda: {
-            "intellicare-ocr": "MINERVA",
+            "intellicare-minerva": "MINERVA",
             "intellicare-superz": "PIERRE",
         }
     )
@@ -28,7 +28,7 @@ class MCPClientConfig(BaseModel):
     # MINERVA: /mcp/tools  |  PIERRE: /api/v1/mcp/tools
     mcp_tool_list_paths: dict[str, str] = Field(
         default_factory=lambda: {
-            "intellicare-ocr": "/mcp/tools",
+            "intellicare-minerva": "/mcp/tools",
             "intellicare-superz": "/api/v1/mcp/tools",
         }
     )
@@ -38,7 +38,7 @@ class MCPClientConfig(BaseModel):
     #   "body_named"  → POST {base_url}/api/v1/mcp/call        body = {"name": tool_name, "arguments": params}
     mcp_tool_call_style: dict[str, str] = Field(
         default_factory=lambda: {
-            "intellicare-ocr": "path_params",
+            "intellicare-minerva": "path_params",
             "intellicare-superz": "body_named",
         }
     )
@@ -46,13 +46,13 @@ class MCPClientConfig(BaseModel):
     # Per-module call base path (for "path_params" style, /{tool_name} is appended)
     mcp_tool_call_paths: dict[str, str] = Field(
         default_factory=lambda: {
-            "intellicare-ocr": "/mcp/tools",
+            "intellicare-minerva": "/mcp/tools",
             "intellicare-superz": "/api/v1/mcp/call",
         }
     )
 
     # Timeouts by tool category
-    ocr_timeout_seconds: int = 30  # OCR can be slow (large PDFs)
+    minerva_timeout_seconds: int = 30  # OCR can be slow (large PDFs)
     search_timeout_seconds: int = 15  # Web search
     analysis_timeout_seconds: int = 60  # LLM text analysis (Qwen2.5-72B)
     default_timeout_seconds: int = 30
@@ -94,8 +94,8 @@ class MCPClientConfig(BaseModel):
     def get_timeout_for_tool(self, module_name: str, tool_name: str) -> int:
         """Get the appropriate timeout for a tool."""
         # OCR tools
-        if module_name == "intellicare-ocr":
-            return self.ocr_timeout_seconds
+        if module_name == "intellicare-minerva":
+            return self.minerva_timeout_seconds
 
         # SuperZ tools
         if tool_name in ("web_search", "search_medical_literature", "check_regulatory"):

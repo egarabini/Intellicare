@@ -19,7 +19,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 ## [0.1.0-demo] - 2026-02-20
 
 ### Added
-- Estrutura modular com 15 módulos (core, wanda, florence, oswaldo, nise, geralda, grahame, zilda, donabedian, superz, ocr, conhecimento, comunicacao, auth, portal)
+- Estrutura modular com 15 módulos (core, wanda, florence, oswaldo, nise, geralda, grahame, zilda, donabedian, pierre, ocr, conhecimento, comunicacao, auth, portal)
 - Demo local funcional com 6 backends Python + portal React
 - Ambientes virtuais Python por módulo (.venv ou venv)
 - Scripts de automação:

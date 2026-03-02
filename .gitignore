@@ -39,10 +39,16 @@ venv.bak/
 
 # Environment variables (CRÍTICO - SEGURANÇA)
 .env
-.env.*
 .env.local
 .env.*.local
 *.env
+# Exception: .env.example, .env.full.example (templates) e .env.full (configuração de deploy)
+!.env.example
+!.env.full.example
+!.env.full
+
+# Temporary files created by AI agent tools
+tmpclaude-*-cwd
 
 # Testing
 .pytest_cache/
@@ -121,3 +127,6 @@ cython_debug/
 *.out.log
 *.err.log
 api*.log
+
+# Claude Code (configurações locais)
+.claude/

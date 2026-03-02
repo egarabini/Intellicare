@@ -20,7 +20,7 @@ services:
     volumes:
       - ./apresentacao/web:/usr/share/nginx/html:ro
     networks:
-      - modularizacao_intellicare-network
+      - intellicare-network
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -31,7 +31,7 @@ services:
       - "traefik.http.routers.apresentacao.middlewares=frontend-chain@file"
 
 networks:
-  modularizacao_intellicare-network:
+  intellicare-network:
     external: true
 ```
 

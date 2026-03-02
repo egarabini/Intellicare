@@ -1,6 +1,6 @@
 # intellicare-pierre — Especificacao Funcional
 
-**Modulo:** `intellicare-pierre` (Super Z / PIERRE)
+**Modulo:** `intellicare-pierre` (PIERRE / PIERRE)
 **Versao:** 1.0 (IntelliCare V5)
 **Porta:** 8009
 **Data:** 2026-02-16
@@ -313,7 +313,7 @@ Ajuste de dose nao necessario em DRC G1-G4. Contraindicado em gastroenterite gra
 Gestor: "Este artigo da NEJM mudaria nossa conduta com pacientes HAS?"
 (anexa PDF do artigo)
     │
-    ├──► [MCP] OCR.extract_document(artigo.pdf) → texto extraido
+    ├──► [MCP] MINERVA.extract_document(artigo.pdf) → texto extraido
     │
     └──► [MCP] SuperZ.analyze_text(
                    text=texto_artigo,
@@ -349,8 +349,8 @@ CV sem DRC avancada ou diabetes — revisar criterios de inclusao."
 - **Perguntas sem base documental** — SuperZ NAO alucina; se nao encontrar, diz que nao encontrou
 - **Armazenamento de resultados de busca** — stateless, cada query e independente
 - **Acesso autenticado a plataformas** (UpToDate, Dynamed) — apenas fontes publicas
-- **Busca em PDF sem texto** — para isso: OCR (intellicare-ocr) primeiro
-- **Analise de imagens** — responsabilidade do intellicare-ocr com Llama4 Vision
+- **Busca em PDF sem texto** — para isso: MINERVA (intellicare-minerva) primeiro
+- **Analise de imagens** — responsabilidade do intellicare-minerva com Llama4 Vision
 
 ---
 

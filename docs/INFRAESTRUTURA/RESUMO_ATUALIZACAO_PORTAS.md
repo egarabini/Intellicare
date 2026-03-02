@@ -50,7 +50,7 @@ Atualização **COMPLETA** de toda a documentação do IntelliCare para refletir
 | 8005 | Comunicacao | 8005:8000 | WhatsApp + Email + SMS |
 | 8006 | Geralda | 8006:8000 | Gestão + Administrativo |
 | 8007 | Zilda | 8007:8000 | CNES + DATASUS |
-| 8008 | OCR/Minerva | 8008:8008 | Extração Documentos |
+| 8008 | MINERVA/Minerva | 8008:8008 | Extração Documentos |
 | 8009 | Pierre | 8009:8009 | Scientific Search |
 | 8010 | Admin | 8010:8010 | Administração Sistema |
 | 8011 | Gestor | 8011:8011 | Gestão Módulos Clínicos |

@@ -18,7 +18,7 @@
 | **intellicare-florence** | Planejamento | Fase 3 | Definição | Especificação Funcional |
 | **intellicare-donabedian** | Concluído (Piloto) | Fase 2.4.1 | Implementação Consolidação | Replicar padrão |
 | **intellicare-nise** | Documentado | - | Guias de Workflow | Implementação Gestão de Fluxos |
-| **intellicare-ocr** (Minerva) | **PRIORIDADE (DEV 3)** | Demo MVP | **Spec OK (Pronto)** | Implementar Upload/Parse |
+| **intellicare-minerva** (Minerva) | **PRIORIDADE (DEV 3)** | Demo MVP | **Spec OK (Pronto)** | Implementar Upload/Parse |
 | **intellicare-superz** (Pierre) | **PRIORIDADE (DEV 2)** | Demo MVP | **Spec OK (Pronto)** | Implementar Tools Web/IA |
 | **intellicare-portal** | **PRIORIDADE (DEV 1)** | Demo MVP | **Spec OK (Novo)** | Criar Dashboard e Telas Demo |
 | **intellicare-zilda** | Planejamento | Fase 5 | - | - |

@@ -270,7 +270,7 @@ created_at: Mapped[datetime] = mapped_column(DateTime, default=lambda: datetime.
 ### NÍVEL 3 - Features Principais
 
 **FASE 3.1:** WANDA MCP Client
-- Cliente MCP para MINERVA (OCR)
+- Cliente MCP para MINERVA (MINERVA)
 - Cliente MCP para PIERRE (busca científica)
 - Orquestração de ferramentas
 

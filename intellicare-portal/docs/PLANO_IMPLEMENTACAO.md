@@ -28,7 +28,7 @@ components/
 pages/
   Dashboard.tsx    <- Grid dos 8 agentes
   PierreChat.tsx   <- Console de IA
-  MinervaOCR.tsx   <- Upload e Visualização
+  MinervaMINERVA.tsx   <- Upload e Visualização
 hooks/
   useMockData.ts   <- Simulador de latência e respostas da API
 mocks/

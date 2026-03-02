@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 # Degradation policy
 DEGRADATION_POLICY: dict[str, dict[str, Any]] = {
-    "intellicare-ocr": {
+    "intellicare-minerva": {
         "fallback_message": (
             "Servico de OCR (MINERVA) indisponivel. "
             "Nao e possivel processar documentos no momento. "
@@ -36,7 +36,7 @@ DEGRADATION_POLICY: dict[str, dict[str, Any]] = {
         "can_continue_without": True,
         "tools_affected": [
             "extract_document",
-            "ocr_image",
+            "minerva_image",
             "parse_lab_result",
             "parse_discharge_summary",
             "search_documents",

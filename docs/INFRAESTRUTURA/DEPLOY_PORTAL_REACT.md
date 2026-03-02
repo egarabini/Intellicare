@@ -98,7 +98,7 @@ docker rm intellicare-portal
 
 docker run -d \
   --name intellicare-portal \
-  --network modularizacao_intellicare-network \
+  --network intellicare-network \
   -v /opt/intellicare/portal-dist:/usr/share/nginx/html:ro \
   --restart unless-stopped \
   nginx:alpine

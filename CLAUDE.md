@@ -82,7 +82,7 @@ python scripts/smoke_tests.py
 | 8005 | `intellicare-comunicacao/` | — | WhatsApp + Email + SMS | 8005:8000 |
 | 8006 | `intellicare-geralda/` | GERALDA | Gestão + Administrativo | 8006:8000 |
 | 8007 | `intellicare-zilda/` | ZILDA | CNES + DATASUS | 8007:8000 |
-| 8008 | `intellicare-ocr/` | MINERVA | Extração Documentos (MCP Server) | 8008:8008 |
+| 8008 | `intellicare-minerva/` | MINERVA | Extração Documentos (MCP Server) | 8008:8008 |
 | 8009 | `intellicare-pierre/` | PIERRE | Scientific Search PubMed+Tavily (MCP Server) | 8009:8009 |
 | 8010 | `intellicare-admin/` | — | Administração do Sistema | 8010:8010 |
 | 8011 | `intellicare-gestor/` | — | Gestão de Módulos Clínicos | 8011:8011 |

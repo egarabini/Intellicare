@@ -67,11 +67,71 @@ http:
       middlewares:
         - api-chain
 
+    sc-geralda:
+      rule: "Host(`geralda.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: geralda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-wanda:
+      rule: "Host(`wanda.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: wanda-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-grahame:
+      rule: "Host(`grahame.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: grahame-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-nise:
+      rule: "Host(`nise.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: nise-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-minerva:
+      rule: "Host(`minerva.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: minerva-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    sc-pierre:
+      rule: "Host(`pierre.saudeplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: pierre-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
     # ── Wildcard: White-label tenant subdomains ───────────────
     # Catch-all for {tenant}.saudeplanner.com.br
     # Routes to portal with X-Tenant-ID header injection
     sc-whitelabel:
-      rule: "HostRegexp(`{tenant:[a-z0-9_]+}.saudeplanner.com.br`)"
+      rule: "HostRegexp(`[a-z0-9_]+\\.saudeplanner\\.com\\.br`)"
       entryPoints:
         - websecure
       service: portal-svc
@@ -85,15 +145,6 @@ http:
         - frontend-chain
       priority: 1  # Lower priority than explicit module routes above
 
-  # ── Services (reuse intellicare services) ───────────────────
-  # Services already defined in routes-intellicare.yml
-  # Additional service for zilda:
-  services:
-    zilda-svc:
-      loadBalancer:
-        servers:
-          - url: "http://intellicare-zilda:8000"
-        healthCheck:
-          path: /api/v1/health
-          interval: 30s
-          timeout: 5s
+  # ── Services ────────────────────────────────────────────────
+  # All services (florence-svc, oswaldo-svc, etc.) are defined
+  # in routes-intellicare.yml and shared across both files.

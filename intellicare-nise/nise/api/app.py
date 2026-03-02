@@ -16,6 +16,13 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
 # ── App setup ──────────────────────────────────────────────────────
 
 app = FastAPI(
@@ -33,6 +40,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+if _HAS_AUTH:
+    configure_auth(app, secrets_path="keycloak_client_secrets.json")
+
 # ── Routers ────────────────────────────────────────────────────────
 
 app.include_router(oswaldo.router, prefix="/api/v1")
@@ -44,6 +54,7 @@ app.include_router(framingham.router, prefix="/api/v1")
 
 
 @app.get("/health")
+@app.get("/api/v1/health")
 async def health():
     """Health check endpoint."""
     return {
