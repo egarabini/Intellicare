@@ -8,8 +8,8 @@ Este guia cobre a integração dos módulos IntelliCare com Keycloak usando `int
 
 ```
 ┌─────────────┐      ┌──────────────┐      ┌─────────────┐
-│   Portal    │─────▶│   Keycloak   │─────▶│  Módulos    │
-│  (React)    │      │  (OAuth2/OIDC)│      │  (FastAPI)  │
+│   Portal    │────▶│   Keycloak   │─────▶│  Módulos    │
+│  (React)    │      │ (OAuth2/OIDC)│      │  (FastAPI)  │
 └─────────────┘      └──────────────┘      └─────────────┘
                             │
                             ▼

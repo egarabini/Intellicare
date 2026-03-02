@@ -20,14 +20,20 @@ Esta fase implementa o servidor de autenticação **Keycloak** para o IntelliCar
 ## 📁 Estrutura de Arquivos
 
 ```
-keycloak/
-├── import/
-│   └── bemcuidar-realm.json    # Configuração do realm (roles, clients, users)
-├── certs/                      # Certificados SSL (HTTPS)
-│   ├── server.keystore         # Keystore para HTTPS
-│   └── cert-creation-script.sh # Script para gerar certificados
-└── themes/                     # Temas customizados (opcional)
-    └── intellicare/
+intellicare-auth/
+├── keycloak/
+│   ├── import/
+│   │   └── bemcuidar-realm.json    # Configuração do realm (roles, clients, users)
+│   ├── certs/                      # Certificados SSL (HTTPS)
+│   │   ├── server.keystore         # Keystore para HTTPS
+│   │   └── cert-creation-script.sh # Script para gerar certificados
+│   └── themes/                     # Temas customizados (opcional)
+│       └── intellicare/
+├── intellicare_auth/              # Biblioteca Python de integração Keycloak
+│   ├── client.py                  # KeycloakClient para integração
+│   ├── middleware.py              # FastAPI middleware
+│   └── ...
+└── keycloak_client_secrets.json   # Client secrets para desenvolvimento
 ```
 
 ## 🔐 Credenciais Padrão
@@ -127,10 +133,10 @@ docker-compose -f docker-compose.keycloak.yml up -d --force-recreate keycloak
 ```bash
 # Export realm atual
 docker exec keycloak-intellicare /opt/keycloak/bin/kcadm.sh get realms/bemcuidar -o /tmp/realm-backup.json
-docker cp keycloak-intellicare:/tmp/realm-backup.json ./keycloak/backup/
+docker cp keycloak-intellicare:/tmp/realm-backup.json ./intellicare-auth/keycloak/backup/
 
 # Backup database
-docker exec keycloak-db pg_dump -U keycloak keycloak > keycloak/db-backup.sql
+docker exec keycloak-db pg_dump -U keycloak keycloak > intellicare-auth/keycloak/db-backup.sql
 ```
 
 ## 📞 Suporte

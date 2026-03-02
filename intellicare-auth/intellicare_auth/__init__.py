@@ -21,6 +21,7 @@ from intellicare_auth.exceptions import (
     KeycloakConnectionError,
 )
 from intellicare_auth.middleware import get_current_user, get_optional_user
+from intellicare_auth.fastapi import configure_auth, require_role, require_any_role as require_any_role_dep
 from intellicare_auth.tenant_middleware import (
     get_tenant_context,
     get_available_tenants,
@@ -41,6 +42,10 @@ __all__ = [
     "get_tenant_context",
     "get_available_tenants",
     "get_optional_tenant_context",
+    # FastAPI helpers
+    "configure_auth",
+    "require_role",
+    "require_any_role_dep",
     # Decorators
     "requires_role",
     "requires_any_role",

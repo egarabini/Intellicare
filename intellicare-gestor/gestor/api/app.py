@@ -45,6 +45,13 @@ async def lifespan(app: FastAPI):
     logger.info("gestor.shutdown")
 
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
 app = FastAPI(
     title="IntelliCare Gestor",
     description="Gestão de usuários, RBAC e setores por tenant",
@@ -57,6 +64,9 @@ app = FastAPI(
 # Prometheus metrics
 from intellicare_core.monitoring.metrics import setup_metrics  # noqa: E402
 setup_metrics(app, module_name="gestor")
+
+if _HAS_AUTH:
+    configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
 app.add_middleware(
     CORSMiddleware,

@@ -42,9 +42,13 @@ venv.bak/
 .env.local
 .env.*.local
 *.env
-# Exception: .env.example and .env.full.example are allowed (templates only)
+# Exception: .env.example, .env.full.example (templates) e .env.full (configuração de deploy)
 !.env.example
 !.env.full.example
+!.env.full
+
+# Temporary files created by AI agent tools
+tmpclaude-*-cwd
 
 # Testing
 .pytest_cache/

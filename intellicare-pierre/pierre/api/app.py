@@ -49,6 +49,13 @@ async def lifespan(app: FastAPI):
     logger.info("SuperZ/PIERRE encerrado")
 
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
 app = FastAPI(
     title="intellicare-pierre",
     description="MCP Server de inteligencia externa do IntelliCare (PIERRE)",
@@ -59,6 +66,9 @@ app = FastAPI(
 # Prometheus metrics
 from intellicare_core.monitoring.metrics import setup_metrics  # noqa: E402
 setup_metrics(app, module_name="pierre")
+
+if _HAS_AUTH:
+    configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
 # CORS
 app.add_middleware(

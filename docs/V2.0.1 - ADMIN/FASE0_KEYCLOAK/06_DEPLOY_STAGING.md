@@ -20,16 +20,21 @@ Este guia cobre o deploy do Keycloak em ambiente de staging.
 
 ### 1. Preparar Certificados SSL
 
-Para staging, usar **Traefik** com **Let's Encrypt** para gerenciar certificados automaticamente:
+Para staging, usar **Traefik** com **Let's Encrypt** para gerenciar certificados automaticamente. O Keycloak está configurado no módulo `intellicare-auth/keycloak/`:
 
 ```yaml
 # docker-compose.keycloak.yml (staging)
+# Arquivo: raiz do projeto
 keycloak:
   environment:
-    KC_HOSTNAME: auth.intellicare.ia.br
-    KC_HTTP_ENABLED: "false"
-    KC_PROXY: edge
+    KC_HTTP_ENABLED: "true"
+    KC_PROXY: none
     KC_HOSTNAME_STRICT: "false"
+
+  volumes:
+    # Import realm do diretório do módulo intellicare-auth
+    - ./intellicare-auth/keycloak/import:/opt/keycloak/data/import:ro
+    - ./intellicare-auth/keycloak/certs:/opt/keycloak/conf:ro
 
   labels:
     - "traefik.enable=true"

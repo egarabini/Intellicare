@@ -178,9 +178,9 @@ http:
       middlewares:
         - api-chain
 
-    # ── Keycloak (Authentication) ─────────────────────────────
-    keycloak:
-      rule: "Host(`keycloak.intellicare.ia.br`)"
+    # ── Keycloak (Authentication) — auth.intellicare.ia.br ──
+    keycloak-auth:
+      rule: "Host(`auth.intellicare.ia.br`)"
       entryPoints:
         - websecure
       service: keycloak-svc
@@ -341,8 +341,8 @@ http:
     keycloak-svc:
       loadBalancer:
         servers:
-          - url: "http://intellicare-keycloak:8080"
+          - url: "http://keycloak:8080"
         healthCheck:
-          path: /health
+          path: /health/ready
           interval: 30s
           timeout: 5s

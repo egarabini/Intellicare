@@ -19,6 +19,13 @@ from minerva.utils.file_utils import normalize_file_type
 
 _state: dict[str, Any] = {}
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
 
 class ToolExecuteRequest(BaseModel):
     arguments: dict[str, Any] = Field(default_factory=dict)
@@ -42,6 +49,9 @@ def create_app() -> FastAPI:
     _state["vision_engine"] = vision_engine
 
     app = FastAPI(title="IntelliCare MINERVA (MINERVA)", version=config.module_version)
+
+    if _HAS_AUTH:
+        configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
     @app.get("/api/v1/health")
     async def health() -> dict[str, Any]:

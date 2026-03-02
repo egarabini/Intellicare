@@ -16,6 +16,13 @@ from geralda.engine.models import (
 )
 from geralda.engine.reminder_engine import ReminderEngine
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
 # ── App setup ──────────────────────────────────────────────────
 
 config = GeraldaConfig()
@@ -25,6 +32,9 @@ app = FastAPI(
     description="Agente de Acompanhamento do Paciente — planos de cuidado, lembretes e educacao em saude",
     version=config.module_version,
 )
+
+if _HAS_AUTH:
+    configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
 # ── Engine instances (in-memory for v1.0.0) ────────────────────
 

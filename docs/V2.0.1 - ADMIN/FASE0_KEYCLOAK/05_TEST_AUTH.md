@@ -83,7 +83,7 @@ Verificar:
 - [ ] Realm bemcuidar aparece
 - [ ] Clients intellicare-admin e intellicare-portal existem
 - [ ] User admin@intellicare.ia.br existe
-- [ ] Roles PLATFORM_ADMIN, PLATFORM_SUPPORT, PLATFORM_BILLING existem
+- [ ] Roles PLATFORM_ADMIN, PLATFORM_GESTOR, PLATFORM_SUPPORT, PLATFORM_BILLING existem
 ```
 
 ### 2. Login no Portal

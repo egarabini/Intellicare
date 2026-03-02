@@ -57,6 +57,14 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     _state.clear()
 
 
+# Auth integration (opcional)
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
+
 def create_app() -> FastAPI:
     app = FastAPI(
         title="IntelliCare Oswaldo",
@@ -64,6 +72,9 @@ def create_app() -> FastAPI:
         version="1.0.0",
         lifespan=lifespan,
     )
+
+    if _HAS_AUTH:
+        configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
     @app.get("/api/v1/health")
     async def health() -> dict[str, Any]:

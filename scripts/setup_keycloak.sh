@@ -25,7 +25,7 @@ KEYCLOAK_ADMIN_PASS="${KEYCLOAK_ADMIN_PASSWORD:-changeme}"
 
 echo "╔═══════════════════════════════════════════════════════════╗"
 echo "║                                                           ║"
-echo "║   🔐 Setup Keycloak - IntelliCare Multi-Tenant         ║"
+echo "║   🔐 Setup Keycloak - IntelliCare Multi-Tenant           ║"
 echo "║                                                           ║"
 echo "╚═══════════════════════════════════════════════════════════╝"
 echo ""

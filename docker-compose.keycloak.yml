@@ -43,8 +43,8 @@ services:
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
     container_name: keycloak-intellicare
-    # Em desenvolvimento: start-dev --import-realm
-    # Em produção: start --import-realm
+    # --import-realm: importa realm apenas se não existir (Keycloak ignora se já existe)
+    # Na primeira execução: cria o realm. Nas demais: segue silenciosamente.
     command: start-dev --import-realm
     environment:
       # Database Configuration
@@ -54,8 +54,9 @@ services:
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-changeme}
       KC_DB_SCHEMA: public
 
-      # Hostname (não definir para HTTP development)
-      # KC_HOSTNAME será determinado automaticamente
+      # Hostname explícito — corrige NullPointerException no authority() do Vert.x
+      # quando Keycloak recebe requests sem Host header válido (ex: healthcheck interno)
+      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME_URL:-http://localhost:8080}
       KC_HTTP_ENABLED: "true"
 
       # Admin User (Criado automaticamente na primeira execução)
@@ -70,9 +71,10 @@ services:
       KC_LOG_CONSOLE_OUTPUT: json
       KC_LOG_FORMAT: json
 
-      # Proxy / HTTPS (none para HTTP em staging, edge para HTTPS com proxy)
+      # Proxy / HTTPS
       KC_PROXY: none
       KC_HOSTNAME_STRICT: "false"
+      KC_HOSTNAME_STRICT_HTTPS: "false"
 
       # CORS (desenvolvimento)
       KC_HTTP_CORS: "true"
@@ -86,20 +88,17 @@ services:
       KC_DB_POOL_MAX_SIZE: "20"
       KC_DB_POOL_INITIAL_SIZE: "5"
 
-      # Cache
-      KC_HOSTNAME_STRICT_HTTPS: "false"
-
       # Health
       KC_HEALTH_ENABLED: "true"
       KC_METRICS_ENABLED: "true"
 
     volumes:
       # Import realm automaticamente
-      - ./keycloak/import:/opt/keycloak/data/import:ro
+      - ./intellicare-auth/keycloak/import:/opt/keycloak/data/import:ro
       # Custom themes (opcional)
-      # - ./keycloak/themes:/opt/keycloak/themes:ro
+      # - ./intellicare-auth/keycloak/themes:/opt/keycloak/themes:ro
       # Keystore (HTTPS)
-      - ./keycloak/certs:/opt/keycloak/conf:ro
+      - ./intellicare-auth/keycloak/certs:/opt/keycloak/conf:ro
 
     ports:
       - "${KEYCLOAK_HTTP_PORT:-8080}:8080"  # HTTP
@@ -113,11 +112,12 @@ services:
         condition: service_healthy
 
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
+      # Usa curl com Host header explícito para evitar o NullPointerException no authority()
+      test: ["CMD-SHELL", "curl -f -H 'Host: localhost' http://localhost:8080/health/ready || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 60s
+      start_period: 90s
 
     restart: unless-stopped
 
