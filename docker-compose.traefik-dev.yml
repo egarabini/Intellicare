@@ -16,7 +16,7 @@ services:
     hostname: traefik
     ports:
       - "80:80"
-      - "8888:8080"  # Dashboard (insecure for dev) — porta 8080 reservada para Keycloak
+      - "${TRAEFIK_PORT:-8888}:8080"  # Dashboard (insecure for dev) — porta 8080 reservada para Keycloak
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     command:
