@@ -87,20 +87,31 @@ develop → (merge) → staging → (merge) → main
 
 ---
 
-## 🔑 Pré-requisito: SSH sem senha
+## 🔑 Pré-requisito: SSH sem senha (Windows)
 
-O script de deploy usa SSH. Configure uma vez:
+O script de deploy usa SSH. Configure **uma única vez** por máquina:
 
-```bash
-# 1. Gerar chave (se não tiver)
+```powershell
+# 1. Gerar chave SSH (no PowerShell — só se não tiver)
 ssh-keygen -t ed25519 -C "seu-email@empresa.com"
+# Pressione Enter em tudo (sem passphrase) para não pedir senha depois
 
-# 2. Copiar para o servidor
-ssh-copy-id root@167.86.97.142
+# 2. Ver a chave pública gerada
+cat "$env:USERPROFILE\.ssh\id_ed25519.pub"
+```
 
-# 3. Testar (não deve pedir senha)
+**Copie a linha inteira** que começa com `ssh-ed25519 ...`
+
+```powershell
+# 3. No PuTTY (conectado ao servidor), cole:
+#    mkdir -p ~/.ssh && echo "COLE_SUA_CHAVE_AQUI" >> ~/.ssh/authorized_keys
+#    && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+
+# 4. Testar aqui no PowerShell (deve responder OK sem pedir senha)
 ssh root@167.86.97.142 "echo OK"
 ```
+
+> ⚠️ `ssh-copy-id` **não existe no Windows** — use o método manual acima via PuTTY.
 
 ---
 
