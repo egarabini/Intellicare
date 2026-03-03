@@ -130,3 +130,7 @@ api*.log
 
 # Claude Code (configurações locais)
 .claude/
+
+# Diretório "null" gerado por ferramentas de IA/IDE (não deve ir ao git)
+null/
+/null
