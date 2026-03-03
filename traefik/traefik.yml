@@ -52,6 +52,9 @@ api:
   dashboard: true
   insecure: false
 
+# ── Ping (health check) ────────────────────────────────────
+ping: {}
+
 # ── Logging ─────────────────────────────────────────────────
 log:
   level: INFO

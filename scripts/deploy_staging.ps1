@@ -143,7 +143,7 @@ docker compose -f docker-compose.full.yml build portal
 
 $remoteScript += @"
 
-docker compose -f docker-compose.full.yml up -d --remove-orphans
+docker compose -f docker-compose.full.yml -f docker-compose.traefik.yml up -d --remove-orphans
 docker compose -f docker-compose.keycloak.yml --env-file .env.full up -d
 
 echo '--- status ---'
@@ -159,8 +159,10 @@ if ($LASTEXITCODE -ne 0) { Err "Deploy no servidor falhou."; exit 1 }
 Step "4/4" "Deploy concluído"
 Write-Host ""
 Ok "Tudo pronto! Acesse:"
-Write-Host "  🌐 Portal:   http://${SERVER_HOST}:3001" -ForegroundColor Cyan
+Write-Host "  🌐 Portal:   https://portal.intellicare.ia.br" -ForegroundColor Cyan
 Write-Host "  🔑 Keycloak: http://${SERVER_HOST}:8080" -ForegroundColor Cyan
 Write-Host "  📊 Grafana:  http://${SERVER_HOST}:3000" -ForegroundColor Cyan
+Write-Host "  🌐 Admin:    https://admin.intellicare.ia.br" -ForegroundColor Cyan
+Write-Host "  🔗 API:      https://api.intellicare.ia.br" -ForegroundColor Cyan
 Write-Host ""
 

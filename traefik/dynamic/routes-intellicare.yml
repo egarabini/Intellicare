@@ -217,7 +217,7 @@ http:
         servers:
           - url: "http://intellicare-portal:80"
         healthCheck:
-          path: /
+          path: /health
           interval: 30s
           timeout: 5s
 
