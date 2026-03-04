@@ -1,29 +1,36 @@
-"""GlobalAuditLog ORM model — schema 'platform'."""
-
-import uuid
-from datetime import datetime, UTC
-
-from sqlalchemy import Column, String, DateTime, JSON
+from sqlalchemy import Column, String, DateTime, JSON, Text
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.sql import func
+import uuid
 
-from admin.models.tenant import Base
+from admin.db import Base
 
+import os
 
-class GlobalAuditLog(Base):
-    """Immutable audit log for all administrative actions across the platform."""
+SCHEMA = os.getenv("DB_SCHEMA", "platform")
+TABLE_ARGS = {"schema": SCHEMA} if SCHEMA else {}
 
-    __tablename__ = "audit_global"
-    __table_args__ = {"schema": "platform"}
+class AuditLog(Base):
+    __tablename__ = "audit_logs"
+    __table_args__ = TABLE_ARGS
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    actor_id = Column(String(255), nullable=False)  # "admin:uuid" or "support:uuid"
-    action = Column(String(100), nullable=False, index=True)  # "tenant.created", "impersonation.started"
-    resource_type = Column(String(100))  # "tenant", "plan", "module"
-    resource_id = Column(String(255))
-    target_tenant_id = Column(String(100), index=True)
-    details = Column(JSON, default=dict)
-    ip_address = Column(String(45))
-    created_at = Column(DateTime, default=lambda: datetime.now(UTC), index=True)
+    actor_id = Column(UUID(as_uuid=True), nullable=False)
+    actor_email = Column(String(255), nullable=False)
+    actor_role = Column(String(100), nullable=False)
 
-    def __repr__(self) -> str:
-        return f"<AuditLog {self.action} by={self.actor_id} at={self.created_at}>"
+    action = Column(String(100), nullable=False)
+    target_type = Column(String(50))
+    target_id = Column(UUID(as_uuid=True))
+
+    payload = Column(JSON)
+    result = Column(String(50))
+    error_message = Column(Text)
+
+    ip = Column(String(45))
+    user_agent = Column(Text)
+
+    impersonated_as = Column(UUID(as_uuid=True))
+    reason = Column(Text)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())

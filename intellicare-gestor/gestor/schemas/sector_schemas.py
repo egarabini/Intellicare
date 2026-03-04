@@ -1,36 +1,32 @@
-"""Schemas Pydantic para Sector."""
-
-import uuid
+from pydantic import BaseModel, Field
+from typing import Optional, List
+from uuid import UUID
 from datetime import datetime
-from typing import Literal, Optional
 
-from pydantic import BaseModel
+class SectorBase(BaseModel):
+    name: str = Field(..., max_length=255)
+    type: Optional[str] = Field(None, max_length=50) # "UTI", "Enfermaria", etc.
+    parent_id: Optional[UUID] = None
+    responsavel_id: Optional[UUID] = None
+    active: bool = True
 
-SectorType = Literal["UTI", "Enfermaria", "Ambulatório", "Administração", "Outro"]
-
-
-class SectorCreate(BaseModel):
-    name: str
-    type: Optional[SectorType] = None
-    parent_id: Optional[uuid.UUID] = None
-    responsavel_id: Optional[uuid.UUID] = None
-
+class SectorCreate(SectorBase):
+    pass
 
 class SectorUpdate(BaseModel):
-    name: Optional[str] = None
-    type: Optional[SectorType] = None
-    parent_id: Optional[uuid.UUID] = None
-    responsavel_id: Optional[uuid.UUID] = None
+    name: Optional[str] = Field(None, max_length=255)
+    type: Optional[str] = Field(None, max_length=50)
+    parent_id: Optional[UUID] = None
+    responsavel_id: Optional[UUID] = None
     active: Optional[bool] = None
 
-
-class SectorResponse(BaseModel):
-    id: uuid.UUID
-    name: str
-    type: Optional[str] = None
-    parent_id: Optional[uuid.UUID] = None
-    responsavel_id: Optional[uuid.UUID] = None
-    active: bool
+class SectorResponse(SectorBase):
+    id: UUID
     created_at: datetime
 
-    model_config = {"from_attributes": True}
+    class Config:
+        from_attributes = True
+
+class SectorListResponse(BaseModel):
+    sectors: List[SectorResponse]
+    total: int

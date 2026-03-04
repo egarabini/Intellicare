@@ -23,7 +23,7 @@ const PierreChat = () => {
         {
             id: '1',
             role: 'assistant',
-            content: 'Olá, sou **Pierre (Super Z)**. Tenho acesso a *35 milhões* de artigos no PubMed e guidelines em tempo real.\n\nComo posso ajudar na decisão clínica hoje?',
+            content: 'Olá, sou **Pierre**. Tenho acesso a *35 milhões* de artigos no PubMed e guidelines em tempo real.\n\nComo posso ajudar na decisão clínica hoje?',
             timestamp: new Date()
         }
     ]);
@@ -88,7 +88,7 @@ const PierreChat = () => {
                         <Cpu className="h-6 w-6" />
                     </div>
                     <div>
-                        <h1 className="text-lg font-bold">Pierre (Super Z)</h1>
+                        <h1 className="text-lg font-bold">Pierre</h1>
                         <div className="flex items-center gap-2 text-xs text-emerald-400">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

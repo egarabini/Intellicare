@@ -56,7 +56,7 @@ const MinervaOCR = () => {
                         <Eye className="h-6 w-6" />
                     </div>
                     <div>
-                        <h1 className="text-lg font-bold">Minerva (OCR)</h1>
+                        <h1 className="text-lg font-bold">Minerva</h1>
                         <p className="text-xs text-slate-400">Extração Estruturada de Documentos Médicos</p>
                     </div>
                 </div>

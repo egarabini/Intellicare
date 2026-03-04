@@ -1,0 +1,54 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\intellicare-gestor
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/test_users.py::test_health_check PASSED                            [ 33%]
+tests/test_users.py::test_create_user FAILED                             [ 66%]
+tests/test_users.py::test_list_users FAILED                              [100%]
+
+================================== FAILURES ===================================
+______________________________ test_create_user _______________________________
+tests\test_users.py:19: in test_create_user
+    assert response.status_code == 201
+E   assert 403 == 201
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+_______________________________ test_list_users _______________________________
+tests\test_users.py:31: in test_list_users
+    assert response.status_code == 200
+E   assert 403 == 200
+E    +  where 403 = <Response [403 Forbidden]>.status_code
+============================== warnings summary ===============================
+gestor\config.py:4
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\config.py:4: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+gestor\db.py:6
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\db.py:6: MovedIn20Warning: The ``declarative_base()`` function is now available as sqlalchemy.orm.declarative_base(). (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    Base = declarative_base()
+
+gestor\schemas\user_schemas.py:26
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\user_schemas.py:26: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class TenantUserResponse(TenantUserBase):
+
+gestor\schemas\role_schemas.py:18
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\role_schemas.py:18: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class RoleResponse(RoleBase):
+
+gestor\schemas\sector_schemas.py:23
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\sector_schemas.py:23: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class SectorResponse(SectorBase):
+
+gestor\schemas\settings_schemas.py:10
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\settings_schemas.py:10: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class TenantSettingResponse(BaseModel):
+
+gestor\schemas\audit_schemas.py:6
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\audit_schemas.py:6: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class LocalAuditLogResponse(BaseModel):
+
+tests/test_users.py::test_health_check

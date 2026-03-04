@@ -1,29 +1,24 @@
-"""Schemas Pydantic para TenantSetting."""
-
-import uuid
+from pydantic import BaseModel, Field
+from typing import Optional, List
+from uuid import UUID
 from datetime import datetime
-from typing import Literal, Optional
 
-from pydantic import BaseModel
-
-ValueType = Literal["string", "number", "boolean", "json"]
-
-
-class SettingUpdate(BaseModel):
+class TenantSettingUpdate(BaseModel):
     value: str
-    value_type: Optional[ValueType] = None
+    value_type: str = Field(default="string", pattern="^(string|number|boolean|json)$")
 
-
-class SettingResponse(BaseModel):
-    id: uuid.UUID
+class TenantSettingResponse(BaseModel):
+    id: UUID
     category: str
     key: str
     value: Optional[str] = None
     value_type: str
     updated_at: Optional[datetime] = None
+    updated_by: Optional[UUID] = None
 
-    model_config = {"from_attributes": True}
+    class Config:
+        from_attributes = True
 
-
-class SettingsBulkUpdate(BaseModel):
-    settings: dict[str, str]  # key → value
+class TenantSettingListResponse(BaseModel):
+    settings: List[TenantSettingResponse]
+    total: int

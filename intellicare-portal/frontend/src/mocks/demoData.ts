@@ -3,7 +3,7 @@ import type { ModuleProps } from "../components/demo/ModuleCard";
 export const demoModules: ModuleProps[] = [
     {
         id: "superz",
-        name: "PIERRE (Super Z)",
+        name: "PIERRE",
         description: "Inteligência Artificial Generativa e Busca Semântica em tempo real.",
         status: "active",
         latency: 124,
@@ -12,7 +12,7 @@ export const demoModules: ModuleProps[] = [
     },
     {
         id: "ocr",
-        name: "MINERVA (OCR)",
+        name: "MINERVA",
         description: "Extração estruturada de documentos médicos e laudos.",
         status: "active",
         latency: 45,

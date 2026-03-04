@@ -1,73 +1,34 @@
-"""SettingsService — Configurações chave-valor do tenant."""
-
 import uuid
-from datetime import UTC, datetime
-from typing import Optional
-
-from fastapi import HTTPException
-from sqlalchemy import select
+from typing import List, Optional
+from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from sqlalchemy import update
 
 from gestor.models.settings import TenantSetting
-from gestor.schemas.settings_schemas import SettingUpdate
-
+from gestor.schemas.settings_schemas import TenantSettingUpdate
 
 class SettingsService:
-    def __init__(self, session: AsyncSession) -> None:
-        self._session = session
+    def __init__(self, session: AsyncSession):
+        self.session = session
 
-    async def list_settings(self, category: Optional[str] = None) -> list[TenantSetting]:
-        q = select(TenantSetting)
-        if category:
-            q = q.where(TenantSetting.category == category)
-        result = await self._session.execute(q)
+    async def get_all_settings(self) -> List[TenantSetting]:
+        result = await self.session.execute(select(TenantSetting))
         return list(result.scalars().all())
 
-    async def get_setting(self, key: str) -> TenantSetting:
-        result = await self._session.execute(
-            select(TenantSetting).where(TenantSetting.key == key)
-        )
-        setting = result.scalar_one_or_none()
+    async def get_setting(self, key: str) -> Optional[TenantSetting]:
+        result = await self.session.execute(select(TenantSetting).where(TenantSetting.key == key))
+        return result.scalar_one_or_none()
+
+    async def update_setting(self, key: str, setting_data: TenantSettingUpdate, actor_id: Optional[uuid.UUID] = None) -> Optional[TenantSetting]:
+        setting = await self.get_setting(key)
         if not setting:
-            raise HTTPException(404, f"Configuração '{key}' não encontrada")
+            return None
+        
+        setting.value = setting_data.value
+        setting.value_type = setting_data.value_type
+        setting.updated_by = actor_id
+        
+        await self.session.commit()
+        await self.session.refresh(setting)
         return setting
-
-    async def update_setting(
-        self,
-        key: str,
-        data: SettingUpdate,
-        updated_by: Optional[uuid.UUID] = None,
-    ) -> TenantSetting:
-        result = await self._session.execute(
-            select(TenantSetting).where(TenantSetting.key == key)
-        )
-        setting = result.scalar_one_or_none()
-
-        if setting is None:
-            raise HTTPException(404, f"Configuração '{key}' não encontrada")
-
-        setting.value = data.value
-        if data.value_type:
-            setting.value_type = data.value_type
-        setting.updated_at = datetime.now(UTC)
-        setting.updated_by = updated_by
-
-        await self._session.flush()
-        await self._session.refresh(setting)
-        return setting
-
-    async def bulk_update(
-        self,
-        updates: dict[str, str],
-        updated_by: Optional[uuid.UUID] = None,
-    ) -> list[TenantSetting]:
-        updated = []
-        for key, value in updates.items():
-            try:
-                setting = await self.update_setting(
-                    key, SettingUpdate(value=value), updated_by
-                )
-                updated.append(setting)
-            except HTTPException:
-                pass  # Ignorar chaves inexistentes no bulk
-        return updated

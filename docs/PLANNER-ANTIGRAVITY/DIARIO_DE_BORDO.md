@@ -5,7 +5,7 @@
 - **MVP Portal Implementado (DEV 1)**:
     - Assumi o papel de DEV 1 e implementei a interface do `intellicare-portal`.
     - **Dashboard**: Criado com cards animados e status "pulsante" para simular atividade em tempo real.
-    - **Pierre (Super Z)**: Interface de Chat implementada com suporte a Markdown. Possui mock de "tempo de pensamento" e respostas pré-gravadas para perguntas clínicas (DRC, Potássio).
+    - **Pierre**: Interface de Chat implementada com suporte a Markdown. Possui mock de "tempo de pensamento" e respostas pré-gravadas para perguntas clínicas (DRC, Potássio).
     - **Minerva (MINERVA)**: Interface de split-view (PDF + JSON) com simulação de delay de processamento e exibição de dados estruturados.
     - **Stack**: React 19, Vite, Tailwind CSS, Framer Motion.
     - **Status**: Código pronto para Demo.

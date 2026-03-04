@@ -1,28 +1,16 @@
-"""Model ORM — Sector."""
-
 import uuid
-from datetime import UTC, datetime
-
-from sqlalchemy import UUID, Boolean, Column, DateTime, ForeignKey, String
-from sqlalchemy.orm import relationship
-
-from gestor.models.base import Base
-
+from datetime import datetime, timezone
+from sqlalchemy import Column, String, Boolean, DateTime, ForeignKey
+from sqlalchemy.dialects.postgresql import UUID
+from gestor.db import Base
 
 class Sector(Base):
     __tablename__ = "sectors"
-
+    
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(255), nullable=False)
-    type = Column(String(50), nullable=True)   # "UTI", "Enfermaria", "Ambulatório", "Administração"
-    parent_id = Column(UUID(as_uuid=True), ForeignKey("sectors.id"), nullable=True)
+    type = Column(String(50))  # "UTI", "Enfermaria", etc.
+    parent_id = Column(UUID(as_uuid=True), ForeignKey("sectors.id"), nullable=True)  # Hierarquia
     responsavel_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=True)
-    active = Column(Boolean, default=True, nullable=False)
-    created_at = Column(
-        DateTime(timezone=True),
-        default=lambda: datetime.now(UTC),
-        nullable=False,
-    )
-
-    users = relationship("TenantUser", back_populates="sector", foreign_keys="TenantUser.sector_id")
-    children = relationship("Sector", backref="parent", foreign_keys=[parent_id])
+    active = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))

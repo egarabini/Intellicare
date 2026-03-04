@@ -1,46 +1,49 @@
-"""BillingRecord ORM model — schema 'platform'."""
-
-import uuid
-from datetime import datetime, UTC
-
-from sqlalchemy import Column, String, DateTime, Integer, Numeric, ForeignKey
+from sqlalchemy import Column, String, DateTime, Integer, Numeric, ForeignKey, Date, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
+import uuid
 
-from admin.models.tenant import Base
+from admin.db import Base
 
+import os
 
-class BillingRecord(Base):
-    """Monthly billing record per tenant."""
+SCHEMA = os.getenv("DB_SCHEMA", "platform")
+TABLE_ARGS = {"schema": SCHEMA} if SCHEMA else {}
 
-    __tablename__ = "billing_records"
-    __table_args__ = {"schema": "platform"}
+class RegistroBilling(Base):
+    __tablename__ = "registro_billing"
+    # The original code had __table_args__ defined twice.
+    # The second definition was the effective one, combining UniqueConstraint and schema.
+    # We'll update that effective definition.
+    # __table_args__ = {"schema": "platform"} # This line was effectively overridden
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    tenant_id = Column(
-        String(100),
-        ForeignKey("platform.tenants.tenant_id"),
-        nullable=False,
-        index=True,
+    estabelecimento_id = Column(UUID(as_uuid=True), ForeignKey(f"{SCHEMA}.estabelecimentos.id" if SCHEMA else "estabelecimentos.id"))
+    periodo_ano = Column(Integer, nullable=False)
+    periodo_mes = Column(Integer, nullable=False)
+
+    # Uso
+    gestores_ativos = Column(Integer, default=0)
+    usuarios_saude_ativos = Column(Integer, default=0)
+    chamadas_api = Column(Integer, default=0)
+    storage_gb = Column(Numeric(10, 2), default=0)
+
+    # Valores
+    preco_base = Column(Numeric(10, 2))
+    preco_excedente = Column(Numeric(10, 2), default=0)
+    preco_total = Column(Numeric(10, 2))
+
+    # Status
+    status = Column(String(50), default="pending")  # pending, paid, overdue, cancelled
+    pago_em = Column(DateTime(timezone=True))
+    data_vencimento = Column(Date)
+
+    criado_em = Column(DateTime(timezone=True), server_default=func.now())
+
+    estabelecimento = relationship("Estabelecimento", backref="registros_billing")
+    __table_args__ = (
+        UniqueConstraint("estabelecimento_id", "periodo_ano", "periodo_mes"),
+        TABLE_ARGS
     )
-    period_start = Column(DateTime, nullable=False)
-    period_end = Column(DateTime, nullable=False)
-    plan_name = Column(String(50))
 
-    # Usage
-    active_users = Column(Integer, default=0)
-    sms_sent = Column(Integer, default=0)
-    api_requests = Column(Integer, default=0)
-
-    # Financial
-    amount = Column(Numeric(10, 2), default=0)
-    payment_status = Column(String(20), default="pending")  # pending, paid, overdue, grace
-    paid_at = Column(DateTime)
-
-    created_at = Column(DateTime, default=lambda: datetime.now(UTC))
-
-    # Relationship
-    tenant = relationship("Tenant", back_populates="billing_records")
-
-    def __repr__(self) -> str:
-        return f"<BillingRecord {self.tenant_id} {self.period_start:%Y-%m} status={self.payment_status}>"

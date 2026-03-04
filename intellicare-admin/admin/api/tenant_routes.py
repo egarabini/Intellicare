@@ -1,7 +1,7 @@
 """Tenant API routes — /admin/tenants/*"""
 
 from typing import Optional
-from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi import APIRouter, Depends, HTTPException, Query
 
 from admin.schemas.tenant_schemas import (
     TenantCreate, TenantUpdate, TenantResponse, TenantListResponse, ModuleUpdate, TenantModuleResponse,

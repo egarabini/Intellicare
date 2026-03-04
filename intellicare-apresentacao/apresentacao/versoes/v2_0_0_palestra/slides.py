@@ -268,7 +268,7 @@ def create_v2_0_0_palestra_slides() -> List:
             "    gestor | zilda | oswaldo | florence\n"
             "    donabedian | comunicacao | geralda | wanda\n"
             "                    |\n"
-            "         MCP: MINERVA (OCR) + PIERRE (SuperZ)\n"
+            "         MCP: MINERVA + PIERRE\n"
             "                    |\n"
             "    PostgreSQL | Redis | Keycloak | FHIR R4"
         ),

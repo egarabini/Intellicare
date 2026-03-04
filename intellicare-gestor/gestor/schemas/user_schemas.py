@@ -1,51 +1,38 @@
-"""Schemas Pydantic para TenantUser."""
-
-import uuid
+from pydantic import BaseModel, EmailStr, Field
+from typing import Optional, List
+from uuid import UUID
 from datetime import datetime
-from typing import Optional
 
-from pydantic import BaseModel, EmailStr, field_validator
-
-
-class UserCreate(BaseModel):
+class TenantUserBase(BaseModel):
     nome: str
     email: EmailStr
-    cpf: Optional[str] = None
+    cpf: Optional[str] = Field(None, max_length=14)
     cargo: Optional[str] = None
     conselho: Optional[str] = None
-    sector_id: Optional[uuid.UUID] = None
+    sector_id: Optional[UUID] = None
+    active: bool = True
 
-    @field_validator("cpf")
-    @classmethod
-    def validate_cpf(cls, v: Optional[str]) -> Optional[str]:
-        if v is None:
-            return v
-        digits = "".join(c for c in v if c.isdigit())
-        if len(digits) != 11:
-            raise ValueError("CPF deve ter 11 dígitos")
-        return f"{digits[:3]}.{digits[3:6]}.{digits[6:9]}-{digits[9:]}"
+class TenantUserCreate(TenantUserBase):
+    pass
 
-
-class UserUpdate(BaseModel):
+class TenantUserUpdate(BaseModel):
     nome: Optional[str] = None
-    cpf: Optional[str] = None
+    cpf: Optional[str] = Field(None, max_length=14)
     cargo: Optional[str] = None
     conselho: Optional[str] = None
-    sector_id: Optional[uuid.UUID] = None
+    sector_id: Optional[UUID] = None
     active: Optional[bool] = None
 
-
-class UserResponse(BaseModel):
-    id: uuid.UUID
-    nome: str
-    email: str
-    cpf: Optional[str] = None
-    cargo: Optional[str] = None
-    conselho: Optional[str] = None
-    sector_id: Optional[uuid.UUID] = None
-    active: bool
+class TenantUserResponse(TenantUserBase):
+    id: UUID
+    keycloak_user_id: Optional[str] = None
     invited_at: Optional[datetime] = None
     last_login_at: Optional[datetime] = None
     created_at: datetime
 
-    model_config = {"from_attributes": True}
+    class Config:
+        from_attributes = True
+
+class TenantUserListResponse(BaseModel):
+    users: List[TenantUserResponse]
+    total: int

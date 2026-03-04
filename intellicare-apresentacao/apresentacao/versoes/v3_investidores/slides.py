@@ -413,8 +413,8 @@ def create_v3_investidores_slides(image_style: str = "real") -> List:
             "- GERALDA: 108 testes, 96% cobertura\n"
             "- DONABEDIAN: 277 testes, 80% cobertura\n"
             "- ZILDA: 68 testes, 95% cobertura\n"
-            "- MINERVA (OCR): 37 testes\n"
-            "- PIERRE (SuperZ): 29 testes\n\n"
+            "- MINERVA: 37 testes\n"
+            "- PIERRE: 29 testes\n\n"
             "Total: ~715 testes automatizados"
         ),
     }

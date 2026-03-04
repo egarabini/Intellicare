@@ -1,22 +1,18 @@
-"""Configuração do módulo intellicare-gestor."""
+import os
+from pydantic_settings import BaseSettings
 
-from intellicare_core.config import BaseModuleConfig
+class Settings(BaseSettings):
+    PROJECT_NAME: str = "IntelliCare Gestor"
+    VERSION: str = "0.1.0"
+    API_V1_STR: str = "/api/v1/gestor"
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///:memory:")
+    KEYCLOAK_SERVER_URL: str = os.getenv("KEYCLOAK_SERVER_URL", "http://localhost:8080/")
+    KEYCLOAK_CLIENT_ID: str = os.getenv("KEYCLOAK_CLIENT_ID", "intellicare-gestor")
+    KEYCLOAK_CLIENT_SECRET: str = os.getenv("KEYCLOAK_CLIENT_SECRET", "")
+    KEYCLOAK_REALM: str = os.getenv("KEYCLOAK_REALM", "bemcuidar")
 
+    class Config:
+        env_file = ".env"
+        case_sensitive = True
 
-class GestorConfig(BaseModuleConfig):
-    """Configuração do Gestor — estende BaseModuleConfig."""
-
-    module_name: str = "intellicare-gestor"
-    module_version: str = "1.0.0"
-
-    # Porta do serviço
-    gestor_port: int = 8011
-
-    # Multi-tenancy — True em produção, False em dev local
-    multi_tenant_enabled: bool = False
-
-    # URL do banco do gestor (schema público ou tenant_{id})
-    database_url: str = ""
-
-
-config = GestorConfig()
+settings = Settings()

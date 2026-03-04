@@ -1,46 +1,55 @@
-"""Tests for admin module — conftest with test fixtures."""
-
-import pytest
 import pytest_asyncio
-from unittest.mock import AsyncMock, MagicMock, patch
-from uuid import uuid4
-from datetime import datetime, timedelta, UTC
+import os
+import asyncio
+from httpx import AsyncClient
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+# Ensure test DB SCHEMA is empty to avoid schema prefixing in Models specifically for SQLite tests
+os.environ["DB_SCHEMA"] = ""
 
+from admin.db import Base
+from admin.api.app import app
+from admin.db import get_db
 
-# ─── Fixtures ────────────────────────────────────────────────
+# Use a test-specific in-memory database
+TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 
-@pytest.fixture
-def sample_tenant_data():
-    """Valid tenant creation data."""
-    return {
-        "nome_fantasia": "Hospital Einstein",
-        "razao_social": "Sociedade Beneficente Israelita Hospital Albert Einstein",
-        "cnpj": "60.765.823/0001-30",
-        "email_admin": "admin@einstein.br",
-        "plan_name": "trial",
-    }
+test_engine = create_async_engine(
+    TEST_DATABASE_URL, 
+    echo=False, 
+    connect_args={"check_same_thread": False}
+)
 
+TestingSessionLocal = async_sessionmaker(
+    autocommit=False, 
+    autoflush=False, 
+    bind=test_engine
+)
 
-@pytest.fixture
-def sample_tenant_data_2():
-    """Second valid tenant creation data."""
-    return {
-        "nome_fantasia": "UBS Centro",
-        "razao_social": "Unidade Básica de Saúde Centro Municipal",
-        "cnpj": "11.222.333/0001-81",
-        "email_admin": "admin@ubscentro.br",
-        "plan_name": "basico",
-    }
+async def override_get_db():
+    async with TestingSessionLocal() as session:
+        yield session
 
+app.dependency_overrides[get_db] = override_get_db
 
-@pytest.fixture
-def mock_session():
-    """Mock AsyncSession for unit tests."""
-    session = AsyncMock(spec=AsyncSession)
-    session.flush = AsyncMock()
-    session.commit = AsyncMock()
-    session.rollback = AsyncMock()
-    session.add = MagicMock()
-    return session
+@pytest_asyncio.fixture(scope="session")
+def event_loop():
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
+@pytest_asyncio.fixture(autouse=True, scope="class")
+async def setup_db():
+    async with test_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+    async with test_engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+
+@pytest_asyncio.fixture
+async def async_client():
+    async with AsyncClient(app=app, base_url="http://test") as client:
+        yield client

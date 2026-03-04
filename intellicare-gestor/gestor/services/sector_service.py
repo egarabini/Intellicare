@@ -1,65 +1,38 @@
-"""SectorService — CRUD de setores organizacionais do tenant."""
-
 import uuid
-from typing import Optional
-
-from fastapi import HTTPException
-from sqlalchemy import select
+from typing import List, Optional, Any
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
 
 from gestor.models.sector import Sector
 from gestor.schemas.sector_schemas import SectorCreate, SectorUpdate
 
-
 class SectorService:
-    def __init__(self, session: AsyncSession) -> None:
-        self._session = session
+    def __init__(self, session: AsyncSession):
+        self.session = session
 
-    async def list_sectors(self, active_only: bool = True) -> list[Sector]:
-        q = select(Sector)
-        if active_only:
-            q = q.where(Sector.active == True)
-        result = await self._session.execute(q)
+    async def get_sector(self, sector_id: uuid.UUID) -> Optional[Sector]:
+        result = await self.session.execute(select(Sector).where(Sector.id == sector_id))
+        return result.scalar_one_or_none()
+
+    async def list_sectors(self) -> List[Sector]:
+        result = await self.session.execute(select(Sector).order_by(Sector.name))
         return list(result.scalars().all())
 
-    async def get_sector(self, sector_id: uuid.UUID) -> Sector:
-        sector = await self._session.get(Sector, sector_id)
-        if not sector:
-            raise HTTPException(404, f"Setor {sector_id} não encontrado")
+    async def create_sector(self, sector_data: SectorCreate) -> Sector:
+        sector = Sector(**sector_data.model_dump())
+        self.session.add(sector)
+        await self.session.commit()
+        await self.session.refresh(sector)
         return sector
 
-    async def create_sector(self, data: SectorCreate) -> Sector:
-        # Validar hierarquia máxima de 2 níveis
-        if data.parent_id:
-            parent = await self.get_sector(data.parent_id)
-            if parent.parent_id:
-                raise HTTPException(
-                    400,
-                    "Hierarquia de setores suporta no máximo 2 níveis",
-                )
-
-        sector = Sector(
-            name=data.name,
-            type=data.type,
-            parent_id=data.parent_id,
-            responsavel_id=data.responsavel_id,
-        )
-        self._session.add(sector)
-        await self._session.flush()
-        await self._session.refresh(sector)
-        return sector
-
-    async def update_sector(self, sector_id: uuid.UUID, data: SectorUpdate) -> Sector:
+    async def update_sector(self, sector_id: uuid.UUID, sector_data: SectorUpdate) -> Optional[Sector]:
         sector = await self.get_sector(sector_id)
+        if not sector:
+            return None
 
-        if data.parent_id and data.parent_id != sector.parent_id:
-            parent = await self.get_sector(data.parent_id)
-            if parent.parent_id:
-                raise HTTPException(400, "Hierarquia de setores suporta no máximo 2 níveis")
-
-        for field, value in data.model_dump(exclude_none=True).items():
-            setattr(sector, field, value)
-
-        await self._session.flush()
-        await self._session.refresh(sector)
+        for key, value in sector_data.model_dump(exclude_unset=True).items():
+            setattr(sector, key, value)
+            
+        await self.session.commit()
+        await self.session.refresh(sector)
         return sector

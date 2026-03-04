@@ -7,12 +7,14 @@ from sqlalchemy.orm import relationship
 
 from admin.models.tenant import Base
 
+SCHEMA = os.getenv("DB_SCHEMA", "platform")
+TABLE_ARGS = {"schema": SCHEMA} if SCHEMA else {}
 
 class Plan(Base):
     """Subscription plans available on the platform."""
 
-    __tablename__ = "plans"
-    __table_args__ = {"schema": "platform"}
+    __tablename__ = "plan"
+    __table_args__ = TABLE_ARGS
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(50), unique=True, nullable=False)  # trial, basico, etc.

@@ -95,7 +95,7 @@ const agents = [
   },
   {
     id: 'pierre',
-    name: 'Pierre (Super Z)',
+    name: 'Pierre',
     role: 'Inteligência Coletiva',
     image: '/agents/pierre_cartoon.png',
     inspiration: 'Pierre Lévy (Filósofo)',

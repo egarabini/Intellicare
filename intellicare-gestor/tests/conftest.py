@@ -1,57 +1,68 @@
-"""Fixtures para testes do intellicare-gestor."""
-
-import pytest
 import pytest_asyncio
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+import os
+import asyncio
+from httpx import AsyncClient
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from gestor.models.base import Base
-from gestor.models import TenantUser, Role, UserRole, Sector, TenantSetting, LocalAuditLog
+# Ensure test DB SCHEMA is empty to avoid schema prefixing in Models specifically for SQLite tests
+os.environ["DB_SCHEMA"] = ""
 
+from gestor.db import Base
+from gestor.api.app import app
+from gestor.db import get_db
 
-# SQLite em memória para testes (sem Docker)
+# Use a test-specific in-memory database
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 
+from starlette.middleware.base import BaseHTTPMiddleware
+from fastapi import Request
 
-@pytest_asyncio.fixture(scope="function")
-async def engine():
-    eng = create_async_engine(TEST_DATABASE_URL, echo=False)
-    async with eng.begin() as conn:
+class MockPermissionMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        request.state.user_permissions = ["*"]
+        request.state.user_id = "00000000-0000-0000-0000-000000000000"
+        return await call_next(request)
+
+app.add_middleware(MockPermissionMiddleware)
+
+test_engine = create_async_engine(
+    TEST_DATABASE_URL, 
+    echo=False, 
+    connect_args={"check_same_thread": False}
+)
+
+TestingSessionLocal = async_sessionmaker(
+    autocommit=False, 
+    autoflush=False, 
+    bind=test_engine
+)
+
+async def override_get_db():
+    async with TestingSessionLocal() as session:
+        yield session
+
+app.dependency_overrides[get_db] = override_get_db
+
+@pytest_asyncio.fixture(scope="session")
+def event_loop():
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
+@pytest_asyncio.fixture(autouse=True, scope="function")
+async def setup_db():
+    async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    yield eng
-    async with eng.begin() as conn:
+    yield
+    async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
-    await eng.dispose()
 
-
-@pytest_asyncio.fixture(scope="function")
-async def session(engine):
-    factory = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
-    async with factory() as sess:
-        yield sess
-
+from httpx import AsyncClient, ASGITransport
 
 @pytest_asyncio.fixture
-async def sample_role(session: AsyncSession) -> Role:
-    role = Role(name="test_role", display_name="Test Role", permissions=["oswaldo.ver"])
-    session.add(role)
-    await session.commit()
-    await session.refresh(role)
-    return role
-
-
-@pytest_asyncio.fixture
-async def sample_user(session: AsyncSession) -> TenantUser:
-    user = TenantUser(nome="Fulano de Tal", email="fulano@test.com")
-    session.add(user)
-    await session.commit()
-    await session.refresh(user)
-    return user
-
-
-@pytest_asyncio.fixture
-async def admin_role(session: AsyncSession) -> Role:
-    role = Role(name="admin_local", display_name="Administrador Local", is_system=True, permissions=["*"])
-    session.add(role)
-    await session.commit()
-    await session.refresh(role)
-    return role
+async def async_client():
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        yield client
