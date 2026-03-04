@@ -1,5 +1,6 @@
 """Alembic Environment Configuration."""
 
+import os
 from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
@@ -19,6 +20,15 @@ if config.config_file_name is not None:
 
 # Add your model's MetaData object here for 'autogenerate' support
 target_metadata = Base.metadata
+
+# Database URL from environment (matches app_db.py logic)
+DATABASE_URL = os.getenv(
+    "INTELLICARE_DATABASE_URL",
+    os.getenv(
+        "DATABASE_URL",
+        "postgresql+asyncpg://intellicare:intellicare@localhost:5432/intellicare",
+    ),
+)
 
 
 def run_migrations_offline() -> None:
@@ -51,7 +61,7 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
     """
     configuration = config.get_section(config.config_ini_section)
-    configuration["sqlalchemy.url"] = "postgresql+asyncpg://..."
+    configuration["sqlalchemy.url"] = DATABASE_URL
 
     connectable = async_engine_from_config(
         configuration,

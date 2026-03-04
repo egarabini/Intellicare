@@ -44,7 +44,7 @@ def test_extract_document_tool_for_image_uses_vision(monkeypatch) -> None:
         }
 
     monkeypatch.setattr(
-        "ocr.mcp.tools.extract_document.Llama4VisionEngine.extract_structured",
+        "minerva.mcp.tools.extract_document.Llama4VisionEngine.extract_structured",
         _fake_extract,
     )
     image_b64 = base64.b64encode(b"fake-image").decode("utf-8")
@@ -78,8 +78,8 @@ def test_extract_document_tool_for_image_falls_back_to_surya(monkeypatch) -> Non
             warnings=[],
         )
 
-    monkeypatch.setattr("ocr.mcp.tools.extract_document.Llama4VisionEngine.extract_structured", _raise)
-    monkeypatch.setattr("ocr.mcp.tools.extract_document.SuryaOcrEngine.extract_text", _fake_surya)
+    monkeypatch.setattr("minerva.mcp.tools.extract_document.Llama4VisionEngine.extract_structured", _raise)
+    monkeypatch.setattr("minerva.mcp.tools.extract_document.SuryaOcrEngine.extract_text", _fake_surya)
     image_b64 = base64.b64encode(b"fake-image").decode("utf-8")
     result = asyncio.run(
         extract_document_run(

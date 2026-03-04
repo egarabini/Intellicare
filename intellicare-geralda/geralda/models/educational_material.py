@@ -4,8 +4,7 @@ from datetime import datetime, UTC
 from typing import Any
 from uuid import UUID, uuid4
 
-from sqlalchemy import DateTime, Index, String, Text
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import DateTime, Index, JSON, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from geralda.database.base import Base
@@ -36,7 +35,7 @@ class EducationalMaterial(Base):
     category: Mapped[str] = mapped_column(String(100))
 
     # Clinical Codes (for filtering - e.g., ICD-10 codes)
-    condition_codes: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, default=list)
+    condition_codes: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
 
     # Language
     language: Mapped[str] = mapped_column(String(10), default="pt-BR")

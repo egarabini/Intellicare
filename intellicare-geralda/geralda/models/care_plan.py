@@ -4,8 +4,7 @@ from datetime import datetime, UTC
 from typing import Any
 from uuid import UUID, uuid4
 
-from sqlalchemy import Boolean, DateTime, Index, String, Text, func
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy import Boolean, DateTime, Index, JSON, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from geralda.database.base import Base
@@ -30,9 +29,9 @@ class CarePlan(Base):
     patient_id: Mapped[str] = mapped_column(String(200), index=True)
     patient_name: Mapped[str] = mapped_column(String(200))
 
-    # Clinical Data (JSONB for flexibility)
-    conditions: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, default=list)
-    goals: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, default=list)
+    # Clinical Data (JSON — JSONB on PostgreSQL, JSON on SQLite)
+    conditions: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    goals: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
 
     # Status
     active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)

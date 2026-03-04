@@ -9,7 +9,7 @@ class GeraldaConfig(BaseModuleConfig):
     """Configuracao do modulo Geralda — acompanhamento do paciente."""
 
     module_name: str = "intellicare-geralda"
-    module_version: str = "1.0.0"
+    module_version: str = "2.0.0"
 
     # Educacao em saude
     education_data_dir: str = str(
@@ -19,6 +19,11 @@ class GeraldaConfig(BaseModuleConfig):
     # Lembretes
     default_reminder_advance_minutes: int = 30
     max_reminders_per_patient: int = 50
+
+    # LLM / AI (para chat e criação assistida de planos)
+    llm_provider: str = "none"  # "ollama", "openai", "none"
+    ollama_url: str = "http://localhost:11434"
+    ollama_model: str = "mistral:7b"
 
     # Integracao (opcional)
     comunicacao_url: str = ""

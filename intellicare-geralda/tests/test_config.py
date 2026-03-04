@@ -7,7 +7,7 @@ class TestConfig:
     def test_defaults(self):
         config = GeraldaConfig()
         assert config.module_name == "intellicare-geralda"
-        assert config.module_version == "1.0.0"
+        assert config.module_version == "2.0.0"
         assert config.default_reminder_advance_minutes == 30
         assert config.max_reminders_per_patient == 50
 
