@@ -10,14 +10,15 @@ export async function exchangeTokenForTenant(currentToken: string, tenantId: str
         params.append('grant_type', 'urn:ietf:params:oauth:grant-type:token-exchange');
         params.append('subject_token', currentToken);
         params.append('requested_token_type', 'urn:ietf:params:oauth:token-type:access_token');
-        params.append('audience', config.keycloak.clientId);
+        params.append('audience', import.meta.env.VITE_KEYCLOAK_CLIENT_ID || 'intellicare-portal');
         params.append('tenant_id', tenantId);
 
-        const keycloakUrl = config.keycloak.url.endsWith('/')
-            ? config.keycloak.url
-            : `${config.keycloak.url}/`;
+        const envUrl = import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:8080';
+        const keycloakUrl = envUrl.endsWith('/')
+            ? envUrl
+            : `${envUrl}/`;
 
-        const tokenEndpoint = `${keycloakUrl}realms/${config.keycloak.realm}/protocol/openid-connect/token`;
+        const tokenEndpoint = `${keycloakUrl}realms/${import.meta.env.VITE_KEYCLOAK_REALM || 'bemcuidar'}/protocol/openid-connect/token`;
 
         const response = await fetch(tokenEndpoint, {
             method: 'POST',

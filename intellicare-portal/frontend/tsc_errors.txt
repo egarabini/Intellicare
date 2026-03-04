@@ -1,0 +1,11 @@
+src/components/layout/Header.tsx(46,18): error TS2304: Cannot find name 'tenantInfo'.
+src/components/tenant/TenantProvider.tsx(12,10): error TS2305: Module '"../../services/tokenExchange"' has no exported member 'decodeJwt'.
+src/components/tenant/TenantProvider.tsx(12,21): error TS2305: Module '"../../services/tokenExchange"' has no exported member 'tokenExchange'.
+src/components/tenant/TenantProvider.tsx(12,36): error TS2305: Module '"../../services/tokenExchange"' has no exported member 'getStoredToken'.
+src/components/tenant/TenantProvider.tsx(12,52): error TS2305: Module '"../../services/tokenExchange"' has no exported member 'storeToken'.
+src/components/tenant/TenantProvider.tsx(12,69): error TS2305: Module '"../../services/tokenExchange"' has no exported member 'DecodedToken'.
+src/services/tokenExchange.ts(13,35): error TS2304: Cannot find name 'config'.
+src/services/tokenExchange.ts(16,29): error TS2304: Cannot find name 'config'.
+src/services/tokenExchange.ts(17,15): error TS2304: Cannot find name 'config'.
+src/services/tokenExchange.ts(18,18): error TS2304: Cannot find name 'config'.
+src/services/tokenExchange.ts(20,55): error TS2304: Cannot find name 'config'.

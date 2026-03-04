@@ -46,16 +46,40 @@ ZILDA ∥ PIERRE  →  COMUNICACAO (fix deps)
 ---
 
 ### ONDA 2 — Core Clinico (Semana 2-4)
-Modulos com maior valor clinico que dependem de infra basica.
+Modulos com maior valor clinico. **Pode iniciar em paralelo com ONDA 1** — sem dependencia entre ondas.
 
 ```
-MINERVA → GRAHAME (hardening) → GERALDA (persistencia)
+MINERVA ∥ GRAHAME  →  GERALDA
+(paralelo)              fase core: independente
+                        fase FHIR: depende GRAHAME pronto
 ```
 
-**Por que esta ordem:**
-- MINERVA: extracao de documentos, habilita digitalizacao de prontuarios
-- GRAHAME: barramento FHIR precisa estar solido antes de integracoes
-- GERALDA: planos de cuidado persistidos, FHIR CarePlan via Grahame
+**Regras de paralelismo:**
+- MINERVA e GRAHAME nao tem dependencia entre si — rodam em paralelo
+- GERALDA: fase 1 (PostgreSQL) independente, pode comecar junto; fase 3 (FHIR CarePlan) aguarda GRAHAME
+- ONDA 2 pode comecar ANTES da ONDA 1 terminar — nenhum modulo da ONDA 2 depende de ZILDA, PIERRE ou COMUNICACAO
+
+---
+
+### Timeline Real (com paralelismo completo)
+
+```
+Dia:      1    2    3    4    5    6    7    8    9   10   11   12   13   14
+          ─────────────────────────────────────────────────────────────────
+ZILDA     ████████
+PIERRE    ████████████
+MINERVA   ████████████████
+GRAHAME   ████████████████
+COMUNICAO           ████████████
+GERALDA   (fase1)████████████ (fhir)████████████
+          ─────────────────────────────────────────────────────────────────
+DONABEDI                              ████████████████
+NISE                                           ████████████████████
+WANDA                                                    ████████████████████
+```
+
+> A ONDA 2 pode comecar no Dia 1 junto com ONDA 1.
+> A ONDA 3 aguarda GRAHAME + GERALDA funcionais (dados para calcular indicadores).
 
 ---
 

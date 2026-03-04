@@ -17,6 +17,26 @@ class CnesValidateRequest(BaseModel):
     cnes_code: str
 
 
+class AnalyzeRequest(BaseModel):
+    patient_id: str
+    query: str = ""
+    parameters: dict[str, Any] = {}
+
+
+def _detect_query_type(query: str, parameters: dict[str, Any]) -> str:
+    """Resolve query type with explicit parameter taking precedence."""
+    explicit = parameters.get("query_type")
+    if isinstance(explicit, str) and explicit.strip():
+        return explicit.strip().lower()
+
+    q = query.lower()
+    if "cnes" in q or "estabelecimento" in q:
+        return "cnes_lookup"
+    if "territ" in q or "regiao" in q:
+        return "territorial_context"
+    return "network_mapping"
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):  # noqa: ARG001
     """Inicializa e finaliza recursos."""
@@ -165,5 +185,83 @@ def create_app() -> FastAPI:
     def region_context(city_code: str, state_code: str = Query(..., description="Codigo UF")) -> dict[str, Any]:
         engine: TerritorialEngine = _state["engine"]
         return engine.get_region_context(city_code=city_code, state_code=state_code)
+
+    @app.post("/api/v1/analyze")
+    async def analyze(request: AnalyzeRequest) -> dict[str, Any]:
+        """Endpoint padrao de analise para orquestracao da Wanda."""
+        client: CnesClient = _state["client"]
+        engine: TerritorialEngine = _state["engine"]
+        parameters = request.parameters or {}
+        query_type = _detect_query_type(request.query, parameters)
+
+        try:
+            if query_type == "cnes_lookup":
+                cnes_code = str(parameters.get("cnes_code", "")).strip()
+                if cnes_code:
+                    est = client.get_establishment_by_cnes(cnes_code)
+                    establishments = [est.to_dict()] if est else []
+                else:
+                    found = client.search_establishments(
+                        state_code=parameters.get("state_code"),
+                        city_code=parameters.get("city_code"),
+                        unit_type_code=parameters.get("unit_type_code"),
+                        active_only=True,
+                        limit=int(parameters.get("limit", 20)),
+                    )
+                    establishments = [item.to_dict() for item in found]
+
+                analysis = {
+                    "query_type": "cnes_lookup",
+                    "establishments": establishments,
+                    "total": len(establishments),
+                }
+            elif query_type == "territorial_context":
+                state_code = parameters.get("state_code")
+                city_code = parameters.get("city_code")
+                summary = engine.get_territorial_summary(
+                    state_code=state_code,
+                    city_code=city_code,
+                    limit=int(parameters.get("limit", 100)),
+                )
+                context = None
+                if state_code and city_code:
+                    context = engine.get_region_context(city_code=city_code, state_code=state_code)
+
+                analysis = {
+                    "query_type": "territorial_context",
+                    "territorial_summary": summary.to_dict(),
+                    "region_context": context,
+                }
+            else:
+                nearby = engine.find_nearby_establishments(
+                    city_code=str(parameters.get("city_code", "")),
+                    unit_type_code=parameters.get("unit_type_code"),
+                    limit=int(parameters.get("limit", 20)),
+                )
+                analysis = {
+                    "query_type": "network_mapping",
+                    "establishments": [item.to_dict() for item in nearby],
+                    "total": len(nearby),
+                }
+
+            return {
+                "success": True,
+                "patient_id": request.patient_id,
+                "analysis": analysis,
+                "recommendations": [],
+                "alerts": [],
+                "confidence": 0.8,
+                "source": "intellicare-zilda",
+            }
+        except Exception as exc:  # pragma: no cover - protective fallback
+            return {
+                "success": False,
+                "patient_id": request.patient_id,
+                "analysis": {"error": str(exc), "query_type": query_type},
+                "recommendations": [],
+                "alerts": [],
+                "confidence": 0.0,
+                "source": "intellicare-zilda",
+            }
 
     return app

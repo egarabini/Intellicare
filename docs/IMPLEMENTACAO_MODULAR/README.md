@@ -39,13 +39,15 @@ Leia este documento primeiro. Ele define:
 | **PIERRE** — Pesquisa Cientifica | 2-3 dias | Baixa | ✅ com ZILDA | [PIERRE/](./PIERRE/) |
 | **COMUNICACAO** — Fix deps | 3-4 dias | Media | Apos ZILDA ou PIERRE | [COMUNICACAO/](./COMUNICACAO/) |
 
-### ONDA 2 — Core Clinico (Semana 2-4)
+### ONDA 2 — Core Clinico (pode iniciar em paralelo com ONDA 1)
 
-| Modulo | Tempo Est. | Complexidade | Pasta |
-|--------|-----------|--------------|-------|
-| **MINERVA** — OCR + Documentos | 3-5 dias | Media | [MINERVA/](./MINERVA/) |
-| **GRAHAME** — FHIR R4 Hardening | 3-5 dias | Media | [GRAHAME/](./GRAHAME/) |
-| **GERALDA** — Planos de Cuidado | 5-7 dias | Media | [GERALDA/](./GERALDA/) |
+> MINERVA e GRAHAME rodam em **paralelo**. GERALDA fase core e independente; fase FHIR aguarda GRAHAME.
+
+| Modulo | Tempo Est. | Complexidade | Paralelo? | Pasta |
+|--------|-----------|--------------|-----------|-------|
+| **MINERVA** — OCR + Documentos | 3-5 dias | Media | ✅ com GRAHAME e ONDA 1 | [MINERVA/](./MINERVA/) |
+| **GRAHAME** — FHIR R4 Hardening | 3-5 dias | Media | ✅ com MINERVA e ONDA 1 | [GRAHAME/](./GRAHAME/) |
+| **GERALDA** — Planos de Cuidado | 5-7 dias | Media | Fase core ✅ paralela; fase FHIR apos GRAHAME | [GERALDA/](./GERALDA/) |
 
 ### ONDA 3 — Qualidade e Inteligencia (Semana 4-7)
 
