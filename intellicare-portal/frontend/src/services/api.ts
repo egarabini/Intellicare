@@ -15,8 +15,23 @@ const api: AxiosInstance = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    // Attempt to read from zustand store if available (preferable for current architecture)
+    let token = '';
+    try {
+      const authStorage = localStorage.getItem('auth-storage');
+      if (authStorage) {
+        token = JSON.parse(authStorage).state?.token;
+      }
+    } catch (e) {
+      // fallback
+    }
+
+    // Fallback to old token if not found in zustand
+    if (!token) {
+      token = localStorage.getItem('token') || '';
+    }
+
+    if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;

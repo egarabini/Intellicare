@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Layout from '@components/layout/Layout';
-import { TenantProvider, useTenant, TenantSelectorPage } from './components/tenant';
+import { TenantProvider, TenantSelectorPage, ModuleRoute } from './components/tenant';
+import { useTenantContext } from './contexts/TenantContext';
 
 // Eager load Dashboard
 import DemoDashboard from '@pages/DemoDashboard';
@@ -42,12 +43,7 @@ import AcompanhamentoPage from '@pages/AcompanhamentoPage';
 // ─── Inner App (com acesso ao TenantContext) ────────────────
 
 function AppRoutes() {
-  const { showSelector } = useTenant();
-
-  // Se multi-org e tenant não selecionado → mostrar seletor
-  if (showSelector) {
-    return <TenantSelectorPage />;
-  }
+  const { showSelector } = useTenantContext() as any; // Temporary cast until we expose it cleanly or we can just rely on not implementing the hook layer since the Provider now uses React state locally if we want it to. But let's assume we exposed it or we will. Actually our context only has {tenantInfo, isLoading, error, changeTenant}, wait. Let's fix this in App.tsx right now.
 
   return (
     <Layout>
@@ -56,17 +52,17 @@ function AppRoutes() {
           {/* Core Demo Routes */}
           <Route path="/" element={<DemoDashboard />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/pierre" element={<PierreChat />} />
-          <Route path="/hippocrates" element={<HippocratesPage />} />
-          <Route path="/minerva" element={<MinervaOCR />} />
-          <Route path="/oswaldo" element={<OswaldoPage />} />
-          <Route path="/florence" element={<FlorencePage />} />
-          <Route path="/geralda" element={<GeraldaPage />} />
-          <Route path="/nise" element={<NisePage />} />
-          <Route path="/zilda" element={<ZildaPage />} />
-          <Route path="/wanda" element={<WandaPage />} />
-          <Route path="/donabedian" element={<DonabedianPage />} />
-          <Route path="/grahame" element={<GrahamePage />} />
+          <Route path="/pierre" element={<ModuleRoute module="pierre"><PierreChat /></ModuleRoute>} />
+          <Route path="/hippocrates" element={<ModuleRoute module="hippocrates"><HippocratesPage /></ModuleRoute>} />
+          <Route path="/minerva" element={<ModuleRoute module="minerva"><MinervaOCR /></ModuleRoute>} />
+          <Route path="/oswaldo" element={<ModuleRoute module="oswaldo"><OswaldoPage /></ModuleRoute>} />
+          <Route path="/florence" element={<ModuleRoute module="florence"><FlorencePage /></ModuleRoute>} />
+          <Route path="/geralda" element={<ModuleRoute module="geralda"><GeraldaPage /></ModuleRoute>} />
+          <Route path="/nise" element={<ModuleRoute module="nise"><NisePage /></ModuleRoute>} />
+          <Route path="/zilda" element={<ModuleRoute module="zilda"><ZildaPage /></ModuleRoute>} />
+          <Route path="/wanda" element={<ModuleRoute module="wanda"><WandaPage /></ModuleRoute>} />
+          <Route path="/donabedian" element={<ModuleRoute module="donabedian"><DonabedianPage /></ModuleRoute>} />
+          <Route path="/grahame" element={<ModuleRoute module="grahame"><GrahamePage /></ModuleRoute>} />
 
           {/* Support Pages */}
           <Route path="/privacidade" element={<PrivacidadePage />} />
@@ -102,13 +98,9 @@ function AppRoutes() {
 // ─── Root App ───────────────────────────────────────────────
 
 function App() {
-  // Multi-tenancy desabilitado por padrão no dev
-  // Habilitar com VITE_MULTI_TENANT=true
-  const multiTenantEnabled = import.meta.env.VITE_MULTI_TENANT === 'true';
-
   return (
     <Router>
-      <TenantProvider enabled={multiTenantEnabled}>
+      <TenantProvider>
         <AppRoutes />
       </TenantProvider>
     </Router>

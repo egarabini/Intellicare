@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import OrgSwitcher from '../tenant/OrgSwitcher';
+import { useTenantContext } from '../../contexts/TenantContext';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,12 +38,12 @@ const Header = () => {
       <div className="container">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">IC</span>
+            <div className="w-12 h-12 bg-[var(--tenant-primary,#1E88E5)] text-white rounded-lg flex items-center justify-center shadow-sm">
+              <span className="font-bold text-xl">IC</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-primary-700">
-                IntelliCare
+              <h1 className="text-2xl font-bold" style={{ color: 'var(--tenant-primary, #1E88E5)' }}>
+                {tenantInfo?.name || 'IntelliCare'}
               </h1>
               <p className="text-xs text-neutral-600">
                 Agentes Inteligentes em Saúde

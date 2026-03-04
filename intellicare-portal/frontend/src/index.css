@@ -3,27 +3,27 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @theme {
-  --color-primary-50: #e6f0ff;
-  --color-primary-100: #b3d1ff;
-  --color-primary-200: #80b3ff;
-  --color-primary-300: #4d94ff;
-  --color-primary-400: #1a75ff;
-  --color-primary-500: #0056e0;
-  --color-primary-600: #0047bd;
-  --color-primary-700: #00389a;
-  --color-primary-800: #002977;
-  --color-primary-900: #001a54;
+  --color-primary-50: color-mix(in srgb, var(--tenant-primary, #0056e0) 10%, white);
+  --color-primary-100: color-mix(in srgb, var(--tenant-primary, #0056e0) 20%, white);
+  --color-primary-200: color-mix(in srgb, var(--tenant-primary, #0056e0) 40%, white);
+  --color-primary-300: color-mix(in srgb, var(--tenant-primary, #0056e0) 60%, white);
+  --color-primary-400: color-mix(in srgb, var(--tenant-primary, #0056e0) 80%, white);
+  --color-primary-500: var(--tenant-primary, #0056e0);
+  --color-primary-600: color-mix(in srgb, var(--tenant-primary, #0056e0) 85%, black);
+  --color-primary-700: color-mix(in srgb, var(--tenant-primary, #0056e0) 70%, black);
+  --color-primary-800: color-mix(in srgb, var(--tenant-primary, #0056e0) 55%, black);
+  --color-primary-900: color-mix(in srgb, var(--tenant-primary, #0056e0) 40%, black);
 
-  --color-secondary-50: #e6f9f5;
-  --color-secondary-100: #b3ede0;
-  --color-secondary-200: #80e1cb;
-  --color-secondary-300: #4dd5b6;
-  --color-secondary-400: #1ac9a1;
-  --color-secondary-500: #00b88d;
-  --color-secondary-600: #009e78;
-  --color-secondary-700: #008463;
-  --color-secondary-800: #006a4e;
-  --color-secondary-900: #005039;
+  --color-secondary-50: color-mix(in srgb, var(--tenant-secondary, #00b88d) 10%, white);
+  --color-secondary-100: color-mix(in srgb, var(--tenant-secondary, #00b88d) 20%, white);
+  --color-secondary-200: color-mix(in srgb, var(--tenant-secondary, #00b88d) 40%, white);
+  --color-secondary-300: color-mix(in srgb, var(--tenant-secondary, #00b88d) 60%, white);
+  --color-secondary-400: color-mix(in srgb, var(--tenant-secondary, #00b88d) 80%, white);
+  --color-secondary-500: var(--tenant-secondary, #00b88d);
+  --color-secondary-600: color-mix(in srgb, var(--tenant-secondary, #00b88d) 85%, black);
+  --color-secondary-700: color-mix(in srgb, var(--tenant-secondary, #00b88d) 70%, black);
+  --color-secondary-800: color-mix(in srgb, var(--tenant-secondary, #00b88d) 55%, black);
+  --color-secondary-900: color-mix(in srgb, var(--tenant-secondary, #00b88d) 40%, black);
 
   --color-accent-50: #fff4e6;
   --color-accent-100: #ffd9b3;
@@ -43,7 +43,7 @@
   --color-card-foreground: #171717;
   --color-popover: #ffffff;
   --color-popover-foreground: #171717;
-  --color-primary: #0047bd;
+  --color-primary: var(--tenant-primary, #0047bd);
   --color-primary-foreground: #ffffff;
   --color-secondary: #f5f5f5;
   --color-secondary-foreground: #171717;

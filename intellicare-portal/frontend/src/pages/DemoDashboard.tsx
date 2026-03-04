@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { demoModules } from '../mocks/demoData';
 import { ModuleCard } from '../components/demo/ModuleCard';
+import { useTenantContext } from '../contexts/TenantContext';
 
 const container = {
     hidden: { opacity: 0 },
@@ -18,6 +19,9 @@ const item = {
 };
 
 const DemoDashboard = () => {
+    const { tenantInfo } = useTenantContext();
+    const activeModules = tenantInfo ? demoModules.filter(m => tenantInfo.activeModules.includes(m.id)) : demoModules;
+
     return (
         <div className="min-h-screen bg-slate-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-950 p-8 text-white">
             <div className="max-w-7xl mx-auto">
@@ -43,7 +47,7 @@ const DemoDashboard = () => {
                     animate="show"
                     className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
                 >
-                    {demoModules.map((module) => (
+                    {activeModules.map((module) => (
                         <motion.div key={module.id} variants={item}>
                             <ModuleCard {...module} />
                         </motion.div>
