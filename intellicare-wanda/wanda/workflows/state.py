@@ -23,6 +23,7 @@ class OrchestratorState(TypedDict, total=False):
 
     # ── Input ──────────────────────────────────────────────────────
     query: str
+    tenant_id: str
     patient_id: Optional[str]
     workflow_id: str         # Unique execution ID (UUID)
     workflow_name: str       # e.g. "clinical_analysis"

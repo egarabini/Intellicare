@@ -44,6 +44,7 @@ async def execute_workflow(body: WorkflowExecuteRequest, request: Request):
     result = await executor.execute(
         workflow_name=workflow_name,
         query=body.query,
+        tenant_id=request.headers.get("X-Tenant-ID", "default"),
         patient_id=body.patient_id,
         extra=body.extra,
     )
@@ -64,7 +65,8 @@ async def execute_workflow(body: WorkflowExecuteRequest, request: Request):
 @router.get("/status/{execution_id}", summary="Status/resultado de um workflow")
 async def workflow_status(execution_id: str, request: Request):
     executor = _get_executor(request)
-    state = await executor._checkpointer.restore(execution_id)
+    tenant_id = request.headers.get("X-Tenant-ID", "default")
+    state = await executor._checkpointer.restore(tenant_id, execution_id)
     if state is None:
         raise HTTPException(status_code=404, detail=f"Execution {execution_id} nao encontrada")
     return {"execution_id": execution_id, "state": state}

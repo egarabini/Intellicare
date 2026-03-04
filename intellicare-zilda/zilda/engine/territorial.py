@@ -21,6 +21,7 @@ class TerritorialEngine:
         state_code: str | None = None,
         city_code: str | None = None,
         limit: int = 100,
+        ctx: Any = None,
     ) -> TerritorialSummary:
         """Gera resumo territorial com estabelecimentos e distribuicao por tipo."""
         establishments = self._client.search_establishments(
@@ -28,6 +29,7 @@ class TerritorialEngine:
             city_code=city_code,
             active_only=True,
             limit=limit,
+            ctx=ctx,
         )
 
         type_distribution = self._count_by_type(establishments)
@@ -35,7 +37,7 @@ class TerritorialEngine:
 
         regions: list[HealthRegion] = []
         if state_code:
-            regions = self._client.get_health_regions(state_code=state_code)
+            regions = self._client.get_health_regions(state_code=state_code, ctx=ctx)
 
         region_name = ""
         if city_code and regions:
@@ -61,6 +63,7 @@ class TerritorialEngine:
         city_code: str,
         unit_type_code: str | None = None,
         limit: int = 20,
+        ctx: Any = None,
     ) -> list[HealthEstablishment]:
         """Busca estabelecimentos no municipio, opcionalmente filtrando por tipo."""
         return self._client.search_establishments(
@@ -68,11 +71,12 @@ class TerritorialEngine:
             unit_type_code=unit_type_code,
             active_only=True,
             limit=limit,
+            ctx=ctx,
         )
 
-    def get_region_context(self, city_code: str, state_code: str) -> dict[str, Any]:
+    def get_region_context(self, city_code: str, state_code: str, ctx: Any = None) -> dict[str, Any]:
         """Retorna contexto da regiao de saude para um municipio."""
-        regions = self._client.get_health_regions(state_code=state_code)
+        regions = self._client.get_health_regions(state_code=state_code, ctx=ctx)
 
         city_region = None
         for r in regions:

@@ -28,7 +28,7 @@ def gateway(mock_flowise):
 class TestDrNiseGateway:
     @pytest.mark.asyncio
     async def test_chat_returns_response(self, gateway):
-        msg = PatientMessage(patient_id="p1", content="Tenho dor de cabeça")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="Tenho dor de cabeça")
         response = await gateway.chat(msg)
         assert isinstance(response, DrNiseResponse)
         assert response.session_id is not None
@@ -37,18 +37,18 @@ class TestDrNiseGateway:
 
     @pytest.mark.asyncio
     async def test_new_session_created(self, gateway):
-        msg = PatientMessage(patient_id="p1", content="Olá")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="Olá")
         response = await gateway.chat(msg)
         assert response.session_id is not None
         assert response.message_count >= 1
 
     @pytest.mark.asyncio
     async def test_existing_session_reused(self, gateway):
-        msg1 = PatientMessage(patient_id="p1", content="Mensagem 1")
+        msg1 = PatientMessage(tenant_id="default", patient_id="p1", content="Mensagem 1")
         r1 = await gateway.chat(msg1)
         session_id = r1.session_id
 
-        msg2 = PatientMessage(patient_id="p1", content="Mensagem 2", session_id=session_id)
+        msg2 = PatientMessage(tenant_id="default", patient_id="p1", content="Mensagem 2", session_id=session_id)
         r2 = await gateway.chat(msg2)
         assert r2.session_id == session_id
         assert r2.message_count >= 2
@@ -58,7 +58,7 @@ class TestDrNiseGateway:
         mock_flowise.predict.return_value = FlowiseResponse(
             text="", success=False, error="timeout"
         )
-        msg = PatientMessage(patient_id="p1", content="Teste")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="Teste")
         response = await gateway.chat(msg)
         assert response.text  # fallback message returned
         assert not response.flagged
@@ -69,7 +69,7 @@ class TestDrNiseGateway:
         mock_flowise.predict.return_value = FlowiseResponse(
             text="Pare o remedio imediatamente.", success=True
         )
-        msg = PatientMessage(patient_id="p1", content="Posso parar insulina?")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="Posso parar insulina?")
         response = await gateway.chat(msg)
         assert response.flagged
         assert response.text != "Pare o remedio imediatamente."
@@ -86,7 +86,7 @@ class TestDrNiseGateway:
             alert_hub=alert_hub,
             escalation_enabled=True,
         )
-        msg = PatientMessage(patient_id="p1", content="estou mal")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="estou mal")
         response = await gw.chat(msg)
         # Escalation should be triggered
         assert response.escalated
@@ -104,7 +104,7 @@ class TestDrNiseGateway:
             alert_hub=alert_hub,
             escalation_enabled=False,
         )
-        msg = PatientMessage(patient_id="p1", content="estou mal")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="estou mal")
         response = await gw.chat(msg)
         alert_hub.receive_alert.assert_not_called()
 
@@ -114,15 +114,15 @@ class TestDrNiseGateway:
 
     @pytest.mark.asyncio
     async def test_end_session(self, gateway):
-        msg = PatientMessage(patient_id="p1", content="Olá")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="Olá")
         response = await gateway.chat(msg)
-        result = await gateway.end_session(response.session_id, "p1")
+        result = await gateway.end_session("default", response.session_id, "p1")
         assert result is True
 
     @pytest.mark.asyncio
     async def test_ips_loader_called(self, mock_flowise):
         ips_loader = AsyncMock(return_value={"conditions": [{"code": "E11", "display": "DM2"}]})
         gw = DrNiseGateway(flowise_client=mock_flowise, ips_loader=ips_loader)
-        msg = PatientMessage(patient_id="p1", content="Tenho diabetes")
+        msg = PatientMessage(tenant_id="default", patient_id="p1", content="Tenho diabetes")
         await gw.chat(msg)
         ips_loader.assert_called_once_with("p1")

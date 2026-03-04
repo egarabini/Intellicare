@@ -34,9 +34,10 @@ class CnesClient:
 
     # --- Tipos de Unidade ---
 
-    def get_unit_types(self) -> list[HealthUnitType]:
+    def get_unit_types(self, ctx: Any = None) -> list[HealthUnitType]:
         """Lista tipos de unidade de saude."""
-        cache_key = "unit_types"
+        tenant_prefix = f"tenant:{ctx.tenant_id}:" if ctx and hasattr(ctx, "tenant_id") else ""
+        cache_key = f"{tenant_prefix}unit_types"
         cached = self._cache.get(cache_key)
         if cached is not None:
             return cached
@@ -62,6 +63,7 @@ class CnesClient:
         active_only: bool = True,
         limit: int = 20,
         offset: int = 0,
+        ctx: Any = None,
     ) -> list[HealthEstablishment]:
         """Busca estabelecimentos de saude com filtros."""
         params: dict[str, Any] = {"limit": min(limit, 100), "offset": offset}
@@ -74,7 +76,8 @@ class CnesClient:
         if active_only:
             params["status"] = 1
 
-        cache_key = f"establishments:{hash(frozenset(params.items()))}"
+        tenant_prefix = f"tenant:{ctx.tenant_id}:" if ctx and hasattr(ctx, "tenant_id") else ""
+        cache_key = f"{tenant_prefix}establishments:{hash(frozenset(params.items()))}"
         cached = self._cache.get(cache_key)
         if cached is not None:
             return cached
@@ -84,9 +87,10 @@ class CnesClient:
         self._cache.set(cache_key, establishments, self._ttl_dynamic)
         return establishments
 
-    def get_establishment_by_cnes(self, cnes_code: str) -> HealthEstablishment | None:
+    def get_establishment_by_cnes(self, cnes_code: str, ctx: Any = None) -> HealthEstablishment | None:
         """Busca estabelecimento por codigo CNES."""
-        cache_key = f"establishment:{cnes_code}"
+        tenant_prefix = f"tenant:{ctx.tenant_id}:" if ctx and hasattr(ctx, "tenant_id") else ""
+        cache_key = f"{tenant_prefix}establishment:{cnes_code}"
         cached = self._cache.get(cache_key)
         if cached is not None:
             return cached
@@ -106,13 +110,15 @@ class CnesClient:
         state_code: str | None = None,
         limit: int = 100,
         offset: int = 0,
+        ctx: Any = None,
     ) -> list[HealthRegion]:
         """Lista municipios com suas regioes de saude."""
         params: dict[str, Any] = {"limit": min(limit, 100), "offset": offset}
         if state_code:
             params["codigo_uf"] = state_code
 
-        cache_key = f"regions:{hash(frozenset(params.items()))}"
+        tenant_prefix = f"tenant:{ctx.tenant_id}:" if ctx and hasattr(ctx, "tenant_id") else ""
+        cache_key = f"{tenant_prefix}regions:{hash(frozenset(params.items()))}"
         cached = self._cache.get(cache_key)
         if cached is not None:
             return cached
@@ -124,7 +130,7 @@ class CnesClient:
 
     # --- Validacao CNES ---
 
-    def validate_cnes(self, cnes_code: str) -> CnesValidation:
+    def validate_cnes(self, cnes_code: str, ctx: Any = None) -> CnesValidation:
         """Valida um codigo CNES (formato + existencia)."""
         digits = "".join(c for c in cnes_code if c.isdigit())
         if len(digits) != 7:
@@ -135,7 +141,7 @@ class CnesClient:
                 message=f"CNES invalido: esperados 7 digitos, recebidos {len(digits)}",
             )
 
-        establishment = self.get_establishment_by_cnes(digits)
+        establishment = self.get_establishment_by_cnes(digits, ctx=ctx)
         if establishment:
             return CnesValidation(
                 cnes_code=digits,

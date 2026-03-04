@@ -11,7 +11,7 @@ from wanda.nise.models import NiseSession, SessionStatus
 
 logger = logging.getLogger(__name__)
 
-_SESSION_KEY = "wanda:nise:session:{session_id}"
+_SESSION_KEY_PREFIX = "wanda:nise:session"
 _SESSION_TTL = 7200  # 2 hours
 
 
@@ -35,19 +35,24 @@ class NiseSessionManager:
         self._max_history = max_history
         self._memory: dict[str, NiseSession] = {}  # in-memory fallback
 
+    def _key(self, tenant_id: str, session_id: str) -> str:
+        return f"{_SESSION_KEY_PREFIX}:{tenant_id}:{session_id}"
+
     # ------------------------------------------------------------------
     # Get or create
     # ------------------------------------------------------------------
 
     async def get_or_create(
-        self, patient_id: str, session_id: Optional[str], channel: str = "web"
+        self, tenant_id: str, patient_id: str, session_id: Optional[str], channel: str = "web"
     ) -> NiseSession:
         if session_id:
-            existing = await self._load(session_id)
+            existing = await self._load(tenant_id, session_id)
             if existing and existing.status == SessionStatus.ACTIVE:
                 return existing
 
-        session = NiseSession(patient_id=patient_id, channel=channel)
+        session = NiseSession(tenant_id=tenant_id, patient_id=patient_id, channel=channel)
+        if session_id:
+            session.session_id = session_id
         await self._save(session)
         logger.debug("New Nise session %s for patient %s", session.session_id, patient_id)
         return session
@@ -83,8 +88,9 @@ class NiseSessionManager:
     # ------------------------------------------------------------------
 
     async def _save(self, session: NiseSession) -> None:
-        key = _SESSION_KEY.format(session_id=session.session_id)
+        key = self._key(session.tenant_id, session.session_id)
         data = {
+            "tenant_id": session.tenant_id,
             "patient_id": session.patient_id,
             "session_id": session.session_id,
             "channel": session.channel,
@@ -103,8 +109,8 @@ class NiseSessionManager:
                 logger.warning("Redis session save failed: %s", exc)
         self._memory[session.session_id] = session
 
-    async def _load(self, session_id: str) -> Optional[NiseSession]:
-        key = _SESSION_KEY.format(session_id=session_id)
+    async def _load(self, tenant_id: str, session_id: str) -> Optional[NiseSession]:
+        key = self._key(tenant_id, session_id)
         if self._redis is not None:
             try:
                 raw = await self._redis.get(key)
@@ -118,6 +124,7 @@ class NiseSessionManager:
     @staticmethod
     def _from_dict(data: dict[str, Any]) -> NiseSession:
         session = NiseSession(
+            tenant_id=data.get("tenant_id", "default"),
             patient_id=data["patient_id"],
             channel=data.get("channel", "web"),
             session_id=data["session_id"],
@@ -138,6 +145,7 @@ class NiseSessionManager:
 
             async with self._db() as db_session:
                 model = NiseSessionModel(
+                    tenant_id=session.tenant_id,
                     patient_id=session.patient_id,
                     session_id=session.session_id,
                     channel=session.channel,

@@ -9,11 +9,11 @@ from geralda.api.app import app, care_manager, reminder_engine, content_loader
 @pytest.fixture(autouse=True)
 def reset_state():
     """Reset engine state before each test."""
-    care_manager._plans.clear()
-    care_manager._tasks.clear()
-    care_manager._task_plan.clear()
-    reminder_engine._reminders.clear()
-    reminder_engine._by_patient.clear()
+    care_manager._tenant_plans.clear()
+    care_manager._tenant_tasks.clear()
+    care_manager._tenant_task_plan.clear()
+    reminder_engine._tenant_reminders.clear()
+    reminder_engine._tenant_by_patient.clear()
     content_loader._loaded = False
     content_loader._materials.clear()
     content_loader._by_condition.clear()

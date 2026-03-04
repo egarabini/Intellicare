@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Any
 from datetime import UTC, datetime
 from uuid import uuid4
 
@@ -33,7 +34,7 @@ class JitsiDispatcher:
         self.jitsi_url = jitsi_url
         logger.info("JitsiDispatcher inicializado (stub) - url=%s", jitsi_url)
 
-    async def send(self, message: ChannelMessage) -> DispatchResult:
+    async def send(self, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         """
         Cria sala Jitsi e envia convite (stub).
         
@@ -58,17 +59,17 @@ class JitsiDispatcher:
             metadata={"room_url": room_url},
         )
 
-    async def get_status(self, channel_message_id: str) -> DeliveryStatus:
+    async def get_status(self, channel_message_id: str, ctx: Any = None) -> DeliveryStatus:
         """Consulta status da sala (stub)."""
         logger.info("JitsiDispatcher.get_status (stub): message_id=%s", channel_message_id)
         return DeliveryStatus.SENT
 
-    async def cancel(self, channel_message_id: str) -> bool:
+    async def cancel(self, channel_message_id: str, ctx: Any = None) -> bool:
         """Cancela/fecha sala (stub)."""
         logger.info("JitsiDispatcher.cancel (stub): message_id=%s", channel_message_id)
         return True  # Salas podem ser fechadas
 
-    async def health_check(self) -> ChannelHealth:
+    async def health_check(self, ctx: Any = None) -> ChannelHealth:
         """Verifica saúde do servidor Jitsi (stub)."""
         return ChannelHealth(
             channel=self.channel,
@@ -77,7 +78,7 @@ class JitsiDispatcher:
             details={"jitsi_url": self.jitsi_url, "status": "stub", "latency_ms": 30},
         )
 
-    async def test_send(self, recipient: ResolvedRecipient) -> DispatchResult:
+    async def test_send(self, recipient: ResolvedRecipient, ctx: Any = None) -> DispatchResult:
         """Cria sala de teste (stub)."""
         logger.info("JitsiDispatcher.test_send (stub): recipient=%s", recipient.recipient_id)
         
@@ -91,7 +92,7 @@ class JitsiDispatcher:
             metadata={"room_url": f"{self.jitsi_url}/{room_id}"},
         )
 
-    async def get_capabilities(self) -> ChannelCapabilities:
+    async def get_capabilities(self, ctx: Any = None) -> ChannelCapabilities:
         """Retorna capacidades do canal."""
         return ChannelCapabilities(
             channel=self.channel,
@@ -107,7 +108,7 @@ class JitsiDispatcher:
             },
         )
 
-    async def validate_recipient(self, recipient: ResolvedRecipient) -> RecipientValidation:
+    async def validate_recipient(self, recipient: ResolvedRecipient, ctx: Any = None) -> RecipientValidation:
         """Valida destinatário (stub)."""
         # Para Jitsi, qualquer destinatário é válido (sala pode ser criada)
         # Na implementação real, verificaria se o destinatário tem acesso

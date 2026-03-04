@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from grahame.api.deps import get_tenant_session_context
 
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import JSONResponse
@@ -58,8 +59,7 @@ async def create_subscription(request: Request):
     if not data["channel"].get("type"):
         return fhir_error(400, "required", "Subscription.channel.type is required")
 
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = SubscriptionService(session, tenant_id)
         try:
             sub = await svc.create(data)
@@ -77,8 +77,7 @@ async def list_subscriptions(
     _offset: int = Query(0, alias="_offset"),
 ):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = SubscriptionService(session, tenant_id)
         subs = await svc.list(status=status, limit=_count, offset=_offset)
 
@@ -94,8 +93,7 @@ async def list_subscriptions(
 @router.get("/Subscription/{subscription_id}")
 async def get_subscription(subscription_id: str, request: Request):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = SubscriptionService(session, tenant_id)
         sub = await svc.get(subscription_id)
 
@@ -116,8 +114,7 @@ async def update_subscription(subscription_id: str, request: Request):
     if "channel" in body:
         data["channel"] = body["channel"]
 
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = SubscriptionService(session, tenant_id)
         sub = await svc.update(subscription_id, data)
 
@@ -129,8 +126,7 @@ async def update_subscription(subscription_id: str, request: Request):
 @router.delete("/Subscription/{subscription_id}", status_code=204)
 async def delete_subscription(subscription_id: str, request: Request):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = SubscriptionService(session, tenant_id)
         ok = await svc.delete(subscription_id)
 

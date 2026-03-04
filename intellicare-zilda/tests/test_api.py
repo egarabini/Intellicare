@@ -162,3 +162,44 @@ class TestTerritorialEndpoints:
         data = response.json()
         assert data["found"] is True
         assert data["region_name"] == "Grande SP"
+
+
+class TestAnalyzeEndpoint:
+    def test_analyze_cnes_lookup(self, app_client: TestClient) -> None:
+        response = app_client.post(
+            "/api/v1/analyze",
+            json={
+                "patient_id": "pat-001",
+                "query": "validar cnes",
+                "parameters": {
+                    "query_type": "cnes_lookup",
+                    "cnes_code": "2077485",
+                },
+            },
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["success"] is True
+        assert data["source"] == "intellicare-zilda"
+        assert data["analysis"]["query_type"] == "cnes_lookup"
+        assert data["analysis"]["total"] == 1
+
+    def test_analyze_territorial_context(self, app_client: TestClient) -> None:
+        response = app_client.post(
+            "/api/v1/analyze",
+            json={
+                "patient_id": "pat-001",
+                "query": "contexto territorial",
+                "parameters": {
+                    "query_type": "territorial_context",
+                    "state_code": "35",
+                    "city_code": "3550308",
+                },
+            },
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["success"] is True
+        assert data["analysis"]["query_type"] == "territorial_context"
+        assert data["analysis"]["territorial_summary"]["total_establishments"] == 1
+        assert data["analysis"]["region_context"]["found"] is True

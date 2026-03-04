@@ -31,10 +31,10 @@ class WorkflowCheckpointer:
         self._ttl = ttl_seconds
         self._memory: dict[str, str] = {}  # in-memory fallback
 
-    def _key(self, execution_id: str) -> str:
-        return f"wanda:workflow:checkpoint:{execution_id}"
+    def _key(self, tenant_id: str, execution_id: str) -> str:
+        return f"wanda:workflow:checkpoint:{tenant_id}:{execution_id}"
 
-    async def save(self, execution_id: str, state: dict[str, Any]) -> None:
+    async def save(self, tenant_id: str, execution_id: str, state: dict[str, Any]) -> None:
         """Persist workflow state for the given execution ID."""
         # Strip injected callables before serializing
         safe = {k: v for k, v in state.items() if not k.startswith("_")}
@@ -42,18 +42,18 @@ class WorkflowCheckpointer:
 
         if self._redis is not None:
             try:
-                await self._redis.set(self._key(execution_id), payload, ex=self._ttl)
+                await self._redis.set(self._key(tenant_id, execution_id), payload, ex=self._ttl)
                 return
             except Exception as e:
                 logger.warning("Redis checkpoint save failed: %s — using memory", e)
 
         self._memory[execution_id] = payload
 
-    async def restore(self, execution_id: str) -> Optional[dict[str, Any]]:
+    async def restore(self, tenant_id: str, execution_id: str) -> Optional[dict[str, Any]]:
         """Restore workflow state for the given execution ID."""
         if self._redis is not None:
             try:
-                raw = await self._redis.get(self._key(execution_id))
+                raw = await self._redis.get(self._key(tenant_id, execution_id))
                 if raw:
                     return json.loads(raw)  # type: ignore[no-any-return]
             except Exception as e:
@@ -64,11 +64,11 @@ class WorkflowCheckpointer:
             return json.loads(raw_mem)  # type: ignore[no-any-return]
         return None
 
-    async def delete(self, execution_id: str) -> None:
+    async def delete(self, tenant_id: str, execution_id: str) -> None:
         """Remove checkpoint after workflow completes successfully."""
         self._memory.pop(execution_id, None)
         if self._redis is not None:
             try:
-                await self._redis.delete(self._key(execution_id))
+                await self._redis.delete(self._key(tenant_id, execution_id))
             except Exception:
                 pass

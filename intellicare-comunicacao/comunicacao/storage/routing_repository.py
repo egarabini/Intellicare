@@ -1,6 +1,7 @@
 """Persistencia de roteamento (Postgres + fallback em memoria)."""
 
 from __future__ import annotations
+from comunicacao.storage.tenant_utils import get_tenant_conn
 
 import logging
 from datetime import UTC, datetime
@@ -102,7 +103,7 @@ class PostgresRoutingStore:
             Column("timestamp", TIMESTAMP(timezone=True), nullable=False),
         )
 
-    def save_intent(self, intent: CommunicationIntentRecord) -> None:
+    def save_intent(self, intent: CommunicationIntentRecord, ctx: Any = None) -> None:
         payload = intent.model_dump(mode="json")
         stmt = insert(self.communication_intents).values(
             id=payload["id"],
@@ -135,24 +136,24 @@ class PostgresRoutingStore:
             updated_at=self._parse_dt(payload["updated_at"]),
             timeline=payload.get("timeline", []),
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
 
-    def get_intent(self, intent_id: str) -> CommunicationIntentRecord | None:
+    def get_intent(self, intent_id: str, ctx: Any = None) -> CommunicationIntentRecord | None:
         stmt = select(self.communication_intents).where(self.communication_intents.c.id == intent_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             row = conn.execute(stmt).mappings().first()
         if row is None:
             return None
         return CommunicationIntentRecord.model_validate(dict(row))
 
-    def list_intents(self) -> list[CommunicationIntentRecord]:
+    def list_intents(self, ctx: Any = None) -> list[CommunicationIntentRecord]:
         stmt = select(self.communication_intents).order_by(self.communication_intents.c.created_at.desc())
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             rows = conn.execute(stmt).mappings().all()
         return [CommunicationIntentRecord.model_validate(dict(row)) for row in rows]
 
-    def update_intent(self, intent: CommunicationIntentRecord) -> None:
+    def update_intent(self, intent: CommunicationIntentRecord, ctx: Any = None) -> None:
         payload = intent.model_dump(mode="json")
         stmt = (
             self.communication_intents.update()
@@ -163,10 +164,10 @@ class PostgresRoutingStore:
                 timeline=payload.get("timeline", []),
             )
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
 
-    def append_delivery(self, delivery: DeliveryResultRecord) -> None:
+    def append_delivery(self, delivery: DeliveryResultRecord, ctx: Any = None) -> None:
         payload = delivery.model_dump(mode="json")
         stmt = insert(self.delivery_results).values(
             id=payload["id"],
@@ -180,21 +181,21 @@ class PostgresRoutingStore:
             error_message=payload.get("error_message"),
             timestamp=self._parse_dt(payload["timestamp"]),
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
 
-    def get_deliveries(self, intent_id: str) -> list[DeliveryResultRecord]:
+    def get_deliveries(self, intent_id: str, ctx: Any = None) -> list[DeliveryResultRecord]:
         stmt = select(self.delivery_results).where(self.delivery_results.c.intent_id == intent_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             rows = conn.execute(stmt).mappings().all()
         return [DeliveryResultRecord.model_validate(dict(row)) for row in rows]
 
-    def find_by_source_event(self, source_module: str, source_event_id: str) -> CommunicationIntentRecord | None:
+    def find_by_source_event(self, source_module: str, source_event_id: str, ctx: Any = None) -> CommunicationIntentRecord | None:
         stmt = select(self.communication_intents).where(
             self.communication_intents.c.source_module == source_module,
             self.communication_intents.c.source_event_id == source_event_id,
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             row = conn.execute(stmt).mappings().first()
         if row is None:
             return None

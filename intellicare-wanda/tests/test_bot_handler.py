@@ -111,7 +111,7 @@ class TestWandaBotHandler:
         payload = make_payload(text="@intellicare /paciente patient-123")
         await handler.handle_webhook(payload)
         # Patient ID should be stored in context
-        ctx = await handler._context.get("user-1", "GENERAL")
+        ctx = await handler._context.get("default", "user-1", "GENERAL")
         assert ctx.get("patient_id") == "patient-123"
 
     @pytest.mark.asyncio

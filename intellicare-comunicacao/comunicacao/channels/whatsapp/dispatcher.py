@@ -30,7 +30,16 @@ from comunicacao.dispatchers.base import (
     RecipientValidation,
     RenderedContent,
 )
-from comunicacao.routing.protocols import ChannelDispatcher
+from comunicacao.dispatchers.base import (
+    ChannelCapabilities,
+    ChannelDispatcher,
+    ChannelHealth,
+    ChannelMessage,
+    DeliveryStatus,
+    DispatchResult,
+    RecipientValidation,
+    ResolvedRecipient,
+)
 
 logger = logging.getLogger(__name__)
 

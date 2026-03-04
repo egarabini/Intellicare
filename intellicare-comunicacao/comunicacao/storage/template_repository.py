@@ -1,6 +1,7 @@
 """Persistencia de templates (Postgres + fallback)."""
 
 from __future__ import annotations
+from comunicacao.storage.tenant_utils import get_tenant_conn
 
 import logging
 from datetime import UTC, datetime
@@ -54,13 +55,13 @@ class PostgresTemplateStore:
 
     def create(self, item: MessageTemplate) -> MessageTemplate:
         stmt = pg_insert(self.table).values(**self._to_row(item))
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
         return item
 
     def get(self, template_id: str) -> MessageTemplate | None:
         stmt = select(self.table).where(self.table.c.id == template_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             row = conn.execute(stmt).mappings().first()
         if row is None:
             return None
@@ -68,7 +69,7 @@ class PostgresTemplateStore:
 
     def list(self) -> list[MessageTemplate]:
         stmt = select(self.table).order_by(self.table.c.id.asc())
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             rows = conn.execute(stmt).mappings().all()
         return [MessageTemplate.model_validate(dict(row)) for row in rows]
 
@@ -84,7 +85,7 @@ class PostgresTemplateStore:
             .where(self.table.c.id == template_id)
             .values(**self._to_row(item))
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
         return item
 
@@ -99,7 +100,7 @@ class PostgresTemplateStore:
             .where(self.table.c.id == template_id)
             .values(active=False, updated_at=existing.updated_at)
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
         return existing
 

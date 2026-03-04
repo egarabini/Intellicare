@@ -74,7 +74,7 @@ class RoutingEngine:
                 dispatcher_manager=dispatcher_manager,
             )
 
-    async def create_intent(self, intent_create: CommunicationIntentCreate) -> CommunicationIntentRecord:
+    async def create_intent(self, intent_create: CommunicationIntentCreate, ctx: Any = None) -> CommunicationIntentRecord:
         """
         Cria nova intenção de comunicação.
 
@@ -85,6 +85,7 @@ class RoutingEngine:
             existing = self.routing_store.find_by_source_event(
                 source_module=intent_create.source_module,
                 source_event_id=intent_create.source_event_id,
+                ctx=ctx,
             )
             if existing is not None:
                 logger.info(
@@ -112,7 +113,7 @@ class RoutingEngine:
         )
 
         # Persiste
-        self.routing_store.save_intent(intent)
+        self.routing_store.save_intent(intent, ctx=ctx)
 
         logger.info(
             "RoutingEngine: intent %s criado (source=%s, severity=%s, category=%s)",
@@ -124,7 +125,7 @@ class RoutingEngine:
 
         return intent
 
-    async def process_intent(self, intent_id: UUID) -> CommunicationIntentRecord:
+    async def process_intent(self, intent_id: UUID, ctx: Any = None) -> CommunicationIntentRecord:
         """
         Processa uma intenção de comunicação através do pipeline completo.
 
@@ -138,7 +139,7 @@ class RoutingEngine:
         7. Atualizar status
         """
         # 1. Carregar intent
-        intent = self.routing_store.get_intent(str(intent_id))
+        intent = self.routing_store.get_intent(str(intent_id), ctx=ctx)
         if not intent:
             raise ValueError(f"Intent {intent_id} não encontrado")
 
@@ -146,13 +147,14 @@ class RoutingEngine:
         intent.status = IntentStatus.PROCESSING
         intent.updated_at = datetime.now(UTC)
         self._append_timeline(intent, "processing_started", {})
-        self.routing_store.save_intent(intent)
+        self.routing_store.save_intent(intent, ctx=ctx)
 
         try:
             # 2. Resolver destinatário
             resolved_recipient = await self.recipient_resolver.resolve(
                 recipient_type=intent.recipient_type,
                 recipient_id=intent.recipient_id,
+                ctx=ctx,
             )
             self._append_timeline(intent, "recipient_resolved", {
                 "recipient_type": intent.recipient_type.value,
@@ -163,22 +165,23 @@ class RoutingEngine:
             lgpd_approved = await self.lgpd_gateway.check_compliance(
                 intent=intent,
                 resolved_recipient=resolved_recipient,
+                ctx=ctx,
             )
             self._append_timeline(intent, "lgpd_checked", {"approved": lgpd_approved})
 
             if not lgpd_approved:
                 intent.status = IntentStatus.FAILED
                 self._append_timeline(intent, "lgpd_blocked", {})
-                self.routing_store.save_intent(intent)
+                self.routing_store.save_intent(intent, ctx=ctx)
                 logger.warning("RoutingEngine: intent %s bloqueado por LGPD", intent.id)
                 return intent
 
             # 4. Aplicar regras
-            channels = self.rule_matcher.get_channel_sequence(intent)
+            channels = self.rule_matcher.get_channel_sequence(intent, ctx=ctx)
             if not channels:
                 intent.status = IntentStatus.FAILED
                 self._append_timeline(intent, "no_rules_matched", {})
-                self.routing_store.save_intent(intent)
+                self.routing_store.save_intent(intent, ctx=ctx)
                 logger.warning("RoutingEngine: intent %s sem regras correspondentes", intent.id)
                 return intent
 
@@ -189,7 +192,7 @@ class RoutingEngine:
             # Caso contrário, usa content_raw diretamente
             if intent.content_template_id:
                 try:
-                    template = self.template_store.get(intent.content_template_id)
+                    template = self.template_store.get(intent.content_template_id, ctx=ctx)
                     if template is None:
                         raise ValueError(f"Template não encontrado: {intent.content_template_id}")
 
@@ -221,7 +224,7 @@ class RoutingEngine:
                         "template_id": intent.content_template_id,
                         "error": str(exc),
                     })
-                    self.routing_store.save_intent(intent)
+                    self.routing_store.save_intent(intent, ctx=ctx)
                     return intent
             else:
                 # Usa content_raw diretamente
@@ -238,6 +241,7 @@ class RoutingEngine:
                 intent=intent,
                 channels=channels,
                 resolved_recipient=resolved_recipient,
+                ctx=ctx,
             )
 
             if success:
@@ -265,6 +269,7 @@ class RoutingEngine:
                     escalation_id = await self.fallback_monitor.escalate(
                         intent=intent,
                         reason="all_channels_failed",
+                        ctx=ctx,
                     )
                     if escalation_id:
                         self._append_timeline(intent, "escalated", {
@@ -284,14 +289,14 @@ class RoutingEngine:
                     status=RoutingDeliveryStatus.SENT if attempt.success else RoutingDeliveryStatus.FAILED,
                     error_message=attempt.error_message if not attempt.success else None,
                 )
-                self.routing_store.append_delivery(delivery)
+                self.routing_store.append_delivery(delivery, ctx=ctx)
 
             # Limpa tentativas do monitor
             self.fallback_monitor.clear_attempts(intent.id)
 
             # Salva estado final
             intent.updated_at = datetime.now(UTC)
-            self.routing_store.save_intent(intent)
+            self.routing_store.save_intent(intent, ctx=ctx)
 
             logger.info("RoutingEngine: intent %s processado - status: %s", intent.id, intent.status)
             return intent
@@ -301,7 +306,7 @@ class RoutingEngine:
             intent.status = IntentStatus.FAILED
             self._append_timeline(intent, "processing_failed", {"error": str(exc)})
             intent.updated_at = datetime.now(UTC)
-            self.routing_store.save_intent(intent)
+            self.routing_store.save_intent(intent, ctx=ctx)
             raise
 
     def _append_timeline(self, intent: CommunicationIntentRecord, event_type: str, details: dict) -> None:
@@ -309,7 +314,7 @@ class RoutingEngine:
         event = TimelineEvent(event_type=event_type, details=details)
         intent.timeline.append(event)
 
-    async def send_intent(self, intent_create: CommunicationIntentCreate) -> CommunicationIntentRecord:
+    async def send_intent(self, intent_create: CommunicationIntentCreate, ctx: Any = None) -> CommunicationIntentRecord:
         """
         Cria e processa uma intenção de comunicação (método de conveniência).
 
@@ -336,7 +341,7 @@ class RoutingEngine:
 
         try:
             # Criar intent
-            intent = await self.create_intent(intent_create)
+            intent = await self.create_intent(intent_create, ctx=ctx)
 
             # Idempotency: se intent já foi processado, retorna sem reprocessar
             if intent.status != IntentStatus.PENDING:
@@ -348,7 +353,7 @@ class RoutingEngine:
                 return intent
 
             # Processar intent
-            result = await self.process_intent(intent.id)
+            result = await self.process_intent(intent.id, ctx=ctx)
 
             # Sucesso: registrar latência e incrementar contador
             latency = time.time() - start_time
@@ -405,44 +410,44 @@ class RoutingEngine:
 
 
 
-    def get_intent(self, intent_id: str) -> tuple[CommunicationIntentRecord, list] | None:
+    def get_intent(self, intent_id: str, ctx: Any = None) -> tuple[CommunicationIntentRecord, list] | None:
         """Retorna intent e seus deliveries."""
-        intent = self.routing_store.get_intent(intent_id)
+        intent = self.routing_store.get_intent(intent_id, ctx=ctx)
         if intent is None:
             return None
-        deliveries = self.routing_store.get_deliveries(intent_id)
+        deliveries = self.routing_store.get_deliveries(intent_id, ctx=ctx)
         return intent, deliveries
 
-    def list_intents(self) -> list[CommunicationIntentRecord]:
+    def list_intents(self, ctx: Any = None) -> list[CommunicationIntentRecord]:
         """Lista todas as intents."""
-        return self.routing_store.list_intents()
+        return self.routing_store.list_intents(ctx=ctx)
 
-    def cancel_intent(self, intent_id: str) -> CommunicationIntentRecord | None:
+    def cancel_intent(self, intent_id: str, ctx: Any = None) -> CommunicationIntentRecord | None:
         """Cancela uma intent pendente."""
         from comunicacao.routing.models import IntentStatus
-        intent = self.routing_store.get_intent(intent_id)
+        intent = self.routing_store.get_intent(intent_id, ctx=ctx)
         if intent is None:
             return None
         if intent.status not in {IntentStatus.COMPLETED, IntentStatus.FAILED, IntentStatus.CANCELLED}:
             intent.status = IntentStatus.CANCELLED
-            self.routing_store.save_intent(intent)
+            self.routing_store.save_intent(intent, ctx=ctx)
         return intent
 
-    async def send_batch(self, intents: list[CommunicationIntentCreate]) -> tuple[list, list]:
+    async def send_batch(self, intents: list[CommunicationIntentCreate], ctx: Any = None) -> tuple[list, list]:
         """Processa lista de intents em batch."""
         accepted = []
         rejected = []
         for intent_create in intents:
             try:
-                result = await self.send_intent(intent_create)
+                result = await self.send_intent(intent_create, ctx=ctx)
                 accepted.append(result)
             except Exception as exc:
                 rejected.append({"error": str(exc)})
         return accepted, rejected
 
-    def metrics(self) -> dict:
+    def metrics(self, ctx: Any = None) -> dict:
         """Retorna métricas do engine."""
-        all_intents = self.routing_store.list_intents()
+        all_intents = self.routing_store.list_intents(ctx=ctx)
         by_channel: dict[str, int] = {}
         fallback_count = 0
         escalation_count = 0

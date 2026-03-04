@@ -70,7 +70,8 @@ class WandaBotHandler:
             return {"status": "ignored", "reason": "self-message"}
 
         # Load context (last patient_id etc.)
-        ctx = await self._context.get(msg.user_id, msg.channel_id)
+        tenant_id = payload.get("tenant_id", "default")
+        ctx = await self._context.get(tenant_id, msg.user_id, msg.channel_id)
         context_patient_id = ctx.get("patient_id")
 
         # Parse command
@@ -111,7 +112,7 @@ class WandaBotHandler:
 
         # Update context
         if parsed.patient_id:
-            await self._context.update(msg.user_id, msg.channel_id, {"patient_id": parsed.patient_id})
+            await self._context.update(tenant_id, msg.user_id, msg.channel_id, {"patient_id": parsed.patient_id})
 
         # Log
         self._command_log.append({

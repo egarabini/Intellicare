@@ -19,7 +19,7 @@ class MatrixDispatcher:
     def __init__(self, matrix: MatrixClientService) -> None:
         self._matrix = matrix
 
-    async def send(self, message: ChannelMessage) -> DispatchResult:
+    async def send(self, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         room_id = self._resolve_room_id(message=message)
         if not room_id:
             return DispatchResult(

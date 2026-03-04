@@ -29,7 +29,9 @@ def _get_handler(request: Request):  # type: ignore[return]
 @router.post("/command", summary="Webhook Rocket.Chat")
 async def bot_command(payload: WebhookPayload, request: Request):
     handler = _get_handler(request)
-    result = await handler.handle_webhook(payload.model_dump())
+    data = payload.model_dump()
+    data["tenant_id"] = request.headers.get("X-Tenant-ID", "default")
+    result = await handler.handle_webhook(data)
     return result
 
 

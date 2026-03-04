@@ -111,31 +111,31 @@ class ChannelDispatcher(Protocol):
 
     channel: str
 
-    async def send(self, message: ChannelMessage) -> DispatchResult:
+    async def send(self, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         """Envia mensagem pelo canal. Método principal de dispatch."""
         ...
 
-    async def get_status(self, channel_message_id: str) -> DeliveryStatus:
+    async def get_status(self, channel_message_id: str, ctx: Any = None) -> DeliveryStatus:
         """Consulta status de entrega de uma mensagem específica."""
         ...
 
-    async def cancel(self, channel_message_id: str) -> bool:
+    async def cancel(self, channel_message_id: str, ctx: Any = None) -> bool:
         """Cancela envio pendente (se suportado pelo canal). Retorna True se cancelado."""
         ...
 
-    async def health_check(self) -> ChannelHealth:
+    async def health_check(self, ctx: Any = None) -> ChannelHealth:
         """Verifica saúde/disponibilidade do canal."""
         ...
 
-    async def test_send(self, recipient: ResolvedRecipient) -> DispatchResult:
+    async def test_send(self, recipient: ResolvedRecipient, ctx: Any = None) -> DispatchResult:
         """Envia mensagem de teste sem persistir (para diagnóstico)."""
         ...
 
-    async def get_capabilities(self) -> ChannelCapabilities:
+    async def get_capabilities(self, ctx: Any = None) -> ChannelCapabilities:
         """Retorna capacidades do canal (read receipts, rich content, etc)."""
         ...
 
-    async def validate_recipient(self, recipient: ResolvedRecipient) -> RecipientValidation:
+    async def validate_recipient(self, recipient: ResolvedRecipient, ctx: Any = None) -> RecipientValidation:
         """Valida se destinatário é válido para este canal."""
         ...
 
@@ -158,7 +158,7 @@ class DispatcherManager:
         """Lista todos os canais registrados."""
         return sorted(self._dispatchers.keys())
 
-    async def dispatch(self, channel: str, message: ChannelMessage) -> DispatchResult:
+    async def dispatch(self, channel: str, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         """Despacha mensagem para o canal especificado."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:
@@ -169,7 +169,7 @@ class DispatcherManager:
             )
         return await dispatcher.send(message)
 
-    async def get_status(self, channel: str, channel_message_id: str) -> DeliveryStatus:
+    async def get_status(self, channel: str, channel_message_id: str, ctx: Any = None) -> DeliveryStatus:
         """Consulta status de entrega de uma mensagem."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:
@@ -180,7 +180,7 @@ class DispatcherManager:
             return await dispatcher.check_delivery_status(channel_message_id)  # type: ignore[attr-defined]
         return DeliveryStatus.UNKNOWN
 
-    async def cancel(self, channel: str, channel_message_id: str) -> bool:
+    async def cancel(self, channel: str, channel_message_id: str, ctx: Any = None) -> bool:
         """Cancela envio pendente."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:
@@ -189,7 +189,7 @@ class DispatcherManager:
             return await dispatcher.cancel(channel_message_id)  # type: ignore[attr-defined]
         return False
 
-    async def health_check(self, channel: str) -> ChannelHealth | None:
+    async def health_check(self, channel: str, ctx: Any = None) -> ChannelHealth | None:
         """Verifica saúde de um canal."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:
@@ -203,11 +203,11 @@ class DispatcherManager:
             return ChannelHealth(channel=channel, available=available, status="up" if available else "down")
         return ChannelHealth(channel=channel, available=False, status="unknown")
 
-    async def get_health(self, channel: str) -> ChannelHealth | None:
+    async def get_health(self, channel: str, ctx: Any = None) -> ChannelHealth | None:
         """Alias de compatibilidade para health_check()."""
         return await self.health_check(channel)
 
-    async def test_send(self, channel: str, recipient: ResolvedRecipient) -> DispatchResult:
+    async def test_send(self, channel: str, recipient: ResolvedRecipient, ctx: Any = None) -> DispatchResult:
         """Envia mensagem de teste."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:
@@ -229,7 +229,7 @@ class DispatcherManager:
             return await dispatcher.send(message)  # type: ignore[attr-defined]
         return DispatchResult(success=False, error_code="not_implemented", error_message="test_send indisponivel")
 
-    async def get_capabilities(self, channel: str) -> ChannelCapabilities | None:
+    async def get_capabilities(self, channel: str, ctx: Any = None) -> ChannelCapabilities | None:
         """Retorna capacidades de um canal."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:
@@ -261,7 +261,7 @@ class DispatcherManager:
             supports_rich_content=supports_rich,
         )
 
-    async def validate_recipient(self, channel: str, recipient: ResolvedRecipient) -> RecipientValidation:
+    async def validate_recipient(self, channel: str, recipient: ResolvedRecipient, ctx: Any = None) -> RecipientValidation:
         """Valida destinatário para um canal."""
         dispatcher = self.get_dispatcher(channel=channel)
         if dispatcher is None:

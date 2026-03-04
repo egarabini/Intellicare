@@ -6,6 +6,7 @@ Verifica se todos os serviços estão saudáveis e acessíveis após deploy.
 Uso:
     python scripts/smoke_tests.py                                    # localhost
     python scripts/smoke_tests.py --url https://staging.example.com  # staging/produção
+    python scripts/smoke_tests.py --mode public --portal-url https://portal.intellicare.ia.br
     python scripts/smoke_tests.py --json report.json                 # salvar JSON
 """
 
@@ -37,16 +38,17 @@ def colored(text: str, color: str) -> str:
 
 # Configuração dos serviços a serem testados
 BACKEND_SERVICES = {
-    "florence": {"port": 8001, "name": "Florence - RAG + Protocolos Clínicos"},
-    "oswaldo": {"port": 8002, "name": "Oswaldo - Análise Clínica + FHIR"},
-    "donabedian": {"port": 8003, "name": "Donabedian - Qualidade + Indicadores"},
-    "wanda": {"port": 8004, "name": "Wanda - Orquestração + Workflows"},
-    "comunicacao": {"port": 8005, "name": "Comunicacao - Comunicação + Notificações"},
-    "geralda": {"port": 8006, "name": "Geralda - Gestão + Administrativo"},
+    "florence": {"port": 8001, "name": "Florence - RAG + Protocolos Clínicos", "health_path": "/api/v1/health"},
+    "oswaldo": {"port": 8002, "name": "Oswaldo - Análise Clínica + FHIR", "health_path": "/api/v1/health"},
+    "donabedian": {"port": 8003, "name": "Donabedian - Qualidade + Indicadores", "health_path": "/api/v1/health"},
+    "wanda": {"port": 8004, "name": "Wanda - Orquestração + Workflows", "health_path": "/api/v1/health"},
+    "comunicacao": {"port": 8005, "name": "Comunicacao - Comunicação + Notificações", "health_path": "/api/v1/health"},
+    "geralda": {"port": 8006, "name": "Geralda - Gestão + Administrativo", "health_path": "/api/v1/health"},
+    "pierre": {"port": 8009, "name": "Pierre - Inteligência Externa + Evidências", "health_path": "/api/v1/health"},
 }
 
 FRONTEND_SERVICE = {
-    "portal": {"port": 3001, "name": "Portal - Frontend React"},
+    "portal": {"port": 3001, "name": "Portal - Frontend React", "health_path": "/"},
 }
 
 INFRASTRUCTURE_SERVICES = {
@@ -146,7 +148,12 @@ def print_result(result: Dict, show_response_time: bool = True) -> None:
     if result.get("error"):
         print(f"         └─ {colored(result['error'], Colors.RED)}")
 
-def run_smoke_tests(base_url: str = "http://localhost") -> List[Dict]:
+def run_smoke_tests(
+    base_url: str = "http://localhost",
+    mode: str = "local",
+    portal_url: str = "https://portal.intellicare.ia.br",
+    timeout: int = 10,
+) -> List[Dict]:
     """Executa todos os smoke tests."""
     results = []
 
@@ -154,39 +161,56 @@ def run_smoke_tests(base_url: str = "http://localhost") -> List[Dict]:
     print(colored("🔍 IntelliCare - Smoke Tests", Colors.BOLD))
     print(colored("="*70 + "\n", Colors.BOLD))
 
-    # 1. Testar backends
-    print(colored("📦 Backend Services (6 módulos)", Colors.BLUE))
-    print("-" * 70)
+    should_check_backends = mode == "local" or (
+        mode == "public"
+        and base_url
+        and "localhost" not in base_url
+        and "127.0.0.1" not in base_url
+    )
+    if should_check_backends:
+        print(colored(f"📦 Backend Services ({len(BACKEND_SERVICES)} módulos)", Colors.BLUE))
+        print("-" * 70)
 
-    for service_id, config in BACKEND_SERVICES.items():
-        url = urljoin(base_url.replace("localhost", f"localhost:{config['port']}"), "/health")
-        if "localhost" not in base_url:
-            # Para URLs de produção, usar subdomínio ou path
-            url = f"{base_url}/{service_id}/health"
+        for service_id, config in BACKEND_SERVICES.items():
+            health_path = config.get("health_path", "/health")
+            if mode == "local":
+                url = urljoin(
+                    base_url.replace("localhost", f"localhost:{config['port']}"),
+                    health_path,
+                )
+            else:
+                url = f"{base_url.rstrip('/')}/{service_id}{health_path}"
 
-        result = check_http_endpoint(config["name"], url)
-        results.append(result)
-        print_result(result)
+            result = check_http_endpoint(config["name"], url, timeout=timeout)
+            results.append(result)
+            print_result(result)
 
-    print()
+        print()
+    elif mode == "public":
+        print(colored("📦 Backend Services", Colors.BLUE))
+        print("-" * 70)
+        print(colored("ℹ️  Backends ignorados no modo public sem --url de gateway.", Colors.YELLOW))
+        print()
 
     # 2. Testar frontend
     print(colored("🌐 Frontend Service", Colors.BLUE))
     print("-" * 70)
 
     for service_id, config in FRONTEND_SERVICE.items():
-        url = urljoin(base_url.replace("localhost", f"localhost:{config['port']}"), "/health")
-        if "localhost" not in base_url:
-            url = f"{base_url}/health"
+        health_path = config.get("health_path", "/health")
+        if mode == "local":
+            url = urljoin(base_url.replace("localhost", f"localhost:{config['port']}"), health_path)
+        else:
+            url = f"{portal_url.rstrip('/')}{health_path}"
 
-        result = check_http_endpoint(config["name"], url)
+        result = check_http_endpoint(config["name"], url, timeout=timeout)
         results.append(result)
         print_result(result)
 
     print()
 
     # 3. Testar infraestrutura (apenas localhost)
-    if "localhost" in base_url or "127.0.0.1" in base_url:
+    if mode == "local" and ("localhost" in base_url or "127.0.0.1" in base_url):
         print(colored("🔧 Infrastructure Services", Colors.BLUE))
         print("-" * 70)
 
@@ -250,7 +274,18 @@ def main():
     parser.add_argument(
         "--url",
         default="http://localhost",
-        help="URL base do deploy (padrão: http://localhost)"
+        help="URL base do deploy/gateway para backends (padrão: http://localhost)"
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["local", "public"],
+        default="local",
+        help="Modo de execucao: local (portas host) ou public (dominio externo)"
+    )
+    parser.add_argument(
+        "--portal-url",
+        default="https://portal.intellicare.ia.br",
+        help="URL publica do portal (usado no modo public)"
     )
     parser.add_argument(
         "--json",
@@ -266,7 +301,12 @@ def main():
     args = parser.parse_args()
 
     # Executar testes
-    results = run_smoke_tests(base_url=args.url)
+    results = run_smoke_tests(
+        base_url=args.url,
+        mode=args.mode,
+        portal_url=args.portal_url,
+        timeout=args.timeout,
+    )
 
     # Gerar resumo
     summary = generate_summary(results)

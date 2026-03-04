@@ -1,6 +1,7 @@
 """Persistencia de vinculos paciente->sala para o modulo de comunicacao."""
 
 from __future__ import annotations
+from comunicacao.storage.tenant_utils import get_tenant_conn
 
 import logging
 import os
@@ -68,13 +69,13 @@ except ImportError:  # pragma: no cover - fallback para ambiente sem sqlalchemy
 
 
 class PatientRoomRepository(Protocol):
-    def upsert_link(self, patient_id: str, room_id: str) -> None: ...
+    def upsert_link(self, patient_id: str, room_id: str, ctx: Any = None) -> None: ...
 
-    def get_room_id(self, patient_id: str) -> str | None: ...
+    def get_room_id(self, patient_id: str, ctx: Any = None) -> str | None: ...
 
-    def list_links(self, limit: int, offset: int) -> list[dict[str, str]]: ...
+    def list_links(self, limit: int, offset: int, ctx: Any = None) -> list[dict[str, str]]: ...
 
-    def delete_link(self, patient_id: str) -> bool: ...
+    def delete_link(self, patient_id: str, ctx: Any = None) -> bool: ...
 
     def close(self) -> None: ...
 
@@ -85,18 +86,18 @@ class InMemoryPatientRoomRepository:
 
     links: dict[str, str]
 
-    def upsert_link(self, patient_id: str, room_id: str) -> None:
+    def upsert_link(self, patient_id: str, room_id: str, ctx: Any = None) -> None:
         self.links[patient_id] = room_id
 
-    def get_room_id(self, patient_id: str) -> str | None:
+    def get_room_id(self, patient_id: str, ctx: Any = None) -> str | None:
         return self.links.get(patient_id)
 
-    def list_links(self, limit: int, offset: int) -> list[dict[str, str]]:
+    def list_links(self, limit: int, offset: int, ctx: Any = None) -> list[dict[str, str]]:
         items = sorted(self.links.items(), key=lambda x: x[0])
         page = items[offset : offset + limit]
         return [{"patient_id": patient_id, "room_id": room_id} for patient_id, room_id in page]
 
-    def delete_link(self, patient_id: str) -> bool:
+    def delete_link(self, patient_id: str, ctx: Any = None) -> bool:
         if patient_id not in self.links:
             return False
         del self.links[patient_id]
@@ -124,39 +125,39 @@ class PostgresPatientRoomRepository:
         self._ensure_schema_and_table()
 
     def _ensure_schema_and_table(self) -> None:
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {self.schema}"))
         self.metadata.create_all(self.engine)
 
-    def upsert_link(self, patient_id: str, room_id: str) -> None:
+    def upsert_link(self, patient_id: str, room_id: str, ctx: Any = None) -> None:
         stmt = pg_insert(self.patient_room_links).values(patient_id=patient_id, room_id=room_id)
         stmt = stmt.on_conflict_do_update(
             index_elements=[self.patient_room_links.c.patient_id],
             set_={"room_id": room_id},
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
 
-    def get_room_id(self, patient_id: str) -> str | None:
+    def get_room_id(self, patient_id: str, ctx: Any = None) -> str | None:
         stmt = select(self.patient_room_links.c.room_id).where(self.patient_room_links.c.patient_id == patient_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             room_id = conn.execute(stmt).scalar_one_or_none()
         return room_id
 
-    def list_links(self, limit: int, offset: int) -> list[dict[str, str]]:
+    def list_links(self, limit: int, offset: int, ctx: Any = None) -> list[dict[str, str]]:
         stmt = (
             select(self.patient_room_links.c.patient_id, self.patient_room_links.c.room_id)
             .order_by(self.patient_room_links.c.patient_id.asc())
             .limit(limit)
             .offset(offset)
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             rows = conn.execute(stmt).all()
         return [{"patient_id": row.patient_id, "room_id": row.room_id} for row in rows]
 
-    def delete_link(self, patient_id: str) -> bool:
+    def delete_link(self, patient_id: str, ctx: Any = None) -> bool:
         stmt = self.patient_room_links.delete().where(self.patient_room_links.c.patient_id == patient_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             result = conn.execute(stmt)
         return result.rowcount > 0
 

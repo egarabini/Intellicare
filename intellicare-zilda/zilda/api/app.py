@@ -3,8 +3,11 @@
 from contextlib import asynccontextmanager
 from typing import Any
 
+
+from fastapi import Depends
+from zilda.api.auth import get_tenant_context, check_module_active
 from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from zilda.config import ZildaConfig
 from zilda.engine.cnes_client import CnesClient
@@ -20,7 +23,7 @@ class CnesValidateRequest(BaseModel):
 class AnalyzeRequest(BaseModel):
     patient_id: str
     query: str = ""
-    parameters: dict[str, Any] = {}
+    parameters: dict[str, Any] = Field(default_factory=dict)
 
 
 def _detect_query_type(query: str, parameters: dict[str, Any]) -> str:
@@ -77,11 +80,11 @@ def create_app() -> FastAPI:
         configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
     @app.get("/api/v1/health")
-    def health() -> dict[str, Any]:
+    def health(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-zilda'))) -> dict[str, Any]:
         config: ZildaConfig = _state["config"]
         client: CnesClient = _state["client"]
         try:
-            types = client.get_unit_types()
+            types = client.get_unit_types(ctx=ctx)
             status = "healthy" if types else "degraded"
         except Exception:
             status = "degraded"
@@ -92,7 +95,7 @@ def create_app() -> FastAPI:
         }
 
     @app.get("/api/v1/info")
-    def info() -> dict[str, Any]:
+    def info(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-zilda'))) -> dict[str, Any]:
         config: ZildaConfig = _state["config"]
         return {
             "name": config.module_name,
@@ -114,9 +117,9 @@ def create_app() -> FastAPI:
         }
 
     @app.get("/api/v1/unit-types")
-    def unit_types() -> list[dict[str, str]]:
+    def unit_types(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-zilda'))) -> list[dict[str, str]]:
         client: CnesClient = _state["client"]
-        types = client.get_unit_types()
+        types = client.get_unit_types(ctx=ctx)
         return [t.to_dict() for t in types]
 
     @app.get("/api/v1/establishments")
@@ -127,6 +130,8 @@ def create_app() -> FastAPI:
         active_only: bool = Query(True, description="Apenas ativos"),
         limit: int = Query(20, ge=1, le=100),
         offset: int = Query(0, ge=0),
+        ctx: Any = Depends(get_tenant_context),
+        _check: Any = Depends(check_module_active('intellicare-zilda'))
     ) -> list[dict[str, Any]]:
         client: CnesClient = _state["client"]
         results = client.search_establishments(
@@ -136,21 +141,22 @@ def create_app() -> FastAPI:
             active_only=active_only,
             limit=limit,
             offset=offset,
+            ctx=ctx,
         )
         return [e.to_dict() for e in results]
 
     @app.get("/api/v1/establishment/{cnes_code}")
-    def get_establishment(cnes_code: str) -> dict[str, Any]:
+    def get_establishment(cnes_code: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-zilda'))) -> dict[str, Any]:
         client: CnesClient = _state["client"]
-        est = client.get_establishment_by_cnes(cnes_code)
+        est = client.get_establishment_by_cnes(cnes_code, ctx=ctx)
         if not est:
             raise HTTPException(status_code=404, detail=f"CNES {cnes_code} nao encontrado")
         return est.to_dict()
 
     @app.post("/api/v1/validate")
-    def validate_cnes(request: CnesValidateRequest) -> dict[str, Any]:
+    def validate_cnes(request: CnesValidateRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-zilda'))) -> dict[str, Any]:
         client: CnesClient = _state["client"]
-        result = client.validate_cnes(request.cnes_code)
+        result = client.validate_cnes(request.cnes_code, ctx=ctx)
         return result.to_dict()
 
     @app.get("/api/v1/regions")
@@ -158,12 +164,15 @@ def create_app() -> FastAPI:
         state_code: str | None = Query(None, description="Codigo UF"),
         limit: int = Query(100, ge=1, le=100),
         offset: int = Query(0, ge=0),
+        ctx: Any = Depends(get_tenant_context),
+        _check: Any = Depends(check_module_active('intellicare-zilda'))
     ) -> list[dict[str, Any]]:
         client: CnesClient = _state["client"]
         regions = client.get_health_regions(
             state_code=state_code,
             limit=limit,
             offset=offset,
+            ctx=ctx,
         )
         return [r.to_dict() for r in regions]
 
@@ -172,22 +181,25 @@ def create_app() -> FastAPI:
         state_code: str | None = Query(None, description="Codigo UF"),
         city_code: str | None = Query(None, description="Codigo IBGE do municipio"),
         limit: int = Query(100, ge=1, le=100),
+        ctx: Any = Depends(get_tenant_context),
+        _check: Any = Depends(check_module_active('intellicare-zilda'))
     ) -> dict[str, Any]:
         engine: TerritorialEngine = _state["engine"]
         summary = engine.get_territorial_summary(
             state_code=state_code,
             city_code=city_code,
             limit=limit,
+            ctx=ctx,
         )
         return summary.to_dict()
 
     @app.get("/api/v1/region-context/{city_code}")
-    def region_context(city_code: str, state_code: str = Query(..., description="Codigo UF")) -> dict[str, Any]:
+    def region_context(city_code: str, state_code: str = Query(..., description="Codigo UF"), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active("intellicare-zilda"))) -> dict[str, Any]:
         engine: TerritorialEngine = _state["engine"]
-        return engine.get_region_context(city_code=city_code, state_code=state_code)
+        return engine.get_region_context(city_code=city_code, state_code=state_code, ctx=ctx)
 
     @app.post("/api/v1/analyze")
-    async def analyze(request: AnalyzeRequest) -> dict[str, Any]:
+    async def analyze(request: AnalyzeRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-zilda'))) -> dict[str, Any]:
         """Endpoint padrao de analise para orquestracao da Wanda."""
         client: CnesClient = _state["client"]
         engine: TerritorialEngine = _state["engine"]
@@ -198,7 +210,7 @@ def create_app() -> FastAPI:
             if query_type == "cnes_lookup":
                 cnes_code = str(parameters.get("cnes_code", "")).strip()
                 if cnes_code:
-                    est = client.get_establishment_by_cnes(cnes_code)
+                    est = client.get_establishment_by_cnes(cnes_code, ctx=ctx)
                     establishments = [est.to_dict()] if est else []
                 else:
                     found = client.search_establishments(
@@ -207,6 +219,7 @@ def create_app() -> FastAPI:
                         unit_type_code=parameters.get("unit_type_code"),
                         active_only=True,
                         limit=int(parameters.get("limit", 20)),
+                        ctx=ctx,
                     )
                     establishments = [item.to_dict() for item in found]
 
@@ -222,10 +235,11 @@ def create_app() -> FastAPI:
                     state_code=state_code,
                     city_code=city_code,
                     limit=int(parameters.get("limit", 100)),
+                    ctx=ctx,
                 )
                 context = None
                 if state_code and city_code:
-                    context = engine.get_region_context(city_code=city_code, state_code=state_code)
+                    context = engine.get_region_context(city_code=city_code, state_code=state_code, ctx=ctx)
 
                 analysis = {
                     "query_type": "territorial_context",
@@ -237,6 +251,7 @@ def create_app() -> FastAPI:
                     city_code=str(parameters.get("city_code", "")),
                     unit_type_code=parameters.get("unit_type_code"),
                     limit=int(parameters.get("limit", 20)),
+                    ctx=ctx,
                 )
                 analysis = {
                     "query_type": "network_mapping",

@@ -101,6 +101,7 @@ class TestFindNearby:
             unit_type_code=None,
             active_only=True,
             limit=20,
+            ctx=None,
         )
 
     def test_find_nearby_with_type(self) -> None:
@@ -113,6 +114,7 @@ class TestFindNearby:
             unit_type_code="5",
             active_only=True,
             limit=20,
+            ctx=None,
         )
 
 

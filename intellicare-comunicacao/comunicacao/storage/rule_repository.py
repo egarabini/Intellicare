@@ -1,6 +1,7 @@
 """Repositório de regras de roteamento."""
 
 from __future__ import annotations
+from comunicacao.storage.tenant_utils import get_tenant_conn
 
 import logging
 from dataclasses import dataclass
@@ -33,11 +34,11 @@ logger = logging.getLogger(__name__)
 class RoutingRuleStore(Protocol):
     """Interface para persistência de regras de roteamento."""
 
-    def save_rule(self, rule: RoutingRule) -> None:
+    def save_rule(self, rule: RoutingRule, ctx: Any = None) -> None:
         """Salva ou atualiza uma regra de roteamento."""
         ...
 
-    def get_rule(self, rule_id: str) -> RoutingRule | None:
+    def get_rule(self, rule_id: str, ctx: Any = None) -> RoutingRule | None:
         """Busca regra por ID."""
         ...
 
@@ -45,7 +46,7 @@ class RoutingRuleStore(Protocol):
         """Lista todas as regras, opcionalmente apenas ativas."""
         ...
 
-    def delete_rule(self, rule_id: str) -> bool:
+    def delete_rule(self, rule_id: str, ctx: Any = None) -> bool:
         """Remove uma regra. Retorna True se removida."""
         ...
 
@@ -65,10 +66,10 @@ class InMemoryRuleStore:
     def __init__(self) -> None:
         self._rules: dict[str, RoutingRule] = {}
 
-    def save_rule(self, rule: RoutingRule) -> None:
+    def save_rule(self, rule: RoutingRule, ctx: Any = None) -> None:
         self._rules[rule.id] = rule
 
-    def get_rule(self, rule_id: str) -> RoutingRule | None:
+    def get_rule(self, rule_id: str, ctx: Any = None) -> RoutingRule | None:
         return self._rules.get(rule_id)
 
     def list_rules(self, active_only: bool = True) -> list[RoutingRule]:
@@ -81,7 +82,7 @@ class InMemoryRuleStore:
         """Alias de save_rule para compatibilidade com testes."""
         self.save_rule(rule)
 
-    def delete_rule(self, rule_id: str) -> bool:
+    def delete_rule(self, rule_id: str, ctx: Any = None) -> bool:
         if rule_id in self._rules:
             del self._rules[rule_id]
             return True
@@ -154,7 +155,7 @@ class PostgresRuleStore:
             Column("updated_at", TIMESTAMP(timezone=True), nullable=False),
         )
 
-    def save_rule(self, rule: RoutingRule) -> None:
+    def save_rule(self, rule: RoutingRule, ctx: Any = None) -> None:
         """Salva ou atualiza regra (upsert)."""
         from sqlalchemy.dialects.postgresql import insert as pg_insert
         from datetime import UTC, datetime
@@ -194,14 +195,14 @@ class PostgresRuleStore:
             ),
         )
 
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
 
-    def get_rule(self, rule_id: str) -> RoutingRule | None:
+    def get_rule(self, rule_id: str, ctx: Any = None) -> RoutingRule | None:
         from sqlalchemy import select
 
         stmt = select(self.routing_rules).where(self.routing_rules.c.id == rule_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             row = conn.execute(stmt).mappings().first()
         
         if row is None:
@@ -216,16 +217,16 @@ class PostgresRuleStore:
         if active_only:
             stmt = stmt.where(self.routing_rules.c.active == True)
         
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             rows = conn.execute(stmt).mappings().all()
         
         return [self._row_to_rule(dict(row)) for row in rows]
 
-    def delete_rule(self, rule_id: str) -> bool:
+    def delete_rule(self, rule_id: str, ctx: Any = None) -> bool:
         from sqlalchemy import delete
 
         stmt = delete(self.routing_rules).where(self.routing_rules.c.id == rule_id)
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             result = conn.execute(stmt)
         return result.rowcount > 0
 

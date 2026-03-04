@@ -3,6 +3,10 @@
 from datetime import date
 from typing import Optional
 
+
+from fastapi import Depends
+from typing import Any
+from geralda.api.auth import get_tenant_context, check_module_active
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 
@@ -74,7 +78,7 @@ class CreateReminderRequest(BaseModel):
 # ── Contract endpoints ─────────────────────────────────────────
 
 @app.get("/api/v1/health")
-async def health():
+async def health(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     return {
         "status": "healthy",
         "module_name": config.module_name,
@@ -83,7 +87,7 @@ async def health():
 
 
 @app.get("/api/v1/info")
-async def info():
+async def info(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     return {
         "name": config.module_name,
         "version": config.module_version,
@@ -101,27 +105,28 @@ async def info():
 # ── Care Plan endpoints ───────────────────────────────────────
 
 @app.post("/api/v1/plans")
-async def create_plan(req: CreatePlanRequest):
+async def create_plan(req: CreatePlanRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     plan = care_manager.create_plan(
         patient_id=req.patient_id,
         conditions=req.conditions,
         goals=req.goals,
         patient_name=req.patient_name,
+        ctx=ctx,
     )
     return {"success": True, "data": plan.to_dict()}
 
 
 @app.get("/api/v1/plans/{plan_id}")
-async def get_plan(plan_id: str):
-    plan = care_manager.get_plan(plan_id)
+async def get_plan(plan_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    plan = care_manager.get_plan(plan_id, ctx=ctx)
     if not plan:
         raise HTTPException(status_code=404, detail="Plano nao encontrado")
     return {"success": True, "data": plan.to_dict()}
 
 
 @app.get("/api/v1/plans")
-async def list_plans(patient_id: Optional[str] = Query(None)):
-    plans = care_manager.list_plans(patient_id=patient_id)
+async def list_plans(patient_id: Optional[str] = Query(None), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    plans = care_manager.list_plans(patient_id=patient_id, ctx=ctx)
     return {
         "success": True,
         "data": [p.to_dict() for p in plans],
@@ -132,7 +137,7 @@ async def list_plans(patient_id: Optional[str] = Query(None)):
 # ── Task endpoints ─────────────────────────────────────────────
 
 @app.post("/api/v1/plans/{plan_id}/tasks")
-async def add_task(plan_id: str, req: AddTaskRequest):
+async def add_task(plan_id: str, req: AddTaskRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     try:
         category = TaskCategory(req.category)
     except ValueError:
@@ -147,6 +152,7 @@ async def add_task(plan_id: str, req: AddTaskRequest):
         due_date=due,
         due_time=req.due_time,
         notes=req.notes,
+        ctx=ctx,
     )
     if not task:
         raise HTTPException(status_code=404, detail="Plano nao encontrado")
@@ -158,6 +164,8 @@ async def get_tasks(
     plan_id: str,
     status: Optional[str] = Query(None),
     category: Optional[str] = Query(None),
+    ctx: Any = Depends(get_tenant_context),
+    _check: Any = Depends(check_module_active('intellicare-geralda')),
 ):
     try:
         task_status = TaskStatus(status) if status else None
@@ -173,6 +181,7 @@ async def get_tasks(
         plan_id=plan_id,
         status=task_status,
         category=task_category,
+        ctx=ctx,
     )
     return {
         "success": True,
@@ -182,16 +191,16 @@ async def get_tasks(
 
 
 @app.post("/api/v1/tasks/{task_id}/complete")
-async def complete_task(task_id: str):
-    task = care_manager.complete_task(task_id)
+async def complete_task(task_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    task = care_manager.complete_task(task_id, ctx=ctx)
     if not task:
         raise HTTPException(status_code=404, detail="Tarefa nao encontrada")
     return {"success": True, "data": task.to_dict()}
 
 
 @app.post("/api/v1/tasks/{task_id}/skip")
-async def skip_task(task_id: str, reason: str = Query("")):
-    task = care_manager.skip_task(task_id, reason=reason)
+async def skip_task(task_id: str, reason: str = Query(""), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    task = care_manager.skip_task(task_id, reason=reason, ctx=ctx)
     if not task:
         raise HTTPException(status_code=404, detail="Tarefa nao encontrada")
     return {"success": True, "data": task.to_dict()}
@@ -200,7 +209,7 @@ async def skip_task(task_id: str, reason: str = Query("")):
 # ── Reminder endpoints ─────────────────────────────────────────
 
 @app.post("/api/v1/reminders")
-async def create_reminder(req: CreateReminderRequest):
+async def create_reminder(req: CreateReminderRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     try:
         freq = ReminderFrequency(req.frequency)
     except ValueError:
@@ -218,13 +227,14 @@ async def create_reminder(req: CreateReminderRequest):
         start_date=start,
         end_date=end,
         days_of_week=req.days_of_week,
+        ctx=ctx,
     )
     return {"success": True, "data": reminder.to_dict()}
 
 
 @app.get("/api/v1/reminders")
-async def get_reminders(patient_id: str = Query(...)):
-    reminders = reminder_engine.get_patient_reminders(patient_id)
+async def get_reminders(patient_id: str = Query(...), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    reminders = reminder_engine.get_patient_reminders(patient_id, ctx=ctx)
     return {
         "success": True,
         "data": [r.to_dict() for r in reminders],
@@ -233,8 +243,8 @@ async def get_reminders(patient_id: str = Query(...)):
 
 
 @app.get("/api/v1/reminders/due")
-async def get_due_reminders(patient_id: str = Query(...)):
-    reminders = reminder_engine.get_due_reminders(patient_id)
+async def get_due_reminders(patient_id: str = Query(...), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    reminders = reminder_engine.get_due_reminders(patient_id, ctx=ctx)
     return {
         "success": True,
         "data": [r.to_dict() for r in reminders],
@@ -243,30 +253,30 @@ async def get_due_reminders(patient_id: str = Query(...)):
 
 
 @app.get("/api/v1/reminders/schedule")
-async def get_daily_schedule(patient_id: str = Query(...)):
-    schedule = reminder_engine.generate_daily_schedule(patient_id)
+async def get_daily_schedule(patient_id: str = Query(...), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    schedule = reminder_engine.generate_daily_schedule(patient_id, ctx=ctx)
     return {"success": True, "data": schedule, "total": len(schedule)}
 
 
 @app.post("/api/v1/reminders/{reminder_id}/pause")
-async def pause_reminder(reminder_id: str):
-    reminder = reminder_engine.pause_reminder(reminder_id)
+async def pause_reminder(reminder_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    reminder = reminder_engine.pause_reminder(reminder_id, ctx=ctx)
     if not reminder:
         raise HTTPException(status_code=404, detail="Lembrete nao encontrado ou nao pode ser pausado")
     return {"success": True, "data": reminder.to_dict()}
 
 
 @app.post("/api/v1/reminders/{reminder_id}/resume")
-async def resume_reminder(reminder_id: str):
-    reminder = reminder_engine.resume_reminder(reminder_id)
+async def resume_reminder(reminder_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    reminder = reminder_engine.resume_reminder(reminder_id, ctx=ctx)
     if not reminder:
         raise HTTPException(status_code=404, detail="Lembrete nao encontrado ou nao pode ser retomado")
     return {"success": True, "data": reminder.to_dict()}
 
 
 @app.post("/api/v1/reminders/{reminder_id}/cancel")
-async def cancel_reminder(reminder_id: str):
-    reminder = reminder_engine.cancel_reminder(reminder_id)
+async def cancel_reminder(reminder_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    reminder = reminder_engine.cancel_reminder(reminder_id, ctx=ctx)
     if not reminder:
         raise HTTPException(status_code=404, detail="Lembrete nao encontrado")
     return {"success": True, "data": reminder.to_dict()}
@@ -275,8 +285,8 @@ async def cancel_reminder(reminder_id: str):
 # ── Adherence endpoints ───────────────────────────────────────
 
 @app.get("/api/v1/adherence/{plan_id}")
-async def get_adherence(plan_id: str):
-    adherence = care_manager.get_adherence(plan_id)
+async def get_adherence(plan_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
+    adherence = care_manager.get_adherence(plan_id, ctx=ctx)
     if not adherence:
         raise HTTPException(status_code=404, detail="Plano nao encontrado")
     return {"success": True, "data": adherence.to_dict()}
@@ -285,13 +295,13 @@ async def get_adherence(plan_id: str):
 # ── Education endpoints ───────────────────────────────────────
 
 @app.get("/api/v1/education/conditions")
-async def list_conditions():
+async def list_conditions(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     conditions = content_loader.get_all_conditions()
     return {"success": True, "data": conditions, "total": len(conditions)}
 
 
 @app.get("/api/v1/education/search")
-async def search_education(q: str = Query(..., min_length=2)):
+async def search_education(q: str = Query(..., min_length=2), ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     results = content_loader.search(q)
     return {
         "success": True,
@@ -301,7 +311,7 @@ async def search_education(q: str = Query(..., min_length=2)):
 
 
 @app.get("/api/v1/education/material/{material_id}")
-async def get_material(material_id: str):
+async def get_material(material_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-geralda'))):
     material = content_loader.get_material(material_id)
     if not material:
         raise HTTPException(status_code=404, detail="Material nao encontrado")
@@ -313,6 +323,8 @@ async def get_education_materials(
     condition_code: str,
     reading_level: Optional[str] = Query(None),
     tag: Optional[str] = Query(None),
+    ctx: Any = Depends(get_tenant_context),
+    _check: Any = Depends(check_module_active('intellicare-geralda')),
 ):
     materials = content_loader.get_by_condition(
         condition_code=condition_code,

@@ -1,0 +1,671 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\intellicare-geralda
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 393 items
+
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgent::test_chat_basic PASSED [  0%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgent::test_chat_with_history PASSED [  0%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgent::test_chat_different_roles PASSED [  0%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgent::test_chat_without_llm PASSED [  1%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgent::test_chat_with_empty_message PASSED [  1%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgent::test_chat_long_patient_context PASSED [  1%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgentTools::test_agent_with_tools_integration PASSED [  1%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgentSafety::test_agent_refuses_diagnosis PASSED [  2%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgentSafety::test_agent_refuses_prescription_changes PASSED [  2%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgentSafety::test_agent_emergency_response PASSED [  2%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgentEdgeCases::test_chat_with_special_characters PASSED [  2%]
+tests/test_ai/test_geralda_agent.py::TestGeraldaAgentEdgeCases::test_chat_with_emoji PASSED [  3%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_formatter_initialization PASSED [  3%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_short PASSED [  3%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_short_truncates_long_text PASSED [  3%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_long PASSED [  4%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_topics PASSED [  4%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_reminder PASSED [  4%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_reminder_with_emoji PASSED [  4%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_care_summary PASSED [  5%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_care_summary_different_levels PASSED [  5%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_schedule PASSED [  5%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_schedule_empty PASSED [  5%]
+tests/test_ai/test_language/test_formatter.py::TestOutputFormatter::test_format_medications PASSED [  6%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterEdgeCases::test_format_with_empty_lists PASSED [  6%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterEdgeCases::test_format_with_special_characters PASSED [  6%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterEdgeCases::test_format_with_very_long_condition_name PASSED [  6%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterEdgeCases::test_format_with_unicode PASSED [  7%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterConsistency::test_same_input_produces_same_output PASSED [  7%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterConsistency::test_all_formats_return_strings PASSED [  7%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterLevelAdaptation::test_basic_level_uses_simple_words PASSED [  7%]
+tests/test_ai/test_language/test_formatter.py::TestFormatterLevelAdaptation::test_advanced_level_keeps_technical_terms PASSED [  8%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_glossary_exists PASSED [  8%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_glossary_has_minimum_terms PASSED [  8%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_get_simple_term_existing PASSED [  8%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_get_simple_term_case_insensitive PASSED [  9%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_get_simple_term_nonexistent PASSED [  9%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_get_simple_term_empty PASSED [  9%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_glossary_has_key_conditions PASSED [  9%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_glossary_has_exams PASSED [ 10%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_glossary_has_medications PASSED [ 10%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_has_translation PASSED [ 10%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_get_all_terms PASSED [ 10%]
+tests/test_ai/test_language/test_medical_glossary.py::TestMedicalGlossary::test_glossary_translations_are_simpler PASSED [ 11%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryCategories::test_glossary_has_conditions PASSED [ 11%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryCategories::test_glossary_has_exams PASSED [ 11%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryCategories::test_glossary_has_procedures PASSED [ 11%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryEdgeCases::test_term_with_special_characters PASSED [ 12%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryEdgeCases::test_term_with_numbers PASSED [ 12%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryEdgeCases::test_term_very_long PASSED [ 12%]
+tests/test_ai/test_language/test_medical_glossary.py::TestGlossaryEdgeCases::test_term_with_accents PASSED [ 12%]
+tests/test_ai/test_language/test_simplifier.py::TestMedicalSimplifier::test_simplifier_initialization_without_llm PASSED [ 13%]
+tests/test_ai/test_language/test_simplifier.py::TestMedicalSimplifier::test_simplifier_initialization_with_llm PASSED [ 13%]
+tests/test_ai/test_language/test_simplifier.py::TestMedicalSimplifier::test_simplify_term_with_glossary PASSED [ 13%]
+tests/test_ai/test_language/test_simplifier.py::TestMedicalSimplifier::test_simplify_term_not_in_glossary PASSED [ 13%]
+tests/test_ai/test_language/test_simplifier.py::TestMedicalSimplifier::test_simplify_term_empty_string PASSED [ 14%]
+tests/test_ai/test_language/test_simplifier.py::TestMedicalSimplifier::test_simplify_term_case_insensitive PASSED [ 14%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_simplify_text_without_llm PASSED [ 14%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_simplify_text_with_llm PASSED [ 15%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_simplify_text_intermediate_level PASSED [ 15%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_simplify_text_advanced_level PASSED [ 15%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_explain_condition PASSED [ 15%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_explain_condition_without_llm PASSED [ 16%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_explain_medication PASSED [ 16%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierAsync::test_simplify_long_text PASSED [ 16%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierLevels::test_basic_level_is_simplest PASSED [ 16%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierLevels::test_intermediate_level_balanced PASSED [ 17%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierLevels::test_advanced_level_keeps_technical_terms PASSED [ 17%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierLevels::test_invalid_level_defaults_to_basic PASSED [ 17%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierEdgeCases::test_empty_text PASSED [ 17%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierEdgeCases::test_text_with_special_characters PASSED [ 18%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierEdgeCases::test_text_with_numbers PASSED [ 18%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierEdgeCases::test_very_long_text PASSED [ 18%]
+tests/test_ai/test_language/test_simplifier.py::TestSimplifierEdgeCases::test_text_with_emoji PASSED [ 18%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_ollama_provider FAILED [ 19%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_openai_provider FAILED [ 19%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_none_provider PASSED [ 19%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_invalid_provider_defaults_to_none PASSED [ 19%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_ollama_with_custom_params FAILED [ 20%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_openai_requires_api_key PASSED [ 20%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_ollama_provider_invoke FAILED [ 20%]
+tests/test_ai/test_llm_provider.py::TestLLMProvider::test_openai_provider_invoke FAILED [ 20%]
+tests/test_ai/test_llm_provider.py::TestLLMProviderEdgeCases::test_provider_case_insensitive PASSED [ 21%]
+tests/test_ai/test_llm_provider.py::TestLLMProviderEdgeCases::test_empty_provider_name PASSED [ 21%]
+tests/test_ai/test_llm_provider.py::TestLLMProviderEdgeCases::test_default_parameters FAILED [ 21%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestSystemPrompt::test_system_prompt_exists PASSED [ 21%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestSystemPrompt::test_system_prompt_has_identity PASSED [ 22%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestSystemPrompt::test_system_prompt_has_safety_rules PASSED [ 22%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestSystemPrompt::test_system_prompt_has_role_definition PASSED [ 22%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestCarePrompts::test_create_care_plan_prompt_exists PASSED [ 22%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestCarePrompts::test_explain_task_prompt_exists PASSED [ 23%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestCarePrompts::test_adherence_analysis_prompt_exists PASSED [ 23%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestCarePrompts::test_motivational_message_prompt_exists PASSED [ 23%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptPlaceholders::test_plan_prompt_handles_empty_lists PASSED [ 23%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptPlaceholders::test_plan_prompt_handles_special_characters PASSED [ 24%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptPlaceholders::test_education_prompt_handles_long_text PASSED [ 24%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptFormatting::test_system_prompt_has_proper_structure PASSED [ 24%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptFormatting::test_care_prompts_are_not_empty PASSED [ 24%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptSafety::test_system_prompt_emphasizes_safety PASSED [ 25%]
+tests/test_ai/test_prompts/test_system_prompt.py::TestPromptSafety::test_prompts_do_not_encourage_dangerous_behavior PASSED [ 25%]
+tests/test_ai/test_tools/test_care_tools.py::TestCreateCarePlanTool::test_create_plan_basic PASSED [ 25%]
+tests/test_ai/test_tools/test_care_tools.py::TestCreateCarePlanTool::test_create_plan_with_multiple_conditions PASSED [ 25%]
+tests/test_ai/test_tools/test_care_tools.py::TestCreateCarePlanTool::test_create_plan_without_patient_name PASSED [ 26%]
+tests/test_ai/test_tools/test_care_tools.py::TestCreateCarePlanTool::test_create_plan_tool_has_metadata PASSED [ 26%]
+tests/test_ai/test_tools/test_care_tools.py::TestGetCarePlanTool::test_get_existing_plan PASSED [ 26%]
+tests/test_ai/test_tools/test_care_tools.py::TestGetCarePlanTool::test_get_nonexistent_plan PASSED [ 26%]
+tests/test_ai/test_tools/test_care_tools.py::TestAddCareTaskTool::test_add_task_to_plan PASSED [ 27%]
+tests/test_ai/test_tools/test_care_tools.py::TestAddCareTaskTool::test_add_task_with_due_date PASSED [ 27%]
+tests/test_ai/test_tools/test_care_tools.py::TestAddCareTaskTool::test_add_task_invalid_category PASSED [ 27%]
+tests/test_ai/test_tools/test_care_tools.py::TestCompleteTaskTool::test_complete_task PASSED [ 27%]
+tests/test_ai/test_tools/test_care_tools.py::TestCompleteTaskTool::test_complete_nonexistent_task PASSED [ 28%]
+tests/test_ai/test_tools/test_care_tools.py::TestGetAdherenceTool::test_get_adherence_with_tasks PASSED [ 28%]
+tests/test_ai/test_tools/test_care_tools.py::TestGetAdherenceTool::test_get_adherence_no_tasks PASSED [ 28%]
+tests/test_ai/test_tools/test_care_tools.py::TestToolIntegration::test_full_care_workflow PASSED [ 29%]
+tests/test_ai/test_tools/test_care_tools.py::TestToolIntegration::test_all_tools_have_proper_metadata PASSED [ 29%]
+tests/test_api.py::TestContractEndpoints::test_health ERROR              [ 29%]
+tests/test_api.py::TestContractEndpoints::test_info ERROR                [ 29%]
+tests/test_api.py::TestPlanEndpoints::test_create_plan ERROR             [ 30%]
+tests/test_api.py::TestPlanEndpoints::test_get_plan ERROR                [ 30%]
+tests/test_api.py::TestPlanEndpoints::test_get_plan_404 ERROR            [ 30%]
+tests/test_api.py::TestPlanEndpoints::test_list_plans ERROR              [ 30%]
+tests/test_api.py::TestPlanEndpoints::test_list_plans_filter ERROR       [ 31%]
+tests/test_api.py::TestTaskEndpoints::test_add_task ERROR                [ 31%]
+tests/test_api.py::TestTaskEndpoints::test_add_task_plan_404 ERROR       [ 31%]
+tests/test_api.py::TestTaskEndpoints::test_get_tasks ERROR               [ 31%]
+tests/test_api.py::TestTaskEndpoints::test_complete_task ERROR           [ 32%]
+tests/test_api.py::TestTaskEndpoints::test_complete_task_404 ERROR       [ 32%]
+tests/test_api.py::TestTaskEndpoints::test_skip_task ERROR               [ 32%]
+tests/test_api.py::TestTaskEndpoints::test_filter_tasks_by_status ERROR  [ 32%]
+tests/test_api.py::TestTaskEndpoints::test_filter_tasks_by_category ERROR [ 33%]
+tests/test_api.py::TestReminderEndpoints::test_create_reminder ERROR     [ 33%]
+tests/test_api.py::TestReminderEndpoints::test_get_reminders ERROR       [ 33%]
+tests/test_api.py::TestReminderEndpoints::test_get_due_reminders ERROR   [ 33%]
+tests/test_api.py::TestReminderEndpoints::test_get_schedule ERROR        [ 34%]
+tests/test_api.py::TestReminderEndpoints::test_pause_resume ERROR        [ 34%]
+tests/test_api.py::TestReminderEndpoints::test_cancel ERROR              [ 34%]
+tests/test_api.py::TestReminderEndpoints::test_pause_404 ERROR           [ 34%]
+tests/test_api.py::TestAdherenceEndpoints::test_adherence ERROR          [ 35%]
+tests/test_api.py::TestAdherenceEndpoints::test_adherence_404 ERROR      [ 35%]
+tests/test_api.py::TestEducationEndpoints::test_list_conditions ERROR    [ 35%]
+tests/test_api.py::TestEducationEndpoints::test_search ERROR             [ 35%]
+tests/test_api.py::TestEducationEndpoints::test_get_material_404 ERROR   [ 36%]
+tests/test_api_chat_routes.py::TestChatRoutes::test_chat_endpoint_exists PASSED [ 36%]
+tests/test_api_chat_routes.py::TestChatRoutes::test_chat_with_valid_request PASSED [ 36%]
+tests/test_api_chat_routes.py::TestChatRoutes::test_chat_with_history PASSED [ 36%]
+tests/test_api_chat_routes.py::TestChatRoutes::test_chat_missing_message_field PASSED [ 37%]
+tests/test_api_chat_routes.py::TestChatRoutes::test_chat_missing_patient_id PASSED [ 37%]
+tests/test_api_chat_routes.py::TestChatRoutes::test_create_plan_via_chat PASSED [ 37%]
+tests/test_app_db.py::test_health_returns_module_info PASSED             [ 37%]
+tests/test_app_db.py::test_info_lists_capabilities PASSED                [ 38%]
+tests/test_app_db.py::test_create_and_get_plan PASSED                    [ 38%]
+tests/test_app_db.py::test_get_plan_404 PASSED                           [ 38%]
+tests/test_app_db.py::test_add_task_and_complete PASSED                  [ 38%]
+tests/test_app_db.py::test_skip_task PASSED                              [ 39%]
+tests/test_app_db.py::test_adherence PASSED                              [ 39%]
+tests/test_app_db.py::test_analyze_no_plans PASSED                       [ 39%]
+tests/test_app_db.py::test_analyze_with_plans_and_tasks PASSED           [ 39%]
+tests/test_app_db.py::test_education_conditions PASSED                   [ 40%]
+tests/test_app_db.py::test_education_search PASSED                       [ 40%]
+tests/test_app_db.py::test_reminders_list_empty PASSED                   [ 40%]
+tests/test_care_manager.py::TestCreatePlan::test_create_plan PASSED      [ 40%]
+tests/test_care_manager.py::TestCreatePlan::test_create_plan_default_name PASSED [ 41%]
+tests/test_care_manager.py::TestCreatePlan::test_create_multiple_plans PASSED [ 41%]
+tests/test_care_manager.py::TestGetPlan::test_get_existing_plan PASSED   [ 41%]
+tests/test_care_manager.py::TestGetPlan::test_get_nonexistent_plan PASSED [ 41%]
+tests/test_care_manager.py::TestListPlans::test_list_all PASSED          [ 42%]
+tests/test_care_manager.py::TestListPlans::test_list_by_patient PASSED   [ 42%]
+tests/test_care_manager.py::TestListPlans::test_list_empty PASSED        [ 42%]
+tests/test_care_manager.py::TestTasks::test_add_task PASSED              [ 43%]
+tests/test_care_manager.py::TestTasks::test_add_task_to_nonexistent_plan PASSED [ 43%]
+tests/test_care_manager.py::TestTasks::test_complete_task PASSED         [ 43%]
+tests/test_care_manager.py::TestTasks::test_complete_nonexistent_task PASSED [ 43%]
+tests/test_care_manager.py::TestTasks::test_skip_task PASSED             [ 44%]
+tests/test_care_manager.py::TestTasks::test_skip_nonexistent_task PASSED [ 44%]
+tests/test_care_manager.py::TestTasks::test_filter_by_status PASSED      [ 44%]
+tests/test_care_manager.py::TestTasks::test_filter_by_category PASSED    [ 44%]
+tests/test_care_manager.py::TestTasks::test_get_tasks_nonexistent_plan PASSED [ 45%]
+tests/test_care_manager.py::TestTasks::test_add_task_with_due_date PASSED [ 45%]
+tests/test_care_manager.py::TestAdherence::test_adherence_all_pending PASSED [ 45%]
+tests/test_care_manager.py::TestAdherence::test_adherence_partial PASSED [ 45%]
+tests/test_care_manager.py::TestAdherence::test_adherence_nonexistent PASSED [ 46%]
+tests/test_care_manager.py::TestAdherence::test_adherence_empty_plan PASSED [ 46%]
+tests/test_care_plan_service.py::test_create_plan PASSED                 [ 46%]
+tests/test_care_plan_service.py::test_get_plan PASSED                    [ 46%]
+tests/test_care_plan_service.py::test_get_plan_not_found PASSED          [ 47%]
+tests/test_care_plan_service.py::test_list_plans_by_patient PASSED       [ 47%]
+tests/test_care_plan_service.py::test_list_plans_by_patient_active_only PASSED [ 47%]
+tests/test_care_plan_service.py::test_update_plan PASSED                 [ 47%]
+tests/test_care_plan_service.py::test_update_plan_not_found PASSED       [ 48%]
+tests/test_care_plan_service.py::test_deactivate_plan PASSED             [ 48%]
+tests/test_care_plan_service.py::test_deactivate_plan_not_found PASSED   [ 48%]
+tests/test_care_plan_service.py::test_list_all_plans_pagination PASSED   [ 48%]
+tests/test_care_plan_service.py::test_list_all_plans_ordered PASSED      [ 49%]
+tests/test_care_task_service.py::test_create_task PASSED                 [ 49%]
+tests/test_care_task_service.py::test_get_task PASSED                    [ 49%]
+tests/test_care_task_service.py::test_list_tasks_by_plan PASSED          [ 49%]
+tests/test_care_task_service.py::test_list_tasks_by_plan_with_status_filter PASSED [ 50%]
+tests/test_care_task_service.py::test_list_tasks_by_patient PASSED       [ 50%]
+tests/test_care_task_service.py::test_complete_task PASSED               [ 50%]
+tests/test_care_task_service.py::test_complete_task_not_found PASSED     [ 50%]
+tests/test_care_task_service.py::test_skip_task PASSED                   [ 51%]
+tests/test_care_task_service.py::test_list_overdue_tasks PASSED          [ 51%]
+tests/test_care_task_service.py::test_list_overdue_tasks_all_patients PASSED [ 51%]
+tests/test_care_task_service.py::test_task_is_overdue PASSED             [ 51%]
+tests/test_config.py::TestConfig::test_defaults PASSED                   [ 52%]
+tests/test_config.py::TestConfig::test_education_data_dir PASSED         [ 52%]
+tests/test_content_loader.py::TestLoad::test_load_count PASSED           [ 52%]
+tests/test_content_loader.py::TestLoad::test_load_empty_dir PASSED       [ 52%]
+tests/test_content_loader.py::TestLoad::test_load_nonexistent_dir PASSED [ 53%]
+tests/test_content_loader.py::TestLoad::test_auto_load_on_access PASSED  [ 53%]
+tests/test_content_loader.py::TestGetMaterial::test_get_existing PASSED  [ 53%]
+tests/test_content_loader.py::TestGetMaterial::test_get_nonexistent PASSED [ 53%]
+tests/test_content_loader.py::TestGetByCondition::test_get_ckd PASSED    [ 54%]
+tests/test_content_loader.py::TestGetByCondition::test_get_dm2 PASSED    [ 54%]
+tests/test_content_loader.py::TestGetByCondition::test_filter_by_reading_level PASSED [ 54%]
+tests/test_content_loader.py::TestGetByCondition::test_filter_by_tag PASSED [ 54%]
+tests/test_content_loader.py::TestGetByCondition::test_nonexistent_condition PASSED [ 55%]
+tests/test_content_loader.py::TestGetAllConditions::test_list_conditions PASSED [ 55%]
+tests/test_content_loader.py::TestGetAllConditions::test_condition_count PASSED [ 55%]
+tests/test_content_loader.py::TestSearch::test_search_title PASSED       [ 55%]
+tests/test_content_loader.py::TestSearch::test_search_tag PASSED         [ 56%]
+tests/test_content_loader.py::TestSearch::test_search_no_results PASSED  [ 56%]
+tests/test_content_loader.py::TestSearch::test_search_case_insensitive PASSED [ 56%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_is_duplicate_false_new_event PASSED [ 56%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_is_duplicate_true_existing_event PASSED [ 57%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_mark_processed PASSED [ 57%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_check_and_mark_new_event PASSED [ 57%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_check_and_mark_duplicate_event PASSED [ 58%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_deduplicator_without_redis PASSED [ 58%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_deduplicator_without_redis_mark_does_nothing PASSED [ 58%]
+tests/test_events/test_event_deduplicator.py::TestEventDeduplicator::test_check_and_mark_without_redis PASSED [ 58%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorIdempotencyKey::test_different_events_have_different_keys PASSED [ 59%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorIdempotencyKey::test_same_event_has_same_key PASSED [ 59%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorIdempotencyKey::test_key_includes_patient_id PASSED [ 59%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorIdempotencyKey::test_key_includes_event_type PASSED [ 59%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorIdempotencyKey::test_key_includes_payload_hash PASSED [ 60%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorRedisIntegration::test_redis_key_format PASSED [ 60%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorRedisIntegration::test_redis_ttl_is_48_hours PASSED [ 60%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorRedisIntegration::test_redis_connection_error PASSED [ 60%]
+tests/test_events/test_event_deduplicator.py::TestDeduplicatorConcurrency::test_concurrent_duplicate_detection PASSED [ 61%]
+tests/test_events/test_event_enricher.py::TestEventEnricher::test_enrich_basic_event PASSED [ 61%]
+tests/test_events/test_event_enricher.py::TestEventEnricher::test_enrich_adds_conditions PASSED [ 61%]
+tests/test_events/test_event_enricher.py::TestEventEnricher::test_enrich_adds_active_plans PASSED [ 61%]
+tests/test_events/test_event_enricher.py::TestEventEnricher::test_enrich_determines_journey_stage PASSED [ 62%]
+tests/test_events/test_event_enricher.py::TestEventEnricher::test_enrich_calculates_risk_level PASSED [ 62%]
+tests/test_events/test_event_enricher.py::TestEventEnricher::test_enrich_without_care_manager PASSED [ 62%]
+tests/test_events/test_event_enricher.py::TestEnrichedEvent::test_enriched_event_creation PASSED [ 62%]
+tests/test_events/test_event_enricher.py::TestEnrichedEvent::test_enriched_event_to_dict PASSED [ 63%]
+tests/test_events/test_event_enricher.py::TestJourneyStageDetermination::test_stage_e0_no_plan PASSED [ 63%]
+tests/test_events/test_event_enricher.py::TestJourneyStageDetermination::test_stage_e1_plan_created PASSED [ 63%]
+tests/test_events/test_event_enricher.py::TestJourneyStageDetermination::test_stage_e3_active_care PASSED [ 63%]
+tests/test_events/test_event_enricher.py::TestRiskLevelCalculation::test_low_risk_healthy_patient PASSED [ 64%]
+tests/test_events/test_event_enricher.py::TestRiskLevelCalculation::test_high_risk_critical_event PASSED [ 64%]
+tests/test_events/test_event_enricher.py::TestEnricherEdgeCases::test_enrich_event_without_patient_id PASSED [ 64%]
+tests/test_events/test_event_enricher.py::TestEnricherEdgeCases::test_enrich_with_empty_conditions PASSED [ 64%]
+tests/test_events/test_event_enricher.py::TestEnricherEdgeCases::test_enrich_with_many_conditions PASSED [ 65%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_fhir_observation PASSED [ 65%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_fhir_condition PASSED [ 65%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_fhir_unknown_type PASSED [ 65%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_agent_event_oswaldo PASSED [ 66%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_agent_event_florence PASSED [ 66%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_internal_event PASSED [ 66%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_auto_detect_fhir PASSED [ 66%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_auto_detect_agent PASSED [ 67%]
+tests/test_events/test_event_normalizer.py::TestEventNormalizer::test_normalize_auto_detect_internal PASSED [ 67%]
+tests/test_events/test_event_normalizer.py::TestNormalizerEdgeCases::test_normalize_empty_payload PASSED [ 67%]
+tests/test_events/test_event_normalizer.py::TestNormalizerEdgeCases::test_normalize_missing_patient_id PASSED [ 67%]
+tests/test_events/test_event_normalizer.py::TestNormalizerEdgeCases::test_normalize_with_null_values PASSED [ 68%]
+tests/test_events/test_event_normalizer.py::TestNormalizerEdgeCases::test_normalize_with_special_characters PASSED [ 68%]
+tests/test_events/test_event_normalizer.py::TestNormalizerEdgeCases::test_normalize_preserves_timestamp PASSED [ 68%]
+tests/test_events/test_event_normalizer.py::TestNormalizerMapping::test_fhir_to_event_type_mapping PASSED [ 68%]
+tests/test_events/test_event_normalizer.py::TestNormalizerMapping::test_agent_to_event_type_mapping PASSED [ 69%]
+tests/test_events/test_event_pipeline.py::TestEventPipeline::test_process_basic_event PASSED [ 69%]
+tests/test_events/test_event_pipeline.py::TestEventPipeline::test_process_duplicate_event PASSED [ 69%]
+tests/test_events/test_event_pipeline.py::TestEventPipeline::test_process_without_redis PASSED [ 69%]
+tests/test_events/test_event_pipeline.py::TestEventPipeline::test_process_batch PASSED [ 70%]
+tests/test_events/test_event_pipeline.py::TestEventPipeline::test_process_with_error_in_stage PASSED [ 70%]
+tests/test_events/test_event_pipeline.py::TestEventPipeline::test_pipeline_stages_execution_order PASSED [ 70%]
+tests/test_events/test_event_pipeline.py::TestProcessingResult::test_processing_result_creation PASSED [ 70%]
+tests/test_events/test_event_pipeline.py::TestProcessingResult::test_processing_result_with_error PASSED [ 71%]
+tests/test_events/test_event_pipeline.py::TestProcessingResult::test_processing_result_skipped PASSED [ 71%]
+tests/test_events/test_event_pipeline.py::TestPipelineComponents::test_normalize_stage PASSED [ 71%]
+tests/test_events/test_event_pipeline.py::TestPipelineComponents::test_deduplication_stage PASSED [ 72%]
+tests/test_events/test_event_pipeline.py::TestPipelineComponents::test_enrichment_stage PASSED [ 72%]
+tests/test_events/test_event_pipeline.py::TestPipelineComponents::test_persist_stage PASSED [ 72%]
+tests/test_events/test_event_pipeline.py::TestPipelineErrorHandling::test_handles_normalization_error PASSED [ 72%]
+tests/test_events/test_event_pipeline.py::TestPipelineErrorHandling::test_handles_enrichment_error PASSED [ 73%]
+tests/test_events/test_event_pipeline.py::TestPipelineErrorHandling::test_handles_persistence_error PASSED [ 73%]
+tests/test_events/test_event_pipeline.py::TestPipelineErrorHandling::test_continues_on_publish_error PASSED [ 73%]
+tests/test_events/test_event_pipeline.py::TestPipelinePerformance::test_process_single_event_performance PASSED [ 73%]
+tests/test_events/test_event_pipeline.py::TestPipelinePerformance::test_process_batch_performance PASSED [ 74%]
+tests/test_events/test_event_pipeline.py::TestPipelineIntegration::test_full_pipeline_flow PASSED [ 74%]
+tests/test_events/test_event_pipeline.py::TestPipelineIntegration::test_pipeline_with_context_manager PASSED [ 74%]
+tests/test_events/test_event_pipeline.py::TestPipelineIntegration::test_pipeline_with_protocol_engine PASSED [ 74%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_to_redis PASSED [ 75%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_clinical_event PASSED [ 75%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_digital_event PASSED [ 75%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_without_redis PASSED [ 75%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_to_wanda_important_event PASSED [ 76%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_to_wanda_skips_low_priority PASSED [ 76%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_to_wanda_without_http_client PASSED [ 76%]
+tests/test_events/test_event_publisher.py::TestEventPublisher::test_publish_to_wanda_handles_error PASSED [ 76%]
+tests/test_events/test_event_publisher.py::TestEventPublisherStreams::test_determines_stream_from_event_type PASSED [ 77%]
+tests/test_events/test_event_publisher.py::TestEventPublisherStreams::test_unknown_event_type_uses_default_stream PASSED [ 77%]
+tests/test_events/test_event_publisher.py::TestEventPublisherPayloadFormat::test_publish_serializes_event_correctly PASSED [ 77%]
+tests/test_events/test_event_publisher.py::TestEventPublisherWandaIntegration::test_wanda_payload_format PASSED [ 77%]
+tests/test_events/test_event_publisher.py::TestEventPublisherWandaIntegration::test_wanda_timeout PASSED [ 78%]
+tests/test_events/test_event_publisher.py::TestEventPublisherWandaIntegration::test_wanda_retry_on_failure PASSED [ 78%]
+tests/test_events/test_event_publisher.py::TestEventPublisherEdgeCases::test_publish_event_with_large_payload PASSED [ 78%]
+tests/test_events/test_event_publisher.py::TestEventPublisherEdgeCases::test_publish_event_with_special_characters PASSED [ 78%]
+tests/test_events/test_event_publisher.py::TestEventPublisherEdgeCases::test_concurrent_publish PASSED [ 79%]
+tests/test_events/test_event_types.py::TestIntelliCareEvent::test_create_event_minimal PASSED [ 79%]
+tests/test_events/test_event_types.py::TestIntelliCareEvent::test_create_event_full PASSED [ 79%]
+tests/test_events/test_event_types.py::TestIntelliCareEvent::test_event_generates_unique_id PASSED [ 79%]
+tests/test_events/test_event_types.py::TestIntelliCareEvent::test_event_generates_idempotency_key PASSED [ 80%]
+tests/test_events/test_event_types.py::TestIntelliCareEvent::test_event_to_dict PASSED [ 80%]
+tests/test_events/test_event_types.py::TestIntelliCareEvent::test_event_from_dict PASSED [ 80%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_validate_valid_event_type PASSED [ 80%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_validate_invalid_event_type PASSED [ 81%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_validate_case_sensitive PASSED [ 81%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_get_event_category PASSED [ 81%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_get_event_category_clinical PASSED [ 81%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_get_event_category_digital PASSED [ 82%]
+tests/test_events/test_event_types.py::TestEventTypeValidation::test_get_event_category_invalid PASSED [ 82%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_exists PASSED [ 82%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_has_minimum_events PASSED [ 82%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_has_all_categories PASSED [ 83%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_events_have_descriptions PASSED [ 83%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_clinical_events PASSED [ 83%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_care_events PASSED [ 83%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_digital_events PASSED [ 84%]
+tests/test_events/test_event_types.py::TestEventCatalog::test_catalog_operational_events PASSED [ 84%]
+tests/test_events/test_event_types.py::TestEventPayloads::test_event_payload_accepts_various_types PASSED [ 84%]
+tests/test_events/test_event_types.py::TestEventPayloads::test_event_payload_empty PASSED [ 84%]
+tests/test_events/test_event_types.py::TestEventPayloads::test_event_payload_none PASSED [ 85%]
+tests/test_events/test_event_types.py::TestEventTimestamps::test_event_has_timestamp PASSED [ 85%]
+tests/test_events/test_event_types.py::TestEventTimestamps::test_event_custom_timestamp PASSED [ 85%]
+tests/test_events/test_event_types.py::TestEventTimestamps::test_event_timestamp_utc PASSED [ 86%]
+tests/test_events/test_event_types.py::TestEventCorrelation::test_events_with_correlation_id PASSED [ 86%]
+tests/test_events/test_event_types.py::TestEventCorrelation::test_events_without_correlation_id PASSED [ 86%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperTo::test_to_fhir_careplan_minimal_structure PASSED [ 86%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperTo::test_to_fhir_careplan_with_conditions_and_goals PASSED [ 87%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperTo::test_to_fhir_careplan_status_mapping PASSED [ 87%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperTo::test_to_fhir_careplan_with_tasks PASSED [ 87%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperTo::test_to_fhir_careplan_all_categories PASSED [ 87%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperFrom::test_from_fhir_careplan_minimal PASSED [ 88%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperFrom::test_from_fhir_careplan_parse_description PASSED [ 88%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperFrom::test_from_fhir_careplan_invalid_resource_type PASSED [ 88%]
+tests/test_fhir_mapper.py::TestCarePlanFHIRMapperFrom::test_from_fhir_careplan_empty_description PASSED [ 88%]
+tests/test_fhir_mapper.py::TestRoundTrip::test_round_trip_preserves_core_fields PASSED [ 89%]
+tests/test_fhir_mapper.py::TestRoundTrip::test_round_trip_with_deactivated_plan PASSED [ 89%]
+tests/test_fhir_mapper.py::TestConvenienceFunctions::test_to_fhir_careplan_function PASSED [ 89%]
+tests/test_fhir_mapper.py::TestConvenienceFunctions::test_from_fhir_careplan_function PASSED [ 89%]
+tests/test_models.py::TestCareTask::test_to_dict PASSED                  [ 90%]
+tests/test_models.py::TestCareTask::test_to_dict_completed PASSED        [ 90%]
+tests/test_models.py::TestCareTask::test_default_status_is_pending PASSED [ 90%]
+tests/test_models.py::TestCarePlan::test_summary_empty PASSED            [ 90%]
+tests/test_models.py::TestCarePlan::test_summary_with_tasks PASSED       [ 91%]
+tests/test_models.py::TestCarePlan::test_to_dict_includes_summary PASSED [ 91%]
+tests/test_models.py::TestReminder::test_to_dict PASSED                  [ 91%]
+tests/test_models.py::TestReminder::test_is_due_today_daily PASSED       [ 91%]
+tests/test_models.py::TestReminder::test_is_due_today_before_start PASSED [ 92%]
+tests/test_models.py::TestReminder::test_is_due_today_after_end PASSED   [ 92%]
+tests/test_models.py::TestReminder::test_is_due_today_once_not_sent PASSED [ 92%]
+tests/test_models.py::TestReminder::test_is_due_today_once_already_sent PASSED [ 92%]
+tests/test_models.py::TestReminder::test_is_due_today_weekly_correct_day PASSED [ 93%]
+tests/test_models.py::TestReminder::test_is_due_today_weekly_wrong_day PASSED [ 93%]
+tests/test_models.py::TestReminder::test_is_due_today_paused PASSED      [ 93%]
+tests/test_models.py::TestReminder::test_is_due_today_monthly PASSED     [ 93%]
+tests/test_models.py::TestEducationContent::test_to_dict PASSED          [ 94%]
+tests/test_models.py::TestPatientAdherence::test_to_dict PASSED          [ 94%]
+tests/test_models.py::TestPatientAdherence::test_zero_tasks PASSED       [ 94%]
+tests/test_reminder_engine.py::TestCreateReminder::test_create_daily PASSED [ 94%]
+tests/test_reminder_engine.py::TestCreateReminder::test_create_weekly PASSED [ 95%]
+tests/test_reminder_engine.py::TestCreateReminder::test_create_with_dates PASSED [ 95%]
+tests/test_reminder_engine.py::TestGetReminders::test_get_by_id PASSED   [ 95%]
+tests/test_reminder_engine.py::TestGetReminders::test_get_nonexistent PASSED [ 95%]
+tests/test_reminder_engine.py::TestGetReminders::test_get_patient_reminders PASSED [ 96%]
+tests/test_reminder_engine.py::TestGetReminders::test_get_patient_reminders_empty PASSED [ 96%]
+tests/test_reminder_engine.py::TestGetReminders::test_filter_by_status PASSED [ 96%]
+tests/test_reminder_engine.py::TestDueReminders::test_due_today PASSED   [ 96%]
+tests/test_reminder_engine.py::TestDueReminders::test_due_empty_patient PASSED [ 97%]
+tests/test_reminder_engine.py::TestReminderActions::test_pause PASSED    [ 97%]
+tests/test_reminder_engine.py::TestReminderActions::test_pause_already_paused PASSED [ 97%]
+tests/test_reminder_engine.py::TestReminderActions::test_resume PASSED   [ 97%]
+tests/test_reminder_engine.py::TestReminderActions::test_resume_not_paused PASSED [ 98%]
+tests/test_reminder_engine.py::TestReminderActions::test_cancel PASSED   [ 98%]
+tests/test_reminder_engine.py::TestReminderActions::test_cancel_already_cancelled PASSED [ 98%]
+tests/test_reminder_engine.py::TestReminderActions::test_cancel_nonexistent PASSED [ 98%]
+tests/test_reminder_engine.py::TestDailySchedule::test_schedule_sorted PASSED [ 99%]
+tests/test_reminder_engine.py::TestDailySchedule::test_schedule_empty PASSED [ 99%]
+tests/test_reminder_engine.py::TestProperties::test_total_reminders PASSED [ 99%]
+tests/test_reminder_engine.py::TestProperties::test_active_reminders PASSED [100%]
+WARNING: Failed to generate report: No data to report.
+
+
+ERROR: Coverage failure: total of 0 is less than fail-under=80
+
+
+=================================== ERRORS ====================================
+_____________ ERROR at setup of TestContractEndpoints.test_health _____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+______________ ERROR at setup of TestContractEndpoints.test_info ______________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+____________ ERROR at setup of TestPlanEndpoints.test_create_plan _____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+______________ ERROR at setup of TestPlanEndpoints.test_get_plan ______________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+____________ ERROR at setup of TestPlanEndpoints.test_get_plan_404 ____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_____________ ERROR at setup of TestPlanEndpoints.test_list_plans _____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_________ ERROR at setup of TestPlanEndpoints.test_list_plans_filter __________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+______________ ERROR at setup of TestTaskEndpoints.test_add_task ______________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_________ ERROR at setup of TestTaskEndpoints.test_add_task_plan_404 __________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_____________ ERROR at setup of TestTaskEndpoints.test_get_tasks ______________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+___________ ERROR at setup of TestTaskEndpoints.test_complete_task ____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_________ ERROR at setup of TestTaskEndpoints.test_complete_task_404 __________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_____________ ERROR at setup of TestTaskEndpoints.test_skip_task ______________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_______ ERROR at setup of TestTaskEndpoints.test_filter_tasks_by_status _______
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+______ ERROR at setup of TestTaskEndpoints.test_filter_tasks_by_category ______
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+________ ERROR at setup of TestReminderEndpoints.test_create_reminder _________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_________ ERROR at setup of TestReminderEndpoints.test_get_reminders __________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_______ ERROR at setup of TestReminderEndpoints.test_get_due_reminders ________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+__________ ERROR at setup of TestReminderEndpoints.test_get_schedule __________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+__________ ERROR at setup of TestReminderEndpoints.test_pause_resume __________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_____________ ERROR at setup of TestReminderEndpoints.test_cancel _____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+___________ ERROR at setup of TestReminderEndpoints.test_pause_404 ____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+___________ ERROR at setup of TestAdherenceEndpoints.test_adherence ___________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_________ ERROR at setup of TestAdherenceEndpoints.test_adherence_404 _________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+________ ERROR at setup of TestEducationEndpoints.test_list_conditions ________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+____________ ERROR at setup of TestEducationEndpoints.test_search _____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+_______ ERROR at setup of TestEducationEndpoints.test_get_material_404 ________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_api.py:12: in reset_state
+    ???
+E   AttributeError: 'CareManager' object has no attribute '_plans'
+================================== FAILURES ===================================
+_________________ TestLLMProvider.test_create_ollama_provider _________________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_ai\test_llm_provider.py:14: in test_create_ollama_provider
+    ???
+C:\Python314\Lib\unittest\mock.py:1487: in __enter__
+    self.target = self.getter()
+                  ^^^^^^^^^^^^^
+C:\Python314\Lib\pkgutil.py:458: in resolve_name
+    mod = importlib.import_module(modname)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1335: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'langchain_ollama'
+_________________ TestLLMProvider.test_create_openai_provider _________________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_ai\test_llm_provider.py:30: in test_create_openai_provider
+    ???
+C:\Python314\Lib\unittest\mock.py:1487: in __enter__
+    self.target = self.getter()
+                  ^^^^^^^^^^^^^
+C:\Python314\Lib\pkgutil.py:458: in resolve_name
+    mod = importlib.import_module(modname)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1335: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'langchain_openai'
+____________ TestLLMProvider.test_create_ollama_with_custom_params ____________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_ai\test_llm_provider.py:58: in test_create_ollama_with_custom_params
+    ???
+C:\Python314\Lib\unittest\mock.py:1487: in __enter__
+    self.target = self.getter()
+                  ^^^^^^^^^^^^^
+C:\Python314\Lib\pkgutil.py:458: in resolve_name
+    mod = importlib.import_module(modname)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1335: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'langchain_ollama'
+_________________ TestLLMProvider.test_ollama_provider_invoke _________________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_ai\test_llm_provider.py:84: in test_ollama_provider_invoke
+    ???
+C:\Python314\Lib\unittest\mock.py:1487: in __enter__
+    self.target = self.getter()
+                  ^^^^^^^^^^^^^
+C:\Python314\Lib\pkgutil.py:458: in resolve_name
+    mod = importlib.import_module(modname)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1335: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'langchain_ollama'
+_________________ TestLLMProvider.test_openai_provider_invoke _________________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_ai\test_llm_provider.py:99: in test_openai_provider_invoke
+    ???
+C:\Python314\Lib\unittest\mock.py:1487: in __enter__
+    self.target = self.getter()
+                  ^^^^^^^^^^^^^
+C:\Python314\Lib\pkgutil.py:458: in resolve_name
+    mod = importlib.import_module(modname)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1335: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'langchain_openai'
+______________ TestLLMProviderEdgeCases.test_default_parameters _______________
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-geralda\tests\test_ai\test_llm_provider.py:132: in test_default_parameters
+    ???
+C:\Python314\Lib\unittest\mock.py:1487: in __enter__
+    self.target = self.getter()
+                  ^^^^^^^^^^^^^
+C:\Python314\Lib\pkgutil.py:458: in resolve_name
+    mod = importlib.import_module(modname)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1398: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1371: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1335: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'langchain_ollama'
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.14.0-final-0 _______________
+
+FAIL Required test coverage of 80% not reached. Total coverage: 0.00%
+=========================== short test summary info ===========================
+FAILED tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_ollama_provider
+FAILED tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_openai_provider
+FAILED tests/test_ai/test_llm_provider.py::TestLLMProvider::test_create_ollama_with_custom_params
+FAILED tests/test_ai/test_llm_provider.py::TestLLMProvider::test_ollama_provider_invoke
+FAILED tests/test_ai/test_llm_provider.py::TestLLMProvider::test_openai_provider_invoke
+FAILED tests/test_ai/test_llm_provider.py::TestLLMProviderEdgeCases::test_default_parameters
+ERROR tests/test_api.py::TestContractEndpoints::test_health - AttributeError:...
+ERROR tests/test_api.py::TestContractEndpoints::test_info - AttributeError: '...
+ERROR tests/test_api.py::TestPlanEndpoints::test_create_plan - AttributeError...
+ERROR tests/test_api.py::TestPlanEndpoints::test_get_plan - AttributeError: '...
+ERROR tests/test_api.py::TestPlanEndpoints::test_get_plan_404 - AttributeErro...
+ERROR tests/test_api.py::TestPlanEndpoints::test_list_plans - AttributeError:...
+ERROR tests/test_api.py::TestPlanEndpoints::test_list_plans_filter - Attribut...
+ERROR tests/test_api.py::TestTaskEndpoints::test_add_task - AttributeError: '...
+ERROR tests/test_api.py::TestTaskEndpoints::test_add_task_plan_404 - Attribut...
+ERROR tests/test_api.py::TestTaskEndpoints::test_get_tasks - AttributeError: ...
+ERROR tests/test_api.py::TestTaskEndpoints::test_complete_task - AttributeErr...
+ERROR tests/test_api.py::TestTaskEndpoints::test_complete_task_404 - Attribut...
+ERROR tests/test_api.py::TestTaskEndpoints::test_skip_task - AttributeError: ...
+ERROR tests/test_api.py::TestTaskEndpoints::test_filter_tasks_by_status - Att...
+ERROR tests/test_api.py::TestTaskEndpoints::test_filter_tasks_by_category - A...
+ERROR tests/test_api.py::TestReminderEndpoints::test_create_reminder - Attrib...
+ERROR tests/test_api.py::TestReminderEndpoints::test_get_reminders - Attribut...
+ERROR tests/test_api.py::TestReminderEndpoints::test_get_due_reminders - Attr...
+ERROR tests/test_api.py::TestReminderEndpoints::test_get_schedule - Attribute...
+ERROR tests/test_api.py::TestReminderEndpoints::test_pause_resume - Attribute...
+ERROR tests/test_api.py::TestReminderEndpoints::test_cancel - AttributeError:...
+ERROR tests/test_api.py::TestReminderEndpoints::test_pause_404 - AttributeErr...
+ERROR tests/test_api.py::TestAdherenceEndpoints::test_adherence - AttributeEr...
+ERROR tests/test_api.py::TestAdherenceEndpoints::test_adherence_404 - Attribu...
+ERROR tests/test_api.py::TestEducationEndpoints::test_list_conditions - Attri...
+ERROR tests/test_api.py::TestEducationEndpoints::test_search - AttributeError...
+ERROR tests/test_api.py::TestEducationEndpoints::test_get_material_404 - Attr...
+================== 6 failed, 360 passed, 27 errors in 8.62s ===================

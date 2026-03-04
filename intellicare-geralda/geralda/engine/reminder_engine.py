@@ -1,8 +1,8 @@
-"""Reminder engine — manages scheduled reminders and notification dispatch."""
+"""Reminder engine com suporte multi-tenant."""
 
 import uuid
 from datetime import date
-from typing import Optional
+from typing import Optional, Any
 
 from geralda.engine.models import (
     Reminder,
@@ -12,15 +12,26 @@ from geralda.engine.models import (
 
 
 class ReminderEngine:
-    """Manages patient reminders with scheduling and notification logic."""
+    """Manages patient reminders with scheduling and notification logic, isolated per tenant."""
 
     def __init__(self, default_advance_minutes: int = 30):
-        self._reminders: dict[str, Reminder] = {}
-        self._by_patient: dict[str, list[str]] = {}
+        self._tenant_reminders: dict[str, dict[str, Reminder]] = {}
+        self._tenant_by_patient: dict[str, dict[str, list[str]]] = {}
         self.default_advance_minutes = default_advance_minutes
 
     def _gen_id(self) -> str:
         return str(uuid.uuid4())[:8]
+
+    def _get_tenant(self, ctx: Any) -> str:
+        if ctx and hasattr(ctx, "tenant_id"):
+            return ctx.tenant_id
+        return "default"
+
+    def _get_reminders(self, tenant: str) -> dict[str, Reminder]:
+        return self._tenant_reminders.setdefault(tenant, {})
+
+    def _get_by_patient(self, tenant: str) -> dict[str, list[str]]:
+        return self._tenant_by_patient.setdefault(tenant, {})
 
     def create_reminder(
         self,
@@ -33,8 +44,12 @@ class ReminderEngine:
         end_date: Optional[date] = None,
         days_of_week: Optional[list[int]] = None,
         category: str = "general",
+        ctx: Any = None,
     ) -> Reminder:
-        """Create a new reminder for a patient."""
+        tenant = self._get_tenant(ctx)
+        reminders = self._get_reminders(tenant)
+        by_patient = self._get_by_patient(tenant)
+
         reminder = Reminder(
             id=self._gen_id(),
             patient_id=patient_id,
@@ -46,58 +61,60 @@ class ReminderEngine:
             end_date=end_date,
             days_of_week=days_of_week or [],
         )
-        self._reminders[reminder.id] = reminder
-        self._by_patient.setdefault(patient_id, []).append(reminder.id)
+        reminders[reminder.id] = reminder
+        by_patient.setdefault(patient_id, []).append(reminder.id)
         return reminder
 
-    def get_reminder(self, reminder_id: str) -> Optional[Reminder]:
-        """Get a specific reminder by ID."""
-        return self._reminders.get(reminder_id)
+    def get_reminder(self, reminder_id: str, ctx: Any = None) -> Optional[Reminder]:
+        tenant = self._get_tenant(ctx)
+        return self._get_reminders(tenant).get(reminder_id)
 
     def get_patient_reminders(
         self,
         patient_id: str,
         status: Optional[ReminderStatus] = None,
+        ctx: Any = None,
     ) -> list[Reminder]:
-        """Get all reminders for a patient, optionally filtered by status."""
-        ids = self._by_patient.get(patient_id, [])
-        reminders = [self._reminders[rid] for rid in ids if rid in self._reminders]
-        if status:
-            reminders = [r for r in reminders if r.status == status]
-        return reminders
+        tenant = self._get_tenant(ctx)
+        reminders_dict = self._get_reminders(tenant)
+        by_patient = self._get_by_patient(tenant)
 
-    def get_due_reminders(self, patient_id: str, today: Optional[date] = None) -> list[Reminder]:
-        """Get all reminders due today for a patient."""
-        reminders = self.get_patient_reminders(patient_id, status=ReminderStatus.ACTIVE)
+        ids = by_patient.get(patient_id, [])
+        reminders_list = [reminders_dict[rid] for rid in ids if rid in reminders_dict]
+        if status:
+            reminders_list = [r for r in reminders_list if r.status == status]
+        return reminders_list
+
+    def get_due_reminders(self, patient_id: str, today: Optional[date] = None, ctx: Any = None) -> list[Reminder]:
+        reminders = self.get_patient_reminders(patient_id, status=ReminderStatus.ACTIVE, ctx=ctx)
         return [r for r in reminders if r.is_due_today(today)]
 
-    def pause_reminder(self, reminder_id: str) -> Optional[Reminder]:
-        """Pause an active reminder."""
-        reminder = self._reminders.get(reminder_id)
+    def pause_reminder(self, reminder_id: str, ctx: Any = None) -> Optional[Reminder]:
+        tenant = self._get_tenant(ctx)
+        reminder = self._get_reminders(tenant).get(reminder_id)
         if reminder and reminder.status == ReminderStatus.ACTIVE:
             reminder.status = ReminderStatus.PAUSED
             return reminder
         return None
 
-    def resume_reminder(self, reminder_id: str) -> Optional[Reminder]:
-        """Resume a paused reminder."""
-        reminder = self._reminders.get(reminder_id)
+    def resume_reminder(self, reminder_id: str, ctx: Any = None) -> Optional[Reminder]:
+        tenant = self._get_tenant(ctx)
+        reminder = self._get_reminders(tenant).get(reminder_id)
         if reminder and reminder.status == ReminderStatus.PAUSED:
             reminder.status = ReminderStatus.ACTIVE
             return reminder
         return None
 
-    def cancel_reminder(self, reminder_id: str) -> Optional[Reminder]:
-        """Cancel a reminder."""
-        reminder = self._reminders.get(reminder_id)
+    def cancel_reminder(self, reminder_id: str, ctx: Any = None) -> Optional[Reminder]:
+        tenant = self._get_tenant(ctx)
+        reminder = self._get_reminders(tenant).get(reminder_id)
         if reminder and reminder.status in (ReminderStatus.ACTIVE, ReminderStatus.PAUSED):
             reminder.status = ReminderStatus.CANCELLED
             return reminder
         return None
 
-    def generate_daily_schedule(self, patient_id: str, today: Optional[date] = None) -> list[dict]:
-        """Generate today's schedule for a patient, sorted by time."""
-        due = self.get_due_reminders(patient_id, today)
+    def generate_daily_schedule(self, patient_id: str, today: Optional[date] = None, ctx: Any = None) -> list[dict]:
+        due = self.get_due_reminders(patient_id, today, ctx=ctx)
         schedule = []
         for r in sorted(due, key=lambda x: x.time):
             schedule.append(
@@ -113,8 +130,11 @@ class ReminderEngine:
 
     @property
     def total_reminders(self) -> int:
-        return len(self._reminders)
+        return sum(len(d) for d in self._tenant_reminders.values())
 
     @property
     def active_reminders(self) -> int:
-        return sum(1 for r in self._reminders.values() if r.status == ReminderStatus.ACTIVE)
+        return sum(
+            sum(1 for r in d.values() if r.status == ReminderStatus.ACTIVE)
+            for d in self._tenant_reminders.values()
+        )

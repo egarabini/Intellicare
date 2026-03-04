@@ -30,6 +30,7 @@ async def patient_chat(body: PatientChatRequest, request: Request):
 
     gateway = _get_gateway(request)
     msg = PatientMessage(
+        tenant_id=request.headers.get("X-Tenant-ID", "default"),
         patient_id=body.patient_id,
         content=body.content,
         session_id=body.session_id,
@@ -48,8 +49,9 @@ async def patient_chat(body: PatientChatRequest, request: Request):
 @router.get("/patient/session/{session_id}", summary="Histórico da sessão")
 async def get_session_history(session_id: str, patient_id: str, request: Request):
     gateway = _get_gateway(request)
+    tenant_id = request.headers.get("X-Tenant-ID", "default")
     session = await gateway._sessions.get_or_create(
-        patient_id=patient_id, session_id=session_id
+        tenant_id=tenant_id, patient_id=patient_id, session_id=session_id
     )
     return {
         "session_id": session.session_id,
@@ -63,7 +65,8 @@ async def get_session_history(session_id: str, patient_id: str, request: Request
 @router.delete("/patient/session/{session_id}", summary="Encerrar sessão")
 async def end_session(session_id: str, patient_id: str, request: Request):
     gateway = _get_gateway(request)
-    await gateway.end_session(session_id, patient_id)
+    tenant_id = request.headers.get("X-Tenant-ID", "default")
+    await gateway.end_session(tenant_id, session_id, patient_id)
     return {"session_id": session_id, "status": "ended"}
 
 

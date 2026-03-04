@@ -1,0 +1,512 @@
+FFFFFFFFFFFFFFFFFFFFEEEEEE                                               [100%]
+=================================== ERRORS ====================================
+__________________ ERROR at setup of test_ai_operation_json ___________________
+
+    @pytest.fixture
+    def client():
+>       return TestClient(app, raise_server_exceptions=False, timeout=10.0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: TestClient.__init__() got an unexpected keyword argument 'timeout'
+
+tests\test_onda9.py:12: TypeError
+__________________ ERROR at setup of test_fhir_ai_operation ___________________
+
+    @pytest.fixture
+    def client():
+>       return TestClient(app, raise_server_exceptions=False, timeout=10.0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: TestClient.__init__() got an unexpected keyword argument 'timeout'
+
+tests\test_onda9.py:12: TypeError
+_____________ ERROR at setup of test_schedule_find_returns_bundle _____________
+
+    @pytest.fixture
+    def client():
+>       return TestClient(app, raise_server_exceptions=False, timeout=10.0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: TestClient.__init__() got an unexpected keyword argument 'timeout'
+
+tests\test_onda9.py:12: TypeError
+______ ERROR at setup of test_appointment_book_requires_slot_and_patient ______
+
+    @pytest.fixture
+    def client():
+>       return TestClient(app, raise_server_exceptions=False, timeout=10.0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: TestClient.__init__() got an unexpected keyword argument 'timeout'
+
+tests\test_onda9.py:12: TypeError
+_____________ ERROR at setup of test_on_behalf_of_header_accepted _____________
+
+    @pytest.fixture
+    def client():
+>       return TestClient(app, raise_server_exceptions=False, timeout=10.0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: TestClient.__init__() got an unexpected keyword argument 'timeout'
+
+tests\test_onda9.py:12: TypeError
+___________ ERROR at setup of test_on_behalf_of_invalid_returns_403 ___________
+
+    @pytest.fixture
+    def client():
+>       return TestClient(app, raise_server_exceptions=False, timeout=10.0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: TestClient.__init__() got an unexpected keyword argument 'timeout'
+
+tests\test_onda9.py:12: TypeError
+================================== FAILURES ===================================
+____________________________ test_connect_to_redis ____________________________
+
+mock_redis = <AsyncMock id='1982965808304'>
+
+>   ???
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\hl7v2\test_event_publisher.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AsyncMock name='mock.asyncio.from_url' id='1982966777232'>
+
+    def assert_called_once(self):
+        """assert that the mock was called only once.
+        """
+        if not self.call_count == 1:
+            msg = ("Expected '%s' to have been called once. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'from_url' to have been called once. Called 0 times.
+
+C:\Python314\Lib\unittest\mock.py:964: AssertionError
+________________________ test_publish_patient_created _________________________
+
+publisher = <grahame.events.hl7v2_publisher.HL7v2EventPublisher object at 0x000001CDB211C410>
+mock_redis = <AsyncMock id='1982966784288'>
+
+>   ???
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\hl7v2\test_event_publisher.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AsyncMock name='mock.xadd' id='1982966786304'>
+
+    def assert_called_once(self):
+        """assert that the mock was called only once.
+        """
+        if not self.call_count == 1:
+            msg = ("Expected '%s' to have been called once. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'xadd' to have been called once. Called 0 times.
+
+C:\Python314\Lib\unittest\mock.py:964: AssertionError
+_______________________ test_publish_encounter_created ________________________
+
+publisher = <grahame.events.hl7v2_publisher.HL7v2EventPublisher object at 0x000001CDB211DE50>
+mock_redis = <AsyncMock id='1982966789664'>
+
+>   ???
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\hl7v2\test_event_publisher.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AsyncMock name='mock.xadd' id='1982966791008'>
+
+    def assert_called_once(self):
+        """assert that the mock was called only once.
+        """
+        if not self.call_count == 1:
+            msg = ("Expected '%s' to have been called once. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'xadd' to have been called once. Called 0 times.
+
+C:\Python314\Lib\unittest\mock.py:964: AssertionError
+______________________ test_publish_handles_redis_error _______________________
+
+publisher = <grahame.events.hl7v2_publisher.HL7v2EventPublisher object at 0x000001CDB1FB82B0>
+mock_redis = <AsyncMock id='1982965990800'>
+
+>   ???
+E   assert True is False
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\hl7v2\test_event_publisher.py:159: AssertionError
+_________________________ test_disconnect_from_redis __________________________
+
+publisher = <grahame.events.hl7v2_publisher.HL7v2EventPublisher object at 0x000001CDB1FBA060>
+mock_redis = <AsyncMock id='1982965994496'>
+
+>   ???
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\hl7v2\test_event_publisher.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AsyncMock name='mock.close' id='1982965995840'>
+
+    def assert_called_once(self):
+        """assert that the mock was called only once.
+        """
+        if not self.call_count == 1:
+            msg = ("Expected '%s' to have been called once. Called %s times.%s"
+                   % (self._mock_name or 'mock',
+                      self.call_count,
+                      self._calls_repr()))
+>           raise AssertionError(msg)
+E           AssertionError: Expected 'close' to have been called once. Called 0 times.
+
+C:\Python314\Lib\unittest\mock.py:964: AssertionError
+_____________________ test_event_timestamp_is_iso_format ______________________
+
+publisher = <grahame.events.hl7v2_publisher.HL7v2EventPublisher object at 0x000001CDB1FA2B10>
+mock_redis = <AsyncMock id='1982965990464'>
+
+>   ???
+E   TypeError: 'NoneType' object is not subscriptable
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\hl7v2\test_event_publisher.py:185: TypeError
+_____________________________ test_create_diagram _____________________________
+
+client = <starlette.testclient.TestClient object at 0x000001CDB1FBE120>
+diagram_data = {'appState': {'viewBackgroundColor': '#ffffff'}, 'elements': [{'height': 100, 'id': 'element1', 'type': 'rectangle', 'width': 200, ...}], 'source': 'https://excalidraw.com', 'type': 'excalidraw', ...}
+
+    def test_create_diagram(client: TestClient, diagram_data):
+        """Test creating a diagram via API."""
+        response = client.post(
+            "/api/v1/excalidraw/diagrams",
+            json={
+                "diagram_data": diagram_data,
+                "patient_id": "patient-123",
+                "title": "Test Diagram",
+                "description": "A test diagram",
+                "category": "clinical-diagram",
+                "author_id": "practitioner-456",
+            },
+        )
+    
+>       assert response.status_code == 201
+E       assert 405 == 201
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+
+tests\test_excalidraw_routes.py:42: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-04 19:37:45 [info     ] tenant_resolver.initialized    module_domains=['saudeconectada.com.br'] path_resolution=False platform_domains=['intellicare.ia.br'] query_resolution=False
+2026-03-04 19:37:46 [warning  ] grahame.db.fallback            msg='Using in-memory SQLite'
+2026-03-04 19:37:46 [info     ] hl7v2.publisher.initialized    redis_url=redis://localhost:6379/0
+2026-03-04 19:37:46 [info     ] rate_limiter.initialized       redis_url=redis://localhost:6379/0
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-04 19:37:46 [info     ] rate_limiter.closed
+2026-03-04 19:37:46 [info     ] grahame.shutdown
+______________________________ test_get_diagram _______________________________
+
+client = <starlette.testclient.TestClient object at 0x000001CDB21B2FD0>
+diagram_data = {'appState': {'viewBackgroundColor': '#ffffff'}, 'elements': [{'height': 100, 'id': 'element1', 'type': 'rectangle', 'width': 200, ...}], 'source': 'https://excalidraw.com', 'type': 'excalidraw', ...}
+
+    def test_get_diagram(client: TestClient, diagram_data):
+        """Test retrieving a diagram via API."""
+        # Create diagram
+        create_response = client.post(
+            "/api/v1/excalidraw/diagrams",
+            json={
+                "diagram_data": diagram_data,
+                "patient_id": "patient-123",
+                "title": "Test Diagram",
+            },
+        )
+    
+>       media_id = create_response.json()["media_id"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'media_id'
+
+tests\test_excalidraw_routes.py:61: KeyError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-04 19:37:46 [info     ] tenant_resolver.initialized    module_domains=['saudeconectada.com.br'] path_resolution=False platform_domains=['intellicare.ia.br'] query_resolution=False
+2026-03-04 19:37:46 [warning  ] grahame.db.fallback            msg='Using in-memory SQLite'
+2026-03-04 19:37:46 [info     ] hl7v2.publisher.initialized    redis_url=redis://localhost:6379/0
+2026-03-04 19:37:46 [info     ] rate_limiter.initialized       redis_url=redis://localhost:6379/0
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-04 19:37:46 [info     ] rate_limiter.closed
+2026-03-04 19:37:46 [info     ] grahame.shutdown
+_________________________ test_list_patient_diagrams __________________________
+
+client = <starlette.testclient.TestClient object at 0x000001CDB21B3C50>
+diagram_data = {'appState': {'viewBackgroundColor': '#ffffff'}, 'elements': [{'height': 100, 'id': 'element1', 'type': 'rectangle', 'width': 200, ...}], 'source': 'https://excalidraw.com', 'type': 'excalidraw', ...}
+
+    def test_list_patient_diagrams(client: TestClient, diagram_data):
+        """Test listing diagrams for a patient."""
+        # Create multiple diagrams
+        client.post(
+            "/api/v1/excalidraw/diagrams",
+            json={
+                "diagram_data": diagram_data,
+                "patient_id": "patient-123",
+                "title": "Diagram 1",
+                "category": "clinical-diagram",
+            },
+        )
+    
+        client.post(
+            "/api/v1/excalidraw/diagrams",
+            json={
+                "diagram_data": diagram_data,
+                "patient_id": "patient-123",
+                "title": "Diagram 2",
+                "category": "education",
+            },
+        )
+    
+        # List all diagrams
+        response = client.get("/api/v1/excalidraw/patients/patient-123/diagrams")
+    
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests\test_excalidraw_routes.py:107: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-04 19:37:46 [info     ] tenant_resolver.initialized    module_domains=['saudeconectada.com.br'] path_resolution=False platform_domains=['intellicare.ia.br'] query_resolution=False
+2026-03-04 19:37:46 [warning  ] grahame.db.fallback            msg='Using in-memory SQLite'
+2026-03-04 19:37:46 [info     ] hl7v2.publisher.initialized    redis_url=redis://localhost:6379/0
+2026-03-04 19:37:46 [info     ] rate_limiter.initialized       redis_url=redis://localhost:6379/0
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-04 19:37:46 [info     ] rate_limiter.closed
+2026-03-04 19:37:46 [info     ] grahame.shutdown
+_____________________________ test_update_diagram _____________________________
+
+client = <starlette.testclient.TestClient object at 0x000001CDB198C050>
+diagram_data = {'appState': {'viewBackgroundColor': '#ffffff'}, 'elements': [{'height': 100, 'id': 'element1', 'type': 'rectangle', 'width': 200, ...}], 'source': 'https://excalidraw.com', 'type': 'excalidraw', ...}
+
+    def test_update_diagram(client: TestClient, diagram_data):
+        """Test updating a diagram via API."""
+        # Create diagram
+        create_response = client.post(
+            "/api/v1/excalidraw/diagrams",
+            json={
+                "diagram_data": diagram_data,
+                "patient_id": "patient-123",
+                "title": "Original Title",
+            },
+        )
+    
+>       media_id = create_response.json()["media_id"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'media_id'
+
+tests\test_excalidraw_routes.py:134: KeyError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-04 19:37:46 [info     ] tenant_resolver.initialized    module_domains=['saudeconectada.com.br'] path_resolution=False platform_domains=['intellicare.ia.br'] query_resolution=False
+2026-03-04 19:37:46 [warning  ] grahame.db.fallback            msg='Using in-memory SQLite'
+2026-03-04 19:37:46 [info     ] hl7v2.publisher.initialized    redis_url=redis://localhost:6379/0
+2026-03-04 19:37:46 [info     ] rate_limiter.initialized       redis_url=redis://localhost:6379/0
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-04 19:37:46 [info     ] rate_limiter.closed
+2026-03-04 19:37:46 [info     ] grahame.shutdown
+_____________________________ test_delete_diagram _____________________________
+
+client = <starlette.testclient.TestClient object at 0x000001CDB198DA70>
+diagram_data = {'appState': {'viewBackgroundColor': '#ffffff'}, 'elements': [{'height': 100, 'id': 'element1', 'type': 'rectangle', 'width': 200, ...}], 'source': 'https://excalidraw.com', 'type': 'excalidraw', ...}
+
+    def test_delete_diagram(client: TestClient, diagram_data):
+        """Test deleting a diagram via API."""
+        # Create diagram
+        create_response = client.post(
+            "/api/v1/excalidraw/diagrams",
+            json={
+                "diagram_data": diagram_data,
+                "patient_id": "patient-123",
+                "title": "To Delete",
+            },
+        )
+    
+>       media_id = create_response.json()["media_id"]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'media_id'
+
+tests\test_excalidraw_routes.py:176: KeyError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-04 19:37:47 [info     ] tenant_resolver.initialized    module_domains=['saudeconectada.com.br'] path_resolution=False platform_domains=['intellicare.ia.br'] query_resolution=False
+2026-03-04 19:37:47 [warning  ] grahame.db.fallback            msg='Using in-memory SQLite'
+2026-03-04 19:37:47 [info     ] hl7v2.publisher.initialized    redis_url=redis://localhost:6379/0
+2026-03-04 19:37:47 [info     ] rate_limiter.initialized       redis_url=redis://localhost:6379/0
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-04 19:37:47 [info     ] rate_limiter.closed
+2026-03-04 19:37:47 [info     ] grahame.shutdown
+_____________ TestPatientSummary.test_summary_vital_signs_section _____________
+
+self = <tests.test_fhir_operations.TestPatientSummary object at 0x000001CDB1F19810>
+session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001CDB2264DD0>
+patient_silva = <FHIRResource Patient/patient-123>
+observation_heartrate = <FHIRResource Observation/obs-001>
+
+>   ???
+E   AssertionError: assert '8716-3' in ['30954-2']
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_fhir_operations.py:284: AssertionError
+____________________ test_validate_api_key_missing_header _____________________
+
+mock_request = <MagicMock id='1982963851216'>
+mock_db = <AsyncMock id='1982963852224'>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:50: TypeError
+______________________ test_validate_api_key_invalid_key ______________________
+
+mock_request = <MagicMock id='1982963852896'>
+mock_db = <AsyncMock id='1982963854240'>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:69: TypeError
+_______________________ test_validate_api_key_inactive ________________________
+
+mock_request = <MagicMock id='1982963856256'>
+mock_db = <AsyncMock id='1982963857600'>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:99: TypeError
+________________________ test_validate_api_key_expired ________________________
+
+mock_request = <MagicMock id='1982967350000'>
+mock_db = <AsyncMock id='1982967351344'>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:129: TypeError
+__________________ test_validate_api_key_ip_not_whitelisted ___________________
+
+mock_request = <MagicMock id='1982967353360'>
+mock_db = <AsyncMock id='1982967354704'>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:160: TypeError
+________________________ test_validate_api_key_success ________________________
+
+mock_request = <MagicMock id='1982967357056'>
+mock_db = <AsyncMock id='1982967358400'>
+valid_api_key = <grahame.models.hl7v2_api_key.HL7v2APIKey object at 0x000001CDB198C510>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:179: TypeError
+________________ test_validate_api_key_with_whitelist_success _________________
+
+mock_request = <MagicMock id='1982967361424'>
+mock_db = <AsyncMock id='1982967362768'>
+
+>   ???
+E   TypeError: validate_hl7v2_api_key() got an unexpected keyword argument 'db'
+
+C:\DOCSHARE\INTELLICARE\MODULARIZACAO\intellicare-grahame\tests\test_hl7v2_auth_dependency.py:209: TypeError
+___________ test_failover_handler_execute_with_retry_recovers_once ____________
+
+    @pytest.mark.asyncio
+    async def test_failover_handler_execute_with_retry_recovers_once() -> None:
+        redis_mock = AsyncMock()
+        redis_mock.ping = AsyncMock(return_value=True)
+    
+        with patch("app.jobs.failover.aioredis.from_url", new=AsyncMock(return_value=redis_mock)):
+            handler = RedisFailoverHandler(
+                "redis://localhost:6379/0",
+                config=FailoverConfig(initial_delay_seconds=0, max_retries=2),
+            )
+            await handler.connect()
+    
+        state = {"calls": 0}
+    
+        async def flaky_operation(_redis):
+            state["calls"] += 1
+            if state["calls"] == 1:
+                raise aioredis.ConnectionError("simulated drop")
+            return "ok"
+    
+        with patch.object(handler, "_handle_connection_loss", new=AsyncMock()) as reconnect_mock:
+>           result = await handler.execute_with_retry(flaky_operation)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_jobs_failover.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+app\jobs\failover.py:227: in execute_with_retry
+    return await operation(self._redis, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+_redis = <AsyncMock id='1982967364448'>
+
+    async def flaky_operation(_redis):
+        state["calls"] += 1
+        if state["calls"] == 1:
+>           raise aioredis.ConnectionError("simulated drop")
+E           TypeError: exceptions must derive from BaseException
+
+tests\test_jobs_failover.py:49: TypeError
+============================== warnings summary ===============================
+grahame\config.py:6
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\config.py:6: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class GrahameConfig(BaseSettings):
+
+grahame\api\schemas\hl7v2_api_key.py:81
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_api_key.py:81: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class HL7v2APIKeyResponse(HL7v2APIKeyBase):
+
+grahame\api\schemas\hl7v2_api_key.py:97
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_api_key.py:97: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class HL7v2APIKeyListResponse(BaseModel):
+
+grahame\api\schemas\hl7v2_api_key.py:144
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_api_key.py:144: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class IPWhitelistResponse(BaseModel):
+
+grahame\api\schemas\hl7v2_audit.py:9
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_audit.py:9: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class HL7v2AuditLogResponse(BaseModel):
+
+tests/hl7v2/test_event_publisher.py::test_publish_patient_created
+tests/hl7v2/test_event_publisher.py::test_publish_encounter_created
+tests/hl7v2/test_event_publisher.py::test_publish_handles_redis_error
+tests/hl7v2/test_event_publisher.py::test_disconnect_from_redis
+tests/hl7v2/test_event_publisher.py::test_disconnect_from_redis
+tests/hl7v2/test_event_publisher.py::test_event_timestamp_is_iso_format
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\events\hl7v2_publisher.py:91: DeprecationWarning: Call to deprecated close. (Use aclose() instead) -- Deprecated since version 5.0.1.
+    await self._redis.close()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/hl7v2/test_event_publisher.py::test_connect_to_redis - Assertion...
+FAILED tests/hl7v2/test_event_publisher.py::test_publish_patient_created - As...
+FAILED tests/hl7v2/test_event_publisher.py::test_publish_encounter_created - ...
+FAILED tests/hl7v2/test_event_publisher.py::test_publish_handles_redis_error
+FAILED tests/hl7v2/test_event_publisher.py::test_disconnect_from_redis - Asse...
+FAILED tests/hl7v2/test_event_publisher.py::test_event_timestamp_is_iso_format
+FAILED tests/test_excalidraw_routes.py::test_create_diagram - assert 405 == 201
+FAILED tests/test_excalidraw_routes.py::test_get_diagram - KeyError: 'media_id'
+FAILED tests/test_excalidraw_routes.py::test_list_patient_diagrams - assert 4...
+FAILED tests/test_excalidraw_routes.py::test_update_diagram - KeyError: 'medi...
+FAILED tests/test_excalidraw_routes.py::test_delete_diagram - KeyError: 'medi...
+FAILED tests/test_fhir_operations.py::TestPatientSummary::test_summary_vital_signs_section
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_missing_header
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_invalid_key
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_inactive - ...
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_expired - T...
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_ip_not_whitelisted
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_success - T...
+FAILED tests/test_hl7v2_auth_dependency.py::test_validate_api_key_with_whitelist_success
+FAILED tests/test_jobs_failover.py::test_failover_handler_execute_with_retry_recovers_once
+ERROR tests/test_onda9.py::test_ai_operation_json - TypeError: TestClient.__i...
+ERROR tests/test_onda9.py::test_fhir_ai_operation - TypeError: TestClient.__i...
+ERROR tests/test_onda9.py::test_schedule_find_returns_bundle - TypeError: Tes...
+ERROR tests/test_onda9.py::test_appointment_book_requires_slot_and_patient - ...
+ERROR tests/test_onda9.py::test_on_behalf_of_header_accepted - TypeError: Tes...
+ERROR tests/test_onda9.py::test_on_behalf_of_invalid_returns_403 - TypeError:...
+20 failed, 41 deselected, 11 warnings, 6 errors in 3.99s

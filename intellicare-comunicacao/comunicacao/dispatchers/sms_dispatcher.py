@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Any
 from datetime import UTC, datetime
 
 from comunicacao.dispatchers.base import (
@@ -32,7 +33,12 @@ class SMSDispatcher:
         self.provider = provider
         logger.info("SMSDispatcher inicializado (stub) - provider=%s", provider)
 
-    async def send(self, message: ChannelMessage) -> DispatchResult:
+    def _get_provider(self, ctx: Any = None) -> str:
+        if ctx and hasattr(ctx, "tenant_settings") and isinstance(ctx.tenant_settings, dict):
+            return ctx.tenant_settings.get("sms_provider", self.provider)
+        return self.provider
+
+    async def send(self, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         """Envia SMS (stub)."""
         logger.info(
             "SMSDispatcher.send (stub): intent=%s, recipient=%s",
@@ -47,26 +53,27 @@ class SMSDispatcher:
             timestamp=datetime.now(UTC),
         )
 
-    async def get_status(self, channel_message_id: str) -> DeliveryStatus:
+    async def get_status(self, channel_message_id: str, ctx: Any = None) -> DeliveryStatus:
         """Consulta status de entrega (stub)."""
         logger.info("SMSDispatcher.get_status (stub): message_id=%s", channel_message_id)
         return DeliveryStatus.SENT
 
-    async def cancel(self, channel_message_id: str) -> bool:
+    async def cancel(self, channel_message_id: str, ctx: Any = None) -> bool:
         """Cancela envio pendente (stub)."""
         logger.info("SMSDispatcher.cancel (stub): message_id=%s", channel_message_id)
         return False  # SMS não podem ser cancelados após envio
 
-    async def health_check(self) -> ChannelHealth:
+    async def health_check(self, ctx: Any = None) -> ChannelHealth:
         """Verifica saúde do canal (stub)."""
+        provider = self._get_provider(ctx)
         return ChannelHealth(
             channel=self.channel,
             available=True,
             status="up",
-            details={"provider": self.provider, "status": "stub", "latency_ms": 100},
+            details={"provider": provider, "status": "stub", "latency_ms": 100},
         )
 
-    async def test_send(self, recipient: ResolvedRecipient) -> DispatchResult:
+    async def test_send(self, recipient: ResolvedRecipient, ctx: Any = None) -> DispatchResult:
         """Envia mensagem de teste (stub)."""
         logger.info("SMSDispatcher.test_send (stub): recipient=%s", recipient.recipient_id)
         
@@ -76,8 +83,9 @@ class SMSDispatcher:
             timestamp=datetime.now(UTC),
         )
 
-    async def get_capabilities(self) -> ChannelCapabilities:
+    async def get_capabilities(self, ctx: Any = None) -> ChannelCapabilities:
         """Retorna capacidades do canal."""
+        provider = self._get_provider(ctx)
         return ChannelCapabilities(
             channel=self.channel,
             supports_read_receipt=False,
@@ -87,12 +95,12 @@ class SMSDispatcher:
             max_message_length=160,  # SMS padrão
             metadata={
                 "format": "plain",
-                "provider": self.provider,
+                "provider": provider,
                 "implementation": "stub",
             },
         )
 
-    async def validate_recipient(self, recipient: ResolvedRecipient) -> RecipientValidation:
+    async def validate_recipient(self, recipient: ResolvedRecipient, ctx: Any = None) -> RecipientValidation:
         """Valida destinatário (stub)."""
         phone = recipient.channels.get("sms")
         

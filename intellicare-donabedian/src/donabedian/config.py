@@ -24,7 +24,7 @@ class Settings(BaseSettings):
 
     # Database Schema (isolamento por módulo)
     # Use None for SQLite tests (set DATABASE_SCHEMA="NONE" in environment)
-    database_schema: str | None = "intellicare_donabedian"
+    database_schema: str | None = None  # None allows search_path MT isolation
 
     @property
     def db_schema(self) -> str | None:

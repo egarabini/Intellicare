@@ -18,7 +18,7 @@ class SessionStatus(str, Enum):
 @dataclass
 class NiseSession:
     """Represents a patient chat session with Dr. Nise."""
-
+    tenant_id: str
     patient_id: str
     channel: str = "web"  # web | app | rc
     session_id: str = field(default_factory=lambda: str(uuid.uuid4()))
@@ -34,7 +34,7 @@ class NiseSession:
 @dataclass
 class PatientMessage:
     """A message sent by a patient to Dr. Nise."""
-
+    tenant_id: str
     patient_id: str
     content: str
     session_id: Optional[str] = None

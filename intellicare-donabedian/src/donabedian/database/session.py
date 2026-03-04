@@ -5,7 +5,8 @@ Provides async SQLAlchemy session factory and dependency injection
 for FastAPI routes.
 """
 
-from typing import AsyncGenerator
+from typing import AsyncGenerator, Any
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     AsyncEngine,
@@ -33,27 +34,24 @@ AsyncSessionLocal = async_sessionmaker(
 )
 
 
-async def get_session() -> AsyncGenerator[AsyncSession, None]:
+async def get_session(ctx: Any = None) -> AsyncGenerator[AsyncSession, None]:
     """
-    Dependency for FastAPI routes to get a database session.
-    
-    Usage:
-        @app.get("/items")
-        async def get_items(session: AsyncSession = Depends(get_session)):
-            result = await session.execute(select(Item))
-            return result.scalars().all()
-    
-    Yields:
-        AsyncSession: Database session
+    Dependency for FastAPI routes to get a tenant-aware database session.
     """
+    tenant_schema = ctx.schema_name if ctx and hasattr(ctx, "schema_name") else "public"
+    
     async with AsyncSessionLocal() as session:
         try:
+            if "postgresql" in settings.intellicare_database_url:
+                await session.execute(text(f"SET search_path TO {tenant_schema}"))
             yield session
             await session.commit()
         except Exception:
             await session.rollback()
             raise
         finally:
+            if "postgresql" in settings.intellicare_database_url:
+                await session.execute(text("SET search_path TO public"))
             await session.close()
 
 

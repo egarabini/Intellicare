@@ -9,6 +9,7 @@ from typing import Any
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
 
 from pierre import __version__
 from pierre.config import PierreConfig
@@ -19,6 +20,62 @@ logger = logging.getLogger(__name__)
 # Globals (initialized in lifespan)
 _mcp_server: PierreMCPServer | None = None
 _config: PierreConfig | None = None
+
+
+class AnalyzeRequest(BaseModel):
+    """Request padrao BaseAgent para orquestracao via Wanda."""
+
+    patient_id: str
+    query: str = ""
+    parameters: dict[str, Any] = Field(default_factory=dict)
+
+
+def _resolve_tool_payload(query: str, parameters: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    """Mapeia capability de alto nivel para uma tool MCP do PIERRE."""
+    capability = str(parameters.get("capability", "")).strip().lower()
+
+    if capability in {"medical_literature", "search_medical_literature", "literature"}:
+        return "search_medical_literature", {
+            "query": query,
+            "database": parameters.get("database", "all"),
+            "max_results": parameters.get("max_results", 5),
+            "years_back": parameters.get("years_back", 5),
+            "study_type": parameters.get("study_type"),
+        }
+
+    if capability in {"regulatory", "check_regulatory"}:
+        return "check_regulatory", {
+            "query": parameters.get("query") or query,
+            "authority": parameters.get("authority"),
+            "country": parameters.get("country", "br"),
+        }
+
+    if capability in {"summarize", "summarize_document"}:
+        return "summarize_document", {
+            "text": parameters.get("text"),
+            "url": parameters.get("url"),
+            "summary_type": parameters.get("summary_type", "clinical_action"),
+            "max_length": parameters.get("max_length", 600),
+        }
+
+    if capability in {"translate", "translate_to_portuguese"}:
+        return "translate_to_portuguese", {
+            "text": parameters.get("text") or query,
+            "target_style": parameters.get("target_style", "medical_ptbr"),
+        }
+
+    if capability in {"analyze_text", "analysis"}:
+        return "analyze_text", {
+            "text": parameters.get("text") or query,
+            "instruction": parameters.get("instruction", "Analise clinica estruturada."),
+            "output_format": parameters.get("output_format", "structured"),
+        }
+
+    return "web_search", {
+        "query": parameters.get("query") or query,
+        "focus": parameters.get("focus", "guidelines"),
+        "max_results": parameters.get("max_results", 5),
+    }
 
 
 @asynccontextmanager
@@ -180,6 +237,53 @@ async def call_tool(request: Request) -> JSONResponse:
             status_code=500,
             content={"error": str(e), "tool": tool_name},
         )
+
+
+@app.post("/api/v1/analyze")
+async def analyze(request: AnalyzeRequest) -> dict[str, Any]:
+    """Endpoint BaseAgent para uso padrao via Wanda."""
+    if _mcp_server is None:
+        return {
+            "success": False,
+            "patient_id": request.patient_id,
+            "analysis": {"error": "Server nao inicializado"},
+            "recommendations": [],
+            "alerts": [],
+            "confidence": 0.0,
+            "source": "intellicare-pierre",
+        }
+
+    parameters = request.parameters or {}
+    tool_name, tool_args = _resolve_tool_payload(request.query, parameters)
+    try:
+        result = await _mcp_server._route_tool(tool_name, tool_args)
+        confidence = 0.85 if not result.get("error") else 0.25
+        return {
+            "success": True,
+            "patient_id": request.patient_id,
+            "analysis": {
+                "query": request.query,
+                "capability": parameters.get("capability", "web_search"),
+                "tool_used": tool_name,
+                "tool_arguments": tool_args,
+                "result": result,
+            },
+            "recommendations": [],
+            "alerts": [],
+            "confidence": confidence,
+            "source": "intellicare-pierre",
+        }
+    except Exception as exc:  # pragma: no cover - fallback defensivo
+        logger.error("analyze falhou: %s", exc)
+        return {
+            "success": False,
+            "patient_id": request.patient_id,
+            "analysis": {"error": str(exc), "tool_used": tool_name},
+            "recommendations": [],
+            "alerts": [],
+            "confidence": 0.0,
+            "source": "intellicare-pierre",
+        }
 
 
 # ──────────────────────────────────────

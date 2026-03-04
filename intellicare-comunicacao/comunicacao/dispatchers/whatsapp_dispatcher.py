@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Any
 from datetime import UTC, datetime
 
 from comunicacao.dispatchers.base import (
@@ -32,7 +33,7 @@ class WhatsAppDispatcher:
         self.api_key = api_key
         logger.info("WhatsAppDispatcher inicializado (stub)")
 
-    async def send(self, message: ChannelMessage) -> DispatchResult:
+    async def send(self, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         """Envia mensagem via WhatsApp (stub)."""
         logger.info(
             "WhatsAppDispatcher.send (stub): intent=%s, recipient=%s",
@@ -47,17 +48,17 @@ class WhatsAppDispatcher:
             timestamp=datetime.now(UTC),
         )
 
-    async def get_status(self, channel_message_id: str) -> DeliveryStatus:
+    async def get_status(self, channel_message_id: str, ctx: Any = None) -> DeliveryStatus:
         """Consulta status de entrega (stub)."""
         logger.info("WhatsAppDispatcher.get_status (stub): message_id=%s", channel_message_id)
         return DeliveryStatus.SENT
 
-    async def cancel(self, channel_message_id: str) -> bool:
+    async def cancel(self, channel_message_id: str, ctx: Any = None) -> bool:
         """Cancela envio pendente (stub)."""
         logger.info("WhatsAppDispatcher.cancel (stub): message_id=%s", channel_message_id)
         return False  # WhatsApp não permite cancelamento após envio
 
-    async def health_check(self) -> ChannelHealth:
+    async def health_check(self, ctx: Any = None) -> ChannelHealth:
         """Verifica saúde do canal (stub)."""
         return ChannelHealth(
             channel=self.channel,
@@ -66,7 +67,7 @@ class WhatsAppDispatcher:
             details={"api": "whatsapp_business", "status": "stub", "latency_ms": 80},
         )
 
-    async def test_send(self, recipient: ResolvedRecipient) -> DispatchResult:
+    async def test_send(self, recipient: ResolvedRecipient, ctx: Any = None) -> DispatchResult:
         """Envia mensagem de teste (stub)."""
         logger.info("WhatsAppDispatcher.test_send (stub): recipient=%s", recipient.recipient_id)
         
@@ -76,7 +77,7 @@ class WhatsAppDispatcher:
             timestamp=datetime.now(UTC),
         )
 
-    async def get_capabilities(self) -> ChannelCapabilities:
+    async def get_capabilities(self, ctx: Any = None) -> ChannelCapabilities:
         """Retorna capacidades do canal."""
         return ChannelCapabilities(
             channel=self.channel,
@@ -92,7 +93,7 @@ class WhatsAppDispatcher:
             },
         )
 
-    async def validate_recipient(self, recipient: ResolvedRecipient) -> RecipientValidation:
+    async def validate_recipient(self, recipient: ResolvedRecipient, ctx: Any = None) -> RecipientValidation:
         """Valida destinatário (stub)."""
         phone = recipient.channels.get("whatsapp")
         

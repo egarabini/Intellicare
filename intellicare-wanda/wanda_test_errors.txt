@@ -1,0 +1,227 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\intellicare-wanda
+configfile: pytest.ini (WARNING: ignoring pytest config in pyproject.toml!)
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 544 items / 531 deselected / 13 selected
+run-last-failure: rerun previous 13 failures
+
+tests/test_bot_handler.py::TestWandaBotHandler::test_context_updated_with_patient_id FAILED [  7%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_chat_returns_response FAILED [ 15%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_new_session_created FAILED [ 23%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_existing_session_reused FAILED [ 30%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_flowise_failure_returns_fallback FAILED [ 38%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_dangerous_response_flagged FAILED [ 46%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_escalation_triggers_alert_hub FAILED [ 53%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_no_escalation_when_disabled FAILED [ 61%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_end_session FAILED   [ 69%]
+tests/test_nise_gateway.py::TestDrNiseGateway::test_ips_loader_called FAILED [ 76%]
+tests/test_workflow_graphs.py::TestWorkflowGraphs::test_checkpointer_save_restore_memory FAILED [ 84%]
+tests/test_workflow_graphs.py::TestWorkflowGraphs::test_checkpointer_delete FAILED [ 92%]
+tests/test_workflow_graphs.py::TestWorkflowGraphs::test_checkpointer_restore_nonexistent_returns_none FAILED [100%]
+ERROR: Coverage failure: total of 36 is less than fail-under=80
+
+
+================================== FAILURES ===================================
+__________ TestWandaBotHandler.test_context_updated_with_patient_id ___________
+tests\test_bot_handler.py:114: in test_context_updated_with_patient_id
+    ctx = await handler._context.get("user-1", "GENERAL")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: BotContextStore.get() missing 1 required positional argument: 'channel_id'
+________________ TestDrNiseGateway.test_chat_returns_response _________________
+tests\test_nise_gateway.py:31: in test_chat_returns_response
+    msg = PatientMessage(patient_id="p1", content="Tenho dor de cabeþa")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+_________________ TestDrNiseGateway.test_new_session_created __________________
+tests\test_nise_gateway.py:40: in test_new_session_created
+    msg = PatientMessage(patient_id="p1", content="Olß")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+_______________ TestDrNiseGateway.test_existing_session_reused ________________
+tests\test_nise_gateway.py:47: in test_existing_session_reused
+    msg1 = PatientMessage(patient_id="p1", content="Mensagem 1")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+___________ TestDrNiseGateway.test_flowise_failure_returns_fallback ___________
+tests\test_nise_gateway.py:61: in test_flowise_failure_returns_fallback
+    msg = PatientMessage(patient_id="p1", content="Teste")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+______________ TestDrNiseGateway.test_dangerous_response_flagged ______________
+tests\test_nise_gateway.py:72: in test_dangerous_response_flagged
+    msg = PatientMessage(patient_id="p1", content="Posso parar insulina?")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+____________ TestDrNiseGateway.test_escalation_triggers_alert_hub _____________
+tests\test_nise_gateway.py:89: in test_escalation_triggers_alert_hub
+    msg = PatientMessage(patient_id="p1", content="estou mal")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+_____________ TestDrNiseGateway.test_no_escalation_when_disabled ______________
+tests\test_nise_gateway.py:107: in test_no_escalation_when_disabled
+    msg = PatientMessage(patient_id="p1", content="estou mal")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+_____________________ TestDrNiseGateway.test_end_session ______________________
+tests\test_nise_gateway.py:117: in test_end_session
+    msg = PatientMessage(patient_id="p1", content="Olß")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+__________________ TestDrNiseGateway.test_ips_loader_called ___________________
+tests\test_nise_gateway.py:126: in test_ips_loader_called
+    msg = PatientMessage(patient_id="p1", content="Tenho diabetes")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+__________ TestWorkflowGraphs.test_checkpointer_save_restore_memory ___________
+tests\test_workflow_graphs.py:72: in test_checkpointer_save_restore_memory
+    await cp.save("exec-1", state)
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: WorkflowCheckpointer.save() missing 1 required positional argument: 'state'
+_________________ TestWorkflowGraphs.test_checkpointer_delete _________________
+tests\test_workflow_graphs.py:81: in test_checkpointer_delete
+    await cp.save("exec-2", {"data": "value"})
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: WorkflowCheckpointer.save() missing 1 required positional argument: 'state'
+____ TestWorkflowGraphs.test_checkpointer_restore_nonexistent_returns_none ____
+tests\test_workflow_graphs.py:90: in test_checkpointer_restore_nonexistent_returns_none
+    restored = await cp.restore("nonexistent-exec-id")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: WorkflowCheckpointer.restore() missing 1 required positional argument: 'execution_id'
+=============================== tests coverage ================================
+_______________ coverage: platform win32, python 3.14.0-final-0 _______________
+
+Name                                           Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------
+wanda\__init__.py                                  0      0   100%
+wanda\alerts\__init__.py                           3      0   100%
+wanda\alerts\consolidator.py                      40     27    32%   25-27, 30, 33-36, 44-62, 66-72
+wanda\alerts\deduplicator.py                      35     21    40%   33-34, 37, 40, 44-53, 57-67
+wanda\alerts\escalator.py                         60     42    30%   34-38, 47-51, 55-57, 61-65, 69-76, 79-84, 87-101, 105
+wanda\alerts\hub.py                              119     91    24%   42-50, 57-58, 61-62, 74-168, 176-180, 189, 192-201, 206-210, 213-215, 218-219, 222-227, 230-238, 241-246, 249-261
+wanda\alerts\models.py                            42      6    86%   28-31, 64-66
+wanda\alerts\prioritizer.py                       40     31    22%   39-81
+wanda\alerts\queue.py                             45     30    33%   20-22, 39-52, 64-69, 72, 75, 78-82, 90-95, 101-107, 110-113
+wanda\alerts\store.py                            108     93    14%   20, 24-52, 60-80, 83-100, 105-126, 131-153, 156-171, 175
+wanda\api\__init__.py                              0      0   100%
+wanda\api\aggregation_routes.py                   32     18    44%   27-28, 44-93
+wanda\api\alert_routes.py                         60     27    55%   43-46, 55-70, 84-86, 91-95, 100-104, 109-111, 116-117
+wanda\api\app.py                                 126     63    50%   12, 49-133, 146, 178, 188, 206-211, 225-234, 244-245, 251-253, 262-267, 273-281
+wanda\api\bot_routes.py                           42     18    57%   23-26, 31-35, 40-41, 49-51, 56-57, 62-63
+wanda\api\event_routes.py                         35     16    54%   22-25, 29-32, 37-38, 44, 49-60
+wanda\api\ips_routes.py                           39     26    33%   18-19, 25-29, 39-53, 62-66, 75-81
+wanda\api\mcp_routes.py                           58     38    34%   22-23, 34-38, 51-64, 77-92, 104-123, 129-139
+wanda\api\metrics_routes.py                       26     13    50%   13, 18-20, 25-27, 32-34, 39-41
+wanda\api\nise_routes.py                          43     22    49%   21-24, 29-40, 51-56, 67-70, 75-77, 82-84
+wanda\api\registry_routes.py                      40     24    40%   21-22, 28-32, 46-50, 56-63, 75-79, 95-99
+wanda\api\resilience_routes.py                    25     14    44%   13-14, 19-21, 26-28, 33-38
+wanda\api\routing_routes.py                       38     20    47%   32-35, 58-107, 113
+wanda\api\trace_routes.py                         46     28    39%   17-19, 29-32, 50-52, 57-60, 69-76, 81-86
+wanda\api\workflow_routes.py                      39     20    49%   23-26, 31-51, 67-72, 77-78
+wanda\bot\__init__.py                              3      0   100%
+wanda\bot\auth.py                                 37     27    27%   37-40, 46-65, 75-83
+wanda\bot\commands\__init__.py                     0      0   100%
+wanda\bot\commands\ajuda.py                        7      7     0%   3-14
+wanda\bot\commands\alerta.py                      16     16     0%   3-41
+wanda\bot\commands\guideline.py                   20     20     0%   3-39
+wanda\bot\commands\paciente.py                    31     31     0%   3-56
+wanda\bot\commands\resumo.py                      20     20     0%   3-38
+wanda\bot\commands\status.py                      21     21     0%   3-34
+wanda\bot\commands\teleconsulta.py                23     23     0%   3-50
+wanda\bot\context_store.py                        45     18    60%   34-38, 44-48, 57-64
+wanda\bot\formatter.py                            35     25    29%   18-34, 37, 44, 47-50, 60-66, 69-79, 82
+wanda\bot\handler.py                              63     17    73%   55-56, 70, 80-82, 91-95, 100-103, 125, 131, 135-137
+wanda\bot\models.py                               41      0   100%
+wanda\bot\parser.py                               35      5    86%   43, 52, 64, 76-77
+wanda\bot\rc_client.py                            31     21    32%   28-32, 36-68, 71
+wanda\bot\router.py                               40     31    22%   27-32, 38-70, 73
+wanda\config.py                                   86      1    99%   134
+wanda\database\__init__.py                         4      0   100%
+wanda\database\engine.py                          24     15    38%   37-46, 61-70, 76-80
+wanda\database\models.py                         163      0   100%
+wanda\database\repository.py                     168    142    15%   31, 40-114, 118-124, 128-131, 135-140, 146-147, 151-177, 181-205, 211-219, 225-233, 239-244, 250-284, 288-291, 295-300, 306-330, 334-337, 343-348
+wanda\discovery\__init__.py                        0      0   100%
+wanda\discovery\models.py                         52      6    88%   28, 49, 70, 73, 99, 124
+wanda\discovery\registry.py                      118     88    25%   36-39, 43, 55-64, 70-96, 107-209, 219, 227, 231, 239, 243, 247
+wanda\events\__init__.py                           4      0   100%
+wanda\events\consumer.py                          89     66    26%   42-50, 57-66, 69-76, 83-91, 98-118, 126-138, 144-159, 174
+wanda\events\coordinator.py                       72     59    18%   66-70, 73, 77-147, 161-196
+wanda\events\deduplicator.py                      31     19    39%   23-24, 27, 30-36, 39-47
+wanda\events\models.py                            30      0   100%
+wanda\ips\__init__.py                              5      0   100%
+wanda\ips\enricher.py                             47     33    30%   46-63, 67-82, 86-100
+wanda\ips\fallback.py                             50     39    22%   28-30, 48-83, 90, 94-102, 106-114
+wanda\ips\manager.py                             185    150    19%   55, 72-116, 120-123, 127-136, 144-178, 182, 193-209, 214-235, 239-251, 255-272, 276, 290, 293-299, 302-307, 310-315
+wanda\ips\models.py                               44     10    77%   39, 57, 72, 97-104, 116
+wanda\llm\__init__.py                              4      0   100%
+wanda\llm\exceptions.py                           15      9    40%   8-10, 17-19, 28-30
+wanda\llm\ollama_provider.py                      48     34    29%   30-33, 37, 50-106, 117-124
+wanda\llm\provider.py                             14      1    93%   22
+wanda\mcp\__init__.py                              6      0   100%
+wanda\mcp\client.py                              161    132    18%   78-83, 88, 96-156, 170-261, 274-278, 285-298, 302-311, 315, 319, 323-324, 328-329, 337-358, 371-397, 401-410
+wanda\mcp\config.py                               35     17    51%   69-70, 80-92, 97-106
+wanda\mcp\exceptions.py                           28     18    36%   14-18, 25-27, 36-39, 48-53
+wanda\mcp\models.py                               35      4    89%   20, 49, 52, 91
+wanda\mcp\multi_mcp_provider.py                   37     26    30%   16-17, 21-47, 56, 59, 62, 66
+wanda\mcp\tool_registry.py                        47     28    40%   28-32, 35, 113-114, 118-123, 127-148, 158, 162, 166, 170, 177
+wanda\nise\__init__.py                             3      0   100%
+wanda\nise\audit_logger.py                        27     16    41%   29-54, 58
+wanda\nise\flowise_client.py                      42     33    21%   28-33, 41-73, 76-82
+wanda\nise\gateway.py                             65     39    40%   60-113, 122-126, 130-145, 148
+wanda\nise\ips_simplifier.py                      45     33    27%   35-71, 75-82, 86-96
+wanda\nise\models.py                              48      0   100%
+wanda\nise\response_filter.py                     21     13    38%   44-67
+wanda\nise\session_manager.py                     88     61    31%   39, 48-58, 65-69, 72-73, 76-78, 81-84, 91-110, 113-122, 126-137, 141-162
+wanda\observability\__init__.py                    4      0   100%
+wanda\observability\metrics.py                   173    144    17%   20-163, 172, 175-183, 186-200, 210-220, 223, 226-233, 236-237, 240, 243, 246-248, 251-256, 259, 268-272, 275-286, 315-319, 343-350, 353-357, 361-365, 368-371, 379-382, 391-395
+wanda\observability\slo_store.py                  37     26    30%   11-12, 15-16, 19-20, 25-27, 30-35, 38-48
+wanda\observability\tracing.py                   135     82    39%   48, 51, 54, 63-71, 78, 81-96, 105-175, 179-183, 190-191, 214, 217, 225-226, 239-240, 253-265
+wanda\orchestrator\__init__.py                     0      0   100%
+wanda\orchestrator\aggregator.py                  60     53    12%   27-57, 68-91, 96-101, 105-115
+wanda\orchestrator\contradiction_detector.py      57     39    32%   76, 90-102, 109-161, 165-169
+wanda\orchestrator\intelligent_aggregator.py      59     43    27%   103-105, 122-153, 163-220, 233-237, 247
+wanda\orchestrator\intent_extractor.py            55     33    40%   20, 24, 104-131, 145, 148-152, 159-177
+wanda\orchestrator\intent_router.py               61     47    23%   69-72, 94-119, 128-195, 208-213
+wanda\orchestrator\orchestrator.py               358    279    22%   98-112, 116-137, 141-162, 166-205, 209-264, 276-285, 300-301, 310-318, 332-333, 337-357, 361-401, 405-445, 448-454, 457-485, 489-491, 500-635, 644-659, 673-719, 733-759, 771-794, 798-805
+wanda\orchestrator\router.py                      40     30    25%   70-118, 126-140
+wanda\registry\__init__.py                         3      0   100%
+wanda\registry\discovery_service.py              117     86    26%   25-27, 31, 35, 38, 71-99, 103-112, 121-163, 167, 173-177, 183-191, 195-204
+wanda\registry\persistent_registry.py            109     75    31%   44, 50, 58, 62, 70, 74, 78, 82, 89-114, 122-130, 134-142, 148-166, 172-188, 195-202, 213, 220-248
+wanda\resilience\__init__.py                       9      0   100%
+wanda\resilience\circuit_breaker.py              113     91    19%   24-35, 38-48, 51-53, 56-60, 63, 71-81, 84-92, 95-100, 103-111, 114-127, 140-146, 149-159, 162-166, 169
+wanda\resilience\errors.py                         1      0   100%
+wanda\resilience\fallback_manager.py              10      4    60%   18-19, 26-31
+wanda\resilience\health_dashboard.py              16      9    44%   11, 14-26, 29-30
+wanda\resilience\models.py                        13      0   100%
+wanda\resilience\retry_policy.py                  31     17    45%   21, 28-43
+wanda\resilience\state_store.py                   35     23    34%   10, 13, 16-17, 20, 25, 28-36, 39-42, 45-48
+wanda\resilience\timeout_manager.py               11      8    27%   6, 15-21
+wanda\rules\__init__.py                            0      0   100%
+wanda\rules\safety.py                             45     32    29%   42-51, 58-81, 85-88, 92-100, 108-114
+wanda\workflows\__init__.py                        3      0   100%
+wanda\workflows\checkpointer.py                   42     27    36%   35, 40-50, 54-65, 69-74
+wanda\workflows\executor.py                      107     74    31%   44-59, 79-87, 91, 95-100, 112-134, 148-226, 238-253, 256, 259-269
+wanda\workflows\graphs.py                         56     56     0%   11-155
+wanda\workflows\nodes.py                         144    144     0%   7-281
+wanda\workflows\state.py                          22      0   100%
+----------------------------------------------------------------------------
+TOTAL                                           5476   3484    36%
+Coverage HTML written to dir htmlcov
+FAIL Required test coverage of 80% not reached. Total coverage: 36.38%
+=========================== short test summary info ===========================
+FAILED tests/test_bot_handler.py::TestWandaBotHandler::test_context_updated_with_patient_id - TypeError: BotContextStore.get() missing 1 required positional argument: 'channel_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_chat_returns_response - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_new_session_created - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_existing_session_reused - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_flowise_failure_returns_fallback - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_dangerous_response_flagged - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_escalation_triggers_alert_hub - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_no_escalation_when_disabled - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_end_session - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_nise_gateway.py::TestDrNiseGateway::test_ips_loader_called - TypeError: PatientMessage.__init__() missing 1 required positional argument: 'tenant_id'
+FAILED tests/test_workflow_graphs.py::TestWorkflowGraphs::test_checkpointer_save_restore_memory - TypeError: WorkflowCheckpointer.save() missing 1 required positional argument: 'state'
+FAILED tests/test_workflow_graphs.py::TestWorkflowGraphs::test_checkpointer_delete - TypeError: WorkflowCheckpointer.save() missing 1 required positional argument: 'state'
+FAILED tests/test_workflow_graphs.py::TestWorkflowGraphs::test_checkpointer_restore_nonexistent_returns_none - TypeError: WorkflowCheckpointer.restore() missing 1 required positional argument: 'execution_id'
+===================== 13 failed, 531 deselected in 5.28s ======================

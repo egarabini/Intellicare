@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 from comunicacao.auth import get_current_user, requires_any_role, requires_role
 from comunicacao.routing.models import CommunicationIntentCreate
 from comunicacao.routing.engine import RoutingService
+from comunicacao.auth import get_tenant_context
 import comunicacao.routing.models as routing_models
 from comunicacao.routing.delayed import DelayedWorker
 
@@ -38,6 +39,7 @@ def create_routing_router(get_state: Callable[[], dict[str, Any]]) -> APIRouter:
     async def routing_send(
         payload: CommunicationIntentCreate,
         user: dict[str, Any] = Depends(get_current_user),
+        ctx: Any = Depends(get_tenant_context),
     ) -> dict[str, Any]:
         state = get_state()
         service: RoutingService | None = state.get("routing_service")
@@ -48,7 +50,7 @@ def create_routing_router(get_state: Callable[[], dict[str, Any]]) -> APIRouter:
             service.template_store = state["template_store"]
         if "template_renderer" in state and hasattr(service, "template_renderer"):
             service.template_renderer = state["template_renderer"]
-        intent = await service.send_intent(payload)
+        intent = await service.send_intent(payload, ctx=ctx)
         return {
             "intent_id": str(intent.id),
             "status": intent.status.value,
@@ -60,12 +62,13 @@ def create_routing_router(get_state: Callable[[], dict[str, Any]]) -> APIRouter:
     def routing_get_intent(
         intent_id: str,
         user: dict[str, Any] = Depends(get_current_user),
+        ctx: Any = Depends(get_tenant_context),
     ) -> dict[str, Any]:
         state = get_state()
         service: RoutingService | None = state.get("routing_service")
         if service is None:
             raise HTTPException(status_code=503, detail="routing service indisponivel")
-        loaded = service.get_intent(intent_id=intent_id)
+        loaded = service.get_intent(intent_id=intent_id, ctx=ctx)
         if loaded is None:
             raise HTTPException(status_code=404, detail=f"intent nao encontrada: {intent_id}")
         intent, deliveries = loaded
@@ -80,12 +83,13 @@ def create_routing_router(get_state: Callable[[], dict[str, Any]]) -> APIRouter:
     async def routing_send_batch(
         payload: CommunicationIntentBatchRequest,
         user: dict[str, Any] = Depends(get_current_user),
+        ctx: Any = Depends(get_tenant_context),
     ) -> dict[str, Any]:
         state = get_state()
         service: RoutingService | None = state.get("routing_service")
         if service is None:
             raise HTTPException(status_code=503, detail="routing service indisponivel")
-        accepted, rejected = await service.send_batch(intents=payload.intents)
+        accepted, rejected = await service.send_batch(intents=payload.intents, ctx=ctx)
         return {
             "accepted": len(accepted),
             "rejected": rejected,
@@ -96,12 +100,13 @@ def create_routing_router(get_state: Callable[[], dict[str, Any]]) -> APIRouter:
     @requires_any_role(["comunicacao_read", "comunicacao_admin", "intellicare_admin"])
     def routing_list_intents(
         user: dict[str, Any] = Depends(get_current_user),
+        ctx: Any = Depends(get_tenant_context),
     ) -> dict[str, Any]:
         state = get_state()
         service: RoutingService | None = state.get("routing_service")
         if service is None:
             raise HTTPException(status_code=503, detail="routing service indisponivel")
-        items = service.list_intents()
+        items = service.list_intents(ctx=ctx)
         return {
             "items": [item.model_dump(mode="json") for item in items],
             "total": len(items),
@@ -113,12 +118,13 @@ def create_routing_router(get_state: Callable[[], dict[str, Any]]) -> APIRouter:
     def routing_cancel_intent(
         intent_id: str,
         user: dict[str, Any] = Depends(get_current_user),
+        ctx: Any = Depends(get_tenant_context),
     ) -> dict[str, Any]:
         state = get_state()
         service: RoutingService | None = state.get("routing_service")
         if service is None:
             raise HTTPException(status_code=503, detail="routing service indisponivel")
-        intent = service.cancel_intent(intent_id=intent_id)
+        intent = service.cancel_intent(intent_id=intent_id, ctx=ctx)
         if intent is None:
             raise HTTPException(status_code=404, detail=f"intent nao encontrada: {intent_id}")
         if intent.status in {routing_models.IntentStatus.COMPLETED, routing_models.IntentStatus.FAILED}:

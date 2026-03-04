@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Any
 from datetime import UTC, datetime
 
 from comunicacao.dispatchers.base import (
@@ -37,7 +38,7 @@ class RocketChatDispatcher:
         self._status_map: dict[str, DeliveryStatus] = {}
         logger.info("RocketChatDispatcher inicializado - server=%s", self._config.url)
 
-    async def send(self, message: ChannelMessage) -> DispatchResult:
+    async def send(self, message: ChannelMessage, ctx: Any = None) -> DispatchResult:
         room_id = message.recipient.channels.get("rocketchat")
         if not room_id:
             room_id = message.metadata.get("room_id") if isinstance(message.metadata, dict) else None
@@ -82,10 +83,10 @@ class RocketChatDispatcher:
                 timestamp=datetime.now(UTC),
             )
 
-    async def get_status(self, channel_message_id: str) -> DeliveryStatus:
+    async def get_status(self, channel_message_id: str, ctx: Any = None) -> DeliveryStatus:
         return self._status_map.get(channel_message_id, DeliveryStatus.UNKNOWN)
 
-    async def cancel(self, channel_message_id: str) -> bool:
+    async def cancel(self, channel_message_id: str, ctx: Any = None) -> bool:
         room_id = self._message_room_map.get(channel_message_id)
         if not room_id:
             return False
@@ -94,7 +95,7 @@ class RocketChatDispatcher:
             self._status_map[channel_message_id] = DeliveryStatus.SKIPPED
         return deleted
 
-    async def health_check(self) -> ChannelHealth:
+    async def health_check(self, ctx: Any = None) -> ChannelHealth:
         try:
             health = await self._client.health_check_details()
             available = bool(health.get("healthy"))
@@ -117,7 +118,7 @@ class RocketChatDispatcher:
                 details={"server": self._config.url, "error": str(exc)},
             )
 
-    async def test_send(self, recipient: ResolvedRecipient) -> DispatchResult:
+    async def test_send(self, recipient: ResolvedRecipient, ctx: Any = None) -> DispatchResult:
         message = ChannelMessage(
             intent_id="test-intent",
             correlation_id="test-correlation",
@@ -130,7 +131,7 @@ class RocketChatDispatcher:
         )
         return await self.send(message)
 
-    async def get_capabilities(self) -> ChannelCapabilities:
+    async def get_capabilities(self, ctx: Any = None) -> ChannelCapabilities:
         return ChannelCapabilities(
             channel=self.channel,
             supports_read_receipt=True,
@@ -145,7 +146,7 @@ class RocketChatDispatcher:
             },
         )
 
-    async def validate_recipient(self, recipient: ResolvedRecipient) -> RecipientValidation:
+    async def validate_recipient(self, recipient: ResolvedRecipient, ctx: Any = None) -> RecipientValidation:
         room_id = recipient.channels.get("rocketchat")
         if not room_id:
             return RecipientValidation(

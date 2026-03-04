@@ -69,8 +69,8 @@ class TestWorkflowGraphs:
         from wanda.workflows.checkpointer import WorkflowCheckpointer
         cp = WorkflowCheckpointer()
         state = {"query": "test", "workflow_name": "clinical_analysis", "iterations": 1}
-        await cp.save("exec-1", state)
-        restored = await cp.restore("exec-1")
+        await cp.save("default", "exec-1", state)
+        restored = await cp.restore("default", "exec-1")
         assert restored is not None
         assert restored.get("query") == "test"
 
@@ -78,14 +78,14 @@ class TestWorkflowGraphs:
     async def test_checkpointer_delete(self):
         from wanda.workflows.checkpointer import WorkflowCheckpointer
         cp = WorkflowCheckpointer()
-        await cp.save("exec-2", {"data": "value"})
-        await cp.delete("exec-2")
-        restored = await cp.restore("exec-2")
+        await cp.save("default", "exec-2", {"data": "value"})
+        await cp.delete("default", "exec-2")
+        restored = await cp.restore("default", "exec-2")
         assert restored is None
 
     @pytest.mark.asyncio
     async def test_checkpointer_restore_nonexistent_returns_none(self):
         from wanda.workflows.checkpointer import WorkflowCheckpointer
         cp = WorkflowCheckpointer()
-        restored = await cp.restore("nonexistent-exec-id")
+        restored = await cp.restore("default", "nonexistent-exec-id")
         assert restored is None

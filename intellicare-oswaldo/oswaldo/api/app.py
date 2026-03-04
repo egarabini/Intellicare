@@ -8,6 +8,9 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any, AsyncIterator
 
+
+from fastapi import Depends
+from oswaldo.api.auth import get_tenant_context, check_module_active
 from fastapi import FastAPI
 
 from intellicare_core.contracts import HealthCheck, ModuleInfo
@@ -77,7 +80,7 @@ def create_app() -> FastAPI:
         configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
     @app.get("/api/v1/health")
-    async def health() -> dict[str, Any]:
+    async def health(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-oswaldo'))) -> dict[str, Any]:
         registry = _state.get("registry")
         config = _state.get("config")
         uptime = time.time() - _start_time
@@ -91,7 +94,7 @@ def create_app() -> FastAPI:
         return check.model_dump()
 
     @app.get("/api/v1/info")
-    async def info() -> dict[str, Any]:
+    async def info(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-oswaldo'))) -> dict[str, Any]:
         registry = _state.get("registry")
         config = _state.get("config")
         diseases = registry.list_ids() if registry else []
@@ -105,7 +108,7 @@ def create_app() -> FastAPI:
         return module_info.model_dump()
 
     @app.get("/api/v1/diseases")
-    async def list_diseases() -> list[dict[str, Any]]:
+    async def list_diseases(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-oswaldo'))) -> list[dict[str, Any]]:
         registry = _state.get("registry")
         if not registry:
             return []
@@ -115,41 +118,41 @@ def create_app() -> FastAPI:
         ]
 
     @app.get("/api/v1/staging/{patient_id}")
-    async def get_staging(patient_id: str, disease: str | None = None) -> dict[str, Any]:
+    async def get_staging(patient_id: str, disease: str | None = None, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-oswaldo'))) -> dict[str, Any]:
         engine: ChronicDiseaseEngine = _state["engine"]
         if disease:
-            result = engine.calculate_staging(patient_id, disease)
+            result = engine.calculate_staging(patient_id, disease, ctx=ctx)
             return result.to_dict()
         # Todas as doencas
         registry = _state["registry"]
         results = {}
         for disease_id in registry.list_ids():
             try:
-                results[disease_id] = engine.calculate_staging(patient_id, disease_id).to_dict()
+                results[disease_id] = engine.calculate_staging(patient_id, disease_id, ctx=ctx).to_dict()
             except Exception as e:
                 results[disease_id] = {"error": str(e)}
         return {"patient_id": patient_id, "staging": results}
 
     @app.get("/api/v1/alerts/{patient_id}")
-    async def get_alerts(patient_id: str) -> dict[str, Any]:
+    async def get_alerts(patient_id: str, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-oswaldo'))) -> dict[str, Any]:
         engine: ChronicDiseaseEngine = _state["engine"]
         registry = _state["registry"]
         all_alerts = []
         for disease_id in registry.list_ids():
             try:
-                staging = engine.calculate_staging(patient_id, disease_id)
-                trends = engine.calculate_trends(patient_id, disease_id)
-                alerts = engine.generate_alerts(patient_id, disease_id, staging, trends)
+                staging = engine.calculate_staging(patient_id, disease_id, ctx=ctx)
+                trends = engine.calculate_trends(patient_id, disease_id, ctx=ctx)
+                alerts = engine.generate_alerts(patient_id, disease_id, staging, trends, ctx=ctx)
                 all_alerts.extend([a.to_dict() for a in alerts])
             except Exception:
                 pass
         return {"patient_id": patient_id, "alerts": all_alerts, "total": len(all_alerts)}
 
     @app.post("/api/v1/analyze")
-    async def analyze(patient_id: str, diseases: list[str] | None = None) -> dict[str, Any]:
+    async def analyze(patient_id: str, diseases: list[str] | None = None, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-oswaldo'))) -> dict[str, Any]:
         engine: ChronicDiseaseEngine = _state["engine"]
         knowledge_client: KnowledgeClient | None = _state.get("knowledge_client")
-        summary = engine.get_patient_summary(patient_id, diseases)
+        summary = engine.get_patient_summary(patient_id, diseases, ctx=ctx)
         payload = summary.to_dict()
 
         if knowledge_client:

@@ -1,6 +1,7 @@
 """Persistencia de regras de roteamento (Postgres + fallback)."""
 
 from __future__ import annotations
+from comunicacao.storage.tenant_utils import get_tenant_conn
 
 import logging
 from datetime import UTC, datetime
@@ -51,7 +52,7 @@ class PostgresRoutingRuleStore:
 
     def list_rules(self) -> list[routing_models.RoutingRule]:
         stmt = select(self.table).order_by(self.table.c.priority.asc())
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             rows = conn.execute(stmt).mappings().all()
         items: list[routing_models.RoutingRule] = []
         for row in rows:
@@ -101,7 +102,7 @@ class PostgresRoutingRuleStore:
                 "updated_at": datetime.now(UTC),
             },
         )
-        with self.engine.begin() as conn:
+        with get_tenant_conn(self.engine, ctx) as conn:
             conn.execute(stmt)
         return rule
 

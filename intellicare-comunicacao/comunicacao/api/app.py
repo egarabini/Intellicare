@@ -303,6 +303,9 @@ async def lifespan(app: FastAPI):  # noqa: ARG001
 def create_app() -> FastAPI:
     from .sms_routes import router as sms_router
     from .email_routes import router as email_router
+    from fastapi import Depends
+    from comunicacao.auth import get_tenant_context, check_module_active
+    config = ComunicacaoConfig()
 
     app = FastAPI(
         title="IntelliCare Communication Module",
@@ -311,9 +314,15 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
+    # Configurar dependências de tenant
+    tenant_deps = []
+    if config.multi_tenant_enabled:
+        tenant_deps.append(Depends(get_tenant_context))
+        tenant_deps.append(Depends(check_module_active("comunicacao")))
+
     # Register Routers
-    app.include_router(sms_router, prefix="/api/v1")
-    app.include_router(email_router, prefix="/api/v1")
+    app.include_router(sms_router, prefix="/api/v1", dependencies=tenant_deps)
+    app.include_router(email_router, prefix="/api/v1", dependencies=tenant_deps)
 
     # Register simple health/info endpoints FIRST so they take priority over health_router
     @app.get("/api/v1/health")
@@ -362,18 +371,18 @@ def create_app() -> FastAPI:
             ),
         }
 
-    app.include_router(create_channel_router(lambda: _state))
-    app.include_router(create_routing_router(lambda: _state))
-    app.include_router(create_template_router(lambda: _state))
-    app.include_router(create_case_room_router(lambda: _state))
-    app.include_router(rocketchat_router)
+    app.include_router(create_channel_router(lambda: _state), dependencies=tenant_deps)
+    app.include_router(create_routing_router(lambda: _state), dependencies=tenant_deps)
+    app.include_router(create_template_router(lambda: _state), dependencies=tenant_deps)
+    app.include_router(create_case_room_router(lambda: _state), dependencies=tenant_deps)
+    app.include_router(rocketchat_router, dependencies=tenant_deps)
     app.include_router(health_router)
-    app.include_router(lgpd_router)
+    app.include_router(lgpd_router, dependencies=tenant_deps)
 
     # Jitsi routes (EF-COM-020 — aguarda comunicacao.jitsi)
     try:
         from comunicacao.api.jitsi_routes import router as jitsi_router
-        app.include_router(jitsi_router)
+        app.include_router(jitsi_router, dependencies=tenant_deps)
     except ImportError:
         logger.warning("jitsi_routes não disponível (comunicacao.jitsi não instalado)")
 

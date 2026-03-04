@@ -58,6 +58,7 @@ class DrNiseGateway:
 
         # 1. Session
         session = await self._sessions.get_or_create(
+            tenant_id=message.tenant_id,
             patient_id=message.patient_id,
             session_id=message.session_id,
             channel=message.channel,
@@ -117,9 +118,9 @@ class DrNiseGateway:
             message_count=session.message_count,
         )
 
-    async def end_session(self, session_id: str, patient_id: str) -> bool:
+    async def end_session(self, tenant_id: str, session_id: str, patient_id: str) -> bool:
         session = await self._sessions.get_or_create(
-            patient_id=patient_id, session_id=session_id
+            tenant_id=tenant_id, patient_id=patient_id, session_id=session_id
         )
         await self._sessions.end_session(session)
         return True

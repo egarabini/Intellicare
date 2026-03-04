@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from grahame.api.deps import get_tenant_session_context
 
 from fastapi import APIRouter, Query, Request
 from fastapi.responses import JSONResponse
@@ -39,8 +40,7 @@ async def create_bot(request: Request):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
     if not body.get("name"):
         return fhir_error(400, "required", "Bot.name is required")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         bot = await svc.create(body)
     return JSONResponse(content=_to_fhir(bot), status_code=201, media_type=_FHIR_JSON)
@@ -54,8 +54,7 @@ async def list_bots(
     _offset: int = Query(0, alias="_offset"),
 ):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         bots = await svc.list(status=status, limit=_count, offset=_offset)
     bundle = {
@@ -70,8 +69,7 @@ async def list_bots(
 @router.get("/Bot/{bot_id}")
 async def get_bot(bot_id: str, request: Request):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         bot = await svc.get(bot_id)
     if bot is None:
@@ -83,8 +81,7 @@ async def get_bot(bot_id: str, request: Request):
 async def update_bot(bot_id: str, request: Request):
     body = await request.json()
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         bot = await svc.update(bot_id, body)
     if bot is None:
@@ -95,8 +92,7 @@ async def update_bot(bot_id: str, request: Request):
 @router.delete("/Bot/{bot_id}", status_code=204)
 async def delete_bot(bot_id: str, request: Request):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         ok = await svc.delete(bot_id)
     if not ok:
@@ -114,8 +110,7 @@ async def set_bot_secret(bot_id: str, secret_name: str, request: Request):
     value = body.get("value")
     if not value:
         return fhir_error(400, "required", "Secret value required in body.value")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         await svc.set_secret(bot_id, secret_name, value)
     return JSONResponse(content={"ok": True, "name": secret_name}, status_code=200)
@@ -130,8 +125,7 @@ async def execute_bot(bot_id: str, request: Request):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
     input_resource = body.get("resource", body)
 
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         try:
             result = await svc.execute(bot_id, input_resource)
@@ -153,8 +147,7 @@ async def list_bot_executions(
     _count: int = Query(20, alias="_count"),
 ):
     tenant_id = request.headers.get("X-Tenant-ID", "default")
-    session = request.app.state.session_factory()
-    async with session:
+    async with get_tenant_session_context(request) as session:
         svc = BotService(session, tenant_id)
         executions = await svc.list_executions(bot_id, limit=_count)
 

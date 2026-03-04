@@ -104,12 +104,14 @@ class WorkflowExecutor:
         workflow_name: str,
         execution_id: str,
         query: str,
+        tenant_id: str = "default",
         patient_id: Optional[str] = None,
         extra: Optional[dict[str, Any]] = None,
     ) -> OrchestratorState:
         """Build the initial state dict injecting config and callables."""
         state: OrchestratorState = {
             "query": query,
+            "tenant_id": tenant_id,
             "patient_id": patient_id,
             "workflow_id": execution_id,
             "workflow_name": workflow_name,
@@ -135,6 +137,7 @@ class WorkflowExecutor:
         self,
         workflow_name: str,
         query: str,
+        tenant_id: str = "default",
         patient_id: Optional[str] = None,
         extra: Optional[dict[str, Any]] = None,
     ) -> WorkflowResult:
@@ -170,7 +173,7 @@ class WorkflowExecutor:
             return result
 
         initial_state = self._build_initial_state(
-            workflow_name, execution_id, query, patient_id, extra
+            workflow_name, execution_id, query, tenant_id, patient_id, extra
         )
 
         try:
@@ -204,7 +207,7 @@ class WorkflowExecutor:
             return result
 
         # Checkpoint final state
-        await self._checkpointer.save(execution_id, dict(final_state))
+        await self._checkpointer.save(tenant_id, execution_id, dict(final_state))
 
         latency_ms = int((time.monotonic() - t_start) * 1000)
         result = WorkflowResult(

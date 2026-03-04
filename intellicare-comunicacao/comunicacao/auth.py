@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 logger = logging.getLogger(__name__)
@@ -21,8 +21,8 @@ try:
         get_current_user as _get_current_user,
         get_optional_user as _get_optional_user,
         get_user_roles as _get_user_roles,
-        requires_role as _requires_role,
         requires_any_role as _requires_any_role,
+        get_tenant_context as _get_tenant_context,
     )
     _AUTH_AVAILABLE = True
     logger.info("intellicare-auth disponível - autenticação habilitada")
@@ -208,4 +208,48 @@ def requires_any_role(roles: list[str]):
         return decorator
 
     return _requires_any_role(roles)
+
+
+async def get_tenant_context(request: Request) -> Any:
+    """
+    Dependency para obter o contexto do tenant atual (Multi-Tenant).
+    
+    Se intellicare-auth não estiver disponível, retorna o TenantContext default (desenvolvimento).
+    """
+    if not _AUTH_AVAILABLE:
+        from intellicare_core.tenant import TenantContext
+        return TenantContext.default()
+    
+    return await _get_tenant_context(request)
+
+
+def check_module_active(module_name: str):
+    """
+    Retorna uma Dependency do FastAPI que verifica se o módulo está ativo para o tenant.
+    """
+    async def _check(ctx: Any = Depends(get_tenant_context)):
+        if not _AUTH_AVAILABLE or ctx.tenant_id == "default":
+            return
+            
+        import os
+        from intellicare_core.tenant.redis import TenantRedisClient
+        
+        redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/1")
+        try:
+            client = TenantRedisClient(redis_url)
+            # A chave de cache no Redis já herda o prefixo "tenant:{id}:"
+            cached = await client.get(ctx, f"modules:{module_name}:active")
+            
+            if cached is not None and cached in ("0", b"0", "false", b"false", False):
+                raise HTTPException(
+                    status_code=status.HTTP_403_FORBIDDEN, 
+                    detail=f"Módulo '{module_name}' não disponível para esta organização"
+                )
+        except HTTPException:
+            raise
+        except Exception as exc:
+            logger.warning("Falha ao validar module %s active redis cache: %s", module_name, exc)
+            pass # Fail open if redis is down for active checks unless strict config is present
+    
+    return Depends(_check)
 

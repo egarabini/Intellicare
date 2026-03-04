@@ -43,11 +43,11 @@ class ChronicDiseaseEngine:
             if not profile:
                 continue
             try:
-                staging = self.calculate_staging(patient_id, disease_id)
+                staging = self.calculate_staging(patient_id, disease_id, ctx=ctx)
                 staging_results[disease_id] = staging
-                trends = self.calculate_trends(patient_id, disease_id)
+                trends = self.calculate_trends(patient_id, disease_id, ctx=ctx)
                 trend_results.update(trends)
-                alerts = self.generate_alerts(patient_id, disease_id, staging, trends)
+                alerts = self.generate_alerts(patient_id, disease_id, staging, trends, ctx=ctx)
                 all_alerts.extend(alerts)
             except Exception as e:
                 logger.error("Erro ao processar doenca '%s': %s", disease_id, e)
@@ -61,7 +61,7 @@ class ChronicDiseaseEngine:
             last_updated=datetime.now(timezone.utc),
         )
 
-    def calculate_staging(self, patient_id: str, disease_id: str) -> StagingResult:
+    def calculate_staging(self, patient_id: str, disease_id: str, ctx: Any = None) -> StagingResult:
         profile = self.registry.get(disease_id)
         if not profile:
             raise ValueError(f"Perfil '{disease_id}' nao encontrado")

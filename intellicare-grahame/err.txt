@@ -1,0 +1,49 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\egara\INTELLICARE\intellicare-grahame
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 397 items / 1 error
+
+=================================== ERRORS ====================================
+______________ ERROR collecting tests/test_excalidraw_storage.py ______________
+ImportError while importing test module 'C:\Users\egara\INTELLICARE\intellicare-grahame\tests\test_excalidraw_storage.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_excalidraw_storage.py:6: in <module>
+    from grahame.services.excalidraw import ExcalidrawDiagramStorage
+grahame\services\excalidraw\__init__.py:10: in <module>
+    from .diagram_storage import ExcalidrawDiagramStorage
+grahame\services\excalidraw\diagram_storage.py:16: in <module>
+    from grahame.services.fhir_storage import FHIRStorageService
+E   ModuleNotFoundError: No module named 'grahame.services.fhir_storage'
+============================== warnings summary ===============================
+grahame\config.py:6
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\config.py:6: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class GrahameConfig(BaseSettings):
+
+grahame\api\schemas\hl7v2_api_key.py:81
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_api_key.py:81: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class HL7v2APIKeyResponse(HL7v2APIKeyBase):
+
+grahame\api\schemas\hl7v2_api_key.py:97
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_api_key.py:97: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class HL7v2APIKeyListResponse(BaseModel):
+
+grahame\api\schemas\hl7v2_api_key.py:144
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_api_key.py:144: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class IPWhitelistResponse(BaseModel):
+
+grahame\api\schemas\hl7v2_audit.py:9
+  C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\schemas\hl7v2_audit.py:9: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class HL7v2AuditLogResponse(BaseModel):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_excalidraw_storage.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+======================== 5 warnings, 1 error in 1.75s =========================
