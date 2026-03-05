@@ -1,0 +1,233 @@
+
+INTELLICARE
+MEDPLUM INTEGRATION ROADMAP
+Wave 2-B: Access Policies
+Especificacoes Funcional, Tecnica e Plano de Implementacao
+
+1. CONTEXTO E PRE-REQUISITOS
+
+1.1 O que e Wave 2-B
+O Wave 2-B implementa o motor de avaliacao de permissoes granulares (Access Policies) inspirado no padrao Medplum. Enquanto o W2-A entregou a infra de execucao de Bots, o W2-B entrega o controle de quem pode acessar o que no servidor FHIR (GRAHAME), com enforcement em tempo de requisicao.
+O objetivo e substituir o controle de acesso binario atual (autenticado = acesso total) por um modelo baseado em politicas declarativas por recurso, por interacao e por compartimento.
+
+1.2 O que JA existe no codebase (GRAHAME)
+
+
+
+1.3 Estrutura do Modelo Atual (referencia para o DEV1)
+
+AccessPolicy.resource_rules e um campo JSONB com array de ResourceRule. Cada regra tem o seguinte formato esperado:
+{
+  "resource_type": "Patient",
+  "interaction": ["read", "search", "create", "update", "delete"],
+  "criteria": "Patient?managingOrganization=%profile.organization",
+  "readonly_fields": [],
+  "hidden_fields": ["telecom", "address"]
+}
+
+TenantMembership liga user_id (sub do Keycloak) a um access_policy_id e suporta parameters para substituicao dinamica (ex: %profile.organization -> Organization/123).
+
+2. ESPECIFICACOES FUNCIONAIS
+
+2.1 Objetivo do Motor
+O PolicyEvaluator e invocado em cada requisicao autenticada ao GRAHAME. Ele recebe a identidade do usuario (extraida do JWT), o tipo de recurso alvo, a interacao solicitada (read/write/delete/search) e o recurso FHIR completo. Retorna: permitido ou negado, com razao auditavel.
+
+2.2 Casos de Uso
+
+UC-01 — Acesso por Role Clinica
+Ator: Medico autenticado via Keycloak
+Pre-condicao: TenantMembership aponta para policy 'Medico Assistente'
+Policy define: read/search Patient + Observation + Condition; create/update Observation; nenhum acesso a financeiro
+Fluxo: medico tenta GET /fhir/Patient/123 → engine carrega policy → interaction 'read' em 'Patient' esta permitida → retorna recurso
+Fluxo alternativo: medico tenta DELETE /fhir/Patient/123 → 'delete' em 'Patient' nao esta na policy → retorna OperationOutcome 403
+
+UC-02 — Compartimento de Paciente
+Ator: Enfermeiro com policy que define compartment_ref: 'Organization/setor-a'
+Fluxo: enfermeiro faz GET /fhir/Observation?patient=123 → engine filtra resultados ao compartimento → retorna apenas Observations de pacientes do setor-a
+Fluxo alternativo: enfermeiro tenta acessar Observation de paciente de outro setor → engine bloqueia, retorna Bundle vazio ou 403
+
+UC-03 — Restricoes por Campo
+Ator: Recepcionista com policy 'Dados Administrativos'
+Policy define: read Patient com hidden_fields: [deceasedBoolean, address] e readonly_fields: [name, birthDate]
+Fluxo: recepcionista faz GET /fhir/Patient/456 → engine retorna recurso com campos sensiveis removidos da resposta
+Fluxo alternativo: recepcionista tenta PUT /fhir/Patient/456 modificando name → engine bloqueia pois name e readonly → retorna 422 OperationOutcome
+
+UC-04 — Bot com Permissoes Especificas
+Ator: Bot de notificacao (identidade via service account do Keycloak)
+Policy define: read Patient + Observation; create Communication; nenhuma outra interacao
+Fluxo: bot executa codigo que chama client.create('Communication', {...}) → engine valida que 'create' em 'Communication' esta permitido → sucesso
+Garantia: mesmo se bot tiver bug tentando DELETE Patient, engine bloqueia antes de chegar ao banco
+
+UC-05 — Admin de Tenant
+Ator: Admin do tenant (TenantMembership.is_admin = true)
+Fluxo: admin faz qualquer operacao em qualquer recurso do proprio tenant → engine bypass de restricoes, mas registra no audit log
+Garantia de isolamento: admin nao acessa recursos de outro tenant mesmo com is_admin=true
+
+UC-06 — Usuario sem Policy
+Ator: Usuario autenticado no Keycloak mas sem TenantMembership
+Fluxo: usuario faz qualquer requisicao FHIR → engine nao encontra membership → retorna 403 OperationOutcome: 'Sem policy de acesso configurada para este usuario no tenant'
+Behavior configuravel: DENY_ALL (padrao seguro) ou ALLOW_READONLY (modo legado)
+
+2.3 Comportamentos Nao Funcionais
+
+
+3. ESPECIFICACOES TECNICAS
+
+3.1 PolicyEvaluator — Nucleo do W2-B
+
+3.1.1 Interface Publica
+O PolicyEvaluator deve ser implementado em intellicare_core/access/ (nao em GRAHAME) para que outros modulos possam usar a mesma logica de enforcement no futuro. GRAHAME importa e usa via FastAPI Depends.
+
+# intellicare_core/access/evaluator.py
+class PolicyEvaluator:
+    """Avalia se um usuario tem permissao para uma acao sobre um recurso."""
+
+    def can_read(
+        self,
+        policy: AccessPolicySchema,
+        resource_type: str,
+        resource: dict | None = None,
+    ) -> EvaluationResult: ...
+
+    def can_write(
+        self,
+        policy: AccessPolicySchema,
+        resource_type: str,
+        interaction: str,           # create | update | delete | patch
+        resource: dict,
+    ) -> EvaluationResult: ...
+
+    def apply_field_restrictions(
+        self,
+        policy: AccessPolicySchema,
+        resource_type: str,
+        resource: dict,
+    ) -> dict:                      # retorna recurso com campos filtrados
+        ...
+
+    def filter_search_results(
+        self,
+        policy: AccessPolicySchema,
+        resource_type: str,
+        bundle_entries: list[dict],
+    ) -> list[dict]: ...
+
+3.1.2 EvaluationResult
+@dataclass
+class EvaluationResult:
+    allowed: bool
+    reason: str                     # human-readable para audit log
+    matched_rule: dict | None       # qual regra da policy permitiu/bloqueou
+
+3.1.3 Logica de Avaliacao (algoritmo)
+O evaluator percorre as resource_rules da policy na ordem em que aparecem e aplica first-match wins:
+Verificar se policy.resource_rules contem uma regra para resource_type (ou wildcard '*')
+Se regra encontrada: verificar se interaction esta na lista da regra
+Se criteria presente: avaliar FHIRPath basico (ver 3.1.4)
+Se hidden_fields ou readonly_fields: aplicar restricoes na resposta
+Se nenhuma regra encontrada: retornar EvaluationResult(allowed=False, reason='No matching rule')
+Se is_admin=True no TenantMembership: skip todas as regras, retornar allowed=True
+
+3.1.4 Criteria — FHIRPath Simplificado
+O Medplum usa FHIRPath completo para criteria. Para o W2-B, implementar suporte a um subconjunto suficiente para os casos de uso clinicos mais comuns:
+
+Parametros substituiveis: %user.id, %user.patient, %profile (referencia ao resource no TenantMembership.parameters), %tenant.id.
+
+3.2 Integracao com as Rotas FHIR do GRAHAME
+
+3.2.1 FastAPI Dependency
+Criar uma FastAPI dependency get_evaluated_policy que e injetada em todas as rotas FHIR. Ela resolve a policy do usuario e devolve um PolicyContext pronto para usar:
+
+# grahame/api/deps.py  (adicionar ao existente)
+async def get_policy_context(
+    request: Request,
+    token: str = Depends(oauth2_scheme),
+    session: AsyncSession = Depends(get_session),
+    redis: Redis = Depends(get_redis),
+) -> PolicyContext:
+    tenant_id = resolve_tenant(request)
+    user_id = decode_jwt(token)["sub"]
+    policy = await PolicyResolver(session, redis).resolve(tenant_id, user_id)
+    return PolicyContext(user_id=user_id, tenant_id=tenant_id, policy=policy)
+
+3.2.2 Uso nas Rotas FHIR (exemplo)
+@router.get('/fhir/{resource_type}/{resource_id}')
+async def fhir_read(
+    resource_type: str,
+    resource_id: str,
+    ctx: PolicyContext = Depends(get_policy_context),
+):
+    result = ctx.evaluator.can_read(ctx.policy, resource_type)
+    if not result.allowed:
+        raise FHIRForbiddenError(result.reason)
+    resource = await fhir_service.get(resource_type, resource_id, ctx.tenant_id)
+    return ctx.evaluator.apply_field_restrictions(ctx.policy, resource_type, resource)
+
+3.2.3 FHIRForbiddenError → OperationOutcome
+Registrar um exception handler global no GRAHAME que transforma FHIRForbiddenError em resposta HTTP 403 com corpo FHIR-compativel:
+{
+  "resourceType": "OperationOutcome",
+  "issue": [{
+    "severity": "error",
+    "code": "forbidden",
+    "diagnostics": "<reason da EvaluationResult>"
+  }]
+}
+
+3.3 Resolucao de Policy via Keycloak JWT
+
+3.3.1 Fluxo de Resolucao
+A PolicyResolver carrega a policy efetiva do usuario na ordem de precedencia:
+Verificar cache Redis: chave policy:{tenant_id}:{user_id} (TTL 5 minutos)
+Se miss: consultar TenantMembership no banco onde tenant_id = ctx.tenant_id AND user_id = jwt.sub
+Se membership.is_admin = true: retornar AdminPolicy (permite tudo no tenant)
+Se membership.access_policy_id: carregar AccessPolicy pelo id
+Aplicar parameter substitution (TenantMembership.parameters nas criteria da policy)
+Armazenar no Redis e retornar
+Se nenhum membership: retornar DenyAllPolicy
+
+3.3.2 Keycloak — Claim Opcional
+Como otimizacao futura (nao obrigatoria no W2-B), o Keycloak pode ser configurado para emitir um claim customizado intellicare_policy_id no JWT. Se presente, o PolicyResolver pula a consulta ao banco e vai direto ao Redis/PostgreSQL pelo ID da policy. Isso reduz a latencia de resolucao em ~40%.
+Para o W2-B inicial, implementar a resolucao via banco (nao requer mudanca no Keycloak).
+
+3.4 Estrutura de Arquivos a Criar
+
+
+4. PLANO DE IMPLEMENTACAO
+
+
+4.1 Fase 1 — PolicyEvaluator Core (Dias 1-2)
+
+Tudo em intellicare_core/access/ — sem tocar no GRAHAME ainda. A logica pura de avaliacao e completamente testavel em isolamento.
+
+
+
+4.2 Fase 2 — PolicyResolver com Redis + DB (Dias 3-4)
+
+Implementar a camada que carrega a policy do usuario a partir do banco (TenantMembership + AccessPolicy) e faz cache no Redis.
+
+
+
+4.3 Fase 3 — Enforcement nas Rotas FHIR do GRAHAME (Dias 5-7)
+
+Integrar o PolicyEvaluator nas rotas FHIR do GRAHAME. Esta e a fase de maior risco — tocar em codigo de producao do servidor FHIR.
+
+
+
+
+4.4 Fase 4 — Validacao em Staging e Ativacao Gradual (Dias 8-9)
+
+
+
+5. CRITERIOS DE ACEITE E DEPENDENCIAS
+
+5.1 Checklist de Aceite do W2-B
+
+
+5.2 Dependencias Tecnicas
+
+
+5.3 Visao do Roadmap Completo
+
+
+Este documento foi elaborado em 05/03/2026 com base na inspecao direta do codebase do GRAHAME e do intellicare-core. O modelo de dados e o CRUD de Access Policies ja existentes poupam aproximadamente 3 dias de trabalho estimado originalmente para o W2-B.
