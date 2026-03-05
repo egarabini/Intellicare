@@ -18,22 +18,23 @@
 param(
     [string]$Message = "",
     [switch]$RebuildPortal,
+    [switch]$RebuildAdmin,
     [switch]$SkipCommit,
     [switch]$Help
 )
 
 # --- Configurações ---
-$SERVER_HOST  = "167.86.97.142"
-$SERVER_USER  = "root"
-$SERVER_PATH  = "/opt/intellicare"
-$GIT_BRANCH   = "staging"
+$SERVER_HOST = "167.86.97.142"
+$SERVER_USER = "root"
+$SERVER_PATH = "/opt/intellicare"
+$GIT_BRANCH = "staging"
 
 # --- Cores ---
-function Info($msg)    { Write-Host "ℹ️  $msg" -ForegroundColor Cyan }
-function Ok($msg)      { Write-Host "✅ $msg" -ForegroundColor Green }
-function Warn($msg)    { Write-Host "⚠️  $msg" -ForegroundColor Yellow }
-function Err($msg)     { Write-Host "❌ $msg" -ForegroundColor Red }
-function Step($n, $msg){ Write-Host "`n[$n] $msg" -ForegroundColor Magenta }
+function Info($msg) { Write-Host "ℹ️  $msg" -ForegroundColor Cyan }
+function Ok($msg) { Write-Host "✅ $msg" -ForegroundColor Green }
+function Warn($msg) { Write-Host "⚠️  $msg" -ForegroundColor Yellow }
+function Err($msg) { Write-Host "❌ $msg" -ForegroundColor Red }
+function Step($n, $msg) { Write-Host "`n[$n] $msg" -ForegroundColor Magenta }
 
 if ($Help) {
     Get-Help $MyInvocation.MyCommand.Path -Detailed
@@ -71,7 +72,8 @@ if (-not $SkipCommit) {
         git commit -m $Message
         if ($LASTEXITCODE -ne 0) { Err "Commit falhou."; exit 1 }
         Ok "Commit realizado: $Message"
-    } else {
+    }
+    else {
         Info "Nenhuma mudança local para commitar."
     }
 
@@ -80,7 +82,8 @@ if (-not $SkipCommit) {
     git push origin $GIT_BRANCH
     if ($LASTEXITCODE -ne 0) { Err "Push falhou."; exit 1 }
     Ok "Push concluído."
-} else {
+}
+else {
     Info "SkipCommit ativo — pulando commit e push."
 }
 
@@ -106,18 +109,24 @@ Step "3/4" "Deploy no servidor remoto"
 
 # Detectar se portal mudou (para decidir se precisa rebuild)
 $portalChanged = $false
+$adminChanged = $false
 if (-not $SkipCommit) {
     $changedFiles = git diff --name-only HEAD~1 HEAD 2>/dev/null
     if ($changedFiles -match "intellicare-portal|docker-compose.full.yml") {
         $portalChanged = $true
     }
+    if ($changedFiles -match "intellicare-admin") {
+        $adminChanged = $true
+    }
 }
 if ($RebuildPortal) { $portalChanged = $true }
+if ($RebuildAdmin) { $adminChanged = $true }
 
-if ($portalChanged) {
-    Info "Mudanças no portal detectadas — rebuild necessário."
-} else {
-    Info "Sem mudanças no portal — apenas restart dos containers."
+if ($portalChanged -or $adminChanged) {
+    Info "Mudanças em imagens (Portal ou Admin) detectadas — rebuild necessário."
+}
+else {
+    Info "Sem mudanças estruturais — apenas restart dos containers."
 }
 
 # Montar script remoto
@@ -138,6 +147,14 @@ if ($portalChanged) {
 
 echo 'Rebuild do portal (pode levar alguns minutos)...'
 docker compose -f docker-compose.full.yml build portal
+"@
+}
+
+if ($adminChanged) {
+    $remoteScript += @"
+
+echo 'Rebuild do admin (pode levar alguns minutos)...'
+docker compose -f docker-compose.full.yml build admin
 "@
 }
 
