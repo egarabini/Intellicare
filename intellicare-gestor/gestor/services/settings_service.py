@@ -29,6 +29,6 @@ class SettingsService:
         setting.value_type = setting_data.value_type
         setting.updated_by = actor_id
         
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(setting)
         return setting

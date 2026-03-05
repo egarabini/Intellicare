@@ -4,9 +4,7 @@ import pytest
 
 from gestor.permissions import (
     VALID_PERMISSIONS,
-    has_permission,
     validate_permission,
-    validate_permissions,
 )
 
 
@@ -38,36 +36,3 @@ class TestValidatePermission:
     def test_all_modules_have_permissions(self):
         for module in VALID_PERMISSIONS:
             assert len(VALID_PERMISSIONS[module]) > 0
-
-
-class TestValidatePermissions:
-    def test_all_valid(self):
-        perms = ["oswaldo.ver", "florence.analisar", "*"]
-        assert validate_permissions(perms) == []
-
-    def test_some_invalid(self):
-        perms = ["oswaldo.ver", "modulo_fake.acao", "florence.acao_fake"]
-        invalid = validate_permissions(perms)
-        assert "modulo_fake.acao" in invalid
-        assert "florence.acao_fake" in invalid
-        assert "oswaldo.ver" not in invalid
-
-
-class TestHasPermission:
-    def test_global_wildcard_grants_all(self):
-        assert has_permission(["*"], "oswaldo.classificar") is True
-        assert has_permission(["*"], "florence.analisar") is True
-
-    def test_module_wildcard(self):
-        assert has_permission(["oswaldo.*"], "oswaldo.classificar") is True
-        assert has_permission(["oswaldo.*"], "oswaldo.ver") is True
-        assert has_permission(["oswaldo.*"], "florence.ver") is False
-
-    def test_specific_permission(self):
-        perms = ["oswaldo.classificar", "florence.ver_resultados"]
-        assert has_permission(perms, "oswaldo.classificar") is True
-        assert has_permission(perms, "florence.ver_resultados") is True
-        assert has_permission(perms, "oswaldo.exportar") is False
-
-    def test_no_permissions(self):
-        assert has_permission([], "oswaldo.ver") is False

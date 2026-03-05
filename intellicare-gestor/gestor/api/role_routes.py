@@ -30,7 +30,7 @@ async def create_role(
     audit: AuditService = Depends(get_audit),
 ):
     role = await svc.create_role(data)
-    await audit.log(
+    await audit.log_action(
         "role.created",
         resource_type="role",
         resource_id=str(role.id),
@@ -49,7 +49,7 @@ async def update_role(
     audit: AuditService = Depends(get_audit),
 ):
     role = await svc.update_role(role_id, data)
-    await audit.log(
+    await audit.log_action(
         "role.updated",
         resource_type="role",
         resource_id=str(role_id),

@@ -1,0 +1,483 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\intellicare-gestor
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 29 items
+
+tests/test_permissions.py::TestValidatePermission::test_wildcard_global PASSED [  3%]
+tests/test_permissions.py::TestValidatePermission::test_wildcard_module PASSED [  6%]
+tests/test_permissions.py::TestValidatePermission::test_valid_specific PASSED [ 10%]
+tests/test_permissions.py::TestValidatePermission::test_invalid_module PASSED [ 13%]
+tests/test_permissions.py::TestValidatePermission::test_invalid_action PASSED [ 17%]
+tests/test_permissions.py::TestValidatePermission::test_invalid_format_no_dot PASSED [ 20%]
+tests/test_permissions.py::TestValidatePermission::test_invalid_format_too_many_dots PASSED [ 24%]
+tests/test_permissions.py::TestValidatePermission::test_all_modules_have_permissions PASSED [ 27%]
+tests/test_role_service.py::TestRoleService::test_list_roles_empty ERROR [ 31%]
+tests/test_role_service.py::TestRoleService::test_create_role ERROR      [ 34%]
+tests/test_role_service.py::TestRoleService::test_create_role_invalid_permission ERROR [ 37%]
+tests/test_role_service.py::TestRoleService::test_create_role_duplicate ERROR [ 41%]
+tests/test_role_service.py::TestRoleService::test_update_role_permissions ERROR [ 44%]
+tests/test_role_service.py::TestRoleService::test_get_role_not_found ERROR [ 48%]
+tests/test_role_service.py::TestRoleService::test_delete_system_role_forbidden ERROR [ 51%]
+tests/test_role_service.py::TestRoleService::test_get_user_permissions ERROR [ 55%]
+tests/test_role_service.py::TestRoleService::test_assign_role_duplicate ERROR [ 58%]
+tests/test_user_service.py::TestUserService::test_create_user ERROR      [ 62%]
+tests/test_user_service.py::TestUserService::test_create_user_duplicate_email ERROR [ 65%]
+tests/test_user_service.py::TestUserService::test_create_user_respects_max_users ERROR [ 68%]
+tests/test_user_service.py::TestUserService::test_create_user_within_limit ERROR [ 72%]
+tests/test_user_service.py::TestUserService::test_deactivate_user ERROR  [ 75%]
+tests/test_user_service.py::TestUserService::test_deactivate_last_admin_forbidden ERROR [ 79%]
+tests/test_user_service.py::TestUserService::test_update_user ERROR      [ 82%]
+tests/test_user_service.py::TestUserService::test_get_user_not_found ERROR [ 86%]
+tests/test_user_service.py::TestUserService::test_list_users_active_only ERROR [ 89%]
+tests/test_users.py::test_health_check PASSED                            [ 93%]
+tests/test_users.py::test_create_user FAILED                             [ 96%]
+tests/test_users.py::test_list_users FAILED                              [100%]
+
+=================================== ERRORS ====================================
+___________ ERROR at setup of TestRoleService.test_list_roles_empty ___________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 14
+      async def test_list_roles_empty(self, session: AsyncSession):
+          svc = RoleService(session)
+          roles = await svc.list_roles()
+          assert roles == []
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:14
+_____________ ERROR at setup of TestRoleService.test_create_role ______________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 19
+      async def test_create_role(self, session: AsyncSession):
+          svc = RoleService(session)
+          data = RoleCreate(name="medico", permissions=["oswaldo.classificar", "florence.ver_resultados"])
+          role = await svc.create_role(data)
+          assert role.name == "medico"
+          assert "oswaldo.classificar" in role.permissions
+          assert role.is_system is False
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:19
+____ ERROR at setup of TestRoleService.test_create_role_invalid_permission ____
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 27
+      async def test_create_role_invalid_permission(self, session: AsyncSession):
+          svc = RoleService(session)
+          with pytest.raises(Exception):
+              RoleCreate(name="bad", permissions=["modulo_invalido.acao"])
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:27
+________ ERROR at setup of TestRoleService.test_create_role_duplicate _________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 32
+      async def test_create_role_duplicate(self, session: AsyncSession, sample_role: Role):
+          svc = RoleService(session)
+          with pytest.raises(HTTPException) as exc:
+              await svc.create_role(RoleCreate(name=sample_role.name, permissions=[]))
+          assert exc.value.status_code == 409
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:32
+_______ ERROR at setup of TestRoleService.test_update_role_permissions ________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 38
+      async def test_update_role_permissions(self, session: AsyncSession, sample_role: Role):
+          svc = RoleService(session)
+          updated = await svc.update_role(sample_role.id, RoleUpdate(permissions=["florence.analisar"]))
+          assert "florence.analisar" in updated.permissions
+          assert "oswaldo.ver" not in updated.permissions
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:38
+__________ ERROR at setup of TestRoleService.test_get_role_not_found __________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 44
+      async def test_get_role_not_found(self, session: AsyncSession):
+          import uuid
+          svc = RoleService(session)
+          with pytest.raises(HTTPException) as exc:
+              await svc.get_role(uuid.uuid4())
+          assert exc.value.status_code == 404
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:44
+_____ ERROR at setup of TestRoleService.test_delete_system_role_forbidden _____
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 51
+      async def test_delete_system_role_forbidden(self, session: AsyncSession, admin_role: Role):
+          svc = RoleService(session)
+          with pytest.raises(HTTPException) as exc:
+              await svc.delete_role(admin_role.id)
+          assert exc.value.status_code == 400
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:51
+_________ ERROR at setup of TestRoleService.test_get_user_permissions _________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 57
+      async def test_get_user_permissions(self, session: AsyncSession, sample_user, sample_role: Role):
+          svc = RoleService(session)
+          await svc.assign_role_to_user(sample_user.id, sample_role.id)
+          perms = await svc.get_user_permissions(sample_user.id)
+          assert "oswaldo.ver" in perms
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:57
+________ ERROR at setup of TestRoleService.test_assign_role_duplicate _________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py, line 63
+      async def test_assign_role_duplicate(self, session: AsyncSession, sample_user, sample_role: Role):
+          svc = RoleService(session)
+          await svc.assign_role_to_user(sample_user.id, sample_role.id)
+          with pytest.raises(HTTPException) as exc:
+              await svc.assign_role_to_user(sample_user.id, sample_role.id)
+          assert exc.value.status_code == 409
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_role_service.py:63
+_____________ ERROR at setup of TestUserService.test_create_user ______________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 14
+      async def test_create_user(self, session: AsyncSession):
+          svc = UserService(session)
+          data = UserCreate(nome="Dr. Silva", email="silva@hospital.com", cargo="Médico")
+          user = await svc.create_user(data)
+          assert user.nome == "Dr. Silva"
+          assert user.email == "silva@hospital.com"
+          assert user.active is True
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:14
+_____ ERROR at setup of TestUserService.test_create_user_duplicate_email ______
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 22
+      async def test_create_user_duplicate_email(self, session: AsyncSession, sample_user: TenantUser):
+          svc = UserService(session)
+          with pytest.raises(HTTPException) as exc:
+              await svc.create_user(UserCreate(nome="Outro", email=sample_user.email))
+          assert exc.value.status_code == 409
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:22
+____ ERROR at setup of TestUserService.test_create_user_respects_max_users ____
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 28
+      async def test_create_user_respects_max_users(self, session: AsyncSession):
+          svc = UserService(session)
+          await svc.create_user(UserCreate(nome="User 1", email="u1@test.com"))
+          with pytest.raises(HTTPException) as exc:
+              await svc.create_user(
+                  UserCreate(nome="User 2", email="u2@test.com"),
+                  max_users=1,
+              )
+          assert exc.value.status_code == 402
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:28
+_______ ERROR at setup of TestUserService.test_create_user_within_limit _______
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 38
+      async def test_create_user_within_limit(self, session: AsyncSession):
+          svc = UserService(session)
+          user = await svc.create_user(
+              UserCreate(nome="User 1", email="u1@test.com"),
+              max_users=10,
+          )
+          assert user is not None
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:38
+___________ ERROR at setup of TestUserService.test_deactivate_user ____________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 46
+      async def test_deactivate_user(self, session: AsyncSession, sample_user: TenantUser):
+          svc = UserService(session)
+          user = await svc.deactivate_user(sample_user.id)
+          assert user.active is False
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:46
+___ ERROR at setup of TestUserService.test_deactivate_last_admin_forbidden ____
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 51
+      async def test_deactivate_last_admin_forbidden(
+          self, session: AsyncSession, sample_user: TenantUser, admin_role: Role
+      ):
+          # Atribuir role admin ao usuário
+          session.add(UserRole(user_id=sample_user.id, role_id=admin_role.id))
+          await session.commit()
+
+          svc = UserService(session)
+          with pytest.raises(HTTPException) as exc:
+              await svc.deactivate_user(sample_user.id)
+          assert exc.value.status_code == 400
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:51
+_____________ ERROR at setup of TestUserService.test_update_user ______________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 63
+      async def test_update_user(self, session: AsyncSession, sample_user: TenantUser):
+          svc = UserService(session)
+          user = await svc.update_user(sample_user.id, UserUpdate(cargo="Enfermeiro"))
+          assert user.cargo == "Enfermeiro"
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:63
+__________ ERROR at setup of TestUserService.test_get_user_not_found __________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 68
+      async def test_get_user_not_found(self, session: AsyncSession):
+          import uuid
+          svc = UserService(session)
+          with pytest.raises(HTTPException) as exc:
+              await svc.get_user(uuid.uuid4())
+          assert exc.value.status_code == 404
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:68
+________ ERROR at setup of TestUserService.test_list_users_active_only ________
+file C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py, line 75
+      async def test_list_users_active_only(self, session: AsyncSession):
+          svc = UserService(session)
+          u1 = await svc.create_user(UserCreate(nome="Ativo", email="ativo@test.com"))
+          u2 = await svc.create_user(UserCreate(nome="Inativo", email="inativo@test.com"))
+          await svc.deactivate_user(u2.id)
+
+          active = await svc.list_users(active_only=True)
+          all_users = await svc.list_users(active_only=False)
+
+          assert len(active) == 1
+          assert len(all_users) == 2
+E       fixture 'session' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, async_client, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, setup_db, subtests, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\intellicare-gestor\tests\test_user_service.py:75
+================================== FAILURES ===================================
+______________________________ test_create_user _______________________________
+tests\test_users.py:18: in test_create_user
+    response = await async_client.post("/api/v1/gestor/users", json=payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1135: in __call__
+    await super().__call__(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:191: in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:162: in __exit__
+    self.gen.throw(value)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_utils.py:85: in collapse_excgroups
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\conftest.py:24: in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:115: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:101: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:355: in app
+    raw_response = await run_endpoint_function(
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:243: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gestor\api\user_routes.py:43: in create_user
+    await audit.log(
+          ^^^^^^^^^
+E   AttributeError: 'AuditService' object has no attribute 'log'
+_______________________________ test_list_users _______________________________
+tests\test_users.py:27: in test_list_users
+    await async_client.post("/api/v1/gestor/users", json={"nome": "A", "email": "a@a.com"})
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1135: in __call__
+    await super().__call__(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:191: in __call__
+    with recv_stream, send_stream, collapse_excgroups():
+                                   ^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\contextlib.py:162: in __exit__
+    self.gen.throw(value)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_utils.py:85: in collapse_excgroups
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:193: in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\conftest.py:24: in dispatch
+    return await call_next(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:168: in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\base.py:144: in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:115: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:101: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:355: in app
+    raw_response = await run_endpoint_function(
+..\..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:243: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gestor\api\user_routes.py:43: in create_user
+    await audit.log(
+          ^^^^^^^^^
+E   AttributeError: 'AuditService' object has no attribute 'log'
+============================== warnings summary ===============================
+gestor\config.py:4
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\config.py:4: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class Settings(BaseSettings):
+
+gestor\schemas\user_schemas.py:26
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\user_schemas.py:26: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class TenantUserResponse(TenantUserBase):
+
+gestor\schemas\role_schemas.py:18
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\role_schemas.py:18: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class RoleResponse(RoleBase):
+
+gestor\schemas\sector_schemas.py:23
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\sector_schemas.py:23: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class SectorResponse(SectorBase):
+
+gestor\schemas\settings_schemas.py:14
+  C:\Users\egara\INTELLICARE\intellicare-gestor\gestor\schemas\settings_schemas.py:14: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class TenantSettingResponse(BaseModel):
+
+tests/test_permissions.py: 8 warnings
+tests/test_role_service.py: 9 warnings
+tests/test_user_service.py: 9 warnings
+tests/test_users.py: 3 warnings
+  <sys>:0: SAWarning: Can't sort tables for DROP; an unresolvable foreign key dependency exists between tables: sectors, users; and backend does not support ALTER.  To restore at least a partial sort, apply use_alter=True to ForeignKey and ForeignKeyConstraint objects involved in the cycle to mark these as known cycles that will be ignored.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_users.py::test_create_user - AttributeError: 'AuditService'...
+FAILED tests/test_users.py::test_list_users - AttributeError: 'AuditService' ...
+ERROR tests/test_role_service.py::TestRoleService::test_list_roles_empty
+ERROR tests/test_role_service.py::TestRoleService::test_create_role
+ERROR tests/test_role_service.py::TestRoleService::test_create_role_invalid_permission
+ERROR tests/test_role_service.py::TestRoleService::test_create_role_duplicate
+ERROR tests/test_role_service.py::TestRoleService::test_update_role_permissions
+ERROR tests/test_role_service.py::TestRoleService::test_get_role_not_found
+ERROR tests/test_role_service.py::TestRoleService::test_delete_system_role_forbidden
+ERROR tests/test_role_service.py::TestRoleService::test_get_user_permissions
+ERROR tests/test_role_service.py::TestRoleService::test_assign_role_duplicate
+ERROR tests/test_user_service.py::TestUserService::test_create_user
+ERROR tests/test_user_service.py::TestUserService::test_create_user_duplicate_email
+ERROR tests/test_user_service.py::TestUserService::test_create_user_respects_max_users
+ERROR tests/test_user_service.py::TestUserService::test_create_user_within_limit
+ERROR tests/test_user_service.py::TestUserService::test_deactivate_user
+ERROR tests/test_user_service.py::TestUserService::test_deactivate_last_admin_forbidden
+ERROR tests/test_user_service.py::TestUserService::test_update_user
+ERROR tests/test_user_service.py::TestUserService::test_get_user_not_found
+ERROR tests/test_user_service.py::TestUserService::test_list_users_active_only
+============= 2 failed, 9 passed, 34 warnings, 18 errors in 3.46s =============

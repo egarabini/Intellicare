@@ -15,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from intellicare_core.tenant import TenantAwareSessionFactory, TenantContext
 
-from gestor.config import config
+from gestor.config import settings
 from gestor.services.audit_service import AuditService
 
 
@@ -30,7 +30,7 @@ async def get_tenant_ctx(request: Request) -> TenantContext:
     - Multi-tenant: extrai do request.state (injetado pelo middleware auth)
     - Single-tenant (dev): retorna TenantContext.default()
     """
-    if config.multi_tenant_enabled:
+    if settings.multi_tenant_enabled:
         ctx = getattr(request.state, "tenant_context", None)
         if ctx is None:
             # Middleware não foi executado — fallback seguro

@@ -33,7 +33,7 @@ async def create_sector(
     audit: AuditService = Depends(get_audit),
 ):
     sector = await svc.create_sector(data)
-    await audit.log(
+    await audit.log_action(
         "sector.created",
         resource_type="sector",
         resource_id=str(sector.id),
@@ -52,7 +52,7 @@ async def update_sector(
     audit: AuditService = Depends(get_audit),
 ):
     sector = await svc.update_sector(sector_id, data)
-    await audit.log(
+    await audit.log_action(
         "sector.updated",
         resource_type="sector",
         resource_id=str(sector_id),

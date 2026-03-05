@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Text, DateTime
 from sqlalchemy.dialects.postgresql import UUID
-from gestor.db import Base
+from gestor.models.base import Base
 
 class TenantSetting(Base):
     __tablename__ = "settings"

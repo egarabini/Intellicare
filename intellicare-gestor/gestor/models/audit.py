@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Text, DateTime, JSON, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
-from gestor.db import Base
+from gestor.models.base import Base
 
 class LocalAuditLog(Base):
     __tablename__ = "audit_local"

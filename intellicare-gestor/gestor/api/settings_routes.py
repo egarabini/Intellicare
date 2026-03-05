@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from gestor.api.deps import get_db, get_audit
-from gestor.schemas.settings_schemas import SettingResponse, SettingsBulkUpdate
+from gestor.schemas.settings_schemas import TenantSettingResponse as SettingResponse, SettingsBulkUpdate
 from gestor.services.audit_service import AuditService
 from gestor.services.settings_service import SettingsService
 
@@ -33,7 +33,7 @@ async def update_settings(
     audit: AuditService = Depends(get_audit),
 ):
     updated = await svc.bulk_update(data.settings)
-    await audit.log(
+    await audit.log_action(
         "settings.updated",
         resource_type="settings",
         details={"keys": list(data.settings.keys())},

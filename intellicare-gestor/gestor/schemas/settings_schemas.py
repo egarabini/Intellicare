@@ -1,11 +1,15 @@
 from pydantic import BaseModel, Field
-from typing import Optional, List
+from typing import Optional, List, Dict
 from uuid import UUID
 from datetime import datetime
 
 class TenantSettingUpdate(BaseModel):
     value: str
     value_type: str = Field(default="string", pattern="^(string|number|boolean|json)$")
+
+class SettingsBulkUpdate(BaseModel):
+    settings: Dict[str, TenantSettingUpdate]
+
 
 class TenantSettingResponse(BaseModel):
     id: UUID

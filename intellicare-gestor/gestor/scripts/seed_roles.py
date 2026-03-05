@@ -15,7 +15,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from intellicare_core.tenant import TenantAwareSessionFactory, TenantContext
 
-from gestor.config import config
+from gestor.config import settings
 from gestor.models.role import Role
 from gestor.models.settings import TenantSetting
 
@@ -105,7 +105,7 @@ async def main(tenant_id: str = "default") -> None:
         print("❌ INTELLICARE_DATABASE_URL não configurada")
         sys.exit(1)
 
-    factory = TenantAwareSessionFactory(config.database_url)
+    factory = TenantAwareSessionFactory(settings.DATABASE_URL)
     ctx = TenantContext(
         tenant_id=tenant_id,
         tenant_schema=f"tenant_{tenant_id}" if tenant_id != "default" else "public",

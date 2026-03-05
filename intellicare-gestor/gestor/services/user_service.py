@@ -30,7 +30,7 @@ class UserService:
             invited_at=datetime.now(timezone.utc)
         )
         self.session.add(user)
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(user)
         return user
 
@@ -43,7 +43,7 @@ class UserService:
         for key, value in update_data.items():
             setattr(user, key, value)
             
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(user)
         return user
 
@@ -52,6 +52,6 @@ class UserService:
         if not user:
             return False
         user.active = False
-        await self.session.commit()
+        await self.session.flush()
         # TODO: Sincronizar inativação com Keycloak
         return True

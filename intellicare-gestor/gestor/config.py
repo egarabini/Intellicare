@@ -10,6 +10,12 @@ class Settings(BaseSettings):
     KEYCLOAK_CLIENT_ID: str = os.getenv("KEYCLOAK_CLIENT_ID", "intellicare-gestor")
     KEYCLOAK_CLIENT_SECRET: str = os.getenv("KEYCLOAK_CLIENT_SECRET", "")
     KEYCLOAK_REALM: str = os.getenv("KEYCLOAK_REALM", "bemcuidar")
+    MULTI_TENANT_ENABLED: bool = os.getenv("INTELLICARE_MULTI_TENANT_ENABLED", "false").lower() == "true"
+    
+    # Aliases
+    @property
+    def multi_tenant_enabled(self) -> bool:
+        return self.MULTI_TENANT_ENABLED
 
     class Config:
         env_file = ".env"

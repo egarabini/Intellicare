@@ -7,9 +7,9 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 # Ensure test DB SCHEMA is empty to avoid schema prefixing in Models specifically for SQLite tests
 os.environ["DB_SCHEMA"] = ""
 
-from gestor.db import Base
+from gestor.models import Base
 from gestor.api.app import app
-from gestor.db import get_db
+from gestor.api.deps import get_db
 
 # Use a test-specific in-memory database
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
@@ -39,7 +39,12 @@ TestingSessionLocal = async_sessionmaker(
 
 async def override_get_db():
     async with TestingSessionLocal() as session:
-        yield session
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
 
 app.dependency_overrides[get_db] = override_get_db
 

@@ -32,7 +32,7 @@ class RoleService:
             is_system=False
         )
         self.session.add(role)
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(role)
         return role
 
@@ -53,14 +53,14 @@ class RoleService:
         if role_data.display_name is not None:
             role.display_name = role_data.display_name
 
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(role)
         return role
 
     async def assign_role_to_user(self, user_id: uuid.UUID, role_id: uuid.UUID, assigned_by: Optional[uuid.UUID] = None) -> UserRole:
         user_role = UserRole(user_id=user_id, role_id=role_id, assigned_by=assigned_by)
         self.session.add(user_role)
-        await self.session.commit()
+        await self.session.flush()
         return user_role
 
     async def get_user_roles(self, user_id: uuid.UUID) -> List[Role]:

@@ -6,7 +6,11 @@ from fastapi import APIRouter, Depends, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from gestor.api.deps import get_db, get_audit
-from gestor.schemas.user_schemas import UserCreate, UserResponse, UserUpdate
+from gestor.schemas.user_schemas import (
+    TenantUserCreate as UserCreate,
+    TenantUserResponse as UserResponse,
+    TenantUserUpdate as UserUpdate,
+)
 from gestor.services.audit_service import AuditService
 from gestor.services.user_service import UserService
 
@@ -36,7 +40,7 @@ async def create_user(
     audit: AuditService = Depends(get_audit),
 ):
     user = await svc.create_user(data)
-    await audit.log(
+    await audit.log_action(
         "user.created",
         resource_type="user",
         resource_id=str(user.id),
@@ -55,7 +59,7 @@ async def update_user(
     audit: AuditService = Depends(get_audit),
 ):
     user = await svc.update_user(user_id, data)
-    await audit.log(
+    await audit.log_action(
         "user.updated",
         resource_type="user",
         resource_id=str(user_id),
@@ -73,7 +77,7 @@ async def deactivate_user(
     audit: AuditService = Depends(get_audit),
 ):
     user = await svc.deactivate_user(user_id)
-    await audit.log(
+    await audit.log_action(
         "user.deactivated",
         resource_type="user",
         resource_id=str(user_id),

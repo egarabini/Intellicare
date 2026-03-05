@@ -21,7 +21,7 @@ class SectorService:
     async def create_sector(self, sector_data: SectorCreate) -> Sector:
         sector = Sector(**sector_data.model_dump())
         self.session.add(sector)
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(sector)
         return sector
 
@@ -33,6 +33,6 @@ class SectorService:
         for key, value in sector_data.model_dump(exclude_unset=True).items():
             setattr(sector, key, value)
             
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(sector)
         return sector

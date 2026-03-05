@@ -1,7 +1,31 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from gestor.config import settings
+from sqlalchemy.ext.asyncio import create_async_engine
 
-from gestor.api.v1 import users, roles, sectors, settings as tenant_settings, audit, dashboard
+from gestor.config import settings
+from gestor.api import (
+    user_routes as users,
+    role_routes as roles,
+    sector_routes as sectors,
+    settings_routes as tenant_settings,
+    audit_routes as audit,
+    dashboard_routes as dashboard,
+)
+from intellicare_core.tenant import TenantAwareSessionFactory
+
+try:
+    from intellicare_auth.fastapi import configure_auth
+    _HAS_AUTH = True
+except ImportError:
+    _HAS_AUTH = False
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Inicializa engine multi-tenant configurado via TenantAwareSessionFactory
+    engine = create_async_engine(settings.DATABASE_URL, echo=False)
+    app.state.session_factory = TenantAwareSessionFactory(engine)
+    yield
+    await engine.dispose()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -9,7 +33,11 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
     docs_url=f"{settings.API_V1_STR}/docs",
     redoc_url=f"{settings.API_V1_STR}/redoc",
+    lifespan=lifespan,
 )
+
+if _HAS_AUTH:
+    configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
 app.include_router(users.router, prefix=settings.API_V1_STR)
 app.include_router(roles.router, prefix=settings.API_V1_STR)

@@ -28,7 +28,7 @@ class AuditService:
             ip_address=ip_address
         )
         self.session.add(audit_log)
-        await self.session.commit()
+        await self.session.flush()
         await self.session.refresh(audit_log)
         return audit_log
 

@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from gestor.models.role import Role, UserRole
 from gestor.models.user import TenantUser
-from gestor.schemas.user_schemas import UserCreate, UserUpdate
+from gestor.schemas.user_schemas import TenantUserCreate as UserCreate, TenantUserUpdate as UserUpdate
 from gestor.services.user_service import UserService
 
 
