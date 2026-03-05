@@ -1,74 +1,52 @@
-"""Pydantic models for the Bots Engine — no SQLAlchemy in core."""
-
-from __future__ import annotations
-
-import datetime
 import uuid
-from typing import Any, Literal, Optional
+from datetime import datetime
+from sqlalchemy import Column, String, Integer, Boolean, DateTime, ForeignKey, Text, UniqueConstraint
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
 
-from pydantic import BaseModel, Field
+from intellicare_core.db.base import Base
 
+class Bot(Base):
+    __tablename__ = "bots"
 
-class EventMetadata(BaseModel):
-    """Metadata about the FHIR event that triggered the bot."""
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    tenant_id = Column(String, nullable=False, index=True)
+    name = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    code = Column(Text, nullable=False)
+    code_version = Column(Integer, default=1)
+    runtime = Column(String, default="sandbox")       # sandbox | subprocess
+    status = Column(String, default="active")         # active | inactive
+    run_as_user = Column(Boolean, default=False)
+    timeout_seconds = Column(Integer, default=30)
+    created_by = Column(String, nullable=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    subscription_id: Optional[str] = None
-    interaction: Literal["create", "update", "delete", "execute"] = "create"
-    resource_type: Optional[str] = None
-    resource_id: Optional[str] = None
-    tenant_id: str = "default"
-    triggered_at: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
+class BotSecret(Base):
+    __tablename__ = "bot_secrets"
 
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    tenant_id = Column(String, nullable=False, index=True)
+    bot_id = Column(PGUUID(as_uuid=True), ForeignKey("bots.id", ondelete="CASCADE"), nullable=True)
+    name = Column(String, nullable=False)
+    value_encrypted = Column(Text, nullable=False)
 
-class BotRecord(BaseModel):
-    """Lightweight bot descriptor passed from DB to the execution engine."""
+    __table_args__ = (
+        UniqueConstraint("tenant_id", "bot_id", "name", name="uix_tenant_bot_secret_name"),
+    )
 
-    id: str
-    tenant_id: str
-    name: str
-    description: Optional[str] = None
-    code: str
-    runtime: Literal["sandbox", "subprocess"] = "sandbox"
-    status: Literal["active", "inactive"] = "active"
-    run_as_user: bool = False
-    timeout_seconds: int = 30
-    code_version: int = 1
-    created_at: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
-    updated_at: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
+class BotExecution(Base):
+    __tablename__ = "bot_executions"
 
-    model_config = {"from_attributes": True}
-
-
-class BotSecretRecord(BaseModel):
-    """Decrypted secret value (never serialised to DB in plaintext)."""
-
-    id: str
-    tenant_id: str
-    bot_id: Optional[str] = None
-    name: str
-    value: str  # decrypted plaintext
-
-
-class BotExecutionResult(BaseModel):
-    """Result of a single bot execution."""
-
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    bot_id: str
-    tenant_id: str
-    subscription_id: Optional[str] = None
-    interaction: str = "create"
-    input_resource_type: Optional[str] = None
-    input_resource_id: Optional[str] = None
-    success: bool
-    log_output: str = ""
-    duration_ms: float = 0.0
-    error_message: Optional[str] = None
-    created_at: datetime.datetime = Field(default_factory=datetime.datetime.utcnow)
-
-
-class BotExecutionRequest(BaseModel):
-    """Request to execute a bot (for $execute endpoint)."""
-
-    input_resource: dict[str, Any]
-    interaction: str = "execute"
-    secrets_override: Optional[dict[str, str]] = None
+    id = Column(PGUUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    bot_id = Column(PGUUID(as_uuid=True), ForeignKey("bots.id", ondelete="CASCADE"), nullable=False, index=True)
+    tenant_id = Column(String, nullable=False)
+    subscription_id = Column(PGUUID(as_uuid=True), nullable=True)
+    input_resource_type = Column(String, nullable=True)
+    input_resource_id = Column(String, nullable=True)
+    interaction = Column(String, nullable=True)
+    success = Column(Boolean, nullable=False)
+    log_output = Column(Text, nullable=True)
+    duration_ms = Column(Integer, nullable=True)
+    error_message = Column(Text, nullable=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)

@@ -1,35 +1,37 @@
-"""BotExecutionContext — the execution environment passed to bot code."""
-
-from __future__ import annotations
-
-from dataclasses import dataclass, field
-from typing import Any
-
+"""
+Bot Execution Context for IntelliCare.
+Encapsulates all the contextual data needed by a Bot to execute its task.
+"""
+from dataclasses import dataclass
+from typing import Any, Dict, Optional
 from .client import IntelliCareClient
-from .models import EventMetadata
 
+@dataclass
+class EventMetadata:
+    """Metadata about the event that triggered the bot."""
+    subscription_id: Optional[str] = None
+    interaction: Optional[str] = None
+    trigger_type: str = "subscription"
+
+class BotLogger:
+    """Captures all print statements outputted by the bot."""
+    def __init__(self):
+        self._logs = []
+
+    def info(self, *args, **kwargs):
+        """Standard print captured locally."""
+        message = " ".join(str(a) for a in args)
+        self._logs.append(message)
+
+    def get_log_output(self) -> str:
+        """Returns the accumulated logs joined by newlines."""
+        return "\n".join(self._logs)
 
 @dataclass
 class BotExecutionContext:
-    """All context available to bot code at runtime.
-
-    Bot code receives these as globals:
-        ``input``   — FHIR resource that triggered the bot
-        ``client``  — IntelliCareClient authenticated for the tenant
-        ``secrets`` — dict of decrypted secret values
-        ``event``   — EventMetadata (subscription_id, interaction, etc.)
-    """
-
-    input_resource: dict[str, Any]
+    """Context passed to the RestrictedPython script namespace."""
+    input_resource: Dict[str, Any]
     fhir_client: IntelliCareClient
-    secrets: dict[str, str] = field(default_factory=dict)
-    event_metadata: EventMetadata = field(default_factory=EventMetadata)
-
-    def as_globals(self) -> dict[str, Any]:
-        """Return the globals dict injected into the bot sandbox."""
-        return {
-            "input": self.input_resource,
-            "client": self.fhir_client,
-            "secrets": self.secrets,
-            "event": self.event_metadata,
-        }
+    secrets: Dict[str, str]
+    event_metadata: EventMetadata
+    logger: BotLogger

@@ -1,141 +1,107 @@
-"""BotSandbox — executes Python code in a restricted environment.
-
-Primary:  RestrictedPython (if installed)
-Fallback: stdlib exec() with threading timeout (development only)
-
-RestrictedPython prevents:
-  - Access to __builtins__.__import__ beyond the allowlist
-  - Access to private attributes (_ prefixed)
-  - Attribute write on protected objects
+"""
+Restricted Python Sandbox for IntelliCare Bots.
+Provides a secure environment to execute arbitrary patient/admin defined python scripts.
 """
 
-from __future__ import annotations
+from RestrictedPython import compile_restricted, safe_globals, safe_builtins
+from RestrictedPython.PrintCollector import PrintCollector
+import multiprocessing
+import queue
+import time
 
-import threading
-from dataclasses import dataclass, field
-from typing import Any, Optional
+ALLOWED_IMPORTS = {
+    "json", "datetime", "math", "re", "hashlib",
+    "collections", "itertools", "functools", "typing", "base64", "uuid"
+}
 
-ALLOWED_IMPORTS = frozenset(
-    {
-        "json",
-        "datetime",
-        "math",
-        "re",
-        "hashlib",
-        "collections",
-        "itertools",
-        "functools",
-        "typing",
-        "uuid",
-        "decimal",
-        "string",
-        "textwrap",
-    }
-)
-
-
-@dataclass
-class SandboxResult:
-    success: bool
-    log_output: str = ""
-    error: Optional[str] = None
-    duration_ms: float = 0.0
-
-
-@dataclass
-class _BotLogCapture:
-    lines: list[str] = field(default_factory=list)
-
-    def __call__(self, *args: Any, **kwargs: Any) -> None:
-        self.lines.append(" ".join(str(a) for a in args))
-
-    def getvalue(self) -> str:
-        return "\n".join(self.lines)
-
-
-def _restricted_import(name: str, *args: Any, **kwargs: Any) -> Any:
-    """Allow only safelisted imports inside bot code."""
+def _restricted_import(name, globals=None, locals=None, fromlist=(), level=0):
+    """Import wrapper that only allows whitelisted stdlib modules."""
     if name not in ALLOWED_IMPORTS:
-        raise ImportError(f"Import of '{name}' is not allowed in bot sandbox")
-    return __import__(name, *args, **kwargs)
+        raise ImportError(f"Import {name} is restricted in this sandbox.")
+    return __import__(name, globals, locals, fromlist, level)
 
+def _execute_code(code: str, restricted_globals: dict, result_queue: multiprocessing.Queue):
+    """Executes the code and puts the result or error into a queue."""
+    try:
+        compiled = compile_restricted(code, '<bot>', 'exec')
+        # Execute the compiled code in the restricted globals namespace
+        # (Updates restricted_globals in place with any variables the script defined)
+        exec(compiled, restricted_globals)
+        
+        # If the script used print(), retrieve its output
+        printed_output = ""
+        if '_print' in restricted_globals:
+            printed_output = restricted_globals['_print']()
+            
+        result_queue.put({"success": True, "error": None, "printed": printed_output})
+    except Exception as e:
+        result_queue.put({"success": False, "error": str(e), "printed": ""})
 
 class BotSandbox:
-    """Execute bot Python code in a sandboxed environment."""
+    """Provides a safe sandbox to execute Bot Python code."""
 
-    def execute(
-        self,
-        code: str,
-        globals_ctx: dict[str, Any],
-        timeout: int = 30,
-    ) -> SandboxResult:
-        """Run *code* with *globals_ctx* and enforce *timeout* seconds."""
-        import time
+    def __init__(self):
+        pass
 
-        log = _BotLogCapture()
-        start = time.monotonic()
-        result_container: list[SandboxResult] = []
-
-        def _run() -> None:
-            try:
-                _execute_code(code, globals_ctx, log)
-                elapsed = (time.monotonic() - start) * 1000
-                result_container.append(
-                    SandboxResult(success=True, log_output=log.getvalue(), duration_ms=elapsed)
-                )
-            except Exception as exc:
-                elapsed = (time.monotonic() - start) * 1000
-                result_container.append(
-                    SandboxResult(
-                        success=False,
-                        log_output=log.getvalue(),
-                        error=f"{type(exc).__name__}: {exc}",
-                        duration_ms=elapsed,
-                    )
-                )
-
-        t = threading.Thread(target=_run, daemon=True)
-        t.start()
-        t.join(timeout)
-
-        if t.is_alive():
-            elapsed = (time.monotonic() - start) * 1000
-            return SandboxResult(
-                success=False,
-                log_output=log.getvalue(),
-                error=f"Bot execution timed out after {timeout}s",
-                duration_ms=elapsed,
-            )
-
-        return result_container[0] if result_container else SandboxResult(
-            success=False, error="No result — execution thread did not complete"
-        )
-
-
-def _execute_code(code: str, globals_ctx: dict[str, Any], log: _BotLogCapture) -> None:
-    """Try RestrictedPython first, fall back to plain exec."""
-    try:
-        from RestrictedPython import (  # type: ignore[import]
-            compile_restricted,
-            safe_builtins,
-            safe_globals,
-        )
-
-        compiled = compile_restricted(code, "<bot>", "exec")
-        restricted_globals: dict[str, Any] = {
+    def execute(self, code: str, context: 'BotExecutionContext', timeout: int = 30) -> dict: # type: ignore
+        """
+        Executes python code matching the provided Bot context.
+        Enforces a hard timeout to prevent endless loops.
+        """
+        # Required restricted python components
+        restricted_globals = {
             **safe_globals,
-            "__builtins__": {**safe_builtins, "__import__": _restricted_import},
-            "print": log,
+            '_print_': PrintCollector,
+            '_getattr_': getattr,
+            '__builtins__': {
+                **safe_builtins, 
+                '__import__': _restricted_import,
+                'input': context.input_resource, # allow `input()` to return resource 
+            },
+            'resource': context.input_resource,
+            'client': context.fhir_client,
+            'secrets': context.secrets,
+            'event': context.event_metadata,
+            'log': context.logger.info, # standard safe logger since print is captured by _print_
         }
-        restricted_globals.update(globals_ctx)
-        exec(compiled, restricted_globals)  # noqa: S102
 
-    except ImportError:
-        # RestrictedPython not installed — plain exec with print capture (dev only)
-        _builtins_base = __builtins__ if isinstance(__builtins__, dict) else vars(__builtins__)  # type: ignore[arg-type]
-        plain_globals: dict[str, Any] = {
-            "__builtins__": {**_builtins_base, "__import__": _restricted_import},
-            "print": log,
-        }
-        plain_globals.update(globals_ctx)
-        exec(code, plain_globals)  # noqa: S102
+        # Use multiprocessing to safely enforce strict timeouts 
+        # (since threading cannot stop CPU-bound infinite loops like while True)
+        result_queue = multiprocessing.Queue()
+        process = multiprocessing.Process(
+            target=_execute_code, 
+            args=(code, restricted_globals, result_queue)
+        )
+        
+        start_time = time.time()
+        process.start()
+        process.join(timeout=timeout)
+        
+        duration_ms = int((time.time() - start_time) * 1000)
+
+        if process.is_alive():
+            # Code exceeded timeout
+            process.terminate()
+            process.join()
+            return {
+                "success": False,
+                "error": f"Bot execution exceeded timeout of {timeout}s",
+                "duration_ms": duration_ms
+            }
+
+        try:
+            result = result_queue.get_nowait()
+            if result.get("printed"):
+                context.logger.info(result["printed"])
+                
+            return {
+                "success": result["success"],
+                "error": result["error"],
+                "duration_ms": duration_ms
+            }
+        except queue.Empty:
+            return {
+                "success": False,
+                "error": "Bot process crashed unexpectedly",
+                "duration_ms": duration_ms
+            }

@@ -10,6 +10,7 @@ from gestor.api import (
     settings_routes as tenant_settings,
     audit_routes as audit,
     dashboard_routes as dashboard,
+    bot_routes as bots,
 )
 from intellicare_core.tenant import TenantAwareSessionFactory
 
@@ -45,6 +46,7 @@ app.include_router(sectors.router, prefix=settings.API_V1_STR)
 app.include_router(tenant_settings.router, prefix=settings.API_V1_STR)
 app.include_router(audit.router, prefix=settings.API_V1_STR)
 app.include_router(dashboard.router, prefix=settings.API_V1_STR)
+app.include_router(bots.router, prefix=settings.API_V1_STR)
 
 @app.get(f"{settings.API_V1_STR}/health")
 async def health_check():

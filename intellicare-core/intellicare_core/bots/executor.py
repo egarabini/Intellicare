@@ -1,80 +1,114 @@
-"""BotExecutor — orchestrates a single bot execution end-to-end."""
+"""
+Bot Executor for IntelliCare.
+Orchestrates the entire bot lifecycle constraint to the tenant's execution context.
+"""
+from typing import Any, Dict, Optional
+from sqlalchemy.orm import Session
 
-from __future__ import annotations
-
-import time
-from typing import Any, Optional
-
-from .client import IntelliCareClient
-from .context import BotExecutionContext
-from .models import BotExecutionResult, BotRecord, EventMetadata
+from .models import Bot, BotExecution
 from .sandbox import BotSandbox
-from .secrets_manager import SecretsManager
-
+from .client import IntelliCareClient
+from .context import BotExecutionContext, EventMetadata, BotLogger
+from .secrets_manager import get_tenant_bot_secrets
 
 class BotExecutor:
-    """Orchestrate one bot execution: load context → run sandbox → return result."""
+    """Main entrypoint to execute a Bot and record its execution."""
 
-    def __init__(self, grahame_url: Optional[str] = None) -> None:
-        self._sandbox = BotSandbox()
-        self._secrets_mgr = SecretsManager()
-        self._grahame_url = grahame_url
+    def __init__(self, session: Session):
+        self.session = session
+        self.sandbox = BotSandbox()
 
-    async def execute(
-        self,
-        bot: BotRecord,
-        input_resource: dict[str, Any],
-        *,
-        encrypted_secrets: Optional[dict[str, str]] = None,
-        event_metadata: Optional[EventMetadata] = None,
-    ) -> BotExecutionResult:
-        """Execute *bot* with *input_resource* and return a structured result.
-
-        Args:
-            bot:               Bot definition (code, timeout, etc.)
-            input_resource:    The FHIR resource that triggered the bot.
-            encrypted_secrets: {name: ciphertext} from the DB — decrypted here.
-            event_metadata:    Subscription/interaction context.
+    def execute_bot(
+        self, 
+        bot_id: str, 
+        tenant_id: str, 
+        input_resource: Dict[str, Any], 
+        event_metadata: EventMetadata
+    ) -> BotExecution:
         """
-        start = time.monotonic()
-        meta = event_metadata or EventMetadata(tenant_id=bot.tenant_id)
+        Executes a bot by its ID for the given tenant and resource.
+        Persists the execution result and returns the BotExecution record.
+        """
+        # Load the bot
+        bot = self.session.query(Bot).filter(
+            Bot.id == bot_id, 
+            Bot.tenant_id == tenant_id,
+            Bot.status == "active"
+        ).first()
 
-        # Decrypt secrets
-        secrets: dict[str, str] = {}
-        if encrypted_secrets:
-            try:
-                secrets = self._secrets_mgr.decrypt_all(encrypted_secrets)
-            except Exception:
-                pass  # Silently skip if decryption fails
+        if not bot:
+            return self._record_failure(
+                bot_id, tenant_id, input_resource, event_metadata, 
+                error="Bot not found, inactive, or belongs to another tenant"
+            )
 
         # Build context
-        fhir_client = IntelliCareClient(
-            tenant_id=bot.tenant_id,
-            base_url=self._grahame_url,
-        )
-        ctx = BotExecutionContext(
-            input_resource=input_resource,
-            fhir_client=fhir_client,
-            secrets=secrets,
-            event_metadata=meta,
+        try:
+            secrets = get_tenant_bot_secrets(self.session, tenant_id, bot_id)
+            client = IntelliCareClient(tenant_id=tenant_id)
+            logger = BotLogger()
+            
+            context = BotExecutionContext(
+                input_resource=input_resource,
+                fhir_client=client,
+                secrets=secrets,
+                event_metadata=event_metadata,
+                logger=logger
+            )
+        except Exception as e:
+            return self._record_failure(
+                bot_id, tenant_id, input_resource, event_metadata, 
+                error=f"Context initialization failed: {str(e)}"
+            )
+
+        # Execute in sandbox
+        result = self.sandbox.execute(
+            code=bot.code, 
+            context=context, 
+            timeout=bot.timeout_seconds
         )
 
-        # Run in sandbox
-        sandbox_result = self._sandbox.execute(
-            bot.code, ctx.as_globals(), timeout=bot.timeout_seconds
-        )
-
-        elapsed = (time.monotonic() - start) * 1000
-
-        return BotExecutionResult(
+        # Save Execution Log
+        execution = BotExecution(
             bot_id=bot.id,
-            tenant_id=bot.tenant_id,
-            subscription_id=meta.subscription_id,
-            interaction=meta.interaction,
+            tenant_id=tenant_id,
+            subscription_id=event_metadata.subscription_id,
             input_resource_type=input_resource.get("resourceType"),
             input_resource_id=input_resource.get("id"),
-            success=sandbox_result.success,
-            log_output=sandbox_result.log_output,
-            duration_ms=elapsed,
-            error_message=sandbox_result.error,
+            interaction=event_metadata.interaction,
+            success=result["success"],
+            log_output=logger.get_log_output(),
+            duration_ms=result.get("duration_ms"),
+            error_message=result.get("error")
         )
+        self.session.add(execution)
+        self.session.flush() # flush to generate ID without committing outer transaction
+        return execution
+
+    def _record_failure(
+        self, 
+        bot_id: str, 
+        tenant_id: str, 
+        input_resource: Dict[str, Any], 
+        event_metadata: EventMetadata,
+        error: str
+    ) -> BotExecution:
+        """Records an execution that failed before reaching the Sandbox."""
+        execution = BotExecution(
+            bot_id=bot_id if bot_id else None,
+            tenant_id=tenant_id,
+            subscription_id=event_metadata.subscription_id,
+            input_resource_type=input_resource.get("resourceType"),
+            input_resource_id=input_resource.get("id"),
+            interaction=event_metadata.interaction,
+            success=False,
+            log_output="",
+            duration_ms=0,
+            error_message=error
+        )
+        # We only add if bot_id is uuid (foreign key constraints). 
+        # If bot wasn't found, we might skip insertion or rely on a nullable FK.
+        if execution.bot_id:
+            self.session.add(execution)
+            self.session.flush()
+        return execution

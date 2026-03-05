@@ -53,66 +53,48 @@ async def send_bot_notification(
     grahame_url = (subscription.channel_header or {}).get("X-Grahame-URL")
 
     try:
-        import os  # noqa: PLC0415
-
-        import httpx  # noqa: PLC0415
-
-        from intellicare_core.bots import BotExecutor, BotRecord, EventMetadata  # noqa: PLC0415
-
-        executor = BotExecutor(grahame_url=grahame_url)
-        base = (
-            grahame_url or os.getenv("GRAHAME_URL", "http://intellicare-grahame:8000")
-        ).rstrip("/")
-        headers = {"X-Tenant-ID": subscription.tenant_id}
-
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            bot_resp = await client.get(f"{base}/api/v1/fhir/Bot/{bot_id}", headers=headers)
-
-        if not bot_resp.is_success:
-            return ChannelResult(
-                subscription_id=subscription.id,
-                success=False,
-                error=f"Bot/{bot_id} not found (HTTP {bot_resp.status_code})",
-            )
-
-        bot_data = bot_resp.json()
-        bot = BotRecord(
-            id=bot_data["id"],
-            tenant_id=subscription.tenant_id,
-            name=bot_data.get("name", ""),
-            code=bot_data.get("code", ""),
-            runtime=bot_data.get("runtime", "sandbox"),
-            status=bot_data.get("status", "active"),
-            timeout_seconds=bot_data.get("timeoutSeconds", 30),
-        )
-
-        if bot.status != "active":
-            return ChannelResult(
-                subscription_id=subscription.id,
-                success=False,
-                error=f"Bot/{bot_id} is not active (status={bot.status})",
-            )
-
-        meta = EventMetadata(
-            subscription_id=subscription.id,
-            interaction="create",
-            resource_type=resource.get("resourceType"),
-            resource_id=resource.get("id"),
-            tenant_id=subscription.tenant_id,
-        )
-
-        result = await executor.execute(bot, resource, event_metadata=meta)
-        logger.info(
-            "bot.executed bot_id=%s success=%s duration_ms=%.1f",
-            bot_id,
-            result.success,
-            result.duration_ms,
-        )
-        return ChannelResult(
-            subscription_id=subscription.id,
-            success=result.success,
-            error=result.error_message,
-        )
+        from intellicare_core.bots.models import Bot
+        from intellicare_core.bots.executor import BotExecutor
+        from intellicare_core.bots.context import EventMetadata
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+        import asyncio
+        import os
+        
+        db_url = os.getenv("DATABASE_URL")
+        # Ensure we use sync psycopg for the executor session since the executor uses sync sqlalchemy
+        if db_url and db_url.startswith("postgresql+asyncpg://"):
+            db_url = db_url.replace("postgresql+asyncpg://", "postgresql://")
+            
+        engine = create_engine(db_url)
+        SessionLocal = sessionmaker(bind=engine)
+        
+        def _run_bot_sync():
+            with SessionLocal() as session:
+                executor = BotExecutor(session)
+                meta = EventMetadata(
+                    subscription_id=subscription.id,
+                    interaction="create", # TODO: dynamic interaction
+                )
+                
+                # Execute bot blocks execution based on strictly enforced timeouts.
+                result = executor.execute_bot(
+                    bot_id=bot_id,
+                    tenant_id=subscription.tenant_id,
+                    input_resource=resource,
+                    event_metadata=meta
+                )
+                
+                return ChannelResult(
+                    subscription_id=subscription.id,
+                    success=result.success,
+                    error=result.error_message,
+                )
+                
+        # Run sync DB operations and python sandbox in a separate thread
+        loop = asyncio.get_running_loop()
+        channel_result = await loop.run_in_executor(None, _run_bot_sync)
+        return channel_result
 
     except ImportError as exc:
         return ChannelResult(
