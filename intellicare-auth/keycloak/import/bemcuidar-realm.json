@@ -36,7 +36,7 @@
       },
       {
         "name": "PLATFORM_BILLING",
-        "description": "Equipe financeira e cobrança",
+        "description": "Equipe financeira e cobran\u00e7a",
         "clientRole": false,
         "composite": false,
         "attributes": {}
@@ -48,8 +48,12 @@
       "name": "platform_admins",
       "path": "/platform_admins",
       "attributes": {
-        "type": ["platform"],
-        "descricao": ["Administradores globais da plataforma"]
+        "type": [
+          "platform"
+        ],
+        "descricao": [
+          "Administradores globais da plataforma"
+        ]
       }
     }
   ],
@@ -68,8 +72,12 @@
       "firstName": "IntelliCare",
       "lastName": "Admin",
       "attributes": {
-        "tenant_id": ["platform"],
-        "role": ["PLATFORM_ADMIN"]
+        "tenant_id": [
+          "platform"
+        ],
+        "role": [
+          "PLATFORM_ADMIN"
+        ]
       },
       "credentials": [
         {
@@ -91,7 +99,7 @@
     {
       "clientId": "intellicare-admin",
       "name": "IntelliCare Admin Platform",
-      "description": "Painel de administração da plataforma (super-admins)",
+      "description": "Painel de administra\u00e7\u00e3o da plataforma (super-admins)",
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
       "secret": "admin-secret-change-in-production",
@@ -114,7 +122,6 @@
       },
       "authenticationFlowBindingOverrides": {},
       "fullScopeAllowed": true,
-      "nodeReRegistrationEnabled": false,
       "defaultClientScopes": [
         "web-origins",
         "roles"
@@ -140,7 +147,7 @@
     {
       "clientId": "intellicare-portal",
       "name": "IntelliCare Portal",
-      "description": "Portal de acesso para tenants e usuários",
+      "description": "Portal de acesso para tenants e usu\u00e1rios",
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
       "secret": "portal-secret-change-in-production",
@@ -202,7 +209,7 @@
     {
       "clientId": "intellicare-api",
       "name": "IntelliCare API Services",
-      "description": "Client para serviços Python (módulos)",
+      "description": "Client para servi\u00e7os Python (m\u00f3dulos)",
       "enabled": true,
       "clientAuthenticatorType": "client-secret",
       "secret": "api-secret-change-in-production",
