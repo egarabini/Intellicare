@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from admin.models.billing import BillingRecord
 from admin.models.tenant import Tenant
 from admin.schemas.billing_schemas import BillingResponse
-from admin.api.deps import get_session
+from admin.api.deps import get_db as get_session
 
 router = APIRouter(prefix="/admin/billing", tags=["Billing"])
 

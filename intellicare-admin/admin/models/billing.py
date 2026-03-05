@@ -11,39 +11,24 @@ import os
 SCHEMA = os.getenv("DB_SCHEMA", "platform")
 TABLE_ARGS = {"schema": SCHEMA} if SCHEMA else {}
 
-class RegistroBilling(Base):
-    __tablename__ = "registro_billing"
-    # The original code had __table_args__ defined twice.
-    # The second definition was the effective one, combining UniqueConstraint and schema.
-    # We'll update that effective definition.
-    # __table_args__ = {"schema": "platform"} # This line was effectively overridden
+class BillingRecord(Base):
+    __tablename__ = "billing_records"
+    __table_args__ = TABLE_ARGS
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    estabelecimento_id = Column(UUID(as_uuid=True), ForeignKey(f"{SCHEMA}.estabelecimentos.id" if SCHEMA else "estabelecimentos.id"))
-    periodo_ano = Column(Integer, nullable=False)
-    periodo_mes = Column(Integer, nullable=False)
+    tenant_id = Column(String(50), ForeignKey(f"{SCHEMA}.tenants.tenant_id" if SCHEMA else "tenants.tenant_id"), nullable=False)
+    
+    period_start = Column(DateTime(timezone=True), nullable=False)
+    period_end = Column(DateTime(timezone=True), nullable=False)
+    
+    plan_name = Column(String(50))
+    active_users = Column(Integer, default=0)
+    sms_sent = Column(Integer, default=0)
+    api_requests = Column(Integer, default=0)
 
-    # Uso
-    gestores_ativos = Column(Integer, default=0)
-    usuarios_saude_ativos = Column(Integer, default=0)
-    chamadas_api = Column(Integer, default=0)
-    storage_gb = Column(Numeric(10, 2), default=0)
-
-    # Valores
-    preco_base = Column(Numeric(10, 2))
-    preco_excedente = Column(Numeric(10, 2), default=0)
-    preco_total = Column(Numeric(10, 2))
-
-    # Status
-    status = Column(String(50), default="pending")  # pending, paid, overdue, cancelled
-    pago_em = Column(DateTime(timezone=True))
-    data_vencimento = Column(Date)
-
-    criado_em = Column(DateTime(timezone=True), server_default=func.now())
-
-    estabelecimento = relationship("Estabelecimento", backref="registros_billing")
-    __table_args__ = (
-        UniqueConstraint("estabelecimento_id", "periodo_ano", "periodo_mes"),
-        TABLE_ARGS
-    )
+    amount = Column(Numeric(10, 2))
+    payment_status = Column(String(50), default="pending")  # pending, paid, overdue, cancelled
+    
+    paid_at = Column(DateTime(timezone=True))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
 

@@ -1,6 +1,7 @@
 """Plan ORM model — schema 'platform'."""
 
 import uuid
+import os
 from sqlalchemy import Column, String, Boolean, Integer, Numeric, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship

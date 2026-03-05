@@ -10,27 +10,19 @@ import os
 SCHEMA = os.getenv("DB_SCHEMA", "platform")
 TABLE_ARGS = {"schema": SCHEMA} if SCHEMA else {}
 
-class AuditLog(Base):
-    __tablename__ = "audit_logs"
+class GlobalAuditLog(Base):
+    __tablename__ = "global_audit_logs"
     __table_args__ = TABLE_ARGS
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    actor_id = Column(UUID(as_uuid=True), nullable=False)
-    actor_email = Column(String(255), nullable=False)
-    actor_role = Column(String(100), nullable=False)
-
+    actor_id = Column(String(255), nullable=False)
     action = Column(String(100), nullable=False)
-    target_type = Column(String(50))
-    target_id = Column(UUID(as_uuid=True))
+    
+    resource_type = Column(String(50))
+    resource_id = Column(String(255))
+    target_tenant_id = Column(String(50))
 
-    payload = Column(JSON)
-    result = Column(String(50))
-    error_message = Column(Text)
-
-    ip = Column(String(45))
-    user_agent = Column(Text)
-
-    impersonated_as = Column(UUID(as_uuid=True))
-    reason = Column(Text)
-
+    details = Column(JSON)
+    ip_address = Column(String(45))
+    
     created_at = Column(DateTime(timezone=True), server_default=func.now())

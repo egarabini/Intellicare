@@ -35,7 +35,7 @@ class Tenant(Base):
     max_sms_month = Column(Integer, default=0)
 
     # Reference to Plan
-    plan_name = Column(String(50), ForeignKey(f"{SCHEMA}.plans.id" if SCHEMA else "plans.id"), default="trial")
+    plan_name = Column(String(50), ForeignKey(f"{SCHEMA}.plan.name" if SCHEMA else "plan.name"), default="trial")
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
@@ -45,21 +45,8 @@ class Tenant(Base):
 
     # Relationships
     modules = relationship("TenantModule", back_populates="tenant", lazy="joined")
-    plan = relationship("Plan")
 
 
-class Plan(Base):
-    __tablename__ = "plans"
-    __table_args__ = TABLE_ARGS
-
-    id = Column(String(50), primary_key=True)  # trial, basico, profissional, enterprise
-    nome = Column(String(255), nullable=False)
-    descricao = Column(String(512))
-    preco_mensal = Column(Integer)  # Em centavos
-    moeda = Column(String(3), default="BRL")
-    
-    status = Column(String(50), default="active")
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
 class TenantModule(Base):

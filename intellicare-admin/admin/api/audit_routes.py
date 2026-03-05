@@ -8,7 +8,7 @@ from sqlalchemy import select, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from admin.models.audit import GlobalAuditLog
-from admin.api.deps import get_session
+from admin.api.deps import get_db as get_session
 
 router = APIRouter(prefix="/admin/audit", tags=["Audit"])
 

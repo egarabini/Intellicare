@@ -8,7 +8,7 @@ from admin.models.plan import Plan
 from admin.models.tenant import Tenant
 from admin.models.billing import BillingRecord
 from admin.schemas.plan_schemas import PlanResponse
-from admin.api.deps import get_session
+from admin.api.deps import get_db as get_session
 
 plan_router = APIRouter(prefix="/admin/plans", tags=["Plans"])
 dashboard_router = APIRouter(prefix="/admin/dashboard", tags=["Dashboard"])
