@@ -34,7 +34,7 @@ async def admin_portal_root():
     <head>
         <meta charset="UTF-8">
         <title>IntelliCare Admin</title>
-        <script src="https://keycloak.gsi.srv.br/js/keycloak.js"></script>
+        <script src="https://auth.intellicare.ia.br/js/keycloak.js"></script>
         <style>
             body { font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
             .card { background: #1e293b; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); max-width: 500px; width: 100%; text-align: center; border: 1px solid #334155; }
@@ -54,7 +54,7 @@ async def admin_portal_root():
         </div>
         <script>
             var keycloak = new Keycloak({
-                url: 'https://keycloak.gsi.srv.br',
+                url: 'https://auth.intellicare.ia.br',
                 realm: 'bemcuidar',
                 clientId: 'intellicare-admin'
             });
