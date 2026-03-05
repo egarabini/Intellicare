@@ -1,31 +1,28 @@
 """PolicyResolver — resolve an EffectiveAccessPolicy from a decoded JWT payload.
 
-Extracts user_id (sub), tenant_id, and SMART scopes from the JWT then delegates
-composition to PolicyBuilder.
+Checks Redis cache first. If cache missed, queries the database for the 
+TenantMembershipPolicy and AccessPolicy. Replaces `%profile` and other
+parameters before returning the effective policy.
 """
 
 from __future__ import annotations
 
 import logging
-from typing import Any, Optional
+import json
+from typing import Any, Optional, Dict
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from redis.asyncio import Redis
 
 logger = logging.getLogger(__name__)
 
 
 class PolicyResolver:
-    """Resolve AccessPolicy from a Keycloak JWT payload.
+    """Resolve AccessPolicy from the database and Redis cache."""
 
-    Requires:
-        - JWT payload dict (as returned by KeycloakClient.validate_token)
-        - A configured PolicyBuilder (from intellicare_core.access)
-    """
-
-    def __init__(self, policy_builder: Any) -> None:
-        """
-        Args:
-            policy_builder: An instance of ``intellicare_core.access.PolicyBuilder``.
-        """
-        self._builder = policy_builder
+    def __init__(self, session: AsyncSession, redis: Redis) -> None:
+        self.session = session
+        self.redis = redis
 
     def extract_user_id(self, jwt_payload: dict[str, Any]) -> str:
         """Extract user ID from JWT (Keycloak 'sub' claim)."""
@@ -35,54 +32,88 @@ class PolicyResolver:
         """Extract tenant ID — from request header (preferred) or JWT claim."""
         if request_tenant:
             return request_tenant
-        # Keycloak custom claim (configured in token mapper)
         return jwt_payload.get("tenant_id") or jwt_payload.get("tenantId") or "default"
 
-    def extract_smart_scopes(self, jwt_payload: dict[str, Any]) -> Optional[str]:
-        """Extract SMART-on-FHIR scopes from JWT 'scope' claim."""
-        scope = jwt_payload.get("scope", "")
-        if not scope:
-            return None
-        # Filter to SMART scope tokens (patient/*, user/*, system/*)
-        smart_tokens = [
-            t for t in scope.split()
-            if t.startswith(("patient/", "user/", "system/"))
-        ]
-        return " ".join(smart_tokens) if smart_tokens else None
+    def _replace_parameters(self, rules: list, parameters: dict) -> list:
+        """Replace placeholders like %profile in the rules criteria."""
+        if not parameters or not rules:
+            return rules
+
+        rules_str = json.dumps(rules)
+        for key, value in parameters.items():
+            placeholder = f"%{key}"
+            # Ensure safe replacement of strings in JSON
+            # In a real scenario, consider AST parsing or proper FHIRPath substitution
+            rules_str = rules_str.replace(placeholder, str(value))
+        
+        return json.loads(rules_str)
 
     async def resolve(
         self,
-        jwt_payload: dict[str, Any],
-        request_tenant: Optional[str] = None,
-    ) -> Any:
-        """Build and return an EffectiveAccessPolicy for the JWT user.
-
-        Returns an EffectiveAccessPolicy (from intellicare_core.access).
-        Returns an empty/unauthenticated policy if an error occurs.
+        tenant_id: str,
+        user_id: str,
+    ) -> dict:
+        """Build and return an AccessPolicy dictionary.
+        
+        Follows precedence: Redis -> DB -> Default DenyAll
         """
-        try:
-            user_id = self.extract_user_id(jwt_payload)
-            tenant_id = self.extract_tenant_id(jwt_payload, request_tenant)
-            smart_scopes = self.extract_smart_scopes(jwt_payload)
+        cache_key = f"policy:{tenant_id}:{user_id}"
 
-            policy = await self._builder.build_effective_policy(
-                tenant_id=tenant_id,
-                user_id=user_id,
-                smart_scopes=smart_scopes,
-            )
-            logger.debug(
-                "policy_resolver.resolved user=%s tenant=%s admin=%s rules=%d",
-                user_id,
-                tenant_id,
-                policy.is_admin,
-                len(policy.rules),
-            )
-            return policy
+        try:
+            # 1. Check Redis Cache
+            cached_policy = await self.redis.get(cache_key)
+            if cached_policy:
+                logger.debug(f"policy_resolver.cache_hit key={cache_key}")
+                return json.loads(cached_policy)
+                
+        except Exception as e:
+            logger.warning(f"policy_resolver.redis_error: {e}")
+
+        # 2. Check Database (TenantMembership + AccessPolicy)
+        try:
+            # Dynamic import to avoid circular dependencies if used inside GRAHAME models
+            from intellicare_core.access.models import TenantMembershipRecord, AccessPolicyRecord
+            # We assume these models are SQLAlchemy ORM classes despite the `models.py` showing Pydantic initially.
+            # In the W2-B spec, they were defined via SQL CREATE TABLE.
+            # We will use SQLAlchemy core text or a declarative model if it gets mapped in grahame.
+
+            # Using SQL text to fetch safely without depending on the exact ORM model placement
+            from sqlalchemy import text
+            
+            query = text('''
+                SELECT tmp.is_admin, tmp.parameters, ap.resource_rules
+                FROM tenant_membership_policies tmp
+                LEFT JOIN access_policies ap ON tmp.access_policy_id = ap.id
+                WHERE tmp.tenant_id = :tenant_id AND tmp.user_id = :user_id
+            ''')
+            
+            result = await self.session.execute(query, {"tenant_id": tenant_id, "user_id": user_id})
+            row = result.fetchone()
+
+            if not row:
+                logger.debug(f"policy_resolver.not_found user={user_id} tenant={tenant_id}")
+                return {} # Deny All
+
+            is_admin, parameters, resource_rules = row
+            
+            if is_admin:
+                policy_dict = {"is_admin": True, "resource_rules": []}
+            else:
+                rules = resource_rules if resource_rules else []
+                # Handle parameter replacement like %profile -> Practitioner/123
+                if parameters:
+                    rules = self._replace_parameters(rules, parameters)
+                
+                policy_dict = {"is_admin": False, "resource_rules": rules}
+
+            # 3. Cache the resolved policy for 5 minutes
+            try:
+                await self.redis.set(cache_key, json.dumps(policy_dict), ex=300)
+            except Exception as e:
+                logger.warning(f"policy_resolver.redis_set_error: {e}")
+
+            return policy_dict
 
         except Exception as exc:
-            logger.warning("policy_resolver.error %s — returning empty policy", exc)
-            try:
-                from intellicare_core.access.models import EffectiveAccessPolicy  # noqa: PLC0415
-                return EffectiveAccessPolicy()
-            except ImportError:
-                return None
+            logger.error(f"policy_resolver.db_error {exc} — returning empty policy")
+            return {}

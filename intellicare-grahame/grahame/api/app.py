@@ -166,6 +166,24 @@ except ImportError:
 if _HAS_AUTH:
     configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
+# ── Exception Handlers ─────────────────────────────────────────────────────
+
+from fastapi.responses import JSONResponse
+from grahame.api.deps import FHIRForbiddenError
+
+@app.exception_handler(FHIRForbiddenError)
+async def fhir_forbidden_exception_handler(request, exc: FHIRForbiddenError):
+    return JSONResponse(
+        status_code=403,
+        content={
+            "resourceType": "OperationOutcome",
+            "issue": [{
+                "severity": "error",
+                "code": "forbidden",
+                "diagnostics": exc.reason
+            }]
+        }
+    )
 
 # ── Contrato do módulo ─────────────────────────────────────────────────────
 
