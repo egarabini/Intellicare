@@ -104,17 +104,19 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "admin-secret-change-in-production",
       "redirectUris": [
-        "http://localhost:8010/*"
+        "http://localhost:8010/*",
+        "https://admin.intellicare.ia.br/*"
       ],
       "webOrigins": [
-        "http://localhost:8010"
+        "http://localhost:8010",
+        "https://admin.intellicare.ia.br"
       ],
-      "bearerOnly": true,
+      "bearerOnly": false,
       "consentRequired": false,
-      "standardFlowEnabled": false,
-      "implicitFlowEnabled": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
       "directAccessGrantsEnabled": true,
-      "publicClient": false,
+      "publicClient": true,
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
