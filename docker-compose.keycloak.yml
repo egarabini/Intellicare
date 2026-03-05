@@ -54,9 +54,9 @@ services:
       KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:-changeme}
       KC_DB_SCHEMA: public
 
-      # Hostname explícito — corrige NullPointerException no authority() do Vert.x
+      # Hostname explícito — default para o domínio de Auth
       # quando Keycloak recebe requests sem Host header válido (ex: healthcheck interno)
-      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME_URL:-http://localhost:8080}
+      KC_HOSTNAME: ${KEYCLOAK_HOSTNAME:-auth.intellicare.ia.br}
       KC_HTTP_ENABLED: "true"
 
       # Admin User (Criado automaticamente na primeira execução)
@@ -73,7 +73,7 @@ services:
       KC_LOG_FORMAT: json
 
       # Proxy / HTTPS
-      KC_PROXY: none
+      KC_PROXY: edge
       KC_HOSTNAME_STRICT: "false"
       KC_HOSTNAME_STRICT_HTTPS: "false"
 
