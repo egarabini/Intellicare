@@ -33,23 +33,13 @@ async def info() -> dict[str, Any]:
     }
 
 
-def _safe_include_router(module_name: str, attr_name: str, prefix: str = "/api/v1") -> None:
-    """
-    Include a router only when import succeeds.
-    Keeps admin service online even if a specific route module is temporarily broken.
-    """
-    try:
-        module = importlib.import_module(module_name)
-        router = getattr(module, attr_name)
-        app.include_router(router, prefix=prefix)
-        logger.info("Router loaded: %s.%s", module_name, attr_name)
-    except Exception as exc:  # pragma: no cover - defensive startup guard
-        logger.warning("Router disabled: %s.%s (%s)", module_name, attr_name, exc)
+from admin.api.tenant_routes import router as tenant_router
+# from admin.api.billing_routes import router as billing_router
+# from admin.api.audit_routes import router as audit_router
+# from admin.api.plan_routes import plan_router, dashboard_router
 
-
-# Optional routers (best effort)
-_safe_include_router("admin.api.tenant_routes", "router")
-_safe_include_router("admin.api.billing_routes", "router")
-_safe_include_router("admin.api.audit_routes", "router")
-_safe_include_router("admin.api.plan_routes", "plan_router")
-_safe_include_router("admin.api.plan_routes", "dashboard_router")
+app.include_router(tenant_router, prefix="/api/v1")
+# app.include_router(billing_router, prefix="/api/v1")
+# app.include_router(audit_router, prefix="/api/v1")
+# app.include_router(plan_router, prefix="/api/v1")
+# app.include_router(dashboard_router, prefix="/api/v1")

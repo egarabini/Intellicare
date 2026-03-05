@@ -194,7 +194,7 @@ class ProvisioningService:
                     "enabled": True,
                     "attributes": {
                         "tenant_id": [tenant.tenant_id],
-                        "role": ["ADMIN"],
+                        "role": ["ADMIN", "TENANT_ADMIN"],
                         "nome": [f"Admin {tenant.nome_fantasia}"],
                         "tipo": ["ADMIN_LOCAL"],
                     },
@@ -210,7 +210,7 @@ class ProvisioningService:
                 "emailVerified": False,
                 "attributes": {
                     "tenant_id": [tenant.tenant_id],
-                    "role": ["ADMIN"],
+                    "role": ["ADMIN", "TENANT_ADMIN"],
                     "nome": [f"Admin {tenant.nome_fantasia}"],
                     "tipo": ["ADMIN_LOCAL"],
                 },
