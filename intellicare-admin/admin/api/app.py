@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from admin.api.v1 import tenants, billing, audit
+
+from admin.api import audit_routes, billing_routes, plan_routes, tenant_routes
 
 app = FastAPI(
     title="IntelliCare Admin API",
@@ -7,6 +8,8 @@ app = FastAPI(
     version="1.0.0",
 )
 
-app.include_router(tenants.router, prefix="/api/v1/admin", tags=["estabelecimentos"])
-app.include_router(billing.router, prefix="/api/v1/admin", tags=["faturamento"])
-app.include_router(audit.router, prefix="/api/v1/admin/auditoria", tags=["auditoria"])
+app.include_router(tenant_routes.router, prefix="/api/v1")
+app.include_router(billing_routes.router, prefix="/api/v1")
+app.include_router(audit_routes.router, prefix="/api/v1")
+app.include_router(plan_routes.plan_router, prefix="/api/v1")
+app.include_router(plan_routes.dashboard_router, prefix="/api/v1")
