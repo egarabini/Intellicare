@@ -28,22 +28,49 @@ interface AuthState {
     expiry: number | null;
     setTokens: (data: TokenResponse) => void;
     clear: () => void;
+    // Legacy aliases for backward compatibility (TenantContext, OrgSwitcher, TenantSelectorPage)
+    token: string | null;
+    setToken: (token: string) => void;
+    logout: () => void;
 }
 
 // Memory-only storage for access_token to prevent XSS. 
 // Refresh token goes to sessionStorage to survive F5 but not new tabs.
-export const useAuthStore = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set, get) => ({
     accessToken: null,
     refreshToken: null,
+    token: null, // Legacy alias for accessToken
     user: null,
     roles: [],
     tenantId: null,
     expiry: null,
 
+    // Legacy: accepts a raw JWT string. Used by TenantContext/OrgSwitcher.
+    setToken: (rawToken: string) => {
+        const payload = parseJwt(rawToken);
+        set({
+            accessToken: rawToken,
+            token: rawToken,
+            user: {
+                sub: payload.sub,
+                name: payload.name || payload.given_name || payload.preferred_username,
+                email: payload.email,
+                preferred_username: payload.preferred_username
+            },
+            roles: payload.realm_roles ?? [],
+            tenantId: payload.tenant_id ?? null,
+            expiry: payload.exp ? payload.exp * 1000 : null,
+        });
+    },
+    logout: () => {
+        get().clear();
+    },
+
     setTokens: (data: TokenResponse) => {
         const payload = parseJwt(data.access_token);
         set({
             accessToken: data.access_token,
+            token: data.access_token, // Keep legacy alias in sync
             refreshToken: data.refresh_token,
             user: {
                 sub: payload.sub,
@@ -62,6 +89,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         sessionStorage.removeItem("refresh_token");
         set({
             accessToken: null,
+            token: null,
             refreshToken: null,
             user: null,
             roles: [],
