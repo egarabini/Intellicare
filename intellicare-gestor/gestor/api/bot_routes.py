@@ -3,13 +3,13 @@ from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from gestor.api.deps import get_db, get_current_user
+from gestor.api.deps import get_db, get_tenant_ctx
+from intellicare_core.tenant.context import TenantContext
 from gestor.schemas.bot_schemas import (
     BotCreate, BotUpdate, BotResponse, 
     BotSecretCreate, BotSecretResponse,
     BotExecutionResponse
 )
-from gestor.schemas.user_schemas import TenantUserResponse
 
 # These rely on the models created in intellicare_core.bots
 from intellicare_core.bots.models import Bot, BotSecret, BotExecution
@@ -22,24 +22,24 @@ router = APIRouter()
 @router.get("/bots", response_model=List[BotResponse])
 def list_bots(
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user),
+    ctx: TenantContext = Depends(get_tenant_ctx),
     skip: int = 0,
     limit: int = 100
 ):
     """List all bots for the current tenant."""
-    return db.query(Bot).filter(Bot.tenant_id == current_user.tenant_id).offset(skip).limit(limit).all()
+    return db.query(Bot).filter(Bot.tenant_id == ctx.tenant_id).offset(skip).limit(limit).all()
 
 @router.post("/bots", response_model=BotResponse, status_code=status.HTTP_201_CREATED)
 def create_bot(
     bot_in: BotCreate,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """Create a new bot."""
     bot = Bot(
         **bot_in.model_dump(),
-        tenant_id=current_user.tenant_id,
-        created_by=str(current_user.id)
+        tenant_id=ctx.tenant_id,
+        created_by=str(ctx.user_id)
     )
     db.add(bot)
     db.commit()
@@ -50,10 +50,10 @@ def create_bot(
 def get_bot(
     bot_id: uuid.UUID,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """Get a specific bot."""
-    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == current_user.tenant_id).first()
+    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == ctx.tenant_id).first()
     if not bot:
         raise HTTPException(status_code=404, detail="Bot not found")
     return bot
@@ -63,10 +63,10 @@ def update_bot(
     bot_id: uuid.UUID,
     bot_in: BotUpdate,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """Update a bot."""
-    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == current_user.tenant_id).first()
+    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == ctx.tenant_id).first()
     if not bot:
         raise HTTPException(status_code=404, detail="Bot not found")
 
@@ -85,10 +85,10 @@ def update_bot(
 def delete_bot(
     bot_id: uuid.UUID,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """Delete a bot."""
-    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == current_user.tenant_id).first()
+    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == ctx.tenant_id).first()
     if not bot:
         raise HTTPException(status_code=404, detail="Bot not found")
     
@@ -101,10 +101,10 @@ def delete_bot(
 def list_secrets(
     bot_id: Optional[uuid.UUID] = None,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """List bot secrets (does not expose values)."""
-    query = db.query(BotSecret).filter(BotSecret.tenant_id == current_user.tenant_id)
+    query = db.query(BotSecret).filter(BotSecret.tenant_id == ctx.tenant_id)
     if bot_id:
         query = query.filter((BotSecret.bot_id == bot_id) | (BotSecret.bot_id.is_(None)))
     return query.all()
@@ -113,12 +113,12 @@ def list_secrets(
 def create_secret(
     secret_in: BotSecretCreate,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """Create or update a secret for a bot or globally for the tenant."""
     # Check if exists
     existing = db.query(BotSecret).filter(
-        BotSecret.tenant_id == current_user.tenant_id,
+        BotSecret.tenant_id == ctx.tenant_id,
         BotSecret.bot_id == secret_in.bot_id,
         BotSecret.name == secret_in.name
     ).first()
@@ -132,7 +132,7 @@ def create_secret(
         return existing
     else:
         secret = BotSecret(
-            tenant_id=current_user.tenant_id,
+            tenant_id=ctx.tenant_id,
             bot_id=secret_in.bot_id,
             name=secret_in.name,
             value_encrypted=encrypted_val
@@ -146,12 +146,12 @@ def create_secret(
 def delete_secret(
     secret_id: uuid.UUID,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user)
+    ctx: TenantContext = Depends(get_tenant_ctx)
 ):
     """Delete a secret."""
     secret = db.query(BotSecret).filter(
         BotSecret.id == secret_id, 
-        BotSecret.tenant_id == current_user.tenant_id
+        BotSecret.tenant_id == ctx.tenant_id
     ).first()
     if not secret:
         raise HTTPException(status_code=404, detail="Secret not found")
@@ -165,17 +165,17 @@ def delete_secret(
 def list_bot_executions(
     bot_id: uuid.UUID,
     db: Session = Depends(get_db),
-    current_user: TenantUserResponse = Depends(get_current_user),
+    ctx: TenantContext = Depends(get_tenant_ctx),
     skip: int = 0,
     limit: int = 100
 ):
     """List execution history logs for a specific bot."""
     # Ensure bot belongs to tenant
-    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == current_user.tenant_id).first()
+    bot = db.query(Bot).filter(Bot.id == bot_id, Bot.tenant_id == ctx.tenant_id).first()
     if not bot:
         raise HTTPException(status_code=404, detail="Bot not found")
     
     return db.query(BotExecution).filter(
         BotExecution.bot_id == bot_id,
-        BotExecution.tenant_id == current_user.tenant_id
+        BotExecution.tenant_id == ctx.tenant_id
     ).order_by(BotExecution.created_at.desc()).offset(skip).limit(limit).all()
