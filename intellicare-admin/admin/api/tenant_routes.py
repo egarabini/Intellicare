@@ -8,9 +8,9 @@ from admin.schemas.tenant_schemas import (
 )
 from admin.services.tenant_service import TenantService
 from admin.services.provisioning_service import ProvisioningService
-from admin.api.deps import get_tenant_service, get_provisioning_service, get_actor_id
+from admin.api.deps import get_tenant_service, get_provisioning_service, get_actor_id, require_platform_admin
 
-router = APIRouter(prefix="/admin/tenants", tags=["Tenants"])
+router = APIRouter(prefix="/admin/tenants", tags=["Tenants"], dependencies=[Depends(require_platform_admin)])
 
 
 @router.post("", response_model=TenantResponse, status_code=201)

@@ -4,6 +4,17 @@ import Layout from '@components/layout/Layout';
 import { TenantProvider, TenantSelectorPage, ModuleRoute } from './components/tenant';
 import { useTenantContext } from './contexts/TenantContext';
 
+// Auth Components
+import Login from '@pages/Login';
+import AuthCallback from '@pages/Login/AuthCallback';
+import SemPermissao from '@pages/SemPermissao';
+import RoleRouter from '@components/auth/RoleRouter';
+import ProtectedRoute from '@components/auth/ProtectedRoute';
+
+// Admin & Gestor Portals
+import AdminDashboard from '@pages/Admin/Dashboard';
+import GestorDashboard from '@pages/Gestor/Dashboard';
+
 // Eager load Dashboard
 import DemoDashboard from '@pages/DemoDashboard';
 
@@ -43,26 +54,48 @@ import AcompanhamentoPage from '@pages/AcompanhamentoPage';
 // ─── Inner App (com acesso ao TenantContext) ────────────────
 
 function AppRoutes() {
-  const { showSelector } = useTenantContext() as any; // Temporary cast until we expose it cleanly or we can just rely on not implementing the hook layer since the Provider now uses React state locally if we want it to. But let's assume we exposed it or we will. Actually our context only has {tenantInfo, isLoading, error, changeTenant}, wait. Let's fix this in App.tsx right now.
+  const { showSelector } = useTenantContext() as any;
 
   return (
     <Layout>
       <Suspense fallback={<div className="flex h-screen items-center justify-center text-white">Carregando Módulos...</div>}>
         <Routes>
-          {/* Core Demo Routes */}
-          <Route path="/" element={<DemoDashboard />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/pierre" element={<ModuleRoute module="pierre"><PierreChat /></ModuleRoute>} />
-          <Route path="/hippocrates" element={<ModuleRoute module="hippocrates"><HippocratesPage /></ModuleRoute>} />
-          <Route path="/minerva" element={<ModuleRoute module="minerva"><MinervaOCR /></ModuleRoute>} />
-          <Route path="/oswaldo" element={<ModuleRoute module="oswaldo"><OswaldoPage /></ModuleRoute>} />
-          <Route path="/florence" element={<ModuleRoute module="florence"><FlorencePage /></ModuleRoute>} />
-          <Route path="/geralda" element={<ModuleRoute module="geralda"><GeraldaPage /></ModuleRoute>} />
-          <Route path="/nise" element={<ModuleRoute module="nise"><NisePage /></ModuleRoute>} />
-          <Route path="/zilda" element={<ModuleRoute module="zilda"><ZildaPage /></ModuleRoute>} />
-          <Route path="/wanda" element={<ModuleRoute module="wanda"><WandaPage /></ModuleRoute>} />
-          <Route path="/donabedian" element={<ModuleRoute module="donabedian"><DonabedianPage /></ModuleRoute>} />
-          <Route path="/grahame" element={<ModuleRoute module="grahame"><GrahamePage /></ModuleRoute>} />
+          {/* OIDC Auth Flow */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
+          <Route path="/sem-permissao" element={<SemPermissao />} />
+          <Route path="/router" element={<RoleRouter />} />
+
+          {/* Área Admin */}
+          <Route element={<ProtectedRoute requiredRole="PLATFORM_ADMIN" />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+            {/* Futuras rotas admin: tenants, modulos, auditoria */}
+          </Route>
+
+          {/* Área Gestor */}
+          <Route element={<ProtectedRoute requiredRole="TENANT_GESTOR" />}>
+            <Route path="/gestor" element={<GestorDashboard />} />
+            {/* Futuras rotas gestor: usuarios, unidades */}
+          </Route>
+
+          {/* Área Clínica (Requer token válido) */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<DemoDashboard />} />
+            <Route path="/dashboard" element={<Navigate to="/" replace />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+
+            <Route path="/pierre" element={<ModuleRoute module="pierre"><PierreChat /></ModuleRoute>} />
+            <Route path="/hippocrates" element={<ModuleRoute module="hippocrates"><HippocratesPage /></ModuleRoute>} />
+            <Route path="/minerva" element={<ModuleRoute module="minerva"><MinervaOCR /></ModuleRoute>} />
+            <Route path="/oswaldo" element={<ModuleRoute module="oswaldo"><OswaldoPage /></ModuleRoute>} />
+            <Route path="/florence" element={<ModuleRoute module="florence"><FlorencePage /></ModuleRoute>} />
+            <Route path="/geralda" element={<ModuleRoute module="geralda"><GeraldaPage /></ModuleRoute>} />
+            <Route path="/nise" element={<ModuleRoute module="nise"><NisePage /></ModuleRoute>} />
+            <Route path="/zilda" element={<ModuleRoute module="zilda"><ZildaPage /></ModuleRoute>} />
+            <Route path="/wanda" element={<ModuleRoute module="wanda"><WandaPage /></ModuleRoute>} />
+            <Route path="/donabedian" element={<ModuleRoute module="donabedian"><DonabedianPage /></ModuleRoute>} />
+            <Route path="/grahame" element={<ModuleRoute module="grahame"><GrahamePage /></ModuleRoute>} />
+          </Route>
 
           {/* Support Pages */}
           <Route path="/privacidade" element={<PrivacidadePage />} />

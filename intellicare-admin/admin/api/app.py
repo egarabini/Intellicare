@@ -55,7 +55,7 @@ async def admin_portal_root():
         <script>
             var keycloak = new Keycloak({
                 url: 'https://auth.intellicare.ia.br',
-                realm: 'bemcuidar',
+                realm: 'intellicare',
                 clientId: 'intellicare-admin'
             });
 
@@ -115,9 +115,14 @@ from admin.api.tenant_routes import router as tenant_router
 from admin.api.billing_routes import router as billing_router
 from admin.api.audit_routes import router as audit_router
 from admin.api.plan_routes import plan_router, dashboard_router
+from admin.api.gestor_routes import router as gestor_router
+from admin.api.contrato_routes import router as contrato_router
 
 app.include_router(tenant_router, prefix="/api/v1")
 app.include_router(billing_router, prefix="/api/v1")
 app.include_router(audit_router, prefix="/api/v1")
 app.include_router(plan_router, prefix="/api/v1")
 app.include_router(dashboard_router, prefix="/api/v1")
+app.include_router(gestor_router, prefix="/api/v1/admin")
+app.include_router(contrato_router, prefix="/api/v1/admin")
+

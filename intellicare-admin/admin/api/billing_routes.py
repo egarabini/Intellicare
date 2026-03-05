@@ -10,9 +10,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from admin.models.billing import BillingRecord
 from admin.models.tenant import Tenant
 from admin.schemas.billing_schemas import BillingResponse
-from admin.api.deps import get_db as get_session
+from admin.api.deps import get_db as get_session, require_platform_admin
 
-router = APIRouter(prefix="/admin/billing", tags=["Billing"])
+router = APIRouter(prefix="/admin/billing", tags=["Billing"], dependencies=[Depends(require_platform_admin)])
 
 
 @router.get("", response_model=list[BillingResponse])
@@ -108,6 +108,6 @@ async def mark_billing_paid(
 
     record.payment_status = "paid"
     record.paid_at = datetime.now(UTC)
-    await session.flush()
+    await session.commit()
 
     return {"success": True, "billing_id": str(record.id), "status": "paid"}
