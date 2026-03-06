@@ -4,7 +4,7 @@ param(
     [string]$Module,
 
     [Parameter(Mandatory = $true)]
-    [string]$Host,
+    [string]$TargetHost,
 
     [string]$User = "root",
     [string]$Branch = "main",
@@ -70,7 +70,7 @@ else
 fi
 "@
 
-$target = "$User@$Host"
+$target = "$User@$TargetHost"
 $remoteScript | ssh $target "bash -s"
 
 Write-Host "Deploy completed for module '$Module' on '$target'."

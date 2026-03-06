@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [string]$Host,
+    [string]$TargetHost,
     [string]$User = "root",
     [string]$Branch = "main",
     [string]$RepoPath = "/opt/intellicare",
@@ -12,4 +12,4 @@ param(
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $runner = Join-Path $scriptDir "deploy-module.ps1"
 
-& $runner -Module "keycloak" -Host $Host -User $User -Branch $Branch -RepoPath $RepoPath -ComposeFile $ComposeFile -EnvFile $EnvFile -Build:$Build
+& $runner -Module "keycloak" -TargetHost $TargetHost -User $User -Branch $Branch -RepoPath $RepoPath -ComposeFile $ComposeFile -EnvFile $EnvFile -Build:$Build
