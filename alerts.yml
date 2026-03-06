@@ -230,6 +230,34 @@ groups:
           summary: "Performance test exceeding target"
           description: "Duration: {{ humanizeDuration $value }}"
 
+  # =========================================================================
+  # Keycloak Alerts (T5.5)
+  # =========================================================================
+  - name: keycloak_alerts
+    interval: 30s
+    rules:
+      # Keycloak is down
+      - alert: KeycloakDown
+        expr: up{job="keycloak"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          service: keycloak
+        annotations:
+          summary: "Keycloak is down"
+          description: "Keycloak at {{ $labels.instance }} has been down for 1 minute"
+
+      # High login failure rate / possible brute force
+      - alert: KeycloakHighLoginFailures
+        expr: rate(keycloak_failed_login_attempts_total[5m]) > 5
+        for: 2m
+        labels:
+          severity: warning
+          service: keycloak
+        annotations:
+          summary: "High number of failed logins"
+          description: "Keycloak is experiencing an unusual number of failed logins (>5/sec). Investigate for brute force."
+
 # ============================================================================
 # Alert Configuration Notes
 # ============================================================================

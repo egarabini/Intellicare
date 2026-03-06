@@ -22,7 +22,7 @@ services:
     networks:
       - intellicare_intellicare-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${KEYCLOAK_DB_USER:-keycloak_admin}"]
+      test: [ "CMD-SHELL", "pg_isready -U ${KEYCLOAK_DB_USER:-keycloak_admin}" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -37,15 +37,15 @@ services:
     #     reservations:
     #       memory: 512M
 
-  # --------------------------------------------------------------------------
-  # Keycloak Server
-  # --------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
+    # Keycloak Server
+    # --------------------------------------------------------------------------
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
     container_name: keycloak-intellicare
     # --import-realm: importa realm apenas se não existir (Keycloak ignora se já existe)
     # Na primeira execução: cria o realm. Nas demais: segue silenciosamente.
-    command: start-dev --import-realm
+    command: start --import-realm
     environment:
       # Database Configuration
       KC_DB: postgres
@@ -62,7 +62,6 @@ services:
       # Admin User (Criado automaticamente na primeira execução)
       KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN:-admin}
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-changeme}
-
 
       # Realm Default
       KC_REALM: bemcuidar
@@ -102,8 +101,8 @@ services:
       - ./intellicare-auth/keycloak/certs:/opt/keycloak/conf:ro
 
     ports:
-      - "${KEYCLOAK_HTTP_PORT:-8080}:8080"  # HTTP
-      - "${KEYCLOAK_HTTPS_PORT:-8443}:8443"  # HTTPS
+      - "${KEYCLOAK_HTTP_PORT:-8080}:8080" # HTTP
+      - "${KEYCLOAK_HTTPS_PORT:-8443}:8443" # HTTPS
 
     networks:
       - intellicare_intellicare-network
@@ -115,7 +114,7 @@ services:
     healthcheck:
       # Usa bash /dev/tcp — sem curl (imagem UBI minimal não tem curl)
       # Conecta na porta 8080 e verifica se a resposta contém "UP"
-      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080 && echo -e 'GET /health/ready HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n' >&3 && cat <&3 | grep -q 'UP' || exit 1"]
+      test: [ "CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080 && echo -e 'GET /health/ready HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n' >&3 && cat <&3 | grep -q 'UP' || exit 1" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -131,6 +130,12 @@ services:
       - "traefik.http.routers.keycloak.service=keycloak"
       - "traefik.http.routers.keycloak.tls.certresolver=letsencrypt"
       - "traefik.http.services.keycloak.loadbalancer.server.port=8080"
+
+      # ── Rate Limiting (T5.6) ──
+      # Rate limit token endpoints against brute force
+      - "traefik.http.routers.keycloak.middlewares=kc-ratelimit"
+      - "traefik.http.middlewares.kc-ratelimit.ratelimit.average=5"
+      - "traefik.http.middlewares.kc-ratelimit.ratelimit.burst=10"
 
 networks:
   intellicare_intellicare-network:

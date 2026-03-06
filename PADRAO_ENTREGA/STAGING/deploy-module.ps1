@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("portal", "admin")]
+    [ValidateSet("portal", "admin", "keycloak")]
     [string]$Module,
 
     [Parameter(Mandatory = $true)]
@@ -17,13 +17,17 @@ param(
 $ErrorActionPreference = "Stop"
 
 $serviceMap = @{
-    "portal" = @{
-        Service = "portal"
+    "portal"   = @{
+        Service   = "portal"
         HealthUrl = "http://localhost:3001"
     }
-    "admin" = @{
-        Service = "admin"
+    "admin"    = @{
+        Service   = "admin"
         HealthUrl = "http://localhost:8010/api/v1/health"
+    }
+    "keycloak" = @{
+        Service   = "keycloak"
+        HealthUrl = "http://localhost:8080/health/ready"
     }
 }
 

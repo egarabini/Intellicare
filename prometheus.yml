@@ -67,6 +67,17 @@ scrape_configs:
     scrape_timeout: 5s
 
   # =========================================================================
+  # Keycloak Metrics
+  # Exposed by KC_METRICS_ENABLED="true" on /metrics
+  # =========================================================================
+  - job_name: 'keycloak'
+    static_configs:
+      - targets: ['keycloak-intellicare:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+    scrape_timeout: 5s
+
+  # =========================================================================
   # Node Exporter (System metrics - optional)
   # docker run --net intellicare-network -p 9100:9100 \
   #   prom/node-exporter
