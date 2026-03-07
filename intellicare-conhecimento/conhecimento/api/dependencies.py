@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from functools import lru_cache
 
-from conhecimento.rag import InMemoryRetriever, KnowledgeIndexer
+from conhecimento.rag.retriever import PGVectorRetriever
+from conhecimento.rag.indexer import KnowledgeIndexer
 from conhecimento.services import CarePlanService, ProtocolService, TerminologyService, WorkflowService
 
 
@@ -27,8 +28,8 @@ def get_workflow_service() -> WorkflowService:
 
 
 @lru_cache(maxsize=1)
-def get_retriever() -> InMemoryRetriever:
-    return InMemoryRetriever()
+def get_retriever() -> PGVectorRetriever:
+    return PGVectorRetriever()
 
 
 @lru_cache(maxsize=1)

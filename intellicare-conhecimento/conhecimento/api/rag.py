@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 
 from conhecimento.api.dependencies import get_indexer, get_retriever
-from conhecimento.rag import InMemoryRetriever, KnowledgeIndexer
+from conhecimento.rag import KnowledgeIndexer, PGVectorRetriever
 
 router = APIRouter(prefix="/api/v1/rag", tags=["rag"])
 
@@ -22,7 +22,7 @@ def reindex(indexer: KnowledgeIndexer = Depends(get_indexer)):
 
 
 @router.post("/query")
-def query(body: RAGQueryRequest, retriever: InMemoryRetriever = Depends(get_retriever)):
+def query(body: RAGQueryRequest, retriever: PGVectorRetriever = Depends(get_retriever)):
     results = retriever.query(body.query, top_k=body.top_k, source=body.source)
     return [
         {

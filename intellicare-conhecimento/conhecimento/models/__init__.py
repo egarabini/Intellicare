@@ -27,6 +27,8 @@ from .careplan_template import (
     CarePlanGenerateResponse,
 )
 
+from .document import Document
+
 __all__ = [
     "Protocol",
     "ProtocolMetadata",
@@ -48,4 +50,5 @@ __all__ = [
     "CarePlanActivityFrequency",
     "CarePlanGenerateRequest",
     "CarePlanGenerateResponse",
+    "Document",
 ]
