@@ -13,7 +13,7 @@ class TenantContrato(Base):
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     tenant_id: Mapped[str] = mapped_column(ForeignKey("platform.tenants.tenant_id"))
-    plan_id: Mapped[UUID] = mapped_column(ForeignKey("platform.plans.id"))
+    plan_id: Mapped[UUID] = mapped_column(ForeignKey("platform.plan.id"))
     inicio_vigencia: Mapped[date] = mapped_column(Date)
     fim_vigencia: Mapped[date | None] = mapped_column(Date, nullable=True)
     valor_mensal: Mapped[Decimal] = mapped_column(Numeric(10, 2))

@@ -24,7 +24,8 @@ export default function AuthCallback() {
 
             try {
                 await handleCallback(code);
-                const redirectAfter = sessionStorage.getItem("redirect_after") || "/router";
+                const redirectAfter = sessionStorage.getItem("redirect_after") || "/";
+                sessionStorage.removeItem("redirect_after");
                 navigate(redirectAfter, { replace: true });
             } catch (e: any) {
                 setError(e.message || 'Validation error');

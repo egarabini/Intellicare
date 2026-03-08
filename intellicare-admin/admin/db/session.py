@@ -1,19 +1,15 @@
 """Database session block for intellicare-admin."""
 
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi import Request
 from admin.config import AdminConfig
+from intellicare_core.tenant import TenantAwareSessionFactory
 
 config = AdminConfig()
 
-# In production, this uses config.database_url
-engine = create_async_engine(
-    config.database_url or "sqlite+aiosqlite:///:memory:", 
-    echo=False
-)
-
-AsyncSessionLocal = async_sessionmaker(
-    engine, class_=AsyncSession, expire_on_commit=False
+session_factory = TenantAwareSessionFactory(
+    config.database_url or "sqlite+aiosqlite:///:memory:",
+    echo=False,
 )
 
 async def get_db(request: Request) -> AsyncSession:
@@ -21,9 +17,19 @@ async def get_db(request: Request) -> AsyncSession:
     # Attempt to use app state if initialized in lifespan, otherwise fallback
     try:
         factory = request.app.state.session_factory
-        async with factory() as session:
-            yield session
+        async with await factory.get_platform_session() as session:
+            try:
+                yield session
+                await session.commit()
+            except Exception:
+                await session.rollback()
+                raise
     except AttributeError:
         # Fallback for scripts/tests
-        async with AsyncSessionLocal() as session:
-            yield session
+        async with await session_factory.get_platform_session() as session:
+            try:
+                yield session
+                await session.commit()
+            except Exception:
+                await session.rollback()
+                raise

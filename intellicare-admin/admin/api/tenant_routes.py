@@ -34,7 +34,9 @@ async def create_tenant(
         # Tenant was created but provisioning failed — log but don't fail the request
         pass
 
-    return tenant
+    # Reload entity with relationships eagerly loaded to avoid async lazy-load on serialization.
+    reloaded = await service.get(str(tenant.id))
+    return reloaded or tenant
 
 
 @router.get("", response_model=TenantListResponse)
