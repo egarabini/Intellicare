@@ -128,3 +128,30 @@ class ModuleProxyClient:
             except Exception as e:
                 return {"health": "unreachable", "error": str(e), "latency_ms": -1}
 
+    async def test_analyze(self, module_name: str, payload: dict[str, Any]) -> dict[str, Any]:
+        """Sends POST /analyze to the target module and returns latency & response."""
+        if module_name not in MODULE_REGISTRY:
+            return {"status_code": 404, "success": False, "error": "Module not found in registry"}
+
+        base = MODULE_REGISTRY[module_name]["url"]
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            start = time.monotonic()
+            try:
+                r = await client.post(
+                    f"{base}/api/v1/analyze",
+                    json=payload,
+                    headers=self._headers,
+                )
+                latency_ms = int((time.monotonic() - start) * 1000)
+                return {
+                    "status_code": r.status_code,
+                    "latency_ms": latency_ms,
+                    "success": r.is_success,
+                    "response": r.json() if r.is_success else None,
+                    "error": r.text if not r.is_success else None,
+                }
+            except httpx.TimeoutException:
+                return {"status_code": 504, "success": False, "error": "timeout"}
+            except Exception as ex:
+                return {"status_code": 500, "success": False, "error": str(ex)}
+

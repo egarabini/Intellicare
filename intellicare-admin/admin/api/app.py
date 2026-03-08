@@ -101,8 +101,10 @@ from admin.api.contrato_routes import router as contrato_router
 from admin.api.estabelecimento_routes import router as estabelecimento_router
 from admin.api.secretaria_routes import router as secretaria_router
 from admin.api.module_probe_routes import router as probe_router
+from admin.api.module_test_routes import router as test_router
 
 app.include_router(probe_router, prefix="/api/v1")
+app.include_router(test_router, prefix="/api/v1")
 app.include_router(tenant_router, prefix="/api/v1")
 app.include_router(billing_router, prefix="/api/v1")
 app.include_router(audit_router, prefix="/api/v1")
