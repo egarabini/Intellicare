@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y \
 
 # Instalar intellicare-core
 COPY ./intellicare-core /tmp/intellicare-core
-RUN pip install --no-cache-dir -e /tmp/intellicare-core
+RUN pip install --no-cache-dir /tmp/intellicare-core
 
 # Instalar intellicare-auth (opcional)
 COPY ./intellicare-auth /tmp/intellicare-auth
-RUN pip install --no-cache-dir -e /tmp/intellicare-auth || true
+RUN pip install --no-cache-dir /tmp/intellicare-auth || true
 
 # Copy requirements and source
 COPY ./intellicare-nise/pyproject.toml ./

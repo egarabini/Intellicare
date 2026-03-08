@@ -9,7 +9,7 @@ from typing import Any, AsyncIterator
 
 
 from fastapi import Depends
-from florence.api.auth import get_tenant_context, check_module_active
+from intellicare_auth import get_tenant_context
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -141,7 +141,7 @@ def create_app() -> FastAPI:
         configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
     @app.get("/api/v1/health")
-    async def health(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def health(ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         config = _state.get("config")
         ref_loader = _state.get("ref_loader")
         uptime = time.time() - _start_time
@@ -155,7 +155,7 @@ def create_app() -> FastAPI:
         return check.model_dump()
 
     @app.get("/api/v1/info")
-    async def info(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def info(ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         config = _state.get("config")
         ref_loader = _state.get("ref_loader")
         corr_detector = _state.get("corr_detector")
@@ -173,7 +173,7 @@ def create_app() -> FastAPI:
         return module_info.model_dump()
 
     @app.get("/api/v1/panels")
-    async def list_panels(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> list[dict[str, Any]]:
+    async def list_panels(ctx: Any = Depends(get_tenant_context)) -> list[dict[str, Any]]:
         ref_loader: ReferenceRangeLoader = _state["ref_loader"]
         panels = []
         for panel_id in ref_loader.list_panels():
@@ -185,7 +185,7 @@ def create_app() -> FastAPI:
         return panels
 
     @app.get("/api/v1/labs")
-    async def list_labs(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> list[dict[str, Any]]:
+    async def list_labs(ctx: Any = Depends(get_tenant_context)) -> list[dict[str, Any]]:
         ref_loader: ReferenceRangeLoader = _state["ref_loader"]
         labs = []
         for lab_id in ref_loader.list_labs():
@@ -201,14 +201,14 @@ def create_app() -> FastAPI:
         return labs
 
     @app.post("/api/v1/interpret")
-    async def interpret_labs(request: LabResultsRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def interpret_labs(request: LabResultsRequest, ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         analyzer: ClinicalAnalyzer = _state["analyzer"]
         ts = datetime.fromisoformat(request.timestamp) if request.timestamp else None
         analysis = analyzer.analyze_labs(request.patient_id, request.results, ts)
         return analysis.to_dict()
 
     @app.post("/api/v1/analyze")
-    async def analyze(request: AnalyzeRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def analyze(request: AnalyzeRequest, ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         analyzer: ClinicalAnalyzer = _state["analyzer"]
         ts = datetime.fromisoformat(request.timestamp) if request.timestamp else None
 
@@ -227,7 +227,7 @@ def create_app() -> FastAPI:
         return analysis.to_dict()
 
     @app.post("/api/v1/analyze-with-rag")
-    async def analyze_with_rag(request: AnalyzeWithRAGRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def analyze_with_rag(request: AnalyzeWithRAGRequest, ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         """Análise clínica com consulta a protocolos via RAG."""
         analyzer: ClinicalAnalyzer = _state["analyzer"]
         ts = datetime.fromisoformat(request.timestamp) if request.timestamp else None
@@ -243,7 +243,7 @@ def create_app() -> FastAPI:
         return analysis.to_dict()
 
     @app.post("/api/v1/rag/query")
-    async def rag_query(request: RAGQueryRequest, ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def rag_query(request: RAGQueryRequest, ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         """Query direta ao RAG para buscar protocolos clínicos."""
         rag_retriever = _state.get("rag_retriever")
         knowledge_client: KnowledgeClient | None = _state.get("knowledge_client")
@@ -316,7 +316,7 @@ def create_app() -> FastAPI:
         return response_payload
 
     @app.get("/api/v1/rag/protocols")
-    async def list_protocols(ctx: Any = Depends(get_tenant_context), _check: Any = Depends(check_module_active('intellicare-florence'))) -> dict[str, Any]:
+    async def list_protocols(ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
         """Lista todos os protocolos indexados."""
         rag_retriever = _state.get("rag_retriever")
 

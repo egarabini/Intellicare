@@ -1,12 +1,23 @@
 """Persistencia de vinculos paciente->sala para o modulo de comunicacao."""
 
 from __future__ import annotations
-from comunicacao.storage.tenant_utils import get_tenant_conn
 
 import logging
 import os
 from dataclasses import dataclass
 from typing import AsyncGenerator, Protocol
+
+from contextlib import contextmanager
+from typing import Any
+
+@contextmanager
+def get_tenant_conn(engine, ctx: Any = None):
+    schema = ctx.schema_name if ctx and hasattr(ctx, "schema_name") else "public"
+    with engine.begin() as conn:
+        if "postgresql" in str(engine.url):
+            from sqlalchemy import text
+            conn.execute(text(f"SET search_path TO {schema}"))
+        yield conn
 
 try:
     from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine

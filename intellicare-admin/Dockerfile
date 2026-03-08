@@ -9,11 +9,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install intellicare-core first
 COPY ./intellicare-core /tmp/intellicare-core
-RUN pip install --no-cache-dir -e /tmp/intellicare-core
+RUN pip install --no-cache-dir /tmp/intellicare-core
 
 # Install intellicare-auth (optional)
 COPY ./intellicare-auth /tmp/intellicare-auth
-RUN pip install --no-cache-dir -e /tmp/intellicare-auth || true
+RUN pip install --no-cache-dir /tmp/intellicare-auth || true
 
 # Install the module
 COPY ./intellicare-admin/pyproject.toml ./intellicare-admin/README.md* ./
