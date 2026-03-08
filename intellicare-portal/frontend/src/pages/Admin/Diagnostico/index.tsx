@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Button, FormControl, InputLabel, Select, MenuItem, Paper, Alert } from '@mui/material';
-import RefreshIcon from '@mui/icons-material/Refresh';
+import { RefreshCw, Activity, CheckCircle, AlertTriangle, XCircle, HelpCircle } from 'lucide-react';
 import ModuleGrid from './ModuleGrid';
 import api from '../../../services/api';
 
@@ -32,7 +31,6 @@ const DiagnosticoAdmin: React.FC = () => {
         setLoading(true);
         setError(null);
         try {
-            // using the backend proxy endpoint
             const response = await api.get('/admin/modules');
             setModules(response.data);
         } catch (err: unknown) {
@@ -59,51 +57,63 @@ const DiagnosticoAdmin: React.FC = () => {
     }, [refreshInterval]);
 
     return (
-        <Box sx={{ p: 4 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 4 }}>
-                <Box>
-                    <Typography variant="h4" fontWeight={700} color="text.primary" gutterBottom>
+        <div className="p-6 max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+                        <Activity className="w-8 h-8 text-primary-600" />
                         Console de Diagnóstico Modular
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary">
+                    </h1>
+                    <p className="text-gray-600">
                         Visão de saúde e latência estrutural de ponta a ponta dos microserviços.
-                    </Typography>
-                </Box>
-                <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                    <FormControl size="small" sx={{ minWidth: 160 }}>
-                        <InputLabel>Auto-Refresh</InputLabel>
-                        <Select
+                    </p>
+                </div>
+
+                <div className="flex flex-wrap gap-4 items-center bg-white p-3 rounded-xl shadow-sm border border-gray-100">
+                    <div className="flex flex-col">
+                        <label className="text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wider">Auto-Refresh</label>
+                        <select
+                            className="bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2"
                             value={refreshInterval}
-                            label="Auto-Refresh"
                             onChange={(e) => setRefreshInterval(Number(e.target.value))}
                         >
-                            <MenuItem value={0}>Off</MenuItem>
-                            <MenuItem value={15}>A cada 15s</MenuItem>
-                            <MenuItem value={30}>A cada 30s</MenuItem>
-                            <MenuItem value={60}>A cada 1 min</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        startIcon={<RefreshIcon />}
+                            <option value={0}>Desligado</option>
+                            <option value={15}>A cada 15s</option>
+                            <option value={30}>A cada 30s</option>
+                            <option value={60}>A cada 1 min</option>
+                        </select>
+                    </div>
+
+                    <button
                         onClick={fetchModules}
                         disabled={loading}
+                        className="mt-5 flex items-center gap-2 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white font-medium py-2 px-4 rounded-lg transition-colors"
                     >
-                        Atualizar Tudo
-                    </Button>
-                </Box>
-            </Box>
+                        <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
+                        {loading ? 'Sondando...' : 'Atualizar Tudo'}
+                    </button>
+                </div>
+            </div>
 
             {error && (
-                <Alert severity="error" sx={{ mb: 4 }}>
-                    {error}
-                </Alert>
+                <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg flex items-start gap-3">
+                    <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                        <h3 className="font-semibold text-red-800">Falha ao buscar diagnóstico</h3>
+                        <p className="text-red-700 text-sm">{error}</p>
+                    </div>
+                </div>
             )}
 
-            <ModuleGrid modules={modules} loading={loading} onTestFuncional={(name) => console.log('Test Phase 2 for:', name)} />
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+                <ModuleGrid
+                    modules={modules}
+                    loading={loading}
+                    onTestFuncional={(name) => console.log('Test Phase 2 for:', name)}
+                />
+            </div>
 
-        </Box>
+        </div>
     );
 };
 
