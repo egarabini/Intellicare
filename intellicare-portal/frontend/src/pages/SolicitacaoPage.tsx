@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  User, 
-  Mail, 
-  Phone, 
-  FileText, 
-  Search, 
-  CheckCircle, 
+import {
+  Building2,
+  User,
+  Mail,
+  Phone,
+  FileText,
+  Search,
+  CheckCircle,
   AlertCircle,
   Loader2,
   Send,
@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { cnesApi, requestsApi, type CreateRequestData } from '@/services/api';
+import { cnesApi, requestsApi, type CreateRequestData } from '@/services/backendApi';
 import { TokenVerification } from '@/components/TokenVerification';
 
 interface CnesData {
@@ -89,7 +89,7 @@ export default function SolicitacaoPage() {
     try {
       const response = await cnesApi.validate(cnes);
       if (response.success && response.data) {
-        setCnesData(response.data as CnesData);
+        setCnesData(response.data as unknown as CnesData);
         setFormData((prev) => ({
           ...prev,
           cnes: response.data.cnes,
@@ -228,7 +228,7 @@ export default function SolicitacaoPage() {
                       maxLength={7}
                       className="flex-1"
                     />
-                    <Button 
+                    <Button
                       onClick={handleValidateCnes}
                       disabled={isValidatingCnes || cnes.length !== 7}
                     >
@@ -263,8 +263,8 @@ export default function SolicitacaoPage() {
                           {cnesData.regiao && <p>Região: {cnesData.regiao}</p>}
                           {cnesData.endereco && <p>Endereço: {cnesData.endereco}</p>}
                         </div>
-                        <Button 
-                          className="mt-4" 
+                        <Button
+                          className="mt-4"
                           onClick={() => setStep(2)}
                         >
                           Continuar
@@ -452,15 +452,15 @@ export default function SolicitacaoPage() {
                 </Card>
 
                 <div className="flex gap-4">
-                  <Button 
-                    type="button" 
-                    variant="outline" 
+                  <Button
+                    type="button"
+                    variant="outline"
                     onClick={() => setStep(1)}
                   >
                     Voltar
                   </Button>
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="flex-1"
                     disabled={isLoading}
                   >
@@ -489,8 +489,8 @@ export default function SolicitacaoPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <TokenVerification 
-              protocol={protocol} 
+            <TokenVerification
+              protocol={protocol}
               email={formData.requesterEmail || ''}
               onVerified={() => {
                 setSuccess('Email validado com sucesso!');

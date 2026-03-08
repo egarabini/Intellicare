@@ -1,33 +1,44 @@
-"""Middleware de autenticacao e autorizacao do Admin.
-Valida o token JWT e garante que o usuario possua o role de administrador da plataforma.
-"""
+"""Auth middleware for intellicare-admin protected API routes."""
 
-from fastapi import Request, HTTPException, Depends
-try:
-    from intellicare_auth.fastapi.middleware import verify_token
-except ImportError:
-    async def verify_token(token: str) -> dict: return {}
+from __future__ import annotations
 
-from fastapi.security import OAuth2PasswordBearer
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 
-async def require_platform_admin(request: Request, token: str = Depends(oauth2_scheme)):
-    """FastAPI Dependency: Ensures user has ADMIN_PLATFORM role."""
-    if not token:
-        raise HTTPException(status_code=401, detail="Token ausente ou invalido.")
-    
-    try:
-        payload = await verify_token(token)
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"Token invalido: {str(e)}")
-        
-    roles = payload.get("realm_access", {}).get("roles", [])
-    
-    # Check if user is a platform admin (Adjust based on exact Keycloak role naming for platform admin vs tenant admin)
-    if "ADMIN" not in roles and "PLATFORM_ADMIN" not in roles:
-        raise HTTPException(status_code=403, detail="Acesso negado. Requer privilegios de Administrador da Plataforma.")
-        
-    request.state.user_id = payload.get("sub")
-    request.state.user_email = payload.get("email")
-    request.state.user_roles = roles
-    return True
+from intellicare_auth.middleware import get_keycloak_client
+
+
+class AuthMiddleware(BaseHTTPMiddleware):
+    """Validate Bearer token for protected admin API routes."""
+
+    _PUBLIC_PATHS = {
+        "/api/v1/health",
+        "/api/v1/info",
+        "/openapi.json",
+        "/docs",
+        "/redoc",
+    }
+
+    async def dispatch(self, request: Request, call_next):
+        path = request.url.path
+
+        # Keep dashboard/static and health/info public.
+        if not path.startswith("/api/") or path in self._PUBLIC_PATHS:
+            return await call_next(request)
+
+        auth_header = request.headers.get("Authorization", "")
+        if not auth_header.startswith("Bearer "):
+            return JSONResponse(status_code=401, content={"detail": "Token ausente ou invalido."})
+
+        token = auth_header.removeprefix("Bearer ").strip()
+        if not token:
+            return JSONResponse(status_code=401, content={"detail": "Token ausente ou invalido."})
+
+        try:
+            payload = await get_keycloak_client().validate_token(token)
+        except Exception as exc:  # noqa: BLE001
+            return JSONResponse(status_code=401, content={"detail": f"Token invalido: {exc}"})
+
+        request.state.auth_payload = payload
+        return await call_next(request)

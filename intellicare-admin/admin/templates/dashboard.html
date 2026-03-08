@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IntelliCare Admin</title>
+  <script src="https://auth.intellicare.ia.br/js/keycloak.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #f8fafc; }
+    .hidden { display: none !important; }
+    .loading { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+    .loading p { color: #94a3b8; }
+    .sidebar { width: 240px; background: #1e293b; min-height: 100vh; padding: 1rem 0; display: flex; flex-direction: column; border-right: 1px solid #334155; }
+    .logo { padding: 0 1rem 1.5rem; font-weight: 700; font-size: 1.1rem; color: #38bdf8; }
+    nav { flex: 1; }
+    .nav-link { display: block; padding: 0.75rem 1rem; color: #94a3b8; text-decoration: none; transition: background 0.2s; }
+    .nav-link:hover { background: #334155; color: #f8fafc; }
+    .nav-link.active { background: #0ea5e9; color: white; }
+    .user { padding: 1rem; border-top: 1px solid #334155; font-size: 0.85rem; }
+    .btn-logout { background: #475569; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-top: 8px; }
+    .btn-logout:hover { background: #64748b; }
+    .layout { display: flex; min-height: 100vh; }
+    .content { flex: 1; padding: 2rem; overflow: auto; }
+    h1 { margin: 0 0 1.5rem; font-size: 1.5rem; color: #38bdf8; }
+    .card { background: #1e293b; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #334155; }
+    .card h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .card p { margin: 0; color: #94a3b8; font-size: 0.9rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #334155; }
+    th { color: #94a3b8; font-weight: 500; font-size: 0.85rem; }
+    .btn { padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem; }
+    .btn-primary { background: #0ea5e9; color: white; }
+    .btn-primary:hover { background: #0284c7; }
+    .btn-danger { background: #ef4444; color: white; }
+    .btn-danger:hover { background: #dc2626; }
+    .btn-secondary { background: #475569; color: white; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.25rem; color: #94a3b8; font-size: 0.9rem; }
+    .form-group input { width: 100%; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #f8fafc; }
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; }
+    .modal-content { background: #1e293b; padding: 1.5rem; border-radius: 8px; max-width: 480px; width: 90%; border: 1px solid #334155; }
+    .modal-actions { margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: flex-end; }
+    .error { color: #f87171; font-size: 0.9rem; margin-top: 0.5rem; }
+    .empty { color: #64748b; padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="loading" class="loading">
+    <h2>IntelliCare Admin</h2>
+    <p>Redirecionando para autenticacao...</p>
+  </div>
+  <div id="app" class="hidden">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">IntelliCare Admin</div>
+        <nav>
+          <a href="#/" data-page="dashboard" class="nav-link active">Dashboard</a>
+          <a href="#/estabelecimentos" data-page="estabelecimentos" class="nav-link">Estabelecimentos</a>
+          <a href="#/secretarias" data-page="secretarias" class="nav-link">Secretarias</a>
+        </nav>
+        <div class="user">
+          <span id="userName"></span>
+          <button id="btnLogout" class="btn-logout">Sair</button>
+        </div>
+      </aside>
+      <main class="content">
+        <div id="page"></div>
+      </main>
+    </div>
+  </div>
+  <script>
+    var keycloak = new Keycloak({
+      url: 'https://auth.intellicare.ia.br',
+      realm: 'intellicare',
+      clientId: 'intellicare-admin'
+    });
+
+    function api(path, opts) {
+      opts = opts || {};
+      opts.headers = opts.headers || {};
+      opts.headers['Authorization'] = 'Bearer ' + keycloak.token;
+      opts.headers['Content-Type'] = 'application/json';
+      return fetch(path, opts);
+    }
+
+    function nav(page) {
+      document.querySelectorAll('.nav-link').forEach(function(a) {
+        a.classList.toggle('active', a.getAttribute('data-page') === page);
+      });
+    }
+
+    function renderDashboard() {
+      nav('dashboard');
+      document.getElementById('page').innerHTML = '<h1>Dashboard</h1>' +
+        '<div class="card"><h3>Bem-vindo ao IntelliCare Admin</h3>' +
+        '<p>Use o menu lateral para gerenciar Estabelecimentos e Secretarias.</p></div>' +
+        '<div class="card"><h3>Acesso rapido</h3>' +
+        '<p><a href="#/estabelecimentos" style="color:#38bdf8">Estabelecimentos</a> - Hospitais, UBS, unidades de saude</p>' +
+        '<p><a href="#/secretarias" style="color:#38bdf8">Secretarias</a> - SES, SMS, secretarias de saude</p></div>';
+    }
+
+    function renderCrud(type, title, fields, listPath, itemPath) {
+      nav(type);
+      var token = keycloak.token;
+      var page = document.getElementById('page');
+      page.innerHTML = '<h1>' + title + '</h1><button class="btn btn-primary" id="btnNew">Novo</button><div id="list" class="card" style="margin-top:1rem"></div>';
+      var listEl = document.getElementById('list');
+
+      function load() {
+        api('/api/v1/admin/' + type).then(function(r) {
+          if (r.status === 401) { keycloak.updateToken(30).then(load); return; }
+          return r.json();
+        }).then(function(items) {
+          if (!items) return;
+          if (items.length === 0) {
+            listEl.innerHTML = '<div class="empty">Nenhum registro. Clique em Novo para adicionar.</div>';
+            return;
+          }
+          var headers = fields.map(function(f) { return '<th>' + f.label + '</th>'; }).join('') + '<th>Acoes</th>';
+          var rows = items.map(function(item) {
+            var cells = fields.map(function(f) { return '<td>' + (item[f.key] || '-') + '</td>'; }).join('');
+            return '<tr>' + cells + '<td><button class="btn btn-secondary" onclick="edit' + type + '(\'' + item.id + '\')">Editar</button> <button class="btn btn-danger" onclick="del' + type + '(\'' + item.id + '\')">Excluir</button></td></tr>';
+          }).join('');
+          listEl.innerHTML = '<table><thead><tr>' + headers + '</tr></thead><tbody>' + rows + '</tbody></table>';
+        });
+      }
+
+      window['edit' + type] = function(id) {
+        api('/api/v1/admin/' + type + '/' + id).then(function(r) { return r.json(); }).then(function(item) {
+          if (!item) return;
+          var form = fields.map(function(f) {
+            return '<div class="form-group"><label>' + f.label + '</label><input id="f_' + f.key + '" value="' + (item[f.key] || '') + '"' + (f.readonly ? ' readonly' : '') + '></div>';
+          }).join('');
+          var modal = document.createElement('div');
+          modal.className = 'modal';
+          modal.id = 'modal';
+          modal.innerHTML = '<div class="modal-content"><h3>Editar</h3><form id="editForm">' + form +
+            '</form><div class="modal-actions"><button class="btn btn-secondary" onclick="document.getElementById(\'modal\').remove()">Cancelar</button>' +
+            '<button class="btn btn-primary" onclick="save' + type + '(\'' + id + '\')">Salvar</button></div></div>';
+          document.body.appendChild(modal);
+          window['_current' + type] = id;
+        });
+      };
+
+      window['del' + type] = function(id) {
+        if (!confirm('Excluir este registro?')) return;
+        api('/api/v1/admin/' + type + '/' + id, { method: 'DELETE' }).then(function() { load(); });
+      };
+
+      window['save' + type] = function(id) {
+        var data = {};
+        fields.forEach(function(f) {
+          if (!f.readonly) data[f.key] = document.getElementById('f_' + f.key).value;
+        });
+        api('/api/v1/admin/' + type + '/' + id, { method: 'PATCH', body: JSON.stringify(data) })
+          .then(function() { document.getElementById('modal').remove(); load(); });
+      };
+
+      document.getElementById('btnNew').onclick = function() {
+        var form = fields.map(function(f) {
+          return '<div class="form-group"><label>' + f.label + (f.key === 'id' ? ' (ex: org-ubs-001)' : '') + '</label><input id="f_' + f.key + '"' + (f.placeholder ? ' placeholder="' + f.placeholder + '"' : '') + '></div>';
+        }).join('');
+        var modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.id = 'modal';
+        modal.innerHTML = '<div class="modal-content"><h3>Novo</h3><form id="editForm">' + form +
+          '</form><div class="modal-actions"><button class="btn btn-secondary" onclick="document.getElementById(\'modal\').remove()">Cancelar</button>' +
+          '<button class="btn btn-primary" onclick="create' + type + '()">Criar</button></div></div>';
+        document.body.appendChild(modal);
+      };
+
+      window['create' + type] = function() {
+        var data = {};
+        fields.forEach(function(f) { data[f.key] = document.getElementById('f_' + f.key).value; });
+        if (!data.id || !data.cnes || !data.nome) { alert('Preencha ID, CNES e Nome'); return; }
+        api('/api/v1/admin/' + type, { method: 'POST', body: JSON.stringify(data) })
+          .then(function(r) {
+            if (r.status >= 400) return r.json().then(function(e) { alert(e.detail || 'Erro'); });
+            document.getElementById('modal').remove();
+            load();
+          });
+      };
+
+      load();
+    }
+
+    function route() {
+      var hash = (location.hash || '#/').slice(1) || 'dashboard';
+      var parts = hash.split('/');
+      var page = parts[0] || 'dashboard';
+      if (page === 'dashboard') renderDashboard();
+      else if (page === 'estabelecimentos') {
+        renderCrud('estabelecimentos', 'Estabelecimentos',
+          [{key:'id',label:'ID',readonly:true},{key:'cnes',label:'CNES'},{key:'nome',label:'Nome'},{key:'alias',label:'Alias'},{key:'cidade',label:'Cidade'},{key:'telefone',label:'Telefone'}]);
+      } else if (page === 'secretarias') {
+        renderCrud('secretarias', 'Secretarias',
+          [{key:'id',label:'ID',readonly:true},{key:'cnes',label:'CNES'},{key:'nome',label:'Nome'},{key:'alias',label:'Alias'},{key:'cidade',label:'Cidade'},{key:'telefone',label:'Telefone'}]);
+      }
+    }
+
+    keycloak.init({ onLoad: 'login-required', checkLoginIframe: false }).then(function(authenticated) {
+      if (!authenticated) {
+        document.getElementById('loading').innerHTML = '<h2>Falha na Autenticacao</h2><p>Acesso negado.</p>';
+        return;
+      }
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('app').classList.remove('hidden');
+      document.getElementById('userName').textContent = keycloak.tokenParsed.name || keycloak.tokenParsed.preferred_username;
+      document.getElementById('btnLogout').onclick = function() { keycloak.logout(); };
+      window.addEventListener('hashchange', route);
+      route();
+    }).catch(function() {
+      document.getElementById('loading').innerHTML = '<h2>Erro de Conexao</h2><p>Keycloak indisponivel. Verifique auth.intellicare.ia.br</p>';
+    });
+  </script>
+</body>
+</html>

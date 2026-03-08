@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Layout from '@components/layout/Layout';
-import { TenantProvider, TenantSelectorPage, ModuleRoute } from './components/tenant';
-import { useTenantContext } from './contexts/TenantContext';
+import { TenantSelectorPage, ModuleRoute } from './components/tenant';
+import { TenantProvider, useTenantContext } from './contexts/TenantContext';
 
 // Auth Components
 import Login from '@pages/Login';
@@ -14,6 +14,7 @@ import ProtectedRoute from '@components/auth/ProtectedRoute';
 // Admin & Gestor Portals
 import AdminDashboard from '@pages/Admin/Dashboard';
 import GestorDashboard from '@pages/Gestor/Dashboard';
+const AdminDiagnostico = lazy(() => import('./pages/Admin/Diagnostico'));
 
 // Eager load Dashboard
 import DemoDashboard from '@pages/DemoDashboard';
@@ -69,6 +70,7 @@ function AppRoutes() {
           {/* Área Admin */}
           <Route element={<ProtectedRoute requiredRole="PLATFORM_ADMIN" />}>
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/diagnostico" element={<AdminDiagnostico />} />
             {/* Futuras rotas admin: tenants, modulos, auditoria */}
           </Route>
 
