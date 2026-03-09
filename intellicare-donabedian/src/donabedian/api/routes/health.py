@@ -4,37 +4,33 @@ Health check and info endpoints.
 Provides endpoints for monitoring service health and retrieving module information.
 """
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from donabedian.config import settings
-from donabedian.api.dependencies import get_db
 from donabedian.schemas.common import HealthResponse, InfoResponse
 
 router = APIRouter()
 
 
 @router.get("/health", response_model=HealthResponse)
-async def health_check(db: AsyncSession = Depends(get_db)) -> HealthResponse:
+async def health_check() -> HealthResponse:
     """
-    Health check endpoint.
-    
-    Verifies that the service is running and can connect to the database.
-    
-    Args:
-        db: Database session
-        
-    Returns:
-        HealthResponse: Service health status
+    Health check endpoint — público, sem autenticação.
+
+    Verifica se o serviço está rodando e se consegue conectar ao banco.
+    Não requer JWT nem tenant context para que o Docker healthcheck funcione.
     """
-    # Test database connection
+    from donabedian.database.session import AsyncSessionLocal
+
+    database_status = "disconnected"
     try:
-        await db.execute(text("SELECT 1"))
-        database_status = "connected"
+        async with AsyncSessionLocal() as session:
+            await session.execute(text("SELECT 1"))
+            database_status = "connected"
     except Exception:
-        database_status = "disconnected"
-    
+        pass
+
     return HealthResponse(
         status="healthy" if database_status == "connected" else "unhealthy",
         module=settings.module_name,
