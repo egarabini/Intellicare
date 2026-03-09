@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00328",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JADINA",
+        "MOREIRA",
+        "DA"
+      ],
+      "family": "PAIXAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11502521628"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400662",
+      "line": [
+        "42 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988066924",
+      "use": "home"
+    }
+  ]
+}

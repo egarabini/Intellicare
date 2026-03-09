@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09358",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAURA",
+        "APARECIDA",
+        "ROCHA"
+      ],
+      "family": "VIANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "49260596653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400432",
+      "line": [
+        "68 39400432"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984110898",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedo46@gmial.com",
+      "use": "home"
+    }
+  ]
+}

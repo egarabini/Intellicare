@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04832",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "JOSE",
+        "NASCIMENTO"
+      ],
+      "family": "MACHADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04622548607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403100",
+      "line": [
+        "36 39403100"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992358583",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

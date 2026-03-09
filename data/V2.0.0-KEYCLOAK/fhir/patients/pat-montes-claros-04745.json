@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04745",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "RIBEIRO"
+      ],
+      "family": "FREIRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-12-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "43098070625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401177",
+      "line": [
+        "22"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31997336281",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00196",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CICERO",
+        "TEMOTEO",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89155920349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330042",
+      "line": [
+        "26 QUADRA 177"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996472620",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "analauragabriele@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09413",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "CICERO"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-06-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "58645713691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400556",
+      "line": [
+        "189"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999524439",
+      "use": "home"
+    }
+  ]
+}

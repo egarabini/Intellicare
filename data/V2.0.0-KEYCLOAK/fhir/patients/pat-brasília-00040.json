@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00040",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSEILTON",
+        "TORRES"
+      ],
+      "family": "CAMELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-01-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "57572810144"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71698007",
+      "line": [
+        "28 03"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982994405",
+      "use": "home"
+    }
+  ]
+}

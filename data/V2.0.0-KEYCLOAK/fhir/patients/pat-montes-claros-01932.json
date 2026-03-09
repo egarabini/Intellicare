@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01932",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VINICIUS",
+        "DANIEL",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70491027680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400212",
+      "line": [
+        "119 39400212"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988269851",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carloscharles675@gmail.com",
+      "use": "home"
+    }
+  ]
+}

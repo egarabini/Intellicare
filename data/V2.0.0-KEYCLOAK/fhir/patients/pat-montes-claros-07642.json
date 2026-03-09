@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07642",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ZILCA",
+        "DE",
+        "CASSIA",
+        "RUAS"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-04-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04926637693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404472",
+      "line": [
+        "279"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991167823",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adsonruad@gmail.com",
+      "use": "home"
+    }
+  ]
+}

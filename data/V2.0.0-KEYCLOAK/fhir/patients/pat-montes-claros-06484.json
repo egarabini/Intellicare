@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06484",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEANDRO",
+        "SILVA"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12489248600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404027",
+      "line": [
+        "434"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997290394",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leandro.engmoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

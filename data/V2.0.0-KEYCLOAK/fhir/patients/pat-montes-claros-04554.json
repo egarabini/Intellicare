@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04554",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANGELINE",
+        "DE",
+        "CASSIA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-11-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05515810694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406158",
+      "line": [
+        "364 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998311268",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00901",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CATIA",
+        "QUELI",
+        "SANTOS"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07840396585"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402472",
+      "line": [
+        "121 39402472"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998416622",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "skatiakellysantos5@gmail.com",
+      "use": "home"
+    }
+  ]
+}

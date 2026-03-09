@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03184",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEX",
+        "FARLEY",
+        "BARBOSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05018009640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406138",
+      "line": [
+        "60 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992407404",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "farley.silva12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

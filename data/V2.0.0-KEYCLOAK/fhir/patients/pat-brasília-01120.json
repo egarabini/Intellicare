@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01120",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "MARTA",
+        "OLIVEIRA",
+        "DE",
+        "PINHO"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-08-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "31708056149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72405190",
+      "line": [
+        "04 CASA 19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996231422",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anamartapinho2017@gmail.com",
+      "use": "home"
+    }
+  ]
+}

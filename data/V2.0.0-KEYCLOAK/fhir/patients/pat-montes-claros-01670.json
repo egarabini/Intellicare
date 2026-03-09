@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01670",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENDA",
+        "KARINE",
+        "PEREIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70109841662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401481",
+      "line": [
+        "645 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997439912",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karinebrenda93@gmail.com",
+      "use": "home"
+    }
+  ]
+}

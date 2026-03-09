@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08970",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WAGNER",
+        "LEAL",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-07-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15181912826"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401660",
+      "line": [
+        "213"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984111771",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ivaldetefreitas0@gmail.com",
+      "use": "home"
+    }
+  ]
+}

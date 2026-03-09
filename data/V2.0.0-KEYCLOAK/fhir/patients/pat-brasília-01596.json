@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01596",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRO",
+        "RIBEIRO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-09-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01764867637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691153",
+      "line": [
+        "711"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996929983",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexjoaovictor123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

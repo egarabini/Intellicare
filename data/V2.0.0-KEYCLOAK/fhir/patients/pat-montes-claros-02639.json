@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02639",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CLARA",
+        "FREIRE"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-12-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70632129662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400441",
+      "line": [
+        "516 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991685817",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fmariaclarafreiresoares@gmail.com",
+      "use": "home"
+    }
+  ]
+}

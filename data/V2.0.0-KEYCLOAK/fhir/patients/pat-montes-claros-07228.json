@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07228",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFFERSON",
+        "PRATES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70314931619"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404464",
+      "line": [
+        "127"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991159632",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mf975069@gmail.com",
+      "use": "home"
+    }
+  ]
+}

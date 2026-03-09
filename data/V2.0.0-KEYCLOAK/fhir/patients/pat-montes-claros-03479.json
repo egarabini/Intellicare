@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03479",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "ANTONIO",
+        "DOS",
+        "ANJOS"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74452819672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403241",
+      "line": [
+        "325"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999968140",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eduaradanicole@gmail.com",
+      "use": "home"
+    }
+  ]
+}

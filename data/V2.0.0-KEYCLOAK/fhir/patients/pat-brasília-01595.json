@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01595",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MIZAEAL",
+        "GUIMARAES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-03-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50403877172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692055",
+      "line": [
+        "4"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999026610",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mizaelpintura@live.com",
+      "use": "home"
+    }
+  ]
+}

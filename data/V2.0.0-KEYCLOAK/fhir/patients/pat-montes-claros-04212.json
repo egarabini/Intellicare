@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04212",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YURI",
+        "LUAN"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50468611860"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401212",
+      "line": [
+        "73"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999752576",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yuriluan245@gmail.com",
+      "use": "home"
+    }
+  ]
+}

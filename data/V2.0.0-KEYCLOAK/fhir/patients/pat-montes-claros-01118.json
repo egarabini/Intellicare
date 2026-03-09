@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01118",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMANDA",
+        "JULIAN",
+        "RODRIGUES"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-09-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10488826675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401123",
+      "line": [
+        "450 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988428865",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amandanthony4990@gmail.com",
+      "use": "home"
+    }
+  ]
+}

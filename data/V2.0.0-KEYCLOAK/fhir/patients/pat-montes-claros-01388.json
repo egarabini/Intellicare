@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01388",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITORIA",
+        "VERSSIANE",
+        "E"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13228312623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404046",
+      "line": [
+        "1052 APARTAMENTO"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999090073",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "viverssiane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

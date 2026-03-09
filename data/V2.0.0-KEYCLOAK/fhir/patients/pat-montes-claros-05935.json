@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05935",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAQUELINI",
+        "MORGANI",
+        "CARDOSO",
+        "BARBOSA"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07427870603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "3055 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998367511",
+      "use": "home"
+    }
+  ]
+}

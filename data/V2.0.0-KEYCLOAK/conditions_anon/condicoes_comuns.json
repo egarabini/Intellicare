@@ -1,0 +1,11 @@
+[
+  {"cid": "E11", "display": "Diabetes mellitus tipo 2"},
+  {"cid": "I10", "display": "Hipertensão essencial (primária)"},
+  {"cid": "N18.3", "display": "DRC estágio 3"},
+  {"cid": "N18.4", "display": "DRC estágio 4"},
+  {"cid": "N18.5", "display": "DRC estágio 5 (insuficiência renal terminal)"},
+  {"cid": "J45", "display": "Asma"},
+  {"cid": "K21", "display": "Doença do refluxo gastroesofágico"},
+  {"cid": "M17", "display": "Gonartrose (artrose do joelho)"},
+  {"cid": "F32", "display": "Episódios depressivos"}
+]

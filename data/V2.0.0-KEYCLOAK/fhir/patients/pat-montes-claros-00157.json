@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00157",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "IVO",
+        "D"
+      ],
+      "family": "AVILA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-03-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04420965690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401354",
+      "line": [
+        "292 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988452142",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatafernandes970118@gmail.com",
+      "use": "home"
+    }
+  ]
+}

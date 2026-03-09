@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00998",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "CESAR"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71609946472"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693120",
+      "line": [
+        "71 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982845367",
+      "use": "home"
+    }
+  ]
+}

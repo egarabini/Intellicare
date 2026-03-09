@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01268",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDUARDA",
+        "ANJOS",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-12-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07383538170"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72460190",
+      "line": [
+        "19 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993971898",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07477",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ILDEMAR",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-07-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02715136676"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401428",
+      "line": [
+        "518"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991896114",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolchoes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

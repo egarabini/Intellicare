@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07909",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TATIANA",
+        "SOUZA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09135487666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406619",
+      "line": [
+        "1800 CONDOMINIO"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998921088",
+      "use": "home"
+    }
+  ]
+}

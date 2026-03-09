@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04562",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "BARBOSA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52050943890"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403087",
+      "line": [
+        "37 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991003970",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "matheussantos9100@gmail.com",
+      "use": "home"
+    }
+  ]
+}

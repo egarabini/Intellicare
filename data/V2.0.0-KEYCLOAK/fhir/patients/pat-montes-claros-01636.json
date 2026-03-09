@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01636",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "LUIS",
+        "RUAS",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-05-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05045361686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401526",
+      "line": [
+        "98"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988642253",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luisandre051980@gmail.com",
+      "use": "home"
+    }
+  ]
+}

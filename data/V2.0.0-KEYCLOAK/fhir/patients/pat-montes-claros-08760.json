@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08760",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAVI",
+        "SOARES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-04-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16987318689"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401456",
+      "line": [
+        "113 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998687775",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dsdd54321@gmail.com",
+      "use": "home"
+    }
+  ]
+}

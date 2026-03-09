@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00424",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRACISCO",
+        "RICARDO",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1957-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "38569353120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72307613",
+      "line": [
+        "15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996465214",
+      "use": "home"
+    }
+  ]
+}

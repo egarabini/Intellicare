@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00777",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "J",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06556686166"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571504",
+      "line": [
+        "03"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991989309",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucajefesson5956@gmail.com",
+      "use": "home"
+    }
+  ]
+}

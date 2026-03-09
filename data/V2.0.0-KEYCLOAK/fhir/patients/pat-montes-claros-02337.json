@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02337",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDILSON",
+        "GODINHO"
+      ],
+      "family": "SALDANHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-10-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05621940610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402786",
+      "line": [
+        "266"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998139280",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edilsongodinhosaldanha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

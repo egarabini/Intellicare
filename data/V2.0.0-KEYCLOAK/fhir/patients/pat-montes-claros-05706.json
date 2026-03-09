@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05706",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAQUEL",
+        "DE",
+        "JESUS",
+        "SILVA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-02-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08908957677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403357",
+      "line": [
+        "551 39403357"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998851014",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raqueljesussilvapereira551@gmail.com",
+      "use": "home"
+    }
+  ]
+}

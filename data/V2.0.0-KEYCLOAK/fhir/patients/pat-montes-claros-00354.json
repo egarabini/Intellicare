@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00354",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALTAMIRANDO",
+        "BARBOSA"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36765821600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403170",
+      "line": [
+        "455 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998282835",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamodas210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

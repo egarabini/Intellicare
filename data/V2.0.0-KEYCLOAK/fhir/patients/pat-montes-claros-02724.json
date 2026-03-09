@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02724",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDEL",
+        "ANTUNES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10516926608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403261",
+      "line": [
+        "1190 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991879534",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wendelantunes1234@gmail.com",
+      "use": "home"
+    }
+  ]
+}

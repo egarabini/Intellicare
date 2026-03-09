@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02089",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-04-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02677613506"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404308",
+      "line": [
+        "32 39404308"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999521001",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

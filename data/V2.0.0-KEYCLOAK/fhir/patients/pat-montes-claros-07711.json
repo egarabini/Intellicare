@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07711",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHARLES",
+        "SILVA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-08-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10039882616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403119",
+      "line": [
+        "97 39403119"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991023874",
+      "use": "home"
+    }
+  ]
+}

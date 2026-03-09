@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03863",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NILDA",
+        "RODRIGUES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11214701655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401160",
+      "line": [
+        "158 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991389674",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariacristinacris31679@gmail.com",
+      "use": "home"
+    }
+  ]
+}

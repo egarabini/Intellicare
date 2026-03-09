@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00306",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "MENDES"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01056669802"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694038",
+      "line": [
+        "18 BOSQUE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991410001",
+      "use": "home"
+    }
+  ]
+}

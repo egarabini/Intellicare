@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03160",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RICARDO",
+        "FERREIRA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-02-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06852573630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402797",
+      "line": [
+        "221 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999952477",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rf2089667@gmail.com",
+      "use": "home"
+    }
+  ]
+}

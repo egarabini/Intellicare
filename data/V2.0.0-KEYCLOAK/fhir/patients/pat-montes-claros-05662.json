@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05662",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO",
+        "JOSE"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-06-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "21791554687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400388",
+      "line": [
+        "60"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997278066",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscojose1954@gmail.com",
+      "use": "home"
+    }
+  ]
+}

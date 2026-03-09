@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03469",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EUMARCOS",
+        "ESPERDIAO",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-08-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09947069605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402094",
+      "line": [
+        "210"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999549313",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "esperdiaomarcos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

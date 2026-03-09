@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02149",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTINA",
+        "FERREIRA",
+        "ALVES"
+      ],
+      "family": "BEZERRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-03-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05833026610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400430",
+      "line": [
+        "100"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992277007",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cf500289@gmail.com",
+      "use": "home"
+    }
+  ]
+}

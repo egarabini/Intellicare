@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01416",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIANE",
+        "MEIRELES",
+        "DE"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-01-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04847053184"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571006",
+      "line": [
+        "21"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999316971",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "julianemereles90@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02971",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCINE",
+        "GABRIELLE",
+        "MARTINS"
+      ],
+      "family": "VILELA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-01-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12927940622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401874",
+      "line": [
+        "1367"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999873094",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabriellefrancine138@gmail.com",
+      "use": "home"
+    }
+  ]
+}

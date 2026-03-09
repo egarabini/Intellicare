@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00132",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LEONETE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-01-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01155761340"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "9 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994351976",
+      "use": "home"
+    }
+  ]
+}

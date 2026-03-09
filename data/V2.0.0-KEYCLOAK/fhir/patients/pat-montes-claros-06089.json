@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06089",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "BARBOSA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1952-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04002135675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402716",
+      "line": [
+        "273 39402716"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998565313",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "05camilamartins@gmail.com",
+      "use": "home"
+    }
+  ]
+}

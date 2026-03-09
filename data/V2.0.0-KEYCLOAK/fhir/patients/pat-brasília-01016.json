@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01016",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IGOR",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71060712180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71699899",
+      "line": [
+        "47 CHACARA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991032523",
+      "use": "home"
+    }
+  ]
+}

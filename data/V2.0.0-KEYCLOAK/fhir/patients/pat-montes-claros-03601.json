@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03601",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAURA",
+        "PEREIRA"
+      ],
+      "family": "NERY"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01748781685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401840",
+      "line": [
+        "60 APT 102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999492153",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laura_pnery89@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01185",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "C�NTIA",
+        "MARIA",
+        "GON�ALVES",
+        "DE"
+      ],
+      "family": "GUSM�O"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01797240102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73369050",
+      "line": [
+        "54"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985215338",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cintianutri87@gmail.com",
+      "use": "home"
+    }
+  ]
+}

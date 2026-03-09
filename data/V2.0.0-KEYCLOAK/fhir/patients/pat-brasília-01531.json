@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01531",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARAH",
+        "GABRIELE"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-10-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06895553185"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998703843",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pereiragabriele@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04948",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIEL",
+        "SOARES"
+      ],
+      "family": "AFONSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70444899669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403724",
+      "line": [
+        "948 39403724"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998896865",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05990",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAIARA",
+        "FERREIRA",
+        "NETO"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-09-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10334666627"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401429",
+      "line": [
+        "151"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999553619",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nf395814@gmail.com",
+      "use": "home"
+    }
+  ]
+}

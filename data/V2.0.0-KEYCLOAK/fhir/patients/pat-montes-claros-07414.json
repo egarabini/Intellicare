@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07414",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CONCEI�AO",
+        "SOARES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-11-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73423858672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404300",
+      "line": [
+        "320 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999083169",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariamaria70424@gmail.com",
+      "use": "home"
+    }
+  ]
+}

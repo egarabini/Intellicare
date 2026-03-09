@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02703",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCINETE",
+        "FERNANDES",
+        "TERRA"
+      ],
+      "family": "SOBRAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-11-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10249938685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403073",
+      "line": [
+        "1355 39403073"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999482587",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

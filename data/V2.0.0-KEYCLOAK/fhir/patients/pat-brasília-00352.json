@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00352",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ION�",
+        "VIEIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-01-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71278400168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693201",
+      "line": [
+        "300 JOAO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998386176",
+      "use": "home"
+    }
+  ]
+}

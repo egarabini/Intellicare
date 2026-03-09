@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00973",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LUCIA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-09-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "39940446187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72536165",
+      "line": [
+        "07"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982673930",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "l.pretosilva95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

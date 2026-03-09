@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06240",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "01432070673"
+      ],
+      "family": "01432070673"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-03-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01432070673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403202",
+      "line": [
+        "1380"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999272041",
+      "use": "home"
+    }
+  ]
+}

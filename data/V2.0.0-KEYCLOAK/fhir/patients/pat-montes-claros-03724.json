@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03724",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DO",
+        "ROSARIO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06431954670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402537",
+      "line": [
+        "677"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999737463",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariamara12@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

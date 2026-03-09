@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08627",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "MARCIO"
+      ],
+      "family": "AMARAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-02-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04227709652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403205",
+      "line": [
+        "437"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999152771",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielkennedy12333@gmail.com",
+      "use": "home"
+    }
+  ]
+}

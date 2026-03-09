@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05448",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LETICIA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-02-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09334591650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401137",
+      "line": [
+        "723"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991657516",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leticiajesuscardoso2021@gmail.com",
+      "use": "home"
+    }
+  ]
+}

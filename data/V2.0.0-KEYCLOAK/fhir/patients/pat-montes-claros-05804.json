@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05804",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "FRANCIELE",
+        "QUIRINO"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-03-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10446955604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402478",
+      "line": [
+        "55 39402478"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997267271",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@gmail.com",
+      "use": "home"
+    }
+  ]
+}

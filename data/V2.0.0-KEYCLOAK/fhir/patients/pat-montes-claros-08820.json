@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08820",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "DO",
+        "CARMO"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1958-05-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05362811657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402228",
+      "line": [
+        "109"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999191670",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josecarmoaraujo@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

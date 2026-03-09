@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-009",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dr.",
+        "André",
+        "Luiz"
+      ],
+      "family": "Souza"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "DF 78901"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

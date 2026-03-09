@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09057",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDERSON",
+        "SOUZA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-07-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04758753628"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400810",
+      "line": [
+        "216"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999224991",
+      "use": "home"
+    }
+  ]
+}

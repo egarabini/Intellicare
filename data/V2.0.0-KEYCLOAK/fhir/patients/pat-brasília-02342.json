@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02342",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "GLORIA",
+        "JESUS"
+      ],
+      "family": "NOVAIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-06-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73485152587"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71695130",
+      "line": [
+        "41 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993678672",
+      "use": "home"
+    }
+  ]
+}

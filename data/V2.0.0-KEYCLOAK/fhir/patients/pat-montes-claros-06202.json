@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06202",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "DE",
+        "JESUS",
+        "DIAS",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1958-03-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74853945687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404296",
+      "line": [
+        "91 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997304545",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diasritadaluzdias@gmail.com",
+      "use": "home"
+    }
+  ]
+}

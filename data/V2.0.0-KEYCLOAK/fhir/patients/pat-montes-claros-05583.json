@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05583",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIO",
+        "ALEXANDRE"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-10-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12076698655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401125",
+      "line": [
+        "142 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998456398",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudioxs189@gmail.com",
+      "use": "home"
+    }
+  ]
+}

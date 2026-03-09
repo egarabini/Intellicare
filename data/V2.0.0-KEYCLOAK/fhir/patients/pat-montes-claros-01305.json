@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01305",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAUANE",
+        "IASMIM",
+        "SOUZA"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17522406692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400396",
+      "line": [
+        "135 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997305666",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamoc210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

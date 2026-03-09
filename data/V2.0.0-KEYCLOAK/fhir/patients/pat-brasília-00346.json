@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00346",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "CONCEI��O"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-12-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36174599272"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693011",
+      "line": [
+        "10 JOSE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995271099",
+      "use": "home"
+    }
+  ]
+}

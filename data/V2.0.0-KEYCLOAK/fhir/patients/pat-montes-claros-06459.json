@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06459",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "RICARDO",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70617183660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "250 NOVA ESPERANCA LOTEAMENTO VALE DAS PAINEIRAS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998835839",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulomeliodas336b@gmail.com",
+      "use": "home"
+    }
+  ]
+}

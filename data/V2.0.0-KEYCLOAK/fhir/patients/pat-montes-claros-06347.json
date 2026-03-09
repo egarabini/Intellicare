@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06347",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GETULIO",
+        "XAVIER"
+      ],
+      "family": "AMORIM"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-04-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18771106634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401531",
+      "line": [
+        "145 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991169392",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "getulioxavier@gmail.com",
+      "use": "home"
+    }
+  ]
+}

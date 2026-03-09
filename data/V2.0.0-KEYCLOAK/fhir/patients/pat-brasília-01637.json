@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01637",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-04-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36333425320"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590573",
+      "line": [
+        "9"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991074970",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sf22136@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06675",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRESSA",
+        "MENDES",
+        "DA",
+        "SILVA",
+        "E"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70271076607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403010",
+      "line": [
+        "97"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991218083",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andre@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

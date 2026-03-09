@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00633",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAKELINE",
+        "OLIVEIRA",
+        "NUNES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01890013137"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "06 QD 41 R 05"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994027349",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nunesjaquelineoliveira754@gmail.com",
+      "use": "home"
+    }
+  ]
+}

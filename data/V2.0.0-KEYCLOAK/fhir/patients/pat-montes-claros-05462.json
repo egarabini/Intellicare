@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05462",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ANTONIO",
+        "GONCALVES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-12-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02283048656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404402",
+      "line": [
+        "126 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998166753",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosantonio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01399",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "CONCEICAO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-04-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00352630590"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404323",
+      "line": [
+        "463 39404323"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998677861",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas136@gmail.com",
+      "use": "home"
+    }
+  ]
+}

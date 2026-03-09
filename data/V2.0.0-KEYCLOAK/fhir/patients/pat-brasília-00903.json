@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00903",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "PAULO",
+        "COSTA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-01-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00936916109"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72542404",
+      "line": [
+        "13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998762412",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaopaulocosta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

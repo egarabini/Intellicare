@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00383",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILSON",
+        "ARAUJO",
+        "DE"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-08-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13441682645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402798",
+      "line": [
+        "262"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999598177",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

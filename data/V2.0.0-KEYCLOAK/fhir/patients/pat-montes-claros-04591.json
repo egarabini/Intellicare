@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04591",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ISABELA",
+        "GON�ALVES"
+      ],
+      "family": "FROES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11663276633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400637",
+      "line": [
+        "395"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992550720",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bellafroes92@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00825",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "BEZERRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-03-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04243975108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692619",
+      "line": [
+        "27 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991256113",
+      "use": "home"
+    }
+  ]
+}

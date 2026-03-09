@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02155",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "DE",
+        "MAGALHAES"
+      ],
+      "family": "MARANHAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02784553108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73401104",
+      "line": [
+        "18 MODULO I"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985528384",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bruna060889@gmail.com",
+      "use": "home"
+    }
+  ]
+}

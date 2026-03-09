@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01711",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CECILIA",
+        "HELENA",
+        "AMIARANA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-11-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "40455548668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401067",
+      "line": [
+        "27"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991432172",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ceciprof@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

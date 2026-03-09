@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07868",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BARBARA",
+        "STEFANY",
+        "COSTA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11061581640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402547",
+      "line": [
+        "180"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998424700",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbarastefany299@gmail.com",
+      "use": "home"
+    }
+  ]
+}

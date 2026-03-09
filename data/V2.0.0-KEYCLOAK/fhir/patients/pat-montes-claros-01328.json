@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01328",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TATIANE",
+        "RAMOS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-07-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02123198684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400296",
+      "line": [
+        "38 39400296"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991135400",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tatianeramos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

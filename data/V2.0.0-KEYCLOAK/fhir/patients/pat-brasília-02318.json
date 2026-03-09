@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02318",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAMIRES",
+        "REIS",
+        "CAMARGO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-04-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10226589641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693001",
+      "line": [
+        "551 SOA JOSE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "34984018695",
+      "use": "home"
+    }
+  ]
+}

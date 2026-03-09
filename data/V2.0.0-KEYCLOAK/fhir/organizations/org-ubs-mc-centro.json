@@ -1,0 +1,49 @@
+{
+  "resourceType": "Organization",
+  "id": "org-ubs-mc-centro",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes",
+      "value": "2000007"
+    }
+  ],
+  "name": "UBS Centro Montes Claros",
+  "alias": [
+    "UBS Centro MC"
+  ],
+  "partOf": {
+    "reference": "Organization/org-sms-montesclaros"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ]
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "Centro"
+      ],
+      "city": "Montes Claros",
+      "state": "MG",
+      "postalCode": "39400-001"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id",
+      "valueString": "secretaria-montesclaros"
+    }
+  ]
+}

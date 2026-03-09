@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07270",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "MERCES",
+        "GOMES",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-09-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04988076652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401187",
+      "line": [
+        "52 BECO PARDAL"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992180042",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

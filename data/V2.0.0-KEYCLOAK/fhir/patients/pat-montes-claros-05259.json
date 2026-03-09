@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05259",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EGNALDO",
+        "RAMOS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70159601681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407482",
+      "line": [
+        "91"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999638308",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edvantorres2@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

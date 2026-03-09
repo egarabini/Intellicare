@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01158",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDNA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70532362187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71588174",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998490214",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edna.santos020713@gmail.com",
+      "use": "home"
+    }
+  ]
+}

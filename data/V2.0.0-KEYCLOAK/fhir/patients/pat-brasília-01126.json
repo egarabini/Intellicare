@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01126",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELLE",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06223030150"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73403506",
+      "line": [
+        "15 MD 19 CJ B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993708060",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcelleoliveira728@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08696",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CISLEIDE",
+        "XAVIER",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98627961620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403101",
+      "line": [
+        "195 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998065790",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cisleidexavier@gmail.com",
+      "use": "home"
+    }
+  ]
+}

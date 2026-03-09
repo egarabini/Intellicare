@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00350",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAYCON",
+        "OLIVEIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04461796124"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73358650",
+      "line": [
+        "5 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996632939",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ms2125@gmail.com",
+      "use": "home"
+    }
+  ]
+}

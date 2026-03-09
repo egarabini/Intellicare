@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00112",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELISANGELA",
+        "CHAVIER",
+        "DE"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-08-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01692750194"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71675205",
+      "line": [
+        "13 RUA 10 CHACARA 13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996228975",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elisangelaxa4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

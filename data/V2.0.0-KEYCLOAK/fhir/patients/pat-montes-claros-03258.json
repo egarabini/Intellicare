@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03258",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROMILDO",
+        "LOPES",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73412996653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401157",
+      "line": [
+        "71"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999083468",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "romildolopes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

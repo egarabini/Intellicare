@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07988",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDA",
+        "RODRIGUES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10717257690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403162",
+      "line": [
+        "431"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998666567",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nandarsilva89@gmail.com",
+      "use": "home"
+    }
+  ]
+}

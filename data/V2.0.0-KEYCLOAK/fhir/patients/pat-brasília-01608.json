@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01608",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "MARIA",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-04-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "96020873153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694013",
+      "line": [
+        "13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995085783",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aninha1004k@gmail.com",
+      "use": "home"
+    }
+  ]
+}

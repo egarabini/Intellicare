@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06720",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LORENA",
+        "STHEFANE",
+        "BARBOSA"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70341179698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402890",
+      "line": [
+        "174 39402890"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3832154489",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorena4690857@gmail.com",
+      "use": "home"
+    }
+  ]
+}

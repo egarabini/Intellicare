@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07164",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDUARDA",
+        "ROGERIO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-12-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70332440613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401483",
+      "line": [
+        "177"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997370515",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dudarogerio736@gmail.com",
+      "use": "home"
+    }
+  ]
+}

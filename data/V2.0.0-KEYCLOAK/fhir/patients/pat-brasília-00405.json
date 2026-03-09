@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00405",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ISABEL",
+        "SANTIAGO",
+        "DE"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-07-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00625055136"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73350204",
+      "line": [
+        "39 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996790062",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "isabelmorais110@gmail.com",
+      "use": "home"
+    }
+  ]
+}

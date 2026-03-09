@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00600",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILBERTO",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-10-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82964807353"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71731440",
+      "line": [
+        "40 NR 02 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999463458",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "desousag@gmail.com",
+      "use": "home"
+    }
+  ]
+}

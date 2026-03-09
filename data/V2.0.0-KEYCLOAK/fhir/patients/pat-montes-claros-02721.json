@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02721",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDVALDO",
+        "CONCEICAO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-05-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07614005910"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400025",
+      "line": [
+        "96 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992043199",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edvaldocondossantos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

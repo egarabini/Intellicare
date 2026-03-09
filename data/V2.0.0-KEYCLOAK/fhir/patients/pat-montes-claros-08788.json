@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08788",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANNY",
+        "GABRIELLY",
+        "PEREIRA"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-10-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70368901696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403297",
+      "line": [
+        "106 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999713111",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "graciana2010@live.com",
+      "use": "home"
+    }
+  ]
+}

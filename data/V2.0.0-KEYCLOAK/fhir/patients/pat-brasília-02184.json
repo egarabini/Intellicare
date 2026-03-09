@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02184",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAYLANE",
+        "CRISTINE",
+        "DE",
+        "CASTRO"
+      ],
+      "family": "GAZOLLA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07726241195"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572206",
+      "line": [
+        "19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995521118",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kaylanecristine06@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00139",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAVIDE"
+      ],
+      "family": "DIPALMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13275460609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400385",
+      "line": [
+        "477 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988453094",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "davidediplama@gmail.com",
+      "use": "home"
+    }
+  ]
+}

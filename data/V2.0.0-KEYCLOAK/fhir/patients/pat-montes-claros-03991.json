@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03991",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NILSON",
+        "DE"
+      ],
+      "family": "PADUA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-01-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "29784198819"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403199",
+      "line": [
+        "356 MAJOR PRATES"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998972682",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamoc210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

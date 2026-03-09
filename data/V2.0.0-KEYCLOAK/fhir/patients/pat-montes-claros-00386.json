@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00386",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REBECA",
+        "SIMOES",
+        "CANELA"
+      ],
+      "family": "CAMPOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-04-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13600096630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401081",
+      "line": [
+        "63"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999136169",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

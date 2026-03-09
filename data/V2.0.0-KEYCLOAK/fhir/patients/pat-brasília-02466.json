@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02466",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTOR",
+        "RODOLFO",
+        "GOMES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00431515158"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72405925",
+      "line": [
+        "205 BLOCO B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985621463",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vicctorrodolfopmaiagomes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

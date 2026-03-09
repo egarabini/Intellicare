@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08069",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BEATRIZ",
+        "SOARES"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-05-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01826596666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39408085",
+      "line": [
+        "92 39408085"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991084854",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "julianosoares712@gmail.com",
+      "use": "home"
+    }
+  ]
+}

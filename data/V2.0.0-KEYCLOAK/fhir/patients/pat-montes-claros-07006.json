@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07006",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RONY",
+        "LADEIA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-08-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "91239532687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404318",
+      "line": [
+        "363 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992591049",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ronyladeia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07220",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIZANGELA",
+        "APARECIDA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-10-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08886094698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405423",
+      "line": [
+        "21"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998168293",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elizangelaaparecida@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00175",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EXPEDITO",
+        "OLIVEIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1962-02-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "27933709168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570809",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996744603",
+      "use": "home"
+    }
+  ]
+}

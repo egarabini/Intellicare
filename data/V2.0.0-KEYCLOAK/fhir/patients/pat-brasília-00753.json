@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00753",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "FERNANDO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-01-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81674554915"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71925000",
+      "line": [
+        "02 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "48996833322",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eduardofsf2008@outlook.com",
+      "use": "home"
+    }
+  ]
+}

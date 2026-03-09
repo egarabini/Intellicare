@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03152",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALCIDES",
+        "ALVES",
+        "DE"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1949-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04375757647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39411000",
+      "line": [
+        "00 SAO PEDRO DA GARCA FAZENDA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999989985",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alcides.alves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

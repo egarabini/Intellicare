@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-010",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dra.",
+        "Beatriz"
+      ],
+      "family": "Lima"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "MG 89012"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

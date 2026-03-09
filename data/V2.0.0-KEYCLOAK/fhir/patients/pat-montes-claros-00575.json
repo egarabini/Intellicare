@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00575",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARI�A",
+        "SOUZA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-01-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02303587646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401275",
+      "line": [
+        "63 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999988174",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "izaltinamm@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01169",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDIR",
+        "CRISTIANO",
+        "BARBOSA",
+        "DOS"
+      ],
+      "family": "PASSOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85794252120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72429210",
+      "line": [
+        "33"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991386765",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valdirbarbosapassos4521@gmail.com",
+      "use": "home"
+    }
+  ]
+}

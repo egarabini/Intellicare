@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01334",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAQUELINE",
+        "SOARES",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-07-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02099726370"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693019",
+      "line": [
+        "32 LT 36  CS 1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995809742",
+      "use": "home"
+    }
+  ]
+}

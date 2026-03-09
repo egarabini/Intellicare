@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01106",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DOMINGOS",
+        "FERREIRA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60534139337"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572308",
+      "line": [
+        "05"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996012434",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "domingosferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

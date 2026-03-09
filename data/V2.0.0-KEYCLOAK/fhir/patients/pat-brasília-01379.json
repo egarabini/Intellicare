@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01379",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CINTIA",
+        "CANDIDA"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63502577153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572604",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995751617",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cintiachef@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

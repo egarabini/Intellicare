@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05951",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TUANNE",
+        "FERNANDA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-07-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09407183670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404138",
+      "line": [
+        "118 RUA JARDIM DOS IPES"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999621511",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tuannefernanda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02964",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LISLEIA",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06349302656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402485",
+      "line": [
+        "109 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999577067",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lisleia33@gmail.com",
+      "use": "home"
+    }
+  ]
+}

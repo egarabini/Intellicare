@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04420",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "FABRICIO",
+        "SILVA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-01-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11440208670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401465",
+      "line": [
+        "165 39401465"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991959247",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

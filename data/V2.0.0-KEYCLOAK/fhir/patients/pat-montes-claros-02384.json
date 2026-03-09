@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02384",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEONARDO",
+        "EVANGELISTA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-03-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04971503609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400211",
+      "line": [
+        "101"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988510900",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leosilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

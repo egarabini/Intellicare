@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04362",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMANDA",
+        "GONCALVES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-09-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11689543639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401249",
+      "line": [
+        "261"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998337956",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amandagoncalves@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-00957-85",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 5 (TFG < 15), Hipertensão essencial (primária)",
+  "description": "Condições: DRC estágio 5 (TFG < 15), Hipertensão essencial (primária)",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00957"
+  },
+  "period": {
+    "start": "2025-11-28"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-00957-85"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

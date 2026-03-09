@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01647",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "STEPHANNY",
+        "COSTA"
+      ],
+      "family": "MESQUITA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-02-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07525129193"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72504405",
+      "line": [
+        "02 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994132209",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "stephannycostam17@gmail.com",
+      "use": "home"
+    }
+  ]
+}

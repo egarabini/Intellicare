@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07354",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "VICTOR",
+        "SOARES"
+      ],
+      "family": "MONTEZANO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-11-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14847114671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403238",
+      "line": [
+        "1904 39403238"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991790152",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

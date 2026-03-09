@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05565",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIMONE",
+        "FERREIRA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-09-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09907945633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406514",
+      "line": [
+        "270 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999034687",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dandara0427@gmail.com",
+      "use": "home"
+    }
+  ]
+}

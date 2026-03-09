@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02530",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEONICE",
+        "FERNANDES",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-06-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84535695687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403102",
+      "line": [
+        "415 39403102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991991776",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@eletosom.com",
+      "use": "home"
+    }
+  ]
+}

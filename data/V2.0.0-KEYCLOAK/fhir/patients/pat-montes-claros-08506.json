@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08506",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "ELIZIO",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1957-06-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "33859523600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400291",
+      "line": [
+        "291 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "33988994533",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antonioelizio123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

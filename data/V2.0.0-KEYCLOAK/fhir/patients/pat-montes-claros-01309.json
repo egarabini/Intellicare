@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01309",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "XAVIER"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16237263608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406326",
+      "line": [
+        "680 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988163437",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alessandrafx08@gmail.com",
+      "use": "home"
+    }
+  ]
+}

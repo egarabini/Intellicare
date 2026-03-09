@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01015",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSILENE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07252976629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400319",
+      "line": [
+        "340 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992151645",
+      "use": "home"
+    }
+  ]
+}

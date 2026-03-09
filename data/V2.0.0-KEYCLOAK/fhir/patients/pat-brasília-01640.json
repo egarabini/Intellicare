@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01640",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIANO",
+        "SILVESTRE"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01078206171"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "01 CHACARA 38"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986058465",
+      "use": "home"
+    }
+  ]
+}

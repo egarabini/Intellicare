@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08892",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANIA",
+        "RODRIGUES",
+        "SANTOS"
+      ],
+      "family": "SARAIVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-07-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01539766675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400456",
+      "line": [
+        "274"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997364231",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "waniarodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

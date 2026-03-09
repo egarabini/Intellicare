@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00619",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TOMAZIO",
+        "VARDOSO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-04-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05787436121"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691056",
+      "line": [
+        "71"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994260347",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thomaiscardoso.28@gmail.com",
+      "use": "home"
+    }
+  ]
+}

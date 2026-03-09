@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01249",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIO",
+        "GONCALVES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "38143364100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72450110",
+      "line": [
+        "39 Q 11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995903581",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcio35santos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

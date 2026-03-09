@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04174",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANT�NIO",
+        "FABIANO",
+        "DE",
+        "SENA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-01-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09788185630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404742",
+      "line": [
+        "226 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988650647",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "asena5488@gmail.com",
+      "use": "home"
+    }
+  ]
+}

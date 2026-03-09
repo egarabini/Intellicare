@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02511",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "ELIZABETE",
+        "BRAZ",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-04-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09883776160"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587076",
+      "line": [
+        "66"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982523708",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anaelizabet45@gmail.com",
+      "use": "home"
+    }
+  ]
+}

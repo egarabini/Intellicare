@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00539",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WASHINGTON",
+        "LUIZ",
+        "CAVALCANTE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-09-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "34295860115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805527",
+      "line": [
+        "6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995442092",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "washington153575w@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01094",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "PAULA",
+        "DE",
+        "CARVALHO",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-07-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04037398028"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70803040",
+      "line": [
+        "19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996314647",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ana-carvalho00@gmail.com",
+      "use": "home"
+    }
+  ]
+}

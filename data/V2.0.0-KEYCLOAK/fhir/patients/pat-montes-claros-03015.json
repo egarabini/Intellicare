@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03015",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EUCLIDES",
+        "FERREIRA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06123779621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403069",
+      "line": [
+        "150"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984040657",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "didivitaflayme@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

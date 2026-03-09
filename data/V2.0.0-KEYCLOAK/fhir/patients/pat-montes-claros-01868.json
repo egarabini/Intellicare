@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01868",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AILTON",
+        "RIBEIRO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-10-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13996268688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404767",
+      "line": [
+        "59"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997477962",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ailtonribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

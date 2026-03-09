@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01716",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIOGO",
+        "ESTEVAO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-05-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07883214128"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340020",
+      "line": [
+        "32"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996904119",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diogoestevao761@gmail.com",
+      "use": "home"
+    }
+  ]
+}

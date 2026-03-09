@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01527",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIA",
+        "DE",
+        "CASSIA",
+        "MIRANDA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02717783180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593220",
+      "line": [
+        "46 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983439071",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniomarcoss4190@gmail.com",
+      "use": "home"
+    }
+  ]
+}

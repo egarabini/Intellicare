@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04890",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLUCIO",
+        "MARTINS"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-01-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07355974645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402421",
+      "line": [
+        "445 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992406193",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carluciomartins20@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

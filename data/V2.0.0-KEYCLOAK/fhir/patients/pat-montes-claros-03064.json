@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03064",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEANNE",
+        "GETULIA"
+      ],
+      "family": "SOUTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-11-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01317138686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400725",
+      "line": [
+        "1468 39400725"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992511671",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeanegetulia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

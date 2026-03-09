@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05554",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "FATIMA",
+        "MARTINS",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03883549843"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400047",
+      "line": [
+        "48"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988436476",
+      "use": "home"
+    }
+  ]
+}

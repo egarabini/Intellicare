@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00077",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "CELESTE",
+        "BORGES",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12251474684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572403",
+      "line": [
+        "9 71572403"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6194052935",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "saraborges005@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

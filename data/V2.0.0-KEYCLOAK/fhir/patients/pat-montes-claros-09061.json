@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09061",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIO",
+        "ROBERTO",
+        "RODRIGUES"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95885374600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407492",
+      "line": [
+        "230 39407492"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998140165",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "clausilvarod1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

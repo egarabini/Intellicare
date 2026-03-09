@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03320",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAURA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "27099449877"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404307",
+      "line": [
+        "60 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999496298",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laurapereirasena@gmail.com",
+      "use": "home"
+    }
+  ]
+}

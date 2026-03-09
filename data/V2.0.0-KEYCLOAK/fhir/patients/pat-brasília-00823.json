@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00823",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAMIANA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "TAVARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-02-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "91081580453"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73389009",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984475152",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "damianatavaresouza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

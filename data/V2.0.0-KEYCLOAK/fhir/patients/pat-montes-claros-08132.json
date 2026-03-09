@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08132",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIO",
+        "MENDES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-04-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01288902662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401138",
+      "line": [
+        "680 CSA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998392842",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviomendesudi@gmail.com",
+      "use": "home"
+    }
+  ]
+}

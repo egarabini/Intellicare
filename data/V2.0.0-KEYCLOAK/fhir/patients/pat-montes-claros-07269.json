@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07269",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALAICE",
+        "SANTOS"
+      ],
+      "family": "FROIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-11-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08054661690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400291",
+      "line": [
+        "56 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991353068",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "froiscintia57@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04334",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HEVERSON",
+        "DE",
+        "FREITAS",
+        "SANTANA"
+      ],
+      "family": "PRIMO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-05-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12859147675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406148",
+      "line": [
+        "514 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999189261",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "heversons458@gmail.com",
+      "use": "home"
+    }
+  ]
+}

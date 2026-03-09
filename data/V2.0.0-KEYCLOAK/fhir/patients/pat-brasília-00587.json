@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00587",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "STELLA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "VIANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-02-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "65760751115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72236800",
+      "line": [
+        "42"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6186414602",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "stellavianasouza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

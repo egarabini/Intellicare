@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03541",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIO",
+        "GUEDES"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04487244641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400453",
+      "line": [
+        "35 39400453"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991912040",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marioguedesjunior@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

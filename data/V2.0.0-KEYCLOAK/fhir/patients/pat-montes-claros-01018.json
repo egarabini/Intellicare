@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01018",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATO",
+        "AUGUSTO",
+        "SILVA"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10137104600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403078",
+      "line": [
+        "169 39403078"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38912523694",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendasclaros@redetopmagazine.com",
+      "use": "home"
+    }
+  ]
+}

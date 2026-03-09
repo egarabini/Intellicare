@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00199",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNO",
+        "CELESTINO",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-04-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06799778139"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590000",
+      "line": [
+        "35"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994012920",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunol45@gmail.com",
+      "use": "home"
+    }
+  ]
+}

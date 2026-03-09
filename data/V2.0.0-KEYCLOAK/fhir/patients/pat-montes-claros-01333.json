@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01333",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAILDE",
+        "SIQUEIRA",
+        "DOS"
+      ],
+      "family": "REIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-04-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10918991692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407448",
+      "line": [
+        "85"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999006713",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolchoes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

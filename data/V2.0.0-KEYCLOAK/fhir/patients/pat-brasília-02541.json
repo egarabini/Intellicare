@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02541",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INALDO",
+        "CARVALHO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-07-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89569016191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587766",
+      "line": [
+        "203"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981942281",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvainaldo751@gmail.com",
+      "use": "home"
+    }
+  ]
+}

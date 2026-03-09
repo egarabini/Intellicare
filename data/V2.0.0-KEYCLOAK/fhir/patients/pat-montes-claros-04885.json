@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04885",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SANDRA",
+        "FRANCISCA",
+        "DA"
+      ],
+      "family": "PAIXAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08776980669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403358",
+      "line": [
+        "140 39403358"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991248845",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sandrafrancisca0111@gmail.com",
+      "use": "home"
+    }
+  ]
+}

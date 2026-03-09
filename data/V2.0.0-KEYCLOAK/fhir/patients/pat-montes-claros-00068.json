@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00068",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIANA",
+        "RUAS",
+        "TEIXEIRA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07185976642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406025",
+      "line": [
+        "292 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998706580",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adrianaruast@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06227",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "JOAQUINA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1939-07-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78396948615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401034",
+      "line": [
+        "260 39401034"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3832123665",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "analuizabelem8@gmail.com",
+      "use": "home"
+    }
+  ]
+}

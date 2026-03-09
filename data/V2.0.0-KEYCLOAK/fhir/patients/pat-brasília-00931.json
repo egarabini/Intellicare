@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00931",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALESSANDRO",
+        "MARQUES",
+        "RIBEIRO",
+        "DE"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-12-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06461067167"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "01 Q 7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981003509",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alessandro.marques.3304@gmail.com",
+      "use": "home"
+    }
+  ]
+}

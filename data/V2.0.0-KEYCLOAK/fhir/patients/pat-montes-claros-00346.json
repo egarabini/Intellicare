@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00346",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ATENOR",
+        "CESAR"
+      ],
+      "family": "CONCEI��O"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-10-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76931790625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401027",
+      "line": [
+        "44 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988427748",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "atenorcesarc@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

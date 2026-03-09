@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09039",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HENRIQUE",
+        "SANTOS"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09014377606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404286",
+      "line": [
+        "200 39404286"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997223059",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaelizaesteves21@gamil.com",
+      "use": "home"
+    }
+  ]
+}

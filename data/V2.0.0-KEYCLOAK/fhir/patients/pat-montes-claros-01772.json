@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01772",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATEUS",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "MEIRELES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-12-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04732587143"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404521",
+      "line": [
+        "415 39404521"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998786811",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mateusmeireles@gmail.com",
+      "use": "home"
+    }
+  ]
+}

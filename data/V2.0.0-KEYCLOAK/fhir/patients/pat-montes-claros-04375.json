@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04375",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "MARGARETH",
+        "DE",
+        "JESUS",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-07-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11570720622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401208",
+      "line": [
+        "23"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999128541",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@outlook.com",
+      "use": "home"
+    }
+  ]
+}

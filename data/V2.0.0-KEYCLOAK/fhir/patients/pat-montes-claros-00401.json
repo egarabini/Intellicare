@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00401",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDUARDA",
+        "GOMES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-03-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16131500673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404311",
+      "line": [
+        "60 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998854382",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eduardagomes180922@gmail.com",
+      "use": "home"
+    }
+  ]
+}

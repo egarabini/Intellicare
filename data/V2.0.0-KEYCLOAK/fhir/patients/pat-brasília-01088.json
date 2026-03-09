@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01088",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIANO",
+        "MIRANDA",
+        "MARTINS"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-12-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03997463077"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72302851",
+      "line": [
+        "110 CJ 01 AP 102"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986640093",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabianoj39@gmail.com",
+      "use": "home"
+    }
+  ]
+}

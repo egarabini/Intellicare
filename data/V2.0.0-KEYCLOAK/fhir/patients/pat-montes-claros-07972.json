@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07972",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIELA",
+        "ARAUJO"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-06-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14591313638"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400053",
+      "line": [
+        "414 39400053"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997393254",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

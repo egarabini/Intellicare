@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01658",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MIRIAM",
+        "ALVES",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00914203185"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691084",
+      "line": [
+        "330 CENTRO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982169406",
+      "use": "home"
+    }
+  ]
+}

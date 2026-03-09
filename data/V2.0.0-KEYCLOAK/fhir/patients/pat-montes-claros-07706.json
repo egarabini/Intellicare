@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07706",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCELIA",
+        "SOARES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-10-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12197887670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402810",
+      "line": [
+        "140"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988330972",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "soareslucelia45@gmail.com",
+      "use": "home"
+    }
+  ]
+}

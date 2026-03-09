@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01481",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO",
+        "DOS",
+        "REIS"
+      ],
+      "family": "CROZU�"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1951-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "28103890634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71820208",
+      "line": [
+        "5"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985808076",
+      "use": "home"
+    }
+  ]
+}

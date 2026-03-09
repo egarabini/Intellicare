@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08345",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSANA",
+        "CARDOSO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-05-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "65725387615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407430",
+      "line": [
+        "25"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999999999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rose38998297692@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06043",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILSON",
+        "GODINHO"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74867920606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402780",
+      "line": [
+        "369 39402780"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999399115",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@gmail.com",
+      "use": "home"
+    }
+  ]
+}

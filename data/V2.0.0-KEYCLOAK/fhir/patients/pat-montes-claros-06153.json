@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06153",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALAN",
+        "FIUZA"
+      ],
+      "family": "FREIRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-10-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11055968695"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404531",
+      "line": [
+        "131 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998603801",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alanfiuza92@gmail.com",
+      "use": "home"
+    }
+  ]
+}

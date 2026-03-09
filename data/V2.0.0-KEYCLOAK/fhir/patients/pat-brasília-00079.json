@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00079",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANESSA",
+        "ROSA",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00151065195"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72710120",
+      "line": [
+        "176 72710120"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6198378424",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "macelocontonet806@gmail.com",
+      "use": "home"
+    }
+  ]
+}

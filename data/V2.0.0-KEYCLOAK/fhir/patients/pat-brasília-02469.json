@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02469",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MICAELLA",
+        "GONCALVES",
+        "DE",
+        "LIMA"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-12-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04635085139"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587050",
+      "line": [
+        "25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999011452",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "micaellagoncalve154@gmail.com",
+      "use": "home"
+    }
+  ]
+}

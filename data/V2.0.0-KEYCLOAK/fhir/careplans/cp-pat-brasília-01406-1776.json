@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-01406-1776",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 4, Diabetes mellitus tipo 2",
+  "description": "Condições: DRC estágio 4, Diabetes mellitus tipo 2",
+  "subject": {
+    "reference": "Patient/pat-brasília-01406"
+  },
+  "period": {
+    "start": "2025-10-16"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-01406-1776"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

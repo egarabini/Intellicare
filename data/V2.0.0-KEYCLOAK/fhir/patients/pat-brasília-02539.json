@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02539",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIANE",
+        "BARBOSA",
+        "LIMA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-10-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83410724168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71751050",
+      "line": [
+        "9 CHACARA 10 10"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996302242",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cristiane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

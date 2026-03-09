@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00628",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REGINA",
+        "DE",
+        "FARIAS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-10-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66665531104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571030",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982642962",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "regina125@gmail.com",
+      "use": "home"
+    }
+  ]
+}

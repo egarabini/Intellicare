@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00360",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMRIA",
+        "DO",
+        "CARMO",
+        "MARTIS",
+        "CAMPELO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02836257679"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73355000",
+      "line": [
+        "2 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998478995",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "otaviocarneiro857@gmail.com",
+      "use": "home"
+    }
+  ]
+}

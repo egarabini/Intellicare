@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08388",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MICHAEL",
+        "DOUGLAS",
+        "SANTOS"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02035916666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404327",
+      "line": [
+        "256 39404327"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999555462",
+      "use": "home"
+    }
+  ]
+}

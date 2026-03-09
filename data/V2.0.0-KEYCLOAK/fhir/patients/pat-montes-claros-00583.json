@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00583",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THALITA"
+      ],
+      "family": "MICAELLE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70678914699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407492",
+      "line": [
+        "341 39407492"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988662260",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thalita@gmail.com",
+      "use": "home"
+    }
+  ]
+}

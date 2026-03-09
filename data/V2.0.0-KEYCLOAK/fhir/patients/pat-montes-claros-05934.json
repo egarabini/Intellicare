@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05934",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YAGO",
+        "CARDOSO",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-07-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13269954646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401177",
+      "line": [
+        "37 37"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992020667",
+      "use": "home"
+    }
+  ]
+}

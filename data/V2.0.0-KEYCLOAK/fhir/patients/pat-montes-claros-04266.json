@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04266",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCIELLEN",
+        "SANTOS"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-03-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13232952674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401681",
+      "line": [
+        "26 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999535418",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oliveiradaiane996@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00568",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "JOSE"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09890313650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995959265",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariajosey@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

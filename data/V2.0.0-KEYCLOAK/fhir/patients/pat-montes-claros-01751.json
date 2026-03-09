@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01751",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NIVALDA",
+        "LUCIANA",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09479441683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404303",
+      "line": [
+        "18000 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999357862",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nivaldacruz5@gmail.com",
+      "use": "home"
+    }
+  ]
+}

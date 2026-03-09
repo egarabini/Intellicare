@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00336",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERICK",
+        "BRUNO",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "PAULA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05439920129"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693009",
+      "line": [
+        "03 57 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982175056",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08714",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCIELE",
+        "KEILIANE",
+        "LEITE"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-09-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11299366600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402300",
+      "line": [
+        "660"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988318093",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "frangoomesrenato@gmail.com",
+      "use": "home"
+    }
+  ]
+}

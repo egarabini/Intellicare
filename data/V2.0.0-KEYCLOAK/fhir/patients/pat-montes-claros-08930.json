@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08930",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "OSCAR",
+        "LOPES",
+        "DE"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69320462615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400000",
+      "line": [
+        "7 LOTE 7"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992200101",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniooscarlopesmorais1965@gmail.com",
+      "use": "home"
+    }
+  ]
+}

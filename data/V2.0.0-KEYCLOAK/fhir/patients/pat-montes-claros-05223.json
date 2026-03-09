@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05223",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAYARA",
+        "LILIANE",
+        "ALMEIDA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-06-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70421255684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404313",
+      "line": [
+        "106"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988608008",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

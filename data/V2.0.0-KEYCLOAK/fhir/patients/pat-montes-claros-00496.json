@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00496",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TANIA",
+        "APARECIDA",
+        "SALGADO"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60857641620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400384",
+      "line": [
+        "632 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988536646",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taniaaparecidasalgadolima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

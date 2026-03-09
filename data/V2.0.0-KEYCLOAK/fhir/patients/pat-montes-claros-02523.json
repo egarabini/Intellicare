@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02523",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANISSON",
+        "RODRIGUES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-03-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12006256688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403100",
+      "line": [
+        "514 39403100"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988587181",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

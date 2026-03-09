@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08124",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLY",
+        "SIMONE"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03855835675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400006",
+      "line": [
+        "182 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999972748",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernandeskelly88@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

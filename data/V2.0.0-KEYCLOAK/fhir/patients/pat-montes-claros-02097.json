@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02097",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARISNET",
+        "FERREIRA",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-07-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92078982687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404263",
+      "line": [
+        "479"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988652327",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jussara.pereira.001@gmail",
+      "use": "home"
+    }
+  ]
+}

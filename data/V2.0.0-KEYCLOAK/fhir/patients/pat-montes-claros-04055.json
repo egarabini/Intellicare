@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04055",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROZALINA",
+        "NASCIMENTO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-08-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06847559632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404470",
+      "line": [
+        "71 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999129291",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valdecyfernandes67@gamil.com",
+      "use": "home"
+    }
+  ]
+}

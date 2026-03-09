@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02032",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NURIA",
+        "RUBIA",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-05-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12872556630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400441",
+      "line": [
+        "314 39400441"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991517324",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@gmail.com",
+      "use": "home"
+    }
+  ]
+}

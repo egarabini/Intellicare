@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00596",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CATIA",
+        "SOARES",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-10-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "37372556104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71735308",
+      "line": [
+        "03 QUADRA 03 CJ 08 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998107082",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "catiamotorista@gmail.com",
+      "use": "home"
+    }
+  ]
+}

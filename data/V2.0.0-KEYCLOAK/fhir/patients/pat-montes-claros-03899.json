@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03899",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAMARA",
+        "DIAS"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02264983604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401184",
+      "line": [
+        "64 39401184"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991169762",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

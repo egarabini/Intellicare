@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01161",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "VILMAR",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-02-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "43987818204"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587580",
+      "line": [
+        "403"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982400205",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josevilmarmm@gmail.com",
+      "use": "home"
+    }
+  ]
+}

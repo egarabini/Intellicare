@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05313",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHONATHAN",
+        "COSTA"
+      ],
+      "family": "COUTINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-08-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70102564620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404246",
+      "line": [
+        "88 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998382098",
+      "use": "home"
+    }
+  ]
+}

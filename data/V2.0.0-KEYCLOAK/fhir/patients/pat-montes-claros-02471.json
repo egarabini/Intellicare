@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02471",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANDA",
+        "MARIA",
+        "RODRIGUES"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82337837653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400303",
+      "line": [
+        "960 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997273334",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vms170330@gmail.com",
+      "use": "home"
+    }
+  ]
+}

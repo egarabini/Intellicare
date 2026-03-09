@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04749",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNO",
+        "FERREIRA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-04-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02326211600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401154",
+      "line": [
+        "1234 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999368462",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ferreiralopesbruno139@gmail.com",
+      "use": "home"
+    }
+  ]
+}

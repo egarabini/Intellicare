@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02408",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANILDA",
+        "DA",
+        "COSTA"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-11-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08602820666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401309",
+      "line": [
+        "304 APT 304 BLO 6"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999494813",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanildalima528@gmail.com",
+      "use": "home"
+    }
+  ]
+}

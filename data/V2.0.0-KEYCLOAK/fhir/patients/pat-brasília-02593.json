@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02593",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONISE",
+        "BISPO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-11-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03587825114"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330106",
+      "line": [
+        "1 QUADRA 115"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992408686",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sem@email.com",
+      "use": "home"
+    }
+  ]
+}

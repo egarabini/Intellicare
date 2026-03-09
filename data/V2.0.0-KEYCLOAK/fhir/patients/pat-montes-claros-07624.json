@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07624",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ELZA",
+        "RIBEIRO"
+      ],
+      "family": "FURTUNATO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-04-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04064679601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401025",
+      "line": [
+        "45"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999106980",
+      "use": "home"
+    }
+  ]
+}

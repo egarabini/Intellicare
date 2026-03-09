@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02234",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSANGELA"
+      ],
+      "family": "PARRELA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-01-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36899615649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401488",
+      "line": [
+        "283"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999075195",
+      "use": "home"
+    }
+  ]
+}

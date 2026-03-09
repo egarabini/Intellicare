@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02565",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANE",
+        "GARCIA"
+      ],
+      "family": "LATORRE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-04-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08861131808"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72007385",
+      "line": [
+        "28"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6181219518",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vivilatorre09@gmail.com",
+      "use": "home"
+    }
+  ]
+}

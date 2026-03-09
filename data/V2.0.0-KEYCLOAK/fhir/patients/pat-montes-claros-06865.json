@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06865",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAQUIM",
+        "ALVES",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-04-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11097254690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403561",
+      "line": [
+        "461 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999984023",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaquimmalvess921@gmail.com",
+      "use": "home"
+    }
+  ]
+}

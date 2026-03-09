@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00508",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ITALO",
+        "EMANUEL",
+        "TAVARES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14064698665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403065",
+      "line": [
+        "440"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "55999550250",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emanuellitalo2019@gmail.com",
+      "use": "home"
+    }
+  ]
+}

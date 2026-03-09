@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00644",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NANINE",
+        "REBECA",
+        "FIUZA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10194928640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404265",
+      "line": [
+        "150"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998222971",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "naninerebeca441@gmail.com",
+      "use": "home"
+    }
+  ]
+}

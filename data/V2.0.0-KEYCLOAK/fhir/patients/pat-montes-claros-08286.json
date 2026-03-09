@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08286",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CAROLINA",
+        "ROCHA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-05-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70563472669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404475",
+      "line": [
+        "566"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997424174",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carolineane050@gmail.com",
+      "use": "home"
+    }
+  ]
+}

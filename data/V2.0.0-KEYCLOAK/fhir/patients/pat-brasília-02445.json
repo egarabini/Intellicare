@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02445",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIANA",
+        "MEDEIROS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-10-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "26189127487"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805706",
+      "line": [
+        "07 CJ 06 LT 22 AP 203"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981380837",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elianapbrn_natal@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

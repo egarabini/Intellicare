@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06547",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "VALDIVINA",
+        "SOARES"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36693936687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401724",
+      "line": [
+        "50 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991871798",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valdivinaruas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

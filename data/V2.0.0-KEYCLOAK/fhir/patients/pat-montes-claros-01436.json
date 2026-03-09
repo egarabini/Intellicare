@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01436",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIANA",
+        "VITORIA",
+        "SILVA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00229113672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401525",
+      "line": [
+        "22"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988498907",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mv1344100@gmail.com",
+      "use": "home"
+    }
+  ]
+}

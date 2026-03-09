@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03042",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISELE",
+        "APARECIDA",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-11-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06733865629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401584",
+      "line": [
+        "7"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998128974",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "giselealvesoliver@gmail.com",
+      "use": "home"
+    }
+  ]
+}

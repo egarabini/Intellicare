@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01998",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIANY",
+        "SANTOS"
+      ],
+      "family": "CANTANHEDE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06905980170"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694022",
+      "line": [
+        "16 C B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985455921",
+      "use": "home"
+    }
+  ]
+}

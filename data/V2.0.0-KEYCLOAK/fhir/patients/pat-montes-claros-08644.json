@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08644",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIANA",
+        "BENEDITA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "TIMOTEO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01914462629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "8556 39414000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998706645",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

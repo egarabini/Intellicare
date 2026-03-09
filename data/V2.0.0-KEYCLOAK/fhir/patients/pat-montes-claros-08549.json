@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08549",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "POLIENE",
+        "DE",
+        "FATIMA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-05-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12826410695"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404745",
+      "line": [
+        "380 39404745"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998552497",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

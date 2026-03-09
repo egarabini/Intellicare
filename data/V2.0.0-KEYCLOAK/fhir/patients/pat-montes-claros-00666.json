@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00666",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "JESUS",
+        "ALVES"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07455351607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404108",
+      "line": [
+        "195"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998730561",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "duzinhadejesus85@gmail.com",
+      "use": "home"
+    }
+  ]
+}

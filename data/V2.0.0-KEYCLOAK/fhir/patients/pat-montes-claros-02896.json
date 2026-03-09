@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02896",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CLEONICE",
+        "PRATES",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-05-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03625495678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403212",
+      "line": [
+        "708 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988514602",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleoprates10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

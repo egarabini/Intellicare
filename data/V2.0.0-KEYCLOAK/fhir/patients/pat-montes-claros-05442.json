@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05442",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "HENRIQUE",
+        "VIEIRA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07995506635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403001",
+      "line": [
+        "106 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992062465",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pedrohenrique@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02026",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRA",
+        "CRISTINA",
+        "MENESES",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-10-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69723575191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73015304",
+      "line": [
+        "104"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992817126",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cptnascimento17@gmail.com",
+      "use": "home"
+    }
+  ]
+}

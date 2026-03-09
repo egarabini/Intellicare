@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02391",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "BARROZO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-07-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00359188370"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587050",
+      "line": [
+        "0 QD 3 CONJ 1 LT 6 BL A AP 302"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998606742",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariabarrozo84@gmail.com",
+      "use": "home"
+    }
+  ]
+}

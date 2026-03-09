@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00365",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANIA",
+        "GONCALVES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-08-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08636675626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406613",
+      "line": [
+        "803 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991783420",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cristianoadrianoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

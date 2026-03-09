@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03315",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "GABRIEL"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-02-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02215783664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400412",
+      "line": [
+        "667 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998502661",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adriellya956@gmail.com",
+      "use": "home"
+    }
+  ]
+}

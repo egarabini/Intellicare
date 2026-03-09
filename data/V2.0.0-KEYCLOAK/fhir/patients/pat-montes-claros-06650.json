@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06650",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOANE",
+        "CHAVES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-07-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07039323656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403205",
+      "line": [
+        "591 39403205"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999895820",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "roseaneisaura.macielsilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

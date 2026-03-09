@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06107",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IARA",
+        "DA",
+        "FONSECA"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12386204693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403113",
+      "line": [
+        "136 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999135177",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucas.zuba@redecasadocelular.com",
+      "use": "home"
+    }
+  ]
+}

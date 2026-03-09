@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01110",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IGOR",
+        "LEONARDO"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-01-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07322093666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403111",
+      "line": [
+        "45 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988391151",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamoc210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

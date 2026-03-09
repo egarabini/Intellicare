@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04505",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ISABELA",
+        "CECILIA",
+        "DIAS",
+        "DE"
+      ],
+      "family": "PAULA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02100538608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403057",
+      "line": [
+        "350 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992695833",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "isadias0907@gmail.com",
+      "use": "home"
+    }
+  ]
+}

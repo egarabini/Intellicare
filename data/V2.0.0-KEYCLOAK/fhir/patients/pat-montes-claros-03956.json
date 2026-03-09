@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03956",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDILD",
+        "SILVA"
+      ],
+      "family": "CAMPANHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08481879622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404143",
+      "line": [
+        "35 39404143"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988460651",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edildsilvacampanha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03808",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ITALO",
+        "VINICIUS",
+        "CALHEIROS",
+        "MARTINS"
+      ],
+      "family": "MATTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-05-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15753096611"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400617",
+      "line": [
+        "90 AP 102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998925685",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

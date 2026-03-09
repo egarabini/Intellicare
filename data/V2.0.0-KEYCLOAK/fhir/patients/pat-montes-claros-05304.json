@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05304",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERIVALDO",
+        "SOARES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-12-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95719296549"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400075",
+      "line": [
+        "365 39400075"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999969001",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carol.3061@gmail.com",
+      "use": "home"
+    }
+  ]
+}

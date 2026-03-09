@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02719",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FAGNEY",
+        "IREUSMAR",
+        "LOPES"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11187839647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403415",
+      "line": [
+        "40 39403415"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999156960",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexlopesdesenhos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

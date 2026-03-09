@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08155",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAX",
+        "GIBSON",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-04-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12205651641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404149",
+      "line": [
+        "62 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992299317",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fla34viane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

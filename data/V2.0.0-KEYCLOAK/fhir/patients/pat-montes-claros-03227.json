@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03227",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAMILA",
+        "SILVA",
+        "QUEIROZ"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-11-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12758520680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407046",
+      "line": [
+        "61 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998683350",
+      "use": "home"
+    }
+  ]
+}

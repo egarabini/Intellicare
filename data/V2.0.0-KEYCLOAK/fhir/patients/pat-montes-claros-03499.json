@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03499",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OSCAR",
+        "NAZARE"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-01-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56460864187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406029",
+      "line": [
+        "820 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988526429",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oscarsantosnazare@gmail.com",
+      "use": "home"
+    }
+  ]
+}

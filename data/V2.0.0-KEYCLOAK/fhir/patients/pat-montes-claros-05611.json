@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05611",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "APARECIDO",
+        "PEREIRA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50474162672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403427",
+      "line": [
+        "89 39403427"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998258500",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

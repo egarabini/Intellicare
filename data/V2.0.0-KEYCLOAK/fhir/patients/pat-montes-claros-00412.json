@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00412",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAABE",
+        "ALVES",
+        "DE"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-02-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12837278629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39408078",
+      "line": [
+        "51 AP 3201"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999532902",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raabebinha@gma.com",
+      "use": "home"
+    }
+  ]
+}

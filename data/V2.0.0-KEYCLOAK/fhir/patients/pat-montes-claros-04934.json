@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04934",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULINA",
+        "FERNANDES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70173441629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407430",
+      "line": [
+        "61"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991027290",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulinafernandes311@gmail.com",
+      "use": "home"
+    }
+  ]
+}

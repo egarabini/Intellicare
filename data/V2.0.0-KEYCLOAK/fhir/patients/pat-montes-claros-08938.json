@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08938",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANDERSON",
+        "CUNEGUNDES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-12-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12074244630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403199",
+      "line": [
+        "346 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998353485",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wantssoares57@gmail.com",
+      "use": "home"
+    }
+  ]
+}

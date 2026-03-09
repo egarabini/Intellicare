@@ -1,0 +1,41 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00368",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTINA",
+        "RIBEIRO"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-02-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04322242111"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692200",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983084579",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02130",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WASHINGTON",
+        "ALVES"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00251464164"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572503",
+      "line": [
+        "25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999748634",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "washitgon44lk@gmail.com",
+      "use": "home"
+    }
+  ]
+}

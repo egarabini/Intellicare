@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00709",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIO",
+        "FERREIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-02-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69572380168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571507",
+      "line": [
+        "21 71571507"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6193781992",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "julio408ferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

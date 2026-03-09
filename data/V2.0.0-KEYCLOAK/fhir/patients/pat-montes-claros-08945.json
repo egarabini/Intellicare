@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08945",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILQUER",
+        "SOUZA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-04-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07713763678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407036",
+      "line": [
+        "50 39407036"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988153793",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wnpinturass@gmail.com",
+      "use": "home"
+    }
+  ]
+}

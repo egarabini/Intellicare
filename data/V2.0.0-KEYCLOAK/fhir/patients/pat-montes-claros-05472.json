@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05472",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAINARA",
+        "CORREA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13015573667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405666",
+      "line": [
+        "65 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984136335",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tainaracorrea@gmail.com",
+      "use": "home"
+    }
+  ]
+}

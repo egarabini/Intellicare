@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02890",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRAYAN",
+        "DAVID",
+        "CHACIN"
+      ],
+      "family": "TOVAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-08-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70744604273"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403578",
+      "line": [
+        "105 39403578"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988589643",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor139@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

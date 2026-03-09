@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06656",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSEANNE",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10017213657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402427",
+      "line": [
+        "381 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991234740",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josy@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01196",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO",
+        "DAS",
+        "CHAGAS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1971-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89725255453"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71680060",
+      "line": [
+        "18 CONJUNTO 6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998220571",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fcodossantos22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

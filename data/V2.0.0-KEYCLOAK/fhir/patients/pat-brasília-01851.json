@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01851",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELESSON",
+        "DE",
+        "OLIVEIRA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01114049166"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73360404",
+      "line": [
+        "56 4 CJ D"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982729104",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "welessonsousa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

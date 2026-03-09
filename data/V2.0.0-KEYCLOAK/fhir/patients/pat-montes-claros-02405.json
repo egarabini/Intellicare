@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02405",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENDA",
+        "DE",
+        "OLIVEIRA",
+        "ULLMANN"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-07-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05368830092"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401479",
+      "line": [
+        "167"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "51984216856",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bo658573@gmail.com",
+      "use": "home"
+    }
+  ]
+}

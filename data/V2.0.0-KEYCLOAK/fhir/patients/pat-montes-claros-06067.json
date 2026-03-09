@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06067",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ABDENIA",
+        "BEATRIZ",
+        "SILVA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-04-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06695611696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400053",
+      "line": [
+        "342 39400053"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3836901282",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "abdenia@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

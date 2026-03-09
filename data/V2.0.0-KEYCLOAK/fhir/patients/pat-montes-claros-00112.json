@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00112",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLARA",
+        "BRANDAO",
+        "CAVALCANTE",
+        "DAS"
+      ],
+      "family": "NEVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-08-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70301690693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404287",
+      "line": [
+        "1432 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999301949",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brandaocavalcantedasnevesanacl@gmail.com",
+      "use": "home"
+    }
+  ]
+}

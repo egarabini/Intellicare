@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00750",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANILSON",
+        "SOARES",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03577128623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593225",
+      "line": [
+        "19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998529956",
+      "use": "home"
+    }
+  ]
+}

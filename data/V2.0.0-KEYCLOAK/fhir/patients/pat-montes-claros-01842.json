@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01842",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDIVAN",
+        "TEIXEIRA",
+        "ASSIS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08787923688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400648",
+      "line": [
+        "1131"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998928990",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edivanteixeira87@gmail.com",
+      "use": "home"
+    }
+  ]
+}

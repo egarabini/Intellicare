@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03699",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "FLAVIA",
+        "SOUZA"
+      ],
+      "family": "AMARAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-06-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02147925608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403065",
+      "line": [
+        "267"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999785525",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anaaninha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

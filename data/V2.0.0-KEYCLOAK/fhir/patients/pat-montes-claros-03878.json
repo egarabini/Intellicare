@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03878",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAREN",
+        "GABRIELA",
+        "GUSM�O"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-04-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02096961688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402731",
+      "line": [
+        "649 CAS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999224274",
+      "use": "home"
+    }
+  ]
+}

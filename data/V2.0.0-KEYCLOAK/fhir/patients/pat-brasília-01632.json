@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01632",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAURENICE",
+        "ROSA",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83950540172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692225",
+      "line": [
+        "9 R.OESTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996166321",
+      "use": "home"
+    }
+  ]
+}

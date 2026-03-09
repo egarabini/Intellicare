@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00540",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIA",
+        "DA",
+        "MORA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1945-02-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81382545134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71588120",
+      "line": [
+        "1 QUADRA 04 CONJUNTO 5 APTO 101"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993934039",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviafernandesdelima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02127",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "SEVERINO",
+        "DE"
+      ],
+      "family": "ALBUQUERQUE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12023362482"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330066",
+      "line": [
+        "7 A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999900660",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pauloalbu1995@gmail.com",
+      "use": "home"
+    }
+  ]
+}

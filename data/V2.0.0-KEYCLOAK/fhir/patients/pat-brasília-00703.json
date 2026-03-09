@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00703",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELLY",
+        "SILVA"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06605342151"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691266",
+      "line": [
+        "8 QUADRA 2"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994506031",
+      "use": "home"
+    }
+  ]
+}

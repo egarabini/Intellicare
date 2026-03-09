@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02424",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THAYS",
+        "SILVA",
+        "GOMES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-07-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04723143190"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805523",
+      "line": [
+        "5 BL C LJ 01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993110398",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yasminsantanadesouza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02003",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDVALDO",
+        ",PRAI",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-11-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56887582368"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692504",
+      "line": [
+        "08 202 CNJ 01 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986044313",
+      "use": "home"
+    }
+  ]
+}

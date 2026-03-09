@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05647",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAEL",
+        "JUNIO",
+        "RAMOS",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01733499601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406323",
+      "line": [
+        "838 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998808357",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ms3125798@gmail.com",
+      "use": "home"
+    }
+  ]
+}

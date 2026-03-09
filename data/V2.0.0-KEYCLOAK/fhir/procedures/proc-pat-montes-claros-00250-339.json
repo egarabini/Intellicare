@@ -1,0 +1,30 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-pat-montes-claros-00250-339",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183452005",
+        "display": "Hemodiálise"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00250"
+  },
+  "performedDateTime": "2026-01-21T06:35:08Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/prac-005"
+      }
+    },
+    {
+      "actor": {
+        "reference": "Organization/org-hran"
+      }
+    }
+  ]
+}

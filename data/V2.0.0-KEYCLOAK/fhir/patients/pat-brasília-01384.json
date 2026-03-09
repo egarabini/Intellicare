@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01384",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LORRANE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08057696176"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73366246",
+      "line": [
+        "18 A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998359170",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santoslorrane855@gmail.com",
+      "use": "home"
+    }
+  ]
+}

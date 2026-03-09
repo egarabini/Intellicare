@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00371",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "STEFANY",
+        "MIRIAN",
+        "SOARES"
+      ],
+      "family": "FROES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13280330661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400237",
+      "line": [
+        "9 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992580211",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "stefanyfroes65@gmail.com",
+      "use": "home"
+    }
+  ]
+}

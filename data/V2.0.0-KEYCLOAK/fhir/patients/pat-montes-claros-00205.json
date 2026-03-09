@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00205",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANE",
+        "SOARES",
+        "FONSECA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-10-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08041624685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403069",
+      "line": [
+        "89"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38389917609",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dyennynycolly69@gmail.com",
+      "use": "home"
+    }
+  ]
+}

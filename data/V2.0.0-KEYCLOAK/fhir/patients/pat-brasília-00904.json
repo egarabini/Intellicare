@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00904",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISMAR",
+        "GOMES",
+        "DE"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-10-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52763064191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573016",
+      "line": [
+        "15 CONJ I"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61989652626",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gismar@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08281",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WEBERTH",
+        "MIQUEIAS",
+        "CARDOSO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-06-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13669156666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406524",
+      "line": [
+        "50"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984171736",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deysonalves25@gmail.com",
+      "use": "home"
+    }
+  ]
+}

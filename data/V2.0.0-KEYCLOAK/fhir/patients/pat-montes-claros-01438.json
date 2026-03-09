@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01438",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THALLES",
+        "VICTOR",
+        "NOBRE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16498031689"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403264",
+      "line": [
+        "349 39403264"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991289401",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

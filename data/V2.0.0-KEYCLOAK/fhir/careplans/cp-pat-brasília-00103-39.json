@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-00103-39",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 4 (TFG 15-29), Hipertensão essencial (primária)",
+  "description": "Condições: DRC estágio 4 (TFG 15-29), Hipertensão essencial (primária)",
+  "subject": {
+    "reference": "Patient/pat-brasília-00103"
+  },
+  "period": {
+    "start": "2025-10-09"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-00103-39"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00310",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "ARAUJO",
+        "DE"
+      ],
+      "family": "PAIVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-09-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05197682132"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71697501",
+      "line": [
+        "29 CON 01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996246780",
+      "use": "home"
+    }
+  ]
+}

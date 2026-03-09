@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01014",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOHNNY",
+        "BARBOSA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-07-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09308866159"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72302000",
+      "line": [
+        "102 BLOCO 7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999684857",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vidaloucalol482@gmail.com",
+      "use": "home"
+    }
+  ]
+}

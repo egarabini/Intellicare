@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00462",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAUANNY",
+        "FERREIRA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16986866682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404871",
+      "line": [
+        "48"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991176838",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lauannyferreiramartins@gmail.com",
+      "use": "home"
+    }
+  ]
+}

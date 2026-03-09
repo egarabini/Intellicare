@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02312",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "FATIMA",
+        "GONCAVELS",
+        "DE"
+      ],
+      "family": "SALES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-04-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "23886730115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72544406",
+      "line": [
+        "26"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995533834",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanessa.vanes.s@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

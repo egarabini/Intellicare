@@ -1,0 +1,32 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "med-pat-brasília-00400-156",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.saude.gov.br/fhir/r4/CodeSystem/brmed",
+        "display": "AAS 100mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00400"
+  },
+  "authoredOn": "2026-01-19T06:02:44Z",
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "text": "Oral"
+      }
+    }
+  ]
+}

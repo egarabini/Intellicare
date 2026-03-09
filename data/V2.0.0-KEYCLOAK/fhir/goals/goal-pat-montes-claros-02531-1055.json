@@ -1,0 +1,25 @@
+{
+  "resourceType": "Goal",
+  "id": "goal-pat-montes-claros-02531-1055",
+  "lifecycleStatus": "active",
+  "description": {
+    "text": "Manter eGFR estável"
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-02531"
+  },
+  "target": [
+    {
+      "measure": {
+        "coding": [
+          {
+            "display": "Manter eGFR estável"
+          }
+        ]
+      },
+      "detailString": "eGFR > 45 mL/min",
+      "dueDate": "2025-11-11"
+    }
+  ],
+  "startDate": "2025-11-11"
+}

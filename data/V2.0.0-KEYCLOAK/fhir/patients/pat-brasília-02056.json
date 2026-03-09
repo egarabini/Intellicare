@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02056",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CATIA",
+        "BARCELOS",
+        "DE"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "29289688149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70277120",
+      "line": [
+        "SQS 411 BLOCO L APARTAMENTO 408"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994078787",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "catiabarcelosdeabreu@bol.com.br",
+      "use": "home"
+    }
+  ]
+}

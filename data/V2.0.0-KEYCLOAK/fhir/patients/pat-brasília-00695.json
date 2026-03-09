@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00695",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YASMARI",
+        "JOSEFINA"
+      ],
+      "family": "CEDENO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-02-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70591401231"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692216",
+      "line": [
+        "19 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982958972",
+      "use": "home"
+    }
+  ]
+}

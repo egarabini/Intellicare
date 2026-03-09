@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03368",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "NIVALDO",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "46907742349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406230",
+      "line": [
+        "110 AP 14"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998105259",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniolima3114@gmail.com",
+      "use": "home"
+    }
+  ]
+}

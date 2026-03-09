@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-007",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dra.",
+        "Luciana"
+      ],
+      "family": "Ferreira"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "MG 67890"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06664",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDUARDA",
+        "SILVA"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-11-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18488155654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404106",
+      "line": [
+        "29 RUA 24"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998391900",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariasilvad036@gmail.com",
+      "use": "home"
+    }
+  ]
+}

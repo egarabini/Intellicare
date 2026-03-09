@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02606",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDUARDA",
+        "MENDES"
+      ],
+      "family": "CAETANO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-06-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11656932679"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403078",
+      "line": [
+        "76"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998338060",
+      "use": "home"
+    }
+  ]
+}

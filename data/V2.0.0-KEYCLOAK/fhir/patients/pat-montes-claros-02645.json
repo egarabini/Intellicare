@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02645",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLY",
+        "DA",
+        "SILVA"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-12-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83142711600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404374",
+      "line": [
+        "510 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998572135",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marlyazevedo444@gmail.com",
+      "use": "home"
+    }
+  ]
+}

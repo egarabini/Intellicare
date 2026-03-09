@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00677",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDA",
+        "CARDOSO",
+        "DE"
+      ],
+      "family": "MENDONCA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-03-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06285265631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400661",
+      "line": [
+        "66 39400661"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997275347",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernanda.c.mendonsa06@gmail.com",
+      "use": "home"
+    }
+  ]
+}

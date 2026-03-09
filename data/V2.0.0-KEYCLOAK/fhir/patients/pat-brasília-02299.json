@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02299",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "ALMEIDA",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04967862101"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691154",
+      "line": [
+        "380 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996552285",
+      "use": "home"
+    }
+  ]
+}

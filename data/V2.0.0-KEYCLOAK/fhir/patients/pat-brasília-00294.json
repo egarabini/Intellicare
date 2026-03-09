@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00294",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEISSON",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-12-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01144803110"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72130230",
+      "line": [
+        "41"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981456573",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "supervisorevidence@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "resourceType": "PractitionerRole",
+  "id": "pr-prac-007-org-santacasa-mc",
+  "practitioner": {
+    "reference": "Practitioner/prac-007"
+  },
+  "organization": {
+    "reference": "Organization/org-santacasa-mc"
+  },
+  "code": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/practitioner-role",
+          "code": "doctor"
+        }
+      ]
+    }
+  ],
+  "location": [
+    {
+      "reference": "Location/loc-santacasa-mc"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03528",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1957-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92069320634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400229",
+      "line": [
+        "102 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991108033",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ryaneduardoribeiro2001@gmail.com",
+      "use": "home"
+    }
+  ]
+}

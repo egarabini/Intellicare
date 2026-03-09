@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06489",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TERESINHA",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1946-06-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70290520649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400559",
+      "line": [
+        "32"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999036769",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teresinha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

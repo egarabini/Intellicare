@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07489",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIOGO",
+        "MARTINS"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12925146635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402115",
+      "line": [
+        "65 39402115"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992948134",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diogom036@gmail.com",
+      "use": "home"
+    }
+  ]
+}

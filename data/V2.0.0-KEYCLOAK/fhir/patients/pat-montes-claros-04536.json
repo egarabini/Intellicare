@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04536",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON",
+        "DA",
+        "CRUZ"
+      ],
+      "family": "GAMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08265555601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403264",
+      "line": [
+        "735 39403264"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988457899",
+      "use": "home"
+    }
+  ]
+}

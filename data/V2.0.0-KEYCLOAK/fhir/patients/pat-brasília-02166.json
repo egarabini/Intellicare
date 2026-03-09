@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02166",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "KLEYTON",
+        "LOPES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-07-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89607058100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71989600",
+      "line": [
+        "15 102"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982495053",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kleyton.marcos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

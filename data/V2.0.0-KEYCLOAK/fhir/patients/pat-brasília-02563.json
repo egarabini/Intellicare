@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02563",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERIKE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "FARIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-04-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14856097636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "15 CONJ I"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985456102",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fariaerike3@gmail.com",
+      "use": "home"
+    }
+  ]
+}

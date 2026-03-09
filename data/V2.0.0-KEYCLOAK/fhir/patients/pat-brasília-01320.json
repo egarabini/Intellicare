@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01320",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON",
+        "FRANCISCO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06085448503"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72547400",
+      "line": [
+        "QR 117 CASA 31"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "42991119290",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robsonfranciscosilva91@gmail.com",
+      "use": "home"
+    }
+  ]
+}

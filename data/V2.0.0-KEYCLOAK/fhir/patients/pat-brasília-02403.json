@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02403",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOANILSON",
+        "GONCALVES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72634081120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71540035",
+      "line": [
+        "123"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998581680",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luzinete.goncalves1003@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01192",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARMONIA",
+        "MELO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05674920605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400872",
+      "line": [
+        "176"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984026421",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "armoniamelo4747@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02393",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "CARLOS",
+        "DA",
+        "SILVA"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06018909650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402134",
+      "line": [
+        "19 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999840380",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "loismoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

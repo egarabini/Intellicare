@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01694",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "WALDOMIRO",
+        "OLIVEIRO"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08264884806"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72405210",
+      "line": [
+        "01 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999180390",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaowaldomiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

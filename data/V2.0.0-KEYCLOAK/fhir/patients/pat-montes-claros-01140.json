@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01140",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELE",
+        "PEREIRA",
+        "DE",
+        "ALMEIDA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-08-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06065218600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400209",
+      "line": [
+        "165 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999819395",
+      "use": "home"
+    }
+  ]
+}

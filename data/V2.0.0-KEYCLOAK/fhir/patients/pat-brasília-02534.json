@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02534",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NEUDAIR",
+        "JOAO",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "ESPIDOLA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-07-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "57877173687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73369030",
+      "line": [
+        "02 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985441215",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nildairjoao1965@gmail.com",
+      "use": "home"
+    }
+  ]
+}

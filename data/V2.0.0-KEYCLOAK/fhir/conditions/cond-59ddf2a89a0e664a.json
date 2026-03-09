@@ -1,0 +1,34 @@
+{
+  "resourceType": "Condition",
+  "id": "cond-59ddf2a89a0e664a",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "code": {
+    "coding": [
+      {
+        "system": "http://www.saude.gov.br/fhir/r4/CodeSystem/cid-10",
+        "code": "I10",
+        "display": "Hipertensão essencial (primária)"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-05091"
+  },
+  "recordedDate": "2025-05-15T06:34:37Z",
+  "onsetDateTime": "2025-05-15T06:34:37Z"
+}

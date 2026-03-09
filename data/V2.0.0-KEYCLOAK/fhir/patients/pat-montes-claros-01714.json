@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01714",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALTINA",
+        "GON�ALVES",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1954-06-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "43829147600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401156",
+      "line": [
+        "120 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992000485",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ariannysouza00@gmail.com",
+      "use": "home"
+    }
+  ]
+}

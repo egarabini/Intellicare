@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02963",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELEN",
+        "CAROLINE",
+        "RUAS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70279617682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403202",
+      "line": [
+        "20 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997441195",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamoc210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

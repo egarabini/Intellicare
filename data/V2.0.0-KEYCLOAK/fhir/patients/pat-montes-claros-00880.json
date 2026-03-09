@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00880",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIA",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09728906617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402529",
+      "line": [
+        "116 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991907451",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudia.rfigueiredo@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

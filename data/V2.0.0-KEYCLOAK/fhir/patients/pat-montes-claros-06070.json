@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06070",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "JOSE"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-01-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14613530687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400417",
+      "line": [
+        "912"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999348572",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolchoes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

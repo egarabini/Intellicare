@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00170",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AYUNY",
+        "AILV"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-01-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02274866686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403084",
+      "line": [
+        "30 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997439804",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ayunisoares@gmail.com",
+      "use": "home"
+    }
+  ]
+}

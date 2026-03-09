@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07546",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LORENA",
+        "LIMA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70349462640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400000",
+      "line": [
+        "20"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988184777",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorenarodrigues0800@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00060",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "LEAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-11-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60317265300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691152",
+      "line": [
+        "81 TRADICIONAL"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993656824",
+      "use": "home"
+    }
+  ]
+}

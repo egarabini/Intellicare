@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04778",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "CARLOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11100589694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401272",
+      "line": [
+        "119"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991413098",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cf82265@gmail.com",
+      "use": "home"
+    }
+  ]
+}

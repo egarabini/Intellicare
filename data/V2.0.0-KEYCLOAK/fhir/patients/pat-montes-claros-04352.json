@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04352",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLARA",
+        "MEDEIROS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-02-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70112990681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401221",
+      "line": [
+        "246 39401221"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999282285",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

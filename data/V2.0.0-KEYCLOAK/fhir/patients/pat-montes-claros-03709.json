@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03709",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "DORES",
+        "SERAFIM",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-06-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "77596382649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403082",
+      "line": [
+        "346 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988654082",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariadasdores@gmail.com",
+      "use": "home"
+    }
+  ]
+}

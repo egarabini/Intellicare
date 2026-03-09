@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04046",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMANUELLE",
+        "CRISTINE",
+        "LOPES",
+        "DE",
+        "JESUS"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "19033546680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401141",
+      "line": [
+        "20"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988511679",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lopesemanuelle65@gmail.com",
+      "use": "home"
+    }
+  ]
+}

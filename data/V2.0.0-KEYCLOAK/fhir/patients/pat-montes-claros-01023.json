@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01023",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIANA",
+        "GONTIJO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-03-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92078842672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400761",
+      "line": [
+        "115 RUA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991114628",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "julianagontijo139@gmail.com",
+      "use": "home"
+    }
+  ]
+}

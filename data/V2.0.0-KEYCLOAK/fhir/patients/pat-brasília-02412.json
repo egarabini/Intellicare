@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02412",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "HENRIQUE",
+        "BARBOSA",
+        "TEIXEIRA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02436988102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71810300",
+      "line": [
+        "17 AP 302"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982259131",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulophsara@gmail.com",
+      "use": "home"
+    }
+  ]
+}

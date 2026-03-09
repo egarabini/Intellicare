@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09113",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICIA",
+        "BEATRIZ",
+        "CHAVES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-01-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08347911614"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405644",
+      "line": [
+        "21 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999517597",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pb672067@gmail.com",
+      "use": "home"
+    }
+  ]
+}

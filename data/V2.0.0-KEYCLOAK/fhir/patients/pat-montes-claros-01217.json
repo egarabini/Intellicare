@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01217",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIELA",
+        "MENDES"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12839308622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403166",
+      "line": [
+        "173 39403166"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991965626",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabriela878@gmail.com",
+      "use": "home"
+    }
+  ]
+}

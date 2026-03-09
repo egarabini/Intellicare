@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01819",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAROLINE",
+        "DE",
+        "ABREU"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-03-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04930951100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72343203",
+      "line": [
+        "14 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981782282",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karolineabreu77@gmail.com",
+      "use": "home"
+    }
+  ]
+}

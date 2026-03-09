@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04383",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ZILEIDE",
+        "PEREIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03180887621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406815",
+      "line": [
+        "21 39406815"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992414873",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zilirde97@gmail.com",
+      "use": "home"
+    }
+  ]
+}

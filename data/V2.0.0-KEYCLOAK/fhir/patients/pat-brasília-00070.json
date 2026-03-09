@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00070",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "SANDRA"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88671550320"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694028",
+      "line": [
+        "15 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994620698",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02005",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GLEIDISTON",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-02-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60570156149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693013",
+      "line": [
+        "3 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995350252",
+      "use": "home"
+    }
+  ]
+}

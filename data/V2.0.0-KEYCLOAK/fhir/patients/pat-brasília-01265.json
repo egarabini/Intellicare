@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01265",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "DONIZETH",
+        "BATISTA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1958-08-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22501169115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693170",
+      "line": [
+        "281"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993443000",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josedonizeth@gmail.com",
+      "use": "home"
+    }
+  ]
+}

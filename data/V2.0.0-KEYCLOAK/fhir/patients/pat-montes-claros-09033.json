@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09033",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WARLEY",
+        "MARCIO",
+        "DO"
+      ],
+      "family": "CARMO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-04-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09003308640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401135",
+      "line": [
+        "1337 39401135"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997329068",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juli32anorodrigues1970@gmail.com",
+      "use": "home"
+    }
+  ]
+}

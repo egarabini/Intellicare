@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03224",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "ROBERTO"
+      ],
+      "family": "CABRAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1947-08-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14925486691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403213",
+      "line": [
+        "276"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999590412",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05318",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA"
+      ],
+      "family": "PAULA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-06-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10505374676"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400174",
+      "line": [
+        "65"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984312652",
+      "use": "home"
+    }
+  ]
+}

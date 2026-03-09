@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09036",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "ROBERTO",
+        "PEREIRA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-10-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95903640630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406025",
+      "line": [
+        "292 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992108023",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulojuniorpjr8@gmail.com",
+      "use": "home"
+    }
+  ]
+}

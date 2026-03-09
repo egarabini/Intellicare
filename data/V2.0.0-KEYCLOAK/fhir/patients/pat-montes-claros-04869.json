@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04869",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "LAURA",
+        "PEREIRA"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-08-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95120343600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403396",
+      "line": [
+        "1684 39403396"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999104024",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "martinsoliveiramanoelhenrique@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02225",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAIARA",
+        "AQUINO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-02-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02050309635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39413000",
+      "line": [
+        "9 SAO JOAO DA VEREDA CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998014191",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "naiaraaquini391@gmail.com",
+      "use": "home"
+    }
+  ]
+}

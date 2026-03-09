@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05544",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EFIGENIA",
+        "RODRIGUES",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08727003647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406522",
+      "line": [
+        "170 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998032160",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "efigeniarodrigues551@gmail.com",
+      "use": "home"
+    }
+  ]
+}

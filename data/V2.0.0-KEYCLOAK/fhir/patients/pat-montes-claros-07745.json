@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07745",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "LUCAS",
+        "FERREIRA"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-01-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02143161654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403105",
+      "line": [
+        "145 39403105"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998724007",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@gmail.com",
+      "use": "home"
+    }
+  ]
+}

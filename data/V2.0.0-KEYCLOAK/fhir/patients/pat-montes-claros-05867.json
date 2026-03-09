@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05867",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERTH",
+        "SOUZA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16354894663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404423",
+      "line": [
+        "323 39404423"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988993913",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carol.ela3061@gmail.com",
+      "use": "home"
+    }
+  ]
+}

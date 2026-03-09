@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02358",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DARLAN",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06863037688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402263",
+      "line": [
+        "519 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988485244",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "darlanegociosvp@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07673",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "LOMBARD",
+        "SIQUEIRA"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09754909660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406542",
+      "line": [
+        "102 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999043992",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunalombardsiqueiraazevedob@gmail.com",
+      "use": "home"
+    }
+  ]
+}

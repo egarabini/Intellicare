@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03779",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELA",
+        "KAROLLAYNE",
+        "BORGES"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-05-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17095438684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401154",
+      "line": [
+        "997"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988490435",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcellaborgesmartins@gmail.com",
+      "use": "home"
+    }
+  ]
+}

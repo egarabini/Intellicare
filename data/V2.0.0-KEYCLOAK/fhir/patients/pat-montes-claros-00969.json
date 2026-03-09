@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00969",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FELIPE",
+        "APARECIDO",
+        "BANDEIRA"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-12-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11670863689"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404468",
+      "line": [
+        "190 39404468"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992595608",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "felipeaparecido1912@gmail.com",
+      "use": "home"
+    }
+  ]
+}

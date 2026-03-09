@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09288",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "ANTONIO",
+        "MARTINS"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02000135641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404061",
+      "line": [
+        "119 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992599127",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolchoes@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

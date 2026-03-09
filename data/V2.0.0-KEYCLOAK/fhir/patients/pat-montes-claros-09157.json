@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09157",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DARLICE",
+        "GOMES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70088471659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403062",
+      "line": [
+        "410 39403062"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991040249",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "darlicegomesferreira007@gmail.com",
+      "use": "home"
+    }
+  ]
+}

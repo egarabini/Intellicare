@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00506",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA",
+        "DOS",
+        "SANTOS",
+        "OLIVEIRA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07587249699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401422",
+      "line": [
+        "376 39401422"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999734706",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@gmail.com",
+      "use": "home"
+    }
+  ]
+}

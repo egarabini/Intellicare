@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02597",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILLY",
+        "TALITA",
+        "SILVA",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-01-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12929294647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400417",
+      "line": [
+        "806 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999115905",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emillyoliveirat7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

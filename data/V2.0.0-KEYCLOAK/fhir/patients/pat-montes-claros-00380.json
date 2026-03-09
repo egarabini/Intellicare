@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00380",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISLENE",
+        "BARBOSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71730001653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406326",
+      "line": [
+        "851"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998438033",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gislenebarbosa750@gmail.com",
+      "use": "home"
+    }
+  ]
+}

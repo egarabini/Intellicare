@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03773",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THAWANNE",
+        "SANTOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-11-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70210770686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402558",
+      "line": [
+        "3820 39402558"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991823923",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thawannenepomuceno08@gmail.com",
+      "use": "home"
+    }
+  ]
+}

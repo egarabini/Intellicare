@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01164",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDILENE",
+        "BARBOSA",
+        "PEREIRA"
+      ],
+      "family": "CABRAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12792389680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400871",
+      "line": [
+        "146"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998589370",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edilenebarbosapereiracabral@gmail.com",
+      "use": "home"
+    }
+  ]
+}

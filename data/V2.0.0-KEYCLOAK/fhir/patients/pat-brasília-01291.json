@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01291",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELO",
+        "COELHO"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-02-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "79571948187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340411",
+      "line": [
+        "15 QD4 CJ 4K"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999320184",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marceloncc1977@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

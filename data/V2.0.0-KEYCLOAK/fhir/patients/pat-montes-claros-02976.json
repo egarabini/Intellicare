@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02976",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVONETE",
+        "CORREIA",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-12-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00095356673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403523",
+      "line": [
+        "62 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992008161",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brendasantosnigty@gmail.com",
+      "use": "home"
+    }
+  ]
+}

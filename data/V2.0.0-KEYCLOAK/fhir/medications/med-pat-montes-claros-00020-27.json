@@ -1,0 +1,32 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "med-pat-montes-claros-00020-27",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.saude.gov.br/fhir/r4/CodeSystem/brmed",
+        "display": "AAS 100mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00020"
+  },
+  "authoredOn": "2026-02-27T05:52:08Z",
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "text": "Oral"
+      }
+    }
+  ]
+}

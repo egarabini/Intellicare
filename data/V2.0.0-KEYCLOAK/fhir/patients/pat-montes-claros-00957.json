@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00957",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SABRINA",
+        "DURAES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-12-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14952121658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403073",
+      "line": [
+        "112 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999179241",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sabrinaduraes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

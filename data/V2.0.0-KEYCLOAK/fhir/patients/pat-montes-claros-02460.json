@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02460",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ULISSES",
+        "SANTOS",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-01-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12598513703"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406230",
+      "line": [
+        "110 39406230"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "21973783339",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ulissessantosdacosta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05870",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "HENRIQUE"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08820032678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403017",
+      "line": [
+        "257 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31997234301",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kiosantos96@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05805",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAMON",
+        "SANTOS"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13418677657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400056",
+      "line": [
+        "222 AP 302"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988626523",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ramonbarbosafilho7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

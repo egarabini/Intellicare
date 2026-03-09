@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00076",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEONICE",
+        "MARIA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-02-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86745697653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405041",
+      "line": [
+        "31"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999217175",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santospereiramendesf50@gmail.com",
+      "use": "home"
+    }
+  ]
+}

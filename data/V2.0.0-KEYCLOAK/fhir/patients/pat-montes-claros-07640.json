@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07640",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELA",
+        "OLIVEIRA",
+        "LEAL"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11447116658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404065",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988220592",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dfhhlopes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

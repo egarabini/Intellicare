@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00124",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "FABIANO",
+        "DE",
+        "NORONHA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-12-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78291666172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805527",
+      "line": [
+        "104 BLOCO G"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981457785",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "afdnoronha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02274",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "GIOVANA",
+        "SANTANA"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-09-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16234883621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400403",
+      "line": [
+        "121"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999787825",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "saragiovanasantanalima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

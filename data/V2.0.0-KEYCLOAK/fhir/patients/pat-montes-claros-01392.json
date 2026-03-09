@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01392",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRE",
+        "PEREIRA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12449222693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404509",
+      "line": [
+        "432 39404509"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992160515",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas258@gmail.com",
+      "use": "home"
+    }
+  ]
+}

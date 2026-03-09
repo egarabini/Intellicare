@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02432",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUDMILA",
+        "ARIADNA",
+        "GOMES"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-06-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08439537646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401308",
+      "line": [
+        "101 39401308"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998771792",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ludaguiar123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

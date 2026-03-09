@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00785",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDCARLOS",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-12-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71455825115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572700",
+      "line": [
+        "27"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996638349",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edcarlosaraujo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

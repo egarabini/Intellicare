@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01568",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIVINO",
+        "JOSE",
+        "BISPO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-09-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00593408195"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72650480",
+      "line": [
+        "18 CASA 18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994433565",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "divino013@gmail.com",
+      "use": "home"
+    }
+  ]
+}

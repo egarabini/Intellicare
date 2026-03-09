@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-006",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dr.",
+        "João",
+        "Pedro"
+      ],
+      "family": "Costa"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "MG 56789"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

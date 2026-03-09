@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08239",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DORALICE",
+        "PEREIRA",
+        "LOPES"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1950-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71738762653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400095",
+      "line": [
+        "498 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998272988",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "doralicepereira99@gmail.com",
+      "use": "home"
+    }
+  ]
+}

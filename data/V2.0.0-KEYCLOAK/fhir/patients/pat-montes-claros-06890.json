@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06890",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSEANE",
+        "PEREIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06408898670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401167",
+      "line": [
+        "39 39401167"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984101972",
+      "use": "home"
+    }
+  ]
+}

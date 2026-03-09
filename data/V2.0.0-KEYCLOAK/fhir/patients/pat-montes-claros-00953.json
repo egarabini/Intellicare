@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00953",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SHIRLEY",
+        "DE",
+        "FATIMA",
+        "SOARES"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-05-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13102898670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400814",
+      "line": [
+        "151"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "37991847255",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sr704718@gmail.com",
+      "use": "home"
+    }
+  ]
+}

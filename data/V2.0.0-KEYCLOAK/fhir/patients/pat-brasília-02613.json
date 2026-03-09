@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02613",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAUANNA",
+        "BORGES",
+        "DE"
+      ],
+      "family": "ALENCAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-10-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06508591380"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71978700",
+      "line": [
+        "69 APARTAMENTO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986235708",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diogomanoel856@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00454",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSIRLEY",
+        "DUARTE",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-01-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "44449720172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71710550",
+      "line": [
+        "201 APTO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981102141",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosiduarte155@gmail.com",
+      "use": "home"
+    }
+  ]
+}

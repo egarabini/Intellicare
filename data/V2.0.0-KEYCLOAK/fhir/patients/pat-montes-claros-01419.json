@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01419",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "GRACAS",
+        "NOBRE"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1952-05-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86796950682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400320",
+      "line": [
+        "241 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998687678",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nobrealine398@gmail.com",
+      "use": "home"
+    }
+  ]
+}

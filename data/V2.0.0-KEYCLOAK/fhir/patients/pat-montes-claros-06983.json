@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06983",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANDERLEI",
+        "BARBOSA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-09-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04263523601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401525",
+      "line": [
+        "284 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999710731",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vbarbosa41souza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

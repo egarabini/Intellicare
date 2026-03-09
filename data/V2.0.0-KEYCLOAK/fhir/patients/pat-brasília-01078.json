@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01078",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WEDERSON",
+        "CARDOSO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-04-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89709667149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73060506",
+      "line": [
+        "48"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994367675",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wedersoncardoso1998@gmil.com",
+      "use": "home"
+    }
+  ]
+}

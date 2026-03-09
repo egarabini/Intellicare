@@ -1,0 +1,41 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02088",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIANA",
+        "BEZERA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-11-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07199773129"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72236800",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992163725",
+      "use": "home"
+    }
+  ]
+}

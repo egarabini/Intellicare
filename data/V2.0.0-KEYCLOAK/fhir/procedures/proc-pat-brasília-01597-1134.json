@@ -1,0 +1,30 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-pat-brasília-01597-1134",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "302497006",
+        "display": "Consulta nefrológica"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-01597"
+  },
+  "performedDateTime": "2026-02-12T06:35:11Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/prac-010"
+      }
+    },
+    {
+      "actor": {
+        "reference": "Organization/org-santacasa-mc"
+      }
+    }
+  ]
+}

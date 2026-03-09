@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02151",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VAGNER",
+        "SOUZA"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-09-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06224720541"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73271901",
+      "line": [
+        "0 SN 440"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999671355",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vagneroliveirajhuh@gmail.com",
+      "use": "home"
+    }
+  ]
+}

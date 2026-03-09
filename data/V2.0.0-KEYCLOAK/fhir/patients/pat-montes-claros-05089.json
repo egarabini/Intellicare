@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05089",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LETICIA",
+        "ARAUJO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-07-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02246927633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405636",
+      "line": [
+        "20 39405636"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998212161",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leticia91392011@gmail.com",
+      "use": "home"
+    }
+  ]
+}

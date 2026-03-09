@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00037",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JENNEFER",
+        "LORRANE",
+        "ALMEIDA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-02-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02087206694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405126",
+      "line": [
+        "285"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998102259",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorranealmeidanaildesigner10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

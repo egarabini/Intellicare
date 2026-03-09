@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08455",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "VIEIRA",
+        "DOS",
+        "REIS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12811685642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403215",
+      "line": [
+        "1 39403215"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38887993201",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@gmail.com",
+      "use": "home"
+    }
+  ]
+}

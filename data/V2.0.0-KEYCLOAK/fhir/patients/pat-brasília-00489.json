@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00489",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DERCILIO",
+        "JOSE",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1958-06-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "34297260506"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590000",
+      "line": [
+        "25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999587658",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "derciliojose5211@gmail.com",
+      "use": "home"
+    }
+  ]
+}

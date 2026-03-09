@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06122",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JESSICA",
+        "KARINE"
+      ],
+      "family": "ROSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12895569622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406230",
+      "line": [
+        "10 39406230"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998086850",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jessicakarine026@gmail.com",
+      "use": "home"
+    }
+  ]
+}

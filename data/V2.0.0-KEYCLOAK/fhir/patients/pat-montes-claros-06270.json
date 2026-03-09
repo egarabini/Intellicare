@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06270",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANESSA",
+        "CRISTINA",
+        "SILVA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-02-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07587438661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405429",
+      "line": [
+        "331 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998158129",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulo.gingo27@gmail.com",
+      "use": "home"
+    }
+  ]
+}

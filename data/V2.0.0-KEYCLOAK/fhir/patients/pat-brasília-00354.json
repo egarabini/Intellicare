@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00354",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "MDOS",
+        "SANTOS"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-07-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02206386160"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691042",
+      "line": [
+        "121 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996690046",
+      "use": "home"
+    }
+  ]
+}

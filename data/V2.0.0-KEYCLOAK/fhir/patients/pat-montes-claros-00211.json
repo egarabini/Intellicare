@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00211",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04929184657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400514",
+      "line": [
+        "1280 39400514"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998738724",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas136@gmail.com",
+      "use": "home"
+    }
+  ]
+}

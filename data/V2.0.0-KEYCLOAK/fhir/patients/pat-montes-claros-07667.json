@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07667",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HEDER",
+        "DE",
+        "ARUAJO"
+      ],
+      "family": "DIAMANTINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-02-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05023757609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39408289",
+      "line": [
+        "242"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991360359",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hederaraujosaborreal@gmail.com",
+      "use": "home"
+    }
+  ]
+}

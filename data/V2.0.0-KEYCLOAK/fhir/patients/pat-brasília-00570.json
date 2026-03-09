@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00570",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO",
+        "MAURO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1963-03-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22192980353"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570611",
+      "line": [
+        "17"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998585222",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscomauro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

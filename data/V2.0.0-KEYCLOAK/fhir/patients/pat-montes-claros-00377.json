@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00377",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZABEL",
+        "CRISTINA",
+        "RODRIGUES"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01670605620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403116",
+      "line": [
+        "151 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998652615",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zema210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00720",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON",
+        "LEONARDO"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-05-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02073801633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693035",
+      "line": [
+        "16 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998846085",
+      "use": "home"
+    }
+  ]
+}

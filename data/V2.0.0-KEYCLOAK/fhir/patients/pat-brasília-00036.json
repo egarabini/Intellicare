@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00036",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "RODRIGUES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-05-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00353978108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368578",
+      "line": [
+        "102"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991185277",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eduardorodriguesbz@gmail.com",
+      "use": "home"
+    }
+  ]
+}

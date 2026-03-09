@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01981",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JESUITA",
+        "GOMES",
+        "DO"
+      ],
+      "family": "REGO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01309784183"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692439",
+      "line": [
+        "13 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996101094",
+      "use": "home"
+    }
+  ]
+}

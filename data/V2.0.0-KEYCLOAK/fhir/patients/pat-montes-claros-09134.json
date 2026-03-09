@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09134",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYLSE",
+        "ALVES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11464162611"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403261",
+      "line": [
+        "415 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991667271",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raylsealvesribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

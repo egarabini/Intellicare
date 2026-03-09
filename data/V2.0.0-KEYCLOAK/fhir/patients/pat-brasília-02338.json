@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02338",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEONIDAS",
+        "SALUSTIANO",
+        "DE"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "39853810115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693165",
+      "line": [
+        "42 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981550254",
+      "use": "home"
+    }
+  ]
+}

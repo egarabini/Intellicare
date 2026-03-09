@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02160",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIANA",
+        "DANIELE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-04-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11150354607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406636",
+      "line": [
+        "286 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992114417",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "julianadanielly2003@gmail.com",
+      "use": "home"
+    }
+  ]
+}

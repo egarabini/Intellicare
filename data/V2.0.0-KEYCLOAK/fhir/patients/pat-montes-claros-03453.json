@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03453",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITOR",
+        "MATEUS",
+        "FERREIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-12-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16721877619"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403202",
+      "line": [
+        "1000 39403202"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998991869",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitormateus9199@gmail.com",
+      "use": "home"
+    }
+  ]
+}

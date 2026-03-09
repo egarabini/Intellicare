@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07746",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THAIS",
+        "CRISTINA",
+        "FERREIRA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-03-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18451259677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405666",
+      "line": [
+        "240"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991988068",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thaiscristinaferreiramendes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

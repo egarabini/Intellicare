@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02696",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "SILVEIRA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70198626673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401074",
+      "line": [
+        "1054 39401074"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984085568",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariasilveirarodrigues@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

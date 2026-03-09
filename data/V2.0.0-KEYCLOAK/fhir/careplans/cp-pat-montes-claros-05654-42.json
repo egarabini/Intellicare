@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-05654-42",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 3 (TFG 30-59), Diabetes mellitus tipo 2",
+  "description": "Condições: DRC estágio 3 (TFG 30-59), Diabetes mellitus tipo 2",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-05654"
+  },
+  "period": {
+    "start": "2025-11-29"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-05654-42"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

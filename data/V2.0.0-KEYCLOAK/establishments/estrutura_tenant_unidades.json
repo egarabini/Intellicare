@@ -1,0 +1,59 @@
+{
+  "tenants": [
+    {
+      "tenant_id": "secretaria-brasilia",
+      "gestor": {
+        "username": "gestor.sesdf@saude.df.gov.br",
+        "email": "gestor.sesdf@saude.df.gov.br",
+        "nome": "Roberto Almeida",
+        "role": "TENANT_GESTOR"
+      },
+      "organizacao_raiz": "org-ses-df",
+      "unidades": [
+        {"org_id": "org-ses-df", "location_id": "loc-ses-df-sede", "nome": "Sede SES-DF"},
+        {"org_id": "org-ubs-asa-sul", "location_id": "loc-ubs-asa-sul", "nome": "UBS 1 Asa Sul"}
+      ]
+    },
+    {
+      "tenant_id": "secretaria-montesclaros",
+      "gestor": {
+        "username": "gestor.sms@montesclaros.mg.gov.br",
+        "email": "gestor.sms@montesclaros.mg.gov.br",
+        "nome": "Carla Mendes",
+        "role": "TENANT_GESTOR"
+      },
+      "organizacao_raiz": "org-sms-montesclaros",
+      "unidades": [
+        {"org_id": "org-sms-montesclaros", "location_id": "loc-sms-sede", "nome": "Sede SMS Montes Claros"},
+        {"org_id": "org-ubs-mc-centro", "location_id": "loc-ubs-mc-centro", "nome": "UBS Centro"}
+      ]
+    },
+    {
+      "tenant_id": "hospital-brasilia",
+      "gestor": {
+        "username": "gestor.hran@saude.df.gov.br",
+        "email": "gestor.hran@saude.df.gov.br",
+        "nome": "Dr. Paulo Henrique Costa",
+        "role": "TENANT_GESTOR"
+      },
+      "organizacao_raiz": "org-hran",
+      "unidades": [
+        {"org_id": "org-hran", "location_id": "loc-hran", "nome": "HRAN - Hospital Regional Asa Norte"},
+        {"org_id": "org-hbdf", "location_id": "loc-hbdf", "nome": "HBDF - Hospital de Base"}
+      ]
+    },
+    {
+      "tenant_id": "hospital-montesclaros",
+      "gestor": {
+        "username": "gestor.santacasa@santacasa-mc.org.br",
+        "email": "gestor.santacasa@santacasa-mc.org.br",
+        "nome": "Dra. Mariana Souza",
+        "role": "TENANT_GESTOR"
+      },
+      "organizacao_raiz": "org-santacasa-mc",
+      "unidades": [
+        {"org_id": "org-santacasa-mc", "location_id": "loc-santacasa-mc", "nome": "Santa Casa Montes Claros"}
+      ]
+    }
+  ]
+}

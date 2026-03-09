@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05827",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "LORIANO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15378090830"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403357",
+      "line": [
+        "83 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "87981082675",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josel@gmail.com",
+      "use": "home"
+    }
+  ]
+}

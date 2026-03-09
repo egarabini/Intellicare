@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00203",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "SEBASTIAO"
+      ],
+      "family": "TAVVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-11-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "28491157115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71539015",
+      "line": [
+        "3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996263540",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antpniobbarroba21@gmail.com",
+      "use": "home"
+    }
+  ]
+}

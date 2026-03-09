@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06275",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAMARA",
+        "CRISTINA",
+        "DE",
+        "OLIVEIRA",
+        "SANTOS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-09-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01845065654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401433",
+      "line": [
+        "140 39401433"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997462722",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tamaracristina89@gmail.com",
+      "use": "home"
+    }
+  ]
+}

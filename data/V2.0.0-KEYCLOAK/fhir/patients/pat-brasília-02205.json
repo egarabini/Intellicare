@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02205",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCILENE",
+        "RAMOS",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "37407678120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72270500",
+      "line": [
+        "7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6186785390",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucileenee1970@gmail.com",
+      "use": "home"
+    }
+  ]
+}

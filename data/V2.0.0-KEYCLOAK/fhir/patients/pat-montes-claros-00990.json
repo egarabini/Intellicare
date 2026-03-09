@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00990",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAURILIO",
+        "CRUZ",
+        "DE",
+        "JESUS"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-02-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16425493631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400388",
+      "line": [
+        "26 C"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998076019",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "justiceirodalei1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

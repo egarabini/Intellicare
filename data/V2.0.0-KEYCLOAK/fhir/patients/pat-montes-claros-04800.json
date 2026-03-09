@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04800",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARTA",
+        "DE",
+        "CASIA",
+        "RODRIGUES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-12-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "28249215877"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401275",
+      "line": [
+        "63"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991966328",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "martarodriguex0@gnail.com",
+      "use": "home"
+    }
+  ]
+}

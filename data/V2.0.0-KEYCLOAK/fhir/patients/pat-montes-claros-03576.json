@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03576",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAYNNA",
+        "CRISTIBBE",
+        "ALVES",
+        "DE",
+        "LIMA"
+      ],
+      "family": "RAPOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13799359621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403344",
+      "line": [
+        "15 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997415581",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taynnalima988333043@gmail.com",
+      "use": "home"
+    }
+  ]
+}

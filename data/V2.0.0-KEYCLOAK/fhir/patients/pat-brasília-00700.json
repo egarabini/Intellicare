@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00700",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLIVIA",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-09-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03665556180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71540077",
+      "line": [
+        "12 71540077"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191688366",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marliviakarine.br@gmail.com",
+      "use": "home"
+    }
+  ]
+}

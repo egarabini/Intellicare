@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04070",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATAN",
+        "ROCHA"
+      ],
+      "family": "TANAN"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15897209626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401037",
+      "line": [
+        "255 39401037"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988195687",
+      "use": "home"
+    }
+  ]
+}

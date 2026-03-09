@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00020",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALAN",
+        "EMERSON",
+        "SANTOS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01202318673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404747",
+      "line": [
+        "330 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988143451",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alanenzoeraissa@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

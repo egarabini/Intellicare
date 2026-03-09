@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07653",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAIANE",
+        "FERREIRA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09224152694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401103",
+      "line": [
+        "122 39401103"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999268935",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "daianeffernandes88@agmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00843",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "GAMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08017118600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404363",
+      "line": [
+        "620 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984336150",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carladesouza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

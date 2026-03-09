@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02131",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIEL",
+        "OLIVEIRA"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-05-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70452433673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403201",
+      "line": [
+        "55 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991184836",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elieloliveira58@gmail.com",
+      "use": "home"
+    }
+  ]
+}

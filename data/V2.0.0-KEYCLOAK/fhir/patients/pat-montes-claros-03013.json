@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03013",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FARLEY",
+        "MAIA"
+      ],
+      "family": "BARRAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03051779660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401480",
+      "line": [
+        "267"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999122486",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edvantorres2@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

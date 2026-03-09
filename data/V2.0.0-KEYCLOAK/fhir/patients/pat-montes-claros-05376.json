@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05376",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIO",
+        "IRAN",
+        "MENDES"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-10-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03557873692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404533",
+      "line": [
+        "1321 AP 504"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999322855",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabioveloso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

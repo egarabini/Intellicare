@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02508",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HAMILTON",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05922504665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407042",
+      "line": [
+        "180"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991121581",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hamiltonsr@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01510",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ANTONIO",
+        "CARDOSO"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-03-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11765333636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401234",
+      "line": [
+        "535 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999070215",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosantonio@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

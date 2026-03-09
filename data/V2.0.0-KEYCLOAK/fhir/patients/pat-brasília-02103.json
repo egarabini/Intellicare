@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02103",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUCILENE"
+      ],
+      "family": "CEZAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-05-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "39922421100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587050",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993716913",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jucilenecezar154@gmail.com",
+      "use": "home"
+    }
+  ]
+}

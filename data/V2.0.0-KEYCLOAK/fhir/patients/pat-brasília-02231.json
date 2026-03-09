@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02231",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CECILIO",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "87281473168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691019",
+      "line": [
+        "201"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985568895",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03308",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "DANIEL",
+        "FERREIRA"
+      ],
+      "family": "NEVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70066395658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404506",
+      "line": [
+        "477"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988632512",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosdaniel0540@gamil.com",
+      "use": "home"
+    }
+  ]
+}

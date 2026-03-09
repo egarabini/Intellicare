@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05224",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "FELIPE",
+        "CORDEIRO"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-12-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15912376613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403075",
+      "line": [
+        "712"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998226959",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andreanimes32@gmail.com",
+      "use": "home"
+    }
+  ]
+}

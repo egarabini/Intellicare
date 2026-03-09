@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00525",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERALDA",
+        "CRISTINA",
+        "NEVES",
+        "DE"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-11-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60831901691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401770",
+      "line": [
+        "195 39401770"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988231584",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "geraldacristinasena@gmail.com",
+      "use": "home"
+    }
+  ]
+}

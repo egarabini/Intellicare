@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08034",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BARBARA",
+        "DIAS"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-12-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70296271640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403526",
+      "line": [
+        "448 39403526"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988565953",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbara.dias448@gmail.com",
+      "use": "home"
+    }
+  ]
+}

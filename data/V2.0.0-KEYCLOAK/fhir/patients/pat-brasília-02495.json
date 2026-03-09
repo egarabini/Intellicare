@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02495",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "38626551134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73017013",
+      "line": [
+        "75 CASA 03"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992983032",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vipmanobristas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

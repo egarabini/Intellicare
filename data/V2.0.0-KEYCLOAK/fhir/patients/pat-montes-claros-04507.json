@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04507",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANICERIA",
+        "MARIA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-09-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92063039615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400320",
+      "line": [
+        "251 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998620033",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aniceriama15@gmail.com",
+      "use": "home"
+    }
+  ]
+}

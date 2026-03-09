@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07707",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "ANDR�",
+        "LOPES",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-01-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70440701678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404746",
+      "line": [
+        "251 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999312003",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcoslps2000@gmail.com",
+      "use": "home"
+    }
+  ]
+}

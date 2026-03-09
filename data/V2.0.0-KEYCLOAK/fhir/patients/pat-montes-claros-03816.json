@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03816",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALCIDES",
+        "SALDANHA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12153533678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404742",
+      "line": [
+        "242 39404742"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992607194",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juniorsantosggg24@gmail.com",
+      "use": "home"
+    }
+  ]
+}

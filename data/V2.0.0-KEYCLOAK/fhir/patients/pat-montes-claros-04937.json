@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04937",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "MARTINS"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-09-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13069081673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403163",
+      "line": [
+        "168"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991915157",
+      "use": "home"
+    }
+  ]
+}

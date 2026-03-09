@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04989",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "HENRIQUE",
+        "MOURA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15615459611"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400483",
+      "line": [
+        "163 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998837950",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucashenrique20@gmail.com",
+      "use": "home"
+    }
+  ]
+}

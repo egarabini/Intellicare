@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00676",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INGRID",
+        "MARIA",
+        "MORAIS",
+        "LOPES"
+      ],
+      "family": "TAVARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05742941129"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693110",
+      "line": [
+        "11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985339525",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ingridmoraisx1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

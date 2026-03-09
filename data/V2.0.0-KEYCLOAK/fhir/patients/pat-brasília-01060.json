@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01060",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMANOEL",
+        "DE",
+        "AQUINO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-03-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01852472103"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73391030",
+      "line": [
+        "14"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999450913",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cristianobaby21@gmail.com",
+      "use": "home"
+    }
+  ]
+}

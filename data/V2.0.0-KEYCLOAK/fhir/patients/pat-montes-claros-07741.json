@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07741",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIO",
+        "SERGIO",
+        "DUARTE"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-02-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11440199663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401555",
+      "line": [
+        "318 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984151507",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oiramf75@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

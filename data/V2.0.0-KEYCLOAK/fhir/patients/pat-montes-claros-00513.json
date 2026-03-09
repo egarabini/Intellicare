@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00513",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZA",
+        "DE",
+        "FATIMA",
+        "PEREIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07983338635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404523",
+      "line": [
+        "392 39404523"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988659964",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luizadefatimapereirasantos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

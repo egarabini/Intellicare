@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07120",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "STHEFANY",
+        "GONCALVES",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70245458603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400327",
+      "line": [
+        "73 39400327"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992594777",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sthefanyalmeida600@gmail.com",
+      "use": "home"
+    }
+  ]
+}

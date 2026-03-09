@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01165",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLAUDIA",
+        "SOUZA",
+        "SALES"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02204400696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405417",
+      "line": [
+        "310"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988320350",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anawendylala@gmail.com",
+      "use": "home"
+    }
+  ]
+}

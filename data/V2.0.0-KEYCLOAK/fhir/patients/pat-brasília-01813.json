@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01813",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "BRAGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-02-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22376267153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572000",
+      "line": [
+        "38"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996066283",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniooll6251@gmail.com",
+      "use": "home"
+    }
+  ]
+}

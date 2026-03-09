@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01993",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "HENRIQUE",
+        "ALVES"
+      ],
+      "family": "CORREIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-06-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07754015102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71736102",
+      "line": [
+        "0608 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994482403",
+      "use": "home"
+    }
+  ]
+}

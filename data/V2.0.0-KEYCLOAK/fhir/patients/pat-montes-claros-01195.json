@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01195",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OSCAR",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1962-10-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "45330107172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404506",
+      "line": [
+        "484"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998949546",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andersonjuan6397890@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00408",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "AMARAL",
+        "DE"
+      ],
+      "family": "ARRUDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12485577609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72584400",
+      "line": [
+        "771"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996522832",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiagoamaralarruda@icloud.com",
+      "use": "home"
+    }
+  ]
+}

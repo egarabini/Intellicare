@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01603",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CEANE",
+        "DE",
+        "LIMA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-07-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60265087325"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693006",
+      "line": [
+        "44"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991339441",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ceanelima2014@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01896",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMALIA",
+        "DANIELE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-03-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02012129609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401469",
+      "line": [
+        "412 39401469"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991417305",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amalialima07@gmail.com",
+      "use": "home"
+    }
+  ]
+}

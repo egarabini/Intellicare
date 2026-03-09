@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02177",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "PEDRO",
+        "ANTERO"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70236115685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404108",
+      "line": [
+        "358 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998644820",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaopedropheu@gmail.com",
+      "use": "home"
+    }
+  ]
+}

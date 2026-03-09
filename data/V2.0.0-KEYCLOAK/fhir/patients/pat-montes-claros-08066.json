@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08066",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATAN",
+        "JUNEO",
+        "GUEDES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2007-04-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13821052660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402777",
+      "line": [
+        "362"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984369076",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dayanemacielguedes5@gmail.com",
+      "use": "home"
+    }
+  ]
+}

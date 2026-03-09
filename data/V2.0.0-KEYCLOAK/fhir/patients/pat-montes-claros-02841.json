@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02841",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAMELA",
+        "LORRANE",
+        "BATISTA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-04-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70440523630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404506",
+      "line": [
+        "595 39404506"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998399408",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08964",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA",
+        "DAIANNE",
+        "PEREIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-03-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66837685600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403212",
+      "line": [
+        "661"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991405751",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "monica.biomed@yhaoo.com.br",
+      "use": "home"
+    }
+  ]
+}

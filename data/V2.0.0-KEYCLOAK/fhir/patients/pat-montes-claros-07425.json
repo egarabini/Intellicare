@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07425",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERANICE"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-05-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "96625341649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400037",
+      "line": [
+        "80 39400037"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3836905287",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eraniceribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02814",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVANEIDE",
+        "PEREIRA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92050549687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403099",
+      "line": [
+        "554 39403099"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998091262",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ivaneideepereira12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

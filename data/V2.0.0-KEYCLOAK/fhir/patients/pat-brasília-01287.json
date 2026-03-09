@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01287",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JORGE",
+        "LUIZ",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05690614157"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71697303",
+      "line": [
+        "2 VL DO BOA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985393031",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luiz99jorge@gmail.com",
+      "use": "home"
+    }
+  ]
+}

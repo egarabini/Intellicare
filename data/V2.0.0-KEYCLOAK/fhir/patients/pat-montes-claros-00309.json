@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00309",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "FATIMA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "ALENCAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73732923649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402358",
+      "line": [
+        "118"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988649082",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fatimaoliveiramoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

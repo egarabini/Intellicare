@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08221",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SABRINA",
+        "RODRIGUES",
+        "MATIAS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-09-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09017215658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404691",
+      "line": [
+        "135 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997429439",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sabrinarodriguesmatias10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02090",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "MARIA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "21626741816"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403351",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988483001",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josemaria@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

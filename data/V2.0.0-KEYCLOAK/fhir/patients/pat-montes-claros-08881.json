@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08881",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALERIA",
+        "VIEIRA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "35351948818"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403064",
+      "line": [
+        "293 CASA C"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984132551",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lelamdpf35@gmail.com",
+      "use": "home"
+    }
+  ]
+}

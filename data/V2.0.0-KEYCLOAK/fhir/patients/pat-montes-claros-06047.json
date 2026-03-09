@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06047",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELLA",
+        "SIQUEIRA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11173038612"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400312",
+      "line": [
+        "44 AP 205"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998827838",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "siqdaniella6@gmail.com",
+      "use": "home"
+    }
+  ]
+}

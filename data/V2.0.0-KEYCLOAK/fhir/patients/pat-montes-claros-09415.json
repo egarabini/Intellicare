@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09415",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIELLE",
+        "MACEDO"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-01-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02220568601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "2419"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998224499",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gaby3689@gmail.com",
+      "use": "home"
+    }
+  ]
+}

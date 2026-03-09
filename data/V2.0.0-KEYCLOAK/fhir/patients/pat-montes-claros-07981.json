@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07981",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SANDY",
+        "SUELEN",
+        "ALVES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01896700616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407357",
+      "line": [
+        "130 39407357"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997472001",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sandyethalesramos21081795@gmail.com",
+      "use": "home"
+    }
+  ]
+}

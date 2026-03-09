@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07561",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRES",
+        "YOAN",
+        "CASTRO"
+      ],
+      "family": "BELLO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70447706225"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404149",
+      "line": [
+        "82 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999945533",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andresyoancastro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

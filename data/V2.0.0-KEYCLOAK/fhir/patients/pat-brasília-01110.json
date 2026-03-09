@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01110",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "COSME",
+        "DAMIAO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02341868606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591200",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61988002365",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cosmedaminhao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

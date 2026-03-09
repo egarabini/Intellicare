@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00207",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NELY",
+        "SANTOS"
+      ],
+      "family": "NEVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-05-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14885868610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39411000",
+      "line": [
+        "6 SAO PEDRO DA GARCA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998371283",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nevesfrancislene9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

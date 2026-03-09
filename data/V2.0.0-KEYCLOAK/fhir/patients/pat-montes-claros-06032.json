@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06032",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RICARDO",
+        "MONSALVES"
+      ],
+      "family": "ARANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-12-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71323667180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400154",
+      "line": [
+        "59"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992168491",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeannebarber19@gmail.com",
+      "use": "home"
+    }
+  ]
+}

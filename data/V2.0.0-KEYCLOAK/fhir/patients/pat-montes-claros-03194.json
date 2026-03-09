@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03194",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHENEFER",
+        "DURAES",
+        "PINTO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-04-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12059047609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401446",
+      "line": [
+        "93"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999453272",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhenefer.duraes@outlook.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08803",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VARLANDO",
+        "RIBEIRO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-05-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06649372684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403102",
+      "line": [
+        "566"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999132585",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "varlandoribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

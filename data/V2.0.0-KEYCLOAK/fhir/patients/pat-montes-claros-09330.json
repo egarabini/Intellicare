@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09330",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RUBENS",
+        "CARLOS",
+        "LOMES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-01-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09647168608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401071",
+      "line": [
+        "59 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988567891",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rubenslomesrafa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

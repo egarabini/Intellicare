@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09405",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVANIR",
+        "PIRES",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00670520616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404166",
+      "line": [
+        "4920 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988486373",
+      "use": "home"
+    }
+  ]
+}

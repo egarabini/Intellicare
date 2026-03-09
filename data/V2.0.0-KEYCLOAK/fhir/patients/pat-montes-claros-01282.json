@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01282",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ULY",
+        "GRACIELLE"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-01-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13058511612"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400234",
+      "line": [
+        "32 39400234"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991256172",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

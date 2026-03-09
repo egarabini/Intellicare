@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06211",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "APARECIDA",
+        "LIMA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-11-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04056012636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403117",
+      "line": [
+        "242 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31992006173",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zema210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

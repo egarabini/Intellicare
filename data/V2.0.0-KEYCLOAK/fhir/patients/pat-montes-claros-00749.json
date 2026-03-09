@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00749",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELEN",
+        "GABRIELE",
+        "PINHEIRO"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17474402645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404491",
+      "line": [
+        "220 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991037066",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ericapinheirocarvalho317@gmail.com",
+      "use": "home"
+    }
+  ]
+}

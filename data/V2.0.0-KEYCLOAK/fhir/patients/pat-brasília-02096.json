@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02096",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "ARAUJO"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07329178160"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "26 CH 19 R 06 CS 26"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999243190",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcos.original96.ma@gmail.com",
+      "use": "home"
+    }
+  ]
+}

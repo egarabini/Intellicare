@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08649",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISELE",
+        "MUNIZ"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-07-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08169540623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404093",
+      "line": [
+        "374 39404093"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988521385",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "greicemara56@gmail.com",
+      "use": "home"
+    }
+  ]
+}

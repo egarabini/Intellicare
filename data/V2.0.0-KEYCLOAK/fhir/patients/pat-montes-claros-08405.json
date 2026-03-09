@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08405",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92052355634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401444",
+      "line": [
+        "298"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31972135196",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kcammjesus13298@gmail.com",
+      "use": "home"
+    }
+  ]
+}

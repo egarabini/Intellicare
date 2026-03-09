@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01284",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA",
+        "GONCALVES",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-06-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70296472115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72660055",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981003683",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "monicadf2014@gmail.com",
+      "use": "home"
+    }
+  ]
+}

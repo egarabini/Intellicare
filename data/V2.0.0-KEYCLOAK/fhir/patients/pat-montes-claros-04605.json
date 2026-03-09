@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04605",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIMARA",
+        "MARIA"
+      ],
+      "family": "VIANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04697565606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402362",
+      "line": [
+        "123"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998100741",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "benassouza@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

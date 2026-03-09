@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00543",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ALICE",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-03-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02816597377"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71699899",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999483448",
+      "use": "home"
+    }
+  ]
+}

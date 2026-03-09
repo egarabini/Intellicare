@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01340",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAILSON",
+        "ASOARES",
+        "DOS"
+      ],
+      "family": "RES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11543561675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403076",
+      "line": [
+        "53"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999831019",
+      "use": "home"
+    }
+  ]
+}

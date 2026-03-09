@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01878",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INGRID",
+        "LORENA",
+        "FERREIRA"
+      ],
+      "family": "AMARAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-11-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13487134616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406627",
+      "line": [
+        "237"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999162096",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lolyamaral8@gmail.com",
+      "use": "home"
+    }
+  ]
+}

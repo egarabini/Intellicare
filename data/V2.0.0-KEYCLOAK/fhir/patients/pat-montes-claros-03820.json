@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03820",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELINGTON",
+        "SALESIANO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-10-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70578120607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403072",
+      "line": [
+        "849"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999189495",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "welingtonsalesiano10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06604",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "FERNANDO",
+        "PEREIRA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14733287640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401188",
+      "line": [
+        "18"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991078169",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@gmail.com",
+      "use": "home"
+    }
+  ]
+}

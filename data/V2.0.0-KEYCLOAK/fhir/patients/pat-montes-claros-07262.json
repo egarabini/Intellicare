@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07262",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELO",
+        "SILVA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07344125684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400220",
+      "line": [
+        "650"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992680732",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcelobetas8@gmail.com",
+      "use": "home"
+    }
+  ]
+}

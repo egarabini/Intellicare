@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04676",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RANYELL",
+        "MOREIRA",
+        "GON�ALVES"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09078173602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400441",
+      "line": [
+        "96 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991832334",
+      "use": "home"
+    }
+  ]
+}

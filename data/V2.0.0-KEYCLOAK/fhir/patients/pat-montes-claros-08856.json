@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08856",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AVELINO",
+        "JOSE",
+        "NASCIMENTO"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11938653602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401754",
+      "line": [
+        "420 39401754"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991957808",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "goncalvesavelino9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

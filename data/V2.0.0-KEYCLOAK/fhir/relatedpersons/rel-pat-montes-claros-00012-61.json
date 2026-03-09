@@ -1,0 +1,33 @@
+{
+  "resourceType": "RelatedPerson",
+  "id": "rel-pat-montes-claros-00012-61",
+  "patient": {
+    "reference": "Patient/pat-montes-claros-00012"
+  },
+  "relationship": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "Pai",
+          "display": "Pai"
+        }
+      ]
+    }
+  ],
+  "name": [
+    {
+      "family": "Silva",
+      "given": [
+        "Maria"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999403433",
+      "use": "mobile"
+    }
+  ]
+}

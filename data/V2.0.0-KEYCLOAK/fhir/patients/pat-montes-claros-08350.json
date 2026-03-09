@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08350",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOHN",
+        "ARNOLD",
+        "SILVA"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08739276643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404084",
+      "line": [
+        "200 39404084"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998802171",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilbertoferreiradeoliveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

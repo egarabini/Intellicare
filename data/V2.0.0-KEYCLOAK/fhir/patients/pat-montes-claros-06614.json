@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06614",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREI",
+        "GON�ALVES"
+      ],
+      "family": "MURCA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-05-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01754409644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403166",
+      "line": [
+        "63 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991648872",
+      "use": "home"
+    }
+  ]
+}

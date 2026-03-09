@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00223",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DOMINGO",
+        "ALVES",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "44608110900"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999291278",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitoriavivo53@gmail.com",
+      "use": "home"
+    }
+  ]
+}

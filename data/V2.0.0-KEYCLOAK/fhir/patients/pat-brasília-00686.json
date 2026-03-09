@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00686",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MURILO",
+        "HUDSON",
+        "FERNANDES"
+      ],
+      "family": "CAVALCANTE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-07-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03380752169"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693007",
+      "line": [
+        "26 SAO JOSE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991861791",
+      "use": "home"
+    }
+  ]
+}

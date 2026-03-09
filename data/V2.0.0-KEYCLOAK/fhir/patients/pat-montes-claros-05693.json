@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05693",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ZENILSON",
+        "CARLOS"
+      ],
+      "family": "NOBRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1971-08-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82292949687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403497",
+      "line": [
+        "1341 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999128573",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zunobre16@gmail.com",
+      "use": "home"
+    }
+  ]
+}

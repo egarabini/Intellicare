@@ -1,0 +1,30 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-pat-brasília-00303-1367",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "183452005",
+        "display": "Hemodiálise"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00303"
+  },
+  "performedDateTime": "2026-02-17T06:35:11Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/prac-004"
+      }
+    },
+    {
+      "actor": {
+        "reference": "Organization/org-hran"
+      }
+    }
+  ]
+}

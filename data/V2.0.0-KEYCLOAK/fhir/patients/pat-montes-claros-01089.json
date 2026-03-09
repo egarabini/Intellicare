@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01089",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIA",
+        "BERNADETE"
+      ],
+      "family": "MOURAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47832380659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401039",
+      "line": [
+        "122 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997257069",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karinamoveis001@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

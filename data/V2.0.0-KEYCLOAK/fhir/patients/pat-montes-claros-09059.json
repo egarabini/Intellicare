@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09059",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIA",
+        "SIQUEIRA",
+        "DE"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12272360696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401596",
+      "line": [
+        "579 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998573454",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudiasiqueira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

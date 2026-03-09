@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00654",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DOUGLAS",
+        "ALMEIDA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-03-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11258668610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400727",
+      "line": [
+        "1355"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991518033",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "douggaalmeida@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00661",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIDMAR",
+        "ANTONIO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05014549187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72410100",
+      "line": [
+        "0"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999441069",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sarasarcinelli21@gmail.com",
+      "use": "home"
+    }
+  ]
+}

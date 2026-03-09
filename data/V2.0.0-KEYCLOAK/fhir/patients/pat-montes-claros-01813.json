@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01813",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "MERCES",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76962016620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403170",
+      "line": [
+        "1615"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991331287",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mercessouzap21@gmail.com",
+      "use": "home"
+    }
+  ]
+}

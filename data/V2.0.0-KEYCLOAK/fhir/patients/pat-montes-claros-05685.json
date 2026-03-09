@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05685",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAICON",
+        "SAMUEL",
+        "ALVES"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70344184625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404313",
+      "line": [
+        "588 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988701383",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tianarocha026@gmail.com",
+      "use": "home"
+    }
+  ]
+}

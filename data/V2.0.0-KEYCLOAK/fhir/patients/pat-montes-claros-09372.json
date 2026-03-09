@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09372",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "NEIA",
+        "FERREIRA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10437767612"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401453",
+      "line": [
+        "763"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984021694",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "neiacardosof112@gmail.com",
+      "use": "home"
+    }
+  ]
+}

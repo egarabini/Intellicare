@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07196",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "ROBERTO",
+        "VELOSO"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03334143651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404311",
+      "line": [
+        "46"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999086858",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joseroberto@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04963",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "APARECIDA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-02-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06024258674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401400",
+      "line": [
+        "256 39401400"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999245756",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sf395756@gmail.com",
+      "use": "home"
+    }
+  ]
+}

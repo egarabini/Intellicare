@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08411",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARGARETH",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-02-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08532148670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402211",
+      "line": [
+        "471 39402211"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984121947",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ferreirajhessica105@gmail.com",
+      "use": "home"
+    }
+  ]
+}

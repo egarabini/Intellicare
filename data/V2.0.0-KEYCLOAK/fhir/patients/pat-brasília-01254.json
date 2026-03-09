@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01254",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROGERIO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "LIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00368087336"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72649703",
+      "line": [
+        "15 CONJUNTO 1,"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996834535",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "roderiolira582@gmail.com",
+      "use": "home"
+    }
+  ]
+}

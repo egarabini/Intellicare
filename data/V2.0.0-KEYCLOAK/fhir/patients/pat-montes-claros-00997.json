@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00997",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA",
+        "EVANGELISTA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01329652673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404425",
+      "line": [
+        "131 39404425"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999901724",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "monicasouzalopes2022@gmail.com",
+      "use": "home"
+    }
+  ]
+}

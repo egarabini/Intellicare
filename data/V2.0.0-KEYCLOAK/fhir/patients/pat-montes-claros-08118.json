@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08118",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIENE",
+        "SILVA",
+        "MARTINS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-12-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04145681509"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406625",
+      "line": [
+        "54 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998558082",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "o44232wdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

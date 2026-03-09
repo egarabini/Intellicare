@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08207",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "FERNANDO",
+        "RODRIGUES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12183232641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400313",
+      "line": [
+        "43"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998189358",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joycesouzasilva955@gmail.com",
+      "use": "home"
+    }
+  ]
+}

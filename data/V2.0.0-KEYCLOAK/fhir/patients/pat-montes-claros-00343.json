@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00343",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFFERSON",
+        "JOSE",
+        "SOARES"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-06-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06884548606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403202",
+      "line": [
+        "1000 39403202"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38995050144",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

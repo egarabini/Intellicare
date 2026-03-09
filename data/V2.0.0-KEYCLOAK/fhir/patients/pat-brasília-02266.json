@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02266",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WASHINGTON",
+        "MARTINS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06155317178"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72260815",
+      "line": [
+        "01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991900331",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "washingtonmartins@gmail.com",
+      "use": "home"
+    }
+  ]
+}

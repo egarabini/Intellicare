@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00649",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REINALDO",
+        "MORAES",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-12-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70783462115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72251003",
+      "line": [
+        "11 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999677544",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "reinaldodf22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

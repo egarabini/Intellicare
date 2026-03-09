@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01893",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARMINDA",
+        "PEREIRA"
+      ],
+      "family": "CAMPOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85908983187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692246",
+      "line": [
+        "6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993725371",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "armindars56@gmail.com",
+      "use": "home"
+    }
+  ]
+}

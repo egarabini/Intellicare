@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03881",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIA",
+        "CELINA",
+        "MOURA",
+        "CARDOSO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-12-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92100384600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402801",
+      "line": [
+        "98"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999123387",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudiacelina@gmail.com",
+      "use": "home"
+    }
+  ]
+}

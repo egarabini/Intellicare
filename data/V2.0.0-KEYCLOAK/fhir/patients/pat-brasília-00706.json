@@ -1,0 +1,42 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00706",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLECIA",
+        "ALVES",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-06-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09730841543"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72770300",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998093533",
+      "use": "home"
+    }
+  ]
+}

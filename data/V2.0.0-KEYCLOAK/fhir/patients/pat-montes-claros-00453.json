@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00453",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SUELY",
+        "DE",
+        "FATIMA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-11-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13398996639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402325",
+      "line": [
+        "89 39402325"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999605478",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "suelyfatima987@gmail.com",
+      "use": "home"
+    }
+  ]
+}

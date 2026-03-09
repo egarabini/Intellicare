@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08414",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "APARECIDA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-12-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82226881620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404095",
+      "line": [
+        "349"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998159139",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaaparecida@gmail.com",
+      "use": "home"
+    }
+  ]
+}

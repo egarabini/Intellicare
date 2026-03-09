@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01043",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LUIZA",
+        "FELICIANO"
+      ],
+      "family": "MAGALH�ES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70239171608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403213",
+      "line": [
+        "880 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988535844",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maluhmag22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06683",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMIRA",
+        "GONCALVES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-02-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12161482602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401097",
+      "line": [
+        "108"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998401146",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "samiragsilva8@gmail.com",
+      "use": "home"
+    }
+  ]
+}

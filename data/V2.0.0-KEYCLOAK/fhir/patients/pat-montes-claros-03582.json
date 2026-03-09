@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03582",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANGELA",
+        "MARIA",
+        "SOARES",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-11-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "28087574842"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405695",
+      "line": [
+        "270"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984243607",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "saragabrielyfeh@gmail.com",
+      "use": "home"
+    }
+  ]
+}

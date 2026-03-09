@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02195",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INGRID",
+        "NICAELLE",
+        "NUNES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-09-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70453990657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401693",
+      "line": [
+        "255 APTO 201 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "34997262030",
+      "use": "home"
+    }
+  ]
+}

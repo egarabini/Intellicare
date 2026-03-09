@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01118",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JO�O",
+        "LUCAS",
+        "DE",
+        "SOUZA",
+        "E"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07046637164"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72640111",
+      "line": [
+        "16 CONJUNTO 11 CASA 16B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996109088",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tim.tim@gmail.com",
+      "use": "home"
+    }
+  ]
+}

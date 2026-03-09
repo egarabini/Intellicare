@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01711",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANSCISCO",
+        "GANCALVES",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-05-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61489007342"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72161003",
+      "line": [
+        "38"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999791486",
+      "use": "home"
+    }
+  ]
+}

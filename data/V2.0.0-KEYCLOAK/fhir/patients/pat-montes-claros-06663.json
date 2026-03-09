@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06663",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIEL",
+        "LOPES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15441523611"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400780",
+      "line": [
+        "1110 39400780"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997366871",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ghpecasmoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

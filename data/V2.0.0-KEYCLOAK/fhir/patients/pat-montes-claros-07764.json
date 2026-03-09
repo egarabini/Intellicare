@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07764",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "ANDRE",
+        "OLIVEIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70208712674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403214",
+      "line": [
+        "1537 39403214"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998036848",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

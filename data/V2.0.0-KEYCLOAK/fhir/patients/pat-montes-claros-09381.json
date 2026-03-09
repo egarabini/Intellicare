@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09381",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "IZABEL",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "VIANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52005461687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400223",
+      "line": [
+        "346"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999727194",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlafran@gmail.com",
+      "use": "home"
+    }
+  ]
+}

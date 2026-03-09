@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01727",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITORIA",
+        "NUNES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70420969675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403086",
+      "line": [
+        "96 39403086"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997494622",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitorianunesbarbosanunes2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

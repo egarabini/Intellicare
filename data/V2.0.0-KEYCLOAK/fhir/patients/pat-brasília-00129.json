@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00129",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSINEIDE",
+        "MATA",
+        "DE",
+        "BARROS",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-07-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02444214129"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587740",
+      "line": [
+        "06 LOTE 06"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994369251",
+      "use": "home"
+    }
+  ]
+}

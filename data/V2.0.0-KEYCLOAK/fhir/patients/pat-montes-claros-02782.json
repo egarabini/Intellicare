@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02782",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "VINICIUS",
+        "SILVA"
+      ],
+      "family": "BRAGANCA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-12-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70039966690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400132",
+      "line": [
+        "416 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999031937",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zema210@gmail.com",
+      "use": "home"
+    }
+  ]
+}

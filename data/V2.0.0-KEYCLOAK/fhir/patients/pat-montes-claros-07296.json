@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07296",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELSON",
+        "DE",
+        "JESUS",
+        "ALVES"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-10-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08999908607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401038",
+      "line": [
+        "296"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991172957",
+      "use": "home"
+    }
+  ]
+}

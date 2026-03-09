@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03800",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "VINICIUS"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-09-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70519033655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400058",
+      "line": [
+        "100 39400058"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999511575",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "samirajane95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

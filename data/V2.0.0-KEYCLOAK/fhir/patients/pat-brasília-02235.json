@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02235",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DALILA",
+        "SAMPAIO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06522576155"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71720586",
+      "line": [
+        "103 BLOCO CENTRAL AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986295442",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dalylamirandarocha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

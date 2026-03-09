@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00880",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIO",
+        "GABRIEL",
+        "CAMPOS"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07332083124"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71065905",
+      "line": [
+        "118 EDIFICIL RIO VERDE BLOCO 9"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983067660",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patriciajane63@gmail.com",
+      "use": "home"
+    }
+  ]
+}

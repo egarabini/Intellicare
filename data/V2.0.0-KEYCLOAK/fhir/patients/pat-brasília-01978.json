@@ -1,0 +1,41 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01978",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADAO",
+        "LUCINDO"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "37479245149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691084",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999172930",
+      "use": "home"
+    }
+  ]
+}

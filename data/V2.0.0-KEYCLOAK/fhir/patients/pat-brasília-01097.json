@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01097",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALESSANDRO",
+        "DOMINGOS",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93381760106"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596159",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995873093",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "domingossab021@gmail.com",
+      "use": "home"
+    }
+  ]
+}

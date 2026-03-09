@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06055",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMUEL",
+        "ANDRE",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-12-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02197411667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404438",
+      "line": [
+        "425 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998335435",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tamiresvieira473@gmail.com",
+      "use": "home"
+    }
+  ]
+}

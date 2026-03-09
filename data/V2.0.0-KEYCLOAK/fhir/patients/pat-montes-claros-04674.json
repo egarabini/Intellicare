@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04674",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NICOLAS",
+        "ENZO",
+        "SANTOS"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2007-09-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16920354608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404293",
+      "line": [
+        "427"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998276838",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@outlook.com",
+      "use": "home"
+    }
+  ]
+}

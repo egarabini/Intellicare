@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06738",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "VERONICA",
+        "SANTOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-12-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15375733650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406007",
+      "line": [
+        "140 39406007"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988014194",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santosmaa26@gmail.com",
+      "use": "home"
+    }
+  ]
+}

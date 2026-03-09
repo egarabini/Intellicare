@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06162",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INGRID",
+        "MARIANE",
+        "LIMA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-03-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70436000652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401883",
+      "line": [
+        "118 39401883"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991973344",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ingridmariane19@gmail.com",
+      "use": "home"
+    }
+  ]
+}

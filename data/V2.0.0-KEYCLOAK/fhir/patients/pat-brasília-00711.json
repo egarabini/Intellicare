@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00711",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANILO",
+        "RIBEIRO"
+      ],
+      "family": "NOVAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03711961169"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72420150",
+      "line": [
+        "87 QUADRA 15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998391329",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danilo.15west@gmail.com",
+      "use": "home"
+    }
+  ]
+}

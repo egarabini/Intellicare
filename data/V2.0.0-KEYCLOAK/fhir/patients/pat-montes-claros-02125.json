@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02125",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAMON",
+        "AVELINO",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-10-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10982189656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404011",
+      "line": [
+        "225 39404011"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992292629",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alaneparaiso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

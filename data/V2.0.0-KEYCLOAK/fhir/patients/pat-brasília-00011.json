@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00011",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISELLE",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-05-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01155714180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692701",
+      "line": [
+        "09 LOTE09 QUADRA 301"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994429471",
+      "use": "home"
+    }
+  ]
+}

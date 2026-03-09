@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02921",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADALTO",
+        "PEREIRA",
+        "DE",
+        "ANDRADE"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70343693640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403075",
+      "line": [
+        "135"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999773708",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adaltonpereira927@gmail.com",
+      "use": "home"
+    }
+  ]
+}

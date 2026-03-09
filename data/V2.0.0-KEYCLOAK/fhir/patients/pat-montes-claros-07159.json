@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07159",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "REINILSON",
+        "GONCALVES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1962-03-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "55750788687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406323",
+      "line": [
+        "997 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997517858",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "reinilsong95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

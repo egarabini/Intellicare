@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04228",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "HENRIQUE",
+        "SILVA"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-01-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70477782680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "1013 NOVA ESPERANCA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998340120",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@outlook.com",
+      "use": "home"
+    }
+  ]
+}

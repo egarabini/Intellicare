@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05346",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REINALDO",
+        "JOSE"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1971-01-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53509374134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404086",
+      "line": [
+        "578"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999732516",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "reinaldo1356@gmail.com",
+      "use": "home"
+    }
+  ]
+}

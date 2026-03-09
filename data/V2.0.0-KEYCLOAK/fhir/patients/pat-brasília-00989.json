@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00989",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIO",
+        "AMORIM",
+        "GALVAO"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "27949869100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71994390",
+      "line": [
+        "1 AGUAS LINDAS GOIAS"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996137091",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariogalvaojunior@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04541",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUZIA",
+        "CANDIDO"
+      ],
+      "family": "SIQUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04339280690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400074",
+      "line": [
+        "433"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "35998338630",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudioantunes25@gmail.com",
+      "use": "home"
+    }
+  ]
+}

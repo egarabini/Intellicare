@@ -1,0 +1,25 @@
+{
+  "resourceType": "PractitionerRole",
+  "id": "pr-prac-002-org-hran",
+  "practitioner": {
+    "reference": "Practitioner/prac-002"
+  },
+  "organization": {
+    "reference": "Organization/org-hran"
+  },
+  "code": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/practitioner-role",
+          "code": "doctor"
+        }
+      ]
+    }
+  ],
+  "location": [
+    {
+      "reference": "Location/loc-hran"
+    }
+  ]
+}

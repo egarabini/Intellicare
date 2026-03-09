@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03732",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMANDA",
+        "TAINA",
+        "DIAS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-03-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70055731619"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405642",
+      "line": [
+        "371 39405642"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991563050",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amandataynadias@gmail.com",
+      "use": "home"
+    }
+  ]
+}

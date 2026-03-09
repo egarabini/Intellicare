@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04354",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AGNALDO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "LEOPOLDINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07928035669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401000",
+      "line": [
+        "70 39401000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999098216",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jesusmariageniptu@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01428",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMELIA"
+      ],
+      "family": "VIERA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88068536191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587640",
+      "line": [
+        "101"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994438265",
+      "use": "home"
+    }
+  ]
+}

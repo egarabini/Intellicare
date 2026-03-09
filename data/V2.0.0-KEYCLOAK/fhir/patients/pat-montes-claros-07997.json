@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07997",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDERSON",
+        "CARDOSO"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07494136622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404039",
+      "line": [
+        "349 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988566833",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andersonimperador83@gmail.com",
+      "use": "home"
+    }
+  ]
+}

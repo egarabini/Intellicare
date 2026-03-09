@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04054",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINE",
+        "CATERINNE",
+        "NUNES",
+        "MAIA"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-02-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11765332664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406636",
+      "line": [
+        "80 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999514470",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aline04nunes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

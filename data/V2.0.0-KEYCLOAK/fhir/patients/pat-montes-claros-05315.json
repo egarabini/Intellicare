@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05315",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TEREZINHA",
+        "APARECIDA"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-06-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61007200600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401129",
+      "line": [
+        "17 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999008331",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaemillyalvesvitoria@gmail.com",
+      "use": "home"
+    }
+  ]
+}

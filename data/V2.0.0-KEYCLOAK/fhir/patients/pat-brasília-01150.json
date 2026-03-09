@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01150",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUZIA",
+        "BARBOSA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-12-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89762673115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572508",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996169511",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luziasscarlas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00491",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CECILIA",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18725334697"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401483",
+      "line": [
+        "676 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991378689",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariacecilia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

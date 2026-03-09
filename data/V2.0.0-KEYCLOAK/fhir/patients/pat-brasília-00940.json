@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00940",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RICARDO",
+        "RODRIGUES"
+      ],
+      "family": "CIRQUEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95611827187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72738000",
+      "line": [
+        "1 PROX A SUPERMERCADO DO RILDO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "71997388183",
+      "use": "home"
+    }
+  ]
+}

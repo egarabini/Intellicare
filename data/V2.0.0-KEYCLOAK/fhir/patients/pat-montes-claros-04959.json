@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04959",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRESSA",
+        "LORRANY"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02319409637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400596",
+      "line": [
+        "623"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998935375",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andressalorranyszzz@gmail.com",
+      "use": "home"
+    }
+  ]
+}

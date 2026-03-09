@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00313",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDMILSON",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "99901773172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368440",
+      "line": [
+        "1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999332674",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edimilsondearaujo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

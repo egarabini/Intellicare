@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02608",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSA",
+        "HELOISA",
+        "LUIZ"
+      ],
+      "family": "BRANDAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-09-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81738846687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693306",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991932642",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosabrandao2017@gmail.com",
+      "use": "home"
+    }
+  ]
+}

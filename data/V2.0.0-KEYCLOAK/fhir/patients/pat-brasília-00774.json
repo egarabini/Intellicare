@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00774",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIDNEY",
+        "BRAGADOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-04-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03738633146"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72161030",
+      "line": [
+        "00"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998812401",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sidney@gmail.com",
+      "use": "home"
+    }
+  ]
+}

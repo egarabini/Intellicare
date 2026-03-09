@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00510",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "ADAILTON",
+        "LOPES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-04-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47297964115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73401421",
+      "line": [
+        "2 CASA 2B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996811889",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joseadailton@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03322",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIA",
+        "PATRICIA",
+        "ALVES"
+      ],
+      "family": "APOLINARIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-08-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08191651661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400834",
+      "line": [
+        "64"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991147619",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvafernandesjessica03@gmail.com",
+      "use": "home"
+    }
+  ]
+}

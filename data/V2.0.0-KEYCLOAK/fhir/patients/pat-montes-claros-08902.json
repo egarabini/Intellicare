@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08902",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYSSA",
+        "ANGELICA",
+        "SANTOS"
+      ],
+      "family": "SIQUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-12-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09562211657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405413",
+      "line": [
+        "30"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988845136",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayssaangelicacard@gmail.com",
+      "use": "home"
+    }
+  ]
+}

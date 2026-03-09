@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00434",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIVANY",
+        "MARTINS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-08-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71723005649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402051",
+      "line": [
+        "20 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991679066",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "divanyperaira15@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

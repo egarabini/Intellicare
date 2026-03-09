@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02671",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "FERREIRA",
+        "RIBEIRO"
+      ],
+      "family": "SEVERO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-12-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02099696608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404335",
+      "line": [
+        "218"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997478953",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02046",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANE",
+        "FRANCISCA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83616918120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573303",
+      "line": [
+        "0 QUADRA 3 CONJUNTO 6 LOTE 6 BLOCO K"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999933273",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vivianefranc77@gmail.com",
+      "use": "home"
+    }
+  ]
+}

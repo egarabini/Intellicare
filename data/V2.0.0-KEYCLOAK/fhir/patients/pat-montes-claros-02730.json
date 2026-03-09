@@ -1,0 +1,53 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02730",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NIVEA",
+        "MARIA",
+        "DE",
+        "JESUS",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03094906699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403263",
+      "line": [
+        "50"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991464118",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "apsa7878br@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

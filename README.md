@@ -31,6 +31,7 @@ IntelliCare é uma plataforma modular de saúde construída com microserviços P
 | **8011** | Gestor | — | Gestão Módulos Clínicos | 8011:8011 |
 | **8012** | Grahame | GRAHAME | FHIR R4 + CDS Hooks + HL7v2 + CCDA + Excalidraw | 8012:8000 |
 | **8013** | Nise | NISE | Chatbot + Treinamento | 8013:8000 |
+| **8014** | Bridge | — | Integrações Externas / Gateway | 8014:8000 |
 
 ### Frontend
 
@@ -87,7 +88,7 @@ docker compose up -d
 ### 5. Iniciar Todos os Serviços
 
 ```bash
-# Subir todos os 13 backends + portal
+# Subir todos os 14 backends + portal
 docker compose -f docker-compose.full.yml up -d
 ```
 

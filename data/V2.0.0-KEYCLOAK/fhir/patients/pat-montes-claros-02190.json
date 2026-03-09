@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02190",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIDNEY",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-09-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09764943616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404402",
+      "line": [
+        "207"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998860159",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sidneyferreira9@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

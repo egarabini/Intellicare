@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03947",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANDERSON",
+        "RAMOS",
+        "DA"
+      ],
+      "family": "SOLEDADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-04-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11256976601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403152",
+      "line": [
+        "299"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991079479",
+      "use": "home"
+    }
+  ]
+}

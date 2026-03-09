@@ -1,0 +1,41 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02308",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "NONATO"
+      ],
+      "family": "VISGUEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-06-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05165891305"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694044",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993172320",
+      "use": "home"
+    }
+  ]
+}

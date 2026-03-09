@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01948",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANDERLICE",
+        "SANTOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-12-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11794274677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401730",
+      "line": [
+        "91 CS A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991263822",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanderlice@gmail.com",
+      "use": "home"
+    }
+  ]
+}

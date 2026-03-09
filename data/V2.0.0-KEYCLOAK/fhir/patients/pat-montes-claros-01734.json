@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01734",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFFERSON",
+        "ALVES",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-07-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16291359685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400529",
+      "line": [
+        "36"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998611168",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jefimbrito2901@gmail.com",
+      "use": "home"
+    }
+  ]
+}

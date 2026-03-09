@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04096",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "PEDRO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-04-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11073024636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403157",
+      "line": [
+        "85"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991934565",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dhullyedyon@gmail.com",
+      "use": "home"
+    }
+  ]
+}

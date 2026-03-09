@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07219",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUSCINEIA",
+        "APARECIDA",
+        "FONSECA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-12-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09801990694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400606",
+      "line": [
+        "43 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988396342",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juscineiafonseca426@gmail.com",
+      "use": "home"
+    }
+  ]
+}

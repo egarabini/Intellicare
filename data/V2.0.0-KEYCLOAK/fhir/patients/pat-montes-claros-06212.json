@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06212",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "CAROLAYNE",
+        "SANTOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70522062695"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405041",
+      "line": [
+        "11"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984246205",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ccarolaynes1998@gmail.com",
+      "use": "home"
+    }
+  ]
+}

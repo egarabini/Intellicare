@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01299",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIA",
+        "REGINE",
+        "FERNANDES",
+        "PLACIDO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71526552191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72507507",
+      "line": [
+        "01 LOTE 30"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985365968",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elenicecruz@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

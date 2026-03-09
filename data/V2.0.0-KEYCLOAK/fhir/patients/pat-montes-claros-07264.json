@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07264",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMERSON",
+        "BARBOSA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-02-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85018490659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406320",
+      "line": [
+        "1130"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998455914",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emersonbarbosadasilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

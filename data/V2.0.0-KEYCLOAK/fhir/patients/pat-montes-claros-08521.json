@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08521",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICIA",
+        "DE",
+        "CASSIA",
+        "GOMES",
+        "ASSIS"
+      ],
+      "family": "NATALINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-02-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "77604539653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403215",
+      "line": [
+        "1152 39403215"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999914455",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patricianatalino@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

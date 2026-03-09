@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02245",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BARBARA",
+        "FLORIANO",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1929-12-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18124542600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403082",
+      "line": [
+        "22"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "32984000505",
+      "use": "home"
+    }
+  ]
+}

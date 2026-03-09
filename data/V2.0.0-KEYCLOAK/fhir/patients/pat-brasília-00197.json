@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00197",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BENJAMIN",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-10-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06800775100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73350310",
+      "line": [
+        "14 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998110999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bejamindeoliveira99@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01386",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IRENICE",
+        "SANTOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02186825651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401680",
+      "line": [
+        "84"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992397987",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "irenicesantosferreira69@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07862",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDERSON",
+        "VITOR",
+        "SILVA"
+      ],
+      "family": "AMORIM"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-09-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70035926651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404046",
+      "line": [
+        "1052 BL 3 AP 301"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999935655",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andersonadm696@gmail.com",
+      "use": "home"
+    }
+  ]
+}

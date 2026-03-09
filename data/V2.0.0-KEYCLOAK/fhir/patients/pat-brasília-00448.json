@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00448",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "LEONARDO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84601000300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691044",
+      "line": [
+        "6 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "86988392946",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "irmaopedro127@gmail.com",
+      "use": "home"
+    }
+  ]
+}

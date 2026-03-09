@@ -1,0 +1,41 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01026",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIESSIKA",
+        "ALVES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04102497188"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691431",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998114408",
+      "use": "home"
+    }
+  ]
+}

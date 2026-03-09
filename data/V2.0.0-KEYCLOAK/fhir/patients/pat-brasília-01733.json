@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01733",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSANGELA",
+        "OLIVEIRA",
+        "BRAZ",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00221398180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72425050",
+      "line": [
+        "73 QD 5 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982360309",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosangela_27_1982@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

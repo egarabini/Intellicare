@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09364",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KERULEY",
+        "LAIANE",
+        "AQUINO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13159823660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401137",
+      "line": [
+        "429 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997494139",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laianekel@gmail.com",
+      "use": "home"
+    }
+  ]
+}

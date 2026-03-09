@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02113",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANNE",
+        "RODRIGUES"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-10-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03594495655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404675",
+      "line": [
+        "152"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992256646",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "contabilidadecontamoc@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

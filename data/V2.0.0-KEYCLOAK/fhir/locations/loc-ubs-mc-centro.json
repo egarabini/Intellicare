@@ -1,0 +1,19 @@
+{
+  "resourceType": "Location",
+  "id": "loc-ubs-mc-centro",
+  "name": "UBS Centro Montes Claros",
+  "status": "active",
+  "mode": "instance",
+  "physicalType": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+        "code": "si",
+        "display": "Site"
+      }
+    ]
+  },
+  "managingOrganization": {
+    "reference": "Organization/org-ubs-mc-centro"
+  }
+}

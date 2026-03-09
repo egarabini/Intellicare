@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08153",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELZIANE",
+        "MOREIRA"
+      ],
+      "family": "COUTINHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-11-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14293336699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402150",
+      "line": [
+        "2 39402150"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998482941",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elizenemoreira28@gmail.com",
+      "use": "home"
+    }
+  ]
+}

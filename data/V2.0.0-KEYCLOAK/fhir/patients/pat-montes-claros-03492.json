@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03492",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIAS",
+        "CARLOS",
+        "RODRIGUES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03371919641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406549",
+      "line": [
+        "54"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998242286",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvaraquel2829@gmail.com",
+      "use": "home"
+    }
+  ]
+}

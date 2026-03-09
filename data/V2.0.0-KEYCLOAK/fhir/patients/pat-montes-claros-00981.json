@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00981",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFFERSON",
+        "CASSIANO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-12-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "35376092801"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405419",
+      "line": [
+        "61 39405419"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999523518",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas136@gmail.com",
+      "use": "home"
+    }
+  ]
+}

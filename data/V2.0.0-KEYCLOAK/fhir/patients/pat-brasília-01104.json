@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01104",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "MARIA",
+        "DO",
+        "NASCIMENTO"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67209505415"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591165",
+      "line": [
+        "19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999631134",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaomaria@gmail.com",
+      "use": "home"
+    }
+  ]
+}

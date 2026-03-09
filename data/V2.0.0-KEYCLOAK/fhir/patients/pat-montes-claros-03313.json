@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03313",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "LORRANE",
+        "BARBOSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13240944600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402426",
+      "line": [
+        "58 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991870705",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlalorranebarbosa@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08765",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WALAS",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-09-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70257678670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401170",
+      "line": [
+        "56 39401170"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992234486",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

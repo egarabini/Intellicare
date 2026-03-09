@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02455",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EVA",
+        "DE",
+        "MATOS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1951-04-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61861103620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400237",
+      "line": [
+        "51"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988561038",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolchoes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03684",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATO",
+        "BARBOSA",
+        "SOARES"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-07-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70269849696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406542",
+      "line": [
+        "132 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984248598",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "atendimento+os_931070837415@mktp.extra.com.br",
+      "use": "home"
+    }
+  ]
+}

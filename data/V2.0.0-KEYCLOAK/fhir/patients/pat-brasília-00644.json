@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00644",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISLENE",
+        "MARTINS",
+        "DE"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-08-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13347541600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596168",
+      "line": [
+        "39"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999782329",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gislenemartinscardoso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

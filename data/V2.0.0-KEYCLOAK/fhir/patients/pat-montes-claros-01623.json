@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01623",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MANOEL",
+        "EDSON",
+        "FREITAS"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12705421688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403111",
+      "line": [
+        "44 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992548698",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaquim-ozanam@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

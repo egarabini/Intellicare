@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01221",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-11-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00953427536"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71070518",
+      "line": [
+        "103 QD E,QD 40, LT 13 APT 103"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982837069",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dossantosandrea840@gmail.com",
+      "use": "home"
+    }
+  ]
+}

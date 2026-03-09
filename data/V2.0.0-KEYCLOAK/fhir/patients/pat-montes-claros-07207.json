@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07207",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "OSVALDO",
+        "RIBEIRO"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-12-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52022463668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404381",
+      "line": [
+        "182"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38399985666",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antonioosvaldoribeiroveloso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

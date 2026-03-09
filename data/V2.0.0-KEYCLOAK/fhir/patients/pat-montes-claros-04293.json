@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04293",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDIVO",
+        "FERRAZ",
+        "PENA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-02-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74854224649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401154",
+      "line": [
+        "1233"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998352582",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernandeswelington634@gmail.com",
+      "use": "home"
+    }
+  ]
+}

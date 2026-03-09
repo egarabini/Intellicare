@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00950",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA",
+        "APARECIDA",
+        "SILVA"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-03-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08014869630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400529",
+      "line": [
+        "104 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992250506",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "monicaaparecidasilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

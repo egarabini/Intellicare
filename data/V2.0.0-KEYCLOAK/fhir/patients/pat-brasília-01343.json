@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01343",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFERSON",
+        "NASCIMENTO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11503206483"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693168",
+      "line": [
+        "391 VILA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983073150",
+      "use": "home"
+    }
+  ]
+}

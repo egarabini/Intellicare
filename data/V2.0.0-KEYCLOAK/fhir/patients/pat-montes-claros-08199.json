@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08199",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "LUIZ",
+        "GON�ALVES"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70409977624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405685",
+      "line": [
+        "270"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991184958",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dias82015@gmail.com",
+      "use": "home"
+    }
+  ]
+}

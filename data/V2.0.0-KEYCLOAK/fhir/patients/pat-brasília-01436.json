@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01436",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MICHELE",
+        "ALEXANDRE"
+      ],
+      "family": "CAMPOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04050648105"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572411",
+      "line": [
+        "50"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999965349",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "micheleale@gmail.com",
+      "use": "home"
+    }
+  ]
+}

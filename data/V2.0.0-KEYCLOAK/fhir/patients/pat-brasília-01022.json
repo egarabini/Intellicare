@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01022",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DOS",
+        "SANTOS",
+        "BARROS",
+        "E"
+      ],
+      "family": "BARROS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-06-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04899310307"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691024",
+      "line": [
+        "131"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981150060",
+      "use": "home"
+    }
+  ]
+}

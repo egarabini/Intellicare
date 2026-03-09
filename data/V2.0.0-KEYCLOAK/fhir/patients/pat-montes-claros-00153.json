@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00153",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINSSON",
+        "SANTOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-12-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70551055600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403108",
+      "line": [
+        "135 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991798210",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alinssonsantos12340@gmail.com",
+      "use": "home"
+    }
+  ]
+}

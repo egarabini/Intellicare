@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02246",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ISIDIO",
+        "MARQUES",
+        "DO"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-09-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00692120580"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590239",
+      "line": [
+        "08 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999583322",
+      "use": "home"
+    }
+  ]
+}

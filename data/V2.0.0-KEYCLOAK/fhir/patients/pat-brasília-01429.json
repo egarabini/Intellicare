@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01429",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SALOMAO",
+        "BARROSO"
+      ],
+      "family": "BEZERRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-11-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "32175744272"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70070120",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996518203",
+      "use": "home"
+    }
+  ]
+}

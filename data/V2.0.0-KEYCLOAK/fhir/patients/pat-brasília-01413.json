@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01413",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CINTIA",
+        "FERREIRA"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70330197185"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572205",
+      "line": [
+        "00"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999656690",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cintiafp2909@gmail.com",
+      "use": "home"
+    }
+  ]
+}

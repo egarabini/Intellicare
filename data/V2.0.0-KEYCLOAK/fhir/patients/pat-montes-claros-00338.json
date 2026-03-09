@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00338",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIEL",
+        "HENRIQUE",
+        "RUAS"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-03-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12800933666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405419",
+      "line": [
+        "131"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991911705",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabrielthays2017@gmail.com",
+      "use": "home"
+    }
+  ]
+}

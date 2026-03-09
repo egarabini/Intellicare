@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05946",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JESSICA",
+        "GRACIELE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10606107606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401152",
+      "line": [
+        "2344 CASA 13"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984050481",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "djessicagraciele@gmail.com",
+      "use": "home"
+    }
+  ]
+}

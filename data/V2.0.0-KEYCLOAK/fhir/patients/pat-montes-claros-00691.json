@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00691",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74857770687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401444",
+      "line": [
+        "627 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999056816",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcosferreiradealmeida268@gmail.com",
+      "use": "home"
+    }
+  ]
+}

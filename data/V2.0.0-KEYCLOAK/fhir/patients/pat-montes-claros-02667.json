@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02667",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "AUGUSTO"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08360418608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400848",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999288251",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniosantos41@gmail.com",
+      "use": "home"
+    }
+  ]
+}

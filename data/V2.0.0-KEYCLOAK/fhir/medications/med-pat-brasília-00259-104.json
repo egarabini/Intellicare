@@ -1,0 +1,32 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "med-pat-brasília-00259-104",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.saude.gov.br/fhir/r4/CodeSystem/brmed",
+        "display": "Insulina NPH"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00259"
+  },
+  "authoredOn": "2026-01-31T05:52:45Z",
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "text": "Oral"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05210",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEIVID",
+        "NASCIMENTO"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-02-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16284904622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401478",
+      "line": [
+        "493 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988664997",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deivid.nascimento169soares@gmail.com",
+      "use": "home"
+    }
+  ]
+}

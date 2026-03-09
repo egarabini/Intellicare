@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02237",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "PAULA",
+        "BORGES",
+        "CARVALHO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-05-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05392804616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71710540",
+      "line": [
+        "104 BL 790880 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985910065",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anapaula_dione@hotemail.com",
+      "use": "home"
+    }
+  ]
+}

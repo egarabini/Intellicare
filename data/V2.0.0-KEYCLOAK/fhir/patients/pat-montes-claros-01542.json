@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01542",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAOLA",
+        "STEFANIA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06149317625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405522",
+      "line": [
+        "30 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992271907",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paolastefaniarodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

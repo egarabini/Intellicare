@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09042",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUSTAVO",
+        "FELIPE",
+        "PEREIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-06-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07201582658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401137",
+      "line": [
+        "715 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998023608",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ultralar123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

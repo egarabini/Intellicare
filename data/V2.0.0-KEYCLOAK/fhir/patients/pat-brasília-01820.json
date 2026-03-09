@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01820",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICIA",
+        "BENTO",
+        "MARCELINO",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72871849153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72312802",
+      "line": [
+        "34"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982376923",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kmarcembreagemcelular@gmail.com",
+      "use": "home"
+    }
+  ]
+}

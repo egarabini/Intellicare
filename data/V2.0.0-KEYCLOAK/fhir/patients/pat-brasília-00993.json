@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00993",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CLEIDE",
+        "ARAUJO"
+      ],
+      "family": "LOUREIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-12-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "51617340197"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71697000",
+      "line": [
+        "19 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985454886",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06742",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WARLEY",
+        "DE",
+        "MATOS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-02-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00325289654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403202",
+      "line": [
+        "1352 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999850692",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "warleydematospereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

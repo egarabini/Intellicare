@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08764",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADELAIR",
+        "SOARES"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-08-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03759589677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404305",
+      "line": [
+        "112 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997363406",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adelairsoaresd@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01499",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BENICIO",
+        "HUBERTO",
+        "G",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61072540134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573000",
+      "line": [
+        "22"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995928577",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "beniciommf4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

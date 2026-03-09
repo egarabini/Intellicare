@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04453",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HENTIQUE",
+        "TADEU",
+        "PASSOS"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "32057416844"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400238",
+      "line": [
+        "357 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988155537",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anderson14@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

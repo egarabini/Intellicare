@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05219",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAIO",
+        "BERNARDO",
+        "FERREIRA"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-08-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70487468660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401673",
+      "line": [
+        "289 39401673"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991902759",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "caiobernardo779@gmail.com",
+      "use": "home"
+    }
+  ]
+}

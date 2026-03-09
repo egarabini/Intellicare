@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08182",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAMILA",
+        "DIAS"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-02-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09726285682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402587",
+      "line": [
+        "89 39402587"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997415896",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jamiladias145@gmail.com",
+      "use": "home"
+    }
+  ]
+}

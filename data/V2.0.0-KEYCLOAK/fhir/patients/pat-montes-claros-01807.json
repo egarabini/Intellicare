@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01807",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORAH",
+        "KETLIN",
+        "CARDOSO"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-07-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70631798617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405422",
+      "line": [
+        "150 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992618593",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deboraketlin2018@gmail.com",
+      "use": "home"
+    }
+  ]
+}

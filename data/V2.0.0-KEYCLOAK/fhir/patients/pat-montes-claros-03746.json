@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03746",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERICKES",
+        "BERNARDO",
+        "SOARES"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12488315605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403213",
+      "line": [
+        "722 39403213"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999562510",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "melissanajo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

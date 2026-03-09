@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00378",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANILO",
+        "FERREIRA"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-11-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16431615638"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404108",
+      "line": [
+        "75"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988647276",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "daniloferreira62@gmail.com",
+      "use": "home"
+    }
+  ]
+}

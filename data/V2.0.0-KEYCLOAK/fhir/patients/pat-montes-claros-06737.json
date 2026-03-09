@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06737",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "NEVES",
+        "PEREIRA"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09995993643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400196",
+      "line": [
+        "677 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984186782",
+      "use": "home"
+    }
+  ]
+}

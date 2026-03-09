@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07743",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "MARQUES",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "TEXEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08571704651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39408085",
+      "line": [
+        "38"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999936938",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josemarques@gmail.com",
+      "use": "home"
+    }
+  ]
+}

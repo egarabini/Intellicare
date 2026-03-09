@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04022",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DENILSON",
+        "DE",
+        "JESUS"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-11-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10733504604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406624",
+      "line": [
+        "39 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998235063",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amandaalvesveloso16@gmail.com",
+      "use": "home"
+    }
+  ]
+}

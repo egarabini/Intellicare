@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07549",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "GUSTAVO",
+        "ALVES"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-04-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70401211665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401275",
+      "line": [
+        "62 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997555165",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lanealves66@gmail.com",
+      "use": "home"
+    }
+  ]
+}

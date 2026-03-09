@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08850",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "GOMES"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02224579616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401141",
+      "line": [
+        "98"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999352138",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "igomes20190@gmail.com",
+      "use": "home"
+    }
+  ]
+}

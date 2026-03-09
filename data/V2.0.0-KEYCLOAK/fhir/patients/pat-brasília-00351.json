@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00351",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALTER",
+        "FRANCISCO",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09339849604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693165",
+      "line": [
+        "621"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999700909",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valterfrancisco2701@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00428",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREIA",
+        "SILVA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-06-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06395091344"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596159",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994558975",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00420",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILDINAIDE",
+        "ALVES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-08-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03880013136"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72631215",
+      "line": [
+        "21 QD  406 CONJ O CASA  21"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996618044",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alvesgildinaide@gmail.com",
+      "use": "home"
+    }
+  ]
+}

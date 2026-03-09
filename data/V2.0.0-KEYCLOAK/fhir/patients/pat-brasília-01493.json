@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01493",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIANA",
+        "ELINE",
+        "MAEDA"
+      ],
+      "family": "TE�FILO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93068760178"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71825212",
+      "line": [
+        "1 AP 202"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983241478",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucijapa38@gmail.com",
+      "use": "home"
+    }
+  ]
+}

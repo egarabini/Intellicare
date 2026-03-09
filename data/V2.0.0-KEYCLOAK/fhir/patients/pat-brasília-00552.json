@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00552",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELISANGELA",
+        "DA"
+      ],
+      "family": "CONCEICAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-12-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04565545136"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72404904",
+      "line": [
+        "504 SALA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995116698",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elisakelly72@gmail.com",
+      "use": "home"
+    }
+  ]
+}

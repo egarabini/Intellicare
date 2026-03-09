@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00410",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ILVANI",
+        "ROSA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86763199600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72725401",
+      "line": [
+        "7 72725401"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61339155474",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "isasantosbbb@gmail.com",
+      "use": "home"
+    }
+  ]
+}

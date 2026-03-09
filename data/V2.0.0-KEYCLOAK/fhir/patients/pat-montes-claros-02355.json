@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02355",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "MOREIRA"
+      ],
+      "family": "DAMASCENO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11048292665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405666",
+      "line": [
+        "350"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988242837",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielbobby18@gmail.com",
+      "use": "home"
+    }
+  ]
+}

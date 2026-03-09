@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04151",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABRICIO",
+        "DOMINGUES"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-04-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13443215696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405444",
+      "line": [
+        "50 39405444"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992379072",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabriciodomingues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

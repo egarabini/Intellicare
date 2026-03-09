@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02258",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATASHA",
+        "CRISTINA",
+        "TARRADT"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-08-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14505060705"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72225270",
+      "line": [
+        "27"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "21975204490",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ntarradt123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

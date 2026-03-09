@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07188",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "ADRIANO",
+        "PEREIRA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14325165665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403100",
+      "line": [
+        "5 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991079238",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiagoadriano@gmail.com",
+      "use": "home"
+    }
+  ]
+}

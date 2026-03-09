@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01103",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIA",
+        "RODRIGUES",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-06-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00321791118"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71986720",
+      "line": [
+        "7 LT 17 AP 102"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984976319",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "coqueirapaula@gmail.com",
+      "use": "home"
+    }
+  ]
+}

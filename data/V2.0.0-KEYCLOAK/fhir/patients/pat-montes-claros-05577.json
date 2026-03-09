@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05577",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "WARLEY",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-12-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12320874674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405674",
+      "line": [
+        "205"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999025530",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raissa34nascimentomoc19@gmail.com",
+      "use": "home"
+    }
+  ]
+}

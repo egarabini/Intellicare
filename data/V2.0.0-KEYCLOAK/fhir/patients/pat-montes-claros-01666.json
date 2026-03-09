@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01666",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RUAN",
+        "LIMA"
+      ],
+      "family": "MARINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-04-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "19146199608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402409",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999179357",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ruanl7752@gmail.com",
+      "use": "home"
+    }
+  ]
+}

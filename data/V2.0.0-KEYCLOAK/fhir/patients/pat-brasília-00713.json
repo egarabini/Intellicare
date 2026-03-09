@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00713",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FELIPE",
+        "ARAUJO"
+      ],
+      "family": "PRADO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09073745144"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996626967",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "felipearaujo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

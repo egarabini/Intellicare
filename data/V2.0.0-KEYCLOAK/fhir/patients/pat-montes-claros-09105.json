@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09105",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THAIS",
+        "AMANDA",
+        "SILVA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13156050660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402247",
+      "line": [
+        "36 39402247"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999128541",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thaismartins670@gmail.com",
+      "use": "home"
+    }
+  ]
+}

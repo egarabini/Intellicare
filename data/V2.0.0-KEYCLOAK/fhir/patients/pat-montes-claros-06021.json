@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06021",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLY",
+        "DA",
+        "MOTA"
+      ],
+      "family": "PEDREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-03-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52017001600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402893",
+      "line": [
+        "61"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999627172",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marlymotapedreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

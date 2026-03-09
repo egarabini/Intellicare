@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03221",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "VINICIUS",
+        "SOUZA"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-05-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13949874631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39411000",
+      "line": [
+        "65 SAO PEDRO DA GARCA CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999006840",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcelomaiaataide@mail.com",
+      "use": "home"
+    }
+  ]
+}

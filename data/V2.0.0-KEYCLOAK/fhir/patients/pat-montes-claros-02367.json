@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02367",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILMARA",
+        "BORGES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-02-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66705339691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406619",
+      "line": [
+        "1800 RUA ALAMEDA DAS ACACIAS 259"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984087718",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilmaraborgesdasilva57@gmail.com",
+      "use": "home"
+    }
+  ]
+}

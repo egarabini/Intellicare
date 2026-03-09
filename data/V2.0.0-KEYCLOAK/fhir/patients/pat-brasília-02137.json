@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02137",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANSCISCO",
+        "DAS",
+        "CHAGAS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "94929858534"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570801",
+      "line": [
+        "25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996573989",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscomjk44@gmail.com",
+      "use": "home"
+    }
+  ]
+}

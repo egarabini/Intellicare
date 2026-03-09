@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04666",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEONARDO",
+        "SOARES",
+        "DE"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-06-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10938351680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401137",
+      "line": [
+        "339 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998689156",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leonardo2025@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

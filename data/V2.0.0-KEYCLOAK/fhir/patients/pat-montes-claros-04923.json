@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04923",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SINDY",
+        "EMELLY",
+        "SOARES"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-08-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70518515605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404002",
+      "line": [
+        "210 RUA LOURENCO PEREIRA DOS SANTOS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991443374",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sindyeme23@gmail.com",
+      "use": "home"
+    }
+  ]
+}

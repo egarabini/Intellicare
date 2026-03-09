@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02739",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "SAMUEL",
+        "MIRANDA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70583384692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404302",
+      "line": [
+        "166 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988648449",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucslima257@gmail.com",
+      "use": "home"
+    }
+  ]
+}

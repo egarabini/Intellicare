@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00807",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALESKA",
+        "RAYANE",
+        "BRAGA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-08-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12388405661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401267",
+      "line": [
+        "194"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991093493",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aleskabragamoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

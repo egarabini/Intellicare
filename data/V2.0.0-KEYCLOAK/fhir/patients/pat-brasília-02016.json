@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02016",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAYANARA",
+        "IDALWCIA",
+        "RODRIGUES"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07188578109"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72445070",
+      "line": [
+        "07 CONJUNTO B CS 9"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994345691",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tata.irxaviier@gmail.com",
+      "use": "home"
+    }
+  ]
+}

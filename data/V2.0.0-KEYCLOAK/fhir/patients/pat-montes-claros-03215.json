@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03215",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUAREZ",
+        "ALVES"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "40470067691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400181",
+      "line": [
+        "21"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999394083",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laurencio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

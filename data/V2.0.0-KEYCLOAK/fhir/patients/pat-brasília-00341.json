@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00341",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZABELA",
+        "MARIA",
+        "PEREIRA"
+      ],
+      "family": "MENEZES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-04-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11079898417"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693024",
+      "line": [
+        "1 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999357316",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-002",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dra.",
+        "Ana",
+        "Paula"
+      ],
+      "family": "Santos"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "DF 23456"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

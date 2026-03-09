@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09340",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "ALSANDRE",
+        "GONCALVES"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1963-09-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63527855653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406812",
+      "line": [
+        "41 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992193530",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nilmamariareis@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

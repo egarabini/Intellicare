@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02101",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GENIALDO",
+        "ISRAEL",
+        "ROSARIO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-04-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02854027140"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596159",
+      "line": [
+        "2"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994061499",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "genialdoisrael2566@gmail.com",
+      "use": "home"
+    }
+  ]
+}

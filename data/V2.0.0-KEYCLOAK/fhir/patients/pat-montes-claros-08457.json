@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08457",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RITA",
+        "DE",
+        "CASSIA",
+        "BARBOSA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01560048107"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401428",
+      "line": [
+        "185 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999475866",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ritasilva07@gmail.com",
+      "use": "home"
+    }
+  ]
+}

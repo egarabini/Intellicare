@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06368",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ISAQUE",
+        "MATEUS",
+        "BARBOSA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70289923654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404405",
+      "line": [
+        "95 39404405"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999908508",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@gmail.com",
+      "use": "home"
+    }
+  ]
+}

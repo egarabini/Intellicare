@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00551",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DINALVA",
+        "PEREIRA"
+      ],
+      "family": "DUTRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-10-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03749986126"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70650273",
+      "line": [
+        "3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998644724",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "atdultra@piracicabana.com.br",
+      "use": "home"
+    }
+  ]
+}

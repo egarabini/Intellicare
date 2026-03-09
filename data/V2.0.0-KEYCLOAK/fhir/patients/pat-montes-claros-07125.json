@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07125",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IRANY",
+        "DE",
+        "JESUS"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-09-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07512940637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407034",
+      "line": [
+        "191 39407034"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988514608",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "irany32@gmaail.com",
+      "use": "home"
+    }
+  ]
+}

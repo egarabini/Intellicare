@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04757",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSIVALDO",
+        "TADEU"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06545526650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400063",
+      "line": [
+        "502 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "47991206739",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosivaldotadeu@gmail.com",
+      "use": "home"
+    }
+  ]
+}

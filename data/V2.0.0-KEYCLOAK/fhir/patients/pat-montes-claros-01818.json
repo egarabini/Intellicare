@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01818",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIEGO",
+        "ARAUJO"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-12-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09792394605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404035",
+      "line": [
+        "1331 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992352293",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiegofase@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

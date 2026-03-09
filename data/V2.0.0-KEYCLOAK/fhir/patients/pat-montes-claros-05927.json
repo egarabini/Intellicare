@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05927",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIELA",
+        "FERREIRA",
+        "RODRIGUES"
+      ],
+      "family": "PAIVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07885163610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400382",
+      "line": [
+        "432 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991312999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabrielaflavio86@gmail.com",
+      "use": "home"
+    }
+  ]
+}

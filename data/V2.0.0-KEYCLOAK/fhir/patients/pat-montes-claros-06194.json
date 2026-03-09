@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06194",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WARLEY",
+        "SILVA"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-03-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10619580607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404317",
+      "line": [
+        "716 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999901600",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "warley111silva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01381",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WYLLYAN",
+        "ALMEIDA",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04548725342"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572402",
+      "line": [
+        "24"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991721754",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wyl.32@gmail.com",
+      "use": "home"
+    }
+  ]
+}

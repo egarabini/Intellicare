@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01762",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAEL",
+        "BRUNO"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11523037679"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404311",
+      "line": [
+        "131"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991165361",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rafaelsantos123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

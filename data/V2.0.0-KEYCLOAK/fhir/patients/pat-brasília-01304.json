@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01304",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GEVESTON",
+        "BATISTA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "97981222168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73320020",
+      "line": [
+        "09 QD 13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998795883",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edinbatista125@gmail.com",
+      "use": "home"
+    }
+  ]
+}

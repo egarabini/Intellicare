@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02742",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAILANY",
+        "GAMA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-03-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08280090150"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403297",
+      "line": [
+        "36"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997311037",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04926",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANESSA",
+        "ANDRADE",
+        "NUNES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02334630624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400255",
+      "line": [
+        "30 CASA F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988533612",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanandrade@gmail.com",
+      "use": "home"
+    }
+  ]
+}

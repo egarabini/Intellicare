@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03253",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIANE",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09539193664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404467",
+      "line": [
+        "20 39404467"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999898673",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudiane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

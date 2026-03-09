@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05458",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ESTER",
+        "KAROLINY",
+        "GONCALVES"
+      ],
+      "family": "PEIXOTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-12-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02265456608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403400",
+      "line": [
+        "371"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988017881",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "darcia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

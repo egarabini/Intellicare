@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03525",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "EMILIANO"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1938-04-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84051019853"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403059",
+      "line": [
+        "705 39403059"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992158711",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

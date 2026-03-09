@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00091",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOEL",
+        "RODRIGUES"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "23991283115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73365433",
+      "line": [
+        "14"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993828854",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joel.rodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

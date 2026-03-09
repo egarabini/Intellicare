@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00875",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AKINI",
+        "ADUNI",
+        "RIBEIRO"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02540618189"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73045172",
+      "line": [
+        "0 17 CONJ B CASA 25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981786073",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "stephanie.pianco@outlook.com",
+      "use": "home"
+    }
+  ]
+}

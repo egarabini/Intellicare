@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02054",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELINEIDE",
+        "RAQUEL"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-02-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00176448101"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71100100",
+      "line": [
+        "00"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999485697",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raquelgndh86@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03298",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "ROBERTO",
+        "PEREIRA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08558615683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400489",
+      "line": [
+        "78"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999569428",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pereirapauloroberto88@gmail.com",
+      "use": "home"
+    }
+  ]
+}

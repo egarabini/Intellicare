@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06413",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAYCON",
+        "DAVID",
+        "SOARES"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-04-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10562190686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403099",
+      "line": [
+        "424 39403099"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984297223",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lilianesoresfernandes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

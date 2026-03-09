@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01439",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ESTEFANY",
+        "LOPES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-04-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06972868190"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587578",
+      "line": [
+        "402 71587578"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6195851931",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "estefanylopes100@gmail.com",
+      "use": "home"
+    }
+  ]
+}

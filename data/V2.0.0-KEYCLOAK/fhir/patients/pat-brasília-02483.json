@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02483",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRE",
+        "MARQUES"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-03-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74189913120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72404020",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996180591",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexandreaves251@gmail.com",
+      "use": "home"
+    }
+  ]
+}

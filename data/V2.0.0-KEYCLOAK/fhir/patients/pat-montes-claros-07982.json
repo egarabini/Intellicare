@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07982",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "FERREIRA"
+      ],
+      "family": "RABELO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76377407653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406230",
+      "line": [
+        "501"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31971874622",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pedroferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02399",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADENISIO",
+        "MACEDO"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04120039102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571825",
+      "line": [
+        "102 QUADRA 3 CONJUNTO 1 LOTE 1 BLOCO C"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993560425",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adenisio.adenisio2773@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02362",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KARLIANA",
+        "MESQUITA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-09-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07712415188"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73355301",
+      "line": [
+        "14 QD 13 CONJUNTO 1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996501765",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karliana22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

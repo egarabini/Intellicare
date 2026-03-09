@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03435",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELLEN",
+        "THAIS",
+        "PEREIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18054085699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404491",
+      "line": [
+        "631 39404491"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991254578",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ellenthais022@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05907",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERICA",
+        "ARAUJO"
+      ],
+      "family": "FRANCA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-01-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09203507639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400516",
+      "line": [
+        "60 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988151160",
+      "use": "home"
+    }
+  ]
+}

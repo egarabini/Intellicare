@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00641",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAISSA",
+        "NATIELE",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-03-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18863393680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401429",
+      "line": [
+        "256 39401429"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998826709",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayssanatyelle648@gmail.com",
+      "use": "home"
+    }
+  ]
+}

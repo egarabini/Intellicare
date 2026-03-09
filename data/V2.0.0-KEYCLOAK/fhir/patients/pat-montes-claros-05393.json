@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05393",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERALDA",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1935-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36781720678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401167",
+      "line": [
+        "425 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999552433",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "geraldaferreiradosreis@gmail.com",
+      "use": "home"
+    }
+  ]
+}

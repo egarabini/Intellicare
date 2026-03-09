@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08002",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMARA",
+        "CRYSTINA",
+        "PORTO"
+      ],
+      "family": "PERES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70250180669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407446",
+      "line": [
+        "521 39407446"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998659866",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fl09@vendedor.com",
+      "use": "home"
+    }
+  ]
+}

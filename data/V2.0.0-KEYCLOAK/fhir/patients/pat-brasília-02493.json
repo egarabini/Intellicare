@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02493",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINE",
+        "BRITO",
+        "CARVALHO",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-01-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07411629111"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72600219",
+      "line": [
+        "15 72600219"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191782226",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "britolyne896@gmail.com",
+      "use": "home"
+    }
+  ]
+}

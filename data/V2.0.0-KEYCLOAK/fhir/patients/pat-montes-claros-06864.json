@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06864",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "FABIANA",
+        "GONCALVES"
+      ],
+      "family": "ALENCAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-07-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71732098620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400061",
+      "line": [
+        "262 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988626314",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlafabian2016@gmail.com",
+      "use": "home"
+    }
+  ]
+}

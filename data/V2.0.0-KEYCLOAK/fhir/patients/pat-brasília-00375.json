@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00375",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "RODRIGUES"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1943-06-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08538930125"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368150",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998641095",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joserodriguesvieira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

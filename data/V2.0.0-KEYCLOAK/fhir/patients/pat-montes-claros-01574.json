@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01574",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARMINA",
+        "MARIA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-01-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06110756601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400060",
+      "line": [
+        "1 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998629482",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carminamaria90@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

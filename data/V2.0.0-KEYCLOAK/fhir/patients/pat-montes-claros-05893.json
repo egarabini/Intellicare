@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05893",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "LEVY",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13688492617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401486",
+      "line": [
+        "816 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991384524",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "matheuslevy00@gmail.com",
+      "use": "home"
+    }
+  ]
+}

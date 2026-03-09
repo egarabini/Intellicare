@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00313",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDINAIR",
+        "CORDEIRO"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1947-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07280740600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406545",
+      "line": [
+        "131 39406545"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992346070",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edimarcordeiro45@gmail.com",
+      "use": "home"
+    }
+  ]
+}

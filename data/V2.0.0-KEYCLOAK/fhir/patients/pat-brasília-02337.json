@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02337",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "COSTA",
+        "DE",
+        "ALKIM"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-03-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "68286899687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693710",
+      "line": [
+        "23"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998557051",
+      "use": "home"
+    }
+  ]
+}

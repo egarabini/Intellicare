@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09311",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIZA",
+        "MOREIRA"
+      ],
+      "family": "ROSEMBERG"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-05-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12944551680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404382",
+      "line": [
+        "60"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988331341",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marizarolemberg@gmail.com",
+      "use": "home"
+    }
+  ]
+}

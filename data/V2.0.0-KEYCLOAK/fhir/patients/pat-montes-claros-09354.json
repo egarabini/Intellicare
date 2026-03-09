@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09354",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RANIELLE",
+        "PRISILLA",
+        "SILVA"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-10-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11637809603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "30 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988280895",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvaranielle333@gmail.com",
+      "use": "home"
+    }
+  ]
+}

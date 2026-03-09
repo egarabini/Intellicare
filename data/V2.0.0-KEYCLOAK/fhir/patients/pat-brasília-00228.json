@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00228",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "MARQUES",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05163912160"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72210045",
+      "line": [
+        "73"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981530086",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "f159-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

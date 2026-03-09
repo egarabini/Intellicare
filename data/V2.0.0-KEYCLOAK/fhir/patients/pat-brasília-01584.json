@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01584",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RICARDO",
+        "RODRIGUES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03651808157"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72215061",
+      "line": [
+        "01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985984910",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ricardo.rodrig@gmail.com",
+      "use": "home"
+    }
+  ]
+}

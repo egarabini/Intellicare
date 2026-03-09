@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02697",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEONARDO",
+        "FERREIRA"
+      ],
+      "family": "BRAGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-02-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "59999055672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400094",
+      "line": [
+        "125 AP 102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998395850",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leonardofbraga@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02183",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDUARDA",
+        "VENTURA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07904299186"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "26"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998156156",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaeduarda@gmail.com.br",
+      "use": "home"
+    }
+  ]
+}

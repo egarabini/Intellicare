@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05166",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIO",
+        "JUNEO",
+        "SILVA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10176643664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406613",
+      "line": [
+        "731 39406613"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999862963",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor139@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

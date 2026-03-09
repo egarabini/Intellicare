@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01357",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMERSON",
+        "HENRIQUE"
+      ],
+      "family": "PESSOA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-08-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03080992652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72220184",
+      "line": [
+        "3 QNN 18 CONJ D LOTE 16"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "64999463132",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mb.d85@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

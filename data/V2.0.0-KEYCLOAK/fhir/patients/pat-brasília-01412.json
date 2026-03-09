@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01412",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADENILSON",
+        "DE",
+        "JESUS"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04657784536"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572100",
+      "line": [
+        "07"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982837851",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adenilsondejesusdias50389@gmail.com",
+      "use": "home"
+    }
+  ]
+}

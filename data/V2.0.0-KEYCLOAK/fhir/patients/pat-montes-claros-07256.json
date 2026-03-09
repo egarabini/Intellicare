@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07256",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GRAZIELE",
+        "FERREIRA"
+      ],
+      "family": "PIRES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-06-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17322620631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401883",
+      "line": [
+        "615 CA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988845047",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "grazielepires12345@icloud.com",
+      "use": "home"
+    }
+  ]
+}

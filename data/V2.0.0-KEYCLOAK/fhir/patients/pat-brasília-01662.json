@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01662",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CONCEICAO",
+        "CELESTE",
+        "SANTOS"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56478704149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72502200",
+      "line": [
+        "102 LT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996754942",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "celsan.net@gmail.com",
+      "use": "home"
+    }
+  ]
+}

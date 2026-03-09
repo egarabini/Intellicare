@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02990",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILAS",
+        "BATISTA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-11-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "65496833604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407371",
+      "line": [
+        "551 39407371"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999381492",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

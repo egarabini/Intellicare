@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07495",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WALDECI",
+        "FERREIRA",
+        "DA",
+        "COSTA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02291970607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404395",
+      "line": [
+        "420"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991916569",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jcostta545@gmail.com",
+      "use": "home"
+    }
+  ]
+}

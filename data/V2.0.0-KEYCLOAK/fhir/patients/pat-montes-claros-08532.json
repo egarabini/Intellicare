@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08532",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "49266209600"
+      ],
+      "family": "49266209600"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-10-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "49266209600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403123",
+      "line": [
+        "269 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998689820",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatafernandes970118@gmail.com",
+      "use": "home"
+    }
+  ]
+}

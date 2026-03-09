@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03611",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAEL",
+        "SILVA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-06-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "30327273836"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400109",
+      "line": [
+        "56"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998918375",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeach@gmail.com",
+      "use": "home"
+    }
+  ]
+}

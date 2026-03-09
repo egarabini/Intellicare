@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00983",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IRISMAR",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-03-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "28712617172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573403",
+      "line": [
+        "1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999904470",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "irismarrodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

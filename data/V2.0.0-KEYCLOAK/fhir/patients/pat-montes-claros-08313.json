@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08313",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON",
+        "PEREIRA"
+      ],
+      "family": "FERNADES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-10-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15992961607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404300",
+      "line": [
+        "61 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992102430",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pereiradesouzarafael312@gmail.com",
+      "use": "home"
+    }
+  ]
+}

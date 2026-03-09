@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01130",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIS",
+        "CARLOS",
+        "COSTA",
+        "MACEDO"
+      ],
+      "family": "SARAIVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-04-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60149557396"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572030",
+      "line": [
+        "23 QUADRA 20 CONJUNTO J"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998650027",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luiscarloscosta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

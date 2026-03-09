@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00392",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAERCIO",
+        "NASCIMENTO",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "51650193149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72490030",
+      "line": [
+        "33"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996556940",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laercionasci2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

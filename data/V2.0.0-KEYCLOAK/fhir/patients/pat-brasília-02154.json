@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02154",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARIEL",
+        "SOARES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-07-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04589061155"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991281384",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "arielsoarespereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

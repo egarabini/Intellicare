@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03694",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KATIUCE",
+        "DANYELE",
+        "FREITAS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-06-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07201634631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405431",
+      "line": [
+        "321"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988182394",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "katiuce@gmail.com",
+      "use": "home"
+    }
+  ]
+}

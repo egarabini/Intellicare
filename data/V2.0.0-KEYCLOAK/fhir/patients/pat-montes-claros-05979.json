@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05979",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NORIVALDO",
+        "VELOSO",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1957-03-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24141615668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401186",
+      "line": [
+        "17"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988250552",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleytonisiscecilia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

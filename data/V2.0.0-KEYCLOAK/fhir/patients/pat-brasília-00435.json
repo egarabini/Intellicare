@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00435",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-06-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00113644167"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73350309",
+      "line": [
+        "15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996093034",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosesantos207645@gmail.com",
+      "use": "home"
+    }
+  ]
+}

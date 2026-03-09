@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01917",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OSVALDO",
+        "DA",
+        "PAIXAO",
+        "ROCHA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-04-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "79377890187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72669630",
+      "line": [
+        "01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991385092",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "osvel@gmail.com",
+      "use": "home"
+    }
+  ]
+}

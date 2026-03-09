@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02311",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "M�NICA",
+        "PRISCILA",
+        "PEREIRA",
+        "DA",
+        "SILVA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-08-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01956481613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401136",
+      "line": [
+        "54"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999975516",
+      "use": "home"
+    }
+  ]
+}

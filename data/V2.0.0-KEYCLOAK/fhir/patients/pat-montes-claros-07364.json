@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07364",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDELAMAR",
+        "SOARES",
+        "GUIMAR�ES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "40416550649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401365",
+      "line": [
+        "64"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998330688",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeach@gmail.com",
+      "use": "home"
+    }
+  ]
+}

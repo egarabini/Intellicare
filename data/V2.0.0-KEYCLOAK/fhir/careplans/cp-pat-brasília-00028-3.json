@@ -1,0 +1,45 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-00028-3",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 3, DRC estágio 3",
+  "subject": {
+    "reference": "Patient/pat-brasília-00028"
+  },
+  "period": {
+    "start": "2025-12-19"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "addresses": [
+    {
+      "display": "DRC estágio 3"
+    },
+    {
+      "display": "DRC estágio 3"
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-00028-3"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

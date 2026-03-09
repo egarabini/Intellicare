@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01794",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SELMA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "DIONIZIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1951-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82543909753"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805804",
+      "line": [
+        "10 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986640093",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "selmadionisio51@gmail.com",
+      "use": "home"
+    }
+  ]
+}

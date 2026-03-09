@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06130",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CIBELE",
+        "MARIA",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05803059617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402028",
+      "line": [
+        "316 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998272344",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cibelealves286@gmail.com",
+      "use": "home"
+    }
+  ]
+}

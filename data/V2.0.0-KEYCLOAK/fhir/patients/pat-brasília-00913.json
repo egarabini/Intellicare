@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00913",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "PAZ",
+        "DA"
+      ],
+      "family": "CONCEICAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60527338370"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71993160",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993115308",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pazm66955@gmail.com",
+      "use": "home"
+    }
+  ]
+}

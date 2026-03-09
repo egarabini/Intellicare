@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01243",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LICIO",
+        "BARBOSA"
+      ],
+      "family": "CALDEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-04-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09804111659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402325",
+      "line": [
+        "78 39402325"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998245663",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "licuibarbosacaldeira89@gmail.com",
+      "use": "home"
+    }
+  ]
+}

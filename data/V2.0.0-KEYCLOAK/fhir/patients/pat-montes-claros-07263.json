@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07263",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "MARTINS"
+      ],
+      "family": "COELHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67839835600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403503",
+      "line": [
+        "52 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998645570",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniocoelho1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

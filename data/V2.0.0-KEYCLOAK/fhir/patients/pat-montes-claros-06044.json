@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06044",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIENE",
+        "ACACIO"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03826390652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406639",
+      "line": [
+        "313 ACACIAS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997264228",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eleieneacaciocosta33@gmail.com",
+      "use": "home"
+    }
+  ]
+}

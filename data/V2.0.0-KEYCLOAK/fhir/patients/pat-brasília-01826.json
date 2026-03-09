@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01826",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAIRO",
+        "FERREIRA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "30857597191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72318504",
+      "line": [
+        "0 AP 703"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982647942",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jairorodrigues644@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

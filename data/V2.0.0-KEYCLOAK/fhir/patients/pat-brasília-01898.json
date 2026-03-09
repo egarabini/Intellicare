@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01898",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATALIA",
+        "FLOR"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-03-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01081102144"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61974021835",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jacysousa11@gmail.com",
+      "use": "home"
+    }
+  ]
+}

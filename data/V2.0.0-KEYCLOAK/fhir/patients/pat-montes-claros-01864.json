@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01864",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "MATHEUS",
+        "LERES",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-01-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70675781671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401475",
+      "line": [
+        "184 39401475"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992627827",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danyemily334@gemail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "dr-pat-brasília-00057-56",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "58410-2",
+        "display": "Painel metabólico básico"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00057"
+  },
+  "effectiveDateTime": "2026-02-24T06:35:12Z",
+  "result": [
+    {
+      "reference": "Observation/obs-pat-brasília-00057-creat-56"
+    },
+    {
+      "reference": "Observation/obs-pat-brasília-00057-egfr-56"
+    },
+    {
+      "reference": "Observation/obs-pat-brasília-00057-pa-56"
+    }
+  ],
+  "resultsInterpreter": [
+    {
+      "reference": "Practitioner/prac-006"
+    }
+  ]
+}

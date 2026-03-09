@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06348",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALBA",
+        "VALERIA",
+        "DE"
+      ],
+      "family": "FARIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-10-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50371118620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404294",
+      "line": [
+        "553 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999934007",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "defariavaleria174@gmail.com",
+      "use": "home"
+    }
+  ]
+}

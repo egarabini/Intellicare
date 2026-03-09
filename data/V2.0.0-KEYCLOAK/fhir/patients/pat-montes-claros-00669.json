@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00669",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICIA",
+        "ALMEIDA"
+      ],
+      "family": "VIANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02740624530"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405689",
+      "line": [
+        "306"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998244130",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patriciaalmeidaviana2022@gmail.com",
+      "use": "home"
+    }
+  ]
+}

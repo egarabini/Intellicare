@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03245",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "TAMIRES",
+        "SILVA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08254908630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402188",
+      "line": [
+        "56 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997358324",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunatamires1718@gmail.com",
+      "use": "home"
+    }
+  ]
+}

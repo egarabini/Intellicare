@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06776",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIMONE",
+        "RIBEIRO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09060780671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404318",
+      "line": [
+        "579 39404318"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999221800",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "simone@ribeiroruasgmail.com",
+      "use": "home"
+    }
+  ]
+}

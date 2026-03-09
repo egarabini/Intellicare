@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00849",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEONARDO",
+        "GONCALVES",
+        "DA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-02-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07392318632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404524",
+      "line": [
+        "314 39404524"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998555479",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cintiagracieleferreira@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

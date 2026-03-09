@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00203",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERTO",
+        "CARLOS",
+        "GONCALVES",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-03-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06110752614"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401114",
+      "line": [
+        "43 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998621753",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "roberto318@gmail.com",
+      "use": "home"
+    }
+  ]
+}

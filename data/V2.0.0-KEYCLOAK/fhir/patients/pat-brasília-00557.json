@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00557",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCEL",
+        "SAORES",
+        "FARIA"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00213740150"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72327026",
+      "line": [
+        "425 CJ 25 CASA 22"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996224124",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcel_soares777@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08161",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDECIR",
+        "OLIVEIRA"
+      ],
+      "family": "MAURICIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-09-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05601222509"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401004",
+      "line": [
+        "28 39401004"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993034789",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "caixacef@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

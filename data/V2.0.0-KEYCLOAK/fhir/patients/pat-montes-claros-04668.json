@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04668",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "FREITAS"
+      ],
+      "family": "HIGINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05847372620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401341",
+      "line": [
+        "930 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999653120",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucasfreitas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

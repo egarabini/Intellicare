@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00580",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "HENRIQUE",
+        "FELICIANO"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70104063165"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71540070",
+      "line": [
+        "7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985959606",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscafer@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

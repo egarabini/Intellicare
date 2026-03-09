@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00752",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINE",
+        "PEREIRA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "DEUSDETE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93303440115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72710067",
+      "line": [
+        "144 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981326260",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alinecontabilidade01@gmail.com",
+      "use": "home"
+    }
+  ]
+}

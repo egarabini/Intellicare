@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08159",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANESSA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-01-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11048231607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400417",
+      "line": [
+        "1016 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984214373",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanajesus18@gmail.com",
+      "use": "home"
+    }
+  ]
+}

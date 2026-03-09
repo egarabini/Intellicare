@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08180",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANILSON",
+        "GONCALVES"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-04-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03847623605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404111",
+      "line": [
+        "1096 39404111"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991445459",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanilsongoncalvesmota7777@gmail.com",
+      "use": "home"
+    }
+  ]
+}

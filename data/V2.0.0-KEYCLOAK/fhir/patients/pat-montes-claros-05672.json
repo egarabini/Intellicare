@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05672",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIANO",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "GODINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69223440653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400126",
+      "line": [
+        "1079 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998891533",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabianodeoliveiragodinho@gmail.com",
+      "use": "home"
+    }
+  ]
+}

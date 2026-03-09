@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07154",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REGINALDO",
+        "GONCALVES",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-01-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15539941675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406110",
+      "line": [
+        "493 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984236553",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "reginaldogoncalves486@gmail.com",
+      "use": "home"
+    }
+  ]
+}

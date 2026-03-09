@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04370",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "ALVIMAR"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1963-12-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47087439634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401426",
+      "line": [
+        "25 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992365871",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniodias.c@gmail.com",
+      "use": "home"
+    }
+  ]
+}

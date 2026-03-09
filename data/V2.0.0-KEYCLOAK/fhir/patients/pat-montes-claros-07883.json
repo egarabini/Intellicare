@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07883",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "QUEIROZ",
+        "DE"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08311650578"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400208",
+      "line": [
+        "777 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997441592",
+      "use": "home"
+    }
+  ]
+}

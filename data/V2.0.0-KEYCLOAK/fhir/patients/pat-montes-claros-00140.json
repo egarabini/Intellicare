@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00140",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GLECIANE",
+        "SOARES"
+      ],
+      "family": "AMARAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11826787690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403164",
+      "line": [
+        "85"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991344322",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "glecianesoaresamaral22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

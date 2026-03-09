@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00176",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HERBETHION",
+        "XISLON",
+        "DE",
+        "LIMA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86602993100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72549435",
+      "line": [
+        "12 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986098019",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "winox2020@gmail.com",
+      "use": "home"
+    }
+  ]
+}

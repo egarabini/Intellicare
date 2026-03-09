@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05836",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAURICIO",
+        "PEREIRA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11222088630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407492",
+      "line": [
+        "590 39407492"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998812804",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "f09-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

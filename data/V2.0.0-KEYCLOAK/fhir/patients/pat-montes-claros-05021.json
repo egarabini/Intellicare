@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05021",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MIKAEL",
+        "SILVA",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17974219645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401104",
+      "line": [
+        "415 APT 210"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998932267",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mikaelhen07@icloud.com",
+      "use": "home"
+    }
+  ]
+}

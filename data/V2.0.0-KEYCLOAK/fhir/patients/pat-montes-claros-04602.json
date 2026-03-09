@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04602",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "WENDEL",
+        "CARDDOSO"
+      ],
+      "family": "VENTURA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12130236618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405416",
+      "line": [
+        "111 39405416"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988020897",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@gmail.com",
+      "use": "home"
+    }
+  ]
+}

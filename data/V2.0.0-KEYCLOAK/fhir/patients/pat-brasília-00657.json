@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00657",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RONALD",
+        "AUGUSTO",
+        "BARBOZA"
+      ],
+      "family": "NONATO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-03-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03768588181"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73403509",
+      "line": [
+        "14 MODULO C"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995021656",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ronaldaugustobnonato@gmail.com",
+      "use": "home"
+    }
+  ]
+}

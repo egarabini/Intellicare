@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06345",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDILSON",
+        "RODRIGUES"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-03-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67393691604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403065",
+      "line": [
+        "266"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999475131",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edilson.ramos123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

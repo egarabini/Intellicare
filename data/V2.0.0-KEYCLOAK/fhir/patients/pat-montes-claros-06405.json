@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06405",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALFREDO",
+        "JOSE",
+        "SARMENTO"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-12-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "21787573672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400601",
+      "line": [
+        "508"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999420258",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alfredosarmento@gmail.com",
+      "use": "home"
+    }
+  ]
+}

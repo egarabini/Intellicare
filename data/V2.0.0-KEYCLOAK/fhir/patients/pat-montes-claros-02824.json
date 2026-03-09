@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02824",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NETINHO",
+        "RODRIGUES"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03356735624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401227",
+      "line": [
+        "48 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999573337",
+      "use": "home"
+    }
+  ]
+}

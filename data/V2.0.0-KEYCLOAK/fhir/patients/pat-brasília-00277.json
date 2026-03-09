@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00277",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "LUIS",
+        "DOS",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "TOLEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "48303771191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72261233",
+      "line": [
+        "16"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985730308",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andre_paggy@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

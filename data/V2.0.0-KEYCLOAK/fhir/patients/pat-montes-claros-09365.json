@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09365",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VINICIUS",
+        "ALEXANDRE",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02352173604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404404",
+      "line": [
+        "78 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988356319",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "viniciusalexandre@gmail.com",
+      "use": "home"
+    }
+  ]
+}

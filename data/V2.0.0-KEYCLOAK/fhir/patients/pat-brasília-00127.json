@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00127",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFERSON",
+        "FELIPE",
+        "PEREIRA",
+        "ALVES"
+      ],
+      "family": "RAMALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70247009121"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596153",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993590063",
+      "use": "home"
+    }
+  ]
+}

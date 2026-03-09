@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03359",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARDEN",
+        "WHALESTER",
+        "GONCALVES"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-01-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13225209686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400457",
+      "line": [
+        "183"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998653596",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marden@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00779",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "N",
+        "CARVALHO",
+        "E"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-08-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00028105222"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573100",
+      "line": [
+        "03"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996070834",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nazarecarvalhopiaui@gmail.com",
+      "use": "home"
+    }
+  ]
+}

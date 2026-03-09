@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03457",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHANCLER",
+        "DA",
+        "SILVA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-04-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "27496868817"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402518",
+      "line": [
+        "685"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999972777",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "chancelerdasilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

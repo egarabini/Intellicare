@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00267",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RONALDO",
+        "RIBEIRO"
+      ],
+      "family": "MESSIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-08-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70175621608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400000",
+      "line": [
+        "00 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998973492",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ronaldo12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-008",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Enf.",
+        "Paulo"
+      ],
+      "family": "Henrique"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/coren",
+        "value": "COREN-MG 23456"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "224535009",
+            "display": "Enfermeiro"
+          }
+        ]
+      }
+    }
+  ]
+}

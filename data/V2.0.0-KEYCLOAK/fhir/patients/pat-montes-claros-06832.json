@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06832",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VERONICA",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-06-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13502180652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400496",
+      "line": [
+        "66 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988244727",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviaferreiradejesus7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

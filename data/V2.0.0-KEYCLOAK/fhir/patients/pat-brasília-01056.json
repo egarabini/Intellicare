@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01056",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JONHY",
+        "ANDRADE",
+        "MARQUES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-12-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01889755192"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72410806",
+      "line": [
+        "12"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993596850",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "johnyy.ammss@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00869",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICIA",
+        "APARECIDA",
+        "ALVES",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02970121182"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70757520",
+      "line": [
+        "12 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993978559",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patriciaalves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

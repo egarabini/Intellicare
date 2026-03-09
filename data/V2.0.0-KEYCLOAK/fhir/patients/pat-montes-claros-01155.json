@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01155",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADAO",
+        "FERNANDES"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-10-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56438940682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400000",
+      "line": [
+        "122 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38699234313",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elismouragomes853@gmail.com",
+      "use": "home"
+    }
+  ]
+}

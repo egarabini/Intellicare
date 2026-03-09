@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01729",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JURANDIR",
+        "REIS"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1963-05-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47840617620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39409899",
+      "line": [
+        "CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998242219",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jurandirreis12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

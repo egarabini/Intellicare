@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03852",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEOSVALDO",
+        "FERREIRA"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03416400690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402193",
+      "line": [
+        "455"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984353872",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deosvaldoduraes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

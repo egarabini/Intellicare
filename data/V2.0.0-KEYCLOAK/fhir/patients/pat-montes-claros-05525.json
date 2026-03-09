@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05525",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "MARIA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-02-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02631441605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404312",
+      "line": [
+        "453 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997504791",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marianunesjose595@gmail.com",
+      "use": "home"
+    }
+  ]
+}

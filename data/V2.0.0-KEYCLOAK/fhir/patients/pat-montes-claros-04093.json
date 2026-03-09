@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04093",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOYCE",
+        "GABRIELA",
+        "FERREIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70530672626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401820",
+      "line": [
+        "690"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988310213",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@outlook.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01708",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEUSA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1953-02-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04376608696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39411000",
+      "line": [
+        "67 39411000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999755044",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carllos2410@gmail.com",
+      "use": "home"
+    }
+  ]
+}

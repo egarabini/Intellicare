@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07370",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "HENRIQUE"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-04-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02075564663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404741",
+      "line": [
+        "420 39404741"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988483782",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaopedroandrade164@gmail.com",
+      "use": "home"
+    }
+  ]
+}

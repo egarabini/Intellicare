@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08135",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JESSICA",
+        "MENDES"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70217430686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400807",
+      "line": [
+        "122 39400807"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999956446",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jejerocha256@gmail.com",
+      "use": "home"
+    }
+  ]
+}

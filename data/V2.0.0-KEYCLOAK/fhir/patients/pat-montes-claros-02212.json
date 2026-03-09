@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02212",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "FERNANDA",
+        "ALMEIDA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70028364635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402785",
+      "line": [
+        "109 39402785"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999468595",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernanda123uai@gmail.com",
+      "use": "home"
+    }
+  ]
+}

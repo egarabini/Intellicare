@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05486",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEANE",
+        "MAISE",
+        "SALDANHA"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07808995630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "2093"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998591064",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeanemaise923@gmail.com",
+      "use": "home"
+    }
+  ]
+}

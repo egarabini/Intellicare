@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02309",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "VERISSIMO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "LEAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-09-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "45331570330"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330003",
+      "line": [
+        "02 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984824070",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "verissimoleal89@gmail.com",
+      "use": "home"
+    }
+  ]
+}

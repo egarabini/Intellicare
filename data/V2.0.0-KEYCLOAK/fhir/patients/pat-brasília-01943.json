@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01943",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RICARDO",
+        "BORGES"
+      ],
+      "family": "MUNDIM"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-04-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70397963688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693120",
+      "line": [
+        "30 VILA NOVA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999406879",
+      "use": "home"
+    }
+  ]
+}

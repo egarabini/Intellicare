@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05902",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HENRIQUE",
+        "GUILHERME",
+        "SOUZA"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-06-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15621343611"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400076",
+      "line": [
+        "219 APTO 401"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "11917035453",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nzxt.hp@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

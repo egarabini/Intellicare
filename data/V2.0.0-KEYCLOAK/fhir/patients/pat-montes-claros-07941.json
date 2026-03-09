@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07941",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "VANESSA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-02-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08526599623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400807",
+      "line": [
+        "1231 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984069894",
+      "use": "home"
+    }
+  ]
+}

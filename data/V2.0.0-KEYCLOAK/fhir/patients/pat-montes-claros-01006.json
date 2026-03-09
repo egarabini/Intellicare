@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01006",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIO",
+        "HENRIQUE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-06-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09480057697"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400023",
+      "line": [
+        "583"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991976797",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ms80228@gmail.com",
+      "use": "home"
+    }
+  ]
+}

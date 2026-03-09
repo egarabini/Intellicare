@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00918",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "GERALDO",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-01-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72855533600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72593015",
+      "line": [
+        "24 BLOCO E"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999684721",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaogeraldo714@gmail.com",
+      "use": "home"
+    }
+  ]
+}

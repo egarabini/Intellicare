@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03840",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IRANILDES",
+        "DE",
+        "LOURDES",
+        "FERREIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-10-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82250782687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "163"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991294889",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "iranildelourdes@gamil.com",
+      "use": "home"
+    }
+  ]
+}

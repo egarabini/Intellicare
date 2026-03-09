@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02917",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "GERALDO",
+        "RODRIGUES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-07-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53114426620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402319",
+      "line": [
+        "509"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998776092",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilbertogoncalves8126@gmail.com",
+      "use": "home"
+    }
+  ]
+}

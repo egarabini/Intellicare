@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00388",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSIVANE",
+        "ALEXANDRE",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "99851130125"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72734002",
+      "line": [
+        "20 72734002"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996330426",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vaniaalexandre123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

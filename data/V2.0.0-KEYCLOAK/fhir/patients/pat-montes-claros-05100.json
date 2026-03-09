@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05100",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENO",
+        "RIAN",
+        "OLIVEIRA"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70623316609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401665",
+      "line": [
+        "369"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998762462",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ultralar12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

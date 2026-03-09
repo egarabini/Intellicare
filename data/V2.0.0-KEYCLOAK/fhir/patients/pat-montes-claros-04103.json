@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04103",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELISANGELA",
+        "PEREIRA",
+        "DA",
+        "CONCEICAO"
+      ],
+      "family": "CHAVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-03-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04160611680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403299",
+      "line": [
+        "64"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998354530",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elisangela_chaves@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

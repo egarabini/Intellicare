@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07628",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "APARECIDA",
+        "FERNANDES",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-06-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00789158647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404703",
+      "line": [
+        "3444"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991057865",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cidafcruz15@gmail.com",
+      "use": "home"
+    }
+  ]
+}

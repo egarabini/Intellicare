@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02901",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BENEDITA",
+        "ANTONIA",
+        "TAVARES",
+        "DA",
+        "COSTA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "99572834215"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403439",
+      "line": [
+        "145 APTO 303"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998554118",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "beneditaaantonia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

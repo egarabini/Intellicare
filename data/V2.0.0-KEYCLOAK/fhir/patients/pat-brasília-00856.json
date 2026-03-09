@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00856",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARYANE",
+        "SIMPLICIO"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03121621114"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72321210",
+      "line": [
+        "22"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984223130",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "arykossena@gmail.com",
+      "use": "home"
+    }
+  ]
+}

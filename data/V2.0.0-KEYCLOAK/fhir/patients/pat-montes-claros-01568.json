@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01568",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "GABRIEL",
+        "SILVA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-07-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70198234678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402212",
+      "line": [
+        "75"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998078382",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "larissatai@gmail.com",
+      "use": "home"
+    }
+  ]
+}

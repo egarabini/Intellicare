@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06859",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULA",
+        "APARAECIDA",
+        "DE",
+        "MOURA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12703270623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404137",
+      "line": [
+        "191 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992597550",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulaaparecida95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

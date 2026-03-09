@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01790",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "DANIEL",
+        "SANTOS"
+      ],
+      "family": "BRANDAO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-04-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16201006656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400510",
+      "line": [
+        "481 APT"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998683643",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucasdaniel.santosbrandao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

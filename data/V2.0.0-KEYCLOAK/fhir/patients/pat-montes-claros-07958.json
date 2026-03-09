@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07958",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANETE",
+        "APARECIDA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09925304660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402808",
+      "line": [
+        "215 39402808"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38323333333",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "klebermacedo46@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00326",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HAYNNER",
+        "ISMAEL",
+        "VALENCIO",
+        "DE"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-07-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06303180698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400285",
+      "line": [
+        "306"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31997537731",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "haynnervalencio@icloud.com",
+      "use": "home"
+    }
+  ]
+}

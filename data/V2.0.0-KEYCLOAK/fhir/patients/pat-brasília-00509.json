@@ -1,0 +1,55 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00509",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLON",
+        "BRAITOSER",
+        "GUARELE",
+        "DE",
+        "MARILAC",
+        "PEREIRA",
+        "GALENO",
+        "DOS"
+      ],
+      "family": "SANTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-07-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "96721898187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73369020",
+      "line": [
+        "43"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981988138",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marlon3434@gmail.com",
+      "use": "home"
+    }
+  ]
+}

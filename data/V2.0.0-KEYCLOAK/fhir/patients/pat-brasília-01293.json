@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01293",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNO",
+        "GONCALVES"
+      ],
+      "family": "CAIRES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-07-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12546204602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590675",
+      "line": [
+        "15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993813268",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bcaires39@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00925",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANDERSOM",
+        "CARDOSO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01993008608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404871",
+      "line": [
+        "61 39404871"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988284153",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wandersoncardoso354@gmail.com",
+      "use": "home"
+    }
+  ]
+}

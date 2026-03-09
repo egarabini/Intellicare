@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05885",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAVID",
+        "AMADOR",
+        "RIBEIRO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08942265685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403108",
+      "line": [
+        "134"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991648883",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "davidamador2015@gmail.com",
+      "use": "home"
+    }
+  ]
+}

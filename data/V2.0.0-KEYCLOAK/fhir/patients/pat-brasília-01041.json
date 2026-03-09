@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01041",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "MERCES",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-06-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07702091304"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72705531",
+      "line": [
+        "6 72705531"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996324490",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mercedesmonteiro4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

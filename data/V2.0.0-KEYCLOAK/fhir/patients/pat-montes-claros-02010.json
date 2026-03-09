@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02010",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAVI",
+        "MARTINS",
+        "FERNANDES"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70634040677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402037",
+      "line": [
+        "20"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988609485",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dxmartins7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01497",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "FERNANDO",
+        "PEREIRA"
+      ],
+      "family": "LEITE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09132854633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404329",
+      "line": [
+        "450"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998342452",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pa220674ulo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

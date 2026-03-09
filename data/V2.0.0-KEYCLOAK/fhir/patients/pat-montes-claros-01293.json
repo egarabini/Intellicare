@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01293",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "HENRIQUE",
+        "SOARES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-10-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17947786674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401272",
+      "line": [
+        "91"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999099543",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pedrinho0800pes2017@gmail.com",
+      "use": "home"
+    }
+  ]
+}

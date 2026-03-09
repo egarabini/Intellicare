@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05234",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAEL",
+        "ONOFRE",
+        "LOPES"
+      ],
+      "family": "MALVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-12-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07475561640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404009",
+      "line": [
+        "110 39404009"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988658134",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@gmail.com",
+      "use": "home"
+    }
+  ]
+}

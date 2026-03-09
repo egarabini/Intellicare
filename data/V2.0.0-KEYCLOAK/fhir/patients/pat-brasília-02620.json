@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02620",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "BEATRIZ",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-05-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07744797108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72236800",
+      "line": [
+        "19 CH 84 CJ E CASA 19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995654116",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anabeatrislindah18@iclud.com",
+      "use": "home"
+    }
+  ]
+}

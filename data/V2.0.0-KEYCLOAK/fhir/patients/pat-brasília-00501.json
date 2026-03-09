@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00501",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEILA",
+        "DE",
+        "SENA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1953-01-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71549480197"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73377003",
+      "line": [
+        "0"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998612566",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oaijjoao321@gmail.com",
+      "use": "home"
+    }
+  ]
+}

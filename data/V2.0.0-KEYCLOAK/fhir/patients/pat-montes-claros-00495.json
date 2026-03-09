@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00495",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCUS",
+        "VINICIUS",
+        "PEREIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-04-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70355853620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403067",
+      "line": [
+        "1282"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988533633",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maquinhosantos762@gmail.com",
+      "use": "home"
+    }
+  ]
+}

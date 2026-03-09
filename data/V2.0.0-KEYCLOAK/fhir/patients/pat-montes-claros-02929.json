@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02929",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REJANE",
+        "DIAS",
+        "CABRAL"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-07-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12559579642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403553",
+      "line": [
+        "80 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988656015",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rejaneazeved5@gmail.com",
+      "use": "home"
+    }
+  ]
+}

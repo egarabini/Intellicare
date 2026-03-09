@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02762",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANA",
+        "AFONSO"
+      ],
+      "family": "FAGUNDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-06-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04526316610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404298",
+      "line": [
+        "405 39404298"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998623653",
+      "use": "home"
+    }
+  ]
+}

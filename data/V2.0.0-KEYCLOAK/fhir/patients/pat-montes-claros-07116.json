@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07116",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "GERALDA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1950-06-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85040363672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400412",
+      "line": [
+        "1"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998566621",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolhoes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

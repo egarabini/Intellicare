@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00376",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CELINA",
+        "DA",
+        "LUZ",
+        "SILVA"
+      ],
+      "family": "LAGOIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "39737896220"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73366423",
+      "line": [
+        "1 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981938337",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "celialaboia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

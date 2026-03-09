@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01081",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62217972332"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71985300",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993267668",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deboracarvalho009@icloud.com",
+      "use": "home"
+    }
+  ]
+}

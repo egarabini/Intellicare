@@ -1,0 +1,24 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-pat-brasília-00012-egfr-11",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "33914-3",
+        "display": "eGFR"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00012"
+  },
+  "effectiveDateTime": "2026-02-09T06:34:39Z",
+  "valueQuantity": {
+    "value": 28.1,
+    "unit": "mL/min/1.73m2",
+    "system": "http://unitsofmeasure.org",
+    "code": "mL/min/{1.73_m2}"
+  }
+}

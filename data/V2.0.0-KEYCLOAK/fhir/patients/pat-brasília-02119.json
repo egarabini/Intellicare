@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02119",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDA",
+        "MADALENA",
+        "DOS",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00380241102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73401003",
+      "line": [
+        "17 CJ A LT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982617382",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sem@gmail.com",
+      "use": "home"
+    }
+  ]
+}

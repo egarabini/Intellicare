@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01735",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-09-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80961991372"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71820605",
+      "line": [
+        "0 AP 221"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61619866669",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nyeullecosta05@gmail.com",
+      "use": "home"
+    }
+  ]
+}

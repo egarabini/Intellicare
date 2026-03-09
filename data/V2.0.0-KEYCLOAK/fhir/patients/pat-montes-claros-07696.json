@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07696",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "JORGE",
+        "DIAS",
+        "E"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-11-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11951341694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400170",
+      "line": [
+        "205 39400170"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984235567",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

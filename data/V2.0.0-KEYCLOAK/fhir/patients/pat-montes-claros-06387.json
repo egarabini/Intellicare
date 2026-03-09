@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06387",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GENILSON",
+        "BARBOSA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01646821637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403086",
+      "line": [
+        "158 APARTAMENTO"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998493017",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatafernandes970118@gmail.com",
+      "use": "home"
+    }
+  ]
+}

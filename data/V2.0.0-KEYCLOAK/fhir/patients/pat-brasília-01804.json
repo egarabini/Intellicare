@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01804",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELVECIO",
+        "DIAS",
+        "BATISTA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00720830346"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587024",
+      "line": [
+        "402"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998435459",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "batiisefilho66@gmail.com",
+      "use": "home"
+    }
+  ]
+}

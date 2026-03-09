@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00349",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DO",
+        "SOCORRO",
+        "ALVES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-08-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84497491668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39410000",
+      "line": [
+        "103 39410000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988274738",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariasocorro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

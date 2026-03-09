@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06050",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DO",
+        "SOCORRO",
+        "OLIVEIRA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-02-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66396484668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403110",
+      "line": [
+        "28 39403110"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991247484",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eletrosompitzi@gmail.com",
+      "use": "home"
+    }
+  ]
+}

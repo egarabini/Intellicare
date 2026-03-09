@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02302",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIENE",
+        "SANTANA"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09364532651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405431",
+      "line": [
+        "231"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998311007",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariadapax14@gmail.com",
+      "use": "home"
+    }
+  ]
+}

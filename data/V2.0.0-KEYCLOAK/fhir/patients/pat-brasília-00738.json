@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00738",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARGEMIRO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-05-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01355810108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593535",
+      "line": [
+        "09"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993961608",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cardosoargemiro782@gmail.com",
+      "use": "home"
+    }
+  ]
+}

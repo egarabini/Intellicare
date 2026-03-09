@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02924",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "DAIANE",
+        "CARDOSO"
+      ],
+      "family": "COUTINHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-04-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10280222637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403493",
+      "line": [
+        "506 39403493"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991056960",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carladaianecardoso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

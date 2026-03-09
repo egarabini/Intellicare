@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07877",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAINARA",
+        "BORGES",
+        "DA",
+        "SILVA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-08-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15226742681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404326",
+      "line": [
+        "504 39404326"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999632145",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rainara427@gmail.com",
+      "use": "home"
+    }
+  ]
+}

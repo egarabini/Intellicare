@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01170",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MILTON",
+        "MESQUITA"
+      ],
+      "family": "DAMACENO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-01-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81888600349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593050",
+      "line": [
+        "36"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996948956",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mesquitamosquito@gmail.com",
+      "use": "home"
+    }
+  ]
+}

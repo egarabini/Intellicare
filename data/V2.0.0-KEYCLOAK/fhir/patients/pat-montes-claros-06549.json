@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06549",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SERGIO",
+        "FERREIRA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-01-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01560354640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404696",
+      "line": [
+        "100 39404696"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988043284",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sergioferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

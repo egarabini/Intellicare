@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02396",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "PEREIRA",
+        "CAMILA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10588409677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400612",
+      "line": [
+        "50"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999172620",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "camilapereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

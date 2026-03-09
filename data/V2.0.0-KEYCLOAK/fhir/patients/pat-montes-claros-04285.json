@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04285",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDIR",
+        "BENTO",
+        "DE"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-10-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01820993698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404286",
+      "line": [
+        "3925"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999087795",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valdirbento@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01865",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELAINE",
+        "CRISTINA",
+        "SANTOS",
+        "DA"
+      ],
+      "family": "LUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-03-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06568352659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404326",
+      "line": [
+        "417"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992550794",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elainecristina8712@gmail.com",
+      "use": "home"
+    }
+  ]
+}

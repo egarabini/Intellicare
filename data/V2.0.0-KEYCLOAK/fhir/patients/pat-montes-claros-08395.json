@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08395",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILY",
+        "CRISTINE",
+        "PEREIRA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18929009638"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403526",
+      "line": [
+        "86 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998436497",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ec354157@gmail.com",
+      "use": "home"
+    }
+  ]
+}

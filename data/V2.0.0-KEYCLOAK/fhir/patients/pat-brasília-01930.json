@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01930",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDSON",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-12-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92204805149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71697307",
+      "line": [
+        "121"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996449461",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "isadoradesouzaxavier705@gmail.com",
+      "use": "home"
+    }
+  ]
+}

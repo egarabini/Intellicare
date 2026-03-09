@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00526",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIACOMO",
+        "GUILHERME"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-10-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13317488603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401043",
+      "line": [
+        "220 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "16997385760",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diacomobotu@gmail.com",
+      "use": "home"
+    }
+  ]
+}

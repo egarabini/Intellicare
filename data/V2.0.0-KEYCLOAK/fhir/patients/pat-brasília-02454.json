@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02454",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELIO",
+        "MOURA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "27724380821"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71070511",
+      "line": [
+        "203 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981942996",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "helio.moura6@zipmail.com.br",
+      "use": "home"
+    }
+  ]
+}

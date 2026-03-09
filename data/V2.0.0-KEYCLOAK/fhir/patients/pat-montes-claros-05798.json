@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05798",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HEIDY",
+        "RENATA"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06155565660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400725",
+      "line": [
+        "1050 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997284810",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "heidymaia@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

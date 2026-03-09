@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02068",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAMON",
+        "COSTA"
+      ],
+      "family": "GODINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09803868616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400154",
+      "line": [
+        "59"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "34998894417",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "importacao@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

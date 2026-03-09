@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05424",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSEFINA",
+        "DE",
+        "CASSIA",
+        "NEVES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-04-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08326608688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403023",
+      "line": [
+        "71"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998446272",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cassiaribeiro585@gmail.com",
+      "use": "home"
+    }
+  ]
+}

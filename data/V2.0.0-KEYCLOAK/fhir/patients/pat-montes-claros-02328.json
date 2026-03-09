@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02328",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIANE",
+        "DA",
+        "FONSECA",
+        "BRAGA",
+        "MAIA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1955-05-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06156213686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400318",
+      "line": [
+        "216 APT 102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998637639",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "liu.fb@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

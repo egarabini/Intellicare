@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04440",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMANDA",
+        "COSTA"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-06-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16678357698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402704",
+      "line": [
+        "77 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999229011",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amanda.costa.maia2025@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01050",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSIMARY",
+        "DA",
+        "SILVA"
+      ],
+      "family": "CONCEICAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1953-08-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72318007187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596183",
+      "line": [
+        "14 71596183"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6195255117",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosimaryconceicao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

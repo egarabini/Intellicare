@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03955",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAIRA",
+        "LOPES"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70623746603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402369",
+      "line": [
+        "259"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999904534",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "walmir@gmail.com",
+      "use": "home"
+    }
+  ]
+}

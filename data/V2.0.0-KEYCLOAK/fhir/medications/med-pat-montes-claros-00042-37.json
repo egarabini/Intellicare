@@ -1,0 +1,32 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "med-pat-montes-claros-00042-37",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.saude.gov.br/fhir/r4/CodeSystem/brmed",
+        "display": "Hidroclorotiazida 25mg"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00042"
+  },
+  "authoredOn": "2026-02-05T06:11:50Z",
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "text": "Oral"
+      }
+    }
+  ]
+}

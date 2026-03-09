@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02313",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "FERNANDO",
+        "VIANA"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-04-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01846808243"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72548505",
+      "line": [
+        "28 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992750452",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "atendimentograficafox@gmail.com",
+      "use": "home"
+    }
+  ]
+}

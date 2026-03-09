@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01092",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICIA",
+        "FERREIRA",
+        "DAS",
+        "NEVES"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-09-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03485997145"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73370086",
+      "line": [
+        "64"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998646857",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nevestrycy@gmail.com",
+      "use": "home"
+    }
+  ]
+}

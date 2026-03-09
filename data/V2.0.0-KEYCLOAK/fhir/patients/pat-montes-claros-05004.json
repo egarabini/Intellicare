@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05004",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-01-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10038927608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401223",
+      "line": [
+        "235 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991544093",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernandaperreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

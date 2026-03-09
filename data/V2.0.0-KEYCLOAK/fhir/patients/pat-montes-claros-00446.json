@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00446",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "HENRIQUE",
+        "AQUINO"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-07-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70366361651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400807",
+      "line": [
+        "839 39400807"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999603831",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luishenriqueaquino@gmail.com",
+      "use": "home"
+    }
+  ]
+}

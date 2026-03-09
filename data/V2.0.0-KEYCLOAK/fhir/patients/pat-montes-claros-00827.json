@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00827",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NILSON",
+        "ALVES"
+      ],
+      "family": "CALDEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1955-10-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09040935653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400421",
+      "line": [
+        "300 39400421"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998974494",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nilsonalves991@gmail.com",
+      "use": "home"
+    }
+  ]
+}

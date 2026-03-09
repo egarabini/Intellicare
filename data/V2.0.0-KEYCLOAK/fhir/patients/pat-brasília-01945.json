@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01945",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ANTONIO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53906683168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73060804",
+      "line": [
+        "AR 8 CONJUNTO 4 CASA 24"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999754042",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosba140471@gmail.com",
+      "use": "home"
+    }
+  ]
+}

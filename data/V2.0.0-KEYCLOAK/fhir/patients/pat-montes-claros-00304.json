@@ -1,0 +1,42 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00304",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILDNEY",
+        "ANDRE",
+        "VIEIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12119082677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400847",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998845635",
+      "use": "home"
+    }
+  ]
+}

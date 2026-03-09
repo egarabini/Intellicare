@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00838",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "CONCEI��O",
+        "ELIAS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11827585684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404489",
+      "line": [
+        "120 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998457010",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariadaconceicaoelias@gmail.com",
+      "use": "home"
+    }
+  ]
+}

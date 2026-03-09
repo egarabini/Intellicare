@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01958",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INGRID",
+        "MORGANA",
+        "ANDRADE"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-07-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70546504680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403349",
+      "line": [
+        "65 39403349"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998294148",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ingridanna237@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02502",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HEBERTY",
+        "ADRIANO"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-11-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12383916641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406025",
+      "line": [
+        "50 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999146372",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "herbertyadriano1997@gmail.com",
+      "use": "home"
+    }
+  ]
+}

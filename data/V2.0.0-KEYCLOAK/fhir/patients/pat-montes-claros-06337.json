@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06337",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANETE",
+        "CRUZ",
+        "BARROS",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-04-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82273910606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400567",
+      "line": [
+        "48 39400567"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988605825",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "professorajanetecruz@gmail.com",
+      "use": "home"
+    }
+  ]
+}

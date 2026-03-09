@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00923",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JACIANE",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02997264103"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70232525",
+      "line": [
+        "34"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993198526",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jacysousa11@gmail.com",
+      "use": "home"
+    }
+  ]
+}

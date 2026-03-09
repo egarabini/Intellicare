@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01024",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCILEIDE"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-11-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71293116149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71695070",
+      "line": [
+        "01 CHACARA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992788113",
+      "use": "home"
+    }
+  ]
+}

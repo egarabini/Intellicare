@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02401",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMADEUS",
+        "DOS",
+        "ANJOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "26824472875"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400612",
+      "line": [
+        "100"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998899061",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "abraooferreira995@gmail.com",
+      "use": "home"
+    }
+  ]
+}

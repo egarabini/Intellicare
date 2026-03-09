@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08387",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "HARON",
+        "RODRIGUES"
+      ],
+      "family": "MACIEL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13206482666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402193",
+      "line": [
+        "703 39402193"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988626119",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielharon06@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04073",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AILTON",
+        "CLAUDIO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-09-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10642146659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400430",
+      "line": [
+        "1082 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988250259",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ailtonclaudio@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

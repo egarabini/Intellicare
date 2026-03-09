@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01765",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANCLECIA",
+        "RIBEIRO",
+        "DE"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08484051455"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805737",
+      "line": [
+        "114 BLOCO B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982426709",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josivaldoana04@gmil.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04100",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIA",
+        "EUNICE"
+      ],
+      "family": "CATONE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67369871649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402573",
+      "line": [
+        "439"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999626471",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juliaeunice@gmail.com",
+      "use": "home"
+    }
+  ]
+}

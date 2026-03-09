@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03213",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "HENRIQUE",
+        "RODRIGUES"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70037473670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404399",
+      "line": [
+        "399 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998501175",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pedrohenrique@gmail.com",
+      "use": "home"
+    }
+  ]
+}

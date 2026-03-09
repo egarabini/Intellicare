@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07914",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WEDNA",
+        "ANTUNES",
+        "CARVALHO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14352914681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401275",
+      "line": [
+        "593 39401275"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999624362",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antuneswedna@gmail.com",
+      "use": "home"
+    }
+  ]
+}

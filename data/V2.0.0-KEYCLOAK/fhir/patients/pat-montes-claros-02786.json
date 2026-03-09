@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02786",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SEBASTIAO",
+        "DIAS"
+      ],
+      "family": "CELESTINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-06-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13466288665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403079",
+      "line": [
+        "80 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998574876",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tiaodiascelestino@gmail.com",
+      "use": "home"
+    }
+  ]
+}

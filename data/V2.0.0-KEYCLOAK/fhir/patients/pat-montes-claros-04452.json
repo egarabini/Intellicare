@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04452",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "GON�ALVES",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98625721672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403074",
+      "line": [
+        "87 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38932227351",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

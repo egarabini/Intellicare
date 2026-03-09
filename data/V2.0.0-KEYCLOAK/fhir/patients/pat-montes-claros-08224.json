@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08224",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WALLACE",
+        "ALVES",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11513427695"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406625",
+      "line": [
+        "319 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31993325122",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "o35365445344wdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

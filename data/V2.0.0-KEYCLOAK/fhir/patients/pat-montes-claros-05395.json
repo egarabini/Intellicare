@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05395",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOANA",
+        "APARECIDA"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09534108626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403078",
+      "line": [
+        "169 39403078"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999707461",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendasclaros@redetopmagazine.com.br",
+      "use": "home"
+    }
+  ]
+}

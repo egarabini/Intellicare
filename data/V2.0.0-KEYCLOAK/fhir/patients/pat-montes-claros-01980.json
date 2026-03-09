@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01980",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAIRO",
+        "MARCELO",
+        "BARBOSA",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70738919632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401073",
+      "line": [
+        "23"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991448268",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jairo2023@gmailcom",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05031",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "PRINCIA",
+        "DO"
+      ],
+      "family": "ROSARIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-05-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70088633659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401176",
+      "line": [
+        "61"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991232787",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anaprinciar@gmail.com",
+      "use": "home"
+    }
+  ]
+}

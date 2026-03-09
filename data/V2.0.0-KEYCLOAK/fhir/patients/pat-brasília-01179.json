@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01179",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVANEIDE",
+        "SOUSA"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-07-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60224157302"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72331202",
+      "line": [
+        "20 605 CONJ  2 CASA 20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996042149",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "neidekk335@gmail.com",
+      "use": "home"
+    }
+  ]
+}

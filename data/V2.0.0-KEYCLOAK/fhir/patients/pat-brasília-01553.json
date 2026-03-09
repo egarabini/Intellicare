@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01553",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERIONE",
+        "DAS",
+        "CHAGAS"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84491299153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593240",
+      "line": [
+        "15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999632165",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "erionedaschagas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

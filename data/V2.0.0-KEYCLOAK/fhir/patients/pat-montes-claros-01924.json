@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01924",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAIHARA",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18080673632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407432",
+      "line": [
+        "9 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997228476",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaquim-ozanan@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

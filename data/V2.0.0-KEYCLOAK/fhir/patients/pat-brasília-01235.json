@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01235",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAINARA",
+        "LUZIA",
+        "ARAUJO"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-10-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02960828135"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72650480",
+      "line": [
+        "18 CASA 18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994569714",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maynaraluzia2013@gmail.com",
+      "use": "home"
+    }
+  ]
+}

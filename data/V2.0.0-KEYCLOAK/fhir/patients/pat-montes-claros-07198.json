@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07198",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JACILEIDE",
+        "APARECIDA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "CANGIANI"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-10-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06682604670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400473",
+      "line": [
+        "191"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988024224",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jaci_cangiane@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

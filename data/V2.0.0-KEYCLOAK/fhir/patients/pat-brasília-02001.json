@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02001",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "FERREIRA"
+      ],
+      "family": "MESQUITA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-12-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71201371155"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72669313",
+      "line": [
+        "6 LOTE 15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986326588",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nada@nada.com",
+      "use": "home"
+    }
+  ]
+}

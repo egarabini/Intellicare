@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00146",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JESSICA",
+        "LORRANE",
+        "RODRIGUES",
+        "DIAS",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12944455613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404303",
+      "line": [
+        "1800 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992593459",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jessicalorra10@icloud.com",
+      "use": "home"
+    }
+  ]
+}

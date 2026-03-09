@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00432",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "GERARDO",
+        "BRAGA"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1955-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11391006100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73050170",
+      "line": [
+        "1 Q 16 CONJUNTO J L6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993735885",
+      "use": "home"
+    }
+  ]
+}

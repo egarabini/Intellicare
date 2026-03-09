@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02552",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAURA",
+        "GOMES"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12535078643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404544",
+      "line": [
+        "101 CS NR"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998823260",
+      "use": "home"
+    }
+  ]
+}

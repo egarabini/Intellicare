@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08897",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNO",
+        "MATHEUS",
+        "FERREIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-06-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02339300606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406508",
+      "line": [
+        "180 CT"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31982192785",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07657",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KARINE",
+        "FERNANDES"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-01-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10139751629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403241",
+      "line": [
+        "282 39403241"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991652101",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

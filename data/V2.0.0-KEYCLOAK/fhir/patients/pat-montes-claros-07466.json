@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07466",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THAIS",
+        "SOARES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-11-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70173191681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404798",
+      "line": [
+        "160 39404798"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998322456",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yurisailvaxp@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01060",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PHILLIPI",
+        "FERREIRA",
+        "DOS",
+        "SANTOS",
+        "E"
+      ],
+      "family": "CAMARA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-06-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08213592662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403170",
+      "line": [
+        "1700 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999515516",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "phillipe87@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

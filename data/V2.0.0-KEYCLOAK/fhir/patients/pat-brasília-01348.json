@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01348",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CELIA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-10-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98677837191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596159",
+      "line": [
+        "32 71596159"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6196668602",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sr932520@gmail.com",
+      "use": "home"
+    }
+  ]
+}

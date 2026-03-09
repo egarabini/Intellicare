@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01113",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VILMA",
+        "PEREIRA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67773117691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403100",
+      "line": [
+        "106 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999993234",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tatypereiravieira2413@gmail.com",
+      "use": "home"
+    }
+  ]
+}

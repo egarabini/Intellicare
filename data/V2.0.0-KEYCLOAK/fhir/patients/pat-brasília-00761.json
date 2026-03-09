@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00761",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NILO",
+        "SERGIO",
+        "DE",
+        "PAULA"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24686395100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590764",
+      "line": [
+        "4 CONJUNTO H"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999290161",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nilosergio_61@gmail.com",
+      "use": "home"
+    }
+  ]
+}

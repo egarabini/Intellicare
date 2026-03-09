@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01052",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "FELIPE",
+        "GON�ALVES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12946871665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403024",
+      "line": [
+        "80 CASA 1"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991595882",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nayanegoncalves812@gmail.com",
+      "use": "home"
+    }
+  ]
+}

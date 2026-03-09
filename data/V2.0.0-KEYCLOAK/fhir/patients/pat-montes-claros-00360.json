@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00360",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JORGE",
+        "NATTAN",
+        "SANTOS"
+      ],
+      "family": "CALDEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-05-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70204086647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404271",
+      "line": [
+        "71 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997330496",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jorgenattan10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

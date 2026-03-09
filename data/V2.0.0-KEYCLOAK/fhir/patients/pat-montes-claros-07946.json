@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07946",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "ALMIR",
+        "ELIAS",
+        "DE"
+      ],
+      "family": "MENEZES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-12-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73401994620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404415",
+      "line": [
+        "19"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998413662",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cherleyprincesa92@gmail.com",
+      "use": "home"
+    }
+  ]
+}

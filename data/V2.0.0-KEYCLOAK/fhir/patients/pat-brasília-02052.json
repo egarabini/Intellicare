@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02052",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANK",
+        "PIEDADE"
+      ],
+      "family": "SARMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-06-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04306214184"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72236800",
+      "line": [
+        "140 CJ A1 LJ 04"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994264702",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "frankpiedade2016@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04943",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIOGO",
+        "DIAS"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11312847638"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400059",
+      "line": [
+        "02 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998001254",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diogomarquer190@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00490",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSILAYNE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-07-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04584495122"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340110",
+      "line": [
+        "37"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "99999922269",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josilayneribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01791",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DARLE",
+        "POLIANA",
+        "PEREIRA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17072029664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403090",
+      "line": [
+        "79"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988652289",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "darlepolina@gmail.com",
+      "use": "home"
+    }
+  ]
+}

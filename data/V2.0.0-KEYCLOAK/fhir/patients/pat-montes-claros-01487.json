@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01487",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZABEL",
+        "CRISTINA",
+        "GONCALVES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-07-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06102081609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401860",
+      "line": [
+        "33"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999881285",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maiagabrielle410@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07424",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EVELISE",
+        "DE",
+        "FARIA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-02-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "34192296829"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39412000",
+      "line": [
+        "100 39412000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999635892",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "evelisa216@gmail.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02583",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GLADSON",
+        "BRIAN",
+        "SANTOS"
+      ],
+      "family": "CARLOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70616389663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400217",
+      "line": [
+        "528 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988630685",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosgladson600@gmail.com",
+      "use": "home"
+    }
+  ]
+}

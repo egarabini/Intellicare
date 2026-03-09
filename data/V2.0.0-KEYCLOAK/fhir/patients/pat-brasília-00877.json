@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00877",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUSTAVO",
+        "BEZERRA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-03-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05246302164"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590712",
+      "line": [
+        "26"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61928238989",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gustavobezerra3@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

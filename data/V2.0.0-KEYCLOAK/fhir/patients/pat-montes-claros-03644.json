@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03644",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDIR",
+        "SOARES"
+      ],
+      "family": "NOGUEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1950-03-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "38955733615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401452",
+      "line": [
+        "875 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997390276",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jose@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00038",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELE",
+        "BEZERRA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-07-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01556765126"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72546501",
+      "line": [
+        "201 APT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993237936",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielebezzerradeoliveirabezerr@gmail.com",
+      "use": "home"
+    }
+  ]
+}

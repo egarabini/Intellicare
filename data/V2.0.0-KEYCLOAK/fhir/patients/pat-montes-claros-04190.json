@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04190",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELLINGTON",
+        "SANTOS"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70511113617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403264",
+      "line": [
+        "818 39403264"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998101154",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wellingtonsantossouza15@gmail.com",
+      "use": "home"
+    }
+  ]
+}

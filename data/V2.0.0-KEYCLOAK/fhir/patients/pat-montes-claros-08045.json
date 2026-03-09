@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08045",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "RITA"
+      ],
+      "family": "DUARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1953-06-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "43090494604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401477",
+      "line": [
+        "83"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988474182",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laercioduraes@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

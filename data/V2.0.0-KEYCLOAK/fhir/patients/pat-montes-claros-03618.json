@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03618",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEYWITH",
+        "WASHINGTON",
+        "CHAVES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14835105656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404505",
+      "line": [
+        "545"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "11995928047",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "daywithchaves1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

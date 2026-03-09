@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02903",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERALDA",
+        "ISLANE",
+        "GOMES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-12-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09587590651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404412",
+      "line": [
+        "403 39404412"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988594703",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor139@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

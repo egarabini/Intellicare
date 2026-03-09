@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01093",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SUZANE",
+        "MACEDO",
+        "DA"
+      ],
+      "family": "CUNHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-06-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61921726172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72650220",
+      "line": [
+        "QD 802 CONJ 3A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998414825",
+      "use": "home"
+    }
+  ]
+}

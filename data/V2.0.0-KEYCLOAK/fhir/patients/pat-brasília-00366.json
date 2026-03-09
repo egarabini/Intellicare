@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00366",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "GONZAGA",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-02-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "49495330106"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572406",
+      "line": [
+        "06"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998314964",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luizvascaindo362@gmail.com",
+      "use": "home"
+    }
+  ]
+}

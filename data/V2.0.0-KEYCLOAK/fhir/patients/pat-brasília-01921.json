@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01921",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LILIA",
+        "DO",
+        "APARO",
+        "SILVA"
+      ],
+      "family": "ERICEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-12-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "25340581268"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991877789",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mc998291630@gmail.com",
+      "use": "home"
+    }
+  ]
+}

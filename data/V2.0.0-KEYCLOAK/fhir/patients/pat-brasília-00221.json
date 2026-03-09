@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00221",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIANA",
+        "APARECIDA",
+        "LOPES",
+        "ZAGATTO"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-04-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72619953120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72410500",
+      "line": [
+        "15 APP 604"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992544184",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabiana.gagatto@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07586",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERIK",
+        "OLIVEIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06141784607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403151",
+      "line": [
+        "15 39403151"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991880899",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "erikoliveiradasilvao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

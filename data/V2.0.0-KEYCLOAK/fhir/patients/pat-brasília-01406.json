@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01406",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALESSANDRA",
+        "LIMA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-04-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02713142148"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571023",
+      "line": [
+        "2 71571023"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6194297163",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alessandralima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00919",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLY",
+        "NUNES"
+      ],
+      "family": "AMORIM"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63279197317"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984472263",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kellynunes1008@gmail.com",
+      "use": "home"
+    }
+  ]
+}

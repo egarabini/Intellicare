@@ -1,0 +1,34 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-pat-brasília-00022-creat-21",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2160-0",
+        "display": "Creatinina"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00022"
+  },
+  "effectiveDateTime": "2025-11-21T06:34:39Z",
+  "valueQuantity": {
+    "value": 2.04,
+    "unit": "mg/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mg/dL"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "value": 0.7
+      },
+      "high": {
+        "value": 1.2
+      }
+    }
+  ]
+}

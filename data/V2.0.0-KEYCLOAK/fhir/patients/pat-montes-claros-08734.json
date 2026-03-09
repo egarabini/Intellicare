@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08734",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JESSICA",
+        "ISABELY",
+        "SOUSA",
+        "SANTOS",
+        "RIBEIRO"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01951780680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401466",
+      "line": [
+        "158 39401466"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991165067",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jesica.ribeiro.izabele@gmail.com",
+      "use": "home"
+    }
+  ]
+}

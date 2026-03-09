@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08935",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DOMINGOS",
+        "DOS",
+        "REIS"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88797210625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39409899",
+      "line": [
+        "1 LAGOINHA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998418732",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "domingospereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01519",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEUSIMAR",
+        "DOS",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01946221180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72547801",
+      "line": [
+        "517 CJA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991713271",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deusimardos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

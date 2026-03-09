@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01429",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TANIA",
+        "APARECIDA",
+        "RIBEIRO"
+      ],
+      "family": "ALVARENGA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-12-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06583632632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403553",
+      "line": [
+        "505"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988450630",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taniaaparecida@gmail.com",
+      "use": "home"
+    }
+  ]
+}

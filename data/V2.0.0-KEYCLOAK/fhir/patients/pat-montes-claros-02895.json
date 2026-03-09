@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02895",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THABATA",
+        "MARIANE",
+        "FELISBEK"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-04-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11754256643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404061",
+      "line": [
+        "1109 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991673610",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amadodoscolchoes@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

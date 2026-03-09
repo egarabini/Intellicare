@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08641",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAMILA",
+        "FERNANDA",
+        "REIS"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17857602620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403170",
+      "line": [
+        "760 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988382773",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kamilafernanda013@gmail.com.br",
+      "use": "home"
+    }
+  ]
+}

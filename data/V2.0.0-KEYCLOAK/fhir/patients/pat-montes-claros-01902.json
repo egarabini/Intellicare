@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01902",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BIANCA",
+        "GABRIELLE",
+        "SILVA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-07-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70575486643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401244",
+      "line": [
+        "250"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998945085",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "biancagabrielle29@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

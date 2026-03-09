@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07927",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIEL",
+        "ARAUJO",
+        "SANTOA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-04-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02592666630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400503",
+      "line": [
+        "319 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38995857467",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owd2eew3g1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05877",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WERLES",
+        "SANTOS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07359485690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404306",
+      "line": [
+        "899"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992058430",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaeduardaoliveirasantos435@gmail.com",
+      "use": "home"
+    }
+  ]
+}

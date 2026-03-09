@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06114",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUSTAVO",
+        "HENRIQUE",
+        "SOUZA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-11-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70273342673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401544",
+      "line": [
+        "250"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997472048",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "db612032@gmail.com",
+      "use": "home"
+    }
+  ]
+}

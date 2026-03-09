@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08805",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ALEXANDRE",
+        "AGUIAR",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05036026632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403017",
+      "line": [
+        "217"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999646719",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosalexandreaguiar881@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "resourceType": "Organization",
+  "id": "org-sms-montesclaros",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes",
+      "value": "2000002"
+    }
+  ],
+  "name": "Secretaria Municipal de Saúde de Montes Claros",
+  "alias": [
+    "SMS Montes Claros"
+  ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "govt",
+          "display": "Government"
+        }
+      ]
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "Praça Doutor Carlos",
+        "Centro"
+      ],
+      "city": "Montes Claros",
+      "state": "MG",
+      "postalCode": "39400-001"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "383221-5000"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id",
+      "valueString": "secretaria-montesclaros"
+    }
+  ]
+}

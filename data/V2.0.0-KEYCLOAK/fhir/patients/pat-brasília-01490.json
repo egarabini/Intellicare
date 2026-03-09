@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01490",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILMARA",
+        "APARECIDA"
+      ],
+      "family": "SOMBRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00518134164"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72502502",
+      "line": [
+        "10 72502502"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982541256",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silmara@gmail.com",
+      "use": "home"
+    }
+  ]
+}

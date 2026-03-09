@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01874",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCA",
+        "ROSENDO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "75113953415"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71730170",
+      "line": [
+        "102 LOTE 42 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981196781",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscarosendo78@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06590",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ESMERALDINO",
+        "ALVES"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-12-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "48761648604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404526",
+      "line": [
+        "330"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992198352",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "esmeraldinoalves30@gmail.com",
+      "use": "home"
+    }
+  ]
+}

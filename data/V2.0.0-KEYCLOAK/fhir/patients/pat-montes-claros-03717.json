@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03717",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SABRINA",
+        "NOEMI",
+        "RODRIGUES",
+        "SANTOS"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-01-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15481109654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407371",
+      "line": [
+        "591"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999032852",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sabrinanomei206@gmail.com",
+      "use": "home"
+    }
+  ]
+}

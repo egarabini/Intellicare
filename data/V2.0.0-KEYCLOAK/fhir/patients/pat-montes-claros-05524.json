@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05524",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIEGO",
+        "RAMON",
+        "ARAUJO"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09046370690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401433",
+      "line": [
+        "317 39401433"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38982828883",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diegoramonaraujo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

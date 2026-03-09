@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08204",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WASHINGTON",
+        "HANDERSON",
+        "GABRIEL"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-02-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11946099619"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401555",
+      "line": [
+        "267"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999748361",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabrielmoura@gmail.com",
+      "use": "home"
+    }
+  ]
+}

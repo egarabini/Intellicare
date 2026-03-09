@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06102",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANICE",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-12-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88756360606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401264",
+      "line": [
+        "934 39401264"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998787148",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanicedejesussantos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

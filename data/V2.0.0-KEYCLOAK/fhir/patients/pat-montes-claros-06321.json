@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06321",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NICOLY",
+        "SANTOS",
+        "BORGES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-01-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70227941624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403023",
+      "line": [
+        "419 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999151702",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nicsantos12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00492",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SOLANGE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1952-03-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "23963310197"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72220103",
+      "line": [
+        "44 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994529750",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "duxprodutor2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

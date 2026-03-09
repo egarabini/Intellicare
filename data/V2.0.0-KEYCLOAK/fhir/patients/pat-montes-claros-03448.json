@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03448",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HUGO",
+        "DOMINGUES"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-02-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06131525650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402020",
+      "line": [
+        "110"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999640015",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hugoconsultorautomotivo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

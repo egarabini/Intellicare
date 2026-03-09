@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02582",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERUSA",
+        "NEGALHO"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-01-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "33506906100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72145000",
+      "line": [
+        "17 CJ 12"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6182848361",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gerusanegalhodias12345@gmail.com",
+      "use": "home"
+    }
+  ]
+}

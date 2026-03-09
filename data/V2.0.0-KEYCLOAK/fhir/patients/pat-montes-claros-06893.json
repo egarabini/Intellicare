@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06893",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LOURDES",
+        "FRANCISCO",
+        "DE",
+        "AGUIAR"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05054548661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401027",
+      "line": [
+        "20 39401027"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997312815",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lourdesagui1247@gmail.com",
+      "use": "home"
+    }
+  ]
+}

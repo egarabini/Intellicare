@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00967",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSELITA",
+        "GOMES",
+        "DE"
+      ],
+      "family": "FARIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52408795168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70640002",
+      "line": [
+        "01 Q 7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985111815",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joselita@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

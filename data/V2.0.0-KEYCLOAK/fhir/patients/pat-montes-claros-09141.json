@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09141",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIANA",
+        "TAINA",
+        "MEIRELES",
+        "DE"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17917896684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401477",
+      "line": [
+        "51 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999889331",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcelo.algustoats01@gmail.com",
+      "use": "home"
+    }
+  ]
+}

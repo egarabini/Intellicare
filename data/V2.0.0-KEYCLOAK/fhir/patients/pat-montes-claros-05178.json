@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05178",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "FATIMA",
+        "BATISTA",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47246650687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400804",
+      "line": [
+        "26"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988545745",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maikondouglas2903@gmail.com",
+      "use": "home"
+    }
+  ]
+}

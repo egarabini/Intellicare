@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02357",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THALIANY",
+        "INGRID",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "MACHADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50987629875"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401038",
+      "line": [
+        "127 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999969752",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thallianyingriid847@gmail.com",
+      "use": "home"
+    }
+  ]
+}

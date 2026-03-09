@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01244",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAMILE",
+        "VILHALBA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-03-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02274420599"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71825201",
+      "line": [
+        "101 12 CJ 1A LT 03 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986727770",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "986282789.c@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01349",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KEROLY",
+        "JULIANA",
+        "BARBOSA"
+      ],
+      "family": "ARGENTINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-04-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08281163186"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591195",
+      "line": [
+        "24 71591195"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6192948879",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kerolyargentino@gmail.com",
+      "use": "home"
+    }
+  ]
+}

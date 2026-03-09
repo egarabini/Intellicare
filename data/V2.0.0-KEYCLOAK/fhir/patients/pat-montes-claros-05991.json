@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05991",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIANA",
+        "DE",
+        "SOUZA",
+        "BRITO"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-02-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76910431634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404142",
+      "line": [
+        "51 RUA AMARILIS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999966527",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adrianajacome2009@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

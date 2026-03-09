@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04589",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATA",
+        "PEREIRA"
+      ],
+      "family": "NEVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-11-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07629091613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404027",
+      "line": [
+        "546"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992398797",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renata.pereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

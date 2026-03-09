@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02335",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSEFRAN",
+        "SILVA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "57895082353"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73369156",
+      "line": [
+        "20 A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991605280",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvacruzjosefran@gmail.com",
+      "use": "home"
+    }
+  ]
+}

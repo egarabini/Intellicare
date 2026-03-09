@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01408",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GEOVANNA",
+        "KEVELLY",
+        "GOMES",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08739965180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73360611",
+      "line": [
+        "39 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994296531",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "giovannakevelly155@gmail.com",
+      "use": "home"
+    }
+  ]
+}

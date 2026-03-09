@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00523",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RUTH",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "AMANCIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "99480115115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72548708",
+      "line": [
+        "418 CONJUNTO H CASA 31"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993282871",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "souzaruth629@gmail.com",
+      "use": "home"
+    }
+  ]
+}

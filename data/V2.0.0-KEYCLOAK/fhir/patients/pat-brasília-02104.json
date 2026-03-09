@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02104",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WAGNER",
+        "LINO"
+      ],
+      "family": "SILVESTRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-04-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70465185134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572100",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998554444",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wagnerlini254@gmail.com",
+      "use": "home"
+    }
+  ]
+}

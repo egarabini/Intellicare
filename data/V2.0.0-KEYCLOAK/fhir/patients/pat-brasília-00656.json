@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00656",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "WILLIANE",
+        "BARBOSA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14524403604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694025",
+      "line": [
+        "23 BOSQUE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998505403",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bmariawilliane09@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00006",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DJAN",
+        "CARLOS",
+        "DIAS"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-11-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08642607173"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693106",
+      "line": [
+        "70 VILA NOVA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996761776",
+      "use": "home"
+    }
+  ]
+}

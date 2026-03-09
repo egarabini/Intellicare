@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02806",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "FIGUEIREDO",
+        "MINEIRO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-05-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11414372604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403222",
+      "line": [
+        "3036 APT 101"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998443911",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucasfmineiro@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01845",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "PEREIRA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-11-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01748301144"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591505",
+      "line": [
+        "23"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993949573",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "desousathaisalves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

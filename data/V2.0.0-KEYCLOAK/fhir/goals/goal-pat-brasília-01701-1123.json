@@ -1,0 +1,25 @@
+{
+  "resourceType": "Goal",
+  "id": "goal-pat-brasília-01701-1123",
+  "lifecycleStatus": "active",
+  "description": {
+    "text": "Manter eGFR estável"
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-01701"
+  },
+  "target": [
+    {
+      "measure": {
+        "coding": [
+          {
+            "display": "Manter eGFR estável"
+          }
+        ]
+      },
+      "detailString": "eGFR > 45 mL/min",
+      "dueDate": "2026-01-26"
+    }
+  ],
+  "startDate": "2026-01-26"
+}

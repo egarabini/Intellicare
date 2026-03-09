@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06944",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ACACIA",
+        "DE",
+        "PAULA"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-11-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56935668620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401123",
+      "line": [
+        "40"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999404836",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carvalho.acacia@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

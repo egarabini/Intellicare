@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00636",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZABEL",
+        "CRISTINA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-07-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89191048168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593455",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995763428",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pereiradevison834@gmail.com",
+      "use": "home"
+    }
+  ]
+}

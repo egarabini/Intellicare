@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00349",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERILDO",
+        "DA",
+        "LUZ"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05965294573"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73369112",
+      "line": [
+        "58"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998107263",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "erildolima41@gmail.com",
+      "use": "home"
+    }
+  ]
+}

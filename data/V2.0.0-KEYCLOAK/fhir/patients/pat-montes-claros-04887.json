@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04887",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELLEN",
+        "SILVA",
+        "MOREIRA"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11938648609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400700",
+      "line": [
+        "5 39400700"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991465934",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

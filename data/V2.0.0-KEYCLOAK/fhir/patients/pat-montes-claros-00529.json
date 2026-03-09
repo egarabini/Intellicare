@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00529",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAEL"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08611660609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400047",
+      "line": [
+        "48"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999640673",
+      "use": "home"
+    }
+  ]
+}

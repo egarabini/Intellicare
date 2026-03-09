@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07335",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFERSON",
+        "MEDEIROS"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-05-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06179780692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400552",
+      "line": [
+        "480"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998149476",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jm4142040@gmail.com",
+      "use": "home"
+    }
+  ]
+}

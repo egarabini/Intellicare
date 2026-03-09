@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01457",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIANA",
+        "AMARAL"
+      ],
+      "family": "SIQUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-07-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11709586648"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39409899",
+      "line": [
+        "3 39409899"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999991651",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eletrosompitzi@gmail.com",
+      "use": "home"
+    }
+  ]
+}

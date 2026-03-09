@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00955",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAURA",
+        "GREICIELLE",
+        "DA",
+        "CRUZ",
+        "PRATES"
+      ],
+      "family": "SOBRINHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-07-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13648702661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403149",
+      "line": [
+        "130 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998076217",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lauraprates2017@gmail.com",
+      "use": "home"
+    }
+  ]
+}

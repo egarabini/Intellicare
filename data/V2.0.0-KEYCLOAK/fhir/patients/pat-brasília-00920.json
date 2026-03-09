@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00920",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "HENRIQUE",
+        "BASILIO"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04812019125"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72650720",
+      "line": [
+        "1 LOTE 1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993315014",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "henrypera06@gmail.com",
+      "use": "home"
+    }
+  ]
+}

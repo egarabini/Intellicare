@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05502",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADENILSON",
+        "DIAS"
+      ],
+      "family": "BRAGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00671326694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407076",
+      "line": [
+        "325"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991763136",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatacristinaaguiarsilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

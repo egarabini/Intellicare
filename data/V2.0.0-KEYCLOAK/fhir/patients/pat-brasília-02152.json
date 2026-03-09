@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02152",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CONCEICAO",
+        "DE",
+        "MARIA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24872547187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72220095",
+      "line": [
+        "12"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985724652",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ceicaanjo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

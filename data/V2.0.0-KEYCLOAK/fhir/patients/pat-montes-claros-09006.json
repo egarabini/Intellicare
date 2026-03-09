@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09006",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIANE",
+        "PEREIRA"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05910482645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401537",
+      "line": [
+        "831 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991278564",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "crispereira-ramos@live.com",
+      "use": "home"
+    }
+  ]
+}

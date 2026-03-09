@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09056",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "VITORIA",
+        "GONCALVES"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16331930639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403069",
+      "line": [
+        "964 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997238582",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "br829460@gmail.com",
+      "use": "home"
+    }
+  ]
+}

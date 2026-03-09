@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01441",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GRACIELIA",
+        "GOMES"
+      ],
+      "family": "FRANCISCA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10738660680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407042",
+      "line": [
+        "701"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988081242",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gracieliagomes24@gmail.com",
+      "use": "home"
+    }
+  ]
+}

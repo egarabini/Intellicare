@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09078",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEONICE",
+        "KATARINY",
+        "AMARO",
+        "SANTOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09898464666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401609",
+      "line": [
+        "113 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984099003",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleo48santos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

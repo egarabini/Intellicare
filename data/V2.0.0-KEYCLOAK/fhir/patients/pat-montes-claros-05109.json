@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05109",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIANA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01620018608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404303",
+      "line": [
+        "1800 39404303"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "27992757001",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "credfinanciautomatriz01@outlook.com",
+      "use": "home"
+    }
+  ]
+}

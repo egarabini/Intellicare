@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04962",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELESBAO",
+        "RIBEIRO"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1943-10-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22094466604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404149",
+      "line": [
+        "130 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999684836",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

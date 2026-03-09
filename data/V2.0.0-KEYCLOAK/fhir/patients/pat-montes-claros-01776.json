@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01776",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIO",
+        "JUNEO",
+        "LOPES"
+      ],
+      "family": "PERERIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16397806618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400003",
+      "line": [
+        "897 39400003"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988603086",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviojune958@gmail.com",
+      "use": "home"
+    }
+  ]
+}

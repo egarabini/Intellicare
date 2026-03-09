@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04032",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMANUELLE",
+        "RUAS"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70602052688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "410 NOVA ESPERANCA CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997340201",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emanuelleruas42@gmail.com",
+      "use": "home"
+    }
+  ]
+}

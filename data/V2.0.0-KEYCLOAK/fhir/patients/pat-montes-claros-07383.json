@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07383",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTINA",
+        "DE",
+        "OLIVIA",
+        "SIQUEIRA"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10108045617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401754",
+      "line": [
+        "289 39401754"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998677861",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carololivamiranda62@gmail.com",
+      "use": "home"
+    }
+  ]
+}

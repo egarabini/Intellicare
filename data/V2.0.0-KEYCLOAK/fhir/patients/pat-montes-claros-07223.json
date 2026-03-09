@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07223",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "EDINILZA",
+        "PEREIRA"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06516478600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405636",
+      "line": [
+        "71 39405636"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988584250",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "medimilza717@gmail.com",
+      "use": "home"
+    }
+  ]
+}

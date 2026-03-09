@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07736",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTINA",
+        "PEREIRA",
+        "DA",
+        "ROCHA"
+      ],
+      "family": "TAVARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-03-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88785955604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401139",
+      "line": [
+        "555 39401139"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988219823",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "f09-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

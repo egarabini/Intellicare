@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02476",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "BARROS",
+        "DE"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "41039629172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330060",
+      "line": [
+        "06 QD 24"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999792979",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jbbmorais456@gmail.com",
+      "use": "home"
+    }
+  ]
+}

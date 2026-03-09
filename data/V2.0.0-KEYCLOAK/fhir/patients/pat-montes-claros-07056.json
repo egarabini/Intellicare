@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07056",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZA",
+        "RAMOS",
+        "RODRIGUES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-11-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11020939630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404078",
+      "line": [
+        "74"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984215013",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lur32237@gmail.com",
+      "use": "home"
+    }
+  ]
+}

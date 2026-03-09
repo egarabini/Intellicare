@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07200",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILENO",
+        "FOGACA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-10-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "26645750668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403346",
+      "line": [
+        "25"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998739449",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbarasantosfroice@gmail.com",
+      "use": "home"
+    }
+  ]
+}

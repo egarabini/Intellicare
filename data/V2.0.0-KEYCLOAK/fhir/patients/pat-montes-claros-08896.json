@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08896",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALTAMIRO",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-08-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50370642600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400825",
+      "line": [
+        "81"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991415495",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlapatricialopes72@gmail.com",
+      "use": "home"
+    }
+  ]
+}

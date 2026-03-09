@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00493",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HERLON",
+        "DEISON",
+        "ALLOANO",
+        "MARTINS"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-12-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05384361158"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71993380",
+      "line": [
+        "14 CHACARA 54"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992561092",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "herlondeisonjr@gmail.com",
+      "use": "home"
+    }
+  ]
+}

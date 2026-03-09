@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08556",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DO",
+        "CARMO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "FRANCA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-07-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01729300650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402717",
+      "line": [
+        "171 39402717"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984347138",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariamariadocarmo148@gmail.com",
+      "use": "home"
+    }
+  ]
+}

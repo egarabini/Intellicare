@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01059",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IDEUISA",
+        "ALVES",
+        "DA",
+        "SILVA"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-10-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01659533147"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "12"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991096464",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ideuisaalves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08110",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORA",
+        "JASMIM",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-09-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70608510629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401259",
+      "line": [
+        "395"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988458973",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deborajasmim6@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

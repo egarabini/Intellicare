@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07763",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NILO",
+        "RODRIGUES",
+        "NASCIMENTO",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-02-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08906913630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401770",
+      "line": [
+        "70 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997359946",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nilo15021996@gmail.com",
+      "use": "home"
+    }
+  ]
+}

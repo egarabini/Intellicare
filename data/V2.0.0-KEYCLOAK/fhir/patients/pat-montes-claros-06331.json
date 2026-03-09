@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06331",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "HENRIQUE",
+        "PEREIRA"
+      ],
+      "family": "PENHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10342196693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405444",
+      "line": [
+        "231 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992618048",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05880",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "GABRIEL",
+        "FELICIO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-11-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70147953685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404534",
+      "line": [
+        "451"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998818845",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaogabriel.email.1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

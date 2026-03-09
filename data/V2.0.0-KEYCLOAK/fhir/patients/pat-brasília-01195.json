@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01195",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDEL",
+        "LUAN",
+        "ROCHA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05576321537"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72260772",
+      "line": [
+        "18 QNO 17 CONJUNTO B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993743503",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wendelluanrs@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01504",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATHALIA",
+        "FERNANDES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-07-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01667248154"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340742",
+      "line": [
+        "10 QUADRA D2"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996801745",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nfernandesantos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

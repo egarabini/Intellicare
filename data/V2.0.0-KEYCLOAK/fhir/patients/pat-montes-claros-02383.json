@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02383",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIANE",
+        "MARTINS",
+        "FONSECA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-11-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12136844636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401218",
+      "line": [
+        "104"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988245746",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juh14martinsrodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

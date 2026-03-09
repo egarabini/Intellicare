@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03262",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTOR",
+        "LUIZ"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-02-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11618617699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401035",
+      "line": [
+        "421 39401035"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988562527",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor139@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

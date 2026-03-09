@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08860",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMARA",
+        "GEOVANA",
+        "OLIVEIRA"
+      ],
+      "family": "CUNHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13391677600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402421",
+      "line": [
+        "371 39402421"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999654123",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oliveiracunha87@gmail.com",
+      "use": "home"
+    }
+  ]
+}

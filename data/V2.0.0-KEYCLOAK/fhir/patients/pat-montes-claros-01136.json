@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01136",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAMELA",
+        "PEREIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70232155658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403049",
+      "line": [
+        "270 CS A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992717473",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santospereirapamela12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

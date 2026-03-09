@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04259",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARILENE",
+        "DE",
+        "JESUS"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00670760684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400578",
+      "line": [
+        "1099 39400578"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988036521",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marimoc20100@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

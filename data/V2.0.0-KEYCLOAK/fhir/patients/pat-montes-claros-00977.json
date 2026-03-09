@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00977",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TATIANNE",
+        "RODRIGUES"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06175552652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400254",
+      "line": [
+        "118 CASA F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998647511",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tatyn831@gmail.com",
+      "use": "home"
+    }
+  ]
+}

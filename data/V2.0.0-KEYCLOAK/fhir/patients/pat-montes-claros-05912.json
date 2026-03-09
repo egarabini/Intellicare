@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05912",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDO",
+        "GONCALVES"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-10-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06611616683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400596",
+      "line": [
+        "208 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999407492",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nando@gmail.com",
+      "use": "home"
+    }
+  ]
+}

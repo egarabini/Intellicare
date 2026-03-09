@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06433",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANE",
+        "RABELO"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02706436646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401139",
+      "line": [
+        "638"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999782837",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vivianerabelo1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

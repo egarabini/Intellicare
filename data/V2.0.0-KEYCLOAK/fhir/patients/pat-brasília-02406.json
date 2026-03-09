@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02406",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAPHAEL",
+        "RODRIGUES"
+      ],
+      "family": "PIRES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04050870126"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73355503",
+      "line": [
+        "01 CONJUNTO 3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995857562",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rapheal.rodrigues1993@ggmail.com",
+      "use": "home"
+    }
+  ]
+}

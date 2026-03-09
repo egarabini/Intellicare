@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01860",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOYCE",
+        "SILVA"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-06-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08834506669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401259",
+      "line": [
+        "479 39401259"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991484843",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thalitafranciele14@gmail.com",
+      "use": "home"
+    }
+  ]
+}

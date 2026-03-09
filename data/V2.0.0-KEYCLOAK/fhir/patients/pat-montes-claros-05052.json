@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05052",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LILIAN",
+        "GIORDANA",
+        "BARBOSA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08968201650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404158",
+      "line": [
+        "485 39404158"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999527446",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lilian@gmail.com",
+      "use": "home"
+    }
+  ]
+}

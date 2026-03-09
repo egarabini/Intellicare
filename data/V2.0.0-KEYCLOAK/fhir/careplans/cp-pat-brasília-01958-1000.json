@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-01958-1000",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Hipertensão essencial (primária), Hipertensão essencial (primária)",
+  "description": "Condições: Hipertensão essencial (primária), Hipertensão essencial (primária)",
+  "subject": {
+    "reference": "Patient/pat-brasília-01958"
+  },
+  "period": {
+    "start": "2025-10-08"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-01958-1000"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

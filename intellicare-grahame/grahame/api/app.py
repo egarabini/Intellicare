@@ -27,6 +27,7 @@ from .routes.ccda_routes import router as ccda_router
 from .routes.hl7v2_routes import router as hl7v2_router, init_hl7v2_publisher
 from .routes.hl7v2_admin import router as hl7v2_admin_router
 from .routes.hl7v2_audit_routes import router as hl7v2_audit_router
+from .routes.bridge_routes import router as bridge_router
 from .routes.ai_routes import router as ai_router
 from .routes.custom_operations_routes import (
     admin_custom_ops_router,
@@ -226,6 +227,7 @@ app.include_router(ccda_router, prefix="/api/v1")
 app.include_router(hl7v2_router, prefix="/api/v1")
 app.include_router(hl7v2_admin_router, prefix="/api/v1")
 app.include_router(hl7v2_audit_router, prefix="/api/v1")
+app.include_router(bridge_router)
 app.include_router(ai_router, prefix="/api/v1")
 app.include_router(fhir_custom_ops_router, prefix="/api/v1")
 app.include_router(excalidraw_router, prefix="/api/v1")

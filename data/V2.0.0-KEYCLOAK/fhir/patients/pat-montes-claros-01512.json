@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01512",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEZIEL",
+        "FERREIRA",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02210739659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39410000",
+      "line": [
+        "220 39410000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998882828",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jezielferreira0@gmail.com",
+      "use": "home"
+    }
+  ]
+}

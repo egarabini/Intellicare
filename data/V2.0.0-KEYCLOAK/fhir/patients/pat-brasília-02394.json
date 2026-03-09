@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02394",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADELIA",
+        "MUNIZ",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1947-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15104559149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805725",
+      "line": [
+        "25 LOTE 27"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "79999396270",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adiliarios98@gmail.com",
+      "use": "home"
+    }
+  ]
+}

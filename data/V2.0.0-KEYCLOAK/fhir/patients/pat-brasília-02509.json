@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02509",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "NASCIMENTO"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07883703161"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587376",
+      "line": [
+        "5 APT 303"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981588701",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sp3354132@gmail.com",
+      "use": "home"
+    }
+  ]
+}

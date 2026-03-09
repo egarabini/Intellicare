@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03727",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FELIPE",
+        "CAMPELO"
+      ],
+      "family": "SABBADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-05-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06887573679"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400345",
+      "line": [
+        "183 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998663519",
+      "use": "home"
+    }
+  ]
+}

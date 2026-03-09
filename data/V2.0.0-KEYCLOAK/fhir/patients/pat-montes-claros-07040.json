@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07040",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALCIR",
+        "OLIVEIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-12-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05359364602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406763",
+      "line": [
+        "140 39406763"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988067515",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valciroliveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

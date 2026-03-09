@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01278",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SUELY",
+        "GONCALVES",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05812084637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404674",
+      "line": [
+        "10 39404674"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998700955",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

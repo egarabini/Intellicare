@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07492",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WARLEY",
+        "HENRIQUE",
+        "PEREIRA",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84998610678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400492",
+      "line": [
+        "97 97A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999950804",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "warleyhenrique.vivo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

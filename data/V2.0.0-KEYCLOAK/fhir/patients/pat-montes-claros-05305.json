@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05305",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IGOR",
+        "DIEGO",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07114511680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403672",
+      "line": [
+        "725"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999860110",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vikileal83@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

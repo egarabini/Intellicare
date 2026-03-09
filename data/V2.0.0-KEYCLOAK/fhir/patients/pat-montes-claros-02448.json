@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02448",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GLADSTON",
+        "ADAO",
+        "FREIRE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-01-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05665852600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400804",
+      "line": [
+        "249 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998867375",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gladstonjunior390@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

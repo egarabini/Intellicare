@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08140",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUILHERME",
+        "ALMEIDA"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07660277677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401107",
+      "line": [
+        "375 39401107"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38981151214",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "guihenrto@gmail.com.br",
+      "use": "home"
+    }
+  ]
+}

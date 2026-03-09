@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02618",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAUANE",
+        "PEREIRA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-04-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62555902325"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72236800",
+      "line": [
+        "40 SHSN 02 CONJUNO A1 LOTE 40"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6185157629",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "souzasouzakauane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

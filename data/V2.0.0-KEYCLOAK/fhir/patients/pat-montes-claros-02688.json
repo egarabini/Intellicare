@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02688",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OTACILIO",
+        "ALVES"
+      ],
+      "family": "FRANCA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71713204649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402124",
+      "line": [
+        "90 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991281129",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "euzysilva22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

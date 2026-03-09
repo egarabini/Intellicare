@@ -1,0 +1,33 @@
+{
+  "resourceType": "RelatedPerson",
+  "id": "rel-pat-montes-claros-00064-163",
+  "patient": {
+    "reference": "Patient/pat-montes-claros-00064"
+  },
+  "relationship": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "Mãe",
+          "display": "Mãe"
+        }
+      ]
+    }
+  ],
+  "name": [
+    {
+      "family": "Souza",
+      "given": [
+        "Carlos"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984048523",
+      "use": "mobile"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01227",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MANOEL",
+        "NETO",
+        "SANTOS",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-03-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03892241112"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71731440",
+      "line": [
+        "02 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984030625",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "manoelnetosantos1999@gmail.com",
+      "use": "home"
+    }
+  ]
+}

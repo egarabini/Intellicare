@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02566",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOZUEL",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1947-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "44406606149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "61"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61959652626",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jozuelrodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

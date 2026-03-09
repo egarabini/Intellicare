@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01448",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIANO",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "VASCO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72757183168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805713",
+      "line": [
+        "13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984529165",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vasco.adriano222@gmail.com",
+      "use": "home"
+    }
+  ]
+}

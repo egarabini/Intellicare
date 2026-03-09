@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05957",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATANAEL",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10126394601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404476",
+      "line": [
+        "12"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999586534",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "natanaelasafeanna@gmail.com",
+      "use": "home"
+    }
+  ]
+}

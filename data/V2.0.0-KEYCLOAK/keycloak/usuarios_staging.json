@@ -1,0 +1,91 @@
+{
+  "realm": "bemcuidar",
+  "default_password": "Staging@2026!",
+  "users": [
+    {
+      "username": "admin@intellicare.ia.br",
+      "email": "admin@intellicare.ia.br",
+      "firstName": "Platform",
+      "lastName": "Admin",
+      "roles": ["PLATFORM_ADMIN"],
+      "attributes": {"tenant_id": ["platform"], "tenants": ["platform"]}
+    },
+    {
+      "username": "gestor.sesdf@saude.df.gov.br",
+      "email": "gestor.sesdf@saude.df.gov.br",
+      "firstName": "Roberto",
+      "lastName": "Almeida",
+      "roles": ["TENANT_GESTOR"],
+      "attributes": {"tenant_id": ["secretaria-brasilia"], "tenants": ["secretaria-brasilia"]}
+    },
+    {
+      "username": "gestor.sms@montesclaros.mg.gov.br",
+      "email": "gestor.sms@montesclaros.mg.gov.br",
+      "firstName": "Carla",
+      "lastName": "Mendes",
+      "roles": ["TENANT_GESTOR"],
+      "attributes": {"tenant_id": ["secretaria-montesclaros"], "tenants": ["secretaria-montesclaros"]}
+    },
+    {
+      "username": "gestor.hran@saude.df.gov.br",
+      "email": "gestor.hran@saude.df.gov.br",
+      "firstName": "Paulo Henrique",
+      "lastName": "Costa",
+      "roles": ["TENANT_GESTOR"],
+      "attributes": {"tenant_id": ["hospital-brasilia"], "tenants": ["hospital-brasilia"]}
+    },
+    {
+      "username": "gestor.santacasa@santacasa-mc.org.br",
+      "email": "gestor.santacasa@santacasa-mc.org.br",
+      "firstName": "Mariana",
+      "lastName": "Souza",
+      "roles": ["TENANT_GESTOR"],
+      "attributes": {"tenant_id": ["hospital-montesclaros"], "tenants": ["hospital-montesclaros"]}
+    },
+    {
+      "username": "carlos.silva@hran.org.br",
+      "email": "carlos.silva@hran.org.br",
+      "firstName": "Carlos Eduardo",
+      "lastName": "Silva",
+      "roles": ["MEDICO"],
+      "attributes": {"tenant_id": ["hospital-brasilia"], "tenants": ["hospital-brasilia"]},
+      "practitioner_id": "prac-001"
+    },
+    {
+      "username": "ana.santos@hran.org.br",
+      "email": "ana.santos@hran.org.br",
+      "firstName": "Ana Paula",
+      "lastName": "Santos",
+      "roles": ["MEDICO"],
+      "attributes": {"tenant_id": ["hospital-brasilia"], "tenants": ["hospital-brasilia"]},
+      "practitioner_id": "prac-002"
+    },
+    {
+      "username": "maria.carmo@ubs-df.gov.br",
+      "email": "maria.carmo@ubs-df.gov.br",
+      "firstName": "Maria",
+      "lastName": "do Carmo",
+      "roles": ["ENFERMEIRO"],
+      "attributes": {"tenant_id": ["secretaria-brasilia"], "tenants": ["secretaria-brasilia"]},
+      "practitioner_id": "prac-005"
+    },
+    {
+      "username": "joao.costa@santacasa-mc.org.br",
+      "email": "joao.costa@santacasa-mc.org.br",
+      "firstName": "João Pedro",
+      "lastName": "Costa",
+      "roles": ["MEDICO"],
+      "attributes": {"tenant_id": ["hospital-montesclaros"], "tenants": ["hospital-montesclaros"]},
+      "practitioner_id": "prac-006"
+    },
+    {
+      "username": "paulo.henrique@ubs-mc.gov.br",
+      "email": "paulo.henrique@ubs-mc.gov.br",
+      "firstName": "Paulo",
+      "lastName": "Henrique",
+      "roles": ["ENFERMEIRO"],
+      "attributes": {"tenant_id": ["secretaria-montesclaros"], "tenants": ["secretaria-montesclaros"]},
+      "practitioner_id": "prac-008"
+    }
+  ]
+}

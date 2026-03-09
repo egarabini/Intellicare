@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00939",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVON",
+        "BATISTA",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-01-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06810748172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71735103",
+      "line": [
+        "05 01 CJ 03 CS"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998119558",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ivonalmeida1956@hotemail.com",
+      "use": "home"
+    }
+  ]
+}

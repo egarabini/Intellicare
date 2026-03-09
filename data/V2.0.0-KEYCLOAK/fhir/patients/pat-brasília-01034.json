@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01034",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITOR",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-06-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04918399363"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571601",
+      "line": [
+        "14 71571601"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6193372189",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitinmarque90@gmail.com",
+      "use": "home"
+    }
+  ]
+}

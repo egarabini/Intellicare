@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02981",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUNIA",
+        "MARIA",
+        "RODRIGUES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-05-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08889822678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400283",
+      "line": [
+        "01"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998093420",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juniamariarodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

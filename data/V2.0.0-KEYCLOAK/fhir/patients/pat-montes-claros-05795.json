@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05795",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AYRTON",
+        "CYRINO",
+        "MORAIS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-02-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08841267658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404113",
+      "line": [
+        "215"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991789995",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cyrinoayrton@gmail.com",
+      "use": "home"
+    }
+  ]
+}

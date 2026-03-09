@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04340",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CASSIANO",
+        "DIRCEU",
+        "MENDES"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03322410684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407034",
+      "line": [
+        "30 39407034"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998356988",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fl09-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

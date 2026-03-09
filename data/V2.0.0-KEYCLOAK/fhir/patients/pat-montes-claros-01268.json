@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01268",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TINARA",
+        "DOS",
+        "REIS"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2007-05-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70513944605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404490",
+      "line": [
+        "46 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998634252",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tainaradosreismartins350@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03830",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SONIA",
+        "BEATRIZ"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-12-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92027970649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402379",
+      "line": [
+        "63 39402379"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999093153",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "soniabandrade@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02908",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAYNARA",
+        "CAROLINE",
+        "GARVONE"
+      ],
+      "family": "PRATES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70187828644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403073",
+      "line": [
+        "126 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999956719",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taynara7prates@gmail.com",
+      "use": "home"
+    }
+  ]
+}

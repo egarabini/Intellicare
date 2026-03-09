@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02009",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "VICTOR",
+        "NERY"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-06-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17866416664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404318",
+      "line": [
+        "281 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998959742",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mvictornery189@gmail.com",
+      "use": "home"
+    }
+  ]
+}

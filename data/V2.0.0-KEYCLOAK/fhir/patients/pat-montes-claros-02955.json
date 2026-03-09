@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02955",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SONIA",
+        "SALETE",
+        "MOTA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1954-02-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "21807388620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401068",
+      "line": [
+        "67"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988344804",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "soniasmm.moco@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

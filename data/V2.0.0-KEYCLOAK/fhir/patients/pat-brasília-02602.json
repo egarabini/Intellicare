@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02602",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAMAIRA",
+        "PEREIRA"
+      ],
+      "family": "CALADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04782422121"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71725500",
+      "line": [
+        "10 05 CJ B CS"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996153986",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jamairacalado33@gmail.com",
+      "use": "home"
+    }
+  ]
+}

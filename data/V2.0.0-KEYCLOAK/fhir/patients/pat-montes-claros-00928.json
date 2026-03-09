@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00928",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEITON",
+        "CHARLES",
+        "GONCALVES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-09-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11827608641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404847",
+      "line": [
+        "1110 39404847"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998063494",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleitoncharles@gmail.com",
+      "use": "home"
+    }
+  ]
+}

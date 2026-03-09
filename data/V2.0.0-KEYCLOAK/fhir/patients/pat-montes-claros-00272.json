@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00272",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITORIA",
+        "MONIQUE",
+        "BATISTA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16126850645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404458",
+      "line": [
+        "128"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991004811",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitoriabmonique@gmail.com",
+      "use": "home"
+    }
+  ]
+}

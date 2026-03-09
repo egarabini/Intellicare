@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01784",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARILANDIA",
+        "SANTOS"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03160022676"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403214",
+      "line": [
+        "1022 39403214"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991730271",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nobredelda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

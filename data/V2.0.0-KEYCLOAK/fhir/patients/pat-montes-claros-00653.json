@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00653",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "JACKSON",
+        "ALVES",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SAMPAIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-02-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07965979608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402206",
+      "line": [
+        "466"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984111726",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jajamarceloh07@gmail.com",
+      "use": "home"
+    }
+  ]
+}

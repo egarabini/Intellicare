@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07838",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "VINICIUS",
+        "NUNES"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-10-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70131972626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402330",
+      "line": [
+        "82 39402330"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991246498",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcosthsvinicius@gmail.com",
+      "use": "home"
+    }
+  ]
+}

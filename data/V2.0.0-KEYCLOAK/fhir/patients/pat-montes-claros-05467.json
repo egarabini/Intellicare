@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05467",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIO",
+        "DEUSDETE",
+        "PINHEIRO"
+      ],
+      "family": "NOBRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-04-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53116836604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400372",
+      "line": [
+        "388 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998391964",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudiodeudete@gmail.com",
+      "use": "home"
+    }
+  ]
+}

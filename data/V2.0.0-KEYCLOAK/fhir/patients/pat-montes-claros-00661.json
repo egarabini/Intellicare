@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00661",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELMI",
+        "TEIXEIRA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-03-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86798413668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404407",
+      "line": [
+        "213 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988331801",
+      "use": "home"
+    }
+  ]
+}

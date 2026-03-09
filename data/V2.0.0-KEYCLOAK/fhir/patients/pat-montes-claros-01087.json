@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01087",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "FABIO",
+        "EDUARDO"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10261871684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401034",
+      "line": [
+        "255 39401034"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998911041",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kauaneduardoeduardo346@gmail.com",
+      "use": "home"
+    }
+  ]
+}

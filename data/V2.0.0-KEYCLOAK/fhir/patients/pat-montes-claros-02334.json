@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02334",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIDNEI",
+        "BARBOSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-06-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "25175500856"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401486",
+      "line": [
+        "1867 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992622355",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sidneisilva96@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

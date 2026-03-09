@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00285",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CELIA",
+        "MARIA",
+        "DAVINO",
+        "PINHEIRO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1951-06-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78205280878"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403493",
+      "line": [
+        "202 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998461785",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "celiamariadavino@gmail.com",
+      "use": "home"
+    }
+  ]
+}

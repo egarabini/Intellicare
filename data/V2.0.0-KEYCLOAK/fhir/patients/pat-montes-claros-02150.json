@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02150",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIANE",
+        "DE",
+        "FATIMA",
+        "NEVES",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-09-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03606118694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403481",
+      "line": [
+        "59 39403481"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999842150",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "licaneves294@gmail.com",
+      "use": "home"
+    }
+  ]
+}

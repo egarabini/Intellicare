@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02727",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIENE",
+        "FONSECA"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-11-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09897996621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407482",
+      "line": [
+        "251"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997365635",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elienefonseca837@gmail.com",
+      "use": "home"
+    }
+  ]
+}

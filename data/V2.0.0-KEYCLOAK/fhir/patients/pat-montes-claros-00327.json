@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00327",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "FELIPE",
+        "HENRIQUE"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02195530685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401632",
+      "line": [
+        "106"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38985434333",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielkennedy12333344@gmail.com",
+      "use": "home"
+    }
+  ]
+}

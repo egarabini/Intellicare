@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01382",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAQUIN",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "COSRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1958-05-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84554940187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368434",
+      "line": [
+        "51 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "62996901610",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaquinpereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

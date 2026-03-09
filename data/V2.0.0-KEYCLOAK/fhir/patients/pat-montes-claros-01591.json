@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01591",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAXUEL",
+        "JUNEO",
+        "PEREIRA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-02-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13169357603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403108",
+      "line": [
+        "60 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984239781",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maxueljuneom@gmail.com",
+      "use": "home"
+    }
+  ]
+}

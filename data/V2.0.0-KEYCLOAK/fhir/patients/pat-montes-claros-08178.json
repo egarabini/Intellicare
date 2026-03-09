@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08178",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEYSE",
+        "DAYANE",
+        "SOUZA"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10619758600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402156",
+      "line": [
+        "21 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991562251",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deyse.dayane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

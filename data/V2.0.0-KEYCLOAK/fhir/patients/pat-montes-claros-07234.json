@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07234",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDERLIN",
+        "CARVALHO",
+        "SANTOS"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-07-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16603998661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403212",
+      "line": [
+        "674 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999220336",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wenderlincavalho123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

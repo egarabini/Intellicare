@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07103",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "ALVES"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-05-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02870627831"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401435",
+      "line": [
+        "45"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988622183",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pedro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

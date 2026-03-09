@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01862",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAUANA",
+        "SILVA"
+      ],
+      "family": "BEZERRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-03-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02835858547"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72275100",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "77998604520",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "guanambi@redenorte.com.br",
+      "use": "home"
+    }
+  ]
+}

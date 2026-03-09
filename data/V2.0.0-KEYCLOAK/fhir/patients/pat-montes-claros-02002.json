@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02002",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROMARIO",
+        "MIGUEL",
+        "LIMA"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-09-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11367387620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402823",
+      "line": [
+        "860"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992258990",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "romariomiguel860@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01236",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSA",
+        "COSTA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-03-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86196162349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72120570",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981212346",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosacostaneta0@gmail.com",
+      "use": "home"
+    }
+  ]
+}

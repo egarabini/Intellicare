@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02048",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SANDIO",
+        "JUNHO",
+        "LOPES"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-06-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06280949141"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71555367",
+      "line": [
+        "15 QUADRA 9 CONJUNTO I"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999039735",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "duda059745duda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

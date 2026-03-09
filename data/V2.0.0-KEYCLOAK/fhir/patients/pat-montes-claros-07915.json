@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07915",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAEL",
+        "PIETRO",
+        "NUNES",
+        "DE"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10206139632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400381",
+      "line": [
+        "394 CSA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988374360",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rafaelpietro2006@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

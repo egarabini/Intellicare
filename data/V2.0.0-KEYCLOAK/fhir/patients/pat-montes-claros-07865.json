@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07865",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCA",
+        "DE",
+        "FATIMA",
+        "FERREIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-10-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84503084615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402323",
+      "line": [
+        "12"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999601296",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "francisca123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

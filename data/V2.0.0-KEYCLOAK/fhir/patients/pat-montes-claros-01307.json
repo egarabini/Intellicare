@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01307",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANE",
+        "KAROLINE",
+        "RODRIGUES"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-12-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "19019285602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402594",
+      "line": [
+        "3425 39402594"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999288463",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karolineane908@gmail.com",
+      "use": "home"
+    }
+  ]
+}

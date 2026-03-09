@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00359",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GODOFREDO",
+        "RAIMUNDO",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70267308604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403163",
+      "line": [
+        "163 39403163"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999602167",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "med-pat-montes-claros-00008-21",
+  "status": "active",
+  "intent": "order",
+  "medicationCodeableConcept": {
+    "coding": [
+      {
+        "system": "http://www.saude.gov.br/fhir/r4/CodeSystem/brmed",
+        "display": "Insulina NPH"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00008"
+  },
+  "authoredOn": "2026-02-17T06:11:49Z",
+  "dosageInstruction": [
+    {
+      "timing": {
+        "repeat": {
+          "frequency": 1,
+          "period": 1,
+          "periodUnit": "d"
+        }
+      },
+      "route": {
+        "text": "Oral"
+      }
+    }
+  ]
+}

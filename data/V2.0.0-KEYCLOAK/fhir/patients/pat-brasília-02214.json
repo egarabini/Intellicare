@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02214",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVO",
+        "GALVAO"
+      ],
+      "family": "VIDAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "46124764172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61989859595",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscafer@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

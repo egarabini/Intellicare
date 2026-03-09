@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08003",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ONEIDE",
+        "CARDOSO"
+      ],
+      "family": "SAMPAIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-02-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84990171691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403151",
+      "line": [
+        "1144 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991083123",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oneideesampaio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

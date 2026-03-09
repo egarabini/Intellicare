@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04098",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEILA",
+        "TATIANE",
+        "FREITAS"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-02-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05856964624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400742",
+      "line": [
+        "244 39400742"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992020301",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leilataty2107@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

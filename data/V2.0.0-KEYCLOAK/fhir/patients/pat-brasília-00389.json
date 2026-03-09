@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00389",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AURIC�LIA",
+        "TRINDADE"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-06-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05621670302"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71070012",
+      "line": [
+        "208"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995782994",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "celia92mendes@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

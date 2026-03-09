@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02138",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERALDO",
+        "DE",
+        "FREITAS"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1951-07-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80219691649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403114",
+      "line": [
+        "208"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991589267",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorranyt191@gmail.com",
+      "use": "home"
+    }
+  ]
+}

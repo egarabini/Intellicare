@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04296",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADERSON",
+        "NASCIMENTO"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10858239620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400866",
+      "line": [
+        "305 39400866"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991790072",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@gmail.com",
+      "use": "home"
+    }
+  ]
+}

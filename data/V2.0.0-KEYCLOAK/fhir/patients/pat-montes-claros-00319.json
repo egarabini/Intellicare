@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00319",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANE",
+        "MARIA",
+        "DE",
+        "SENA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-12-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03494833613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403171",
+      "line": [
+        "50 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999599055",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vivimaria@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

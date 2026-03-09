@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01115",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ALVES",
+        "LACERDA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06013960305"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72225273",
+      "line": [
+        "104 BLOCO D"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982758879",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carloslacerdafilho@ootiluk",
+      "use": "home"
+    }
+  ]
+}

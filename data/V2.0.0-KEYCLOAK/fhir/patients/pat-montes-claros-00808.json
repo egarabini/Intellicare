@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00808",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VILMA",
+        "SANTOS"
+      ],
+      "family": "ALCANTARA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-06-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "58627723672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "00000000",
+      "line": [
+        "131 AP 201"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997270832",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vilmasantosalcantara49@gmail.com",
+      "use": "home"
+    }
+  ]
+}

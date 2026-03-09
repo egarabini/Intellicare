@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01368",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILVANA",
+        "MARIA",
+        "DE",
+        "MACEDO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-09-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05389754158"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73402036",
+      "line": [
+        "20 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991373724",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "irene3943545@gmail.com",
+      "use": "home"
+    }
+  ]
+}

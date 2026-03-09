@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07355",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "MACEDO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-10-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10611095696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403513",
+      "line": [
+        "697 AP"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992289344",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "matheusmacedosantos16@gmail.com",
+      "use": "home"
+    }
+  ]
+}

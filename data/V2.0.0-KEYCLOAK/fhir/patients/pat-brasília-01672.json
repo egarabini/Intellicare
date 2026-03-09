@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01672",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDINEIA",
+        "SALES",
+        "DE"
+      ],
+      "family": "ANCHIETA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03044045193"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593675",
+      "line": [
+        "7 71593675"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6182101627",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cllaudiaanchyeta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

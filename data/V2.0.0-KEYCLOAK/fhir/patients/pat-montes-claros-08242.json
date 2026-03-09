@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08242",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "APARECIDA",
+        "FERNANDES",
+        "DE"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05473914632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402564",
+      "line": [
+        "35"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998382686",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "daniellearantesdenunes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03708",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDO",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-09-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "31575847825"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404853",
+      "line": [
+        "339 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "14997672210",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fqueiroz665@gmail.com",
+      "use": "home"
+    }
+  ]
+}

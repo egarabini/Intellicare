@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01692",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "DE",
+        "SOUZA",
+        "GUERRA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-04-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93252684691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400050",
+      "line": [
+        "369"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988494370",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mineiroguerra16@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

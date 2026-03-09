@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02351",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "NECI",
+        "NUNES",
+        "COSTA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "57954186172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572808",
+      "line": [
+        "10 71572808"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6181305946",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mneci87@ggmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01046",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CAROLINA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "CAMPOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-10-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04439509118"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72430208",
+      "line": [
+        "CONJUNTO H"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996981499",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carolinacamposacs@gmail.com",
+      "use": "home"
+    }
+  ]
+}

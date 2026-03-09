@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02401",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREIA",
+        "FERNANDES",
+        "MOURA"
+      ],
+      "family": "FELIX"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-10-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69914575153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573106",
+      "line": [
+        "14"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996211661",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andreiafernandes79@gmail.com",
+      "use": "home"
+    }
+  ]
+}

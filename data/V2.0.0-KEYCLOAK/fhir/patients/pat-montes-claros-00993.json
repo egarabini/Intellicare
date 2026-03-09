@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00993",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "INES",
+        "COSTA"
+      ],
+      "family": "NEVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74857371634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402369",
+      "line": [
+        "626 39402369"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997454381",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "inesm6834@gmail.com",
+      "use": "home"
+    }
+  ]
+}

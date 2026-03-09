@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01389",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCIELE",
+        "CARDOSO"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11770144676"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72215080",
+      "line": [
+        "12 QNM 7 CONJ J"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982413193",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "francielec@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

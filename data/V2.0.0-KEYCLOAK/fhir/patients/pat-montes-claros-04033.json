@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04033",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "CORDEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-07-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01971556696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404789",
+      "line": [
+        "494"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991965629",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunodejesesmoc9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01669",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDA",
+        "GONCALVES"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-09-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02141025648"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401187",
+      "line": [
+        "206"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988593727",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "88593727fernanda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

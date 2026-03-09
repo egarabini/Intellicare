@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03384",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILLY",
+        "VICTORIA",
+        "ALVES",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-12-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17719389603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406365",
+      "line": [
+        "67 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999257384",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ev2805884@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07023",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARIANY",
+        "SAMPAIO"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-10-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16094211677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400786",
+      "line": [
+        "38"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998553895",
+      "use": "home"
+    }
+  ]
+}

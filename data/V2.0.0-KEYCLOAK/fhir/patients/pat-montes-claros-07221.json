@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07221",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RANAILSON",
+        "PEREIRA"
+      ],
+      "family": "FRAGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10839731698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400002",
+      "line": [
+        "100 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988338718",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ronycomidajaponesa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01219",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILBERLITO",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "MOURENTINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-12-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "57618089515"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590532",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "71987951331",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilberlito@gmail.com",
+      "use": "home"
+    }
+  ]
+}

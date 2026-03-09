@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07007",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELO",
+        "FERNADO",
+        "JOSE",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12894064640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406625",
+      "line": [
+        "159"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998834885",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ar2850168@gmail.com",
+      "use": "home"
+    }
+  ]
+}

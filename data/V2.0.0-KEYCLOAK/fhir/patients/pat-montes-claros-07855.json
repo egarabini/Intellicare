@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07855",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MADALENA",
+        "FERREIRA"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-10-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02762119600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401646",
+      "line": [
+        "622 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998828779",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "madalenaferreirabarros0@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07101",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ALINE",
+        "FERREIRA",
+        "DO"
+      ],
+      "family": "NASCIMEN"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12536467678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401170",
+      "line": [
+        "152"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997386256",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaalinenferreira028@gamail.com",
+      "use": "home"
+    }
+  ]
+}

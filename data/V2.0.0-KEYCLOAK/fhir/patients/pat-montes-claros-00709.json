@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00709",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVIANIA",
+        "LOPES"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-11-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06199955641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405803",
+      "line": [
+        "75 39405803"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3830821451",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lopesviviania@gmail.com",
+      "use": "home"
+    }
+  ]
+}

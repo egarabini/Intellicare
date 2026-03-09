@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05413",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAMILE",
+        "APARECIDA",
+        "DUARTE"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-12-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09825154640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403112",
+      "line": [
+        "252 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999643574",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jamileadp@gmail.com",
+      "use": "home"
+    }
+  ]
+}

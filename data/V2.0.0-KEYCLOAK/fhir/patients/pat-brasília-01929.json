@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01929",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOELMA",
+        "ALMEIDA",
+        "DAS"
+      ],
+      "family": "NEVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-07-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93744560104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693217",
+      "line": [
+        "170"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991456645",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josynhaneves@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

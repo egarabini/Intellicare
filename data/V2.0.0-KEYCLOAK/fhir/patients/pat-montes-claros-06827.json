@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06827",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SANDRA",
+        "REGINA",
+        "ALVES"
+      ],
+      "family": "TEIXEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-12-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06079843684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403101",
+      "line": [
+        "101 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999197708",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sandraregina@gmail.com",
+      "use": "home"
+    }
+  ]
+}

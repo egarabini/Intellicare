@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07105",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEANE",
+        "NEIDE",
+        "SOARES"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-05-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01645210626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401725",
+      "line": [
+        "127"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988048006",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dianesoares61@gmail.com",
+      "use": "home"
+    }
+  ]
+}

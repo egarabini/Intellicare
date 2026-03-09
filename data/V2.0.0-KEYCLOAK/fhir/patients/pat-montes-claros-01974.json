@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01974",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SEBASTI�O",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "BRAGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76564746849"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403074",
+      "line": [
+        "740 CS F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999376573",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tiaosbraga@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

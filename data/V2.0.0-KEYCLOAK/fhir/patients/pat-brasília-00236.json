@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00236",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERALDO",
+        "APARECIDO"
+      ],
+      "family": "EVANGELISTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03335857631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590687",
+      "line": [
+        "6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996684770",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "geraldoaparecidoe@gmail.com",
+      "use": "home"
+    }
+  ]
+}

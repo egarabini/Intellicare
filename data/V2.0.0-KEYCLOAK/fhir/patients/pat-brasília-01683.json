@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01683",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSELITA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-12-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01811146155"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73365433",
+      "line": [
+        "14"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998296800",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jjoselita65@gmail.com",
+      "use": "home"
+    }
+  ]
+}

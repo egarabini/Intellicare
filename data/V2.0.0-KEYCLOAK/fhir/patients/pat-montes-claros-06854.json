@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06854",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WESLEY",
+        "DA",
+        "SILVA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11214693610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400862",
+      "line": [
+        "1259 39400862"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999999729",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor09@gmail.com",
+      "use": "home"
+    }
+  ]
+}

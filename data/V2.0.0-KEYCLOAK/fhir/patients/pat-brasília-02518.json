@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02518",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIO",
+        "HENRIQUE",
+        "BANDEIRA",
+        "DE"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "64326837349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72020530",
+      "line": [
+        "43"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981477904",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bandeiraf370@gmail.com",
+      "use": "home"
+    }
+  ]
+}

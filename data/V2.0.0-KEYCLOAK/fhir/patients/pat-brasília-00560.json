@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00560",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93786093172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73403148",
+      "line": [
+        "35 MODULO 16"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993233678",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adsn0522@gmail.com",
+      "use": "home"
+    }
+  ]
+}

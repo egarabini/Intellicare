@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01895",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NEILTON",
+        "DA",
+        "SILVA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60231564104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691104",
+      "line": [
+        "09"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982642117",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nei234@gmail.com",
+      "use": "home"
+    }
+  ]
+}

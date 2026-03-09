@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06206",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ZULMA",
+        "DE",
+        "FATIMA",
+        "PEREIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-10-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "77604849687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403233",
+      "line": [
+        "32"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998387975",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zulmafatima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-pat-montes-claros-00037-creat-86",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2160-0",
+        "display": "Creatinina"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00037"
+  },
+  "effectiveDateTime": "2026-02-02T06:11:49Z",
+  "valueQuantity": {
+    "value": 1.37,
+    "unit": "mg/dL",
+    "system": "http://unitsofmeasure.org",
+    "code": "mg/dL"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "value": 0.7
+      },
+      "high": {
+        "value": 1.2
+      }
+    }
+  ]
+}

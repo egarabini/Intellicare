@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04776",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORA",
+        "CRISTINA",
+        "RODRIGUES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-05-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02336975602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403402",
+      "line": [
+        "637 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991219259",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cristinadeborah256@gmail.com",
+      "use": "home"
+    }
+  ]
+}

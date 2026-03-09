@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04680",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA",
+        "RIBEIRO"
+      ],
+      "family": "ROSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08051113608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403114",
+      "line": [
+        "91 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988351871",
+      "use": "home"
+    }
+  ]
+}

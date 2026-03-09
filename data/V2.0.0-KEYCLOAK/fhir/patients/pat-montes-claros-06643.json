@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06643",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "FERREIRA"
+      ],
+      "family": "ACACIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09925306604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404526",
+      "line": [
+        "157"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984043669",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiagoferreiraacacio85@gmail.com",
+      "use": "home"
+    }
+  ]
+}

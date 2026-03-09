@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02117",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIA",
+        "MAQUES",
+        "DE",
+        "LISBOA"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53992458172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72710643",
+      "line": [
+        "203 AE 4 CONJ B LT 1 APTO 203"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999457312",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marciateco048@gmail.com",
+      "use": "home"
+    }
+  ]
+}

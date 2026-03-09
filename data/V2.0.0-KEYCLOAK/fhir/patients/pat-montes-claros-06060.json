@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06060",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELO",
+        "GERONIMO"
+      ],
+      "family": "INACIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56237332634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403732",
+      "line": [
+        "22 DUAS PORTAS DE ACO"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988130284",
+      "use": "home"
+    }
+  ]
+}

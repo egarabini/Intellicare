@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07848",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KENIA",
+        "FRANCOIS",
+        "SOARES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07766732629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400496",
+      "line": [
+        "183 39400496"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38924242444",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "keniafracoiss@gmail.com",
+      "use": "home"
+    }
+  ]
+}

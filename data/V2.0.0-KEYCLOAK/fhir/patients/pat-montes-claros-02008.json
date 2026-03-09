@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02008",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "RAILDA",
+        "DIAS",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-07-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76949737653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404874",
+      "line": [
+        "41 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998975116",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diasmariarailda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

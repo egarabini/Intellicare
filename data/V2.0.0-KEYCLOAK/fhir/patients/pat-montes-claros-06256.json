@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06256",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCIELY",
+        "JESUS",
+        "DE"
+      ],
+      "family": "PAULA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-02-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10953494659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400848",
+      "line": [
+        "351 39400848"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3832574025",
+      "use": "home"
+    }
+  ]
+}

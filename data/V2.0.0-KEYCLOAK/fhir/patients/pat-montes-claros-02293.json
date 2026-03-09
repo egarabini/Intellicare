@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02293",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREZA",
+        "LORRANE",
+        "RODRIGUES"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-12-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02121252657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407357",
+      "line": [
+        "270"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991961784",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorraneandressa201@gmail.com",
+      "use": "home"
+    }
+  ]
+}

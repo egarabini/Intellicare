@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00777",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANNE",
+        "KAROLLINE",
+        "RIBEIRO"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09785251675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400632",
+      "line": [
+        "181 AP 202"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988339432",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "akrr2010@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

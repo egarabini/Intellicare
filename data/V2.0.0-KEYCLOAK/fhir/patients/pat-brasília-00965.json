@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00965",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDA",
+        "CRISTINA",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07257344183"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570202",
+      "line": [
+        "203 APARTAMENTO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996776058",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "crystinaferreirasantos@gmailcom",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02149",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEILA",
+        "LEEMOS",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98239481191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73151010",
+      "line": [
+        "22"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996656425",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leilaleemios25@gmail.com",
+      "use": "home"
+    }
+  ]
+}

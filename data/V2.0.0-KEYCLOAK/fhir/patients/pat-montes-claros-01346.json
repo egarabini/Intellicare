@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01346",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARTA",
+        "HERLAINE"
+      ],
+      "family": "NOGUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-08-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70285101668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400384",
+      "line": [
+        "422 39400384"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999912562",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "martaherlaine@gmail.com",
+      "use": "home"
+    }
+  ]
+}

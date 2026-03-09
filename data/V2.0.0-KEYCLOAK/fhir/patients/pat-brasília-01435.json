@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01435",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KATIA",
+        "GUARACIABA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-02-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02466238101"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71884690",
+      "line": [
+        "27 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993969298",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "katia@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

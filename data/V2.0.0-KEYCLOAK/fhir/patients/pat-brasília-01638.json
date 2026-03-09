@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01638",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SUAYNE",
+        "LIMA",
+        "DE",
+        "SENA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03722036127"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73151010",
+      "line": [
+        "1215"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993678002",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valdoliam@gmail.com",
+      "use": "home"
+    }
+  ]
+}

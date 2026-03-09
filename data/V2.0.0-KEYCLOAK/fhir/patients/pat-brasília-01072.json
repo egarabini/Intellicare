@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01072",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "ALVES",
+        "DA"
+      ],
+      "family": "MATA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-11-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "89802659134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72151112",
+      "line": [
+        "130 APT 130 BLOCO B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999895982",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andredebrasilia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

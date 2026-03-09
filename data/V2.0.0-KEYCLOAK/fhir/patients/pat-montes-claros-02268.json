@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02268",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VINICIUS",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-04-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08848014542"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400053",
+      "line": [
+        "404"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "13996884005",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "viniciosooliveira@ycloud.com",
+      "use": "home"
+    }
+  ]
+}

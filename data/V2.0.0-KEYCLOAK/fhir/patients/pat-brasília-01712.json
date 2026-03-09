@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01712",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BENEVALDO",
+        "FERREIRA"
+      ],
+      "family": "QUADRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "48325309172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71825413",
+      "line": [
+        "14 CJ 03B CS 22"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992376525",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "quadrocleiton093@gmail.com",
+      "use": "home"
+    }
+  ]
+}

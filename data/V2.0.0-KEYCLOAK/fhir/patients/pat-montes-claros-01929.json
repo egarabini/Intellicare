@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01929",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILLIAM",
+        "GODOY",
+        "DIAS"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-09-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70546225616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403048",
+      "line": [
+        "372 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999546436",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "williangodoy2022@gmail.com",
+      "use": "home"
+    }
+  ]
+}

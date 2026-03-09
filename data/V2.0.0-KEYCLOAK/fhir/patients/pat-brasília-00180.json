@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00180",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MANOEL",
+        "FILGUEIRA",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00028838564"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "2 CHACARA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982276778",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "manoelfilgueiradearaujo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

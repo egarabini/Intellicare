@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02640",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JONATA",
+        "KAIQUE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "LEAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70616824696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404664",
+      "line": [
+        "256 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998746005",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jotanakaique118@gmail.com",
+      "use": "home"
+    }
+  ]
+}

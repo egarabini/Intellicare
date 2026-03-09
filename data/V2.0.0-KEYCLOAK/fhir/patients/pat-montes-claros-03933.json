@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03933",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON",
+        "EDUARDO",
+        "SILVA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-07-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15944358637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400415",
+      "line": [
+        "127 CASA 127B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991870449",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robsoeduardo457@gmail.com",
+      "use": "home"
+    }
+  ]
+}

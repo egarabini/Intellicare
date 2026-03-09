@@ -1,0 +1,30 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-pat-montes-claros-07779-46",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "185349003",
+        "display": "Consulta médica"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-07779"
+  },
+  "performedDateTime": "2025-12-24T06:35:05Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/prac-004"
+      }
+    },
+    {
+      "actor": {
+        "reference": "Organization/org-ubs-asa-sul"
+      }
+    }
+  ]
+}

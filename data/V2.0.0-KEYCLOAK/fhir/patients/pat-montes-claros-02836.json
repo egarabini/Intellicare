@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02836",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HUDSON",
+        "THIAGO",
+        "ALVES"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10154789640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404312",
+      "line": [
+        "690 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999476365",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hudsonpanela@icloud.com",
+      "use": "home"
+    }
+  ]
+}

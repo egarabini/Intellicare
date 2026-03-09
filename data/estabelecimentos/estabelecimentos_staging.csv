@@ -1,0 +1,8 @@
+id,nome,tipo,cidade,uf,cnes,tenant_id
+org-ses-df,Secretaria de Estado de Saúde do Distrito Federal,Secretaria,Brasília,DF,2000001,secretaria-brasilia
+org-sms-montesclaros,Secretaria Municipal de Saúde de Montes Claros,Secretaria,Montes Claros,MG,2000002,secretaria-montesclaros
+org-hran,Hospital Regional da Asa Norte,Hospital,Brasília,DF,2000003,hospital-brasilia
+org-hbdf,Hospital de Base do Distrito Federal,Hospital,Brasília,DF,2000004,hospital-brasilia
+org-santacasa-mc,Santa Casa de Misericórdia de Montes Claros,Hospital,Montes Claros,MG,2000005,hospital-montesclaros
+org-ubs-asa-sul,UBS 1 da Asa Sul,UBS,Brasília,DF,2000006,secretaria-brasilia
+org-ubs-mc-centro,UBS Centro Montes Claros,UBS,Montes Claros,MG,2000007,secretaria-montesclaros

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06778",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIAN",
+        "FARLEY"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-02-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11315402637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403108",
+      "line": [
+        "87 39403108"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999098887",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "christianfarleyferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

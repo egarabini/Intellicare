@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01995",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERT",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05145364113"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71725501",
+      "line": [
+        "51"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985165237",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robertaraujo95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

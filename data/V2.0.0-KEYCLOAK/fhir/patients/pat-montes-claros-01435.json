@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01435",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHIRLENE",
+        "LOPES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11121775667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404472",
+      "line": [
+        "508 39404472"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999590867",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lopessantos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

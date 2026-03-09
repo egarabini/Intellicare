@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03594",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCILLENY",
+        "DUARTE"
+      ],
+      "family": "CHAVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03826579690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400491",
+      "line": [
+        "101"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999870448",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "francillenyduartchaves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

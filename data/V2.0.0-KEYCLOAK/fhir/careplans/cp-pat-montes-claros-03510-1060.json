@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-03510-1060",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 5 (insuficiência renal terminal), DRC estágio 5 (TFG < 15)",
+  "description": "Condições: DRC estágio 5 (insuficiência renal terminal), DRC estágio 5 (TFG < 15)",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-03510"
+  },
+  "period": {
+    "start": "2026-02-13"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-03510-1060"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

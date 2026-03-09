@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07431",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ANGELINA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "LEMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70289786649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401525",
+      "line": [
+        "177"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992230889",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaangelina1968@gmail.com",
+      "use": "home"
+    }
+  ]
+}

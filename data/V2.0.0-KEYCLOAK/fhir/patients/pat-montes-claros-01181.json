@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01181",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILSON",
+        "ROBERTO",
+        "BATISTA"
+      ],
+      "family": "BRUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69223670659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402309",
+      "line": [
+        "2206 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988277322",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wilsonbrunes2022@gmail.com",
+      "use": "home"
+    }
+  ]
+}

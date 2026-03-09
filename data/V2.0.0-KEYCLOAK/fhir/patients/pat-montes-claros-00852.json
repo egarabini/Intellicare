@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00852",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALANE",
+        "SILVA",
+        "DE"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18649590616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400554",
+      "line": [
+        "315 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999863751",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alanesilva24652@gmail.com",
+      "use": "home"
+    }
+  ]
+}

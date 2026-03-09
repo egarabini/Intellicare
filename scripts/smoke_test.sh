@@ -8,6 +8,14 @@ MODULES=(
     "wanda:8004"
     "comunicacao:8005"
     "geralda:8006"
+    "zilda:8007"
+    "minerva:8008"
+    "pierre:8009"
+    "admin:8010"
+    "gestor:8011"
+    "grahame:8012"
+    "nise:8013"
+    "bridge:8014"
 )
 
 PASS=0

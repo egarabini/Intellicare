@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01706",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAROLINE",
+        "FOGACA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04764495104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71050054",
+      "line": [
+        "21 CASA 20 QE 21 CJ E"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984569849",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "corolinefpereira01@gmail.com",
+      "use": "home"
+    }
+  ]
+}

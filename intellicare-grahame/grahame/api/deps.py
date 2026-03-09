@@ -1,9 +1,11 @@
 """Dependências FastAPI do Grahame."""
 
+import base64
+import json
 from typing import Any
 import os
 from dataclasses import dataclass
-from fastapi import Request, Depends
+from fastapi import Request, Depends, HTTPException, status
 from sqlalchemy import text
 from contextlib import asynccontextmanager
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
@@ -14,16 +16,29 @@ from grahame.api.auth import get_tenant_context
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=False)
 
-# Note: assuming intellicare_auth and intellicare_core are available in environment
+# Note: optional integrations with intellicare_auth/intellicare_core
 try:
     from intellicare_auth.policy_resolver import PolicyResolver
+except ImportError:
+    PolicyResolver = None
+
+try:
     from intellicare_core.access.policy_evaluator import PolicyEvaluator
+except ImportError:
+    PolicyEvaluator = None
+
+try:
     from intellicare_auth.fastapi.middleware import verify_token
 except ImportError:
-    # Stub verifier if auth module isn't strictly present
     async def verify_token(token: str) -> dict:
         return {}
-    pass
+
+try:
+    from intellicare_auth.fastapi import require_role
+    _HAS_REQUIRE_ROLE = True
+except ImportError:
+    require_role = None
+    _HAS_REQUIRE_ROLE = False
 
 class FHIRForbiddenError(Exception):
     """Exception raised when a FHIR operation is denied by Access Policies."""
@@ -95,7 +110,10 @@ async def get_policy_context(
         user_id = "anonymous"
         token_payload = {}
         
-    evaluator = PolicyEvaluator()
+    if PolicyEvaluator is not None:
+        evaluator = PolicyEvaluator()
+    else:
+        evaluator = object()
 
     # Feature flag to enable/disable policy enforcement in production
     enforce = os.getenv("ENFORCE_ACCESS_POLICIES", "false").lower() == "true"
@@ -107,6 +125,14 @@ async def get_policy_context(
             evaluator=evaluator
         )
 
+    if PolicyResolver is None:
+        return PolicyContext(
+            user_id=user_id,
+            tenant_id=tenant_id,
+            policy={"is_admin": True, "resource_rules": []},
+            evaluator=evaluator,
+        )
+
     resolver = PolicyResolver(session, redis)
     policy = await resolver.resolve(tenant_id, user_id)
     
@@ -116,3 +142,35 @@ async def get_policy_context(
         policy=policy, 
         evaluator=evaluator
     )
+
+
+if _HAS_REQUIRE_ROLE:
+    async def require_his_adapter(payload: dict = require_role("HIS_ADAPTER")) -> dict:
+        """Dependency que exige role realm HIS_ADAPTER."""
+        return payload
+else:
+    def _decode_jwt_claims_unverified(token: str) -> dict:
+        """Fallback local: decodifica claims JWT sem validar assinatura."""
+        try:
+            parts = token.split(".")
+            if len(parts) < 2:
+                return {}
+            payload = parts[1].replace("-", "+").replace("_", "/")
+            payload += "=" * ((4 - len(payload) % 4) % 4)
+            data = base64.b64decode(payload)
+            return json.loads(data.decode("utf-8"))
+        except Exception:
+            return {}
+
+    async def require_his_adapter(token: str = Depends(oauth2_scheme)) -> dict:
+        """Fallback local: valida bearer token e role HIS_ADAPTER no payload."""
+        if not token:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing bearer token")
+
+        payload = await verify_token(token)
+        if not payload:
+            payload = _decode_jwt_claims_unverified(token)
+        realm_roles = payload.get("realm_access", {}).get("roles", [])
+        if "HIS_ADAPTER" not in realm_roles:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Missing required role: HIS_ADAPTER")
+        return payload

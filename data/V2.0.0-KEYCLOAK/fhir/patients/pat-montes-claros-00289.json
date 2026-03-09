@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00289",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SIDNEY",
+        "PEREIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1971-01-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78397839615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403049",
+      "line": [
+        "96"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999073174",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sidneypereirasil@gmail.com",
+      "use": "home"
+    }
+  ]
+}

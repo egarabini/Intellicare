@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05477",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARTUR",
+        "MARQUES"
+      ],
+      "family": "LOBATO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1944-09-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63303965820"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404303",
+      "line": [
+        "930 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998426161",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "arturmarqueslobato@gmail.com",
+      "use": "home"
+    }
+  ]
+}

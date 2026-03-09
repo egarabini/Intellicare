@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02123",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSA",
+        "APARECIDA"
+      ],
+      "family": "RAIMONDI"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1957-06-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "30848725972"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691126",
+      "line": [
+        "61"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982207476",
+      "use": "home"
+    }
+  ]
+}

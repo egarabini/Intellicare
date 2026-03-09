@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02983",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANNA",
+        "LIVIA",
+        "GON�ALVES"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14449853610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406637",
+      "line": [
+        "254 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991453283",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "annalivia45662@gmail.com",
+      "use": "home"
+    }
+  ]
+}

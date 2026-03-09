@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02236",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALIEN",
+        "DE",
+        "JESUS",
+        "PAVAO"
+      ],
+      "family": "PESTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-12-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01548597295"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "74145000",
+      "line": [
+        "42 CH 01 CJ A CS 01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6181810842",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "walienaline242431@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01005",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZABEL",
+        "VIERIA",
+        "DE",
+        "SA"
+      ],
+      "family": "COQUEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1956-07-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63555425153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573104",
+      "line": [
+        "21"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996465893",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "izabelveiriadesa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

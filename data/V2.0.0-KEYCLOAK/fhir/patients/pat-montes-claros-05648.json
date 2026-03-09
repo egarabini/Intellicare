@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05648",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCUS",
+        "VINICIUS",
+        "ANTUNES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10738658600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404472",
+      "line": [
+        "367"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999142517",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcusviniciusantunes661@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00383",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "ALMEIDA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06957139140"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330016",
+      "line": [
+        "03 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991917946",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emartins.am23@gmail.com",
+      "use": "home"
+    }
+  ]
+}

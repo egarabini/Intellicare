@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04847",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KARLA",
+        "LOPES"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-12-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06714346590"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404300",
+      "line": [
+        "459"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998274399",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karlaaraujo93lopes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

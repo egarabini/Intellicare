@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03796",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "UHENES",
+        "PEREIRA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05885484643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403168",
+      "line": [
+        "254 39403168"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991639234",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fl09-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

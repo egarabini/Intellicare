@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07063",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZA",
+        "EVELYN",
+        "OLIVEIRA",
+        "SILVA",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-06-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08723762659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401469",
+      "line": [
+        "355 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999585834",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luizaevellynn@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

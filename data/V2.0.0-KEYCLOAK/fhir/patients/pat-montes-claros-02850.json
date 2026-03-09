@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02850",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITOR",
+        "GIOVANE",
+        "SOUSA"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13945656664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39411000",
+      "line": [
+        "66 39411000"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999345832",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@gemail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00721",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RODRIGO",
+        "FAGUNDES"
+      ],
+      "family": "JACOME"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02092261614"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400742",
+      "line": [
+        "666 APT 102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992209257",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "djrodrigofagundes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

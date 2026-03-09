@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00805",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIENE",
+        "CANUTO",
+        "DE"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22539930182"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72410600",
+      "line": [
+        "106 11 LOTE 1 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992725115",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luciene438@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07216",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLARA",
+        "BERNARDO"
+      ],
+      "family": "CARDODO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-04-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70369794613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400818",
+      "line": [
+        "71 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999454584",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anaclara016cardoso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

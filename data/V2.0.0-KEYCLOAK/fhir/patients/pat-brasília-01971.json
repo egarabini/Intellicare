@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01971",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELCIENE",
+        "MARTINS"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-09-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06915161384"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693001",
+      "line": [
+        "60 JOSE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982068103",
+      "use": "home"
+    }
+  ]
+}

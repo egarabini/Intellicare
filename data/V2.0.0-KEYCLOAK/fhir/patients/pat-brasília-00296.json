@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00296",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHARLES",
+        "ELTON",
+        "LOPES",
+        "SAMPAIO"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-10-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85520268134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368208",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994443027",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joao123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

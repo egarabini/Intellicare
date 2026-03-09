@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-pat-brasília-00201-pa-200",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "85354-9",
+        "display": "Pressão arterial"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-00201"
+  },
+  "effectiveDateTime": "2026-01-13T06:02:38Z",
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "PAS"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 134.0,
+        "unit": "mmHg",
+        "code": "mm[Hg]"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "PAD"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 81.0,
+        "unit": "mmHg",
+        "code": "mm[Hg]"
+      }
+    }
+  ]
+}

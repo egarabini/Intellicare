@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00107",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOS�",
+        "ANTONIO",
+        "DE",
+        "FRAN�A"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-12-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00867485132"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72225046",
+      "line": [
+        "38 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985849058",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juniorfranca4426@gmail.com",
+      "use": "home"
+    }
+  ]
+}

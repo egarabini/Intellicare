@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01439",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAQUEL",
+        "SOARES"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07008770618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403424",
+      "line": [
+        "120"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998169734",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "casadocelular02@gmail.com",
+      "use": "home"
+    }
+  ]
+}

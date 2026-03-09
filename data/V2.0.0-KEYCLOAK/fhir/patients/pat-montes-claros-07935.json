@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07935",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHONATAN",
+        "MATEUS",
+        "SILVA"
+      ],
+      "family": "LEAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-07-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02097054692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400228",
+      "line": [
+        "157 CS A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991282121",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhonatanmateussilvaleal37@gmail.com",
+      "use": "home"
+    }
+  ]
+}

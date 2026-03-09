@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06253",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ILDENIR",
+        "ROGINA",
+        "LELIS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-03-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01708320660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404399",
+      "line": [
+        "835 39404399"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31971536537",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor139@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

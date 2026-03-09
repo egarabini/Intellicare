@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00361",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EZILDO",
+        "NASCIMENTO"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1952-09-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15728498604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403197",
+      "line": [
+        "230 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998814834",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ezildonascimento@gmail.com",
+      "use": "home"
+    }
+  ]
+}

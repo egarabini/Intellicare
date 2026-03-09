@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01175",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDMILSON",
+        "FERREIRA",
+        "DO"
+      ],
+      "family": "CARMO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-11-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03721089626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401224",
+      "line": [
+        "120 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998082725",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cardosoluan034@gmail.com",
+      "use": "home"
+    }
+  ]
+}

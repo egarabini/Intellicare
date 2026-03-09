@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00158",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLEN",
+        "ADRIANE",
+        "LOURENCO",
+        "DO"
+      ],
+      "family": "CARMO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-04-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09124321605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400310",
+      "line": [
+        "32 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991365785",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marlenadriane2368@gmail.com",
+      "use": "home"
+    }
+  ]
+}

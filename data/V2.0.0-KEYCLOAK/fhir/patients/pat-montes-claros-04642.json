@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04642",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFERSON",
+        "GUSTAVO",
+        "FERREIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-12-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70058675647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403114",
+      "line": [
+        "82 39403114"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998568620",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jefersongu6@gmail.com",
+      "use": "home"
+    }
+  ]
+}

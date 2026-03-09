@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01674",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LINO",
+        "ALVES",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-10-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78694914115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73360607",
+      "line": [
+        "37 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992082626",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "linojaal@gmail.com",
+      "use": "home"
+    }
+  ]
+}

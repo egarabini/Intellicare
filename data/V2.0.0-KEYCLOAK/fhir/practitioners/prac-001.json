@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-001",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dr.",
+        "Carlos",
+        "Eduardo"
+      ],
+      "family": "Silva"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "DF 12345"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

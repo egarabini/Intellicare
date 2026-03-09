@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02550",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLY",
+        "CASSIA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-12-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70673196682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404845",
+      "line": [
+        "295 39404845"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997334677",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lannyzinha009@gmail.com",
+      "use": "home"
+    }
+  ]
+}

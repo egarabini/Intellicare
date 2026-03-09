@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08463",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANDERSON",
+        "FERREIRA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12966059656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39408349",
+      "line": [
+        "10 39408349"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991633515",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mirandaandersonmiranda4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

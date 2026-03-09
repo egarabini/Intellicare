@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05971",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOANA",
+        "DARC",
+        "SOARES",
+        "FERREIRA"
+      ],
+      "family": "FREIRE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01869587650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "1906"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988310519",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joanadarcsoarespereira97@gmail.com",
+      "use": "home"
+    }
+  ]
+}

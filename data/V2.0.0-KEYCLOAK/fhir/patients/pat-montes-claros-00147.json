@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00147",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "LACERDA"
+      ],
+      "family": "ALKMIM"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12898749648"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403396",
+      "line": [
+        "160 39403396"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984226495",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielalkmim10.dl@gmail.com",
+      "use": "home"
+    }
+  ]
+}

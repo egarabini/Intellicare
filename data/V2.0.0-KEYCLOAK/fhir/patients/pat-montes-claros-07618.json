@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07618",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RONALDO"
+      ],
+      "family": "LAERCIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-03-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09966154663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400471",
+      "line": [
+        "46"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999528763",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nalazevedo@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

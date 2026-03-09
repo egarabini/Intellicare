@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07924",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "JEMIMA",
+        "GOMES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-05-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12381212680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403077",
+      "line": [
+        "539 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988612890",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sarahgomesferreira78@gmail.com",
+      "use": "home"
+    }
+  ]
+}

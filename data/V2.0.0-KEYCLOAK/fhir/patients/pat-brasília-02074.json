@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02074",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIO",
+        "DA",
+        "COSTA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03472916354"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72305116",
+      "line": [
+        "303 CONJUNTO 15 CASA 7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983381884",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviocosta191213@gmail.com",
+      "use": "home"
+    }
+  ]
+}

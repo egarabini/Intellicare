@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05082",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "CASSIO",
+        "MIRANDA"
+      ],
+      "family": "FROES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-07-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08909798637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404305",
+      "line": [
+        "734 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998770090",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josecassiofroes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00699",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATASHA",
+        "ROMEIRO",
+        "GOMES"
+      ],
+      "family": "LEAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02797687108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72543512",
+      "line": [
+        "10 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995842811",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "natashargleao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

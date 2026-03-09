@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01351",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BARBARA",
+        "THARCIS",
+        "GUENNES"
+      ],
+      "family": "CARDOZO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-09-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93694970134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593160",
+      "line": [
+        "45 71593160"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6182735100",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbaratharcis@gmail.com",
+      "use": "home"
+    }
+  ]
+}

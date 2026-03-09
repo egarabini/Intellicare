@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00045",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "RUI",
+        "DE"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "23365293604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403038",
+      "line": [
+        "48"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991414315",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ruiaquino27@gmail.com",
+      "use": "home"
+    }
+  ]
+}

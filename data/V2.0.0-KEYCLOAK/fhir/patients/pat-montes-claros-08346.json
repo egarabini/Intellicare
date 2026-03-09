@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08346",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANDERLEI",
+        "RIBEIRO",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-08-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09144136781"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403063",
+      "line": [
+        "397 39403063"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998654079",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanderley189@gmail.com",
+      "use": "home"
+    }
+  ]
+}

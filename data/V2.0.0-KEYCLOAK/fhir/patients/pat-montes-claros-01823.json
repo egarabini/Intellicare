@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01823",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIELE",
+        "DO",
+        "NASCIMENTO",
+        "E"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-06-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13827178657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400080",
+      "line": [
+        "583"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997478261",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adriellealmeidaalves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

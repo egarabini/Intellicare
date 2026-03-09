@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05058",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALESSANDRA",
+        "COSTA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-06-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70037381636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407451",
+      "line": [
+        "424 39407451"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998079451",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alessandracosta0906@gmail.com",
+      "use": "home"
+    }
+  ]
+}

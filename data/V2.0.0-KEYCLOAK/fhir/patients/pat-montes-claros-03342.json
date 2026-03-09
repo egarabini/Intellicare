@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03342",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDSON",
+        "RAFAEL",
+        "SILVA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11581669666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404312",
+      "line": [
+        "830 39404312"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988294999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rafacvc2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

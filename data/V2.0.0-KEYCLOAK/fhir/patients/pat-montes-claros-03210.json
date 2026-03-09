@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03210",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TATIANA",
+        "FIUZA"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-08-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22571293850"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400074",
+      "line": [
+        "757 AP 305"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998243207",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tatifiuza01@gmail.com",
+      "use": "home"
+    }
+  ]
+}

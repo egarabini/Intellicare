@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07394",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUAN",
+        "RIQUELME",
+        "ALVES",
+        "RODRIGUES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-11-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18394573681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406549",
+      "line": [
+        "54"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998790431",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juanriquelmealves07@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01515",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLEIDE",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-06-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06075653651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404159",
+      "line": [
+        "380 CS B AV. LOUISE FRANCESCON"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31990853907",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaopedropereira857@gmail.com",
+      "use": "home"
+    }
+  ]
+}

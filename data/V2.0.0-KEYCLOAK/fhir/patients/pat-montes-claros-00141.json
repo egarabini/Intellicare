@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00141",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DO",
+        "CARMO",
+        "DE",
+        "ALMEIDA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80883397668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401728",
+      "line": [
+        "69 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998646792",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "keniaalmeida848@gmail.com",
+      "use": "home"
+    }
+  ]
+}

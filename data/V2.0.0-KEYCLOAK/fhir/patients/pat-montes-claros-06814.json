@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06814",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KENIA",
+        "KAMILLE",
+        "SILVA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-06-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70603483607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404009",
+      "line": [
+        "61"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999172077",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "keniakamille123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

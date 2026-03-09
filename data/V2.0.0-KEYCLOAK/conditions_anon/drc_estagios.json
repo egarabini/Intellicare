@@ -1,0 +1,8 @@
+[
+  {"cid": "N18.1", "display": "DRC estágio 1 (TFG >= 90)", "eGFR_min": 90, "eGFR_max": 120},
+  {"cid": "N18.2", "display": "DRC estágio 2 (TFG 60-89)", "eGFR_min": 60, "eGFR_max": 89},
+  {"cid": "N18.3", "display": "DRC estágio 3 (TFG 30-59)", "eGFR_min": 30, "eGFR_max": 59},
+  {"cid": "N18.4", "display": "DRC estágio 4 (TFG 15-29)", "eGFR_min": 15, "eGFR_max": 29},
+  {"cid": "N18.5", "display": "DRC estágio 5 (TFG < 15)", "eGFR_min": 0, "eGFR_max": 14},
+  {"cid": "N18.9", "display": "DRC não especificada", "eGFR_min": 30, "eGFR_max": 89}
+]

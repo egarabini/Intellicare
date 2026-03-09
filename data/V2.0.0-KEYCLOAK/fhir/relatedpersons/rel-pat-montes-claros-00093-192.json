@@ -1,0 +1,33 @@
+{
+  "resourceType": "RelatedPerson",
+  "id": "rel-pat-montes-claros-00093-192",
+  "patient": {
+    "reference": "Patient/pat-montes-claros-00093"
+  },
+  "relationship": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+          "code": "Familiar",
+          "display": "Familiar"
+        }
+      ]
+    }
+  ],
+  "name": [
+    {
+      "family": "Costa",
+      "given": [
+        "Pedro"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998163524",
+      "use": "mobile"
+    }
+  ]
+}

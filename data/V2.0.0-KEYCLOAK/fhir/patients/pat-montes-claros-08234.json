@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08234",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSOM",
+        "GERALDO",
+        "CAETANO",
+        "DOAS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09812981683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403346",
+      "line": [
+        "76 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984030468",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhenycarol93@gmail.com",
+      "use": "home"
+    }
+  ]
+}

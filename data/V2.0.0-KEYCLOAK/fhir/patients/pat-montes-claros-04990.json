@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04990",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADMILSON",
+        "SILVA",
+        "DE"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-03-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14069689869"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400184",
+      "line": [
+        "468 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999410969",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "admilsonsilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

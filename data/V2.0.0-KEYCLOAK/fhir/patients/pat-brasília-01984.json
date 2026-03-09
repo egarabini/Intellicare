@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01984",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SABRYNA",
+        "STEFANY",
+        "DOS",
+        "REIS"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06533798111"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691006",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986723303",
+      "use": "home"
+    }
+  ]
+}

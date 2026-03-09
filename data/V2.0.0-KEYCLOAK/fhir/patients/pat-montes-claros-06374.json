@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06374",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TEREZINHA",
+        "DE",
+        "JESUS",
+        "VELOSO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-10-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04380641600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404298",
+      "line": [
+        "50 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999747321",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "terezinhaveloso573@gmail.com",
+      "use": "home"
+    }
+  ]
+}

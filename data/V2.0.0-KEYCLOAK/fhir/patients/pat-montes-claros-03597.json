@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03597",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAISSA",
+        "GOMES",
+        "ROCHA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-08-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12765235643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401111",
+      "line": [
+        "57"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988091181",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raissarochavariedades@gmail.com",
+      "use": "home"
+    }
+  ]
+}

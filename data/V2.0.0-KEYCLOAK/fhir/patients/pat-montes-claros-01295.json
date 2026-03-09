@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01295",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WALDIR",
+        "RAMOS"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1950-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "20592272672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403060",
+      "line": [
+        "400"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998722345",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulo@gamil.com",
+      "use": "home"
+    }
+  ]
+}

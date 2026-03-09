@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01050",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZAURA",
+        "FELICIO",
+        "RODRIGUES"
+      ],
+      "family": "SOUTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-09-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05943941630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403122",
+      "line": [
+        "200 39403122"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992568983",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fl09-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

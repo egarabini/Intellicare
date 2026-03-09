@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02041",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ENILSON",
+        "DINIZ",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-06-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70806778156"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571021",
+      "line": [
+        "33 71571021"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6195885841",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dinizdasilva123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

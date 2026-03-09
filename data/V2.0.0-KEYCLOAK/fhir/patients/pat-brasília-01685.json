@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01685",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANESSA",
+        "ALVES",
+        "DA"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-07-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70890860114"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572031",
+      "line": [
+        "9 71572031"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191104517",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "neessaa.mbv@gmail.com",
+      "use": "home"
+    }
+  ]
+}

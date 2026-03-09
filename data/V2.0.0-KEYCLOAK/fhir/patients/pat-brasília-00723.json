@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00723",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDILSON",
+        "FRANCISCO",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69941556172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570820",
+      "line": [
+        "9 71570820"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191047853",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edilson7713@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

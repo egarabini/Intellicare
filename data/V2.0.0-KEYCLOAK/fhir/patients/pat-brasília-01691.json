@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01691",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GLAUCIO",
+        "SOASRES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-02-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02339067111"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73050174",
+      "line": [
+        "12 QUADRA 16 CONJUNTO N"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993591604",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gsantos.inf@gmail.com",
+      "use": "home"
+    }
+  ]
+}

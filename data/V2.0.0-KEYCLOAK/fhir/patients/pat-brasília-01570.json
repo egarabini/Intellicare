@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01570",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANILO",
+        "SILVA"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-08-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61407388304"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71710525",
+      "line": [
+        "202 LT 535 A AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "98989171799",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ds4507657@gmail.com",
+      "use": "home"
+    }
+  ]
+}

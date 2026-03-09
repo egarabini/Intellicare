@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01565",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MORGANA",
+        "PEREIRA"
+      ],
+      "family": "VALENTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-08-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03695528141"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72660218",
+      "line": [
+        "18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985600560",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mpvalente25@gmail.com",
+      "use": "home"
+    }
+  ]
+}

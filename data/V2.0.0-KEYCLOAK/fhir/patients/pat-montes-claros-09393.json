@@ -1,0 +1,42 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09393",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATANY",
+        "NUNES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-07-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17164477639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404101",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997472082",
+      "use": "home"
+    }
+  ]
+}

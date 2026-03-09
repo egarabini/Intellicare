@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03520",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARINALVA",
+        "DIAS",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-08-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06256212630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401011",
+      "line": [
+        "13 SANTA ROSA DE LIMA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997388989",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marinalvadiasdejesus@gmail.com",
+      "use": "home"
+    }
+  ]
+}

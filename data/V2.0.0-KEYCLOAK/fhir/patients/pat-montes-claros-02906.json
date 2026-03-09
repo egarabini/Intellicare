@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02906",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HEBERTH",
+        "OLIVEIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-12-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06384502682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403140",
+      "line": [
+        "57 39403140"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997305202",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcellyelisa79@gmail.com",
+      "use": "home"
+    }
+  ]
+}

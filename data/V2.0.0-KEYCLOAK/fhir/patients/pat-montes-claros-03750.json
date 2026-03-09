@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03750",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADAILSON",
+        "FERNANDES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-07-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "55419194600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400425",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998155152",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josefernadessouza@22gmail.com",
+      "use": "home"
+    }
+  ]
+}

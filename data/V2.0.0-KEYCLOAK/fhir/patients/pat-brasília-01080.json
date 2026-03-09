@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01080",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEONARDO",
+        "HOLANDA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-08-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72385189100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72125515",
+      "line": [
+        "0 AP 308"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986555135",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leonardoholandabarbosa15@gmail.com",
+      "use": "home"
+    }
+  ]
+}

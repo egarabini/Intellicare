@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00526",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "PEREIRA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-06-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93576528172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570812",
+      "line": [
+        "24"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992757291",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josepererr5151@gmail.com",
+      "use": "home"
+    }
+  ]
+}

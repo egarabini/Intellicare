@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07142",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIS",
+        "PEDRO",
+        "MARTINS",
+        "PRUDENCIO"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-04-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02247102654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403274",
+      "line": [
+        "53 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988290964",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luispmartins13@gmail.com",
+      "use": "home"
+    }
+  ]
+}

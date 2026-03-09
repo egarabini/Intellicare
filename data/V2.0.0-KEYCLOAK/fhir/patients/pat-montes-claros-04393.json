@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04393",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARTA",
+        "POLLYANNA",
+        "CAMPOS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-11-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08048742632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404347",
+      "line": [
+        "150 39404347"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988148352",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "martapollyy@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

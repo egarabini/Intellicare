@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06721",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITTORIA",
+        "MESQUITA"
+      ],
+      "family": "SILVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70368683680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401006",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999220484",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "f43-adm@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

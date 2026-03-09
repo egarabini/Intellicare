@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09221",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REGINA",
+        "RODRIGUES"
+      ],
+      "family": "MORAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-04-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15183790604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400090",
+      "line": [
+        "755 39400090"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998398683",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "regina.moraes.rodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

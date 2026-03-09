@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01642",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "GOMES"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1962-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84533498604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404764",
+      "line": [
+        "2503 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999192485",
+      "use": "home"
+    }
+  ]
+}

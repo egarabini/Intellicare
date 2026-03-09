@@ -1,0 +1,24 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-pat-montes-claros-00008-egfr-57",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "33914-3",
+        "display": "eGFR"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00008"
+  },
+  "effectiveDateTime": "2025-09-24T06:11:48Z",
+  "valueQuantity": {
+    "value": 109.3,
+    "unit": "mL/min/1.73m2",
+    "system": "http://unitsofmeasure.org",
+    "code": "mL/min/{1.73_m2}"
+  }
+}

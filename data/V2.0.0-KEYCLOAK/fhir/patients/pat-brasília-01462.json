@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01462",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "ANTONIO",
+        "BEZERRA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-01-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01664596151"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73050181",
+      "line": [
+        "13 QD 18 CONJ A 13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994137343",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcosantonio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

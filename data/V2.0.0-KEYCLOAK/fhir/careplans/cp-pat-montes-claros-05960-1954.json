@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-05960-1954",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Hipertensão essencial (primária), Diabetes mellitus tipo 2",
+  "description": "Condições: Hipertensão essencial (primária), Diabetes mellitus tipo 2",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-05960"
+  },
+  "period": {
+    "start": "2025-12-08"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-05960-1954"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

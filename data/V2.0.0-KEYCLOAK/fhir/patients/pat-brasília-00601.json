@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00601",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IEDA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "BEZERRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60288317351"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805100",
+      "line": [
+        "01"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992139481",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "iedadossantosbezerra@gmail.com",
+      "use": "home"
+    }
+  ]
+}

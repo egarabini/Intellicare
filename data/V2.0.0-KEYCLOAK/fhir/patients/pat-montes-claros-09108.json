@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09108",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAIS",
+        "GABRIELLY",
+        "LUCAS"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-06-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17729366690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400486",
+      "line": [
+        "347"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998316906",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laisgabriellyofc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

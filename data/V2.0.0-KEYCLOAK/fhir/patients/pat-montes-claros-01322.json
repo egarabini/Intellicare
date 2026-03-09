@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01322",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "CANDIDO",
+        "GON�ALVES",
+        "DE"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08099744608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404874",
+      "line": [
+        "89"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998423155",
+      "use": "home"
+    }
+  ]
+}

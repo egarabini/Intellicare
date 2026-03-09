@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01549",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAVYO",
+        "OLIVEIRA"
+      ],
+      "family": "GAMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-09-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00213680157"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73065182",
+      "line": [
+        "05 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994432201",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "s4vyoo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

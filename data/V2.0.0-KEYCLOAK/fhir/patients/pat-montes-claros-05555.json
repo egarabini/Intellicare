@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05555",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISLENE",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "HONORATO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05038519652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404449",
+      "line": [
+        "141 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999841347",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "honoratogislene6@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-pat-montes-claros-00507-801",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "302497006",
+        "display": "Consulta nefrológica"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00507"
+  },
+  "performedDateTime": "2026-02-18T06:35:10Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/prac-004"
+      }
+    },
+    {
+      "actor": {
+        "reference": "Organization/org-santacasa-mc"
+      }
+    }
+  ]
+}

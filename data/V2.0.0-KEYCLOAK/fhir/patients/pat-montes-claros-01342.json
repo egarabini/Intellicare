@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01342",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RITA",
+        "DE",
+        "CASSIA",
+        "MARIA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05125007625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405803",
+      "line": [
+        "165"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999735776",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ritadecassiamariadejesu215@gmail.com",
+      "use": "home"
+    }
+  ]
+}

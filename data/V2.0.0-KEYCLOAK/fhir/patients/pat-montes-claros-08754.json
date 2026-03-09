@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08754",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAGDA",
+        "APARECID",
+        "GONCALVES"
+      ],
+      "family": "PEIXOTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-05-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03509668693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403532",
+      "line": [
+        "281"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991994123",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "magdapeixoto2005@gmail.com",
+      "use": "home"
+    }
+  ]
+}

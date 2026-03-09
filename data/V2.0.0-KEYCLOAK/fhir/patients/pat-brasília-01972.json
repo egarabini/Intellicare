@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01972",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "CARLOS",
+        "DE",
+        "FREITAS"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-11-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "22296182100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72725302",
+      "line": [
+        "15 QD 3 CJ B CS 15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999398482",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nada@nada.com",
+      "use": "home"
+    }
+  ]
+}

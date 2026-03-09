@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08770",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZABELA",
+        "GOMES",
+        "DA",
+        "SILVA"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-03-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02229138600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401868",
+      "line": [
+        "170"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992573613",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "izabelagomesxavier@gmail.com",
+      "use": "home"
+    }
+  ]
+}

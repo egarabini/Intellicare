@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09347",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIOLA",
+        "CESAR"
+      ],
+      "family": "LEITE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "31840242884"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402488",
+      "line": [
+        "28 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992709676",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05322",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADEMILSON",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-05-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03802601661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404299",
+      "line": [
+        "527"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999740710",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ademilsoncosta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

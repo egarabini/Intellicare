@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07869",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCO",
+        "AURELIO",
+        "MENDES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-09-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06695592616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400195",
+      "line": [
+        "237 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999291680",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcoaurelio33@gmail.com",
+      "use": "home"
+    }
+  ]
+}

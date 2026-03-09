@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06801",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLAUDIA",
+        "NUNES"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-06-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15797296659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400617",
+      "line": [
+        "66 39400617"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998023012",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "annynhah123jere@gmail.com",
+      "use": "home"
+    }
+  ]
+}

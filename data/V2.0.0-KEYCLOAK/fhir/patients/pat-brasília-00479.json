@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00479",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OSVALDO",
+        "DE",
+        "JESUS",
+        "FERREIRA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "43880207100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71588132",
+      "line": [
+        "303 71588132"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993530666",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "osvaldo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

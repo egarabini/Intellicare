@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04731",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SEBASTI�O",
+        "SIZENANO"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-10-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "32219814653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403440",
+      "line": [
+        "3651"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999423851",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sebastiaosizenando@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

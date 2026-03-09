@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07725",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WEDSON",
+        "APARECIDO",
+        "ALVES",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-03-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07826439655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406547",
+      "line": [
+        "641 39406547"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998361479",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alveswedson51@gmail.com",
+      "use": "home"
+    }
+  ]
+}

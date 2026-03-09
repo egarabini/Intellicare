@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01541",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JORDAN",
+        "FERNANDES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-07-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12265200654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400792",
+      "line": [
+        "600 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999079099",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jordanfernandessilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

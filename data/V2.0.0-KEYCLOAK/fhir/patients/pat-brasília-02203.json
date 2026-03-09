@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02203",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO",
+        "EDUARDO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86830139104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368112",
+      "line": [
+        "31"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996756338",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscojunior5982@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02395",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RIQUELE",
+        "DE",
+        "SOUZA",
+        "COSTA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12494503655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404476",
+      "line": [
+        "176"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997442172",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "riquelesouza116@gmail.com",
+      "use": "home"
+    }
+  ]
+}

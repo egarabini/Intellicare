@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08554",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KARINE",
+        "PEREIRA"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12828089665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401146",
+      "line": [
+        "105"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988385045",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kaahgoncalves2024@gmail.com",
+      "use": "home"
+    }
+  ]
+}

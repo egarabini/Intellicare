@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00820",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELITIANE",
+        "DOS",
+        "SANTOS",
+        "CARDOSO"
+      ],
+      "family": "TEXEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03422608478"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572508",
+      "line": [
+        "03"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998001254",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elietegbg1542@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08285",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDNILSON",
+        "FERREIRA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-11-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07963302635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403161",
+      "line": [
+        "1057 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999398045",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ednilsonf996@gmao.com",
+      "use": "home"
+    }
+  ]
+}

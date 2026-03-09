@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02298",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARILENE",
+        "CLARA",
+        "DA"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03051345156"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71675205",
+      "line": [
+        "60"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993618829",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marilene.clara@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00441",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIO",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-01-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07397158609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573009",
+      "line": [
+        "4 QUADRA 29 CONJUNTO I"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999398525",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marciorodrigues81@gmail.com",
+      "use": "home"
+    }
+  ]
+}

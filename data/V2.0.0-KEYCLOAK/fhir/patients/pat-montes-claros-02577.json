@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02577",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENNER",
+        "CLEBER",
+        "SILVA"
+      ],
+      "family": "SAMPAIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-11-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02295078679"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402361",
+      "line": [
+        "2 39402361"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38931158651",
+      "use": "home"
+    }
+  ]
+}

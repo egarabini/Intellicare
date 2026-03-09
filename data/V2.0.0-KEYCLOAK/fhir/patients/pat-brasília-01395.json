@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01395",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARISSA",
+        "SOARES",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-10-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06865596145"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573201",
+      "line": [
+        "26"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992299367",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "larissasoares606.ls@gmail.com",
+      "use": "home"
+    }
+  ]
+}

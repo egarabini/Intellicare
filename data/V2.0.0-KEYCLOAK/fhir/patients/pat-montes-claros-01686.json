@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01686",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LETICIA",
+        "BATISTA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-08-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70048709603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404313",
+      "line": [
+        "624 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998950028",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leticiasouzaatleticomineir@gmail.com",
+      "use": "home"
+    }
+  ]
+}

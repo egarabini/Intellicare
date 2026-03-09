@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01367",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERICLES",
+        "VINICIUS",
+        "SILVA"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02276799625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406816",
+      "line": [
+        "41 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998024775",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ericlesruas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

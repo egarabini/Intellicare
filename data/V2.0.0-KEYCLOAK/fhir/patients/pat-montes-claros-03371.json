@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03371",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ZILMAR",
+        "RODRIGUES"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-08-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07036376651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403036",
+      "line": [
+        "125 39403036"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998988160",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zilmarrodrigues52@gmail.com",
+      "use": "home"
+    }
+  ]
+}

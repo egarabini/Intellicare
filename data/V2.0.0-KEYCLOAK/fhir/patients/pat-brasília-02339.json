@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02339",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARGARIDA",
+        "PIRES",
+        "MARTINS",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "51295601168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692300",
+      "line": [
+        "10 104 CONJ 07"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991134149",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marga.adryan1234@gmail.com",
+      "use": "home"
+    }
+  ]
+}

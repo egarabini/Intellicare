@@ -1,0 +1,25 @@
+{
+  "resourceType": "PractitionerRole",
+  "id": "pr-prac-005-org-ubs-asa-sul",
+  "practitioner": {
+    "reference": "Practitioner/prac-005"
+  },
+  "organization": {
+    "reference": "Organization/org-ubs-asa-sul"
+  },
+  "code": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/practitioner-role",
+          "code": "nurse"
+        }
+      ]
+    }
+  ],
+  "location": [
+    {
+      "reference": "Location/loc-ubs-asa-sul"
+    }
+  ]
+}

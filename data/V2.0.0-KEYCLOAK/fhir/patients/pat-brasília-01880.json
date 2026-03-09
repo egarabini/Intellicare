@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01880",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYANE",
+        "RODRIGUES",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-10-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04967916139"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72610503",
+      "line": [
+        "3 LOTE 3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991832390",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rhannyrodrigues2392@gmail.com",
+      "use": "home"
+    }
+  ]
+}

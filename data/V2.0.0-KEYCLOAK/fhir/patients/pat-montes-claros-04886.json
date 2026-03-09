@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04886",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SHEILA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70341046620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406330",
+      "line": [
+        "791 39406330"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997326129",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sheilaribeiro3778@gmail.com",
+      "use": "home"
+    }
+  ]
+}

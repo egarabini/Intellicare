@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00887",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00457788330"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368152",
+      "line": [
+        "06 LT 25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994653322",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaodesousasilva144@gmail.com",
+      "use": "home"
+    }
+  ]
+}

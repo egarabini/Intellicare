@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06629",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILVIO",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-04-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11969235667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400123",
+      "line": [
+        "228"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999695491",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "souzasilvadenize2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

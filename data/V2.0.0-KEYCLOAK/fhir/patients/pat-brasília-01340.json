@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01340",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CRYS",
+        "BARBOSA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15296973607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691026",
+      "line": [
+        "171"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998531491",
+      "use": "home"
+    }
+  ]
+}

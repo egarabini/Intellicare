@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06222",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARISTELA",
+        "SILVA",
+        "DE",
+        "FREITAS"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04265945686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404289",
+      "line": [
+        "192"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998891349",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maristelafreitas14@gmail.com",
+      "use": "home"
+    }
+  ]
+}

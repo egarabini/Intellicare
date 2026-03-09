@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02437",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMARA",
+        "SOUSA"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-08-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01199976148"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71735511",
+      "line": [
+        "08 QUADRA 05 CONJUNTO 11 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999140609",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "samara.castro@everabank.com.br",
+      "use": "home"
+    }
+  ]
+}

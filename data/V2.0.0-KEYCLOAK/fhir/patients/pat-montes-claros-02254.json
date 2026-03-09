@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02254",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AGNNES",
+        "NUNES"
+      ],
+      "family": "MARINHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16610671664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400074",
+      "line": [
+        "1187"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "11995933976",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "giovannamarinho139@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01830",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LIVIA",
+        "BARBOSA"
+      ],
+      "family": "FERRAZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-02-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18039257603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401266",
+      "line": [
+        "452"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998180440",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "liviabarbosaferraz2021@gmail.com",
+      "use": "home"
+    }
+  ]
+}

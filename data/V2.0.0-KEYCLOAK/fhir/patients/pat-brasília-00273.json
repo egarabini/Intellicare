@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00273",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIOLLA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-02-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04681112127"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72660221",
+      "line": [
+        "19 CASA 19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992793818",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "faaabiollasilvaa470@gmail.com",
+      "use": "home"
+    }
+  ]
+}

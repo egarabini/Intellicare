@@ -1,0 +1,42 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00321",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIS",
+        "MIGUEL",
+        "GARCIA"
+      ],
+      "family": "AREVALO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-03-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70837088275"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693112",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "95981227231",
+      "use": "home"
+    }
+  ]
+}

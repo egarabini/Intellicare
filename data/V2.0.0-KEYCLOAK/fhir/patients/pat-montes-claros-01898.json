@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01898",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMUEL",
+        "SILVA"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-01-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02351313690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404002",
+      "line": [
+        "210 RUA LOURENCO PEREIRA DOS SANTOS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992631357",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sindyeme23@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02636",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "NAZARIO",
+        "ARAUJO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-01-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70489334610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404166",
+      "line": [
+        "5379 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991935195",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiagonazarioaraujo7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

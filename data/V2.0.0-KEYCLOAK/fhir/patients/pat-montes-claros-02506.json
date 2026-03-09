@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02506",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDER",
+        "DE",
+        "MATTOS"
+      ],
+      "family": "EFRAIM"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62703099649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400053",
+      "line": [
+        "135 AP 202"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991177000",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexefraim1540@gmail.com",
+      "use": "home"
+    }
+  ]
+}

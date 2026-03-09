@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06712",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARTA",
+        "LIMA"
+      ],
+      "family": "FAGUNDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-03-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05448955681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405024",
+      "line": [
+        "120"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999988473",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "martafagundes2918@gmail.com",
+      "use": "home"
+    }
+  ]
+}

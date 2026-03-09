@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01700",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "PHELIPE",
+        "TEODORO"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-01-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02574413105"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72710640",
+      "line": [
+        "15 LOTE 15 AREA ESPECIAL 4"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998305292",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucasphelipeteodoro00@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00618",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZAILDA",
+        "MARIA",
+        "DA",
+        "CONCEI��O"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69567700168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72505401",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995823501",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "izaildamaria08@gmail.com",
+      "use": "home"
+    }
+  ]
+}

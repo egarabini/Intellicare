@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02455",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NEUSLENE",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "AMORIM"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-06-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69746770144"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71588120",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998648170",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amorimsouza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

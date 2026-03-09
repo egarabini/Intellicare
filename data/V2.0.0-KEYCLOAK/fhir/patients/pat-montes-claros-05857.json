@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05857",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEMAURA",
+        "DOS",
+        "ANJOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-10-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06899821605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404692",
+      "line": [
+        "31 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984299405",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josydosanjos193@gmail.com",
+      "use": "home"
+    }
+  ]
+}

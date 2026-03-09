@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01507",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ACIR"
+      ],
+      "family": "LOURES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1955-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "30284597953"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72715020",
+      "line": [
+        "25 QUADRA 2 LOTE 25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998639881",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "soleaguaslindas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

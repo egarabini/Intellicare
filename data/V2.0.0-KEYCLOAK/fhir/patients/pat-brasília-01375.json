@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01375",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCELO",
+        "MENDES"
+      ],
+      "family": "FRAGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1963-09-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "38758733434"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71015258",
+      "line": [
+        "2 LOTE 2 QI 22"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982256571",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcelomendesfraga@gmail.com",
+      "use": "home"
+    }
+  ]
+}

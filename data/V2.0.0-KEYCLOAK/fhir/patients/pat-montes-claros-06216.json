@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06216",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IASMIN",
+        "BIANCA",
+        "FRANCA"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "42846206813"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400845",
+      "line": [
+        "170 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998364357",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "biaalima2405@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05645",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELDER",
+        "DELANO",
+        "COIMBRA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-11-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11540487644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404556",
+      "line": [
+        "95 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984353059",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elderdelano@gmail.com",
+      "use": "home"
+    }
+  ]
+}

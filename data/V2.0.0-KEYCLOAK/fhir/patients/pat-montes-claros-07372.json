@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07372",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYRE",
+        "JANAINA",
+        "VIEIRA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09017982667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402308",
+      "line": [
+        "237 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "34999241389",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayrejanaina@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01942",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PRESLEY",
+        "NUNES",
+        "DE"
+      ],
+      "family": "MENEZES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-02-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00052518183"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72140370",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996222228",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "presleymenezes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

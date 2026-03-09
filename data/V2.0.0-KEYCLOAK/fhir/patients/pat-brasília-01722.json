@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01722",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIAS",
+        "PABLO",
+        "PORTELA",
+        "E"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02775029345"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590632",
+      "line": [
+        "16 PATANOA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998529645",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eliaspablo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

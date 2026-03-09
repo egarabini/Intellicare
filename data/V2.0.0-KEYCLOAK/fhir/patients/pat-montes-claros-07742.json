@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07742",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KEZIA",
+        "LORRAYNE",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12404506641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405035",
+      "line": [
+        "100 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992290432",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "keziaramos2003@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04824",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KATIA",
+        "APARECIDA",
+        "DIAS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-08-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06947991650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403163",
+      "line": [
+        "587"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988532166",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "katiadias52@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

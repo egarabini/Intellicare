@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05600",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIANA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-04-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03091758605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401882",
+      "line": [
+        "171 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999827113",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabianadejesusribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

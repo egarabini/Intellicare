@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04821",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEIDIANA",
+        "RIBEIRO"
+      ],
+      "family": "SOBRAL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-01-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12276891602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403570",
+      "line": [
+        "841 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999461572",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleidianaribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00592",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALESSANDRA",
+        "SILVA"
+      ],
+      "family": "RAIMUNDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-03-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76951529191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71065043",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991792144",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aleledf@gmail.com",
+      "use": "home"
+    }
+  ]
+}

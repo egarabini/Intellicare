@@ -1,0 +1,49 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-pat-brasília-00247-484",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergencia"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185349003",
+          "display": "Consulta"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/pat-brasília-00247"
+  },
+  "serviceProvider": {
+    "reference": "Organization/org-ubs-asa-sul"
+  },
+  "period": {
+    "start": "2026-02-01T06:02:43Z",
+    "end": "2026-02-01T06:02:43Z"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/prac-010"
+      },
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "Profissional"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

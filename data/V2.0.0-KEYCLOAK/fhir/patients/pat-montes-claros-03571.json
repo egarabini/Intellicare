@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03571",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ZILDA",
+        "FRANCISCA",
+        "BARBOSA"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16289751808"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401535",
+      "line": [
+        "315 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988523684",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscazildaq815@gmai.com",
+      "use": "home"
+    }
+  ]
+}

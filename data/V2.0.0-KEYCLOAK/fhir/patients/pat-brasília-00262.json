@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00262",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GIOVANI"
+      ],
+      "family": "SIMARI"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-10-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00417560613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71736500",
+      "line": [
+        "201 1 CJ 1 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982418198",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "giovanisimari@gmail.com",
+      "use": "home"
+    }
+  ]
+}

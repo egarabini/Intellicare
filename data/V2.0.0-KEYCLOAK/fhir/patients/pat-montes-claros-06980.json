@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06980",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LORENNA",
+        "MURIELLE",
+        "FONSECA"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-07-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15551227600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403299",
+      "line": [
+        "94"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997355085",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maialorenna46@gmail.com",
+      "use": "home"
+    }
+  ]
+}

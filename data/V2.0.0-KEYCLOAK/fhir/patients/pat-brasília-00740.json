@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00740",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRA",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-08-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01147894361"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805737",
+      "line": [
+        "7 ED. GIOVANO AP 410"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "99982764095",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexandradshugo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

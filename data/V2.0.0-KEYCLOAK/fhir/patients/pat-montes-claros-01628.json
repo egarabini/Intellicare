@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01628",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLEN",
+        "KARINE",
+        "LOURENCO",
+        "DO"
+      ],
+      "family": "CARMO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08251467632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "00 NOVA ESPERANCA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999859716",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marlenkarine012@gmail.com",
+      "use": "home"
+    }
+  ]
+}

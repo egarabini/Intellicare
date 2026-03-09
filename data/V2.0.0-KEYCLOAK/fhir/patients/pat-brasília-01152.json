@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01152",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HENDRIK",
+        "ALLISON",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-09-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02765218110"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330109",
+      "line": [
+        "01 QUADRA 122"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993334907",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hendrik@outlook.com.br",
+      "use": "home"
+    }
+  ]
+}

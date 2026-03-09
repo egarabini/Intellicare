@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00857",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "SANDRA"
+      ],
+      "family": "TADIM"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-07-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80702651672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404287",
+      "line": [
+        "1333 CSA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991395913",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "msandratadim@gmail.com",
+      "use": "home"
+    }
+  ]
+}

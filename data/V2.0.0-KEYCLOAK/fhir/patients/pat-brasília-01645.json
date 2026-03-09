@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01645",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IDOMI",
+        "JOAQUIM",
+        "DE"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-12-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11405078936"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596318",
+      "line": [
+        "12"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996936179",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaquim.idomi@gmail.com",
+      "use": "home"
+    }
+  ]
+}

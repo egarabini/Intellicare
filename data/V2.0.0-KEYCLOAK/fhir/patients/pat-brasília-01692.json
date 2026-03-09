@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01692",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIANA",
+        "CORREA",
+        "DE"
+      ],
+      "family": "MENEZES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-12-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "90854411100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72735006",
+      "line": [
+        "15 72735006"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6133915478",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cistianemenezes1566@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00382",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUAN",
+        "DIAS"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-09-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13556012669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406148",
+      "line": [
+        "514 BLC 05 APT 212"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984368848",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luandiass585@gmail.com.br",
+      "use": "home"
+    }
+  ]
+}

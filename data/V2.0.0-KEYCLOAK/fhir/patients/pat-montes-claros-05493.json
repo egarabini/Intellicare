@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05493",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIANE",
+        "ABIGAIUY",
+        "PEREIRA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-02-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02279685655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401148",
+      "line": [
+        "40 39401148"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988447564",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "na.rubia@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

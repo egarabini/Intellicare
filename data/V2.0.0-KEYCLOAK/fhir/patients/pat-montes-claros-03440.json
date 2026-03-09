@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03440",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KARTIELLY",
+        "RODRIGUES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-06-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11035644630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406621",
+      "line": [
+        "271"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988012045",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kartiellyrodrigues2011@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

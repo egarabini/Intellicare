@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00026",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMARA",
+        "RIBEIRA"
+      ],
+      "family": "PAZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00588137138"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71589899",
+      "line": [
+        "15 CAFE SEM TROCO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986077001",
+      "use": "home"
+    }
+  ]
+}

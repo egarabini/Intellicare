@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08198",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MIRIAM",
+        "MATIAS",
+        "GODINHO"
+      ],
+      "family": "EVANGELISTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-05-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08921335625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401486",
+      "line": [
+        "833 39401486"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38996964269",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "miriammatias@gmail.com.br",
+      "use": "home"
+    }
+  ]
+}

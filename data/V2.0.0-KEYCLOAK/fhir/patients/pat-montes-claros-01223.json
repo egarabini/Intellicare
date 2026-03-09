@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01223",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CINTIA",
+        "ALINE",
+        "FRANCISCA",
+        "DE"
+      ],
+      "family": "PAULA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07928105624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400172",
+      "line": [
+        "50"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991197426",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cintiaalinefranciscad@gmail.com",
+      "use": "home"
+    }
+  ]
+}

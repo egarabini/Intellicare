@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03613",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARYANA",
+        "DO",
+        "NASCIMENTO",
+        "SANTOS"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-11-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08629312408"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403124",
+      "line": [
+        "70"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999001516",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aryanasantosbrito@gmail.com",
+      "use": "home"
+    }
+  ]
+}

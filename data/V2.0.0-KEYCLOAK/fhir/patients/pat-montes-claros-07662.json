@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07662",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "LORRANE",
+        "RIBEIRO",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-08-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02294581652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402579",
+      "line": [
+        "143 39402579"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992626900",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "saralorrane252@gmail.com",
+      "use": "home"
+    }
+  ]
+}

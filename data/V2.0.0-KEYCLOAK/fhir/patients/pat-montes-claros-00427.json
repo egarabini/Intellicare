@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00427",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANGELICA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-02-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12307163603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404064",
+      "line": [
+        "830 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997579537",
+      "use": "home"
+    }
+  ]
+}

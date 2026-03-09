@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01900",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "MATILDE",
+        "SOUSA",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-04-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "58497390172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71736501",
+      "line": [
+        "101 02 CJ CL 1 LT 06 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999634779",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariamal334@gmail.com",
+      "use": "home"
+    }
+  ]
+}

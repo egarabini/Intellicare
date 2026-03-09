@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05106",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMANDA",
+        "ARAUJO"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-03-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18037492613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406545",
+      "line": [
+        "170 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988078469",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07050",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BEATRIZ",
+        "BORGES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-06-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08232528680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404745",
+      "line": [
+        "205 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991665449",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "plborgesbeatriz22@gmail.com",
+      "use": "home"
+    }
+  ]
+}

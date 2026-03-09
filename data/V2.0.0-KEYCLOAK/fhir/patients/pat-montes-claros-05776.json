@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05776",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SOLANGE",
+        "SILVA"
+      ],
+      "family": "FARIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-09-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06089300675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400384",
+      "line": [
+        "760 39400384"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991556688",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "solangefaria35@gmail.com",
+      "use": "home"
+    }
+  ]
+}

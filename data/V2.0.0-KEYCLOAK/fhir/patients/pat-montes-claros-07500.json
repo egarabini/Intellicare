@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07500",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERT",
+        "EDUARDO",
+        "SILVA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15519199663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400555",
+      "line": [
+        "305 39400555"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988622414",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexabdreviktor16@gmail.com",
+      "use": "home"
+    }
+  ]
+}

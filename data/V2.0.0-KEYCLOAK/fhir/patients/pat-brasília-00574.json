@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00574",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIELLA",
+        "VERAS"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-02-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61133716385"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593375",
+      "line": [
+        "31 CASA A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991734077",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabysvera25@gmail.com",
+      "use": "home"
+    }
+  ]
+}

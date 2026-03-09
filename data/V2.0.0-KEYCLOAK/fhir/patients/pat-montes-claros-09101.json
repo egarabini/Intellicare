@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09101",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAMIRES",
+        "LARISSA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70109803655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405801",
+      "line": [
+        "250"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38887213663",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thamirismiru123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

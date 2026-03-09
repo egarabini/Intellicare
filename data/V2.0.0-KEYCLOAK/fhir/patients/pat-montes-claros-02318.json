@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02318",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATA",
+        "DE",
+        "JESUS",
+        "MEDEIROS"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05124904658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406007",
+      "line": [
+        "35"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991514103",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tiakilareis@gmail.com",
+      "use": "home"
+    }
+  ]
+}

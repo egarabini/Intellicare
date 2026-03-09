@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01690",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FELIPE",
+        "OLIVEIRA"
+      ],
+      "family": "SARDINHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-06-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10125178611"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402558",
+      "line": [
+        "2500 BL 4 AP 201"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998275620",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "felipeoliver@gmail.com",
+      "use": "home"
+    }
+  ]
+}

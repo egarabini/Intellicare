@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01994",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUDMILA",
+        "FERNANADA",
+        "SOARES"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16120893644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407430",
+      "line": [
+        "540 39407430"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999104024",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "o3536344wdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

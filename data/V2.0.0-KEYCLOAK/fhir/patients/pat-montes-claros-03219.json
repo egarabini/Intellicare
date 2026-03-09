@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03219",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELICARDO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04471078607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403522",
+      "line": [
+        "38"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998562068",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jesusalvese12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

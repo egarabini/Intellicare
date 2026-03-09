@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00334",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MOACIR",
+        "LUIZ"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-12-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "44265719600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400233",
+      "line": [
+        "102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999141574",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "moacir@gmail.com",
+      "use": "home"
+    }
+  ]
+}

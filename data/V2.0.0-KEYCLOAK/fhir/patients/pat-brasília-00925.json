@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00925",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IURI",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02656861136"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71725306",
+      "line": [
+        "01 03 CJ F LT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994077407",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "iuridossantossouza26@gmail.com",
+      "use": "home"
+    }
+  ]
+}

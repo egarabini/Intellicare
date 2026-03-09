@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01562",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHANE",
+        "STEFANY",
+        "CARDOSO"
+      ],
+      "family": "CANELA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-09-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02195709650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400809",
+      "line": [
+        "331 39400809"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991222295",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor39@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08087",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHRISTIANE",
+        "CARDOSO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-05-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01508370621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403107",
+      "line": [
+        "955 39403107"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992536572",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "chrissrocha.1981@gmail.com",
+      "use": "home"
+    }
+  ]
+}

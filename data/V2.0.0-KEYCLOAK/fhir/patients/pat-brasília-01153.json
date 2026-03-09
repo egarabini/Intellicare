@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01153",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "EDUARDO",
+        "DIAS"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-08-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06671761108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73370072",
+      "line": [
+        "34 CR 72"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995130244",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carloseduardodiasvieira64@gmail.com",
+      "use": "home"
+    }
+  ]
+}

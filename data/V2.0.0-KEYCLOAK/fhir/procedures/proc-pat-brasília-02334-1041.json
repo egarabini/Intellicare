@@ -1,0 +1,30 @@
+{
+  "resourceType": "Procedure",
+  "id": "proc-pat-brasília-02334-1041",
+  "status": "completed",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "185349003",
+        "display": "Consulta médica"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-brasília-02334"
+  },
+  "performedDateTime": "2026-01-04T06:35:10Z",
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/prac-005"
+      }
+    },
+    {
+      "actor": {
+        "reference": "Organization/org-ubs-asa-sul"
+      }
+    }
+  ]
+}

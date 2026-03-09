@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05786",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GRACIELE",
+        "LUIZA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-01-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07162085636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402381",
+      "line": [
+        "177 39402381"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988295031",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luizagraciele7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01271",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALCENIR",
+        "PEDRO"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00676682324"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71555303",
+      "line": [
+        "QDA 08 LOTE 02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991606855",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valcenirvariedades@gmail.com",
+      "use": "home"
+    }
+  ]
+}

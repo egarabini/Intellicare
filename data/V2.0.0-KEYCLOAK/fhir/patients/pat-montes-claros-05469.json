@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05469",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILSON",
+        "FONSECA",
+        "DE",
+        "CASTRO"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-06-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16904863684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401029",
+      "line": [
+        "925"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998783099",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilsonfonsecadecastrocardoso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

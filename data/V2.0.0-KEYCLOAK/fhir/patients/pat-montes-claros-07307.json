@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07307",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITORIA",
+        "TALITA",
+        "PASSOS"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70621066664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403086",
+      "line": [
+        "52 39403086"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991554452",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitoria10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

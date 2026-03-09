@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08845",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "GETULIO"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-08-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63805502672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404703",
+      "line": [
+        "114 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999437165",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josegetulio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

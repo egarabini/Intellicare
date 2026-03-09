@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06626",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAIS",
+        "PEREIRA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-03-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14585980636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406650",
+      "line": [
+        "223 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999261355",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tais0707@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04592",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "AUGUSTO",
+        "PEREIRA"
+      ],
+      "family": "VEIGA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-09-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84496940604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404061",
+      "line": [
+        "290 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991713108",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antonio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

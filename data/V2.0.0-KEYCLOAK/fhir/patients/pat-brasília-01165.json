@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01165",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AGNALDO",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-02-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81598335120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591370",
+      "line": [
+        "10"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998313517",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "agnaldonjhk55@gmail.com",
+      "use": "home"
+    }
+  ]
+}

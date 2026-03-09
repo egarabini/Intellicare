@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09023",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "T�NIA",
+        "MARA",
+        "DE",
+        "QUEIROZ"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-04-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56457111653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400087",
+      "line": [
+        "112 CASA F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991610844",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taniamaraq@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

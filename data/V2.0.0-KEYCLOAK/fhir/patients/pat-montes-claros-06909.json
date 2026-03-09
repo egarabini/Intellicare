@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06909",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERLAINE",
+        "CARDOSO"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06001677638"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401138",
+      "line": [
+        "145 APTO 403"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991917132",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elaine.moc-mg@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

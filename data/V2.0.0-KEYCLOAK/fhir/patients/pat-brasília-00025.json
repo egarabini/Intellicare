@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00025",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENER",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-11-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04955215157"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340706",
+      "line": [
+        "39"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998914312",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brener.199664@gmail.com",
+      "use": "home"
+    }
+  ]
+}

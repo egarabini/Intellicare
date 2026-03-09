@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00881",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAYRA",
+        "PRICILA",
+        "PEREIRA"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-09-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04324210330"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591505",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998436309",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "naraprypinto@gmail.com",
+      "use": "home"
+    }
+  ]
+}

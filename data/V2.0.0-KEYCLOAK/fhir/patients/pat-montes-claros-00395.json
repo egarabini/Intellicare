@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00395",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "FRANCISCA"
+      ],
+      "family": "GUIMAR�ES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1949-04-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05360221607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404748",
+      "line": [
+        "293 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999627530",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "guimaraesthais938@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08076",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLY",
+        "DAIANE",
+        "SANTOS"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08325443618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404041",
+      "line": [
+        "164 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991816881",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kellydaianesantos11@gmail.com",
+      "use": "home"
+    }
+  ]
+}

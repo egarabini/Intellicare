@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02855",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "VITOR",
+        "AMARAL"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-03-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70699010624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403014",
+      "line": [
+        "25 39403014"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998575692",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jucafernandes96@gmail.com",
+      "use": "home"
+    }
+  ]
+}

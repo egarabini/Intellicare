@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00227",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JONATAS",
+        "FONSECA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-12-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02114227626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402579",
+      "line": [
+        "242 39402579"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988532270",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fonsecajonatas53@gmail.com",
+      "use": "home"
+    }
+  ]
+}

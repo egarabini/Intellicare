@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02060",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NIVALDO",
+        "CORREIA",
+        "FERREIRA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-03-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "20978707400"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71882206",
+      "line": [
+        "5 CJ 6 COND 20 BL A AP101"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981871517",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nivaldoffilho@outlook.com",
+      "use": "home"
+    }
+  ]
+}

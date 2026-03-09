@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07816",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KATHLEEN",
+        "DAIANNY",
+        "OLIVEIRA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11494688662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406541",
+      "line": [
+        "414 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997329100",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dauannysantos@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03625",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JIORDANIA",
+        "HUNGLIA",
+        "PEREIRA"
+      ],
+      "family": "DANIEL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-01-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10660792699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403062",
+      "line": [
+        "279 39403062"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992572693",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedoreletrosom139@gmail.com",
+      "use": "home"
+    }
+  ]
+}

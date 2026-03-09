@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01975",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05025641306"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72548504",
+      "line": [
+        "22 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999188265",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mfreitas534@gmail.com",
+      "use": "home"
+    }
+  ]
+}

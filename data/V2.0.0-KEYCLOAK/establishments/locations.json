@@ -1,0 +1,9 @@
+[
+  {"id": "loc-ses-df-sede", "name": "Sede SES-DF", "org_id": "org-ses-df", "tenant_id": "secretaria-brasilia"},
+  {"id": "loc-ubs-asa-sul", "name": "UBS 1 Asa Sul", "org_id": "org-ubs-asa-sul", "tenant_id": "secretaria-brasilia"},
+  {"id": "loc-sms-sede", "name": "Sede SMS Montes Claros", "org_id": "org-sms-montesclaros", "tenant_id": "secretaria-montesclaros"},
+  {"id": "loc-ubs-mc-centro", "name": "UBS Centro Montes Claros", "org_id": "org-ubs-mc-centro", "tenant_id": "secretaria-montesclaros"},
+  {"id": "loc-hran", "name": "HRAN - Hospital Regional Asa Norte", "org_id": "org-hran", "tenant_id": "hospital-brasilia"},
+  {"id": "loc-hbdf", "name": "HBDF - Hospital de Base", "org_id": "org-hbdf", "tenant_id": "hospital-brasilia"},
+  {"id": "loc-santacasa-mc", "name": "Santa Casa Montes Claros", "org_id": "org-santacasa-mc", "tenant_id": "hospital-montesclaros"}
+]

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02145",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRO",
+        "OLIVEIRA"
+      ],
+      "family": "ORTEGAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02277359351"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71680383",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992389276",
+      "use": "home"
+    }
+  ]
+}

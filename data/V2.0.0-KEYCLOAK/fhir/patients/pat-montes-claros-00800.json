@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00800",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIO",
+        "GILLIARD",
+        "SILVA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-12-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11176383671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401451",
+      "line": [
+        "581 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998282544",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "caroline_janu@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

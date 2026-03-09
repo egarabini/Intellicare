@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00757",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIANA",
+        "APARECIDA",
+        "TELES",
+        "GONDIM",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-01-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02022295137"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330020",
+      "line": [
+        "6 73330020"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61926932588",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juju18teles@gmail.com",
+      "use": "home"
+    }
+  ]
+}

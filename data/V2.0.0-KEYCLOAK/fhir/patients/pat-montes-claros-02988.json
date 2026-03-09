@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02988",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIS",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "FONSECA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10378550608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404310",
+      "line": [
+        "46"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998662571",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pereiraelis324@gmail.com",
+      "use": "home"
+    }
+  ]
+}

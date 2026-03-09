@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02657",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RITA",
+        "DE",
+        "CASSIA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-07-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09186881671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400807",
+      "line": [
+        "839"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998403034",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ritacassiasaquino@gmail.com",
+      "use": "home"
+    }
+  ]
+}

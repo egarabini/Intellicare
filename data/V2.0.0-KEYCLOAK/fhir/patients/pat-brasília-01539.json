@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01539",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CICERO",
+        "SOARES",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62571907115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72649709",
+      "line": [
+        "3 Q800CONJ3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993708251",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ciceroadelina@gmail.com",
+      "use": "home"
+    }
+  ]
+}

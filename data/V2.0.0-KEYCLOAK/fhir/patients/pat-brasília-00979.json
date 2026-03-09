@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00979",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DALRILAN",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-02-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04743879337"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72001275",
+      "line": [
+        "64"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994620115",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dalrilan@icloud.com",
+      "use": "home"
+    }
+  ]
+}

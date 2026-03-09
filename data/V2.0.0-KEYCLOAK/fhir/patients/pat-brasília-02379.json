@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02379",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "F�BIO",
+        "GUSTAVO",
+        "FONSECA"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04898425186"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693041",
+      "line": [
+        "07 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993705590",
+      "use": "home"
+    }
+  ]
+}

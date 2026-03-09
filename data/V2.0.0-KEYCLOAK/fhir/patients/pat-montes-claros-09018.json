@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09018",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDEIR",
+        "ROCHA"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-08-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08445936646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403365",
+      "line": [
+        "534 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999617080",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santanavaldeirrocha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

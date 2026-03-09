@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06985",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EUCLIDES",
+        "FIUZA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-07-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13563991693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402624",
+      "line": [
+        "134 39402624"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999763431",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "larissa.98441029@gmail.com",
+      "use": "home"
+    }
+  ]
+}

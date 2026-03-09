@@ -44,7 +44,14 @@ BACKEND_SERVICES = {
     "wanda": {"port": 8004, "name": "Wanda - Orquestração + Workflows", "health_path": "/api/v1/health"},
     "comunicacao": {"port": 8005, "name": "Comunicacao - Comunicação + Notificações", "health_path": "/api/v1/health"},
     "geralda": {"port": 8006, "name": "Geralda - Gestão + Administrativo", "health_path": "/api/v1/health"},
+    "zilda": {"port": 8007, "name": "Zilda - CNES + DATASUS", "health_path": "/api/v1/health"},
+    "minerva": {"port": 8008, "name": "Minerva - Extração Documentos", "health_path": "/api/v1/health"},
     "pierre": {"port": 8009, "name": "Pierre - Inteligência Externa + Evidências", "health_path": "/api/v1/health"},
+    "admin": {"port": 8010, "name": "Admin - Administração Sistema", "health_path": "/api/v1/health"},
+    "gestor": {"port": 8011, "name": "Gestor - Gestão Módulos Clínicos", "health_path": "/api/v1/health"},
+    "grahame": {"port": 8012, "name": "Grahame - FHIR R4 + CDS Hooks", "health_path": "/api/v1/health"},
+    "nise": {"port": 8013, "name": "Nise - Chatbot + Treinamento", "health_path": "/api/v1/health"},
+    "bridge": {"port": 8014, "name": "Bridge - Health Endpoint Stub", "health_path": "/api/v1/health"},
 }
 
 FRONTEND_SERVICE = {

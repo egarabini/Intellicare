@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07110",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELENA",
+        "MARIA",
+        "SOARES"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-01-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "59842180620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39412000",
+      "line": [
+        "131 SANTA ROSA DE LIMA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998736263",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielle.duraes2009@gmail.com",
+      "use": "home"
+    }
+  ]
+}

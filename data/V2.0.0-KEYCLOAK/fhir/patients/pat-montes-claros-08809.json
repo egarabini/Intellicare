@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08809",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PABLO",
+        "RAMON",
+        "LOPES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13709696607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404056",
+      "line": [
+        "94 39404056"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997280223",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pabloramonlopessantos@hotmail834.com",
+      "use": "home"
+    }
+  ]
+}

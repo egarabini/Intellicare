@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01919",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENILDO",
+        "MARTINS",
+        "DA",
+        "ROCHA"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-06-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06776719110"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71881743",
+      "line": [
+        "8"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981855437",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rnrocha58@gmail.com",
+      "use": "home"
+    }
+  ]
+}

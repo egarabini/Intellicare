@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05050",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEODINA",
+        "DAS",
+        "DORES",
+        "PEREIRA"
+      ],
+      "family": "COELHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13663420620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402181",
+      "line": [
+        "912"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991545318",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leodinacoelho0616@gmail.com",
+      "use": "home"
+    }
+  ]
+}

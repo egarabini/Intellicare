@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00983",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "SOARES",
+        "DE"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1943-06-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00793100798"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400124",
+      "line": [
+        "26 PENCIONATO"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998817375",
+      "use": "home"
+    }
+  ]
+}

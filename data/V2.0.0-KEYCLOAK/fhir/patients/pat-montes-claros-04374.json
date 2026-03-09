@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04374",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SABRINA",
+        "DE",
+        "SOUZA",
+        "LAGOS"
+      ],
+      "family": "ARRIAGADA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-04-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15260599675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400358",
+      "line": [
+        "88"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998765433",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sabrianadesouza1213@gmai.com",
+      "use": "home"
+    }
+  ]
+}

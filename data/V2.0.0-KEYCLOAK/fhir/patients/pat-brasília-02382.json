@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02382",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILAS",
+        "HENRIK",
+        "NUNES",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-02-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06970426181"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590312",
+      "line": [
+        "18 71590312"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6199318276",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silasluanda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03818",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIO",
+        "CESAR",
+        "BASTOS",
+        "DE",
+        "MORAIS"
+      ],
+      "family": "PORTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-05-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66825660691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401192",
+      "line": [
+        "26 SEM COMPLEMENTO"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998327509",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juliocesar2023@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04350",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATA",
+        "RODRIGUES"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-12-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70622631683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401155",
+      "line": [
+        "326"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991223800",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00106",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "AVELINO",
+        "DE"
+      ],
+      "family": "MARIZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1946-11-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "30046793453"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693131",
+      "line": [
+        "41"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992430227",
+      "use": "home"
+    }
+  ]
+}

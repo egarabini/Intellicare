@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01819",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTOR",
+        "LORRAN",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-05-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70335674640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400823",
+      "line": [
+        "908 39400823"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "3832156598",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitorlorran540@gmail.com",
+      "use": "home"
+    }
+  ]
+}

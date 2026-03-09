@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08882",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IRANI",
+        "LUIZA",
+        "DE",
+        "CARVALHO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85102695649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400813",
+      "line": [
+        "23 39400813"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998020075",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "iraniluiza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

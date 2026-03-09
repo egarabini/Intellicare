@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06532",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "IRLANDO"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-08-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "77590422649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404399",
+      "line": [
+        "85 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988598117",
+      "use": "home"
+    }
+  ]
+}

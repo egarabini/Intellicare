@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02489",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JADSON",
+        "RODRIGUES",
+        "MENDONCA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-10-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10826071694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401244",
+      "line": [
+        "54 39401244"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38981434396",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "teste@eietrosom.com",
+      "use": "home"
+    }
+  ]
+}

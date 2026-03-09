@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04267",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TEREZA",
+        "SOARES"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1951-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66823307668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403101",
+      "line": [
+        "36 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991963496",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aneversiani24@gmail.com",
+      "use": "home"
+    }
+  ]
+}

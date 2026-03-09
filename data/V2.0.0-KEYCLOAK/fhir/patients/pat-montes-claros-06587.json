@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06587",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SANY",
+        "MARIANE",
+        "BARBOSA",
+        "DE"
+      ],
+      "family": "ABREU"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-09-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11280678623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400440",
+      "line": [
+        "85"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38987654321",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sanymariane123@gamil.com",
+      "use": "home"
+    }
+  ]
+}

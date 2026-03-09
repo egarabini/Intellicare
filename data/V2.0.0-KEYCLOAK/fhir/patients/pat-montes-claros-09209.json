@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09209",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADAO"
+      ],
+      "family": "CANDIDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-01-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36888532615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402056",
+      "line": [
+        "120"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999550674",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

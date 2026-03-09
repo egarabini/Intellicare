@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08841",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CECILIA",
+        "LOPES"
+      ],
+      "family": "MALVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-09-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10621181625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405642",
+      "line": [
+        "61"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991670152",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mceciliamalveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

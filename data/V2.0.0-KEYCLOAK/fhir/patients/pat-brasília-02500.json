@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02500",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEX",
+        "NUNES",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-11-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02573916146"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693713",
+      "line": [
+        "59 RUA 13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982919372",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexaraujopro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

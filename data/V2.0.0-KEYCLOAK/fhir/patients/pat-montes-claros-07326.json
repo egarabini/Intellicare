@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07326",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMUEL",
+        "ALESSANDRO",
+        "ALVES",
+        "E"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02151754685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400321",
+      "line": [
+        "161 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991261405",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "samuelalessandro92@gmail.com",
+      "use": "home"
+    }
+  ]
+}

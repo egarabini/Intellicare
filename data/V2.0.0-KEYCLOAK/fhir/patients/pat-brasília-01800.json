@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01800",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYANN",
+        "SOUZA"
+      ],
+      "family": "GUEDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07125613314"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72035507",
+      "line": [
+        "05 BLOCO 2,AP 409"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "89999427530",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayannguedes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

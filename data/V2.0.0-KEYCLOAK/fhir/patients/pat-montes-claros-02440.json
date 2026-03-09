@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02440",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULA",
+        "FERNANDA",
+        "BARBOSA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11709572698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400392",
+      "line": [
+        "785 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999307567",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bpaulinha330@gmail.com",
+      "use": "home"
+    }
+  ]
+}

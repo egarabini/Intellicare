@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06501",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KLEBER",
+        "AURELIO"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-06-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01792257660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401708",
+      "line": [
+        "29 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31971439858",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "klebercastro58@gmail.com",
+      "use": "home"
+    }
+  ]
+}

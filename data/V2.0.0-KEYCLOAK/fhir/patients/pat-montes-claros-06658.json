@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06658",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANE",
+        "KAROLAYNE",
+        "CARDOSO"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-06-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17738942690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403115",
+      "line": [
+        "241 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991551052",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anycarolayne451@gmail.com",
+      "use": "home"
+    }
+  ]
+}

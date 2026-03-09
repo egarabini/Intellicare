@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06149",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILIA",
+        "RODRIGUES"
+      ],
+      "family": "SALOMAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1970-10-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01010610643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405038",
+      "line": [
+        "250 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984069975",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emiliaasalomaao@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00663",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FELIPE",
+        "RODRIGUES"
+      ],
+      "family": "MACHADO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-01-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07465361192"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330021",
+      "line": [
+        "13"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996790871",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "feliippeduarte525@gmail.com",
+      "use": "home"
+    }
+  ]
+}

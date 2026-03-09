@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01019",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDENILSON",
+        "FERREIRS"
+      ],
+      "family": "PATRICIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "63436193305"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691024",
+      "line": [
+        "131 CENTRO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983577568",
+      "use": "home"
+    }
+  ]
+}

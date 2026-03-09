@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06054",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HUGO",
+        "CUSTODIO",
+        "LOPES"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-03-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15403081623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400220",
+      "line": [
+        "1258 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997441396",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hugolopesmendes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

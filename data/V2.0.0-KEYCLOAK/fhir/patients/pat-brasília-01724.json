@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01724",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREIA",
+        "VANESSA",
+        "CARVALHO",
+        "DE"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-11-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03326566166"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72310208",
+      "line": [
+        "03"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984309219",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00391",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITOR",
+        "SANTOS"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-01-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12930432659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406625",
+      "line": [
+        "378 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998725678",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mich788elerodrigues425@gmail.com",
+      "use": "home"
+    }
+  ]
+}

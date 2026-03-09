@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05057",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATRICK",
+        "PABLO",
+        "LOPES"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15473684629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405416",
+      "line": [
+        "291 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988019252",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patrickpablo436@gmail.com",
+      "use": "home"
+    }
+  ]
+}

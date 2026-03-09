@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00840",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "PETRONE"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-03-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47800062600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403410",
+      "line": [
+        "696 39403410"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38996888888",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gerente9@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

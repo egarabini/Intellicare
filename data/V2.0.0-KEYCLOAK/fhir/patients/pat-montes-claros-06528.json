@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06528",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OSMANDO",
+        "RIBEIRO"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-05-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36931500600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401449",
+      "line": [
+        "367 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998564982",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "osmandoribeirosoares@gamil.com",
+      "use": "home"
+    }
+  ]
+}

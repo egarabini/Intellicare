@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02345",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELLINGTON",
+        "SILVA"
+      ],
+      "family": "VEIGA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05419403170"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691555",
+      "line": [
+        "36 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993492943",
+      "use": "home"
+    }
+  ]
+}

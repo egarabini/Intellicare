@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01727",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALZENARA",
+        "ALVARES"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-03-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47359226104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71910360",
+      "line": [
+        "403 RUA 37 NORTE AP 403"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981318282",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nunes.nara42@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

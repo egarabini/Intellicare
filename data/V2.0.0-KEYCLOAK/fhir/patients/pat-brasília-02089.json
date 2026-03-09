@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02089",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "BERNARDO",
+        "DE"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1952-03-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "35773162172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368730",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994449726",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniobern@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05799",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GRACIELE",
+        "RIBEIRO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-07-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12498120629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401265",
+      "line": [
+        "345 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999589754",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gracieleribeiroro9cha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

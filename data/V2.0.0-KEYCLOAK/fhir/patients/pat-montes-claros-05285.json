@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05285",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YAGO",
+        "PHILLIPE",
+        "PEREIRA"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-07-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70743022602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403099",
+      "line": [
+        "695"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988490584",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yagofhilipe0107@gmail.com",
+      "use": "home"
+    }
+  ]
+}

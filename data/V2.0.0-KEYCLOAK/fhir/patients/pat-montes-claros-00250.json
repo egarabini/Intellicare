@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00250",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "NARDEL",
+        "ALVES",
+        "DE",
+        "ALMEIDA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06093811646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401091",
+      "line": [
+        "445 AP 507"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991696961",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josenardeljunior@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

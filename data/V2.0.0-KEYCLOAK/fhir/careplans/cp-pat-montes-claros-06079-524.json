@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-06079-524",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Hipertensão essencial (primária), DRC estágio 3",
+  "description": "Condições: Hipertensão essencial (primária), DRC estágio 3",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-06079"
+  },
+  "period": {
+    "start": "2025-10-02"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-06079-524"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

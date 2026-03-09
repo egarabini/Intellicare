@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01704",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEITON",
+        "FERREIRA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83663797104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73080100",
+      "line": [
+        "55 55A 66A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982746441",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleitonferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06041",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMANDA",
+        "LIHS",
+        "SANTOS"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-12-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70757522602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400596",
+      "line": [
+        "22 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38389898238",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bonecamilhoes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02498",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIO",
+        "JUNIOR",
+        "VASCONCELOS"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-04-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12384482670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402547",
+      "line": [
+        "04"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31991860951",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudiojuniorvasc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

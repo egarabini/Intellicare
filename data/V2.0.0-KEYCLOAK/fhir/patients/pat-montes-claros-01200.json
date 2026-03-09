@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01200",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELVIS",
+        "BRITO"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07314611696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406330",
+      "line": [
+        "670 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998083632",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elvisbrife@gmail.com",
+      "use": "home"
+    }
+  ]
+}

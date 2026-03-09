@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06930",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDREIA",
+        "GONCALVES",
+        "MARTINS"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-03-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08183928609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404395",
+      "line": [
+        "276 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991668438",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andreiagomsalves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

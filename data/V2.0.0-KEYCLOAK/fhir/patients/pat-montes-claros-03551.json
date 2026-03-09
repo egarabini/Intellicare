@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03551",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LENICE",
+        "CORREIA"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-01-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05123025618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404005",
+      "line": [
+        "60"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992427964",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "icmacedo2@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

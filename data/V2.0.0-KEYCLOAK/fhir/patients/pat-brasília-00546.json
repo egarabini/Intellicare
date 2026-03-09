@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00546",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "BARBOSA"
+      ],
+      "family": "CORREIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "37941976153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72669305",
+      "line": [
+        "5 72669305"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985054595",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renivaldoalvescorreia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00786",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARNALDO"
+      ],
+      "family": "VITOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1951-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12038113149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73320020",
+      "line": [
+        "00"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999558863",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "arnaldovitor@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08494",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIRLENEAPARECIDADASILVA"
+      ],
+      "family": "DIRLENEAPARECIDADASILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-12-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00297440675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400450",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999253509",
+      "use": "home"
+    }
+  ]
+}

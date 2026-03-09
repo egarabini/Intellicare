@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02301",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DARLAN",
+        "GUEDES"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-07-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71775560104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694022",
+      "line": [
+        "13 R. OESTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998042399",
+      "use": "home"
+    }
+  ]
+}

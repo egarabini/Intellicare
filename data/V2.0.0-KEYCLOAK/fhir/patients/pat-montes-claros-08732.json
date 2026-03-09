@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08732",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAYNE",
+        "MARTINS"
+      ],
+      "family": "MOURAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-03-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13022233647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404321",
+      "line": [
+        "45 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991665216",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jaahmartins97@gmail.com",
+      "use": "home"
+    }
+  ]
+}

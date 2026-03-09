@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05858",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRESSA",
+        "EMANOELY",
+        "FONSECA"
+      ],
+      "family": "ROCA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-09-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70133950646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403170",
+      "line": [
+        "586 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992609327",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fandressa784@gmail.com",
+      "use": "home"
+    }
+  ]
+}

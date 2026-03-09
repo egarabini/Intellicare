@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08206",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDUARDO",
+        "HENRIQUE",
+        "RODRIGUES"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15479400690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405632",
+      "line": [
+        "341 39405632"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988157237",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor46@gmail.com",
+      "use": "home"
+    }
+  ]
+}

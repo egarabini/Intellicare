@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08735",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULA",
+        "ADRIANA",
+        "MARTINS",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-02-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03969795648"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404287",
+      "line": [
+        "354 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991105548",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "agnaldodossantosjunior9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02867",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VAGNER",
+        "RODRIGUES"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05180501571"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404323",
+      "line": [
+        "538 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997498619",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vagnerrodrigueslima89@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00007",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCYNEIDE",
+        "GONCALVES",
+        "LOPES"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-07-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07172223659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401130",
+      "line": [
+        "59 39401130"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988608272",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucyneide2020@gmail.com",
+      "use": "home"
+    }
+  ]
+}

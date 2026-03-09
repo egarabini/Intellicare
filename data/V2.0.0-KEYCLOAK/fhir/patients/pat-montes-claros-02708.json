@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02708",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LOS",
+        "ANGELES",
+        "KATIANA"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05351719606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400761",
+      "line": [
+        "349"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999109482",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "katianexavier@gmail.com",
+      "use": "home"
+    }
+  ]
+}

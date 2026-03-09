@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00082",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALISSON",
+        "DA",
+        "SILVA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-12-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10026329433"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72705531",
+      "line": [
+        "1 72705531"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994545665",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbarajessica511@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04842",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDSON",
+        "FERREIRA"
+      ],
+      "family": "BARCELOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08616018662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401133",
+      "line": [
+        "92 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998665283",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barcelosedson86@gmail.com",
+      "use": "home"
+    }
+  ]
+}

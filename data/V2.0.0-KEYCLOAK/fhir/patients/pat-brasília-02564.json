@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02564",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDVALDO",
+        "BATISTA"
+      ],
+      "family": "LEITE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-03-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72393734104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "61 25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61989623894",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "evaldobatista22@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

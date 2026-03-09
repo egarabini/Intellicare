@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02176",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALMIR",
+        "GOMES",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24803650187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72509506",
+      "line": [
+        "15 SANTA MARIA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998131185",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilbertogomes73@uol.com.br",
+      "use": "home"
+    }
+  ]
+}

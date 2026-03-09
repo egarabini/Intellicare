@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-02346-589",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 5 (insuficiência renal terminal), DRC estágio 4 (TFG 15-29)",
+  "description": "Condições: DRC estágio 5 (insuficiência renal terminal), DRC estágio 4 (TFG 15-29)",
+  "subject": {
+    "reference": "Patient/pat-brasília-02346"
+  },
+  "period": {
+    "start": "2025-12-11"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-02346-589"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

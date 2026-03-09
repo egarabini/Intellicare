@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02777",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LORENA",
+        "GABRIELE",
+        "TELEDO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11299551688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400786",
+      "line": [
+        "32 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984100788",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorenagabrieletoledo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

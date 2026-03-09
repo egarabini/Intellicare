@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01246",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YASMIN",
+        "SILVA",
+        "MOREIRA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-06-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70518085678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401692",
+      "line": [
+        "790 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999159207",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yf8712117@gmail.com",
+      "use": "home"
+    }
+  ]
+}

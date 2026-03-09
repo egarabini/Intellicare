@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01011",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "ANTONIO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "BARROS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83814558120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72502512",
+      "line": [
+        "18 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999052199",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcosantoniodasilvabarrosb@gmail.com",
+      "use": "home"
+    }
+  ]
+}

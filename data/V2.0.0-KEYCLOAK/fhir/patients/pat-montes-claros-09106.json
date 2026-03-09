@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09106",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RHIAN",
+        "LUCAS",
+        "RAMOS"
+      ],
+      "family": "TEIXEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-08-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15618452642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404140",
+      "line": [
+        "761 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988660015",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ramosrhian811@gmail.com",
+      "use": "home"
+    }
+  ]
+}

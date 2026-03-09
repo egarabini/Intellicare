@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00658",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JO�O",
+        "VIDAL"
+      ],
+      "family": "LUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-12-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88274675134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73015404",
+      "line": [
+        "4"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996019391",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaovl1912@gmail.com",
+      "use": "home"
+    }
+  ]
+}

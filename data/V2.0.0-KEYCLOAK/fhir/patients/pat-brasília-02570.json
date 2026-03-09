@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02570",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIOGO",
+        "SANTA",
+        "CRUZ"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-09-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01328135136"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72405550",
+      "line": [
+        "508"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993300168",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diogo12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

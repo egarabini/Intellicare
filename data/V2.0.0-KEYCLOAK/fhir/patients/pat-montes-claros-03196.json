@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03196",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SUZANA",
+        "DE",
+        "JESUS",
+        "FONSECA"
+      ],
+      "family": "BRANDAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "64465764634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402666",
+      "line": [
+        "920"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998640065",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hebertjason58@gmail.com",
+      "use": "home"
+    }
+  ]
+}

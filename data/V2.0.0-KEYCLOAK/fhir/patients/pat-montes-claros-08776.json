@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08776",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PATR�CIA",
+        "MARIA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "DINIZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70588491616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402165",
+      "line": [
+        "985 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998578269",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "patriciamariadejesusdiniz@gmail.com",
+      "use": "home"
+    }
+  ]
+}

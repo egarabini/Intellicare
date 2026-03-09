@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02413",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RODRIGO",
+        "OLIVEIRA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98546520178"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71680348",
+      "line": [
+        "33 CONJUNTO 33"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996895731",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rodrigoopersonal@gmail.com",
+      "use": "home"
+    }
+  ]
+}

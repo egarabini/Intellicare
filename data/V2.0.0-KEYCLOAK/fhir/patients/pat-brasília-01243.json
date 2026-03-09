@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01243",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILSON",
+        "ALVES",
+        "DE"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02746288133"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691185",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996273084",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilsonalvesdemorais0019@gmail.com",
+      "use": "home"
+    }
+  ]
+}

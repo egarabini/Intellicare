@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01396",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABIO",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-03-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69124175153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72146020",
+      "line": [
+        "38"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982488374",
+      "use": "home"
+    }
+  ]
+}

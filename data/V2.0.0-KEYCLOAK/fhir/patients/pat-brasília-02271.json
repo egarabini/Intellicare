@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02271",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIANO",
+        "DO",
+        "NASCIMENTO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-07-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05504654300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693709",
+      "line": [
+        "06 CS 02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "86998049241",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucianosantosphb768@gmail.com",
+      "use": "home"
+    }
+  ]
+}

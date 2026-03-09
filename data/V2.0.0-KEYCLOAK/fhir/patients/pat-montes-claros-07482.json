@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07482",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCINA",
+        "SILVEIRA",
+        "ALMEIDA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53115686668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400413",
+      "line": [
+        "308 39400413"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991158966",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alicestefanysilveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

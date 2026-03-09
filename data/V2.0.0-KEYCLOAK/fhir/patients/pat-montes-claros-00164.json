@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00164",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "POLIANA",
+        "SOUZA",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10721317650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403505",
+      "line": [
+        "1088"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991896090",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "polianasouza12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

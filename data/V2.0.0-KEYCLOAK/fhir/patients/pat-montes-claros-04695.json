@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04695",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELLEN",
+        "THAIS",
+        "BISPO",
+        "DE"
+      ],
+      "family": "SIQUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02275640657"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400305",
+      "line": [
+        "72 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991987190",
+      "use": "home"
+    }
+  ]
+}

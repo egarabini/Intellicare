@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05768",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THAIS",
+        "ALEXANDRA",
+        "DIAS"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-06-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70229823688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403099",
+      "line": [
+        "557"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991842102",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thaisdiassoares2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

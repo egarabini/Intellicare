@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03327",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CAROLINE",
+        "NASCIMENTO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-07-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07626755359"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400061",
+      "line": [
+        "10 39400061"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992568866",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anacarolinenascimento9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

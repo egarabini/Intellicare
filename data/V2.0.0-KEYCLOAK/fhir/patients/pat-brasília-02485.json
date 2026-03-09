@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02485",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "VICTORIA",
+        "DE",
+        "PAULA"
+      ],
+      "family": "CONCEICAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-09-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06852207102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340430",
+      "line": [
+        "41"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996259298",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "avpaulaconceicao@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

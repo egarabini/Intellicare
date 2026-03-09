@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03896",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELENA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-01-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05059157660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401484",
+      "line": [
+        "212 39401484"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998846807",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "helena@gmail.com",
+      "use": "home"
+    }
+  ]
+}

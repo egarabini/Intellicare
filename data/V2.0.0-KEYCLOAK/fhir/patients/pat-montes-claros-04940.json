@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04940",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "APARECIDO",
+        "SILVEIRO",
+        "DE"
+      ],
+      "family": "FARIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1953-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "68679904872"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400230",
+      "line": [
+        "363 CASA F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998583070",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joseparecido@gmail.com",
+      "use": "home"
+    }
+  ]
+}

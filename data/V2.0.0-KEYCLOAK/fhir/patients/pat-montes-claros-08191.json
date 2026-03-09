@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08191",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "GABRIELA",
+        "PEREIRA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-05-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15657487605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404293",
+      "line": [
+        "94 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998535629",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anagrabrielamendes678@gmail.com",
+      "use": "home"
+    }
+  ]
+}

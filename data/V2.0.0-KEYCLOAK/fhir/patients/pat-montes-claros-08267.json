@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08267",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "SERGIO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "TEIXEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-10-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10588123609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400382",
+      "line": [
+        "846 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "47997147017",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laripaulo336@gmail.com",
+      "use": "home"
+    }
+  ]
+}

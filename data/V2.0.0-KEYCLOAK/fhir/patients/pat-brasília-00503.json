@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00503",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATALIA",
+        "CIRACO",
+        "FREIRE"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-02-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07785928126"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71965000",
+      "line": [
+        "36 ESCOLAEDUCART"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999794535",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nathaliaciriaco.ribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

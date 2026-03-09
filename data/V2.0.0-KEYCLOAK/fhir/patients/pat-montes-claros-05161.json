@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05161",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALISSON",
+        "PATRICK",
+        "ARAGONEZ"
+      ],
+      "family": "ADELL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11303737620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39409899",
+      "line": [
+        "0 CHACARA QUINTA DA BOA VISTA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991184263",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adellalisson094@gmail.com",
+      "use": "home"
+    }
+  ]
+}

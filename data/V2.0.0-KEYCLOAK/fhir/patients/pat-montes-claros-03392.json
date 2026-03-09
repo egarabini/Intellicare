@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03392",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DOUGLAS",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "LUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08251497620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401244",
+      "line": [
+        "146 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999579161",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "douglasluz@gmail.com",
+      "use": "home"
+    }
+  ]
+}

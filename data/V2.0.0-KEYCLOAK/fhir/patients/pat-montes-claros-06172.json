@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06172",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROMANA",
+        "GOMES",
+        "DE"
+      ],
+      "family": "FRANCA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1954-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85051217672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401596",
+      "line": [
+        "102 39401596"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992358351",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "romana159@gmail.com",
+      "use": "home"
+    }
+  ]
+}

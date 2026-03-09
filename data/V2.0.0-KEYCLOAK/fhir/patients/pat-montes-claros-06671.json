@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06671",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "STEFANY",
+        "CAMILA",
+        "SILVA",
+        "DE"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70650605608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403076",
+      "line": [
+        "10 39403076"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991412812",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "camilapardinho6@gmail.com",
+      "use": "home"
+    }
+  ]
+}

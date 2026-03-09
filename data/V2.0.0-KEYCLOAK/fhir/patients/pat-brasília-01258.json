@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01258",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PEDRO",
+        "CASTRO",
+        "PEREIRA"
+      ],
+      "family": "BASTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00715740504"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692815",
+      "line": [
+        "11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996633205",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "resourceType": "PractitionerRole",
+  "id": "pr-prac-008-org-ubs-mc-centro",
+  "practitioner": {
+    "reference": "Practitioner/prac-008"
+  },
+  "organization": {
+    "reference": "Organization/org-ubs-mc-centro"
+  },
+  "code": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/practitioner-role",
+          "code": "nurse"
+        }
+      ]
+    }
+  ],
+  "location": [
+    {
+      "reference": "Location/loc-ubs-mc-centro"
+    }
+  ]
+}

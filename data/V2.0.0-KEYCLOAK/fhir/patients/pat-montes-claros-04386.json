@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04386",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERTO",
+        "DE",
+        "ALMEIDA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84975628600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400312",
+      "line": [
+        "150"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999946445",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robertoalmeidacostanorteturismo24@gmail.com",
+      "use": "home"
+    }
+  ]
+}

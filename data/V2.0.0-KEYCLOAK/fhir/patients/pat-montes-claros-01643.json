@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01643",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANILO",
+        "ALENCAR"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-09-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07994560636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39408393",
+      "line": [
+        "151 CS FRENTE"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999827085",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "unitranstransportes3@gmail.com",
+      "use": "home"
+    }
+  ]
+}

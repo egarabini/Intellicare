@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05186",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEISE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "COIMBRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-10-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16388511660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400760",
+      "line": [
+        "358"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998448446",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deisesantoscoimbra7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "all-pat-montes-claros-07889-34",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "type": "allergy",
+  "category": [
+    "medication"
+  ],
+  "criticality": "low",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "7632",
+        "display": "Dipirona"
+      }
+    ]
+  },
+  "patient": {
+    "reference": "Patient/pat-montes-claros-07889"
+  },
+  "recordedDate": "2025-04-29T06:34:46Z",
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "247472004",
+              "display": "Hipersensibilidade"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

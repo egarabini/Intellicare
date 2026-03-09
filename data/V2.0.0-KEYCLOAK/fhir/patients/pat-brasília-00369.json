@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00369",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINE",
+        "GOMES"
+      ],
+      "family": "VANCONCELOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-06-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04852652309"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693152",
+      "line": [
+        "131"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985590973",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alineggvv@gmail.com",
+      "use": "home"
+    }
+  ]
+}

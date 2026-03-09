@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07251",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTOVAO",
+        "LEANDRO",
+        "DE",
+        "MORAIS"
+      ],
+      "family": "GUEDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-07-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01626029601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400126",
+      "line": [
+        "1315"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992450830",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owdg18@gmail.com",
+      "use": "home"
+    }
+  ]
+}

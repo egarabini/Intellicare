@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01188",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNO",
+        "RIBEIRO",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05667581132"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72735008",
+      "line": [
+        "35 CONJUNTO H CASA 07"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998844650",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sbrunorochaa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

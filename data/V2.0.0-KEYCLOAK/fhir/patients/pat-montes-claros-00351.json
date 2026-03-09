@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00351",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EIRIC",
+        "FERREIRA"
+      ],
+      "family": "GARCIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-05-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09046857646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39409899",
+      "line": [
+        "0 S/N"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998122838",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "giovana.sfagundes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04503",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "JOVINA",
+        "GONCALVES"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06161493608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404367",
+      "line": [
+        "8297"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999353977",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariajovinasilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

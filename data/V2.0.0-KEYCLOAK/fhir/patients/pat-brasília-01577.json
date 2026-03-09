@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01577",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTYANE",
+        "MENDES",
+        "DA",
+        "CRUS"
+      ],
+      "family": "MEDEIROS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-06-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98485148134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72650440",
+      "line": [
+        "28 CASA 28"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991894955",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cristyanemr@gmail.com",
+      "use": "home"
+    }
+  ]
+}

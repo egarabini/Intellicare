@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00996",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "ARAUJO"
+      ],
+      "family": "CAMELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07033194188"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71698007",
+      "line": [
+        "01 APT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983736432",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01476",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAVID",
+        "RODRIGUES"
+      ],
+      "family": "LISBOA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05889040154"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591155",
+      "line": [
+        "25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996951378",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jorgh65214@gmail.com",
+      "use": "home"
+    }
+  ]
+}

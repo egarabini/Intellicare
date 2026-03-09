@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04697",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUILHERME",
+        "FELIPE",
+        "VIEIRA"
+      ],
+      "family": "SOUTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-07-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70017353610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401444",
+      "line": [
+        "323 39401444"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988641249",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "guilhermefelipe25@gmail.com",
+      "use": "home"
+    }
+  ]
+}

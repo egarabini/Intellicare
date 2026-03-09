@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08647",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEUSA",
+        "NUNES"
+      ],
+      "family": "FRANCO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1950-12-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60831243600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400487",
+      "line": [
+        "152"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999125722",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elizangelanunesfranco@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00664",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "RODRIGUES"
+      ],
+      "family": "TRINDADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06993089173"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570501",
+      "line": [
+        "7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994072644",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "07dreko@gmail.com",
+      "use": "home"
+    }
+  ]
+}

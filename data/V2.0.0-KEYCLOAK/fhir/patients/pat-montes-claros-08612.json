@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08612",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DALTON",
+        "JUNIO",
+        "RODRIGUES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-07-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "19117905605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404853",
+      "line": [
+        "110"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991464710",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "junio33@gnail.com",
+      "use": "home"
+    }
+  ]
+}

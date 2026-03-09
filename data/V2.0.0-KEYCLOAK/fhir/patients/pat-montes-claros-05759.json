@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05759",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTORIA",
+        "LORRANY",
+        "MAGALHAES",
+        "MESQUITA"
+      ],
+      "family": "DOMINGOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-09-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70041752600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403687",
+      "line": [
+        "11"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "21984143965",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "victoriamagalhaes17@gmail.com",
+      "use": "home"
+    }
+  ]
+}

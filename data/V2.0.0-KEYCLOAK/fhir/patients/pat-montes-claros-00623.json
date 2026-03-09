@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00623",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LUIZA",
+        "LISBOA"
+      ],
+      "family": "NARCISO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13392456632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400196",
+      "line": [
+        "715"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998192117",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "malukamoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

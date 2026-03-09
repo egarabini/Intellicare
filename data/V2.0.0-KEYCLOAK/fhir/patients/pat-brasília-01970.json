@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01970",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "VITOR",
+        "MOREIRA"
+      ],
+      "family": "SARAIVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06807726180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691138",
+      "line": [
+        "241 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982406581",
+      "use": "home"
+    }
+  ]
+}

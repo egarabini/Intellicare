@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02501",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLY",
+        "KEMELY",
+        "CUNHA",
+        "DE"
+      ],
+      "family": "MENDON�A"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-05-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03070365108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72640408",
+      "line": [
+        "08 QD 604"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981410532",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kellykemely@gmail.com",
+      "use": "home"
+    }
+  ]
+}

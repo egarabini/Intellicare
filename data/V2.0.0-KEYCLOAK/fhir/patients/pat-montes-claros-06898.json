@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06898",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KETLYN",
+        "FABIANA",
+        "FERREIRA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-04-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70701231670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401265",
+      "line": [
+        "458"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992020285",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ketlynfabiana2024@icloud.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00702",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIANE",
+        "ASSUNCAO"
+      ],
+      "family": "VIANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "75191962320"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693500",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985457251",
+      "use": "home"
+    }
+  ]
+}

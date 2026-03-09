@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07702",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYANE",
+        "GONCALVES"
+      ],
+      "family": "LIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1991-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10912507667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406230",
+      "line": [
+        "110 39406230"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997254811",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayanelira706@gmail.com",
+      "use": "home"
+    }
+  ]
+}

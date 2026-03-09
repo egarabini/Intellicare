@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02623",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATA",
+        "PATRICIA",
+        "SOUZA"
+      ],
+      "family": "RABELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06693272630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402329",
+      "line": [
+        "84"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991398678",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatapatriciarabelo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

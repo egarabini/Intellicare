@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00637",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEIDIANI",
+        "OLIVEIRA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-08-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09584857630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403028",
+      "line": [
+        "20 RUA PARALELA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991613353",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leidesoares769@gmail.com",
+      "use": "home"
+    }
+  ]
+}

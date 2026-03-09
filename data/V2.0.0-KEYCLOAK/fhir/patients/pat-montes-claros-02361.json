@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02361",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "GABRIEL",
+        "BARBOSA",
+        "SANTOS"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-03-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02117881637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404226",
+      "line": [
+        "150 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984092119",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucasgabriell038@icloud.com",
+      "use": "home"
+    }
+  ]
+}

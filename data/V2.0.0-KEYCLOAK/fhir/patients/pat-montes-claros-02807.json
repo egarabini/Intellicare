@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02807",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THALITA",
+        "EMANUELLY",
+        "MARTINS"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16976714626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406618",
+      "line": [
+        "346 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984335771",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thalymartins978@gmail.com",
+      "use": "home"
+    }
+  ]
+}

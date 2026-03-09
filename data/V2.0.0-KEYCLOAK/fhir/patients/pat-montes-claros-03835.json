@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03835",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAMILA",
+        "DAYANE",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-09-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10779475690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400444",
+      "line": [
+        "89"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992357601",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "camilasantos992310512@outlok.com",
+      "use": "home"
+    }
+  ]
+}

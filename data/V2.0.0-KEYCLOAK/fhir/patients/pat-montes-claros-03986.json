@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03986",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALERIA",
+        "ANTUNES"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-04-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03448654604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403051",
+      "line": [
+        "345 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31985254666",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valeriasoares985254666@gmail.com",
+      "use": "home"
+    }
+  ]
+}

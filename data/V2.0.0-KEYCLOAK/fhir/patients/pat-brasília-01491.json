@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01491",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "FATIMA",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1957-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85318809120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573102",
+      "line": [
+        "48 QUDAR 31 CONJ B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996747477",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaffsatunin@gmail.com",
+      "use": "home"
+    }
+  ]
+}

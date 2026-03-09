@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00484",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOANICE",
+        "GON�ALVES",
+        "FERREIRA"
+      ],
+      "family": "BEZERRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-12-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "55404375353"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694013",
+      "line": [
+        "08"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993847883",
+      "use": "home"
+    }
+  ]
+}

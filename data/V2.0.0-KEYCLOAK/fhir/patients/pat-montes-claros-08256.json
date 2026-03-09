@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08256",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SYNDEL",
+        "ALICE",
+        "GON�ALVES"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-04-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01952354609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401262",
+      "line": [
+        "2176"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991821440",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jun.melo@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

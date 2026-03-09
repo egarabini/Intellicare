@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02217",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "LEMOS",
+        "BARCELOS",
+        "DE",
+        "CASTRO"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-05-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01897102682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400761",
+      "line": [
+        "344 C"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998730018",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucashaskell28@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

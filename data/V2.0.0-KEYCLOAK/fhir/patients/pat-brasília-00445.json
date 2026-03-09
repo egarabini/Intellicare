@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00445",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AUREA",
+        "JACKELINE"
+      ],
+      "family": "MONZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36870218153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71993210",
+      "line": [
+        "1 CH 60 CASA 05"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992432547",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aureajackelinemonz161@gmail.com",
+      "use": "home"
+    }
+  ]
+}

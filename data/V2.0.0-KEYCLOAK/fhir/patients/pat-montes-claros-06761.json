@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06761",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "VITOR",
+        "ALMEIDA"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02214578609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404399",
+      "line": [
+        "528 39404399"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998792660",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitorjoao16757@gmail.com",
+      "use": "home"
+    }
+  ]
+}

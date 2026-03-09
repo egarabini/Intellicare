@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01009",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MANOEL",
+        "NETO",
+        "DA"
+      ],
+      "family": "PAIX�O"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "31671195191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693121",
+      "line": [
+        "01 JOSE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998445515",
+      "use": "home"
+    }
+  ]
+}

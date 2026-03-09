@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00224",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATIAS",
+        "PLACIDO",
+        "PEREIRA"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-02-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00487349342"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73017015",
+      "line": [
+        "22 CONDOMINIO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992555597",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "matiasmaia067@gmail.com",
+      "use": "home"
+    }
+  ]
+}

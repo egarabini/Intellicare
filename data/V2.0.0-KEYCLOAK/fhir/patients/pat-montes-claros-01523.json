@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01523",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANDERSON",
+        "MARQUES"
+      ],
+      "family": "SOUTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-02-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70253039681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405803",
+      "line": [
+        "10 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998691971",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vandersonmarques26@gmail.com",
+      "use": "home"
+    }
+  ]
+}

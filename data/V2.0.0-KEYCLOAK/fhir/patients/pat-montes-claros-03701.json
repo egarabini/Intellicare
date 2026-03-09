@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03701",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DALISSON",
+        "DAVI",
+        "CARDOSO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-03-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70763861600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401456",
+      "line": [
+        "266 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984288765",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamoc210@gamil.com",
+      "use": "home"
+    }
+  ]
+}

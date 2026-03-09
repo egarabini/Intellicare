@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00642",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RA�ZA",
+        "GUEDES"
+      ],
+      "family": "CAVALCANTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-01-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05614700145"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692315",
+      "line": [
+        "18 RESIDENCIAL OESTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994051809",
+      "use": "home"
+    }
+  ]
+}

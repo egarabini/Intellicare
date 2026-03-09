@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00585",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NILDA",
+        "DO",
+        "SOCORRO",
+        "SANTA"
+      ],
+      "family": "ROSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-04-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80233872604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402834",
+      "line": [
+        "105 39402834"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991366146",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nilda@gmail.com",
+      "use": "home"
+    }
+  ]
+}

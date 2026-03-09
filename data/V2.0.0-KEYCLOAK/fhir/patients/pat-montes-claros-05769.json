@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05769",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELAINE",
+        "BATISTA",
+        "SANTOS"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13111565696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402416",
+      "line": [
+        "344"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998775036",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "saah16@outlook.com",
+      "use": "home"
+    }
+  ]
+}

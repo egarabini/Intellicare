@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00087",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GOIACYARA",
+        "DE",
+        "SOUSA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-05-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "42844371191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72546810",
+      "line": [
+        "12 516 CONJ J"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991619207",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "goiacyrafilhadorei@gmail.com",
+      "use": "home"
+    }
+  ]
+}

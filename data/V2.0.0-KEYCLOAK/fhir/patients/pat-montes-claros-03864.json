@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03864",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDELL",
+        "VINICIUS",
+        "LOPES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-12-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70591994623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402468",
+      "line": [
+        "37 39402468"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999841028",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wendellvinicuus@gmail.com",
+      "use": "home"
+    }
+  ]
+}

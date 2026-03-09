@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03461",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "VITORIA",
+        "APARECIDA"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-06-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70222579650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404332",
+      "line": [
+        "00 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984234329",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jennifermeryan9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

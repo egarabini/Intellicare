@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02113",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADALTO",
+        "CARDOSO"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-01-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81762518104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590000",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999828048",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adaltocardosonunes1879@gmail.com",
+      "use": "home"
+    }
+  ]
+}

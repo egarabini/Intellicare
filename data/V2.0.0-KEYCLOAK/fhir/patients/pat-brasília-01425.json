@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01425",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AOCIR",
+        "DA",
+        "SILVA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-01-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82345406100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572027",
+      "line": [
+        "9 71572027"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6196532950",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valpedro2009@gmail.com",
+      "use": "home"
+    }
+  ]
+}

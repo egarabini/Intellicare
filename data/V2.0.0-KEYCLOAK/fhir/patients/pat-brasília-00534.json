@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00534",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "NEREIDE",
+        "BARROS"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-12-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "97065676153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "33 FAZENDA SANTO ANTONIO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993661658",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marianereide@gmail.com",
+      "use": "home"
+    }
+  ]
+}

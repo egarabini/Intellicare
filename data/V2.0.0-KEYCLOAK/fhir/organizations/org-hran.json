@@ -1,0 +1,52 @@
+{
+  "resourceType": "Organization",
+  "id": "org-hran",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes",
+      "value": "2000003"
+    }
+  ],
+  "name": "Hospital Regional da Asa Norte",
+  "alias": [
+    "HRAN"
+  ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        }
+      ]
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "SMHN Quadra 101"
+      ],
+      "city": "Brasília",
+      "state": "DF",
+      "postalCode": "70710-100"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "613325-2000"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id",
+      "valueString": "hospital-brasilia"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02156",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "NILTON",
+        "AMORIM",
+        "DO"
+      ],
+      "family": "NACIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-09-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "40021807191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572000",
+      "line": [
+        "33"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998721430",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josemiltoncarpi@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00281",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ALBERTO",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1956-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15067319100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "104"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61619854091",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lojavivoplanaltinadf@gmail.com",
+      "use": "home"
+    }
+  ]
+}

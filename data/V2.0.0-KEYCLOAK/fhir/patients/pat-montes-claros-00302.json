@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00302",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISLEY",
+        "APARECIDA",
+        "GONCALVES"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08585589639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404739",
+      "line": [
+        "389 39404739"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998583966",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gisleygoncalvesmota@gmail.com",
+      "use": "home"
+    }
+  ]
+}

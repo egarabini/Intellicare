@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00016",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARINEIDE",
+        "ROCHA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-03-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08222676750"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71010217",
+      "line": [
+        "35"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996260841",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marirochadasilvaribeiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

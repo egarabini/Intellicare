@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01142",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL",
+        "COSME",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "GOES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-09-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06308169137"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72546810",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61962301927",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielertslih@gmail.com",
+      "use": "home"
+    }
+  ]
+}

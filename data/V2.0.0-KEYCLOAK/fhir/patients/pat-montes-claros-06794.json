@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06794",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OSMAR",
+        "RAFAEL",
+        "SILVA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-12-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13124616677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400716",
+      "line": [
+        "1154"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999213515",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rafael1198.or@gmail.com",
+      "use": "home"
+    }
+  ]
+}

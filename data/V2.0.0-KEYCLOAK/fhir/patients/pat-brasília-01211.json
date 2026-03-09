@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01211",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GEOVANA",
+        "PEREIRA"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04400351122"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72145000",
+      "line": [
+        "111"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6183360394",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "geovalima2128@gmail.com",
+      "use": "home"
+    }
+  ]
+}

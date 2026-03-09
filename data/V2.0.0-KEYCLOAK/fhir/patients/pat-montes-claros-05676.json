@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05676",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VERA",
+        "LUCIA",
+        "CARDOSO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-10-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01696133645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401644",
+      "line": [
+        "30"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999464804",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaauxiliadoramartins28@gmail.com",
+      "use": "home"
+    }
+  ]
+}

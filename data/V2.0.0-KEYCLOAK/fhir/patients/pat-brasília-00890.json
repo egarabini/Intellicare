@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00890",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIANA",
+        "BORGES"
+      ],
+      "family": "ALEXANDRE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-06-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11455434485"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72145000",
+      "line": [
+        "16"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191130722",
+      "use": "home"
+    }
+  ]
+}

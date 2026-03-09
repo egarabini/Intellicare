@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00882",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DENNER",
+        "FELIPE",
+        "XAVIER"
+      ],
+      "family": "CARREIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70103422617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402523",
+      "line": [
+        "431 39402523"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38342424299",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "felipexcarreiro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

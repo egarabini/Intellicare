@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01446",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEX",
+        "FABIANO",
+        "LIMA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1975-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04790470652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403115",
+      "line": [
+        "284"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998612268",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabiano.moc284@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03587",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANE",
+        "KAROLINE",
+        "SOARES",
+        "DE"
+      ],
+      "family": "BRITO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-03-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12167153600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406506",
+      "line": [
+        "91 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998716948",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karolsoares9836@gmail.com",
+      "use": "home"
+    }
+  ]
+}

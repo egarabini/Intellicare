@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03049",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RIAN",
+        "PATRICK",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02238558632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401009",
+      "line": [
+        "29 39401009"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998710970",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "byaandilas@gamil.com",
+      "use": "home"
+    }
+  ]
+}

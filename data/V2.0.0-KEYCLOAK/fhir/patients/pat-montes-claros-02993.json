@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02993",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "COIMBRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-04-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16388519644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400141",
+      "line": [
+        "91"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999738262",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ds.danielaaabb@gmail.com",
+      "use": "home"
+    }
+  ]
+}

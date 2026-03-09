@@ -1,0 +1,49 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-pat-montes-claros-00039-279",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatorio"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185349003",
+          "display": "Consulta"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00039"
+  },
+  "serviceProvider": {
+    "reference": "Organization/org-ubs-mc-centro"
+  },
+  "period": {
+    "start": "2026-01-07T06:01:22Z",
+    "end": "2026-01-07T06:01:22Z"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/prac-010"
+      },
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "Profissional"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

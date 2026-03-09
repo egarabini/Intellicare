@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03643",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADEMIR",
+        "SANTOS"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08855529625"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401181",
+      "line": [
+        "254 39401181"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991217121",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eletrosomteste@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01252",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELE",
+        "CIBELLY"
+      ],
+      "family": "DEQUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-02-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01257292196"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72319210",
+      "line": [
+        "01 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996205720",
+      "use": "home"
+    }
+  ]
+}

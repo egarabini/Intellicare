@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05217",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "MICHAEL",
+        "DA",
+        "CRUZ"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70080659659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401531",
+      "line": [
+        "11 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998570469",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ow43dg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

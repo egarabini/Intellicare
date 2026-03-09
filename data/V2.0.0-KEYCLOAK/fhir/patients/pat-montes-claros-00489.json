@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00489",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GISELE",
+        "CAMPOS"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06414410616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401220",
+      "line": [
+        "90"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984060944",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "giselecxavier404@gmail.com",
+      "use": "home"
+    }
+  ]
+}

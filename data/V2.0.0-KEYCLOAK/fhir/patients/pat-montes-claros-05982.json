@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05982",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NELMA",
+        "VIEIRA",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07847047675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405664",
+      "line": [
+        "365"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999272715",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nelmavieira245@gmail.com",
+      "use": "home"
+    }
+  ]
+}

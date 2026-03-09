@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02479",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INES",
+        "REIS"
+      ],
+      "family": "KEMPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-12-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07710127215"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404789",
+      "line": [
+        "60"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "92998129966",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "manucarva2020@gmail.com",
+      "use": "home"
+    }
+  ]
+}

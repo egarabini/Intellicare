@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00212",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLY",
+        "BRANDAO",
+        "GUEIROS"
+      ],
+      "family": "SUTTER"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-11-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06475495492"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406621",
+      "line": [
+        "645 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991709168",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silas-abraham@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

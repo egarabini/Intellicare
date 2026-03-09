@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05612",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LORRANY",
+        "KAROLINE",
+        "FERNANDES",
+        "DO"
+      ],
+      "family": "CARMO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70199389659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402325",
+      "line": [
+        "45 39402325"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997341072",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lorrany@gmail.com",
+      "use": "home"
+    }
+  ]
+}

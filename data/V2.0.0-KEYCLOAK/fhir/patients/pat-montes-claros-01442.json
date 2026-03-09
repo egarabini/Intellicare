@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01442",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "VICTORIA",
+        "CARDOSO",
+        "BARBOSA"
+      ],
+      "family": "ALKIMIM"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-09-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01945931698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401309",
+      "line": [
+        "111 BL 8 AP 104"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988498294",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariavic04@gmail.com",
+      "use": "home"
+    }
+  ]
+}

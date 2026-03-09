@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03488",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUSANY",
+        "DE",
+        "CERQUEIRA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-03-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03174949610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400015",
+      "line": [
+        "253 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999022307",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cerqueiralusany@gmail.com",
+      "use": "home"
+    }
+  ]
+}

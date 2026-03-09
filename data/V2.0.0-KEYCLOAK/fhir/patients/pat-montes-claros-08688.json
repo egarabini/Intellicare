@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08688",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SEBASTIAO",
+        "AILTON",
+        "DE",
+        "MEDEREIROS"
+      ],
+      "family": "LEITE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-02-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47088125668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402384",
+      "line": [
+        "375 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992164584",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tiaomedeirosleite@mail.com",
+      "use": "home"
+    }
+  ]
+}

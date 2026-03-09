@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02520",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEX",
+        "RIBEIRO"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06086664595"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72425100",
+      "line": [
+        "33"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996772379",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aleexrrbeiro3625@gmail.com",
+      "use": "home"
+    }
+  ]
+}

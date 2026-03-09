@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07715",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELENICE",
+        "PEREIRA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-06-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08616017690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400051",
+      "line": [
+        "339 39400051"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999435841",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amandadyassilva08@gmail.com",
+      "use": "home"
+    }
+  ]
+}

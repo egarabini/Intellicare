@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03897",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RICHARD",
+        "GONCALVES"
+      ],
+      "family": "NOGUEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70143913646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401454",
+      "line": [
+        "302 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997356013",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "milenemirandag2013@gmail.com",
+      "use": "home"
+    }
+  ]
+}

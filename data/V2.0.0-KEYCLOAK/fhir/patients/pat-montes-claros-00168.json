@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00168",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "12081974"
+      ],
+      "family": "12081974"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-08-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84960795620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402115",
+      "line": [
+        "12 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999835947",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "miria203miria@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

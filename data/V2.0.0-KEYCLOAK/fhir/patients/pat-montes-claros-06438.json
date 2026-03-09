@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06438",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATEUS",
+        "FELIPE",
+        "FERNANDES"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02323233645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401641",
+      "line": [
+        "61 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984113073",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mateusfelipe520@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Observation",
+  "id": "obs-pat-montes-claros-00031-pa-80",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "85354-9",
+        "display": "Pressão arterial"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00031"
+  },
+  "effectiveDateTime": "2025-12-03T06:11:49Z",
+  "component": [
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8480-6",
+            "display": "PAS"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 132.0,
+        "unit": "mmHg",
+        "code": "mm[Hg]"
+      }
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "PAD"
+          }
+        ]
+      },
+      "valueQuantity": {
+        "value": 79.0,
+        "unit": "mmHg",
+        "code": "mm[Hg]"
+      }
+    }
+  ]
+}

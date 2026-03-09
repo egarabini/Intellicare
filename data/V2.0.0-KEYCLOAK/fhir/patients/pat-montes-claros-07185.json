@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07185",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROSEMARY",
+        "BELEM"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56953127600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400095",
+      "line": [
+        "890"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997370987",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "samialethiciab1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

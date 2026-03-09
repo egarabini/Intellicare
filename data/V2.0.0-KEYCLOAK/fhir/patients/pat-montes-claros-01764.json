@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01764",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALINE",
+        "GRESIELE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "BUENO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-04-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09595510696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403409",
+      "line": [
+        "74 39403409"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984094188",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "greissybueno@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

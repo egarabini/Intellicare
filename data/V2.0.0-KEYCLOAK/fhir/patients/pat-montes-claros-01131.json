@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01131",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAYNNE",
+        "GOMES"
+      ],
+      "family": "CAMPOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-03-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15432973669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401137",
+      "line": [
+        "917"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999814141",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jaynnegomes303@gmail.com",
+      "use": "home"
+    }
+  ]
+}

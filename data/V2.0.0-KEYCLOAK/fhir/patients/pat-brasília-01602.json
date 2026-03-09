@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01602",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAT�LIA",
+        "DIVINA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "72496754191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593365",
+      "line": [
+        "QD329 LT 80"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983565299",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nataliadasina@gmail.com",
+      "use": "home"
+    }
+  ]
+}

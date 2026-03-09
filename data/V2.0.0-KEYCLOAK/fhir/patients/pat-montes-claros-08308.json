@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08308",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENDA",
+        "APARECIDA",
+        "OLIVEIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-04-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11530351626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406549",
+      "line": [
+        "371 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999024716",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "baparecidha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

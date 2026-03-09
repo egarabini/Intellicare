@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00091",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOANA",
+        "ROSA",
+        "DA"
+      ],
+      "family": "CONCEICAO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-09-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86760211634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406031",
+      "line": [
+        "101 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988606092",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joanaflor107@gmail.com",
+      "use": "home"
+    }
+  ]
+}

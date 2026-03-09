@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01740",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YUMIRA",
+        "DEL",
+        "CARMEM",
+        "RODRIGUEZ"
+      ],
+      "family": "RODRIGUEZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71306059100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72008001",
+      "line": [
+        "69"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983470657",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "remelys202@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00615",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ZULMA",
+        "FREIRE"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1943-05-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01204452636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400362",
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991267918",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "daneilmartins87@gmail.com",
+      "use": "home"
+    }
+  ]
+}

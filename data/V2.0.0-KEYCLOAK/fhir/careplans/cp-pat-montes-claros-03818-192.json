@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-03818-192",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Diabetes mellitus tipo 2",
+  "description": "Condições: Diabetes mellitus tipo 2",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-03818"
+  },
+  "period": {
+    "start": "2025-10-22"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-03818-192"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

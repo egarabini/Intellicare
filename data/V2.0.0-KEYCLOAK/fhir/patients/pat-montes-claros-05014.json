@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05014",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AILTON",
+        "AFONSO",
+        "DE"
+      ],
+      "family": "PAULA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-01-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70293864691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401537",
+      "line": [
+        "593 39401537"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992630626",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ailtondepaula592@gmail.com",
+      "use": "home"
+    }
+  ]
+}

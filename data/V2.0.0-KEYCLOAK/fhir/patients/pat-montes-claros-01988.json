@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01988",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIANE",
+        "RIBEIRO"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07546345669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402115",
+      "line": [
+        "292"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "37999595864",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cristianeribeiro1282@gmail.com",
+      "use": "home"
+    }
+  ]
+}

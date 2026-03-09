@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07585",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MICHELE",
+        "MOREIRA",
+        "SILVA"
+      ],
+      "family": "GUIMARAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-06-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10099994607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402119",
+      "line": [
+        "169 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999502903",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deusestanocontrole2608@gmail.com",
+      "use": "home"
+    }
+  ]
+}

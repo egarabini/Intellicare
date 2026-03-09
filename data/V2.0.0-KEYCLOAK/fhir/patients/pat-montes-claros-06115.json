@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06115",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIEZER",
+        "RIBEIRO"
+      ],
+      "family": "TIAGO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-05-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06149097676"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404313",
+      "line": [
+        "12 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999700305",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eliezerribeirotiago@gmail.com",
+      "use": "home"
+    }
+  ]
+}

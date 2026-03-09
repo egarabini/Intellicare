@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05729",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAYANE",
+        "RAMONIELLE",
+        "COSTA",
+        "FELIX"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12432748670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402473",
+      "line": [
+        "20"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984226436",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "narjacristima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

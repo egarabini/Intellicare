@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00688",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLARICE",
+        "DELFINA"
+      ],
+      "family": "FARINHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-12-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01330137159"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72610302",
+      "line": [
+        "15 OESTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996155079",
+      "use": "home"
+    }
+  ]
+}

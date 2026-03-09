@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02061",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDO",
+        "RODRIGUES",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09906510617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401210",
+      "line": [
+        "8 39401210"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988740892",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nandinhorodrigues3606@gmail.com",
+      "use": "home"
+    }
+  ]
+}

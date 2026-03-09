@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00249",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIA",
+        "CORDEIRO"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-05-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71996419153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570604",
+      "line": [
+        "20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996115374",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviacordeirinho@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

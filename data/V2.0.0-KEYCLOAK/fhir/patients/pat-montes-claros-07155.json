@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07155",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ALICE",
+        "COSTA"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-09-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50370308620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401472",
+      "line": [
+        "138 39401472"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998852828",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alineruas052@gmail.com",
+      "use": "home"
+    }
+  ]
+}

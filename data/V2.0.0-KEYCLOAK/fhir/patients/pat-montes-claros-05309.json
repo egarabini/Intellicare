@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05309",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KENEDE",
+        "SAIMON",
+        "DOMINGOS",
+        "DE"
+      ],
+      "family": "OLIVERIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05992898646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402219",
+      "line": [
+        "40 39402219"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988461678",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kedekarine@gmail.com",
+      "use": "home"
+    }
+  ]
+}

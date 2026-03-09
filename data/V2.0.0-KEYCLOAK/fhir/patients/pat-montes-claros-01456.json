@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01456",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KARINE",
+        "GUSMAO"
+      ],
+      "family": "GANDRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03901077600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400148",
+      "line": [
+        "159 APT 202"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991964454",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "karinegandrag@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

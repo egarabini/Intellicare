@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00473",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIENE",
+        "ALVES",
+        "DE"
+      ],
+      "family": "MORAIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-11-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00656352132"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71695085",
+      "line": [
+        "403"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986789801",
+      "use": "home"
+    }
+  ]
+}

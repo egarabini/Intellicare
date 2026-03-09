@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02289",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "NAZARETH",
+        "RIBEIRO"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-08-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12079148605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401537",
+      "line": [
+        "867 39401537"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999851251",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mahveloso4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

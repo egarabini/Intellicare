@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08746",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARGEMIRA",
+        "SOARES"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-02-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10122481860"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401243",
+      "line": [
+        "21 39401243"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "27996126048",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ruasargermira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

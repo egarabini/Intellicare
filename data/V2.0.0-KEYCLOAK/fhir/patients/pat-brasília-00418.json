@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00418",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ILTOMAR",
+        "PEREIRA"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-04-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80703887300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596189",
+      "line": [
+        "3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982269267",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hiltomarpereira79@gmail.com",
+      "use": "home"
+    }
+  ]
+}

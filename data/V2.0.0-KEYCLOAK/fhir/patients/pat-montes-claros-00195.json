@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00195",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANIRA",
+        "DE",
+        "ALMEIDA",
+        "RAMOS"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-10-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03326033699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402538",
+      "line": [
+        "267 39402538"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999500610",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "janira08@gmail.com",
+      "use": "home"
+    }
+  ]
+}

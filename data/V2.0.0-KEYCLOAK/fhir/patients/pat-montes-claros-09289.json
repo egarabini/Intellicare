@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09289",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "DOMINGOS"
+      ],
+      "family": "CORREIA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-02-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78451442668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406546",
+      "line": [
+        "72"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998367768",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jd453746@gmail.com",
+      "use": "home"
+    }
+  ]
+}

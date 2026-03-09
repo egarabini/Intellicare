@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05517",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "SOLIDADE",
+        "SOARES",
+        "DE"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-11-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00103697675"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400725",
+      "line": [
+        "1292 B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988581996",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariasoledadelv@gmail.com",
+      "use": "home"
+    }
+  ]
+}

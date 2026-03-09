@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01207",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANGELA",
+        "FERNANDA",
+        "BATISTA"
+      ],
+      "family": "MENEZES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09097556635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401674",
+      "line": [
+        "15 AP01"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "53999471374",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernanda2502@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01918",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLARA",
+        "VERAS",
+        "MENEZES"
+      ],
+      "family": "CAVALCANTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-08-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05585612174"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71050033",
+      "line": [
+        "17 QE 19 CONJ C CASA 17"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996094669",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claravmcavalcante@gmail.com",
+      "use": "home"
+    }
+  ]
+}

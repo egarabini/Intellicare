@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03455",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JONATA",
+        "WILLIAM",
+        "SILVA",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-04-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70778342476"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401845",
+      "line": [
+        "261 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "83999848660",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhonatawilliam230@gmail.com",
+      "use": "home"
+    }
+  ]
+}

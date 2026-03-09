@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02179",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JULIO",
+        "CESAR",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "MESQUITA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70086796100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72231810",
+      "line": [
+        "45"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61974023039",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juliozoomlight@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

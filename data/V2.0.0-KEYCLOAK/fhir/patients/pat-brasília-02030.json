@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02030",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELLE",
+        "PAIVA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "CAETANO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-09-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71004882149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73030036",
+      "line": [
+        "32 73030036"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986263263",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor14@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

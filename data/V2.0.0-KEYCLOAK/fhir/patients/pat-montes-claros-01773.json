@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01773",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ROSELI",
+        "SILVA",
+        "DE",
+        "SIUZA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "47876774890"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404399",
+      "line": [
+        "706 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998066512",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariarsilvadesouza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

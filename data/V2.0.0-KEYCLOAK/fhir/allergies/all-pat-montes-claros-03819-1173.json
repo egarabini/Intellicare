@@ -1,0 +1,53 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "all-pat-montes-claros-03819-1173",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "type": "allergy",
+  "category": [
+    "food"
+  ],
+  "criticality": "low",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91935009",
+        "display": "Lactose"
+      }
+    ]
+  },
+  "patient": {
+    "reference": "Patient/pat-montes-claros-03819"
+  },
+  "recordedDate": "2025-07-29T06:34:50Z",
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "247472004",
+              "display": "Hipersensibilidade"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

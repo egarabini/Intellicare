@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00801",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATANAEL",
+        "GON�ALVES",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-04-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "18712148660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400293",
+      "line": [
+        "101 APTO 102"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997563019",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "natanaelgoncalvesdejesuss@gmail.com",
+      "use": "home"
+    }
+  ]
+}

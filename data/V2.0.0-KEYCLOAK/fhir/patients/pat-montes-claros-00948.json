@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00948",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "MARIANA",
+        "PEREIRA"
+      ],
+      "family": "SABINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70461466678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402269",
+      "line": [
+        "33 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991330903",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlamariana210523@gmail.com",
+      "use": "home"
+    }
+  ]
+}

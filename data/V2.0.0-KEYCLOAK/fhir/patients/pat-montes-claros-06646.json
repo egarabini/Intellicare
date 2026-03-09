@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06646",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FREDERICO",
+        "FAGUNDES",
+        "SOARES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-02-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12406154696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400853",
+      "line": [
+        "51"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991789993",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fredffsoares@gmail.com",
+      "use": "home"
+    }
+  ]
+}

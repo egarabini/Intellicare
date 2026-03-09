@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00141",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDNA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1964-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02232424111"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71540400",
+      "line": [
+        "09 QUADRA 05"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994408160",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ednac5144@gmail.com",
+      "use": "home"
+    }
+  ]
+}

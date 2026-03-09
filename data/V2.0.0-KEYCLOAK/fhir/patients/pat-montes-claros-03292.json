@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03292",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROGERIO",
+        "SANTOS"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "82297690606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401158",
+      "line": [
+        "92"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998598831",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rogeriosantosaraujo1972@gmail.com",
+      "use": "home"
+    }
+  ]
+}

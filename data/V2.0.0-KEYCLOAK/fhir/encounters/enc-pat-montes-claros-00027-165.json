@@ -1,0 +1,31 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-pat-montes-claros-00027-165",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "EMER",
+    "display": "emergencia"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185349003",
+          "display": "Consulta"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00027"
+  },
+  "serviceProvider": {
+    "reference": "Organization/org-santacasa-mc"
+  },
+  "period": {
+    "start": "2026-02-27T05:52:07Z",
+    "end": "2026-02-27T05:52:07Z"
+  }
+}

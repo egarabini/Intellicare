@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00826",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIZADORA",
+        "APOL�NIO"
+      ],
+      "family": "CORR�A"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-08-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04474985176"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73320020",
+      "line": [
+        "66 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993357280",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eliza.apolonio15@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

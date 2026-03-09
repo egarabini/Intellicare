@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06789",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALAINE",
+        "GLAYCE",
+        "NEVES"
+      ],
+      "family": "XAVIER"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-03-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09358542667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402125",
+      "line": [
+        "207 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991974869",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alaine.voo29@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05594",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NATHAN",
+        "MATOS"
+      ],
+      "family": "CERQUEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-05-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12704990689"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406148",
+      "line": [
+        "514 APT 504"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999145623",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nathanmatos1999@gmail.com",
+      "use": "home"
+    }
+  ]
+}

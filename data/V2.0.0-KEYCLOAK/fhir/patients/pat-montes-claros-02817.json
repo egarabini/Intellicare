@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02817",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAISSA",
+        "CRISTINA",
+        "RIBEIRO",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-02-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16981439662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403024",
+      "line": [
+        "569"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988330027",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taissasantos3838@gmail.com",
+      "use": "home"
+    }
+  ]
+}

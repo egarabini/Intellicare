@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00305",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ILDECIRA",
+        "GOMES"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03308459698"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403024",
+      "line": [
+        "110"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992415013",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sabrinafrancielle64@gmail.com",
+      "use": "home"
+    }
+  ]
+}

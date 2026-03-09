@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08740",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THALITA",
+        "TAYNA",
+        "VIANA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-11-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16680978696"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400391",
+      "line": [
+        "556"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988701140",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edmarpinto243@gmail.com",
+      "use": "home"
+    }
+  ]
+}

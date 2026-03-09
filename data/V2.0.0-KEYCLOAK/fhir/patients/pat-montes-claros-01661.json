@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01661",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLARICE",
+        "RODRIGUES",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "ANICETO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-11-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07442543618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400180",
+      "line": [
+        "312 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988367714",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00416",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DOUGLAS",
+        "VINICIUS",
+        "SILVA",
+        "DE"
+      ],
+      "family": "VASCONCELOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-10-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05605676180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71050031",
+      "line": [
+        "18 QE 15 CONJUNTO C"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982931308",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "douglas_vini95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

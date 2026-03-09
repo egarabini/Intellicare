@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06694",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ISABEL",
+        "NOGALI"
+      ],
+      "family": "OLHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-02-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10809340810"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405009",
+      "line": [
+        "48"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992447463",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "isabel.nogali@gmail.com",
+      "use": "home"
+    }
+  ]
+}

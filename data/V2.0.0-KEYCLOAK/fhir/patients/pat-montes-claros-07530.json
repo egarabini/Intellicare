@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07530",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WARLEY",
+        "DASILVA"
+      ],
+      "family": "MATOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-11-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02103891686"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405033",
+      "line": [
+        "100"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998752451",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "warleyy.dasilva.450@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03136",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAFAELA",
+        "NAYANE",
+        "SANTOS"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06372477602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402869",
+      "line": [
+        "88 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992576766",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rafaelanayane@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00896",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CICERO",
+        "VICTOR",
+        "FERREIRA"
+      ],
+      "family": "GARCIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-03-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06486929308"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330155",
+      "line": [
+        "04"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "88981993789",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vthomaz158@gmail.com",
+      "use": "home"
+    }
+  ]
+}

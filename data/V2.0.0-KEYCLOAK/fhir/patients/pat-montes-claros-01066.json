@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01066",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRE",
+        "TAFAREL",
+        "PEREIRA"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-03-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01636919677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402369",
+      "line": [
+        "988 39402369"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988283745",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "autoeletrotec@gmail.com",
+      "use": "home"
+    }
+  ]
+}

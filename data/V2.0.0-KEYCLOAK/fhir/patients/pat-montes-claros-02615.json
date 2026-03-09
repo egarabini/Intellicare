@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02615",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "IRIS",
+        "BRANDAO"
+      ],
+      "family": "CAVALCANTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08686338607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404302",
+      "line": [
+        "16 39404302"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "37997574723",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anairis@gmail.com",
+      "use": "home"
+    }
+  ]
+}

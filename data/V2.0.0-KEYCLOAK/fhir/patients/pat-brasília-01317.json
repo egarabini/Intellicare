@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01317",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "FERREIRA",
+        "DO"
+      ],
+      "family": "ROSARIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-02-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "87469863168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72301405",
+      "line": [
+        "06 QR 111 CONJUNTO 5"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996614528",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariarosariof6@gmail.com",
+      "use": "home"
+    }
+  ]
+}

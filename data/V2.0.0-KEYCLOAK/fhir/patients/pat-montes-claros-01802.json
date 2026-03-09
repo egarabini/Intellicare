@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01802",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERICSON",
+        "ANIEL",
+        "CAMPOS"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-12-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11781877645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403157",
+      "line": [
+        "130 39403157"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999807116",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eletroosn139@gmail.com",
+      "use": "home"
+    }
+  ]
+}

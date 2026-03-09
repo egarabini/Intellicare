@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02268",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "00614115159"
+      ],
+      "family": "00614115159"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00614115159"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72316084",
+      "line": [
+        "06"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984468159",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucassilva127@gmail.com",
+      "use": "home"
+    }
+  ]
+}

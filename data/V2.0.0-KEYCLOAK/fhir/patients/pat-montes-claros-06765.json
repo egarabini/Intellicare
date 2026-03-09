@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06765",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENATO",
+        "MENDES",
+        "DE"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04674814669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400787",
+      "line": [
+        "399 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999271560",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rmendesdecastro@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

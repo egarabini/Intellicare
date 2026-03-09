@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05633",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "ANA",
+        "DO"
+      ],
+      "family": "ROSARIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-04-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08163195614"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405691",
+      "line": [
+        "55"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991873824",
+      "use": "home"
+    }
+  ]
+}

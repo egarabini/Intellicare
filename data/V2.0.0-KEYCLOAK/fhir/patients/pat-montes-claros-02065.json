@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02065",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DENISE",
+        "SANTANA",
+        "GOMES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-10-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06427724606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406634",
+      "line": [
+        "200 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999371198",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaaparecida1958@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08447",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORAH",
+        "ADRIANE",
+        "DE",
+        "CARVALHO",
+        "SOARES"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-08-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05066020608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403078",
+      "line": [
+        "86"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998526408",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deborah.adriane@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02591",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLARA",
+        "BRAGA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07062275140"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71090265",
+      "line": [
+        "15 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991841411",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anaclarabraga1272@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06219",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILVANIA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-09-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07831186603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405441",
+      "line": [
+        "411 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988422832",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvaniadeoliveiraneto@gmail.com",
+      "use": "home"
+    }
+  ]
+}

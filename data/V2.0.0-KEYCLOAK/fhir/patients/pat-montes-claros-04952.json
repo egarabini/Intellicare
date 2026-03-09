@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04952",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "MAURICIO",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67376207600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400177",
+      "line": [
+        "333"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988569239",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "desouzagomesjosemauricio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

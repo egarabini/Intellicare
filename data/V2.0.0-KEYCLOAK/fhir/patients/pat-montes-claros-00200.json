@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00200",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BIANCA",
+        "OLIVEIRA"
+      ],
+      "family": "CANGUCU"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-02-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10744083656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402558",
+      "line": [
+        "2500"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988313547",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "drabianca.gangucu@gmail.com",
+      "use": "home"
+    }
+  ]
+}

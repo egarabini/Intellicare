@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01370",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SABRINA",
+        "HILLARY",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-09-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71086799143"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72311308",
+      "line": [
+        "04 CONJUNTO 08"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985495816",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sabrina89@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02525",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIRGINA",
+        "PEREIRA",
+        "NIZA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07102599641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402463",
+      "line": [
+        "15 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999815039",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "virginianiza40@gmail.com",
+      "use": "home"
+    }
+  ]
+}

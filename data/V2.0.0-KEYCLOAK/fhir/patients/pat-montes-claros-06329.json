@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06329",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSIAS",
+        "MEIRELES",
+        "DE",
+        "CASTRO"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11147837651"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401446",
+      "line": [
+        "639 39401446"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984060195",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lojascordeiros123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

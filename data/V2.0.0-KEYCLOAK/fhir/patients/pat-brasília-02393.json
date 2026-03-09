@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02393",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELISMAR",
+        "PEREIRA",
+        "RODRIGUES",
+        "DA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-05-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93402759187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73365112",
+      "line": [
+        "18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "99999999999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elismar@gmail.com",
+      "use": "home"
+    }
+  ]
+}

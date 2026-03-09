@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02574",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIANA",
+        "RODRIGUES"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-01-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08585980605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401135",
+      "line": [
+        "1055"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998495210",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marianarodriguesmaclene@gmail.com",
+      "use": "home"
+    }
+  ]
+}

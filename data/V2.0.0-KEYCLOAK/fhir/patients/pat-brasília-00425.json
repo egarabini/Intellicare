@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00425",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANDERLUCIO",
+        "SARDINHA",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-04-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "68968582149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73150050",
+      "line": [
+        "17"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999447783",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wanderlucionascimento165@gmail.com",
+      "use": "home"
+    }
+  ]
+}

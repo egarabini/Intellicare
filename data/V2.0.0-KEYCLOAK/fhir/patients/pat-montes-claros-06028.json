@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06028",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTOR",
+        "EMANUEL",
+        "SILA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-08-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70544843630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406552",
+      "line": [
+        "432 39406552"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988146033",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "victoremanuel1651@gmail.com",
+      "use": "home"
+    }
+  ]
+}

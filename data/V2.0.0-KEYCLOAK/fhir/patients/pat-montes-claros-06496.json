@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06496",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GEOVANE",
+        "FABIANO",
+        "PEREIRA"
+      ],
+      "family": "SOUTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-04-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15499449678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400228",
+      "line": [
+        "157 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984070862",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "geovanepereira774@gmail.com",
+      "use": "home"
+    }
+  ]
+}

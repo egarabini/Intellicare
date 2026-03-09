@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00216",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YURI",
+        "FERNANDO",
+        "SOARES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70241831601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405650",
+      "line": [
+        "241"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991210900",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "amorimalexandre1234@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03241",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KETLYN",
+        "CAROLINE",
+        "ROCHA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15307111690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401017",
+      "line": [
+        "68 39401017"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991755012",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ketlyncarolinerochalopes123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

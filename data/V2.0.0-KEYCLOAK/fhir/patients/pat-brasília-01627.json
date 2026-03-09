@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01627",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANDIRA",
+        "DO",
+        "NASCIMENTO"
+      ],
+      "family": "RANGEL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53675266591"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692404",
+      "line": [
+        "22 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999724310",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01752",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THATYANE",
+        "DIAS",
+        "P",
+        "SOARES",
+        "DE"
+      ],
+      "family": "ANCHIENTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-02-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03421043140"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587428",
+      "line": [
+        "302"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991219809",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

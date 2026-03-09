@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02329",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GRAZIELA",
+        "APARECIDA",
+        "RODRIGUES"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02503416110"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693701",
+      "line": [
+        "7 QUADRA F"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996262256",
+      "use": "home"
+    }
+  ]
+}

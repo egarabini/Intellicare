@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00416",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLENE"
+      ],
+      "family": "VITORIANO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-11-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "49534033634"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400398",
+      "line": [
+        "380 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999483027",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rikavsd@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

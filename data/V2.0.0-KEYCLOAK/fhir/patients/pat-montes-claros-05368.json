@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05368",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARAH",
+        "RODRIGUES"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09226876681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404265",
+      "line": [
+        "32 39404265"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992128769",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "sarhrodrigues0811@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[
+  {"code": "7980", "display": "Penicilina", "category": "medication", "criticality": "high"},
+  {"code": "7632", "display": "Dipirona", "category": "medication", "criticality": "low"},
+  {"code": "7982", "display": "Amoxicilina", "category": "medication", "criticality": "high"},
+  {"code": "7633", "display": "Iodo", "category": "medication", "criticality": "high"},
+  {"code": "91935009", "display": "Lactose", "category": "food", "criticality": "low"},
+  {"code": "91935009", "display": "Glúten", "category": "food", "criticality": "high"},
+  {"code": "227493005", "display": "Ácaros", "category": "environment", "criticality": "low"},
+  {"code": "260147004", "display": "Látex", "category": "environment", "criticality": "high"}
+]

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07399",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "ROSA",
+        "DE"
+      ],
+      "family": "MOURA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1944-08-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00435283685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404254",
+      "line": [
+        "300"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991670395",
+      "use": "home"
+    }
+  ]
+}

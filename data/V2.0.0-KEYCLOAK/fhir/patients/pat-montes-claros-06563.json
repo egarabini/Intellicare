@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06563",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARISA",
+        "GON�ALVES",
+        "RUAS"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-01-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04988870650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401167",
+      "line": [
+        "566 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984198719",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marisagruas123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

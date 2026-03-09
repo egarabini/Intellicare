@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00073",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILVIAN",
+        "KELLY",
+        "FERREIRA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06991565644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407042",
+      "line": [
+        "701 APT 403 BLC 07"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "34991563320",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvianrodrigues122@gmail.com",
+      "use": "home"
+    }
+  ]
+}

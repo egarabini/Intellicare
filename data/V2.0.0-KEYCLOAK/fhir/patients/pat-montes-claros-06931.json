@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06931",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCAS",
+        "GONCALVES"
+      ],
+      "family": "GOBIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-03-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12783658690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406520",
+      "line": [
+        "761"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998020506",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lucasggobira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

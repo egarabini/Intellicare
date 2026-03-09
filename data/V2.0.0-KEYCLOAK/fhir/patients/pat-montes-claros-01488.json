@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01488",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "BATISTA",
+        "PEREIRA"
+      ],
+      "family": "SOBRINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06430492664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402360",
+      "line": [
+        "98"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997374332",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaobatista22@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

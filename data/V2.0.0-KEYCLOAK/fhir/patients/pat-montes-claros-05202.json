@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05202",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIANE",
+        "FERREIRA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "31434683869"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400344",
+      "line": [
+        "979 39400344"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999080607",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elianefgmontalvania@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

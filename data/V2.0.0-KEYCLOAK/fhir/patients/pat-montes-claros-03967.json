@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03967",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BELARMINO",
+        "RODRIGUES"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1947-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02625568631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403522",
+      "line": [
+        "117"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999266428",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "belarminorodrigues@gmail.com",
+      "use": "home"
+    }
+  ]
+}

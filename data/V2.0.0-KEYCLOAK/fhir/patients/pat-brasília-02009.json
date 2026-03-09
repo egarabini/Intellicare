@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02009",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLERY",
+        "ALVES"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-09-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08137618163"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572806",
+      "line": [
+        "06 QUADRA 28 CONJ F"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994001728",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleiryalferreira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

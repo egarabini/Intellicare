@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07380",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILDO",
+        "DIAS"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-01-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08925978601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405411",
+      "line": [
+        "300 39405411"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988032922",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

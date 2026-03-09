@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01460",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALERIA",
+        "RIBEIRO",
+        "CORDEIRO"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-06-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02963375107"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330004",
+      "line": [
+        "17"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998328811",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valeriaribeiro551@gmail.com",
+      "use": "home"
+    }
+  ]
+}

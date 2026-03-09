@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06311",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEX",
+        "SANDRO",
+        "LOPES"
+      ],
+      "family": "NPEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07713794638"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404629",
+      "line": [
+        "329"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998338145",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alexsandrolopes17100@gmail.com",
+      "use": "home"
+    }
+  ]
+}

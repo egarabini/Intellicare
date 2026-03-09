@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01426",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIEL"
+      ],
+      "family": "RAMIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-06-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "23107570982"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573012",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993679854",
+      "use": "home"
+    }
+  ]
+}

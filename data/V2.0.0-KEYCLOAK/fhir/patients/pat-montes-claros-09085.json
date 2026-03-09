@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09085",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "VANILDA",
+        "LOYOLA",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "BAPTISTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1960-03-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05861778680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404018",
+      "line": [
+        "48 39404018"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998044299",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariavanildaloyola@gmail.com",
+      "use": "home"
+    }
+  ]
+}

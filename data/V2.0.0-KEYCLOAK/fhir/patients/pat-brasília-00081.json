@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00081",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAQUEL",
+        "SOUSA",
+        "DE"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-02-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05715754127"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72506408",
+      "line": [
+        "17 206 COJUNTO H"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993219771",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raquelaquiino3@gmail.com",
+      "use": "home"
+    }
+  ]
+}

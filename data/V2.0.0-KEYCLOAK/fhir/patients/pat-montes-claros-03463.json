@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03463",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEUNICE",
+        "QUEIROZ"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-10-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04705519680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401135",
+      "line": [
+        "297 39401135"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984148855",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joysequeirozborges23@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02284",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANUSA",
+        "SILVA"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-11-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06236008620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404476",
+      "line": [
+        "274 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988523879",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vanuza011502@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02011",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CLARA",
+        "FONSECA"
+      ],
+      "family": "SEGUNDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-02-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13589460601"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400433",
+      "line": [
+        "642 39400433"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991422780",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maria.clara@gmail.com",
+      "use": "home"
+    }
+  ]
+}

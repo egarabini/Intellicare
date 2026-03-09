@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01890",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELBERT",
+        "RIBEIRO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-01-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02274360677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400433",
+      "line": [
+        "852 39400433"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997289678",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "helberth.xaraia2013@gmail.com",
+      "use": "home"
+    }
+  ]
+}

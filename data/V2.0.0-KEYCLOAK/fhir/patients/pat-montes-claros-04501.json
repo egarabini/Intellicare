@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04501",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAIKA",
+        "GRACIELLE",
+        "FERREIRA"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-09-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08946785667"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402381",
+      "line": [
+        "391 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988529360",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maikagraci@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00802",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ESSIVANITO",
+        "FERREIRA",
+        "M",
+        "DAS",
+        "DORIS",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-11-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "79038379234"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590000",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61952200111",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "essivanitoconduto123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

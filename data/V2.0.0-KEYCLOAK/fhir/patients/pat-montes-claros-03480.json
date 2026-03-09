@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03480",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAYARA",
+        "CRISTINA",
+        "NERES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-06-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "51175066850"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404407",
+      "line": [
+        "288 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988596453",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nayarasilvaneres300@gmail.com",
+      "use": "home"
+    }
+  ]
+}

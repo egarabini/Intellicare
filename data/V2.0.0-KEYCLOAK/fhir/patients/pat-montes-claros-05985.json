@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05985",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RUBIA",
+        "PEREIRA",
+        "FLORENTINO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-03-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70131014609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401734",
+      "line": [
+        "40"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984056821",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rubiapfs9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

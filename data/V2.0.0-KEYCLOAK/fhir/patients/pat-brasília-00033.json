@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00033",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IGOR",
+        "DA",
+        "SILVA"
+      ],
+      "family": "GAMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-12-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70628695110"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72504003",
+      "line": [
+        "3 QD  2 LT 25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992797131",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nada@nada.com",
+      "use": "home"
+    }
+  ]
+}

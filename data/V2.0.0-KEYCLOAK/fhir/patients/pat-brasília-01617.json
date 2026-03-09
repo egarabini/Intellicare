@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01617",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CLARA",
+        "SILVA"
+      ],
+      "family": "MACIEL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-11-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08550057185"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72270406",
+      "line": [
+        "7"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6184209922",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvamariaclara649@gmail.com",
+      "use": "home"
+    }
+  ]
+}

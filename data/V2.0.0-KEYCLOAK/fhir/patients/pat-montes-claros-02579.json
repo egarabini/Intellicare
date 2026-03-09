@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02579",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILY",
+        "ALMEIDA"
+      ],
+      "family": "SERAFIM"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-01-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12634845650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401446",
+      "line": [
+        "236 39401446"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988609171",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "almeidamalmeida4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

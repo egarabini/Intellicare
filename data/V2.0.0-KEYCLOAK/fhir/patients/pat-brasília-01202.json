@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01202",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RITA",
+        "DE",
+        "C�SSIA",
+        "RODRIGUES"
+      ],
+      "family": "LUSTOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-06-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00886652162"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72329023",
+      "line": [
+        "0 429 CONJUNTO 23 CASA09"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991018818",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rodrigueslustosa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

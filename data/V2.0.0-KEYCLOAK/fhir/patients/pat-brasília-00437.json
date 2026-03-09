@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00437",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "WENDT"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02215407174"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70720670",
+      "line": [
+        "702/703 BL G EN 49 AP 301"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996730508",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "borgesborges01@gmail.com",
+      "use": "home"
+    }
+  ]
+}

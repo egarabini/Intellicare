@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07557",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALANA",
+        "LETICIA",
+        "MARTINS"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14768041680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401250",
+      "line": [
+        "278 39401250"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38980499204",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alanaleticia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

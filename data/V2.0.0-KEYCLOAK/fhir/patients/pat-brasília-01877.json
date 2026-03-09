@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01877",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "JACKSON",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-12-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06331253505"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72302210",
+      "line": [
+        "11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993855409",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tonycastrro@gmail.com",
+      "use": "home"
+    }
+  ]
+}

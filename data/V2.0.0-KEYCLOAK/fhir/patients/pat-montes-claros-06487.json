@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06487",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDIA",
+        "GOMES",
+        "SILVA"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02698001666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401803",
+      "line": [
+        "261 39401803"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998955412",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alfa.cred@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

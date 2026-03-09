@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07854",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILVANY",
+        "RAIANE",
+        "LACERDA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-11-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11781000654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400503",
+      "line": [
+        "319 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "99999999999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

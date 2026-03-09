@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08102",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDERSON",
+        "JOSE"
+      ],
+      "family": "ROSSINGNOLI"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1957-02-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61146765649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39416000",
+      "line": [
+        "0 VILA NOVA DE MINAS SITIO MORRINHOS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998679019",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anderson14@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

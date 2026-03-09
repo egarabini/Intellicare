@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03489",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIEFERSON",
+        "THIAGO",
+        "DA",
+        "SILVA",
+        "DE"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "37969157874"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404319",
+      "line": [
+        "177 39404319"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988299738",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diefersonluciene@gmail.com",
+      "use": "home"
+    }
+  ]
+}

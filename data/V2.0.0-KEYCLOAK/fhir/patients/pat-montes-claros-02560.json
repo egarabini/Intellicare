@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02560",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WADSON",
+        "MESQUITA"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04118728699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405010",
+      "line": [
+        "657"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991324027",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vo4154669@gmail.com",
+      "use": "home"
+    }
+  ]
+}

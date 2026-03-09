@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07298",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "OROZINHO",
+        "EUSTAQUIO",
+        "MAIA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1944-11-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15378977649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404007",
+      "line": [
+        "220 A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999148721",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hjsrosa@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

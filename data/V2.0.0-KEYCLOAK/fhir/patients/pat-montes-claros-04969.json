@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04969",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILSON",
+        "ANTUNES"
+      ],
+      "family": "MADUREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1962-11-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62389483615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400167",
+      "line": [
+        "96 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998375149",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "veronicamcmadureira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

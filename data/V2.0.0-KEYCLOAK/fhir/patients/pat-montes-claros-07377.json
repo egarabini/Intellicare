@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07377",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MELISSA",
+        "GABRIELA",
+        "DIAS"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-01-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70590643622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400308",
+      "line": [
+        "447"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997543057",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "melissaggabriela56@gmail.com",
+      "use": "home"
+    }
+  ]
+}

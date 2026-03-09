@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05568",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ENZIO",
+        "FELIPE",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-05-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17129063645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400051",
+      "line": [
+        "207"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998018849",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "enzio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

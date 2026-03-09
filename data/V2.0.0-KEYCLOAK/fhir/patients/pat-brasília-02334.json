@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02334",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "LISBOA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03806757143"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691068",
+      "line": [
+        "141 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984189751",
+      "use": "home"
+    }
+  ]
+}

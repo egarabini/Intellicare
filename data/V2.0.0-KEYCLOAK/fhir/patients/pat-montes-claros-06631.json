@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06631",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELE",
+        "VELLOSO"
+      ],
+      "family": "GUIMARAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-08-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10877530661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403202",
+      "line": [
+        "1298 AP 01"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988339656",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danivellosog@gmail.com",
+      "use": "home"
+    }
+  ]
+}

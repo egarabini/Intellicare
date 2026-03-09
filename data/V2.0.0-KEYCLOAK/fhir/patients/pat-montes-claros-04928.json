@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04928",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IGOR",
+        "PEREIRA"
+      ],
+      "family": "TELLES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-07-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15001036674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404006",
+      "line": [
+        "905"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999992398",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "igorpereiratelles@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

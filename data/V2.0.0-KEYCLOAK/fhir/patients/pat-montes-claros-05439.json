@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05439",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERT"
+      ],
+      "family": "AMADEU"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09226895635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404457",
+      "line": [
+        "134 S"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991359014",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariavi@gmail.com",
+      "use": "home"
+    }
+  ]
+}

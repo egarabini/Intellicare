@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09265",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIANA",
+        "RIBEIRO"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-04-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14375954647"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400596",
+      "line": [
+        "371 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998981971",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marciana2955@gmail.com",
+      "use": "home"
+    }
+  ]
+}

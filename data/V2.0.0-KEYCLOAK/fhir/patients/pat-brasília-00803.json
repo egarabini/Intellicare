@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00803",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DUCINAYRA",
+        "ALMEIDA"
+      ],
+      "family": "MACAHADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1992-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04480038132"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591265",
+      "line": [
+        "17"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982168274",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ducinaralo12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

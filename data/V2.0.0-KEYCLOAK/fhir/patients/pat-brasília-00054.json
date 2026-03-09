@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00054",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "VIDAL"
+      ],
+      "family": "TELES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-02-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70832059145"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73255900",
+      "line": [
+        "03 QD 03 CONJUNTO N LOTE 05"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991387560",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunatelesjulia123@gmail",
+      "use": "home"
+    }
+  ]
+}

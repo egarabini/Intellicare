@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08296",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEXANDRE",
+        "RIBEIRO",
+        "DA",
+        "SILVA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71740597672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400208",
+      "line": [
+        "275 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992308898",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "stopautocentercarros@gmail.com",
+      "use": "home"
+    }
+  ]
+}

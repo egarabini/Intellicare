@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06322",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MELORIE",
+        "AWDREY",
+        "TORK",
+        "SIQUEIRA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-09-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70223917699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403098",
+      "line": [
+        "341 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999599302",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "zemamoc210@gamil.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01582",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MISAQUE",
+        "DE",
+        "JESUS"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-04-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09450676666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400231",
+      "line": [
+        "183 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988424816",
+      "use": "home"
+    }
+  ]
+}

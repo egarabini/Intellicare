@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01953",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELLEN",
+        "CRISTINA",
+        "CANTANHEDE"
+      ],
+      "family": "BARROS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-08-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05530112196"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693004",
+      "line": [
+        "50 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983461207",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01036",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEANDRO",
+        "NASCIMENTO"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-07-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02094140148"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587592",
+      "line": [
+        "102 71587592"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191687498",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leandropereirs617.1@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07096",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "MAURICIO",
+        "RIBEIRO"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-11-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12195527633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404388",
+      "line": [
+        "130"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991467894",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josemauricioribeiroveloso@gmail.com",
+      "use": "home"
+    }
+  ]
+}

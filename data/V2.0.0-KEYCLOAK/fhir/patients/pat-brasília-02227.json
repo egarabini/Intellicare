@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02227",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELLE",
+        "MOUR�O"
+      ],
+      "family": "MENESES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-08-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73072966168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73360401",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998613759",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "daniele23@gmail.com",
+      "use": "home"
+    }
+  ]
+}

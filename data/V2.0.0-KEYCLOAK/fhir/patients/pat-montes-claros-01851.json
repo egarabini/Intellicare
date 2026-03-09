@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01851",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "MARY",
+        "NOBRE"
+      ],
+      "family": "PINHHEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1954-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "26844389604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403080",
+      "line": [
+        "411"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988464213",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariamarynobre69@gmail.com",
+      "use": "home"
+    }
+  ]
+}

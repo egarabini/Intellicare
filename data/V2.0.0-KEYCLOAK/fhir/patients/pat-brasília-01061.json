@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01061",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERLINTON",
+        "LUCAS",
+        "FERREIRA"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-02-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07252370585"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571609",
+      "line": [
+        "32"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "77998575675",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gerlintonlucas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

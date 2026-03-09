@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05820",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUNIO",
+        "VIEIRA"
+      ],
+      "family": "SOUTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-05-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70420923683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401274",
+      "line": [
+        "720 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997287961",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juniov634@gmail.com",
+      "use": "home"
+    }
+  ]
+}

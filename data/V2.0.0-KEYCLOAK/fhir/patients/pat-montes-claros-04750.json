@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04750",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORAH",
+        "LUCIA",
+        "OLIVEIRA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1979-07-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07951010669"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404761",
+      "line": [
+        "86 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991783478",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deboraholiveira2742@gmail.com",
+      "use": "home"
+    }
+  ]
+}

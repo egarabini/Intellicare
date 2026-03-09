@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00780",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CARLA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "BRAGA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02618865170"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71827675",
+      "line": [
+        "5 CHACARA 11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993314772",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anaclaudia.silvabraga@gmail.com",
+      "use": "home"
+    }
+  ]
+}

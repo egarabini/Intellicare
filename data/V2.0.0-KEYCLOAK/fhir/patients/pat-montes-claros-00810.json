@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00810",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TIAGO",
+        "SILVA"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-11-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12218511606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404271",
+      "line": [
+        "221"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984144217",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aclara4328@gmail.com",
+      "use": "home"
+    }
+  ]
+}

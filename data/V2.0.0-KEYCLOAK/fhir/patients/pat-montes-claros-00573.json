@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00573",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CAROLINA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "MONTEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-09-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00318315246"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "250 NOVA ESPERANCA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984079854",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "caroldesouza336b@gmail.com",
+      "use": "home"
+    }
+  ]
+}

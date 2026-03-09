@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00067",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRENDA",
+        "TAINARA",
+        "DA",
+        "SILVA"
+      ],
+      "family": "MENESES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13916391623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691044",
+      "line": [
+        "03 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996680012",
+      "use": "home"
+    }
+  ]
+}

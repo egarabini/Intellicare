@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07584",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NAIARAPEREIRA"
+      ],
+      "family": "NAIARAPEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05255649694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402538",
+      "line": [
+        "532"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988451925",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nayarapereiraa2124@gmail.com",
+      "use": "home"
+    }
+  ]
+}

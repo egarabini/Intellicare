@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04193",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDNEY",
+        "RODRIGUES"
+      ],
+      "family": "VERCIANE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-11-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09117801656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404460",
+      "line": [
+        "25"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998957797",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edneyverciane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

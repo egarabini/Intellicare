@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02375",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DARLENE",
+        "MENDES",
+        "DE",
+        "JESUS"
+      ],
+      "family": "NOGUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-12-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06980785605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402107",
+      "line": [
+        "457 ND"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991516876",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "darlenemendes1213@gmail.com",
+      "use": "home"
+    }
+  ]
+}

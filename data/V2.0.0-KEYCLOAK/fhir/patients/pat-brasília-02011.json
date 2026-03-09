@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02011",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JORGE",
+        "ALEXANDRE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SOBRINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1954-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05533317104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72507220",
+      "line": [
+        "2"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991046024",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jdlumefer@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02376",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BENILSON",
+        "ALVES"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1979-01-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85736430134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72733703",
+      "line": [
+        "12 72733703"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6198443204",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alvesbenilson011@gmail.com",
+      "use": "home"
+    }
+  ]
+}

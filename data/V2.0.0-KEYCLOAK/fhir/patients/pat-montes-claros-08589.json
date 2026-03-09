@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08589",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEMIA",
+        "MARCIA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "PIMENTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1967-03-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "59843152620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400439",
+      "line": [
+        "137 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988623100",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ssouzaclemiapimenta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

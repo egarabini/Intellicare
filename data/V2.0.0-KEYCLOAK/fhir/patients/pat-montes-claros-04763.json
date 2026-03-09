@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04763",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLARICE",
+        "ALVES",
+        "NARCISO"
+      ],
+      "family": "CAVALCANTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-08-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03826097602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400385",
+      "line": [
+        "477 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991913275",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "clarice.cavalcante220866@gmail.com",
+      "use": "home"
+    }
+  ]
+}

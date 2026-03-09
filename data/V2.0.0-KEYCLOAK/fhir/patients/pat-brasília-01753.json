@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01753",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DINAILDE",
+        "HONORATO",
+        "DE"
+      ],
+      "family": "AMORIM"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-07-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85972731517"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596159",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993291768",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dinaildehonorato151@gmail.com",
+      "use": "home"
+    }
+  ]
+}

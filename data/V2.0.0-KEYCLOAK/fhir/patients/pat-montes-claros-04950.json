@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04950",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "REGIANA",
+        "DOS",
+        "REIS"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-03-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17809229656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404425",
+      "line": [
+        "381 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999557618",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santana@santanaregianereis@gmail.com",
+      "use": "home"
+    }
+  ]
+}

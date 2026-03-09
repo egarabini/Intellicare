@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08510",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LOURENCO",
+        "JOSE",
+        "DE",
+        "SANT",
+        "ANA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-12-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50374702691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403502",
+      "line": [
+        "611"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999129838",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "losaneto6708@gmail.com",
+      "use": "home"
+    }
+  ]
+}

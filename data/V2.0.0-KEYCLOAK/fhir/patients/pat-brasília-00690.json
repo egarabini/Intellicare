@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00690",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "POLLYANA",
+        "FERREIRA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1993-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04510734107"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330095",
+      "line": [
+        "4"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993048770",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pollyanaferreira@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

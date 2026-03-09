@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05738",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSIELLE",
+        "SILVA"
+      ],
+      "family": "MACHADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70323898645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402139",
+      "line": [
+        "66"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992714271",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tulio@gmail.com",
+      "use": "home"
+    }
+  ]
+}

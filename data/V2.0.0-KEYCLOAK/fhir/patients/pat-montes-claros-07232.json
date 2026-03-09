@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07232",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IRAN",
+        "MARIA",
+        "GONCALVES"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08232586613"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403148",
+      "line": [
+        "55 39403148"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998019533",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yaranmadalena017@gmail.com",
+      "use": "home"
+    }
+  ]
+}

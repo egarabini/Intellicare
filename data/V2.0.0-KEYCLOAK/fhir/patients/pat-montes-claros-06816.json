@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06816",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARDEY",
+        "JESUS"
+      ],
+      "family": "AMARAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-12-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07648168618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404310",
+      "line": [
+        "930"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991409826",
+      "use": "home"
+    }
+  ]
+}

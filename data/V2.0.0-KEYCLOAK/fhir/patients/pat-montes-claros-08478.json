@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08478",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "ROBERTO",
+        "RODRIGUES"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02086868600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403085",
+      "line": [
+        "590 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998565096",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ppaulorobertorodriguesfilho@gmail.com",
+      "use": "home"
+    }
+  ]
+}

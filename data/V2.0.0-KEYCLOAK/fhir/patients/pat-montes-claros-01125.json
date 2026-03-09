@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01125",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "RITA",
+        "DA",
+        "CONCEI��O"
+      ],
+      "family": "NETA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-11-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "75457571300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401551",
+      "line": [
+        "627 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38389985128",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "danielkennedy12333344@gmail.com",
+      "use": "home"
+    }
+  ]
+}

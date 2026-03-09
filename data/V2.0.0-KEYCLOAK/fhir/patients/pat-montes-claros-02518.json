@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02518",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BIANCA",
+        "PEREIRA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-02-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70135298695"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404087",
+      "line": [
+        "1470 BLOCO A APTO 401"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991216251",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bianca98677426@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00466",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELEN",
+        "CRISTINA",
+        "TEIXEIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-02-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09578077165"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72302801",
+      "line": [
+        "1 QR 118 CONJ 1 CS"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983799119",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "helencristinateixeiradasilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

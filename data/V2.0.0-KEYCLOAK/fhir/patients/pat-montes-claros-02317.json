@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02317",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIA",
+        "MIRTES",
+        "FERREIRA"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-01-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09710474642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405662",
+      "line": [
+        "55 39405662"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984146433",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elizangelateixeiradacruz@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

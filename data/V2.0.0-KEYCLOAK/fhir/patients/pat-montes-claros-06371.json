@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06371",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AMAURI",
+        "ROOGERIO",
+        "DIAS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-11-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03435437618"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39412000",
+      "line": [
+        "00 SANTA ROSA DE LIMA ZONA RURAL"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997302735",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rogerioger2666@gmail.com",
+      "use": "home"
+    }
+  ]
+}

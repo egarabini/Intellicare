@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00527",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAQUEL",
+        "LOPES",
+        "FERRAZ"
+      ],
+      "family": "NETA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-07-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "56929986615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401169",
+      "line": [
+        "122 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997337056",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rferrazraquel@gmail.com",
+      "use": "home"
+    }
+  ]
+}

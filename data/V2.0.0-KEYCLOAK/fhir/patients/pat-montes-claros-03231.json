@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03231",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EUNICE",
+        "DAS",
+        "GRACAS",
+        "RIBEIRO"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-04-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "26909057600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401166",
+      "line": [
+        "293"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31973033574",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "analauramendess@outlook.com",
+      "use": "home"
+    }
+  ]
+}

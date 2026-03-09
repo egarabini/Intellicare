@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05628",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MERALICE",
+        "NOGUEIRA"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-03-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08465324689"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400359",
+      "line": [
+        "189 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997541732",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "meraqueirozqueiroz@gmail.com",
+      "use": "home"
+    }
+  ]
+}

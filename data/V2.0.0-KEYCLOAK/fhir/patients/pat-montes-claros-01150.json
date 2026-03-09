@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01150",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "KAROLINE",
+        "RODRIGUES"
+      ],
+      "family": "FARIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-09-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15767608636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404300",
+      "line": [
+        "154 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984347523",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anakarolinlefarias912@gmail.com",
+      "use": "home"
+    }
+  ]
+}

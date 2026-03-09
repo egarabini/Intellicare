@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05739",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALBERTINO",
+        "ALVARO"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-12-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "53093836620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401472",
+      "line": [
+        "409"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999149800",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alvarocostaalbertino@gmail.com",
+      "use": "home"
+    }
+  ]
+}

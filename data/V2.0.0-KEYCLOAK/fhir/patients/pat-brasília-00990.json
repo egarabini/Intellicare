@@ -1,0 +1,47 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00990",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "CARLOS",
+        "RODRIGUES"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-06-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03473672165"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998574004",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniomozzo2319@gmail.com",
+      "use": "home"
+    }
+  ]
+}

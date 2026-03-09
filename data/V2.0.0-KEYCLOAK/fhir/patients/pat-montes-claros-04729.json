@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04729",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MIGUEL",
+        "ANTONIO"
+      ],
+      "family": "GONCALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-09-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95884335687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404165",
+      "line": [
+        "750 APTO101 BL17"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988396698",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "miguelantonio98543@gmail.com",
+      "use": "home"
+    }
+  ]
+}

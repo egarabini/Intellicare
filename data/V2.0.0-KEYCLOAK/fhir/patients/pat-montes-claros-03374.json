@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03374",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FERNANDO",
+        "GOMES"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07899436621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401717",
+      "line": [
+        "80"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38996235739",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owd324g1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

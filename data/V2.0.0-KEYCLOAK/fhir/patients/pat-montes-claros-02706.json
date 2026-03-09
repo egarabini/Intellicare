@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02706",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEONICE",
+        "FONSECA",
+        "ROSA"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-09-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06822988670"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400763",
+      "line": [
+        "11 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998371352",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "millareisfonseca@gmail.com",
+      "use": "home"
+    }
+  ]
+}

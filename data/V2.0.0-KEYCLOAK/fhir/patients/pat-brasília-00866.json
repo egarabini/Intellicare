@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00866",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SAMARA",
+        "ADRIANA",
+        "DA"
+      ],
+      "family": "CONCEI�AO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01539588122"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587580",
+      "line": [
+        "304 BLOCO B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996802373",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "samaraadrianac@gmail.com",
+      "use": "home"
+    }
+  ]
+}

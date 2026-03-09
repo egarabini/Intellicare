@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00417",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FABRICIO",
+        "DA",
+        "COSTA",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-06-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "38658762858"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72120055",
+      "line": [
+        "202"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "11985617514",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fabricionascimento9374@gmail.com",
+      "use": "home"
+    }
+  ]
+}

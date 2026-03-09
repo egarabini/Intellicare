@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02087",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SANTER",
+        "FRANCISCO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-07-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70619271191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72001620",
+      "line": [
+        "67 APTO 201"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998009712",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "santercompras@gmail.com",
+      "use": "home"
+    }
+  ]
+}

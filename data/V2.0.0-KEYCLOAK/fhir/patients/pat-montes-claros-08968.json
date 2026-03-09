@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08968",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CASSIANA",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-01-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07260135603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401236",
+      "line": [
+        "181 39401236"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988236582",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariacarolainebarbosa2022@gmail.com",
+      "use": "home"
+    }
+  ]
+}

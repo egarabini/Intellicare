@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00554",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLUCIA",
+        "PEREIRA"
+      ],
+      "family": "SIMOES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1972-11-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01010827626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401167",
+      "line": [
+        "525"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998338316",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owd333g1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

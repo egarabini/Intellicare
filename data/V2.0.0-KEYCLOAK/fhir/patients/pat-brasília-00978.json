@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00978",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "LUCIANO",
+        "SOUSA"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-11-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "88455823372"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590270",
+      "line": [
+        "3 FAZENDINHA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993716674",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "aguiarantonio654@gmail.com",
+      "use": "home"
+    }
+  ]
+}

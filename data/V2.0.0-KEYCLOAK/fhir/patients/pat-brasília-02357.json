@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02357",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ENOCH",
+        "OLIVEIRA",
+        "BATISTA"
+      ],
+      "family": "FILHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-05-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85954271518"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591315",
+      "line": [
+        "12 71591315"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191841198",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor167@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

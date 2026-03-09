@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04559",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHENIFER",
+        "KAROLINE",
+        "DIAS"
+      ],
+      "family": "VASCONCELOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70362516626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400718",
+      "line": [
+        "922"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984080465",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jheniferk388@gmail.com",
+      "use": "home"
+    }
+  ]
+}

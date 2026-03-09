@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00586",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RENEVALDO",
+        "FEITOSA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-01-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74221140372"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72140580",
+      "line": [
+        "109 APART"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994520268",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renevaldo5@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02126",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JERONIMO",
+        "JUNIOR"
+      ],
+      "family": "PEIXOTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-04-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81186851104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72720190",
+      "line": [
+        "APARTAMENTO 101"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999664959",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeronimo.br@outlook.com",
+      "use": "home"
+    }
+  ]
+}

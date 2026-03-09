@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01350",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADEILSON",
+        "PEREIRA",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09952102682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404590",
+      "line": [
+        "12"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999408472",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adeilsonadeilson948@gmail.com",
+      "use": "home"
+    }
+  ]
+}

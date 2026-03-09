@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05380",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YAGO",
+        "GABRIEL",
+        "NUNES"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-09-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15445736695"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404527",
+      "line": [
+        "104"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998479028",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yagogabriel8588@gmail.com",
+      "use": "home"
+    }
+  ]
+}

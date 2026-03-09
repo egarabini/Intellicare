@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02418",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WALLACE",
+        "COSTA",
+        "SILVA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-02-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00574571159"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72760124",
+      "line": [
+        "11 LOTE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985442358",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wcosta4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

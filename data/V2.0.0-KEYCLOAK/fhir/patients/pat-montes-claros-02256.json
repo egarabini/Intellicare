@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02256",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHONATAN",
+        "MATHEUS",
+        "PINHEIRO"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14001524619"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407050",
+      "line": [
+        "23 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988399013",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eunatejho99@gmail.com",
+      "use": "home"
+    }
+  ]
+}

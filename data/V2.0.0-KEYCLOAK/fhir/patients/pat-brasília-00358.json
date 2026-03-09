@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00358",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAMAR",
+        "DA",
+        "SILVA",
+        "DE",
+        "SILVA",
+        "DE"
+      ],
+      "family": "SA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-07-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01652312544"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71695073",
+      "line": [
+        "103 APT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999271683",
+      "use": "home"
+    }
+  ]
+}

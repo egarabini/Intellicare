@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00566",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "LUCIO",
+        "SANT",
+        "ANA"
+      ],
+      "family": "GAMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-11-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52405567172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73365732",
+      "line": [
+        "1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992419836",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jose20@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05066",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAYCON",
+        "FELIPE",
+        "SILVA"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70710669658"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403085",
+      "line": [
+        "278 39403085"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998005014",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mayconfelipesilvagomesfelipe@gmail.com",
+      "use": "home"
+    }
+  ]
+}

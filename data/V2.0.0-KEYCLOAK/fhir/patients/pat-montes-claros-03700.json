@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03700",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "FELIPE",
+        "OLIVEIRA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-04-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70092085652"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403116",
+      "line": [
+        "107 39403116"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38881245899",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "matheusmfoc@gmail.com",
+      "use": "home"
+    }
+  ]
+}

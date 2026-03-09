@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02199",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "YOSSELIN",
+        "MARIA",
+        "URBINA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-03-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70664387284"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573017",
+      "line": [
+        "17"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998173500",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "urbinayosselin3086@gmail.com",
+      "use": "home"
+    }
+  ]
+}

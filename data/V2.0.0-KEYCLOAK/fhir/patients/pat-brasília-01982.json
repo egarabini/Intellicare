@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01982",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDITE",
+        "DE",
+        "ALECRIM"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-11-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "97326607591"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694026",
+      "line": [
+        "13 RES DO BOSQUE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994143264",
+      "use": "home"
+    }
+  ]
+}

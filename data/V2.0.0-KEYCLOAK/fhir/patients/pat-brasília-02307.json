@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02307",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAGMAR",
+        "BATISTA",
+        "DAS",
+        "CHAGAS"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24009105100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72415109",
+      "line": [
+        "4 2 CONJUNTO L CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998625214",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "merceariadaqui@gmail.com",
+      "use": "home"
+    }
+  ]
+}

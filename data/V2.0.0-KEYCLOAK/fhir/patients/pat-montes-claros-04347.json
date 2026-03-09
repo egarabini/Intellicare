@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04347",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "PAULO"
+      ],
+      "family": "SENA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70302788603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400503",
+      "line": [
+        "319 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991846478",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "o3434536344wdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

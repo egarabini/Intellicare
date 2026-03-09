@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01811",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WALLYSSON",
+        "BRENNIER",
+        "SILVA"
+      ],
+      "family": "BARROS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-02-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60996106340"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691044",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981726452",
+      "use": "home"
+    }
+  ]
+}

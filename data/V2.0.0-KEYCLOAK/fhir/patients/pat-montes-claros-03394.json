@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03394",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARISSA",
+        "STEFANE",
+        "MARTINS",
+        "FERNANDES"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-02-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13169540645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404283",
+      "line": [
+        "356 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988740439",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lstefanemartins98@gmail.com",
+      "use": "home"
+    }
+  ]
+}

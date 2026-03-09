@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09303",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLARICE",
+        "MARIA",
+        "DE"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09559293699"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400465",
+      "line": [
+        "37 39400465"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984095089",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rosyruas10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

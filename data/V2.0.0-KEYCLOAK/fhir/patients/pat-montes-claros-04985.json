@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04985",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PAULO",
+        "RICARDO",
+        "PEREIRA"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-01-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12650735627"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403055",
+      "line": [
+        "149 CS A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984026994",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "prmiranda021@gmail.com",
+      "use": "home"
+    }
+  ]
+}

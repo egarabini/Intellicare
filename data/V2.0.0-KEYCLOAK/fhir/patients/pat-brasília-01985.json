@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01985",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUAN",
+        "PABLO",
+        "MARTINS"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-03-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06714073178"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71695073",
+      "line": [
+        "404"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986117356",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pimba.9762@gmail.com",
+      "use": "home"
+    }
+  ]
+}

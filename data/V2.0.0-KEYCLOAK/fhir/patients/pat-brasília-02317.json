@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02317",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "JOS�",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "DOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "21017948100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72425030",
+      "line": [
+        "108"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996804415",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariajose12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "resourceType": "Organization",
+    "id": "org-ses-df",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000001"}],
+    "name": "Secretaria de Estado de Saúde do Distrito Federal",
+    "alias": ["SES-DF"],
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "govt", "display": "Government"}]}],
+    "address": [{"line": ["SAUN Quadra 5 Bloco N"], "city": "Brasília", "state": "DF", "postalCode": "70040-020"}],
+    "telecom": [{"system": "phone", "value": "613345-1600"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "secretaria-brasilia"}]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-sms-montesclaros",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000002"}],
+    "name": "Secretaria Municipal de Saúde de Montes Claros",
+    "alias": ["SMS Montes Claros"],
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "govt", "display": "Government"}]}],
+    "address": [{"line": ["Praça Doutor Carlos", "Centro"], "city": "Montes Claros", "state": "MG", "postalCode": "39400-001"}],
+    "telecom": [{"system": "phone", "value": "383221-5000"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "secretaria-montesclaros"}]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-hran",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000003"}],
+    "name": "Hospital Regional da Asa Norte",
+    "alias": ["HRAN"],
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "prov", "display": "Healthcare Provider"}]}],
+    "address": [{"line": ["SMHN Quadra 101"], "city": "Brasília", "state": "DF", "postalCode": "70710-100"}],
+    "telecom": [{"system": "phone", "value": "613325-2000"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "hospital-brasilia"}]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-hbdf",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000004"}],
+    "name": "Hospital de Base do Distrito Federal",
+    "alias": ["HBDF"],
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "prov", "display": "Healthcare Provider"}]}],
+    "address": [{"line": ["SMHS Quadra 101"], "city": "Brasília", "state": "DF", "postalCode": "70330-150"}],
+    "telecom": [{"system": "phone", "value": "613325-2000"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "hospital-brasilia"}]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-santacasa-mc",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000005"}],
+    "name": "Santa Casa de Misericórdia de Montes Claros",
+    "alias": ["Santa Casa MC"],
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "prov", "display": "Healthcare Provider"}]}],
+    "address": [{"line": ["Rua Coronel Luís Pires", "Centro"], "city": "Montes Claros", "state": "MG", "postalCode": "39400-000"}],
+    "telecom": [{"system": "phone", "value": "383221-4000"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "hospital-montesclaros"}]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-ubs-asa-sul",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000006"}],
+    "name": "UBS 1 da Asa Sul",
+    "alias": ["UBS Asa Sul"],
+    "partOf": {"reference": "Organization/org-ses-df"},
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "prov", "display": "Healthcare Provider"}]}],
+    "address": [{"line": ["SQS 108"], "city": "Brasília", "state": "DF", "postalCode": "70336-100"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "secretaria-brasilia"}]
+  },
+  {
+    "resourceType": "Organization",
+    "id": "org-ubs-mc-centro",
+    "meta": {"profile": ["http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"]},
+    "identifier": [{"system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes", "value": "2000007"}],
+    "name": "UBS Centro Montes Claros",
+    "alias": ["UBS Centro MC"],
+    "partOf": {"reference": "Organization/org-sms-montesclaros"},
+    "type": [{"coding": [{"system": "http://terminology.hl7.org/CodeSystem/organization-type", "code": "prov", "display": "Healthcare Provider"}]}],
+    "address": [{"line": ["Centro"], "city": "Montes Claros", "state": "MG", "postalCode": "39400-001"}],
+    "extension": [{"url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id", "valueString": "secretaria-montesclaros"}]
+  }
+]

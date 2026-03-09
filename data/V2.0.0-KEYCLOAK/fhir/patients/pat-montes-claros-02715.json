@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02715",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHONATA",
+        "PATRICK",
+        "PEREIRA"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-10-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17726955643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402479",
+      "line": [
+        "241 CASA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991275142",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhonatapatrick749@gmail.com",
+      "use": "home"
+    }
+  ]
+}

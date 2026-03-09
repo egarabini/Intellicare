@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03498",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUILHERME",
+        "MENDES",
+        "PEREIRA"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-04-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70200481614"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400846",
+      "line": [
+        "250"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999360103",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "guilhermemendesp47@gmail.com",
+      "use": "home"
+    }
+  ]
+}

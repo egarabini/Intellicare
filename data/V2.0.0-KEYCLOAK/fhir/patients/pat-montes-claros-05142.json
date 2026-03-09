@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05142",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IZAIAS",
+        "MARTINS"
+      ],
+      "family": "ROSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-03-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70462474631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402633",
+      "line": [
+        "7 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988628915",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "larissaemanuely375@gmail.com",
+      "use": "home"
+    }
+  ]
+}

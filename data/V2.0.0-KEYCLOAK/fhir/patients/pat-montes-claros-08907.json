@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08907",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "MARIA",
+        "SOUZA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-09-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70003615650"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402594",
+      "line": [
+        "2545 39402594"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988458778",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anasouzamartins9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01201",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDER",
+        "GERALDO",
+        "FERREIRA",
+        "DO"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-10-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06236000646"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405807",
+      "line": [
+        "140 39402193"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991800770",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ederferreira2006@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

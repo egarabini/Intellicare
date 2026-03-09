@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03683",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GIANNI",
+        "DE",
+        "PAULO"
+      ],
+      "family": "MIRANDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66279844668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405670",
+      "line": [
+        "45"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998145318",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emilly@gmail.com",
+      "use": "home"
+    }
+  ]
+}

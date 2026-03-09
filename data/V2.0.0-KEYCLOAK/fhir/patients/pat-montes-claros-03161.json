@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03161",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VIVAN",
+        "EMANUELLY",
+        "BATISTA"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-05-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70486315622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400213",
+      "line": [
+        "771"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999968397",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vivian@gmail.com",
+      "use": "home"
+    }
+  ]
+}

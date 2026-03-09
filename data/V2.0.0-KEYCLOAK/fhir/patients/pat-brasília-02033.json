@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02033",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCA",
+        "DA",
+        "CRUZ"
+      ],
+      "family": "LAGO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-04-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71448527104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72320009",
+      "line": [
+        "410 CASA 12"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983714035",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscadacruzlago46@gmail.com",
+      "use": "home"
+    }
+  ]
+}

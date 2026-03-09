@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02820",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "PATR�CIA",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "PIMENTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-06-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08155651606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400439",
+      "line": [
+        "137 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988477522",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlasuozapimenta678@gmail.com",
+      "use": "home"
+    }
+  ]
+}

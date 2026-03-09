@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02519",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERIC",
+        "CLEPTO",
+        "LOPES",
+        "DE"
+      ],
+      "family": "ASSIS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-05-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09537584607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401240",
+      "line": [
+        "371 39401240"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988073714",
+      "use": "home"
+    }
+  ]
+}

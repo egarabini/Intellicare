@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02734",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KAYKY",
+        "FERNANDO",
+        "FARIAS"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-11-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02027790683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404101",
+      "line": [
+        "333 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992598949",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kaykyf287@gmail.com",
+      "use": "home"
+    }
+  ]
+}

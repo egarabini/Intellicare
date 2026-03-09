@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01410",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLENE",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-01-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "96911913349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805704",
+      "line": [
+        "22 AP.104"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982344854",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlenefereiraaa10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

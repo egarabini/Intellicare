@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07000",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITOR",
+        "HUGO",
+        "BENVINDO"
+      ],
+      "family": "MARIANO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-02-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13818778779"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404501",
+      "line": [
+        "100 39404501"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988669276",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "damacenoluciane7@gmail.com",
+      "use": "home"
+    }
+  ]
+}

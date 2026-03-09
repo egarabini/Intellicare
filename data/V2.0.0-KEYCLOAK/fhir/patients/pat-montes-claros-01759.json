@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01759",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LAURO",
+        "ROBSON",
+        "MENDES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03736933622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400346",
+      "line": [
+        "144"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998780025",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rohowdg1891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

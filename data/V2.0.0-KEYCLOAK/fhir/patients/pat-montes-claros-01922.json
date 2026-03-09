@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01922",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LETICIA",
+        "VELOSO"
+      ],
+      "family": "SIDONIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1974-03-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92097758649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400077",
+      "line": [
+        "410"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999864909",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leticiavs@gmail.com",
+      "use": "home"
+    }
+  ]
+}

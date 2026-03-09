@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02704",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BERNARDO",
+        "DE",
+        "ALBURQUERQUE"
+      ],
+      "family": "MEIRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09737867602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400352",
+      "line": [
+        "693 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988099894",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "becasmeira123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

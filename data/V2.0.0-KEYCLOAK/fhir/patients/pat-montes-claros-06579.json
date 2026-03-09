@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06579",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DAS",
+        "GRACAS",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1948-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04719262643"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406512",
+      "line": [
+        "170 39406512"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998013136",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mcceicnha3@gmail.com",
+      "use": "home"
+    }
+  ]
+}

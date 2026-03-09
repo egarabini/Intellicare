@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02960",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANDRE",
+        "MAX",
+        "QUEIROZ",
+        "RODRIGUES"
+      ],
+      "family": "MACHADO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15302786605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403526",
+      "line": [
+        "633 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988061190",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "andremaxqueirozrodriguesmachad@gmail.com",
+      "use": "home"
+    }
+  ]
+}

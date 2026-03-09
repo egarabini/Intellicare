@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01027",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "JANAINA",
+        "RODRIGUES",
+        "DA"
+      ],
+      "family": "MOTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-11-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02921443180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587210",
+      "line": [
+        "APT301"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993893474",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "janainarodriguesmota@gmail.com",
+      "use": "home"
+    }
+  ]
+}

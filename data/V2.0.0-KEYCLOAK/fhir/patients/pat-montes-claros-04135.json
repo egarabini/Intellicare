@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04135",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUNA",
+        "LORRANE",
+        "DIAS"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2006-03-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14904638603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401276",
+      "line": [
+        "37"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997375703",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lunalorraned@gmail.com",
+      "use": "home"
+    }
+  ]
+}

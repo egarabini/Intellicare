@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06272",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WAGNER",
+        "MIGUEL",
+        "SANTOS"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-11-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70444020624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39413000",
+      "line": [
+        "40 SAO JOAO DA VEREDA A"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997463255",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tim@tim.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00205",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ESTER",
+        "DE",
+        "AGUAIR"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-10-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07021454163"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73360605",
+      "line": [
+        "41"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991904686",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "estermaia2233@gmail.com",
+      "use": "home"
+    }
+  ]
+}

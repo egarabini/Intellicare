@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01090",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCO",
+        "VINICIO",
+        "LACERDA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2000-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14318586685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403439",
+      "line": [
+        "155 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992207248",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mviniciolacerdas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

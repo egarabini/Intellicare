@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02092",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "APARECIDA",
+        "MENDES"
+      ],
+      "family": "MENDON�A"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-04-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06503843186"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73252110",
+      "line": [
+        "90 APTO 301"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998839897",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mendeabruna@gmail.com",
+      "use": "home"
+    }
+  ]
+}

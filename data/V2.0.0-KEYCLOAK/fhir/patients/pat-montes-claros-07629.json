@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07629",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BIANCA",
+        "ALVES"
+      ],
+      "family": "NOGUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-05-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17643572640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404645",
+      "line": [
+        "331 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999367154",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "biancanogueira713@gmail.com",
+      "use": "home"
+    }
+  ]
+}

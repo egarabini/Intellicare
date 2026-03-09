@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05751",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARA",
+        "VITORIA",
+        "FREITAS"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-04-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16236532664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404294",
+      "line": [
+        "502"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984244274",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lara@gmail.com",
+      "use": "home"
+    }
+  ]
+}

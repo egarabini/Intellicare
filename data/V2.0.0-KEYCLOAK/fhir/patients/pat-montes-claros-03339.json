@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03339",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHON",
+        "LINDON",
+        "CARDOSO"
+      ],
+      "family": "CANELA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-07-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09855869664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400812",
+      "line": [
+        "50 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998073592",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhonlindon90@gmail.com",
+      "use": "home"
+    }
+  ]
+}

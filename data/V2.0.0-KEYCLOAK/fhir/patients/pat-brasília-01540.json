@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01540",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTORIA",
+        "LUIZA",
+        "MACIEL"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08674780121"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72583500",
+      "line": [
+        "104 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995116159",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "macielvictorialuiza@gmail.com",
+      "use": "home"
+    }
+  ]
+}

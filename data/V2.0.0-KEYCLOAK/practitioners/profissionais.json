@@ -1,0 +1,12 @@
+[
+  {"id": "prac-001", "name": "Dr. Carlos Eduardo Silva", "crm": "DF 12345", "role": "Médico Nefrologista", "org": "org-hran", "location": "loc-hran", "tenant_id": "hospital-brasilia", "keycloak_role": "MEDICO"},
+  {"id": "prac-002", "name": "Dra. Ana Paula Santos", "crm": "DF 23456", "role": "Médica Clínica Geral", "org": "org-hran", "location": "loc-hran", "tenant_id": "hospital-brasilia", "keycloak_role": "MEDICO"},
+  {"id": "prac-003", "name": "Dr. Roberto Mendes", "crm": "DF 34567", "role": "Médico Emergencista", "org": "org-hbdf", "location": "loc-hbdf", "tenant_id": "hospital-brasilia", "keycloak_role": "MEDICO"},
+  {"id": "prac-004", "name": "Dra. Fernanda Oliveira", "crm": "DF 45678", "role": "Médica Endocrinologista", "org": "org-hbdf", "location": "loc-hbdf", "tenant_id": "hospital-brasilia", "keycloak_role": "MEDICO"},
+  {"id": "prac-005", "name": "Enf. Maria do Carmo", "conselho": "COREN-DF 12345", "role": "Enfermeira", "org": "org-ubs-asa-sul", "location": "loc-ubs-asa-sul", "tenant_id": "secretaria-brasilia", "keycloak_role": "ENFERMEIRO"},
+  {"id": "prac-006", "name": "Dr. João Pedro Costa", "crm": "MG 56789", "role": "Médico Nefrologista", "org": "org-santacasa-mc", "location": "loc-santacasa-mc", "tenant_id": "hospital-montesclaros", "keycloak_role": "MEDICO"},
+  {"id": "prac-007", "name": "Dra. Luciana Ferreira", "crm": "MG 67890", "role": "Médica Clínica Geral", "org": "org-santacasa-mc", "location": "loc-santacasa-mc", "tenant_id": "hospital-montesclaros", "keycloak_role": "MEDICO"},
+  {"id": "prac-008", "name": "Enf. Paulo Henrique", "conselho": "COREN-MG 23456", "role": "Enfermeiro", "org": "org-ubs-mc-centro", "location": "loc-ubs-mc-centro", "tenant_id": "secretaria-montesclaros", "keycloak_role": "ENFERMEIRO"},
+  {"id": "prac-009", "name": "Dr. André Luiz Souza", "crm": "DF 78901", "role": "Médico Internista", "org": "org-hran", "location": "loc-hran", "tenant_id": "hospital-brasilia", "keycloak_role": "MEDICO"},
+  {"id": "prac-010", "name": "Dra. Beatriz Lima", "crm": "MG 89012", "role": "Médica Cardiologista", "org": "org-santacasa-mc", "location": "loc-santacasa-mc", "tenant_id": "hospital-montesclaros", "keycloak_role": "MEDICO"}
+]

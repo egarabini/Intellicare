@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04229",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IDELMAR",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-10-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14871048802"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400502",
+      "line": [
+        "141 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991185941",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "idelmardeoliveiraruasr@gmail.com",
+      "use": "home"
+    }
+  ]
+}

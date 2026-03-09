@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01333",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUCIALDO",
+        "MACIEL",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "81863810153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72536170",
+      "line": [
+        "03 CONJUTO R"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991833438",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jucialdoms@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00906",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "NONATO",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "GARCES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-02-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62026305153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73358009",
+      "line": [
+        "15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984804676",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raimundononato365@gmail.com",
+      "use": "home"
+    }
+  ]
+}

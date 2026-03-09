@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02208",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEUDO",
+        "ALVES",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1967-11-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "39256200104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570605",
+      "line": [
+        "10 CONJUNTO 6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998089820",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleudoalves910@gmail.com",
+      "use": "home"
+    }
+  ]
+}

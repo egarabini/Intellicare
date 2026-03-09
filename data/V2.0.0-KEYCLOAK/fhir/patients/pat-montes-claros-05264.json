@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05264",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CASSIA",
+        "BEATRIZ",
+        "FERREIRA"
+      ],
+      "family": "VELOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-01-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86800949604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403034",
+      "line": [
+        "497 39403034"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "36988618076",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fernandescristiane179@gmail.com",
+      "use": "home"
+    }
+  ]
+}

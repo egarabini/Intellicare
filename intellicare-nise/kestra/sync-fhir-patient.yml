@@ -1,0 +1,91 @@
+id: sync-fhir-patient
+namespace: intellicare
+
+description: |
+  Workflow assíncrono para sincronizar a criação de Paciente do PostgreSQL (Gestor) para o FHIR (Grahame).
+  
+  **Fluxo**:
+  1. Recebe payload operacional do API do Gestor
+  2. Transforma (Payload Mapping) para FHIR R4 Patient Resource
+  3. Envia o POST Request para o Grahame (FHIR Server)
+  4. Extrai o ID retornado pelo Servidor FHIR
+  5. Envia PATCH Request de volta para o Gestor, atualizando a coluna `fhir_patient_id`
+
+labels:
+  module: gestor
+  priority: high
+  version: "1.0.0"
+
+inputs:
+  - id: postgresql_patient_id
+    type: STRING
+    required: true
+    description: ID (UUID) do paciente recém-criado na base PostgreSQL do Gestor
+  
+  - id: tenant_id
+    type: STRING
+    required: true
+    description: Tenant ID ao qual o Paciente pertence
+  
+  - id: nome
+    type: STRING
+    required: true
+    description: Nome completo do paciente
+  
+  - id: cpf
+    type: STRING
+    required: false
+    description: CPF do Paciente
+    defaults: ""
+
+tasks:
+  # ── Converter e Gravar no FHIR Server (Grahame) ───────────────────────────
+  
+  - id: criar_paciente_fhir
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://grahame:8000/api/v1/fhir/Patient"
+    method: POST
+    headers:
+      Content-Type: application/json
+      X-Tenant-ID: "{{ inputs.tenant_id }}"
+    # Mapeamento do JSON Operacional para estrutura FHIR R4:
+    body: |
+      {
+        "resourceType": "Patient",
+        "name": [
+          {
+            "use": "official",
+            "text": "{{ inputs.nome }}"
+          }
+        ],
+        "identifier": [
+          {
+            "system": "http://receita.fazenda.gov.br/id/cpf",
+            "value": "{{ inputs.cpf }}"
+          }
+        ],
+        "active": true
+      }
+    description: Posta o recurso Patient validado e abstraído no servidor GRAHAME (FHIR).
+  
+  # ── Confirmar Atualização no Gestor (PostgreSQL) ──────────────────────────
+  
+  - id: atualizar_id_gestao
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://gestor:8011/api/v1/gestor/patients/{{ inputs.postgresql_patient_id }}/fhir-link"
+    method: PATCH
+    headers:
+      Content-Type: application/json
+    body: |
+      {
+        "fhir_patient_id": "{{ outputs.criar_paciente_fhir.body.id }}"
+      }
+    description: Atualiza a linha operacional no Gestor com a Referência Oficial do FHIR.
+
+# ── Error Handling ──────────────────────────────────────────────────────────
+
+errors:
+  - id: notificar_erro_sync
+    type: io.kestra.plugin.core.log.Log
+    level: ERROR
+    message: "❌ Erro no Sync FHIR-Patient: Gestor ID {{ inputs.postgresql_patient_id }}. Detalhe: {{ task.error }}"

@@ -1,0 +1,31 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-pat-montes-claros-00032-172",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "AMB",
+    "display": "ambulatorio"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185349003",
+          "display": "Consulta"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00032"
+  },
+  "serviceProvider": {
+    "reference": "Organization/org-hbdf"
+  },
+  "period": {
+    "start": "2026-03-02T05:52:07Z",
+    "end": "2026-03-02T05:52:07Z"
+  }
+}

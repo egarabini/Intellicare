@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01792",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAYLINE",
+        "VITORIA",
+        "DIAS",
+        "DA",
+        "SILVA"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-04-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70619714603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403199",
+      "line": [
+        "79 39403199"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998067866",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taylinedias28@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00690",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUILHERME",
+        "ALVES",
+        "MEDEIROS"
+      ],
+      "family": "LEITE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-12-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70364246642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403494",
+      "line": [
+        "943 39403494"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999334704",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luziasandielielem@gmail.com",
+      "use": "home"
+    }
+  ]
+}

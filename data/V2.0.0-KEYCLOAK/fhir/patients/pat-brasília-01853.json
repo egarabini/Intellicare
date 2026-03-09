@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01853",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIO",
+        "TADEU",
+        "FAUSTO"
+      ],
+      "family": "FIGUEIREDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-02-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60324309104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340510",
+      "line": [
+        "31 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991601654",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariotadeu05@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00577",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JERIVALDO",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "SANTANA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "80984010149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590239",
+      "line": [
+        "28"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999868179",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jerivaldoferreira12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

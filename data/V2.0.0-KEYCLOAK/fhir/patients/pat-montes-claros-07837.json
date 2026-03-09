@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07837",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLETO",
+        "FORLAN",
+        "OLIVEIRA"
+      ],
+      "family": "PAULINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-02-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03499463610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400461",
+      "line": [
+        "25 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999666512",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cetoforlan2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08467",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "APARECIDO",
+        "SANTOS"
+      ],
+      "family": "BENFICA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-10-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08498726697"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403162",
+      "line": [
+        "406 39403162"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991492772",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiagoapa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

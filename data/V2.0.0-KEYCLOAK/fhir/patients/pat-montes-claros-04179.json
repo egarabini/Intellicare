@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04179",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANILCE",
+        "APARECIDA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "78440580649"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406148",
+      "line": [
+        "514 39406148"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997346425",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eclinavadicerapa@gmail.com",
+      "use": "home"
+    }
+  ]
+}

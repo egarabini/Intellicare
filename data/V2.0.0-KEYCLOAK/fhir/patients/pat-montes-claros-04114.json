@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04114",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "CLEIA",
+        "RODRIGUES"
+      ],
+      "family": "AMADOR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09113437682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401868",
+      "line": [
+        "180"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999526162",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "victor123emanuel@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00404",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROGEIRO",
+        "ATAIDE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-02-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73400041149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72315306",
+      "line": [
+        "14 QR 519 CONJUNTO 6 CS 14"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998137844",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rogerioataide5190614@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01420",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FRANCISCO"
+      ],
+      "family": "ANTONIO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-03-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84493607149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71090675",
+      "line": [
+        "57 CHACARA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986640093",
+      "use": "home"
+    }
+  ]
+}

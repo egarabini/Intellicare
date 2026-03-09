@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03702",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DAYANE",
+        "FERREIRA",
+        "DOS"
+      ],
+      "family": "ANJOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "15441224622"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405441",
+      "line": [
+        "771 39405441"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998078574",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elaine.moc27@gmail.com",
+      "use": "home"
+    }
+  ]
+}

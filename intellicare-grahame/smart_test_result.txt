@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\egara\INTELLICARE\intellicare-grahame\test_smart.py", line 7, in <module>
+    from grahame.api.app import app
+  File "C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\app.py", line 18, in <module>
+    from .fhir_routes import router as fhir_router
+  File "C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\fhir_routes.py", line 11, in <module>
+    from .deps import get_db, get_policy_context, PolicyContext, FHIRForbiddenError
+  File "C:\Users\egara\INTELLICARE\intellicare-grahame\grahame\api\deps.py", line 19
+    except ImportError:
+    ^^^^^^
+IndentationError: expected an indented block after 'try' statement on line 18
+Error occurred:

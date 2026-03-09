@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02083",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEIDOMAR",
+        "SOUZA"
+      ],
+      "family": "CHAVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-09-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06615116693"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71573215",
+      "line": [
+        "2"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992290017",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josep145@gmail.com",
+      "use": "home"
+    }
+  ]
+}

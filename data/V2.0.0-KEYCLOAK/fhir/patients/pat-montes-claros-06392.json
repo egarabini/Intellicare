@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06392",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALAN",
+        "GUSTAVO",
+        "RODRIGUES"
+      ],
+      "family": "SOARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2007-03-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "19087315678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401677",
+      "line": [
+        "44"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999000093",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariabarbosa1995mgbs@gmail.com",
+      "use": "home"
+    }
+  ]
+}

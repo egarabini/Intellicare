@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00092",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILIADES",
+        "MARQUES",
+        "PAIVA",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-07-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00731383125"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72735012",
+      "line": [
+        "14 72735012"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998806740",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbarajessica511@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00149",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HUDSON",
+        "MARTINS",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-05-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03105735135"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72237110",
+      "line": [
+        "00 AREA DE DESENVOLVIMENTO ECONOMICO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996609634",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "hudsonrap0800@gmail.com",
+      "use": "home"
+    }
+  ]
+}

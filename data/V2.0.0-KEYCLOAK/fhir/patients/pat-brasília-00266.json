@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00266",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JONATHAN",
+        "BERNARDINO"
+      ],
+      "family": "GINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-08-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02122468106"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72231606",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986385715",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhonatasestilo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

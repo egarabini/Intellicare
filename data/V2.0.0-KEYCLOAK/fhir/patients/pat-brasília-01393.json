@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01393",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLEUZAIR",
+        "GONCALVES"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-08-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02573268632"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71593195",
+      "line": [
+        "75 LOTE 75"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998475045",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cleorodrigues697@gmail.com",
+      "use": "home"
+    }
+  ]
+}

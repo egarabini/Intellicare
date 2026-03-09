@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04673",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HAROLDO",
+        "VAGNER",
+        "SOARES"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-11-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05775974697"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403521",
+      "line": [
+        "71 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991176033",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "haroldovagnaersoaresmagalhaes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

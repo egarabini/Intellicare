@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01360",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "51563142104"
+      ],
+      "family": "51563142104"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-06-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "51563142104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71690855",
+      "line": [
+        "400 BELA VISTA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992789330",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01034",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "APARECIDA",
+        "SILVA"
+      ],
+      "family": "MADUREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1980-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04709986606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401542",
+      "line": [
+        "78"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991588401",
+      "use": "home"
+    }
+  ]
+}

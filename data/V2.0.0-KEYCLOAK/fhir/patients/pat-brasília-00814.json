@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00814",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LOIDE",
+        "AZEVEDO"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-03-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "23888687349"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71810300",
+      "line": [
+        "18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981643264",
+      "use": "home"
+    }
+  ]
+}

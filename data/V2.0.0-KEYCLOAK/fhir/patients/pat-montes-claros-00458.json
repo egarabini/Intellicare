@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00458",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANGELI",
+        "DE",
+        "GAULE"
+      ],
+      "family": "TEIXEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-02-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "32233388615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400724",
+      "line": [
+        "188 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999791502",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dangelicarvalho@gmail.com",
+      "use": "home"
+    }
+  ]
+}

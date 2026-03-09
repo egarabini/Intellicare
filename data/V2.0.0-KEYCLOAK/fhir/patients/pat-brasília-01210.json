@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01210",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "HELIO",
+        "NUNES",
+        "DE"
+      ],
+      "family": "FRNA�A"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-07-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "25592416172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981379273",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gbueno491@gmail.com",
+      "use": "home"
+    }
+  ]
+}

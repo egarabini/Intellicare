@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01756",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RITA",
+        "DE",
+        "FATIMA"
+      ],
+      "family": "MIGUEL"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-04-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01926513312"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71590582",
+      "line": [
+        "20 CONJUNTO F"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992501114",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ritaf38667@gmail.com",
+      "use": "home"
+    }
+  ]
+}

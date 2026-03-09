@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02240",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILLY",
+        "MOREIRA"
+      ],
+      "family": "BISPO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04589889102"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693155",
+      "line": [
+        "240"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991142272",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emillydireito@outlook.com",
+      "use": "home"
+    }
+  ]
+}

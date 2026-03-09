@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01892",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIAS",
+        "RIBEIRO"
+      ],
+      "family": "BASTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-10-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70913886157"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71699899",
+      "line": [
+        "9 ZUMBI DOS PALMARES"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996084449",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "eliaas.4449@gmail.com",
+      "use": "home"
+    }
+  ]
+}

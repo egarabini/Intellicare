@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00860",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SUZANE",
+        "CAMARA",
+        "FREIRE",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-06-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73690015120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73320010",
+      "line": [
+        "13 QUADRA 16"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996265231",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "trindadefreirecibely@gmail.com",
+      "use": "home"
+    }
+  ]
+}

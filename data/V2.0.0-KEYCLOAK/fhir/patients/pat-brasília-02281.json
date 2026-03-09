@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02281",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADRIANO",
+        "ROCHA"
+      ],
+      "family": "TELLES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1996-02-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06914435561"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693055",
+      "line": [
+        "40"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998141286",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "adriano@gmail.com",
+      "use": "home"
+    }
+  ]
+}

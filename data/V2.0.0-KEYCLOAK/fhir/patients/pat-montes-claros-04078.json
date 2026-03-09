@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04078",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLAUDINEY",
+        "OLIVEIRA"
+      ],
+      "family": "CAETANO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-03-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10242404600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404526",
+      "line": [
+        "150 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988710860",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "claudineyoliveira3467@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

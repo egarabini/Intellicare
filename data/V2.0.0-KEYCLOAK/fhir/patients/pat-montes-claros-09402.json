@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09402",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MELISSA",
+        "GABRIELLE",
+        "AGUIAR"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-09-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70147863694"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403082",
+      "line": [
+        "567 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998418987",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "melissagabrielle56@gmail.com",
+      "use": "home"
+    }
+  ]
+}

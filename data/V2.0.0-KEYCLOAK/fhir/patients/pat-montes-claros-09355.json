@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09355",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KELLEN",
+        "DAYANE",
+        "SOARES"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12844146635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401181",
+      "line": [
+        "353 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992244012",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kellysoaress304f@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06004",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELLINGTON",
+        "OLIVEIRA",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-08-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01463048610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404014",
+      "line": [
+        "246 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988512117",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wellingtonoliveiradarocha69@gmail.com",
+      "use": "home"
+    }
+  ]
+}

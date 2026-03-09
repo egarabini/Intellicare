@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01988",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDEL",
+        "FERREIRA"
+      ],
+      "family": "BENTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05549394103"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691058",
+      "line": [
+        "110 B"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992806298",
+      "use": "home"
+    }
+  ]
+}

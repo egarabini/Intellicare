@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02264",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GERALDO",
+        "JACINTO",
+        "DE"
+      ],
+      "family": "MORAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1942-11-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03374041191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72320301",
+      "line": [
+        "416 BLOCO A APT 401"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982129825",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ggmoraesjacinto@gmail.com",
+      "use": "home"
+    }
+  ]
+}

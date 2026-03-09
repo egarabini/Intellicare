@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00789",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARISSA",
+        "CEZAR"
+      ],
+      "family": "BARROS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-10-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07455277105"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587050",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991751058",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lariassabarros62515@gmail.com",
+      "use": "home"
+    }
+  ]
+}

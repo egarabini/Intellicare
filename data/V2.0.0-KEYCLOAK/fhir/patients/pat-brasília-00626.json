@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00626",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "CONCEICAO",
+        "TAVARES",
+        "DA"
+      ],
+      "family": "CAMARA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-12-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "83607200106"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71731100",
+      "line": [
+        "02 LT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991781722",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariacamara@gmail.com",
+      "use": "home"
+    }
+  ]
+}

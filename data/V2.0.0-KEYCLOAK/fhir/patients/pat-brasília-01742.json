@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01742",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "VICTOR",
+        "MACIEL",
+        "DE",
+        "SA"
+      ],
+      "family": "QUARTIN"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2004-01-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02266226142"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73092906",
+      "line": [
+        "00"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981045698",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jvmqc911@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00776",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RITA"
+      ],
+      "family": "TORRES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1973-04-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73720410315"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72339070",
+      "line": [
+        "09 CONJUNTO 08"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61983202805",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ritatorres466@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02182",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "MARA",
+        "GOMES"
+      ],
+      "family": "MALAQUIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-11-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02976326126"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72631116",
+      "line": [
+        "16"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995703973",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anamaria@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00263",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCLEDIA",
+        "BICALHO",
+        "DE"
+      ],
+      "family": "SA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1965-09-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60324996691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71710510",
+      "line": [
+        "101 379/505 LT 421 AP"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981636786",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kecogari@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

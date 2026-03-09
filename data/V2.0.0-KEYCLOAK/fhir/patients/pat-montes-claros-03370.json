@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03370",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DJALMA",
+        "MATIAS"
+      ],
+      "family": "MENDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-07-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02116337631"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400058",
+      "line": [
+        "679 APT 101"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998958204",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "djalmamathias3@gmail.com",
+      "use": "home"
+    }
+  ]
+}

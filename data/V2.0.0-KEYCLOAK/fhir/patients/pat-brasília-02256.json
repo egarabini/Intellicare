@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02256",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TANIA",
+        "MARIA",
+        "NINES"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-10-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "61983675504"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693027",
+      "line": [
+        "70"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993055130",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "taniamaria094@gmail.com",
+      "use": "home"
+    }
+  ]
+}

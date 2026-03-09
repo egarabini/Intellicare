@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01626",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOHNNY",
+        "DE",
+        "ALCANTARA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-12-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04916740157"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73401412",
+      "line": [
+        "33 MD 5"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986283787",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "johnnyalcantara789@gmail.com",
+      "use": "home"
+    }
+  ]
+}

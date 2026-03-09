@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01385",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMYLLE",
+        "TATIELE",
+        "FERREIRA"
+      ],
+      "family": "CANUTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-06-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07706591107"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591270",
+      "line": [
+        "3 71591270"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6192515920",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vivaesperanca10@gmail.com",
+      "use": "home"
+    }
+  ]
+}

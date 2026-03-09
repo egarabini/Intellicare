@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01938",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ARIANE",
+        "ALBUQUERQUE",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-08-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70884661121"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72275680",
+      "line": [
+        "27 CONJUNTO O"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6191004354",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "yarasousa9031@gamil.com",
+      "use": "home"
+    }
+  ]
+}

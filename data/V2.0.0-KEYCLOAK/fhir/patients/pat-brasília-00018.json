@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00018",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "AUGUSTA",
+        "SOARES",
+        "MEIRELES",
+        "DE"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-10-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "36890316134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73358315",
+      "line": [
+        "06 CONJUNTO C"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998662247",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "deuseuteamoaugusta@gmail.com",
+      "use": "home"
+    }
+  ]
+}

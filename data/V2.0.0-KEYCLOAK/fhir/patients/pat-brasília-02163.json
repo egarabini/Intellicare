@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02163",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDILTON",
+        "DE",
+        "JESUS"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-11-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05157055196"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596168",
+      "line": [
+        "114"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996840409",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edilttnjesus251@gmail.com",
+      "use": "home"
+    }
+  ]
+}

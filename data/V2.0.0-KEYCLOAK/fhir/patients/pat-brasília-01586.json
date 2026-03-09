@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01586",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SARA",
+        "BEATRIZ",
+        "BENEVENUTO"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-06-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07668042164"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72583060",
+      "line": [
+        "105 APTO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998592971",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "7sarabenevenuto@gmail.com",
+      "use": "home"
+    }
+  ]
+}

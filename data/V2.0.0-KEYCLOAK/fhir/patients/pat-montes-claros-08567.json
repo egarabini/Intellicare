@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08567",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLEY",
+        "SILVA",
+        "MORAES"
+      ],
+      "family": "ARAUJO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-02-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "62374982653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400327",
+      "line": [
+        "10"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999391306",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marley12@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

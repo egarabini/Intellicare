@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07600",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "THIAGO",
+        "SOARES"
+      ],
+      "family": "COLARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08123229674"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404523",
+      "line": [
+        "381"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997487302",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "thiagosoaressoares@gmail.com",
+      "use": "home"
+    }
+  ]
+}

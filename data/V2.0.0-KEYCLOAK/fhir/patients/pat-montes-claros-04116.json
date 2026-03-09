@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04116",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NICOLE",
+        "LAURINDA",
+        "ALVES",
+        "PORTO"
+      ],
+      "family": "BARBOSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13697437690"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404173",
+      "line": [
+        "223 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988351940",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "laurindanicole4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

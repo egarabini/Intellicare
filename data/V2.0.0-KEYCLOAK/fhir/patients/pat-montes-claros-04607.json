@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04607",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLENE",
+        "NUNES"
+      ],
+      "family": "CAVALCANTI"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1952-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "41635892600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401662",
+      "line": [
+        "250"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991606398",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marlenenunescavalcantinunes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

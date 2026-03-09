@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02026",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SORAIA",
+        "PEREIRA",
+        "LIMA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-09-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09646826644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403027",
+      "line": [
+        "217 39403027"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991436503",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "soraya_pereira@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07744",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAYNARA",
+        "RISTINA",
+        "SANTOS"
+      ],
+      "family": "DIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-05-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11144962609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400505",
+      "line": [
+        "35"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999876598",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabyrs-02@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

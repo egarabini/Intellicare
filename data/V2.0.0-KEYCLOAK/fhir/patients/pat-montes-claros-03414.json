@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03414",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROGER",
+        "ALEXANDER",
+        "COSTA"
+      ],
+      "family": "MARCIEL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1970-08-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86791818620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401560",
+      "line": [
+        "184"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998903494",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09258",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBSON"
+      ],
+      "family": "SILVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "76966593672"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400443",
+      "line": [
+        "270 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999115923",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robsonsilveiraadvogado@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00636",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALECSANDRA",
+        "ESTER",
+        "XAVIER"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-02-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70669673641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405447",
+      "line": [
+        "110 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991579955",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alecsandraesterxavier35@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

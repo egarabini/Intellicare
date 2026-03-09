@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01930",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELVIS",
+        "JHOMATHAS",
+        "GOMES",
+        "DE"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1992-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12593343680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403115",
+      "line": [
+        "155 CXASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997435017",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elvisjhonata2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

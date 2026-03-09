@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02415",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROZEVANHA",
+        "RAIM"
+      ],
+      "family": "PORTUGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-09-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02173902180"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72251013",
+      "line": [
+        "5 CONJ M CASA 42A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998535166",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rozevanha12345678@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08899",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIA",
+        "MENDES"
+      ],
+      "family": "LOURENCO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11240328605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404402",
+      "line": [
+        "107 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998353987",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flaviuamendes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

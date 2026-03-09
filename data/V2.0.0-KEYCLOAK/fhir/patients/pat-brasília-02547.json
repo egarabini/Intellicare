@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02547",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAYKON",
+        "DO",
+        "AMARAL"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-11-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07211114169"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340510",
+      "line": [
+        "41 CSA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996162993",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "maykon.amaral1212@gmail.com",
+      "use": "home"
+    }
+  ]
+}

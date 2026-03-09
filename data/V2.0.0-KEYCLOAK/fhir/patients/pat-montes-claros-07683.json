@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07683",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "FRANCISCO",
+        "DE",
+        "JESUS"
+      ],
+      "family": "BELTRAO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1961-03-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60841877653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39414000",
+      "line": [
+        "1080 NOVA ESPERANCA CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999435656",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "franciscojose1061@gmail.com",
+      "use": "home"
+    }
+  ]
+}

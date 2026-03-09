@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07190",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDER",
+        "CARVALHO"
+      ],
+      "family": "TOLENTINO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2003-05-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16948924689"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403456",
+      "line": [
+        "55"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998708012",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wendertolentino9145@icloud.com",
+      "use": "home"
+    }
+  ]
+}

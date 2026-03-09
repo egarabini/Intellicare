@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02262",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ROBERT",
+        "LOPES",
+        "DA",
+        "SILVA"
+      ],
+      "family": "GADELHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-12-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05219773127"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71070115",
+      "line": [
+        "05 42 CJ K CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998033772",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "robertlopesgadelha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

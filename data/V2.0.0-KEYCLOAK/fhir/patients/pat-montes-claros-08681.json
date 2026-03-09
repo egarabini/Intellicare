@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08681",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAYANNE",
+        "CAROLINE",
+        "BARBOSA",
+        "DE"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-07-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12864163616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402603",
+      "line": [
+        "3444 39402603"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992678996",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tkaahlima@gmail.com",
+      "use": "home"
+    }
+  ]
+}

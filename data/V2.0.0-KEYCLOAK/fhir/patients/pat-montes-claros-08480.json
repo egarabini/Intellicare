@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08480",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHARLES",
+        "WAGNER",
+        "ALVES"
+      ],
+      "family": "PASSOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1969-01-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "77613554600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400327",
+      "line": [
+        "25"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999456978",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "charles12msg@uahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

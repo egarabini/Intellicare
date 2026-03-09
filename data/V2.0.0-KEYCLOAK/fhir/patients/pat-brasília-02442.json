@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02442",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUSTAVO",
+        "SOBREIRA",
+        "DE"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-01-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03601997126"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71680362",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999021638",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gusavos0285@gmail.com",
+      "use": "home"
+    }
+  ]
+}

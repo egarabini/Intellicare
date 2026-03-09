@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-05938-932",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Diabetes mellitus tipo 2, DRC estágio 5 (TFG < 15)",
+  "description": "Condições: Diabetes mellitus tipo 2, DRC estágio 5 (TFG < 15)",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-05938"
+  },
+  "period": {
+    "start": "2026-02-18"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-05938-932"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

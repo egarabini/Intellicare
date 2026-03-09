@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02897",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCO",
+        "TULIO",
+        "PETERSENN"
+      ],
+      "family": "LEAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1986-08-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08564255677"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401365",
+      "line": [
+        "600 AP 104"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998204348",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatamartinsadv@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

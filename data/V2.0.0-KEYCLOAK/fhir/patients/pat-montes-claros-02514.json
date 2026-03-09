@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02514",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIULY",
+        "JESSIE"
+      ],
+      "family": "MATIAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-05-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01998716635"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406230",
+      "line": [
+        "514 39406230"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988021936",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "diulyjessie2018@gmail.com",
+      "use": "home"
+    }
+  ]
+}

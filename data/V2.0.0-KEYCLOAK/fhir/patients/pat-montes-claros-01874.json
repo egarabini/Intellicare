@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01874",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIO",
+        "AUGUSTO",
+        "DA",
+        "SILVEIRA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-09-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10666365679"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403063",
+      "line": [
+        "273"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991245659",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoninho@gmail.com",
+      "use": "home"
+    }
+  ]
+}

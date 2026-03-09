@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04404",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLI",
+        "RAMOS",
+        "DA",
+        "SILVA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-07-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09565605630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404308",
+      "line": [
+        "838 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999193900",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "fazerloginproximo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

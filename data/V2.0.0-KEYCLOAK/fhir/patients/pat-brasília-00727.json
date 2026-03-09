@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00727",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SEVERINO",
+        "LUIZ"
+      ],
+      "family": "FERREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-06-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "35659289487"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73045151",
+      "line": [
+        "58 QD15 CONJ A"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999687483",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "serveriniluizfereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

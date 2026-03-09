@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01566",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SILVIO",
+        "WELLINGTON",
+        "OLIVEIRA"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12253572683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404556",
+      "line": [
+        "75"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991037534",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "contatowellingtonpessoal@gmail.com",
+      "use": "home"
+    }
+  ]
+}

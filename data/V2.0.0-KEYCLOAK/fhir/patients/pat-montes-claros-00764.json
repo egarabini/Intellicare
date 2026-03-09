@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00764",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "XAVIER",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-04-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "73402796600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404764",
+      "line": [
+        "1739 39404764"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999734560",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mariaxavier@gmail.com",
+      "use": "home"
+    }
+  ]
+}

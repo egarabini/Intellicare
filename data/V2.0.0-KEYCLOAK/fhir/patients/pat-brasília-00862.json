@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00862",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LILIANE",
+        "FIGUEIRA",
+        "DOS",
+        "SANTOS"
+      ],
+      "family": "SALES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-01-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03718878100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572719",
+      "line": [
+        "55"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996026586",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lilicasadinha@gmail.com",
+      "use": "home"
+    }
+  ]
+}

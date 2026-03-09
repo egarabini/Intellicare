@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00331",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMILLY",
+        "MARIANA",
+        "PIRES"
+      ],
+      "family": "RIBEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-04-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16427666665"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71570202",
+      "line": [
+        "4 02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986087303",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "creuzapires1981@gmail.com",
+      "use": "home"
+    }
+  ]
+}

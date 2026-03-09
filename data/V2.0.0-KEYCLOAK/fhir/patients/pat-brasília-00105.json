@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00105",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DONIZETI",
+        "DONATO"
+      ],
+      "family": "GUSM�O"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-02-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24818445134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "0"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991427733",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "donizetidonato@gmail.com",
+      "use": "home"
+    }
+  ]
+}

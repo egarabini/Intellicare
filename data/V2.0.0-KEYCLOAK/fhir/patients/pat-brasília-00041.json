@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00041",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAURICIO",
+        "ALVES"
+      ],
+      "family": "PEDROSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-05-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02945230143"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72620305",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992702641",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nada@nada.com",
+      "use": "home"
+    }
+  ]
+}

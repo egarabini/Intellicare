@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07218",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLA",
+        "JANAINA"
+      ],
+      "family": "QUIRINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-09-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03948531641"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405413",
+      "line": [
+        "140"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988090248",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "janainaquirino841@gmail.com",
+      "use": "home"
+    }
+  ]
+}

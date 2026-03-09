@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01361",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "NONATO",
+        "ARAUJO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60097576301"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596189",
+      "line": [
+        "53 71596189"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6193996837",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raimundoaraujodeoliveira352@gmail.com",
+      "use": "home"
+    }
+  ]
+}

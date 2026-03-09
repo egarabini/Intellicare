@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01363",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KETLEN",
+        "DA",
+        "SILVA"
+      ],
+      "family": "TRINDADE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-07-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08147923163"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587110",
+      "line": [
+        "202 71587110"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6196153197",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ketlen@gmail.com",
+      "use": "home"
+    }
+  ]
+}

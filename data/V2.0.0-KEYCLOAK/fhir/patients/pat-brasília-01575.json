@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01575",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ALBERTO"
+      ],
+      "family": "AZEVEDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1947-10-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07300034187"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71710500",
+      "line": [
+        "205 379 SL"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996604787",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "007albertao2023@gmail.com",
+      "use": "home"
+    }
+  ]
+}

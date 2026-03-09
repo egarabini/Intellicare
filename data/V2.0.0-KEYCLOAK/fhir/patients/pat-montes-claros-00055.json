@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00055",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EMANUELY",
+        "DIAS",
+        "RIBEIRO"
+      ],
+      "family": "PINTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-05-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12873660660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403493",
+      "line": [
+        "5 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988243748",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "demanuely175@gmail.com",
+      "use": "home"
+    }
+  ]
+}

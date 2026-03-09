@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00402",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WANDERLEY",
+        "OLIVEIRA"
+      ],
+      "family": "ANTUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1964-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52935906691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403074",
+      "line": [
+        "539 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998724561",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wanderleyoliveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

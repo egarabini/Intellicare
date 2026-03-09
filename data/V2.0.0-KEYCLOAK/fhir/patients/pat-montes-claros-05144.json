@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05144",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVANEIDE",
+        "QUEIROZ"
+      ],
+      "family": "ALVARENGA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1954-07-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "21791988687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404021",
+      "line": [
+        "127"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988179065",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulobras523@gmail.com",
+      "use": "home"
+    }
+  ]
+}

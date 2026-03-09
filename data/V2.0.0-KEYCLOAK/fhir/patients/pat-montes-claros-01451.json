@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01451",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHUAN",
+        "GABRIEL",
+        "GUSMAO"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "16763792662"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404239",
+      "line": [
+        "17 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992702435",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gjhoan17@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01245",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCIEL",
+        "NUNES"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-01-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03228116352"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70296400",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996699016",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcielnubesdemagalhaes2018@gmail.com",
+      "use": "home"
+    }
+  ]
+}

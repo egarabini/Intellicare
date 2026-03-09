@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08576",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARLUCY",
+        "ATAIDE"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1962-09-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "46726322615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402310",
+      "line": [
+        "1157 39402310"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999601417",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "veubercosta33@gmail.com",
+      "use": "home"
+    }
+  ]
+}

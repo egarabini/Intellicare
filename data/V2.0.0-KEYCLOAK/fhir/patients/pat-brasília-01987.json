@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01987",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FIRMINO",
+        "LEITAO"
+      ],
+      "family": "CORDEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-01-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "29304156300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691595",
+      "line": [
+        "09 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994169856",
+      "use": "home"
+    }
+  ]
+}

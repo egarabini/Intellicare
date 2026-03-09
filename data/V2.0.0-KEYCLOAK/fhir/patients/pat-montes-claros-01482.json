@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01482",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALCINA",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "SILVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1958-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12277010200"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404310",
+      "line": [
+        "600 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999075626",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alcinapereira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

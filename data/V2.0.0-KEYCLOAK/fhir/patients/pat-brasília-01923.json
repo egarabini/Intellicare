@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01923",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILDON",
+        "CONCEICAO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04941587359"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691104",
+      "line": [
+        "02 Q 102 CONJ 18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994588553",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wildonxxtsilvasilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

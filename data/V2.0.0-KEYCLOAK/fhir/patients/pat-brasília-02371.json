@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02371",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JANSEN",
+        "DE",
+        "LIMA"
+      ],
+      "family": "CARVALHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-02-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03248802197"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571601",
+      "line": [
+        "44 71571601"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6193089129",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "janlima18central@gmail.com",
+      "use": "home"
+    }
+  ]
+}

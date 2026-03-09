@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02467",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "APOLINARIO",
+        "DA",
+        "SILVA",
+        "PEREIRA"
+      ],
+      "family": "NETO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-12-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "94380325172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71571205",
+      "line": [
+        "15"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996722796",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "apolinarioseverinanopapal@gmail.com",
+      "use": "home"
+    }
+  ]
+}

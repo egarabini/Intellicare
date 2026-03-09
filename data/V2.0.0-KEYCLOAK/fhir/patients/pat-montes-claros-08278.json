@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08278",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GLERISTON",
+        "GON�ALVES",
+        "DE",
+        "AGUIAR"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1999-11-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70261153676"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401883",
+      "line": [
+        "632"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38917113173",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gleristonjunior@gmail.com",
+      "use": "home"
+    }
+  ]
+}

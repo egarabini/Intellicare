@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08633",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WILSON",
+        "DA",
+        "SILVA"
+      ],
+      "family": "OLIEVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "86792644668"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402700",
+      "line": [
+        "40"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997358322",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "wilsondasilva24244242@gmail.com",
+      "use": "home"
+    }
+  ]
+}

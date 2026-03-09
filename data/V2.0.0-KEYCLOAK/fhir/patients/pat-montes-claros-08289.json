@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08289",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIANE",
+        "ALVES"
+      ],
+      "family": "SAMPAIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-04-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00096097680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403299",
+      "line": [
+        "52"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998588900",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "elianesampaio1@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

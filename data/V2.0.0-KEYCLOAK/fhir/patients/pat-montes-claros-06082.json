@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06082",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOHN",
+        "KENNEDY",
+        "ROCHA"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1984-08-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07183245608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400363",
+      "line": [
+        "457 39400363"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988485658",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rocha@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

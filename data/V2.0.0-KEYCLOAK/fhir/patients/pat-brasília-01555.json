@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01555",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "PEREIRA"
+      ],
+      "family": "MARQUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-10-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "65851820144"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71591295",
+      "line": [
+        "15 PERTO DA PADARIA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996101073",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "josemarques29@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

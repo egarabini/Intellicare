@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01899",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALCINEIDE",
+        "FERREIRA",
+        "DE"
+      ],
+      "family": "ALMEIDA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1971-06-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "42289114200"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72701997",
+      "line": [
+        "450 LT 14B CH"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991217380",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alcineideferreiradealmeida@gmail.com",
+      "use": "home"
+    }
+  ]
+}

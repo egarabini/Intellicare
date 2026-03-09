@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07033",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TELMA",
+        "SOARES"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-02-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "67745440610"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403064",
+      "line": [
+        "1400 39403064"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999337955",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "telmasoares537@yahoo.com",
+      "use": "home"
+    }
+  ]
+}

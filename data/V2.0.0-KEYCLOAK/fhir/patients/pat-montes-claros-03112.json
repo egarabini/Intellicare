@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03112",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LIVIA",
+        "MICHELLE",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "LEITE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07209801600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404035",
+      "line": [
+        "243"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998090202",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "liviasouzaleite@gmail.com",
+      "use": "home"
+    }
+  ]
+}

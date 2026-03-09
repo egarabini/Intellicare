@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06808",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MIRIAN",
+        "LAUANY",
+        "RIBEIRO"
+      ],
+      "family": "VIEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2004-07-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13036229639"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404639",
+      "line": [
+        "1021 39404639"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991041886",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mirianlauany90@gmail.com",
+      "use": "home"
+    }
+  ]
+}

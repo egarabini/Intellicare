@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01080",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JENIESSE",
+        "DE",
+        "FREITAS"
+      ],
+      "family": "RAMOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-10-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11530339685"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406327",
+      "line": [
+        "681 39406327"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998253316",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "monicasabrina62@htmail.com",
+      "use": "home"
+    }
+  ]
+}

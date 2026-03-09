@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01926",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "CATARINA"
+      ],
+      "family": "VIEGAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1954-08-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00109684311"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73401651",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982136365",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marcossilva362629@gmail.com",
+      "use": "home"
+    }
+  ]
+}

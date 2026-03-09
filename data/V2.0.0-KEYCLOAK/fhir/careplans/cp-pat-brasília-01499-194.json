@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-01499-194",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Hipertensão essencial (primária), DRC estágio 3 (TFG 30-59)",
+  "description": "Condições: Hipertensão essencial (primária), DRC estágio 3 (TFG 30-59)",
+  "subject": {
+    "reference": "Patient/pat-brasília-01499"
+  },
+  "period": {
+    "start": "2025-09-18"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-01499-194"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08091",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KATELLY",
+        "THAWANY",
+        "GON�ALVES"
+      ],
+      "family": "TEIXEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1998-09-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02312109654"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403532",
+      "line": [
+        "124"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988460370",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "katellythawanyg124@gmail.com",
+      "use": "home"
+    }
+  ]
+}

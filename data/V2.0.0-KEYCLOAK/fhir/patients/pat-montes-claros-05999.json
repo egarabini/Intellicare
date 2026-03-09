@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05999",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "AUGUSTO",
+        "LOPES",
+        "FERNANDES"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-07-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06492022602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406754",
+      "line": [
+        "219"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998195772",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joseaugustolopesfernandes@gmail.com",
+      "use": "home"
+    }
+  ]
+}

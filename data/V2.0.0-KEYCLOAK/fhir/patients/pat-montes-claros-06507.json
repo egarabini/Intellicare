@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06507",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ELIEZER",
+        "TIBURCIO",
+        "DE"
+      ],
+      "family": "PINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1973-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92107397600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403140",
+      "line": [
+        "68"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992619556",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "marden@gmail.com",
+      "use": "home"
+    }
+  ]
+}

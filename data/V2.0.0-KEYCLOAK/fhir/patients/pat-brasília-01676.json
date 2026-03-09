@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01676",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUCIELMA",
+        "DE",
+        "FREITAS",
+        "DE"
+      ],
+      "family": "BARROS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-04-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04858282350"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693152",
+      "line": [
+        "151 VILA NOVA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61993931606",
+      "use": "home"
+    }
+  ]
+}

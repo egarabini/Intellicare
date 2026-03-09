@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02171",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "FLAVIA",
+        "KELLY",
+        "DE",
+        "DEUS"
+      ],
+      "family": "LAMAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "84799560115"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805718",
+      "line": [
+        "42"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985736866",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "flavialamar3@gmail.com",
+      "use": "home"
+    }
+  ]
+}

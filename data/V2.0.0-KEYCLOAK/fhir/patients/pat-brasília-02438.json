@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02438",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAIRO",
+        "FERREIRA",
+        "DA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-06-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "51029774315"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71735406",
+      "line": [
+        "27 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981533408",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jair.lrnze2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

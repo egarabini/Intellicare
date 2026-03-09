@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02460",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "NUNES",
+        "DE"
+      ],
+      "family": "MAGALHAES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1962-05-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "69669856434"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71540095",
+      "line": [
+        "11"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996045982",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luiznunes451@gmail.com",
+      "use": "home"
+    }
+  ]
+}

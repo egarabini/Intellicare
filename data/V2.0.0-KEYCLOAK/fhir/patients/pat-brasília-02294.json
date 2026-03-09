@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02294",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JUCINEI",
+        "DOS",
+        "SANTOS",
+        "NUNES"
+      ],
+      "family": "CONFESSOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-01-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01801323500"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71697312",
+      "line": [
+        "15 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999328449",
+      "use": "home"
+    }
+  ]
+}

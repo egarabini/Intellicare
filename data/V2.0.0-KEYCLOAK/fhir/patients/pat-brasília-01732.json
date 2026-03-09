@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01732",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "HELENA",
+        "PEREIRA",
+        "DA"
+      ],
+      "family": "LUZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08496189678"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572505",
+      "line": [
+        "8 QUADRA 25"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998785819",
+      "use": "home"
+    }
+  ]
+}

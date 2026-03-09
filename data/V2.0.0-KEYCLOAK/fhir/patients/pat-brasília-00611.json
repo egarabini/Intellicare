@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00611",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIENE",
+        "LIMEIRA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-05-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60712503153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72220203",
+      "line": [
+        "33 QNN 20 CJ C CASA 33"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994205757",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "limeiraliciene356@gmail.com",
+      "use": "home"
+    }
+  ]
+}

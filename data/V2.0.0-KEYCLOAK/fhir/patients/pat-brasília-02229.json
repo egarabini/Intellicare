@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02229",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MATHEUS",
+        "DA",
+        "SILVA",
+        "MIRANDA",
+        "DE"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-05-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04888884170"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72620134",
+      "line": [
+        "6 LOTE 6"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61994405231",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "matheusmiranda22@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

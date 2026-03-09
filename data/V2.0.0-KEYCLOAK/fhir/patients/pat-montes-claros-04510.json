@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04510",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALAN",
+        "SANTOS"
+      ],
+      "family": "TEIXEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04150008663"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403224",
+      "line": [
+        "151"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988390115",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "minasnett@gmail.com",
+      "use": "home"
+    }
+  ]
+}

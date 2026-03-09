@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06872",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CRISTIAN",
+        "DIEGO",
+        "PEREIRA"
+      ],
+      "family": "MENEZES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-12-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70521741629"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404365",
+      "line": [
+        "50"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988357930",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juniowguedes6@gmail.com",
+      "use": "home"
+    }
+  ]
+}

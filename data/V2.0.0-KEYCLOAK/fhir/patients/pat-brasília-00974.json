@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00974",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GUILHERME",
+        "DA",
+        "SILVA",
+        "ALVES"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1994-10-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02788867107"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71881725",
+      "line": [
+        "10"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981900781",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "guisalvesb@gmail.com",
+      "use": "home"
+    }
+  ]
+}

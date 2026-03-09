@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03640",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ALECIO",
+        "RODRIGUES",
+        "DA"
+      ],
+      "family": "CRUZ"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-09-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07166283688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400125",
+      "line": [
+        "125 39400125"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998835509",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosaleciorodrigues@gmail.commail.com",
+      "use": "home"
+    }
+  ]
+}

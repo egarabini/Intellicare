@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01796",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCOS",
+        "VICENTE",
+        "MAGALHAES"
+      ],
+      "family": "CHAVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1966-09-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "28704231368"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71805301",
+      "line": [
+        "19"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61981554022",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01285",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GABRIEL",
+        "DOS",
+        "REIS"
+      ],
+      "family": "BORGES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-04-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06378712190"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72450170",
+      "line": [
+        "89 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985110252",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gabriel-reis@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

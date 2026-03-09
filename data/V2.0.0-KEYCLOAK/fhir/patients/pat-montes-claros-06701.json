@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06701",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHARLES",
+        "WILLIAN",
+        "FRANCISCO"
+      ],
+      "family": "MACIEL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-12-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02314704606"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403025",
+      "line": [
+        "243 39403025"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992631133",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "macielcharles98@gmail.com",
+      "use": "home"
+    }
+  ]
+}

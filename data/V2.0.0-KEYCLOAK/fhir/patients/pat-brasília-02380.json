@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02380",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DARCI",
+        "DANTAS",
+        "DE"
+      ],
+      "family": "MEDEIROS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1951-01-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09306943172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70732510",
+      "line": [
+        "1"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998108383",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "darcidantas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

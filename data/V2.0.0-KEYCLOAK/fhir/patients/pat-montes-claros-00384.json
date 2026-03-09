@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00384",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EULER",
+        "GABRIEL",
+        "FREITAS"
+      ],
+      "family": "RIBAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-06-22",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70483982644"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405632",
+      "line": [
+        "21 39405632"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988187999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayanev287@gmail.com",
+      "use": "home"
+    }
+  ]
+}

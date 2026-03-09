@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09400",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SERGIO",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1977-08-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03482806616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39406610",
+      "line": [
+        "959 39406610"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992152157",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "annecarolline99869890@gmail.com",
+      "use": "home"
+    }
+  ]
+}

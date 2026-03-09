@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00826",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "THAYNA",
+        "SOUZA"
+      ],
+      "family": "TIBO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-10-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02114337642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402629",
+      "line": [
+        "140 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992186584",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunathayna2019@gmail.com",
+      "use": "home"
+    }
+  ]
+}

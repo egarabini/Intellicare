@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02037",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVANICE",
+        "FRANCISCO",
+        "MOURA",
+        "DE"
+      ],
+      "family": "JESUS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1961-12-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07399183627"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400305",
+      "line": [
+        "34 CASA B"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991252977",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dayanemadalenamoura@gmail.com",
+      "use": "home"
+    }
+  ]
+}

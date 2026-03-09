@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00217",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DILENE",
+        "DE",
+        "ARAUJO"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-09-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "90269853120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72547801",
+      "line": [
+        "1 Q517"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991713271",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dilene@gmail.com",
+      "use": "home"
+    }
+  ]
+}

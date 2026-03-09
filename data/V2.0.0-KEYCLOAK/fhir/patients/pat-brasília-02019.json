@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02019",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAISSA",
+        "DA",
+        "ROCHA"
+      ],
+      "family": "REIS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-09-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08046911186"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72725211",
+      "line": [
+        "25 72725211"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6196102471",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayrocha023@gmail.com",
+      "use": "home"
+    }
+  ]
+}

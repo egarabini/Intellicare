@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01576",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SONIA",
+        "MARIA",
+        "CRUZ"
+      ],
+      "family": "PINHEIRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1966-02-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "65441613653"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400294",
+      "line": [
+        "143 39400294"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999462438",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "soniamaria@gmail.com",
+      "use": "home"
+    }
+  ]
+}

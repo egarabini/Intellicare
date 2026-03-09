@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08831",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TAIN�",
+        "RODRIGUES",
+        "DE",
+        "JESUS"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-08-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "57394360873"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405632",
+      "line": [
+        "40"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999152547",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tay.oliveira3c@gmail.com",
+      "use": "home"
+    }
+  ]
+}

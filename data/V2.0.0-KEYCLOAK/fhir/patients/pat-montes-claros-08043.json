@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08043",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DEBORA"
+      ],
+      "family": "DEBORA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-12-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08001409660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403425",
+      "line": [
+        "306"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998818874",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "napossuiemail@gmail.com",
+      "use": "home"
+    }
+  ]
+}

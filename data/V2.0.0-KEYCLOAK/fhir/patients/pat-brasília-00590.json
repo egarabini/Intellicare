@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00590",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DIANA",
+        "DE",
+        "CARVALHO"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93007493153"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72210067",
+      "line": [
+        "29"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991251165",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dianacarv69@gmail.com",
+      "use": "home"
+    }
+  ]
+}

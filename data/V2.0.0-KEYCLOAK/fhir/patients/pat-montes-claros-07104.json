@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07104",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "FERNANDO",
+        "ALVES"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-10-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70083416609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402096",
+      "line": [
+        "372 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999468381",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luizfallan@icloud.com",
+      "use": "home"
+    }
+  ]
+}

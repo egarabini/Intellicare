@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01799",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALLINY",
+        "ADNA",
+        "MARTINS"
+      ],
+      "family": "FREITAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1977-07-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05283223620"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400180",
+      "line": [
+        "43 39400180"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998245619",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "allinyadna@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

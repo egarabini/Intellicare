@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03019",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EVERTON",
+        "GUILHERME",
+        "SOARES"
+      ],
+      "family": "CARDOSO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2001-09-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70486709671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401023",
+      "line": [
+        "36"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988653777",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vs0056311@gmail.com",
+      "use": "home"
+    }
+  ]
+}

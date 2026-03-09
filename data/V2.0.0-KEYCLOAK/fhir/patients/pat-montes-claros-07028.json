@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07028",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CHARLES",
+        "ADRIANO",
+        "BISPO"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-12-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05307675623"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403709",
+      "line": [
+        "351 MORADA DO PARQUE"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "28999999999",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "charlimgaseagua@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03010",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JAQUELINE",
+        "MARTINS"
+      ],
+      "family": "BATISTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-08-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70469729660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402056",
+      "line": [
+        "425 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991126136",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leonardosantosmouras@gmail.com",
+      "use": "home"
+    }
+  ]
+}

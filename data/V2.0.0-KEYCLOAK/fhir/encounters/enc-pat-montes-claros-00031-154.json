@@ -1,0 +1,49 @@
+{
+  "resourceType": "Encounter",
+  "id": "enc-pat-montes-claros-00031-154",
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "internacao"
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "185349003",
+          "display": "Consulta"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00031"
+  },
+  "serviceProvider": {
+    "reference": "Organization/org-ubs-asa-sul"
+  },
+  "period": {
+    "start": "2026-02-04T06:11:49Z",
+    "end": "2026-02-04T06:11:49Z"
+  },
+  "participant": [
+    {
+      "individual": {
+        "reference": "Practitioner/prac-001"
+      },
+      "type": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+              "code": "PPRF",
+              "display": "Profissional"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

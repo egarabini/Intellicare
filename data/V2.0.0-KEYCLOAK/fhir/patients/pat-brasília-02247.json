@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02247",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVANI",
+        "SOARES"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-10-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "24859966104"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72622401",
+      "line": [
+        "10 311 CJ 01 CS"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999595357",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ivanojunior@gmail.com",
+      "use": "home"
+    }
+  ]
+}

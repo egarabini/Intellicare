@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09080",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WERLEY",
+        "DA",
+        "SILVA"
+      ],
+      "family": "CORDEIRO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1985-02-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07823334607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404042",
+      "line": [
+        "204 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997553090",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "werleysilva155@gmail.com",
+      "use": "home"
+    }
+  ]
+}

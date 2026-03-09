@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03173",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIZ",
+        "CARLOS",
+        "DA",
+        "SILVA"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-05-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "39348342134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403206",
+      "line": [
+        "521 39403206"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999633254",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vendedor@eletrosom.com",
+      "use": "home"
+    }
+  ]
+}

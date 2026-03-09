@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02344",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TEREZA",
+        "FRANCISCA",
+        "DE",
+        "SA"
+      ],
+      "family": "TELES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-02-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02531480145"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71694008",
+      "line": [
+        "5 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986094285",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tereza09tdb@gmail.com",
+      "use": "home"
+    }
+  ]
+}

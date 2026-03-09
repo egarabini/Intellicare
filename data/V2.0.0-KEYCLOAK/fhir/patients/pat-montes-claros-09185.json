@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09185",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WENDEL",
+        "ALVES",
+        "DE",
+        "OLIVEIRA"
+      ],
+      "family": "MOREIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-01-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04555462661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400000",
+      "line": [
+        "175"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998142086",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "moreirawendel98@gmail.com",
+      "use": "home"
+    }
+  ]
+}

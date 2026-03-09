@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02352",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "CIRILO",
+        "FERREIRA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1993-10-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05402254109"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340722",
+      "line": [
+        "CONJUNTO B-1 3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996932989",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "cirilojose456@gmail.com",
+      "use": "home"
+    }
+  ]
+}

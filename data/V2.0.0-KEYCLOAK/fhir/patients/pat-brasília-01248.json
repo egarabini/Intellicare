@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01248",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAYARA",
+        "VICENTE"
+      ],
+      "family": "ATANASIO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-09-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12871496692"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72145000",
+      "line": [
+        "1 01/04 AP 1002 RESIS SANTORINI"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6199614721",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "rayaravicente107@gmail.com",
+      "use": "home"
+    }
+  ]
+}

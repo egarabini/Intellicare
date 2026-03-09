@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00607",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CELMA",
+        "APARECIDA",
+        "CAVALCANTI",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1976-06-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00435003666"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402211",
+      "line": [
+        "856 39402211"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992286985",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "celmac276@gmail.com",
+      "use": "home"
+    }
+  ]
+}

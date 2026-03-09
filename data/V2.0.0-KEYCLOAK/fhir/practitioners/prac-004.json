@@ -1,0 +1,31 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-004",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Dra.",
+        "Fernanda"
+      ],
+      "family": "Oliveira"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/crm",
+        "value": "DF 45678"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "223366009",
+            "display": "Médico"
+          }
+        ]
+      }
+    }
+  ]
+}

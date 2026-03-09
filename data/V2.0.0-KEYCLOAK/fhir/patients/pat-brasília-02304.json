@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02304",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MONICA"
+      ],
+      "family": "SAVI"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1985-09-07",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "43565168854"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71880112",
+      "line": [
+        "1 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61986643892",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kaahhhsavi.15@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08571",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "PLINIO",
+        "AUGUSTO"
+      ],
+      "family": "GUIMARES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-01-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14719323626"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404037",
+      "line": [
+        "240"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997408186",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "plinioaugusto278@gmail.com",
+      "use": "home"
+    }
+  ]
+}

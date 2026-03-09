@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01432",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JACKSON"
+      ],
+      "family": "ANGELO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-02-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06470848133"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587096",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61988596496",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jacksonlutador54616@gmail.com",
+      "use": "home"
+    }
+  ]
+}

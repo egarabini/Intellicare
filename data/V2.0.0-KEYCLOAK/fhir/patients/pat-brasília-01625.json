@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01625",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOS�",
+        "LUCAS",
+        "MATHEUS",
+        "SILVA"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-12-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05395177124"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72536165",
+      "line": [
+        "07"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998192474",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "l.pretosilva95@gmail.com",
+      "use": "home"
+    }
+  ]
+}

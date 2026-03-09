@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08052",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSENILDA",
+        "BATISTA",
+        "BEZERRA"
+      ],
+      "family": "MARTINS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-12-03",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01194157637"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401484",
+      "line": [
+        "721 APT 201"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984210543",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "bezerrajosenilda@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

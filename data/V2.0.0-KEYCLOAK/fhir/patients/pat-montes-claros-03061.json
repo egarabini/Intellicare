@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03061",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CIBELE",
+        "GONCALVES",
+        "SILVA"
+      ],
+      "family": "DAVILA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-07-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06164523656"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403513",
+      "line": [
+        "306 39403513"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988440715",
+      "use": "home"
+    }
+  ]
+}

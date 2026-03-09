@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02474",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOAO",
+        "MARCOS",
+        "DA",
+        "SILVA"
+      ],
+      "family": "VITERBO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1995-07-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06303869351"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71820525",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984957986",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antonioemaria230@gmail.com",
+      "use": "home"
+    }
+  ]
+}

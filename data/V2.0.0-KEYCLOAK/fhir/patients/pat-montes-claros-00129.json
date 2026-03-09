@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00129",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VICTOR",
+        "HUGO",
+        "MACIEL"
+      ],
+      "family": "FREIRE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10199506680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401726",
+      "line": [
+        "122"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984070497",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "macielfreirevictorhugo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

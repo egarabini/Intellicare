@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08609",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "WELINGTON",
+        "TEIXEIRA"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "85007099600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404179",
+      "line": [
+        "5"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991933486",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "welingtontixeira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

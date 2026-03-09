@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08575",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BRUNA",
+        "EMANUELE",
+        "DE",
+        "AGUIAR"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-10-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70237801655"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404162",
+      "line": [
+        "31 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991906473",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "brunaemanuelly378@gmail.com",
+      "use": "home"
+    }
+  ]
+}

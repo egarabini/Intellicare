@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04491",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INES",
+        "MARIA",
+        "DE",
+        "CARVALHO"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1959-02-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95118195691"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402894",
+      "line": [
+        "35 39402894"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988341653",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "renatoosilvaa281@gmail.com",
+      "use": "home"
+    }
+  ]
+}

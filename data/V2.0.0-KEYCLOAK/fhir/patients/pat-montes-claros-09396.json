@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09396",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CARLOS",
+        "ANTONIO",
+        "DE"
+      ],
+      "family": "ANDRADE"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1947-11-02",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11321067615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401039",
+      "line": [
+        "418"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998800210",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carlosantonio@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

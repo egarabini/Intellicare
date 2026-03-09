@@ -1,0 +1,53 @@
+{
+  "resourceType": "AllergyIntolerance",
+  "id": "all-pat-montes-claros-07948-524",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+        "code": "confirmed"
+      }
+    ]
+  },
+  "type": "allergy",
+  "category": [
+    "food"
+  ],
+  "criticality": "high",
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "91935009",
+        "display": "Glúten"
+      }
+    ]
+  },
+  "patient": {
+    "reference": "Patient/pat-montes-claros-07948"
+  },
+  "recordedDate": "2025-07-20T06:34:48Z",
+  "reaction": [
+    {
+      "manifestation": [
+        {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "247472004",
+              "display": "Hipersensibilidade"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

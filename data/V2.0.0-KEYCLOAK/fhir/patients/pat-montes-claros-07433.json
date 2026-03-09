@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07433",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTHONY",
+        "MAXWELL",
+        "SILVA"
+      ],
+      "family": "ALVES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-09-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "87383390059"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403162",
+      "line": [
+        "240"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988124769",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeversoncelestinoamaral@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08541",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILVANIA",
+        "DOS",
+        "REIS",
+        "GUIMARAES"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-01-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05469303608"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401531",
+      "line": [
+        "145"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998309797",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "gilreis@gmail.com",
+      "use": "home"
+    }
+  ]
+}

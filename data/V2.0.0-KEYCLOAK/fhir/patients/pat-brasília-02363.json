@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02363",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTONIA",
+        "PEREIRA"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1968-01-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "50478028172"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72726103",
+      "line": [
+        "11 72726103"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999820258",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "antoniamarques0511@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01843",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSELI",
+        "RODRIGUES"
+      ],
+      "family": "BUTRAGO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1958-01-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "71707623155"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330002",
+      "line": [
+        "41"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998909820",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joserodriguesbutrago@gmail.com",
+      "use": "home"
+    }
+  ]
+}

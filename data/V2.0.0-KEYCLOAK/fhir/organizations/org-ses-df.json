@@ -1,0 +1,52 @@
+{
+  "resourceType": "Organization",
+  "id": "org-ses-df",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Organization"
+    ]
+  },
+  "identifier": [
+    {
+      "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/cnes",
+      "value": "2000001"
+    }
+  ],
+  "name": "Secretaria de Estado de Saúde do Distrito Federal",
+  "alias": [
+    "SES-DF"
+  ],
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "govt",
+          "display": "Government"
+        }
+      ]
+    }
+  ],
+  "address": [
+    {
+      "line": [
+        "SAUN Quadra 5 Bloco N"
+      ],
+      "city": "Brasília",
+      "state": "DF",
+      "postalCode": "70040-020"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "613345-1600"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/tenant-id",
+      "valueString": "secretaria-brasilia"
+    }
+  ]
+}

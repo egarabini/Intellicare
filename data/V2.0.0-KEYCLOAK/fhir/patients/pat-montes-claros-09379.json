@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-09379",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUCIANA",
+        "CRISTINA",
+        "DE"
+      ],
+      "family": "CASTRO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1994-03-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13253269680"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404374",
+      "line": [
+        "127 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984061968",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "miguelminhavida2203@gmail.com",
+      "use": "home"
+    }
+  ]
+}

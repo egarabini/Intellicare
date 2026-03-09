@@ -1,0 +1,45 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-montes-claros-00093-25",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - DRC estágio 5 (TFG < 15), DRC estágio 3",
+  "subject": {
+    "reference": "Patient/pat-montes-claros-00093"
+  },
+  "period": {
+    "start": "2025-12-31"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "addresses": [
+    {
+      "display": "DRC estágio 5 (TFG < 15)"
+    },
+    {
+      "display": "DRC estágio 3"
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-montes-claros-00093-25"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

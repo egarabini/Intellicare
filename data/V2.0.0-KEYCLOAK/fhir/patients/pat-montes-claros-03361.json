@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03361",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ETELVINA",
+        "TIAGO",
+        "DE",
+        "FREITAS"
+      ],
+      "family": "SA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-10-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05954919607"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400045",
+      "line": [
+        "166"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992175025",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "etelvinatiago@gmail.com",
+      "use": "home"
+    }
+  ]
+}

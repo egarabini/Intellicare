@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04942",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NUBIA",
+        "KEISE",
+        "MATOS"
+      ],
+      "family": "GOMES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-06-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "07760548648"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405433",
+      "line": [
+        "311 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991383065",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nubiamatos97@gmail.com",
+      "use": "home"
+    }
+  ]
+}

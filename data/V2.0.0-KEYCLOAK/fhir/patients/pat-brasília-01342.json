@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01342",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAISSA",
+        "GABRIELA",
+        "FEITOSA",
+        "DOS"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-06-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05830342170"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73355203",
+      "line": [
+        "9 CONJUNTO 3"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996241445",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "raissagabrielajj130@gmail.com",
+      "use": "home"
+    }
+  ]
+}

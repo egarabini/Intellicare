@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02407",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LEILA",
+        "FERNANDES"
+      ],
+      "family": "LOBO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-12-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "97659452134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71587200",
+      "line": [
+        "6 71587200"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6198487529",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "leilafernandes20@gmail.com",
+      "use": "home"
+    }
+  ]
+}

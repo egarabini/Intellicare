@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07899",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VITOR",
+        "MONOEL",
+        "FERREIRA",
+        "COSTA"
+      ],
+      "family": "FAGUNDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2002-03-24",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01992986614"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400107",
+      "line": [
+        "596"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998827200",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vitormanoel.2403@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02072",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VANDERLEI",
+        "OLIVEIRA"
+      ],
+      "family": "SIMOES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1974-08-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05249850146"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71586100",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999464412",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "van128oliveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

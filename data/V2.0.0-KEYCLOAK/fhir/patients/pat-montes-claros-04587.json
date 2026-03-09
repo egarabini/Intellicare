@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04587",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LILIANE",
+        "RIBEIRO"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-06-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10953624617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39407357",
+      "line": [
+        "162 39407357"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999048074",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lilianeribeirolima79@gmail.com",
+      "use": "home"
+    }
+  ]
+}

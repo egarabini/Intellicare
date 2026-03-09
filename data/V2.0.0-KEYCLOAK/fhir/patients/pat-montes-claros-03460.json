@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03460",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "TATIANE",
+        "GONCALVES",
+        "CAMPOS"
+      ],
+      "family": "DUARTE"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-01-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "92110460687"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401421",
+      "line": [
+        "207"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999517212",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "tatianesilva@gmail.com",
+      "use": "home"
+    }
+  ]
+}

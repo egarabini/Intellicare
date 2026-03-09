@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00961",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDWALDO",
+        "BRUNO",
+        "PEREIRA"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2006-04-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "17942844609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403110",
+      "line": [
+        "91 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999156605",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edwaldobruno719@gmail.com",
+      "use": "home"
+    }
+  ]
+}

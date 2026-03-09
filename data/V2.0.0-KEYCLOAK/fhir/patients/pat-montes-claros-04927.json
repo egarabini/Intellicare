@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04927",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "BARBARA",
+        "LORRANE",
+        "LOPES",
+        "CORDEIRO",
+        "DA"
+      ],
+      "family": "ROCHA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1995-08-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12126120600"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403058",
+      "line": [
+        "429"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999721695",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "barbaralorrane@gmail.com",
+      "use": "home"
+    }
+  ]
+}

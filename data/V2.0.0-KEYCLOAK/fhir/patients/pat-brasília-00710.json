@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00710",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LENICE",
+        "LINA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1989-01-28",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09729684405"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596171",
+      "line": [
+        "43 CONJUNTO G"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992121633",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lenycesantos201410@gmail.com",
+      "use": "home"
+    }
+  ]
+}

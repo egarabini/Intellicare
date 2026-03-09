@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06140",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MAYNE",
+        "EMANUELLE",
+        "GUEDES"
+      ],
+      "family": "RODRIGUES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1999-10-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "11335639616"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404309",
+      "line": [
+        "520 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984230918",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emanurodrigues16@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04816",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHENIFFER",
+        "FERNANDA",
+        "BARBOSA"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1996-02-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12706226684"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403365",
+      "line": [
+        "226 39403365"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992704199",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhenfer226@gmail.com",
+      "use": "home"
+    }
+  ]
+}

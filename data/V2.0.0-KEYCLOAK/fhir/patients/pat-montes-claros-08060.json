@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08060",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VADILSON",
+        "RIBEIRO"
+      ],
+      "family": "SOBRAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1987-07-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09483140609"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401155",
+      "line": [
+        "627 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997416956",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "manuelamontes71@gmail.com",
+      "use": "home"
+    }
+  ]
+}

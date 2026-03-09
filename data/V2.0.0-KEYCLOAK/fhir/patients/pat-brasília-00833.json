@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00833",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VAILTON",
+        "DA",
+        "COSTA"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "93190778191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71572505",
+      "line": [
+        "05"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61992856348",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "vailtondacc44@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00794",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JADSON",
+        "RAFAEL",
+        "CASSIANO",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1989-01-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10571966497"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72710060",
+      "line": [
+        "06"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "84986710027",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "silvaco099@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08429",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "KESIA",
+        "EMANUELLE",
+        "NUNES"
+      ],
+      "family": "SANTOS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2002-02-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70249190605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404388",
+      "line": [
+        "33"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998304068",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "kesiaemmanuelles@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06641",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "PAULA",
+        "GON�ALVES",
+        "DE"
+      ],
+      "family": "AGUIAR"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-03-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08030239602"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401365",
+      "line": [
+        "600 APTO 308 HIBISCOS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992181317",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "paulinhaaguiar220@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

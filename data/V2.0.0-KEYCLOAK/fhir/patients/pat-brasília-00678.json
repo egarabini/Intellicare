@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00678",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEANEFER"
+      ],
+      "family": "BIASIBETTI"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1984-11-15",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01039595138"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73340774",
+      "line": [
+        "9"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995651604",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jeaneferb84@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01785",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "VALDETE",
+        "GONCALVES"
+      ],
+      "family": "DURAES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1963-06-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05867403688"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400314",
+      "line": [
+        "883 39400314"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991410551",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "carolduraesac@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00917",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LINCONL",
+        "BATISTA"
+      ],
+      "family": "FROES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1988-07-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09993573604"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72011000",
+      "line": [
+        "309"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995247890",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "lincolbatista@gmail.com",
+      "use": "home"
+    }
+  ]
+}

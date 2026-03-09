@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01671",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DA",
+        "CONCEICAO",
+        "CARVALHO"
+      ],
+      "family": "MACHADO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1988-07-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "03650238179"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691035",
+      "line": [
+        "101 CASA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999707225",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ceica.carvalho88@gmail.com",
+      "use": "home"
+    }
+  ]
+}

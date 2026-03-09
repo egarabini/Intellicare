@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00785",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NOEMA",
+        "ALVES",
+        "NUNES"
+      ],
+      "family": "MAIA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1969-03-21",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "74853880615"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404295",
+      "line": [
+        "386"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988451739",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anapaulamaia06@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

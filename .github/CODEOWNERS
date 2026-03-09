@@ -1,0 +1,54 @@
+# ============================================================================
+# CODEOWNERS — IntelliCare
+# ============================================================================
+# Define o responsável por cada módulo/área do repositório.
+# GitHub solicita aprovação do dono automaticamente quando um PR toca
+# arquivos do módulo dele.
+#
+# Formato:  padrão-de-caminho   @usuario-github
+# Referência: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# ============================================================================
+
+# Padrão global — responsável geral por tudo não coberto abaixo
+*                               @egarabini
+
+# Infraestrutura e CI/CD — aprovação obrigatória do tech lead
+.github/                        @egarabini
+traefik/                        @egarabini
+docker-compose*.yml             @egarabini
+PADRAO_ENTREGA/                 @egarabini
+scripts/                        @egarabini
+
+# Core e Auth — base compartilhada, proteção máxima
+intellicare-core/               @egarabini
+intellicare-auth/               @egarabini
+intellicare-conhecimento/       @egarabini
+
+# Orquestrador IA — crítico, mudanças afetam todos os módulos
+intellicare-wanda/              @egarabini
+
+# Portal e Frontend
+intellicare-portal/             @egarabini
+intellicare-apresentacao/       @egarabini
+
+# Módulos clínicos
+# Atribuir ao dev especialista quando o time crescer:
+intellicare-oswaldo/            @egarabini
+intellicare-florence/           @egarabini
+intellicare-donabedian/         @egarabini
+intellicare-geralda/            @egarabini
+
+# Módulos de dados e integração
+intellicare-zilda/              @egarabini
+intellicare-grahame/            @egarabini
+intellicare-comunicacao/        @egarabini
+
+# Módulos de plataforma
+intellicare-admin/              @egarabini
+intellicare-gestor/             @egarabini
+intellicare-minerva/            @egarabini
+intellicare-pierre/             @egarabini
+intellicare-nise/               @egarabini
+
+# Documentação
+docs/                           @egarabini

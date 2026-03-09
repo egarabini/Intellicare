@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00101",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSEANA",
+        "DE",
+        "QUEIROZ",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1975-01-31",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "60617187134"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72745013",
+      "line": [
+        "55 72745013"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "6134798574",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "emerson.paive9673@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01986",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JONATHAN",
+        "SAMUEL",
+        "PEREIRA"
+      ],
+      "family": "LEAL"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "2005-01-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70319018636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405804",
+      "line": [
+        "50"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999969665",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jonathansamuel764@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04038",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CLARISSA",
+        "MARINA",
+        "FREIRE",
+        "SILVEIRA"
+      ],
+      "family": "COSTA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1987-05-12",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02356790543"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404055",
+      "line": [
+        "322 39404055"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992249633",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "test@gmail.com",
+      "use": "home"
+    }
+  ]
+}

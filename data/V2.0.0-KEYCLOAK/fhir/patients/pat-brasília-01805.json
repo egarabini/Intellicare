@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01805",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JOSE",
+        "GERALDO",
+        "ALMEIDA"
+      ],
+      "family": "LOPO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1990-01-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04779775108"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71699899",
+      "line": [
+        "18"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982502899",
+      "use": "home"
+    }
+  ]
+}

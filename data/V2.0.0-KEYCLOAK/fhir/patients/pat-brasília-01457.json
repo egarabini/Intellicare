@@ -1,0 +1,52 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01457",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "DE",
+        "NAZARE",
+        "DA",
+        "COSTA"
+      ],
+      "family": "DANTAS"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1955-11-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06601600300"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71882203",
+      "line": [
+        "03 AP 033"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "89994454259",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "dantasalison275@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resourceType": "Practitioner",
+  "id": "prac-005",
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "Enf.",
+        "Maria",
+        "do"
+      ],
+      "family": "Carmo"
+    }
+  ],
+  "qualification": [
+    {
+      "identifier": {
+        "system": "http://www.saude.gov.br/fhir/r4/NamingSystem/coren",
+        "value": "COREN-DF 12345"
+      },
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "224535009",
+            "display": "Enfermeiro"
+          }
+        ]
+      }
+    }
+  ]
+}

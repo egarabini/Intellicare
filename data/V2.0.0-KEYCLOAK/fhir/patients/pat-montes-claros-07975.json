@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07975",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANTHONY",
+        "JOHN",
+        "DE",
+        "JESUS"
+      ],
+      "family": "RUAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1998-08-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12835448659"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400463",
+      "line": [
+        "159 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984118051",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "anthonyruas@gmail.com",
+      "use": "home"
+    }
+  ]
+}

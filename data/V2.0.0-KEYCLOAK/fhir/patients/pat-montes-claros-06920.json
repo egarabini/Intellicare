@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06920",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LUIS",
+        "FERNANDO",
+        "ROCHA"
+      ],
+      "family": "SEIXAS"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1982-09-27",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06117825617"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401426",
+      "line": [
+        "25"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992365487",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luis.casadocell@gmail.com",
+      "use": "home"
+    }
+  ]
+}

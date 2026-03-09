@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00024",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JADERSON",
+        "PETER",
+        "SOUZA"
+      ],
+      "family": "NUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-05-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "10154433624"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402015",
+      "line": [
+        "1062 APARTAMENTO 202"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999326863",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "prjadersonnunes2@gmail.com",
+      "use": "home"
+    }
+  ]
+}

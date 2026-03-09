@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07916",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "DANIELE",
+        "APARECIDA",
+        "MARTINS"
+      ],
+      "family": "LIMA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-03-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70321985621"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404590",
+      "line": [
+        "425"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999977770",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "joaquim-ozanan@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

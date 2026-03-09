@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06882",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "RAIMUNDO",
+        "ANTUNES",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "JUNIOR"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-06-26",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05207536664"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400091",
+      "line": [
+        "213"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984186421",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "juniorantunesmk@gmail.com",
+      "use": "home"
+    }
+  ]
+}

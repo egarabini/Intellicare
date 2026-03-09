@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01946",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ORONILDES",
+        "BISPO",
+        "DE"
+      ],
+      "family": "OLIVEIRA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1949-03-01",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "95531912820"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71692100",
+      "line": [
+        "05 QD 102 CONJ 23"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996547964",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "oronildesbispodeoliveira@gmail.com",
+      "use": "home"
+    }
+  ]
+}

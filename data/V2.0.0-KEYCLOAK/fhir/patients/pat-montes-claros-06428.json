@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-06428",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MUCIO",
+        "ALVES"
+      ],
+      "family": "ANTUNES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1980-09-18",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "04463075645"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400074",
+      "line": [
+        "760"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991035051",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "mucioalves@gmail.com",
+      "use": "home"
+    }
+  ]
+}

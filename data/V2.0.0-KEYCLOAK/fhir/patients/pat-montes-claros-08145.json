@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08145",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "SALOM�O",
+        "HENRIQUE",
+        "DUARTE"
+      ],
+      "family": "ROSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1991-03-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09969451642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400648",
+      "line": [
+        "1171 AP 302 BLOCO D"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999713598",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "salomao_duarte@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

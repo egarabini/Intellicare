@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07798",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "LARA",
+        "CHRISTINE",
+        "SENA"
+      ],
+      "family": "NASCIMENTO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2000-03-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14131868660"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39405699",
+      "line": [
+        "195"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38992341346",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "larasena195@gmail.com",
+      "use": "home"
+    }
+  ]
+}

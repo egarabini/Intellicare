@@ -1,0 +1,44 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05405",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "POLYANE",
+        "GONCALVES"
+      ],
+      "family": "REGO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-06-09",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01906584605"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401444",
+      "line": [
+        "284 39401444"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38999572140",
+      "use": "home"
+    }
+  ]
+}

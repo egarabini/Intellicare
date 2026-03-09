@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07504",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ANA",
+        "PAULA",
+        "RUAS"
+      ],
+      "family": "ANTUNES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1990-03-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "09812986642"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401024",
+      "line": [
+        "862 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38984022439",
+      "use": "home"
+    }
+  ]
+}

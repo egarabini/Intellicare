@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-05793",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GRAICE",
+        "HELLEN",
+        "VIEIRA",
+        "DE"
+      ],
+      "family": "AQUINO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1978-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08978958788"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403464",
+      "line": [
+        "98 39403464"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988419948",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edlevita@gmail.com",
+      "use": "home"
+    }
+  ]
+}

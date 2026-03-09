@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04500",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LUIZA",
+        "SOUZA"
+      ],
+      "family": "SIQUEIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-04-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "13860760661"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39404404",
+      "line": [
+        "1549 CS"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991448316",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "luizasoulzafotografia@gmail.com",
+      "use": "home"
+    }
+  ]
+}

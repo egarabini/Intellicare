@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01615",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "EDIVALDO",
+        "OLIVEIRA"
+      ],
+      "family": "SOUSA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-12-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "58471332191"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72425110",
+      "line": [
+        "01 LOTE 200"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61985734841",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "edivaldo.oliv40@gmail.com",
+      "use": "home"
+    }
+  ]
+}

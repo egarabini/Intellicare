@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08164",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVONE",
+        "DA",
+        "SILVA"
+      ],
+      "family": "PEREIRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-11-17",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "14356938682"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402460",
+      "line": [
+        "202 RUA PROFESSOR GUTIERREZ"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998840975",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ivonedasilvapereira4@gmail.com",
+      "use": "home"
+    }
+  ]
+}

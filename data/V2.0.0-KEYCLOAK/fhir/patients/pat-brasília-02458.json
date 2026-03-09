@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02458",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IVONE",
+        "PEREIRA"
+      ],
+      "family": "DESARSA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1986-10-19",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01909636118"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73368232",
+      "line": [
+        "8 LT"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998378129",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ivonetenycolly123@gmail.com",
+      "use": "home"
+    }
+  ]
+}

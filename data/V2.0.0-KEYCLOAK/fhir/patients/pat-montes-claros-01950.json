@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-01950",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ERICA",
+        "VIVIANE",
+        "BORGES"
+      ],
+      "family": "LOPES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1982-08-16",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05263709633"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400302",
+      "line": [
+        "107"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "31996964051",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ericaviviane2014@gmail.com",
+      "use": "home"
+    }
+  ]
+}

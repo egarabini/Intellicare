@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-08540",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "INGRITH",
+        "VITORIA",
+        "RODRIGUES",
+        "DE"
+      ],
+      "family": "QUEIROZ"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2003-02-05",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70555298671"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401665",
+      "line": [
+        "369 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38997434512",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ultralar12@gmail.com",
+      "use": "home"
+    }
+  ]
+}

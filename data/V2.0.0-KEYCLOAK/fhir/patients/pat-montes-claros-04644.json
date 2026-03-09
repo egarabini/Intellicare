@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04644",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "CASSIO",
+        "RODRIGUES",
+        "FERNANDES",
+        "DE"
+      ],
+      "family": "SOUZA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-06-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08856711630"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39402857",
+      "line": [
+        "465 39402857"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998616513",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "scassiosouza9@gmail.com",
+      "use": "home"
+    }
+  ]
+}

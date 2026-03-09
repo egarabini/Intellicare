@@ -1,0 +1,48 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01906",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "01096910160"
+      ],
+      "family": "01096910160"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1983-10-13",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "01096910160"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "72251008",
+      "line": [
+        "32"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61982634025",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "niceia_pimentel@hotmail.com",
+      "use": "home"
+    }
+  ]
+}

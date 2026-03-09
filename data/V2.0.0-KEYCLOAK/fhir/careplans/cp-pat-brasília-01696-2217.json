@@ -1,0 +1,38 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cp-pat-brasília-01696-2217",
+  "status": "active",
+  "intent": "plan",
+  "title": "Plano de Cuidado - Diabetes mellitus tipo 2, DRC estágio 5 (insuficiência renal terminal)",
+  "description": "Condições: Diabetes mellitus tipo 2, DRC estágio 5 (insuficiência renal terminal)",
+  "subject": {
+    "reference": "Patient/pat-brasília-01696"
+  },
+  "period": {
+    "start": "2025-12-11"
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+          "code": "assess-plan"
+        }
+      ]
+    }
+  ],
+  "goal": [
+    {
+      "reference": "Goal/goal-pat-brasília-01696-2217"
+    }
+  ],
+  "activity": [
+    {
+      "detail": {
+        "kind": "MedicationRequest",
+        "description": "Seguir prescrição médica",
+        "status": "in-progress"
+      }
+    }
+  ]
+}

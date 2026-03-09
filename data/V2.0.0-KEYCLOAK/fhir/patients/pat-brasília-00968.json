@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00968",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "NELCI",
+        "DOS",
+        "SANTOS",
+        "BATISTA"
+      ],
+      "family": "FERNANDES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1968-07-20",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "52405907100"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "73330013",
+      "line": [
+        "19 QUADRA 100"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61999077534",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "nelcifernandes68@gmail.com",
+      "use": "home"
+    }
+  ]
+}

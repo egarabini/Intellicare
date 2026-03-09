@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02392",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "GILDENIR",
+        "LIMA",
+        "DA"
+      ],
+      "family": "SILVA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1972-01-14",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "58525980110"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71596315",
+      "line": [
+        "97 FAZENDINHA"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996072256",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "glsconstrucaoo@gmail.com",
+      "use": "home"
+    }
+  ]
+}

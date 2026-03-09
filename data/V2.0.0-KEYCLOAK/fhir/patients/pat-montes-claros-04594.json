@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-04594",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ALEX",
+        "CRISTIANO"
+      ],
+      "family": "FERNANDO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1978-10-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05018004681"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39401222",
+      "line": [
+        "110 39401222"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991174512",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "alex154@gmail.com",
+      "use": "home"
+    }
+  ]
+}

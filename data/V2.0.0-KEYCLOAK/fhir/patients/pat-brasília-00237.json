@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00237",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JEFERSON",
+        "BATISTA"
+      ],
+      "family": "REUTER"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-09-06",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "34417532168"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71540085",
+      "line": [
+        "02"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61984516268",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "reuterjeferson@yahoo.com.br",
+      "use": "home"
+    }
+  ]
+}

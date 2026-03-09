@@ -1,0 +1,45 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00050",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA",
+        "LUCIA",
+        "BELARMINO"
+      ],
+      "family": "FRANCISCO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1976-08-08",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "00937032441"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71693020",
+      "line": [
+        "06 SAO JOSE"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61998641477",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-07206",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "ADEMIR",
+        "FERREIRA"
+      ],
+      "family": "LELES"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1983-11-10",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "06743873683"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400233",
+      "line": [
+        "409"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988317074",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "ademirferreira101183@gmail.com",
+      "use": "home"
+    }
+  ]
+}

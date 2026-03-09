@@ -1,0 +1,53 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00549",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARCUS",
+        "WINNICIUS",
+        "DA",
+        "PAIXAO",
+        "CAIRES",
+        "DE"
+      ],
+      "family": "MACEDO"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2005-03-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "70431398640"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403513",
+      "line": [
+        "40 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991790715",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "valmacedo251521@gmail.com",
+      "use": "home"
+    }
+  ]
+}

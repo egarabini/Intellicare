@@ -1,0 +1,46 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-00282",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "HELIO",
+        "MINORU"
+      ],
+      "family": "SHIBATTA"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1965-11-29",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "08067047804"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70683750",
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61991847531",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "shibattaminoru@gmail.com",
+      "use": "home"
+    }
+  ]
+}

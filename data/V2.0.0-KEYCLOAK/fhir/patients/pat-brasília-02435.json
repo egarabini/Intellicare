@@ -1,0 +1,49 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-02435",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JACQUELINA",
+        "MENDES"
+      ],
+      "family": "COIMBRA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1981-09-11",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "98123297149"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "70730733",
+      "line": [
+        "20 SHCGN 704 BLOCO C, S/N, CASA 20"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61996525384",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jaquelinamendessantos@gmail.com",
+      "use": "home"
+    }
+  ]
+}

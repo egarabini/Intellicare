@@ -1,0 +1,51 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-00914",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "IDALINO",
+        "DENILSON",
+        "DE",
+        "SOUZA"
+      ],
+      "family": "PINHO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1981-07-04",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "05237797636"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400503",
+      "line": [
+        "319 CASA"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38998592012",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "owd324g3331891@gmail.com",
+      "use": "home"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-brasília-01288",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "MARIA"
+      ],
+      "family": "MADELENA"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1950-11-25",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "66613531120"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "71691005",
+      "line": [
+        "070 CENTRO"
+      ],
+      "city": "Brasília"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "61995803805",
+      "use": "home"
+    }
+  ]
+}

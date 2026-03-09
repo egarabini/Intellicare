@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-02388",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "JHONY",
+        "LUCAS",
+        "BARBOSA"
+      ],
+      "family": "MELO"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1997-08-23",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "02108823603"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39400847",
+      "line": [
+        "129"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38991673848",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "jhonybarbosa750@gmail.com",
+      "use": "home"
+    }
+  ]
+}

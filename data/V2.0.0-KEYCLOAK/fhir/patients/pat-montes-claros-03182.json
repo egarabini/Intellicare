@@ -1,0 +1,50 @@
+{
+  "resourceType": "Patient",
+  "id": "pat-montes-claros-03182",
+  "meta": {
+    "profile": [
+      "http://rnds.saude.gov.br/fhir/r4/StructureDefinition/Patient"
+    ]
+  },
+  "name": [
+    {
+      "use": "official",
+      "given": [
+        "POLLYANA",
+        "EDUARDA",
+        "RODRIGUES"
+      ],
+      "family": "GON�ALVES"
+    }
+  ],
+  "gender": "female",
+  "birthDate": "1997-10-30",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "http://rnds.saude.gov.br/fhir/r4/NamingSystem/cpf",
+      "value": "12208924673"
+    }
+  ],
+  "address": [
+    {
+      "postalCode": "39403121",
+      "line": [
+        "165 F"
+      ],
+      "city": "Montes Claros"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "38988218321",
+      "use": "home"
+    },
+    {
+      "system": "email",
+      "value": "pollyanaeduarda884@gmail.com",
+      "use": "home"
+    }
+  ]
+}
