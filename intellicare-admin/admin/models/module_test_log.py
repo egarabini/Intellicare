@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, Boolean, DateTime, JSON, func
 
-from admin.db.base import Base
+from admin.db import Base
 
 class ModuleTestLog(Base):
     __tablename__ = "module_test_log"
