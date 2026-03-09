@@ -134,6 +134,7 @@ services:
       context: .
       dockerfile: ./intellicare-florence/Dockerfile
       target: api
+    image: intellicare-florence:latest
     container_name: intellicare-florence
     hostname: florence
     environment:
@@ -175,6 +176,7 @@ services:
       context: .
       dockerfile: ./intellicare-oswaldo/Dockerfile
       target: api
+    image: intellicare-oswaldo:latest
     container_name: intellicare-oswaldo
     hostname: oswaldo
     environment:
@@ -216,6 +218,7 @@ services:
       context: .
       dockerfile: ./intellicare-donabedian/Dockerfile
       target: api
+    image: intellicare-donabedian:latest
     container_name: intellicare-donabedian
     hostname: donabedian
     environment:
@@ -257,6 +260,7 @@ services:
       context: .
       dockerfile: ./intellicare-wanda/Dockerfile
       target: api
+    image: intellicare-wanda:latest
     container_name: intellicare-wanda
     hostname: wanda
     environment:
@@ -310,6 +314,7 @@ services:
       context: .
       dockerfile: ./intellicare-comunicacao/Dockerfile
       target: api
+    image: intellicare-comunicacao:latest
     container_name: intellicare-comunicacao
     hostname: comunicacao
     environment:
@@ -374,6 +379,7 @@ services:
       context: .
       dockerfile: ./intellicare-geralda/Dockerfile
       target: api
+    image: intellicare-geralda:latest
     container_name: intellicare-geralda
     hostname: geralda
     environment:
@@ -413,6 +419,7 @@ services:
       context: .
       dockerfile: ./intellicare-zilda/Dockerfile
       target: api
+    image: intellicare-zilda:latest
     container_name: intellicare-zilda
     hostname: zilda
     environment:
@@ -451,6 +458,7 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-minerva/Dockerfile
+    image: intellicare-minerva:latest
     container_name: intellicare-minerva
     hostname: minerva
     environment:
@@ -489,6 +497,7 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-pierre/Dockerfile
+    image: intellicare-pierre:latest
     container_name: intellicare-pierre
     hostname: pierre
     environment:
@@ -528,6 +537,7 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-admin/Dockerfile
+    image: intellicare-admin:latest
     container_name: intellicare-admin
     hostname: admin
     environment:
@@ -567,6 +577,7 @@ services:
       context: .
       dockerfile: ./intellicare-gestor/Dockerfile
       target: api
+    image: intellicare-gestor:latest
     container_name: intellicare-gestor
     hostname: gestor
     environment:
@@ -606,6 +617,7 @@ services:
       context: .
       dockerfile: ./intellicare-grahame/Dockerfile
       target: api
+    image: intellicare-grahame:latest
     container_name: intellicare-grahame
     hostname: grahame
     environment:
@@ -644,6 +656,7 @@ services:
     build:
       context: .
       dockerfile: ./intellicare-nise/Dockerfile
+    image: intellicare-nise:latest
     container_name: intellicare-nise
     hostname: nise
     environment:
@@ -702,6 +715,7 @@ services:
         - VITE_API_TIMEOUT=${VITE_API_TIMEOUT:-30000}
         - VITE_ENABLE_ANALYTICS=${VITE_ENABLE_ANALYTICS:-false}
         - VITE_APP_VERSION=${VITE_APP_VERSION:-0.1.0-demo}
+    image: intellicare-portal:latest
     container_name: intellicare-portal
     hostname: portal
     environment:
