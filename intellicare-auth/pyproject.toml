@@ -4,7 +4,7 @@ version = "1.0.0"
 description = "Módulo de avaliação de qualidade assistencial baseado no framework de Avedis auth"
 authors = ["IntelliCare Team <dev@intellicare.health>"]
 readme = "README.md"
-packages = [{include = "auth", from = "src"}]
+packages = [{include = "intellicare_auth"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
