@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { RefreshCw, Activity, AlertTriangle, X } from 'lucide-react';
 import ModuleGrid from './ModuleGrid';
 import ModuleTestPanel from './ModuleTestPanel';
+import IntegrationTests from './IntegrationTests';
 import api from '../../../services/api';
 
 export interface ModuleProbe {
@@ -28,6 +29,7 @@ const DiagnosticoAdmin: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [refreshInterval, setRefreshInterval] = useState<number>(0);
     const [selectedModule, setSelectedModule] = useState<string | null>(null);
+    const [activeTab, setActiveTab] = useState<'probes' | 'integrations'>('probes');
 
     const fetchModules = async () => {
         setLoading(true);
@@ -107,35 +109,55 @@ const DiagnosticoAdmin: React.FC = () => {
                 </div>
             )}
 
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-                <ModuleGrid
-                    modules={modules}
-                    loading={loading}
-                    onTestFuncional={(name: string) => setSelectedModule(name)}
-                />
+            <div className="flex border-b border-gray-200 mb-6">
+                <button
+                    onClick={() => setActiveTab('probes')}
+                    className={`py-3 px-6 text-sm font-semibold transition-colors ${activeTab === 'probes' ? 'text-primary-700 border-b-2 border-primary-600 bg-white' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                    Módulos Individuais
+                </button>
+                <button
+                    onClick={() => setActiveTab('integrations')}
+                    className={`py-3 px-6 text-sm font-semibold transition-colors ${activeTab === 'integrations' ? 'text-primary-700 border-b-2 border-primary-600 bg-white' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                    Esteiras de Integração E2E
+                </button>
             </div>
 
-            {selectedModule && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
-                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
-                        <div className="p-4 border-b flex justify-between items-center bg-gray-50">
-                            <h3 className="font-bold text-lg text-gray-800">
-                                Diagnóstico Ativo: <span className="text-primary-600">{selectedModule}</span>
-                            </h3>
-                            <button
-                                onClick={() => setSelectedModule(null)}
-                                className="p-1.5 rounded-full hover:bg-gray-200 text-gray-500 transition-colors"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
-                        <div className="p-6 overflow-y-auto">
-                            <ModuleTestPanel moduleName={selectedModule} />
-                        </div>
+            {activeTab === 'probes' ? (
+                <>
+                    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
+                        <ModuleGrid
+                            modules={modules}
+                            loading={loading}
+                            onTestFuncional={(name: string) => setSelectedModule(name)}
+                        />
                     </div>
-                </div>
-            )}
 
+                    {selectedModule && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
+                            <div className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+                                <div className="p-4 border-b flex justify-between items-center bg-gray-50">
+                                    <h3 className="font-bold text-lg text-gray-800">
+                                        Diagnóstico Ativo: <span className="text-primary-600">{selectedModule}</span>
+                                    </h3>
+                                    <button
+                                        onClick={() => setSelectedModule(null)}
+                                        className="p-1.5 rounded-full hover:bg-gray-200 text-gray-500 transition-colors"
+                                    >
+                                        <X className="w-5 h-5" />
+                                    </button>
+                                </div>
+                                <div className="p-6 overflow-y-auto">
+                                    <ModuleTestPanel moduleName={selectedModule} />
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </>
+            ) : (
+                <IntegrationTests />
+            )}
         </div>
     );
 };
