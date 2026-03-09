@@ -141,7 +141,7 @@ def create_app() -> FastAPI:
         configure_auth(app, secrets_path="keycloak_client_secrets.json")
 
     @app.get("/api/v1/health")
-    async def health(ctx: Any = Depends(get_tenant_context)) -> dict[str, Any]:
+    async def health() -> dict[str, Any]:
         config = _state.get("config")
         ref_loader = _state.get("ref_loader")
         uptime = time.time() - _start_time
