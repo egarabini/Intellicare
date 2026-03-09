@@ -4,13 +4,13 @@ import datetime
 from typing import Any, List, Optional
 from pydantic import BaseModel
 from fastapi import APIRouter, HTTPException
+from sqlalchemy import insert, select
 
 from admin.services.module_proxy import MODULE_REGISTRY, ModuleProxyClient
 from admin.config.integration_tests import INTEGRATION_FLOWS
 from admin.config.test_payloads import DEFAULT_TEST_PAYLOADS
 from admin.db.session import session_factory
 from admin.models.module_test_log import ModuleTestLog
-from sqlalchemy import insert
 
 router = APIRouter(tags=["Integration Tests"])
 
@@ -67,23 +67,21 @@ async def execute_step(proxy: ModuleProxyClient, step: dict[str, Any], flow_id: 
         "error": result.get("error")
     }
 
-@router.post("/admin/integration-flows/{flow_id}/run", response_model=IntegrationTestResponse)
-async def run_integration_flow(flow_id: str):
-    """Execute a defined integration test flow (sequential or parallel)."""
+async def _execute_flow(flow_id: str) -> IntegrationTestResponse:
+    """Shared logic: execute a flow by ID and return the response."""
     if flow_id not in INTEGRATION_FLOWS:
         raise HTTPException(status_code=404, detail="Integration flow not found")
-        
+
     flow = INTEGRATION_FLOWS[flow_id]
     steps = flow["steps"]
     proxy = ModuleProxyClient()
-    
+
     start_time = time.monotonic()
     results = []
-    
+
     if flow["type"] == "parallel":
         tasks = [execute_step(proxy, step, flow_id) for step in steps]
         results = await asyncio.gather(*tasks, return_exceptions=True)
-        # Convert exceptions to dicts
         for i, res in enumerate(results):
             if isinstance(res, Exception):
                 results[i] = {
@@ -93,21 +91,58 @@ async def run_integration_flow(flow_id: str):
                     "status_code": 500
                 }
     else:
-        # Sequential
         for step in steps:
             res = await execute_step(proxy, step, flow_id)
             results.append(res)
-            # Short-circuit on sequential failure
             if not res.get("success"):
                 break
-                
+
     total_latency = int((time.monotonic() - start_time) * 1000)
-    
     overall_success = all(isinstance(r, dict) and r.get("success") for r in results)
-    
+
     return IntegrationTestResponse(
         flow_id=flow_id,
         status="success" if overall_success else "failed",
         total_latency_ms=total_latency,
         steps_results=results
     )
+
+
+# ── integration-flows (implementação dev2, frontend usa estas URLs) ──────────
+
+@router.post("/admin/integration-flows/{flow_id}/run", response_model=IntegrationTestResponse)
+async def run_integration_flow(flow_id: str):
+    """Execute a defined integration test flow (sequential or parallel)."""
+    return await _execute_flow(flow_id)
+
+
+# ── integration-tests (URLs canônicas da spec DEM-004 — aliases backward-compat) ──
+
+class RunIntegrationTestRequest(BaseModel):
+    test_id: str
+
+
+@router.get("/admin/integration-tests")
+async def list_integration_tests() -> List[dict[str, Any]]:
+    """[Spec DEM-004] Lista flows de integração disponíveis. Alias de /integration-flows."""
+    return list(INTEGRATION_FLOWS.values())
+
+
+@router.post("/admin/integration-tests/run", response_model=IntegrationTestResponse)
+async def run_integration_test(body: RunIntegrationTestRequest):
+    """[Spec DEM-004] Executa um flow de integração pelo test_id no body."""
+    return await _execute_flow(body.test_id)
+
+
+@router.get("/admin/integration-tests/history")
+async def get_integration_tests_history(limit: int = 50) -> List[dict[str, Any]]:
+    """[Spec DEM-004] Últimas execuções de testes de integração."""
+    async with session_factory.engine.begin() as conn:
+        res = await conn.execute(
+            select(ModuleTestLog)
+            .where(ModuleTestLog.test_type == "integration")
+            .order_by(ModuleTestLog.created_at.desc())
+            .limit(limit)
+        )
+        logs = res.mappings().all()
+        return [dict(log) for log in logs]
