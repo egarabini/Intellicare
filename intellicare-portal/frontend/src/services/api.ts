@@ -1,232 +1,56 @@
-import axios, { AxiosError } from 'axios';
-import type { AxiosInstance } from 'axios';
+import axios from 'axios';
+import { useAuthStore } from '../store/authStore';
+import { refreshToken } from './authService';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8003/api/v1';
-
-// Create axios instance
-const api: AxiosInstance = axios.create({
-  baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  timeout: 30000,
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8004/api/v1',
 });
 
-// Request interceptor
-api.interceptors.request.use(
-  (config) => {
-    // Attempt to read from zustand store if available (preferable for current architecture)
-    let token = '';
-    try {
-      const authStorage = localStorage.getItem('auth-storage');
-      if (authStorage) {
-        token = JSON.parse(authStorage).state?.token;
-      }
-    } catch (e) {
-      // fallback
-    }
+// Request interceptor: add auth token + preemptive refresh
+api.interceptors.request.use(async (config) => {
+  const { accessToken, expiry } = useAuthStore.getState();
 
-    // Fallback to old token if not found in zustand
-    if (!token) {
-      token = localStorage.getItem('token') || '';
+  // Proactive refresh: if token expires in less than 5 minutes (300 seconds)
+  if (accessToken && expiry) {
+    const timeLeft = expiry - Date.now();
+    if (timeLeft < 300000) { // 5 minutes in ms
+      await refreshToken();
     }
+  }
 
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+  // Grab latest token (could be the newly refreshed one)
+  const currentToken = useAuthStore.getState().accessToken;
+  if (currentToken && config.headers) {
+    config.headers.Authorization = `Bearer ${currentToken}`;
+  }
 
-// Response interceptor
+  return config;
+});
+
+// Response interceptor: graceful 401 retry 
 api.interceptors.response.use(
   (response) => response,
-  (error: AxiosError<ApiErrorResponse>) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
+  async (error) => {
+    const originalRequest = error.config;
+
+    // Prevent infinite loops on /token endpoint if refresh also returns 401
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      const refreshed = await refreshToken();
+      if (refreshed) {
+        const token = useAuthStore.getState().accessToken;
+        originalRequest.headers.Authorization = `Bearer ${token}`;
+        return api(originalRequest);
+      }
+
+      // Refresh failed, clear session and send to login
+      useAuthStore.getState().clear();
       window.location.href = '/login';
     }
+
     return Promise.reject(error);
   }
 );
-
-// Types
-export interface ApiErrorResponse {
-  success: false;
-  error: string;
-  details?: unknown;
-}
-
-export interface ApiSuccessResponse<T> {
-  success: true;
-  data: T;
-  message?: string;
-}
-
-// CNES Types
-export interface CnesEstablishment {
-  cnes: string;
-  cnpj: string | null;
-  razaoSocial: string;
-  nomeFantasia: string | null;
-  tipoUnidade: string;
-  codigoTipoUnidade: number | null;
-  uf: string | null;
-  codigoUf: number | null;
-  municipio: string;
-  codigoMunicipio: number | null;
-  regiao: string | null;
-  endereco: string | null;
-  telefone: string | null;
-  latitude: number | null;
-  longitude: number | null;
-  recursos: {
-    centroCirurgico: boolean;
-    centroObstetrico: boolean;
-    centroNeonatal: boolean;
-    atendimentoHospitalar: boolean;
-    servicoApoio: boolean;
-    atendimentoAmbulatorial: boolean;
-  };
-}
-
-// Request Types
-export interface CreateRequestData {
-  requesterName: string;
-  requesterEmail: string;
-  requesterPhone?: string;
-  requesterDocument?: string;
-  cnes: string;
-  cnpj?: string;
-  establishmentName: string;
-  establishmentType?: string;
-  uf: string;
-  municipality: string;
-  address?: string;
-  phone?: string;
-  requestType: 'ACCESS_REQUEST' | 'DATA_CORRECTION' | 'TECHNICAL_SUPPORT' | 'INTEGRATION_REQUEST' | 'OTHER';
-  description: string;
-  priority?: 'LOW' | 'NORMAL' | 'HIGH' | 'URGENT';
-}
-
-export interface RequestResponse {
-  id: string;
-  protocol: string;
-  status: string;
-  message: string;
-}
-
-export interface RequestStatus {
-  protocol: string;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
-  emailVerified: boolean;
-  requesterName: string;
-  requesterEmail: string;
-  establishmentName: string;
-  requestType: string;
-  description: string;
-  logs: {
-    status: string;
-    message: string;
-    createdAt: string;
-  }[];
-}
-
-// CNES API
-export const cnesApi = {
-  validate: async (cnes: string): Promise<ApiSuccessResponse<CnesEstablishment>> => {
-    const response = await api.get(`/cnes/validate/${cnes}`);
-    return response.data;
-  },
-
-  searchEstablishments: async (params: {
-    uf?: string;
-    municipio?: string;
-    tipo?: string;
-    status?: string;
-    limit?: number;
-    offset?: number;
-  }): Promise<ApiSuccessResponse<unknown[]>> => {
-    const response = await api.get('/cnes/establishments', { params });
-    return response.data;
-  },
-
-  getUnitTypes: async (): Promise<ApiSuccessResponse<unknown[]>> => {
-    const response = await api.get('/cnes/unit-types');
-    return response.data;
-  },
-};
-
-// Requests API
-export const requestsApi = {
-  create: async (data: CreateRequestData): Promise<ApiSuccessResponse<RequestResponse>> => {
-    const response = await api.post('/requests', data);
-    return response.data;
-  },
-
-  verifyToken: async (protocol: string, token: string): Promise<ApiSuccessResponse<{ protocol: string; status: string; message: string }>> => {
-    const response = await api.post('/requests/verify', { protocol, token });
-    return response.data;
-  },
-
-  resendToken: async (protocol: string): Promise<ApiSuccessResponse<{ message: string }>> => {
-    const response = await api.post('/requests/resend-token', { protocol });
-    return response.data;
-  },
-
-  getStatus: async (protocol: string): Promise<ApiSuccessResponse<RequestStatus>> => {
-    const response = await api.get(`/requests/${protocol}`);
-    return response.data;
-  },
-
-  getByEmail: async (email: string): Promise<ApiSuccessResponse<Array<{
-    protocol: string;
-    status: string;
-    createdAt: string;
-    updatedAt: string;
-    establishmentName: string;
-    requestType: string;
-  }>>> => {
-    const response = await api.get(`/requests/by-email/${email}`);
-    return response.data;
-  },
-};
-
-// Auth API
-export const authApi = {
-  login: async (email: string, protocol: string): Promise<ApiSuccessResponse<{ token: string; protocol: string; email: string }>> => {
-    const response = await api.post('/auth/login', { email, protocol });
-    return response.data;
-  },
-};
-
-// Status API
-export const statusApi = {
-  getStatus: async (): Promise<ApiSuccessResponse<{
-    api: string;
-    version: string;
-    timestamp: string;
-    requests: {
-      total: number;
-      byStatus: Record<string, number>;
-    };
-  }>> => {
-    const response = await api.get('/status');
-    return response.data;
-  },
-
-  getStats: async (): Promise<ApiSuccessResponse<{
-    totalRequests: number;
-    verifiedRequests: number;
-    pendingVerification: number;
-    requestsToday: number;
-  }>> => {
-    const response = await api.get('/status/stats');
-    return response.data;
-  },
-};
 
 export default api;

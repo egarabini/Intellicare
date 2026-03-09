@@ -44,6 +44,7 @@ class Tenant(Base):
     criado_por = Column(String(255))
 
     # Relationships
+    plan = relationship("Plan", back_populates="tenants", lazy="joined")
     modules = relationship("TenantModule", back_populates="tenant", lazy="joined")
 
 

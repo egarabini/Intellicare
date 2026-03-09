@@ -18,6 +18,8 @@ interface TenantContextType {
     isLoading: boolean;
     error: string | null;
     changeTenant: (tenantId: string) => Promise<void>;
+    showSelector?: boolean;
+    tenants?: string[];
 }
 
 const TenantContext = createContext<TenantContextType | undefined>(undefined);
@@ -27,7 +29,8 @@ export const TenantProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     const [tenantInfo, setTenantInfo] = useState<TenantInfo | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [showSelector, setShowSelector] = useState(false); // To be implemented via a Provider UI wrapper
+    const [showSelector, setShowSelector] = useState(false);
+    const [tenants, setTenants] = useState<string[]>([]);
 
     useEffect(() => {
         const initializeTenant = async () => {
@@ -45,6 +48,7 @@ export const TenantProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
                 const tenantId = decoded.tenant_id;
                 const availableTenants = decoded.tenants || [];
+                setTenants(availableTenants);
 
                 // Scenario 1: User has no tenants configured
                 if (!tenantId && availableTenants.length === 0) {
@@ -116,6 +120,7 @@ export const TenantProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         try {
             const newToken = await exchangeTokenForTenant(token, newTenantId);
             setToken(newToken);
+            setShowSelector(false);
             // The useEffect will react to the token change and re-fetch everything
         } catch (err) {
             console.error('Failed to change org', err);
@@ -125,8 +130,29 @@ export const TenantProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     };
 
     return (
-        <TenantContext.Provider value={{ tenantInfo, isLoading, error, changeTenant }}>
-            {/* We expose a static true UI flag if they need to see the selector. For now we will implement this logic locally in App.tsx */}
+        <TenantContext.Provider value={{ tenantInfo, isLoading, error, changeTenant, showSelector, tenants }}>
+            {showSelector && (
+                <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-xl p-8 max-w-md w-full shadow-2xl">
+                        <h2 className="text-2xl font-bold mb-4 text-gray-900 border-b pb-3">Selecione o Polo</h2>
+                        <p className="text-gray-600 mb-6 text-sm">
+                            Você possui vínculos com múltiplas organizações. Por favor, escolha qual delas você deseja acessar agora:
+                        </p>
+                        <div className="space-y-3">
+                            {tenants.map((t) => (
+                                <button
+                                    key={t}
+                                    onClick={() => changeTenant(t)}
+                                    className="w-full text-left px-5 py-4 border-2 rounded-lg border-gray-100 hover:border-blue-500 hover:bg-blue-50 focus:outline-none transition-all group flex items-center shadow-sm"
+                                >
+                                    <span className="text-2xl mr-4 group-hover:scale-110 transition-transform">🏥</span>
+                                    <span className="font-semibold text-gray-800 text-lg">{t}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
             {children}
         </TenantContext.Provider>
     );
