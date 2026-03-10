@@ -35,3 +35,4 @@ class AdminConfig(BaseModuleConfig):
 
     # Billing
     billing_grace_period_days: int = 15
+
