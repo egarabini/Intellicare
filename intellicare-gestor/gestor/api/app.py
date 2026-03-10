@@ -47,6 +47,7 @@ app.include_router(audit.router, prefix=settings.API_V1_STR)
 app.include_router(dashboard.router, prefix=settings.API_V1_STR)
 app.include_router(bots.router, prefix=settings.API_V1_STR)
 
+@app.get("/api/v1/health")
 @app.get(f"{settings.API_V1_STR}/health")
 async def health_check():
-    return {"status": "ok"}
+    return {"status": "ok", "module": "intellicare-gestor"}
