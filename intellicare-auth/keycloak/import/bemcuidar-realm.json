@@ -155,11 +155,13 @@
       "secret": "portal-secret-change-in-production",
       "redirectUris": [
         "http://localhost:3000/*",
-        "http://localhost:5173/*"
+        "http://localhost:5173/*",
+        "https://portal.intellicare.ia.br/*"
       ],
       "webOrigins": [
         "http://localhost:3000",
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "https://portal.intellicare.ia.br"
       ],
       "bearerOnly": false,
       "consentRequired": false,
@@ -232,6 +234,41 @@
         "web-origins",
         "roles"
       ]
+    },
+    {
+      "clientId": "intellicare-gestor",
+      "name": "IntelliCare Gestor Platform",
+      "description": "Painel de gestão clínica",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "gestor-secret-change-in-production",
+      "redirectUris": [
+        "http://localhost:8011/*",
+        "https://gestor.intellicare.ia.br/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8011",
+        "https://gestor.intellicare.ia.br"
+      ],
+      "bearerOnly": false,
+      "consentRequired": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "publicClient": true,
+      "frontchannelLogout": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "3600"
+      },
+      "authenticationFlowBindingOverrides": {},
+      "fullScopeAllowed": true,
+      "defaultClientScopes": [
+        "web-origins",
+        "roles"
+      ],
+      "optionalClientScopes": [],
+      "protocolMappers": []
     }
   ],
   "browserSecurityHeaders": {
