@@ -149,8 +149,6 @@
       "name": "IntelliCare Portal",
       "description": "Portal de acesso para tenants e usu\u00e1rios",
       "enabled": true,
-      "clientAuthenticatorType": "client-secret",
-      "secret": "portal-secret-change-in-production",
       "redirectUris": [
         "http://localhost:3000/*",
         "http://localhost:5173/*",
@@ -165,8 +163,8 @@
       "consentRequired": false,
       "standardFlowEnabled": true,
       "implicitFlowEnabled": false,
-      "directAccessGrantsEnabled": true,
-      "publicClient": false,
+      "directAccessGrantsEnabled": false,
+      "publicClient": true,
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
