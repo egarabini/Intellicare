@@ -1,6 +1,5 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from sqlalchemy.ext.asyncio import create_async_engine
 
 from gestor.config import settings
 from gestor.api import (
@@ -23,10 +22,10 @@ except ImportError:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Inicializa engine multi-tenant configurado via TenantAwareSessionFactory
-    engine = create_async_engine(settings.DATABASE_URL, echo=False)
-    app.state.session_factory = TenantAwareSessionFactory(engine)
+    factory = TenantAwareSessionFactory(settings.DATABASE_URL, echo=False)
+    app.state.session_factory = factory
     yield
-    await engine.dispose()
+    await factory.dispose()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -48,6 +47,7 @@ app.include_router(audit.router, prefix=settings.API_V1_STR)
 app.include_router(dashboard.router, prefix=settings.API_V1_STR)
 app.include_router(bots.router, prefix=settings.API_V1_STR)
 
+@app.get("/api/v1/health")
 @app.get(f"{settings.API_V1_STR}/health")
 async def health_check():
-    return {"status": "ok"}
+    return {"status": "ok", "module": "intellicare-gestor"}
