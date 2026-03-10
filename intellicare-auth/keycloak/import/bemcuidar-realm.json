@@ -101,8 +101,6 @@
       "name": "IntelliCare Admin Platform",
       "description": "Painel de administra\u00e7\u00e3o da plataforma (super-admins)",
       "enabled": true,
-      "clientAuthenticatorType": "client-secret",
-      "secret": "admin-secret-change-in-production",
       "redirectUris": [
         "http://localhost:8010/*",
         "https://admin.intellicare.ia.br/*"
@@ -114,8 +112,8 @@
       "bearerOnly": false,
       "consentRequired": false,
       "standardFlowEnabled": true,
-      "implicitFlowEnabled": true,
-      "directAccessGrantsEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
       "publicClient": true,
       "frontchannelLogout": true,
       "protocol": "openid-connect",
@@ -151,22 +149,22 @@
       "name": "IntelliCare Portal",
       "description": "Portal de acesso para tenants e usu\u00e1rios",
       "enabled": true,
-      "clientAuthenticatorType": "client-secret",
-      "secret": "portal-secret-change-in-production",
       "redirectUris": [
         "http://localhost:3000/*",
-        "http://localhost:5173/*"
+        "http://localhost:5173/*",
+        "https://portal.intellicare.ia.br/*"
       ],
       "webOrigins": [
         "http://localhost:3000",
-        "http://localhost:5173"
+        "http://localhost:5173",
+        "https://portal.intellicare.ia.br"
       ],
       "bearerOnly": false,
       "consentRequired": false,
       "standardFlowEnabled": true,
       "implicitFlowEnabled": false,
-      "directAccessGrantsEnabled": true,
-      "publicClient": false,
+      "directAccessGrantsEnabled": false,
+      "publicClient": true,
       "frontchannelLogout": true,
       "protocol": "openid-connect",
       "attributes": {
@@ -232,6 +230,24 @@
         "web-origins",
         "roles"
       ]
+    },
+    {
+      "clientId": "intellicare-gestor",
+      "name": "IntelliCare Gestor",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "http://localhost:8011/*",
+        "https://gestor.intellicare.ia.br/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8011",
+        "https://gestor.intellicare.ia.br"
+      ],
+      "protocol": "openid-connect"
     }
   ],
   "browserSecurityHeaders": {
