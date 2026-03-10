@@ -101,8 +101,6 @@
       "name": "IntelliCare Admin Platform",
       "description": "Painel de administra\u00e7\u00e3o da plataforma (super-admins)",
       "enabled": true,
-      "clientAuthenticatorType": "client-secret",
-      "secret": "admin-secret-change-in-production",
       "redirectUris": [
         "http://localhost:8010/*",
         "https://admin.intellicare.ia.br/*"
@@ -114,8 +112,8 @@
       "bearerOnly": false,
       "consentRequired": false,
       "standardFlowEnabled": true,
-      "implicitFlowEnabled": true,
-      "directAccessGrantsEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
       "publicClient": true,
       "frontchannelLogout": true,
       "protocol": "openid-connect",
@@ -237,11 +235,12 @@
     },
     {
       "clientId": "intellicare-gestor",
-      "name": "IntelliCare Gestor Platform",
-      "description": "Painel de gestão clínica",
+      "name": "IntelliCare Gestor",
       "enabled": true,
-      "clientAuthenticatorType": "client-secret",
-      "secret": "gestor-secret-change-in-production",
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
       "redirectUris": [
         "http://localhost:8011/*",
         "https://gestor.intellicare.ia.br/*"
@@ -250,25 +249,7 @@
         "http://localhost:8011",
         "https://gestor.intellicare.ia.br"
       ],
-      "bearerOnly": false,
-      "consentRequired": false,
-      "standardFlowEnabled": true,
-      "implicitFlowEnabled": true,
-      "directAccessGrantsEnabled": true,
-      "publicClient": true,
-      "frontchannelLogout": true,
-      "protocol": "openid-connect",
-      "attributes": {
-        "access.token.lifespan": "3600"
-      },
-      "authenticationFlowBindingOverrides": {},
-      "fullScopeAllowed": true,
-      "defaultClientScopes": [
-        "web-origins",
-        "roles"
-      ],
-      "optionalClientScopes": [],
-      "protocolMappers": []
+      "protocol": "openid-connect"
     }
   ],
   "browserSecurityHeaders": {
