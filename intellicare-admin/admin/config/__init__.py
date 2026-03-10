@@ -25,7 +25,7 @@ class AdminConfig(BaseModuleConfig):
     keycloak_admin_realm: str = "master"
     keycloak_admin_username: str = ""
     keycloak_admin_password: str = ""
-    keycloak_target_realm: str = "bemcuidar"
+    keycloak_target_realm: str = "intellicare"
 
     # Provisioning
     migration_script_path: str = "./migrations"
@@ -35,3 +35,4 @@ class AdminConfig(BaseModuleConfig):
 
     # Billing
     billing_grace_period_days: int = 15
+
