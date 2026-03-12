@@ -64,7 +64,7 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:-changeme}
 
       # Realm Default
-      KC_REALM: bemcuidar
+      KC_REALM: intellicare
 
       # Logging
       KC_LOG_LEVEL: INFO

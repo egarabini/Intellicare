@@ -2,7 +2,7 @@ import { useAuthStore, TokenResponse } from '../store/authStore';
 
 // We should load these from import.meta.env, but falling back to defaults for safety
 const KEYCLOAK_URL = import.meta.env.VITE_KEYCLOAK_URL || 'https://auth.intellicare.ia.br';
-const REALM = import.meta.env.VITE_KEYCLOAK_REALM || 'bemcuidar';
+const REALM = import.meta.env.VITE_KEYCLOAK_REALM || 'intellicare';
 const CLIENT_ID = import.meta.env.VITE_KEYCLOAK_CLIENT_ID || 'intellicare-portal';
 
 // Crypto Helpers for PKCE

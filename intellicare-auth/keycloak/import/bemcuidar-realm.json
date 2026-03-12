@@ -1,5 +1,5 @@
 {
-  "realm": "bemcuidar",
+  "realm": "intellicare",
   "enabled": true,
   "sslRequired": "none",
   "registrationAllowed": false,
@@ -223,7 +223,10 @@
       },
       "fullScopeAllowed": true,
       "defaultClientScopes": [
+        "openid",
         "web-origins",
+        "profile",
+        "email",
         "roles"
       ],
       "protocolMappers": [
