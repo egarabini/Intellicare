@@ -101,7 +101,6 @@ http:
     keycloak-chain:
       chain:
         middlewares:
-          - rate-limit-auth
           - compress
 
     # ── Middleware Chain: Frontend ─────────────────────────────

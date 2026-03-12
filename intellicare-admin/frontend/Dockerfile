@@ -18,8 +18,8 @@ RUN npm ci || npm install
 COPY . .
 
 # Build args (VITE_* compiled into bundle)
-ARG VITE_KEYCLOAK_URL=https://keycloak.gsi.srv.br
-ARG VITE_KEYCLOAK_REALM=bemcuidar
+ARG VITE_KEYCLOAK_URL=https://auth.intellicare.ia.br
+ARG VITE_KEYCLOAK_REALM=intellicare
 ARG VITE_KEYCLOAK_CLIENT_ID=intellicare-admin
 ARG VITE_SKIP_AUTH=false
 ARG VITE_APP_VERSION=0.1.0

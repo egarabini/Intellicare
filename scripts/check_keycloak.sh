@@ -4,7 +4,7 @@
 set -euo pipefail
 
 KEYCLOAK_URL="${KEYCLOAK_URL:-http://localhost:8080}"
-KEYCLOAK_REALM="${KEYCLOAK_REALM:-bemcuidar}"
+KEYCLOAK_REALM="${KEYCLOAK_REALM:-intellicare}"
 
 echo "Verificando saude do Keycloak em ${KEYCLOAK_URL}..."
 
