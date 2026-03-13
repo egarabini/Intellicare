@@ -42,6 +42,15 @@ atualizado: 2026-03-13
 
 ## Referências
 
+### Stack técnica
+- [[references/fastapi]] — FastAPI: routers, Depends, lifespan, streaming
+- [[references/sqlalchemy-async]] — SQLAlchemy 2.0 async + multi-tenancy
+- [[references/keycloak-admin-api]] — Keycloak Admin REST API: grupos, usuários, roles
+- [[references/pgvector]] — pgvector: embeddings, HNSW, busca semântica
+- [[references/ollama-api]] — OLLAMA API: embeddings, geração, streaming
+- [[references/mantine-ui]] — Mantine 7: componentes React para frontend clínico
+
+### Domínio clínico
 - [[references/fhir-r4-recursos-usados]] — Recursos FHIR R4 em uso
 - [[references/wanda-agent-loop]] — Thread/Turn/Item (protocolo de agente)
 
