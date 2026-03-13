@@ -17,12 +17,36 @@ tags: [fase-3, oswaldo, fhir, analise-clinica]
 
 ---
 
+## Propósito
+
+Módulo de inteligência clínica: analisa prontuários, detecta inconsistências, gera score de qualidade e exporta dados em formato FHIR R4 interoperável. Na V3, substitui chamadas a LLMs externas por SLM local (OLLAMA) e integra pgvector para busca semântica do histórico clínico.
+
+---
+
 ## O que entrega (V2 — a preservar)
 
-- Análise de prontuários estruturados via LLM
+- Análise de prontuários estruturados via LLM (V3: SLM local)
 - Exportação FHIR R4: Patient, Observation, Condition, MedicationStatement
 - Score de qualidade de dados clínicos por prontuário
 - Detecção de inconsistências e dados faltantes
+
+---
+
+## Recursos FHIR R4 em uso
+
+| Recurso | Uso |
+|---------|-----|
+| `Patient` | Dados demográficos do paciente |
+| `Encounter` | Consultas e internações |
+| `Observation` | Sinais vitais, resultados laboratoriais |
+| `Condition` | Diagnósticos e problemas ativos |
+| `MedicationStatement` | Medicamentos em uso |
+| `Procedure` | Procedimentos realizados |
+| `DiagnosticReport` | Laudos e relatórios |
+
+Ver [[references/fhir-r4-recursos-usados]] para lista completa.
+
+---
 
 ## Estratégia de incorporação em V3
 
@@ -31,15 +55,28 @@ tags: [fase-3, oswaldo, fhir, analise-clinica]
 3. Substituir chamadas LLM externas por SLM local (OLLAMA)
 4. Integrar com pgvector para busca semântica de histórico clínico do paciente
 
-## Recursos FHIR R4 em uso
+---
 
-Ver [[references/fhir-r4-recursos-usados]] para lista completa.
+## Roles Autorizados (planejado)
 
-Principais: `Patient`, `Encounter`, `Observation`, `Condition`,
-`MedicationStatement`, `Procedure`, `DiagnosticReport`.
+- **`CLINICO`** — análise de prontuários e exportação FHIR
+- **`TENANT_GESTOR`** — relatórios de qualidade e exports em lote
 
-## Dependências
+---
 
-- [[decisoes/ADR-003-rag-slm-pgvector]] — para busca de histórico clínico
-- intellicare-core/fhir/ (DEM-003)
-- SLM local OLLAMA (DEM-002)
+## Stack e Dependências
+
+- FastAPI (APIRouter com prefix `/oswaldo`)
+- FHIR R4 serialization (intellicare-core/fhir/)
+- SLM local OLLAMA (DEM-010)
+- pgvector para busca semântica de histórico
+- [[decisoes/ADR-003-rag-slm-pgvector]]
+- intellicare-core (DEM-003)
+
+---
+
+## DEMs relacionadas
+
+- **DEM-013**: Cuidado backend (dados clínicos que Oswaldo analisa)
+- **DEM-009**: Pipeline RAG (busca semântica de histórico)
+- **DEM-010**: SLM OLLAMA (análise via modelo local)

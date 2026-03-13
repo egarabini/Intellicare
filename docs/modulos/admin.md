@@ -11,54 +11,86 @@ tags: [fase-1, admin, p0]
 
 # Módulo: admin
 
-**Responsabilidade:** Administração da plataforma — tenants, planos, billing, provisionamento.
+**Responsabilidade:** Administração da plataforma — gestão de tenants, provisionamento de schemas, integração Keycloak e módulo financeiro (planos, contratos, faturas).
 
 ---
 
-## O que entrega
+## Propósito
 
-- CRUD de tenants (nome, vertical, plano, status)
-- CRUD de planos (lê `configs/plans/*.yaml` → armazena JSONB no schema do tenant)
-- Provisionamento automático: `CREATE SCHEMA tenant_{slug}` + seed + grupo Keycloak + admin user
-- Finance básico: registro de uso mensal, billing status, plano ativo
-- Auditoria: toda ação admin registrada em `_admin_audit`
+Módulo exclusivo do `PLATFORM_ADMIN`. Controla o ciclo de vida de tenants (criação, ativação, suspensão) e o módulo financeiro (planos, contratos, faturas, job de inadimplência). Toda ação é registrada em `platform_audit_log`.
 
-## Tabelas (dentro do schema autônomo do tenant)
+---
 
-```sql
-tenant_{slug}._admin_contract   -- plano ativo, config JSONB, vertical, status
-tenant_{slug}._admin_modules    -- módulos habilitados e data de ativação
-tenant_{slug}._admin_billing    -- período, valor, status, data de pagamento
-tenant_{slug}._admin_audit      -- ator, ação, alvo, detalhes, timestamp
-tenant_{slug}._admin_config     -- custom rules (JSONB) por tenant
-```
+## Endpoints Principais
 
-## Stack
+### Tenant Management (DEM-005)
 
-- FastAPI + Jinja2 + HTMX (sem build step)
-- SQLAlchemy async com `TenantAwareSessionFactory`
-- Keycloak: role `PLATFORM_ADMIN` para acesso total
+| Método | Rota | Descrição | Role |
+|--------|------|-----------|------|
+| GET | `/admin/health` | Health check | any |
+| GET | `/admin/tenants` | Lista tenants (paginado) | `PLATFORM_ADMIN` |
+| GET | `/admin/tenants/{slug}` | Detalhe de um tenant | `PLATFORM_ADMIN` |
+| POST | `/admin/tenants` | Cria tenant + schema + grupo Keycloak | `PLATFORM_ADMIN` |
+| PATCH | `/admin/tenants/{slug}/status` | Ativa/suspende tenant | `PLATFORM_ADMIN` |
+| GET | `/admin/tenants/{slug}/users` | Lista usuários do tenant (via Keycloak) | `PLATFORM_ADMIN` |
 
-## Tipos de vertical suportados
+### Financeiro (DEM-007)
 
-```sql
-CREATE TYPE tenant_vertical AS ENUM (
-    'estabelecimento_saude',  -- UBS, hospital, clínica
-    'secretaria_saude',       -- secretarias municipais/estaduais
-    'odontologico',           -- FUTURO
-    'veterinario'             -- FUTURO
-);
-```
+| Método | Rota | Descrição | Role |
+|--------|------|-----------|------|
+| GET | `/financeiro/health` | Health check | any |
+| GET | `/financeiro/plans` | Lista planos ativos | `PLATFORM_ADMIN` |
+| POST | `/financeiro/plans` | Cria plano | `PLATFORM_ADMIN` |
+| POST | `/financeiro/contracts` | Cria contrato + 1ª fatura | `PLATFORM_ADMIN` |
+| GET | `/financeiro/contracts/{id}/invoices` | Faturas de um contrato | `PLATFORM_ADMIN` |
+| PATCH | `/financeiro/invoices/{id}/pay` | Marca fatura como paga | `PLATFORM_ADMIN` |
+| GET | `/financeiro/reports/billing` | Relatório mensal | `PLATFORM_ADMIN` |
 
-## Dependências
+---
 
+## Tabelas
+
+### Schema `public` (globais)
+
+| Tabela | Descrição |
+|--------|-----------|
+| `tenants` | Registro de tenants (`id`, `slug`, `name`, `status`, timestamps) |
+| `platform_audit_log` | Auditoria (`actor_id`, `action`, `target_type`, `payload` JSONB) |
+| `plans` | Planos disponíveis (`price_brl` em centavos, `max_users`, `cycle`) |
+| `contracts` | Contratos tenant↔plano (`start_date`, `end_date`, `status`) |
+| `invoices` | Faturas (`amount_brl`, `due_date`, `paid_at`, `status`: pending/paid/overdue) |
+
+### Schema `tenant_{slug}` (por tenant, criado no provisionamento)
+
+| Tabela | Descrição |
+|--------|-----------|
+| `users` | Espelho leve do Keycloak (`keycloak_id`, `email`, `role`) |
+| `knowledge_base` | Base RAG (`content`, `embedding vector(768)`, `source_path`) |
+
+---
+
+## Roles Autorizados
+
+- **`PLATFORM_ADMIN`** — acesso total a todos os endpoints admin e financeiro
+- Sem token → 401; token com role diferente → 403
+
+---
+
+## Stack e Dependências
+
+- FastAPI (APIRouter com prefix `/admin` e `/financeiro`)
+- SQLAlchemy async (`get_engine()` para queries diretas)
+- Keycloak Admin API via `KeycloakAdminClient` (criação de grupos, listagem de usuários)
+- APScheduler: job diário às 03:00 para marcar faturas overdue e suspender tenants inadimplentes
 - [[decisoes/ADR-001-schema-autonomo]]
 - [[decisoes/ADR-002-modulo-vs-servico]]
-- DEM-003: intellicare-core (TenantContext, auth, db)
+- DEM-003: intellicare-core (`TenantContext`, auth, db)
 - DEM-004: Keycloak configurado (realm, clients, roles)
+
+---
 
 ## DEMs relacionadas
 
-- DEM-005: Admin backend (CRUD + provisionamento)
-- DEM-006: Admin frontend (HTMX/Jinja2 dashboard)
-- DEM-007: Finance básico (billing, uso mensal)
+- **DEM-005**: Admin backend (CRUD tenants + provisionamento)
+- **DEM-006**: Admin frontend (HTMX/Jinja2 dashboard)
+- **DEM-007**: Módulo Financeiro (planos, contratos, faturas, job inadimplência)

@@ -11,59 +11,82 @@ tags: [fase-3, cuidado, rag, slm, pgvector]
 
 # Módulo: cuidado
 
-**Responsabilidade:** Cuidado clínico base com busca semântica de protocolos (RAG+SLM).
+**Responsabilidade:** Módulo clínico central — cadastro de pacientes, consultas com evolução SOAP, suporte SLM inline via RAG.
 
 ---
 
-## O que entrega
+## Propósito
 
-- Consulta de protocolos clínicos via busca semântica (pgvector)
-- Síntese de resposta contextualizada via SLM local (OLLAMA)
-- Programas de saúde: DRC, Diabetes, HAS, Câncer
-- **Latência alvo: <300ms por consulta**
+Módulo do `CLINICO`. Gerencia o fluxo clínico: cadastro de pacientes, abertura/encerramento de consultas, registro de evoluções no formato SOAP (Subjective, Objective, Assessment, Plan), e consulta à base de conhecimento via SLM durante o atendimento. Dados de pacientes são isolados no schema do tenant.
 
-## Tabela principal (pgvector)
+---
 
-```sql
-tenant_{slug}.protocols (
-    id          SERIAL PRIMARY KEY,
-    title       TEXT NOT NULL,
-    content     TEXT NOT NULL,
-    program     TEXT,           -- 'drc', 'diabetes', 'has', 'cancer'
-    source      TEXT,
-    embedding   vector(384),    -- pgvector (nomic-embed-text)
-    metadata    JSONB,
-    created_at  TIMESTAMPTZ DEFAULT now()
-);
+## Endpoints Principais
 
-CREATE INDEX ON tenant_{slug}.protocols
-    USING hnsw (embedding vector_cosine_ops)
-    WITH (m = 16, ef_construction = 64);
+| Método | Rota | Descrição | Role |
+|--------|------|-----------|------|
+| GET | `/cuidado/health` | Health check | any |
+| POST | `/cuidado/patients` | Cadastrar paciente | `CLINICO` |
+| GET | `/cuidado/patients` | Busca por nome (full-text search) | `CLINICO` |
+| GET | `/cuidado/patients/{pid}/history` | Timeline de consultas do paciente | `CLINICO` |
+| POST | `/cuidado/encounters` | Abrir consulta (com prioridade) | `CLINICO` |
+| POST | `/cuidado/encounters/{eid}/notes` | Adicionar evolução SOAP | `CLINICO` |
+| POST | `/cuidado/encounters/{eid}/close` | Encerrar consulta | `CLINICO` |
+| POST | `/cuidado/encounters/{eid}/ask` | Pergunta clínica → resposta SLM com fontes | `CLINICO` |
+
+---
+
+## Tabelas (schema `tenant_{slug}`)
+
+| Tabela | Descrição |
+|--------|-----------|
+| `patients` | Cadastro (`full_name`, `cpf` UNIQUE, `birth_date`, `sex`, `phone`, `email`, `address`) |
+| `encounters` | Consultas (`patient_id`, `clinician_id`, `status`: open/closed, `priority`: emergency/urgent/normal/low) |
+| `encounter_notes` | Evoluções SOAP (`subjective`, `objective`, `assessment`, `plan`) |
+
+### Índices relevantes
+
+- `idx_encounters_patient` — busca por paciente + data
+- `idx_notes_encounter` — notas por consulta
+- `idx_patients_name` — full-text search GIN em `full_name` (dicionário `portuguese`)
+
+---
+
+## Fluxo de Consulta com SLM
+
+```
+Clínico faz pergunta no contexto da consulta
+    ↓
+RAG: top-k chunks relevantes da knowledge_base (pgvector)
+    ↓
+SLM (OLLAMA): gera resposta em PT-BR com contexto
+    ↓
+Resposta fundamentada com source_path rastreável
 ```
 
-## Fluxo de consulta
+---
 
-```
-Profissional pergunta
-    ↓
-Embedding da pergunta via OLLAMA (~10ms)
-    ↓
-SELECT FROM protocols ORDER BY embedding <=> $1 LIMIT 5  (~5ms)
-    ↓
-SLM sintetiza resposta com os 5 chunks (~200ms)
-    ↓
-Resposta fundamentada com fonte rastreável
-```
+## Roles Autorizados
 
-## Dependências
+- **`CLINICO`** — acesso a todos os endpoints
+- `PACIENTE` → 403 em qualquer endpoint
 
+---
+
+## Stack e Dependências
+
+- FastAPI (APIRouter com prefix `/cuidado`)
+- SQLAlchemy async via `tenant_session(ctx)`
+- `SLMService` do módulo slm (para endpoint `/ask`)
+- Full-text search PostgreSQL (`to_tsvector`, `plainto_tsquery`, dicionário `portuguese`)
 - [[decisoes/ADR-003-rag-slm-pgvector]]
-- pgvector ativo (DEM-002)
-- SLM OLLAMA configurado (DEM-002)
+- pgvector + OLLAMA (DEM-009, DEM-010)
 - intellicare-core/vector/ helpers (DEM-003)
+
+---
 
 ## DEMs relacionadas
 
-- DEM-013: Cuidado backend (busca semântica + síntese)
-- DEM-014: Programas de saúde indexados (DRC, Diabetes, HAS, Câncer)
-- DEM-015: Frontend clínico MVP
+- **DEM-013**: Cuidado backend (pacientes, consultas SOAP, suporte SLM)
+- **DEM-014**: Programas de saúde (matrículas, cobertura)
+- **DEM-015**: Frontend clínico MVP
