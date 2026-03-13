@@ -1,487 +1,620 @@
----
-dem: DEM-006
-titulo: Admin Frontend — Especificação Técnica
-tipo: TECNICA
-status: aprovado
-criado: 2026-03-13
+# DEM-006 — Admin Frontend: Especificação Técnica (REVISADA)
+
+> **Revisão 2026-03-13**: Stack alterada de Blazor WASM → React + Vite + Mantine UI
+> para consistência com DEM-015 (ClinicoUI) e alinhamento com a stack Python do projeto.
+
 ---
 
-# DEM-006 · 02 — Especificação Técnica
-
-## Estrutura de Projeto
+## 1. Estrutura de Arquivos
 
 ```
-frontend/
-└── AdminUI/                          # Projeto Blazor WASM
-    ├── AdminUI.csproj
-    ├── Program.cs
-    ├── appsettings.json              # OIDC config (lida em runtime)
-    ├── wwwroot/
-    │   └── index.html
-    ├── Pages/
-    │   ├── Dashboard.razor
-    │   ├── TenantList.razor
-    │   ├── TenantForm.razor
-    │   └── TenantDetail.razor
-    ├── Components/
-    │   ├── StatusBadge.razor
-    │   ├── ConfirmModal.razor
-    │   └── ToastService.cs
-    ├── Services/
-    │   ├── TenantApiService.cs       # wrapper HttpClient → /admin/tenants
-    │   └── AuthService.cs
-    └── Models/
-        ├── TenantDto.cs
-        └── PagedResult.cs
-
-# Após build, `publish/wwwroot/` é copiado para intellicare_core/static/admin-ui/
-# e servido pelo FastAPI (ver BLOCO 8)
+frontend/AdminUI/
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── index.html
+├── src/
+│   ├── main.tsx
+│   ├── App.tsx
+│   ├── auth/
+│   │   ├── AuthProvider.tsx
+│   │   └── TokenSync.tsx
+│   ├── api/
+│   │   └── client.ts
+│   ├── hooks/
+│   │   └── useTenants.ts
+│   ├── components/
+│   │   └── StatusBadge.tsx
+│   └── pages/
+│       ├── TenantList.tsx
+│       └── TenantForm.tsx
+tools/scripts/
+└── build_admin_ui.sh
 ```
 
 ---
 
-## BLOCO 1 — `frontend/AdminUI/AdminUI.csproj`
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly"
-                      Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication"
-                      Version="9.0.0" />
-    <PackageReference Include="MudBlazor"
-                      Version="7.*" />
-  </ItemGroup>
-</Project>
-```
-
----
-
-## BLOCO 2 — `frontend/AdminUI/Program.cs`
-
-```csharp
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using MudBlazor.Services;
-using AdminUI;
-using AdminUI.Services;
-
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
-builder.RootComponents.Add<App>("#app");
-builder.RootComponents.Add<HeadOutlet>("head::after");
-
-// OIDC — Keycloak
-builder.Services.AddOidcAuthentication(options =>
-{
-    builder.Configuration.Bind("Oidc", options.ProviderOptions);
-    options.ProviderOptions.ResponseType = "code";
-    options.ProviderOptions.DefaultScopes.Add("openid");
-    options.ProviderOptions.DefaultScopes.Add("profile");
-    options.ProviderOptions.DefaultScopes.Add("email");
-});
-
-// HttpClient autenticado → aponta para FastAPI
-builder.Services.AddHttpClient<TenantApiService>(client =>
-{
-    client.BaseAddress = new Uri(
-        builder.Configuration["ApiBaseUrl"] ?? "http://localhost:8000/"
-    );
-}).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-
-// MudBlazor
-builder.Services.AddMudServices();
-
-await builder.Build().RunAsync();
-```
-
----
-
-## BLOCO 3 — `frontend/AdminUI/appsettings.json`
+## 2. package.json
 
 ```json
 {
-  "ApiBaseUrl": "http://localhost:8000/",
-  "Oidc": {
-    "Authority":    "http://localhost:8080/realms/intellicare",
-    "ClientId":     "intellicare-frontend",
-    "ResponseType": "code"
+  "name": "admin-ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev":     "vite",
+    "build":   "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mantine/core":           "^7.10.0",
+    "@mantine/hooks":          "^7.10.0",
+    "@mantine/notifications":  "^7.10.0",
+    "@mantine/dates":          "^7.10.0",
+    "@tabler/icons-react":     "^3.5.0",
+    "@tanstack/react-query":   "^5.40.0",
+    "axios":                   "^1.7.0",
+    "oidc-client-ts":          "^3.0.1",
+    "react":                   "^18.3.0",
+    "react-dom":               "^18.3.0",
+    "react-oidc-context":      "^3.1.0",
+    "react-router-dom":        "^6.23.0"
+  },
+  "devDependencies": {
+    "@types/react":            "^18.3.0",
+    "@types/react-dom":        "^18.3.0",
+    "@vitejs/plugin-react":    "^4.3.0",
+    "typescript":              "^5.4.0",
+    "vite":                    "^5.3.0"
   }
 }
 ```
 
-> **Em produção**: substitua `localhost` pelos hostnames reais e configure via variável de ambiente
-> ou `appsettings.Production.json` (não commitar segredos).
-
 ---
 
-## BLOCO 4 — `frontend/AdminUI/Models/TenantDto.cs`
+## 3. vite.config.ts
 
-```csharp
-namespace AdminUI.Models;
+```typescript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-public record TenantDto(
-    Guid   Id,
-    string Slug,
-    string Name,
-    string Status,
-    DateTime CreatedAt,
-    DateTime UpdatedAt
-);
-
-public record PagedResult<T>(
-    List<T> Items,
-    int     Total,
-    int     Page,
-    int     Size
-);
-
-public record TenantCreateRequest(
-    string Slug,
-    string Name,
-    string GestorEmail
-);
-
-public record TenantStatusUpdate(string Status);
-
-public record TenantUserDto(
-    string       KeycloakId,
-    string       Username,
-    string       Email,
-    List<string> Roles,
-    bool         Enabled
-);
+export default defineConfig({
+  plugins: [react()],
+  base: '/admin-ui/',
+  build: {
+    outDir: '../../intellicare_core/static/admin-ui',
+    emptyOutDir: true,
+  },
+  server: {
+    proxy: {
+      '/admin':  'http://localhost:8000',
+      '/health': 'http://localhost:8000',
+    },
+  },
+})
 ```
 
 ---
 
-## BLOCO 5 — `frontend/AdminUI/Services/TenantApiService.cs`
+## 4. Auth Provider
 
-```csharp
-using System.Net.Http.Json;
-using AdminUI.Models;
+**`src/auth/AuthProvider.tsx`** — idêntico ao ClinicoUI, client_id diferente:
 
-namespace AdminUI.Services;
+```tsx
+import React from 'react'
+import { AuthProvider as OidcAuthProvider, AuthProviderProps } from 'react-oidc-context'
 
-public class TenantApiService(HttpClient http)
-{
-    public async Task<PagedResult<TenantDto>> ListTenantsAsync(int page = 1, int size = 20)
-    {
-        var result = await http.GetFromJsonAsync<PagedResult<TenantDto>>(
-            $"admin/tenants?page={page}&size={size}"
-        );
-        return result ?? new PagedResult<TenantDto>([], 0, page, size);
+const oidcConfig: AuthProviderProps = {
+  authority:    import.meta.env.VITE_KEYCLOAK_URL + '/realms/intellicare',
+  client_id:    'admin-ui',
+  redirect_uri: window.location.origin + '/admin-ui/callback',
+  post_logout_redirect_uri: window.location.origin + '/admin-ui/',
+  scope:        'openid profile email',
+  userStore:    undefined,    // tokens apenas em memória
+  onSigninCallback: () => {
+    window.history.replaceState({}, document.title, window.location.pathname)
+  },
+}
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  return <OidcAuthProvider {...oidcConfig}>{children}</OidcAuthProvider>
+}
+```
+
+**`src/auth/TokenSync.tsx`**
+
+```tsx
+import { useEffect } from 'react'
+import { useAuth } from 'react-oidc-context'
+
+export function TokenSync() {
+  const auth = useAuth()
+  useEffect(() => {
+    if (auth.user?.access_token) {
+      sessionStorage.setItem('oidc.access_token', auth.user.access_token)
+    } else {
+      sessionStorage.removeItem('oidc.access_token')
     }
-
-    public async Task<TenantDto?> GetTenantAsync(string slug)
-        => await http.GetFromJsonAsync<TenantDto>($"admin/tenants/{slug}");
-
-    public async Task<TenantDto?> CreateTenantAsync(TenantCreateRequest request)
-    {
-        var resp = await http.PostAsJsonAsync("admin/tenants", request);
-        resp.EnsureSuccessStatusCode();
-        return await resp.Content.ReadFromJsonAsync<TenantDto>();
-    }
-
-    public async Task<TenantDto?> UpdateStatusAsync(string slug, string status)
-    {
-        var resp = await http.PatchAsJsonAsync(
-            $"admin/tenants/{slug}/status",
-            new TenantStatusUpdate(status)
-        );
-        resp.EnsureSuccessStatusCode();
-        return await resp.Content.ReadFromJsonAsync<TenantDto>();
-    }
-
-    public async Task<List<TenantUserDto>> GetUsersAsync(string slug)
-    {
-        var resp = await http.GetFromJsonAsync<TenantUsersResponse>($"admin/tenants/{slug}/users");
-        return resp?.Users ?? [];
-    }
-
-    private record TenantUsersResponse(string TenantSlug, List<TenantUserDto> Users, int Total);
+  }, [auth.user?.access_token])
+  return null
 }
 ```
 
 ---
 
-## BLOCO 6 — `frontend/AdminUI/Pages/TenantList.razor`
+## 5. Axios Client
 
-```razor
-@page "/tenants"
-@attribute [Authorize(Roles = "PLATFORM_ADMIN")]
-@inject TenantApiService Api
-@inject NavigationManager Nav
-@inject ISnackbar Snackbar
+**`src/api/client.ts`**
 
-<MudText Typo="Typo.h5" Class="mb-4">Tenants</MudText>
+```typescript
+import axios, { InternalAxiosRequestConfig } from 'axios'
 
-<MudButton Variant="Variant.Filled" Color="Color.Primary"
-           OnClick='() => Nav.NavigateTo("/tenants/new")'
-           Class="mb-4">
-    Novo Tenant
-</MudButton>
+const apiClient = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL ?? '',
+  timeout: 30_000,
+})
 
-@if (_loading)
-{
-    <MudSkeleton SkeletonType="SkeletonType.Rectangle" Height="300px" />
-}
-else
-{
-    <MudTable Items="_tenants" Hover="true" Dense="true" OnRowClick="OnRowClick">
-        <HeaderContent>
-            <MudTh>Slug</MudTh>
-            <MudTh>Nome</MudTh>
-            <MudTh>Status</MudTh>
-            <MudTh>Criado em</MudTh>
-            <MudTh>Ações</MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd>@context.Slug</MudTd>
-            <MudTd>@context.Name</MudTd>
-            <MudTd><StatusBadge Status="@context.Status" /></MudTd>
-            <MudTd>@context.CreatedAt.ToString("dd/MM/yyyy")</MudTd>
-            <MudTd>
-                @if (context.Status == "active")
-                {
-                    <MudButton Size="Size.Small" Color="Color.Warning"
-                               OnClick="() => ToggleStatus(context, \"suspended\")">
-                        Suspender
-                    </MudButton>
-                }
-                else if (context.Status == "suspended")
-                {
-                    <MudButton Size="Size.Small" Color="Color.Success"
-                               OnClick="() => ToggleStatus(context, \"active\")">
-                        Reativar
-                    </MudButton>
-                }
-            </MudTd>
-        </RowTemplate>
-    </MudTable>
+apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+  const token = sessionStorage.getItem('oidc.access_token')
+  if (token) config.headers.Authorization = `Bearer ${token}`
+  return config
+})
 
-    <MudPagination Count="_totalPages" @bind-Selected="_currentPage"
-                   Class="mt-4" />
+export default apiClient
+```
+
+---
+
+## 6. Types e Hook
+
+**`src/hooks/useTenants.ts`**
+
+```typescript
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import apiClient from '../api/client'
+
+export interface Tenant {
+  id: string
+  name: string
+  slug: string
+  status: 'active' | 'suspended' | 'trial'
+  plan: string
+  created_at: string
 }
 
-@code {
-    private List<TenantDto> _tenants = [];
-    private bool _loading = true;
-    private int _currentPage = 1;
-    private int _totalPages = 1;
-    private const int PageSize = 20;
+export interface TenantCreateRequest {
+  name: string
+  slug: string
+  plan: string
+}
 
-    protected override async Task OnInitializedAsync() => await LoadAsync();
+export interface PagedResult<T> {
+  items: T[]
+  total: number
+  page: number
+  size: number
+}
 
-    private async Task LoadAsync()
-    {
-        _loading = true;
-        var result = await Api.ListTenantsAsync(_currentPage, PageSize);
-        _tenants    = result.Items;
-        _totalPages = (int)Math.Ceiling((double)result.Total / PageSize);
-        _loading    = false;
-    }
+export function useTenants(page = 1, size = 20) {
+  return useQuery<PagedResult<Tenant>>({
+    queryKey: ['tenants', page, size],
+    queryFn: async () => {
+      const { data } = await apiClient.get('/admin/tenants', {
+        params: { page, size },
+      })
+      return data
+    },
+  })
+}
 
-    private void OnRowClick(TableRowClickEventArgs<TenantDto> args)
-        => Nav.NavigateTo($"/tenants/{args.Item.Slug}");
+export function useCreateTenant() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (body: TenantCreateRequest) =>
+      apiClient.post('/admin/tenants', body).then(r => r.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenants'] }),
+  })
+}
 
-    private async Task ToggleStatus(TenantDto tenant, string newStatus)
-    {
-        await Api.UpdateStatusAsync(tenant.Slug, newStatus);
-        Snackbar.Add($"Tenant '{tenant.Name}' atualizado para {newStatus}", Severity.Success);
-        await LoadAsync();
-    }
+export function useUpdateTenantStatus() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) =>
+      apiClient.patch(`/admin/tenants/${id}/status`, { status }).then(r => r.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenants'] }),
+  })
+}
+
+export function useTenantUsers(tenantId: string) {
+  return useQuery({
+    queryKey: ['tenant-users', tenantId],
+    queryFn: async () => {
+      const { data } = await apiClient.get(`/admin/tenants/${tenantId}/users`)
+      return data
+    },
+    enabled: !!tenantId,
+  })
 }
 ```
 
 ---
 
-## BLOCO 7 — `frontend/AdminUI/Pages/TenantForm.razor`
+## 7. Componente StatusBadge
 
-```razor
-@page "/tenants/new"
-@attribute [Authorize(Roles = "PLATFORM_ADMIN")]
-@inject TenantApiService Api
-@inject NavigationManager Nav
-@inject ISnackbar Snackbar
-@using System.Text.RegularExpressions
+**`src/components/StatusBadge.tsx`**
 
-<MudText Typo="Typo.h5" Class="mb-4">Novo Tenant</MudText>
+```tsx
+import { Badge } from '@mantine/core'
 
-<MudForm @ref="_form" @bind-IsValid="_isValid">
-    <MudTextField @bind-Value="_name"
-                  Label="Nome"
-                  Required="true"
-                  RequiredError="Nome é obrigatório"
-                  OnInput="OnNameInput"
-                  Class="mb-3" />
+const colorMap: Record<string, string> = {
+  active:    'green',
+  suspended: 'red',
+  trial:     'yellow',
+}
 
-    <MudTextField @bind-Value="_slug"
-                  Label="Slug (gerado automaticamente)"
-                  Required="true"
-                  Validation="@(new Func<string, string?>(ValidateSlug))"
-                  Class="mb-3" />
-
-    <MudTextField @bind-Value="_gestorEmail"
-                  Label="Email do Gestor"
-                  Required="true"
-                  InputType="InputType.Email"
-                  Class="mb-3" />
-
-    <MudButton Variant="Variant.Filled" Color="Color.Primary"
-               Disabled="!_isValid || _submitting"
-               OnClick="Submit">
-        @(_submitting ? "Criando..." : "Criar Tenant")
-    </MudButton>
-    <MudButton Variant="Variant.Text" OnClick='() => Nav.NavigateTo("/tenants")'
-               Class="ml-2">
-        Cancelar
-    </MudButton>
-</MudForm>
-
-@code {
-    private MudForm _form = null!;
-    private string _name        = "";
-    private string _slug        = "";
-    private string _gestorEmail = "";
-    private bool   _isValid;
-    private bool   _submitting;
-
-    private static readonly Regex SlugRegex = new(@"^[a-z0-9_]{3,30}$");
-
-    private void OnNameInput()
-    {
-        _slug = Regex.Replace(_name.ToLowerInvariant().Trim(), @"[^a-z0-9]+", "_")
-                     .Trim('_');
-        if (_slug.Length > 30) _slug = _slug[..30];
-    }
-
-    private string? ValidateSlug(string v)
-        => SlugRegex.IsMatch(v) ? null : "Slug: 3-30 chars [a-z0-9_]";
-
-    private async Task Submit()
-    {
-        await _form.Validate();
-        if (!_isValid) return;
-
-        _submitting = true;
-        try
-        {
-            await Api.CreateTenantAsync(new(_slug, _name, _gestorEmail));
-            Snackbar.Add($"Tenant '{_name}' criado com sucesso!", Severity.Success);
-            Nav.NavigateTo("/tenants");
-        }
-        catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.Conflict)
-        {
-            Snackbar.Add($"Slug '{_slug}' já existe. Escolha outro.", Severity.Error);
-        }
-        catch (Exception ex)
-        {
-            Snackbar.Add($"Erro: {ex.Message}", Severity.Error);
-        }
-        finally { _submitting = false; }
-    }
+export function StatusBadge({ status }: { status: string }) {
+  return (
+    <Badge color={colorMap[status] ?? 'gray'} variant="light">
+      {status}
+    </Badge>
+  )
 }
 ```
 
 ---
 
-## BLOCO 8 — Integração com FastAPI (`intellicare_core/main.py` trecho)
+## 8. Página TenantList
 
-Após `dotnet publish` do projeto Blazor, copiar `wwwroot/` para `intellicare_core/static/admin-ui/`.
-O FastAPI serve como arquivos estáticos:
+**`src/pages/TenantList.tsx`**
 
-```python
-from fastapi.staticfiles import StaticFiles
-import pathlib
+```tsx
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import {
+  Title, Button, Group, Table, Text, Loader, Center,
+  ActionIcon, Tooltip, Stack, Pagination,
+} from '@mantine/core'
+import { IconPlus, IconEye, IconPlayerPause, IconPlayerPlay } from '@tabler/icons-react'
+import { useTenants, useUpdateTenantStatus } from '../hooks/useTenants'
+import { StatusBadge } from '../components/StatusBadge'
+import { notifications } from '@mantine/notifications'
 
-STATIC_DIR = pathlib.Path(__file__).parent / "static" / "admin-ui"
+export function TenantList() {
+  const [page, setPage] = useState(1)
+  const { data, isLoading } = useTenants(page)
+  const updateStatus = useUpdateTenantStatus()
+  const navigate = useNavigate()
 
-if STATIC_DIR.exists():
-    app.mount(
-        "/admin-ui",
-        StaticFiles(directory=str(STATIC_DIR), html=True),
-        name="admin-ui",
-    )
+  const handleToggle = async (id: string, current: string) => {
+    const next = current === 'active' ? 'suspended' : 'active'
+    try {
+      await updateStatus.mutateAsync({ id, status: next })
+      notifications.show({
+        title: 'Status atualizado',
+        message: `Tenant ${next === 'active' ? 'reativado' : 'suspenso'} com sucesso.`,
+        color: next === 'active' ? 'green' : 'orange',
+      })
+    } catch {
+      notifications.show({ title: 'Erro', message: 'Falha ao atualizar status.', color: 'red' })
+    }
+  }
+
+  if (isLoading) return <Center><Loader /></Center>
+
+  const totalPages = data ? Math.ceil(data.total / 20) : 1
+
+  return (
+    <Stack>
+      <Group justify="space-between">
+        <Title order={2}>Tenants</Title>
+        <Button leftSection={<IconPlus size={16} />} onClick={() => navigate('/tenants/new')}>
+          Novo Tenant
+        </Button>
+      </Group>
+
+      <Table highlightOnHover striped withTableBorder>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>Nome</Table.Th>
+            <Table.Th>Slug</Table.Th>
+            <Table.Th>Plano</Table.Th>
+            <Table.Th>Status</Table.Th>
+            <Table.Th>Criado em</Table.Th>
+            <Table.Th>Ações</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>
+          {data?.items.map(t => (
+            <Table.Tr key={t.id}>
+              <Table.Td>{t.name}</Table.Td>
+              <Table.Td><Text size="sm" c="dimmed" ff="monospace">{t.slug}</Text></Table.Td>
+              <Table.Td>{t.plan}</Table.Td>
+              <Table.Td><StatusBadge status={t.status} /></Table.Td>
+              <Table.Td>{new Date(t.created_at).toLocaleDateString('pt-BR')}</Table.Td>
+              <Table.Td>
+                <Group gap="xs">
+                  <Tooltip label="Ver usuários">
+                    <ActionIcon variant="subtle" onClick={() => navigate(`/tenants/${t.id}/users`)}>
+                      <IconEye size={16} />
+                    </ActionIcon>
+                  </Tooltip>
+                  <Tooltip label={t.status === 'active' ? 'Suspender' : 'Reativar'}>
+                    <ActionIcon
+                      variant="subtle"
+                      color={t.status === 'active' ? 'orange' : 'green'}
+                      onClick={() => handleToggle(t.id, t.status)}
+                      loading={updateStatus.isPending}
+                    >
+                      {t.status === 'active'
+                        ? <IconPlayerPause size={16} />
+                        : <IconPlayerPlay size={16} />}
+                    </ActionIcon>
+                  </Tooltip>
+                </Group>
+              </Table.Td>
+            </Table.Tr>
+          ))}
+        </Table.Tbody>
+      </Table>
+
+      {totalPages > 1 && (
+        <Pagination total={totalPages} value={page} onChange={setPage} />
+      )}
+    </Stack>
+  )
+}
 ```
 
-Script de build/copy (adicionar ao `Makefile` ou `tools/scripts/build_frontend.sh`):
+---
+
+## 9. Página TenantForm
+
+**`src/pages/TenantForm.tsx`**
+
+```tsx
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import {
+  Title, TextInput, Select, Button, Stack, Group, Paper, Text,
+} from '@mantine/core'
+import { useForm } from '@mantine/form'
+import { notifications } from '@mantine/notifications'
+import { useCreateTenant } from '../hooks/useTenants'
+
+export function TenantForm() {
+  const navigate = useNavigate()
+  const createTenant = useCreateTenant()
+
+  const form = useForm({
+    initialValues: { name: '', slug: '', plan: 'basic' },
+    validate: {
+      name: v => v.length < 3 ? 'Nome deve ter ao menos 3 caracteres' : null,
+      slug: v => /^[a-z0-9-]+$/.test(v) ? null : 'Slug: apenas letras minúsculas, números e hífens',
+      plan: v => v ? null : 'Selecione um plano',
+    },
+  })
+
+  // auto-gera slug a partir do nome
+  const handleNameChange = (name: string) => {
+    form.setFieldValue('name', name)
+    const slug = name
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+    form.setFieldValue('slug', slug)
+  }
+
+  const handleSubmit = async (values: typeof form.values) => {
+    try {
+      await createTenant.mutateAsync(values)
+      notifications.show({
+        title: 'Tenant criado',
+        message: `${values.name} criado com sucesso.`,
+        color: 'green',
+      })
+      navigate('/')
+    } catch (err: unknown) {
+      const msg = (err as { response?: { data?: { detail?: string } } })
+        ?.response?.data?.detail ?? 'Erro ao criar tenant.'
+      notifications.show({ title: 'Erro', message: msg, color: 'red' })
+    }
+  }
+
+  return (
+    <Stack maw={480}>
+      <Title order={2}>Novo Tenant</Title>
+      <Paper withBorder p="lg" radius="md">
+        <form onSubmit={form.onSubmit(handleSubmit)}>
+          <Stack>
+            <TextInput
+              label="Nome"
+              placeholder="Clínica São Lucas"
+              required
+              {...form.getInputProps('name')}
+              onChange={e => handleNameChange(e.currentTarget.value)}
+            />
+            <TextInput
+              label="Slug"
+              placeholder="clinica-sao-lucas"
+              description="Gerado automaticamente. Identificador único e imutável."
+              required
+              {...form.getInputProps('slug')}
+            />
+            <Select
+              label="Plano"
+              data={[
+                { value: 'basic',      label: 'Basic' },
+                { value: 'pro',        label: 'Pro' },
+                { value: 'enterprise', label: 'Enterprise' },
+              ]}
+              required
+              {...form.getInputProps('plan')}
+            />
+            <Group justify="flex-end">
+              <Button variant="subtle" onClick={() => navigate('/')}>Cancelar</Button>
+              <Button type="submit" loading={createTenant.isPending}>Criar Tenant</Button>
+            </Group>
+          </Stack>
+        </form>
+      </Paper>
+    </Stack>
+  )
+}
+```
+
+---
+
+## 10. App.tsx e main.tsx
+
+**`src/App.tsx`**
+
+```tsx
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { MantineProvider, AppShell, Title, Group, Button, Text } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useAuth } from 'react-oidc-context'
+import { AuthProvider } from './auth/AuthProvider'
+import { TokenSync } from './auth/TokenSync'
+import { TenantList } from './pages/TenantList'
+import { TenantForm } from './pages/TenantForm'
+import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
+
+const queryClient = new QueryClient()
+
+function AppRoutes() {
+  const auth = useAuth()
+
+  if (auth.isLoading) return <Text p="md">Autenticando...</Text>
+  if (!auth.isAuthenticated) {
+    auth.signinRedirect()
+    return null
+  }
+
+  return (
+    <>
+      <TokenSync />
+      <AppShell header={{ height: 56 }} padding="md">
+        <AppShell.Header>
+          <Group h="100%" px="md" justify="space-between">
+            <Title order={4}>IntelliCare — Admin</Title>
+            <Group>
+              <Text size="sm" c="dimmed">{auth.user?.profile.email}</Text>
+              <Button size="xs" variant="subtle" onClick={() => auth.signoutRedirect()}>
+                Sair
+              </Button>
+            </Group>
+          </Group>
+        </AppShell.Header>
+        <AppShell.Main>
+          <Routes>
+            <Route path="/"                element={<TenantList />} />
+            <Route path="/tenants/new"     element={<TenantForm />} />
+            <Route path="*"                element={<Navigate to="/" />} />
+          </Routes>
+        </AppShell.Main>
+      </AppShell>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <MantineProvider>
+          <Notifications />
+          <BrowserRouter basename="/admin-ui">
+            <AppRoutes />
+          </BrowserRouter>
+        </MantineProvider>
+      </QueryClientProvider>
+    </AuthProvider>
+  )
+}
+```
+
+---
+
+## 11. Script de Build
+
+**`tools/scripts/build_admin_ui.sh`**
 
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "=== Build Admin UI ==="
-cd frontend/AdminUI
-dotnet publish -c Release -o /tmp/admin-ui-publish
+UI_DIR="$(git rev-parse --show-toplevel)/frontend/AdminUI"
+OUT_DIR="$(git rev-parse --show-toplevel)/intellicare_core/static/admin-ui"
 
-echo "=== Copiando wwwroot ==="
-rm -rf ../../intellicare_core/static/admin-ui
-cp -r /tmp/admin-ui-publish/wwwroot ../../intellicare_core/static/admin-ui
+echo "==> Instalando dependências..."
+cd "$UI_DIR"
+npm ci
 
-echo "=== Build concluído ==="
+echo "==> Gerando build de produção..."
+npm run build
+
+echo "==> Artefato em: $OUT_DIR"
+ls -lh "$OUT_DIR"
 ```
 
 ---
 
-## BLOCO 9 — Componente `StatusBadge.razor`
+## 12. Keycloak — Client `admin-ui`
 
-```razor
-@* Components/StatusBadge.razor *@
+Adicionar em `tools/scripts/setup_keycloak.py`:
 
-<MudChip T="string"
-         Color="@GetColor()"
-         Size="Size.Small"
-         Label="true">
-    @Status
-</MudChip>
-
-@code {
-    [Parameter] public string Status { get; set; } = "";
-
-    private Color GetColor() => Status switch
-    {
-        "active"     => Color.Success,
-        "suspended"  => Color.Warning,
-        "terminated" => Color.Default,
-        _            => Color.Default,
-    };
-}
+```python
+ensure_client(admin, realm="intellicare", client_id="admin-ui", config={
+    "publicClient": True,
+    "redirectUris": [
+        "http://localhost:5174/*",
+        "http://localhost:8000/admin-ui/*"
+    ],
+    "webOrigins": ["http://localhost:5174", "http://localhost:8000"],
+    "standardFlowEnabled": True,
+    "directAccessGrantsEnabled": False,
+})
 ```
 
 ---
 
-## BLOCO 10 — Commit
+## 13. Mount no FastAPI
 
-```bash
-git add frontend/AdminUI/ \
-        intellicare_core/static/ \
-        tools/scripts/build_frontend.sh \
-        docs/demandas/DEM-006_ADMIN_FRONTEND/
+Em `intellicare_core/main.py`:
 
-git commit -m "DEM-006: Admin Frontend Blazor WASM - OIDC Keycloak, CRUD tenants, MudBlazor"
-git push origin main
+```python
+app.mount(
+    "/admin-ui",
+    StaticFiles(directory=str(STATIC_ROOT / "admin-ui"), html=True),
+    name="admin-ui",
+)
 ```
 
 ---
 
-## Critérios de Aceite (técnicos)
+## 14. Variáveis de Ambiente (`.env.local`)
 
-| # | Critério | Como verificar |
-|---|---|---|
-| AC-1 | `/admin-ui/` redireciona para Keycloak se não autenticado | Abrir em navegação anônima |
-| AC-2 | Login com `platform-admin` → Dashboard com contadores | Login flow completo |
-| AC-3 | Login com `gestor-dev` → rota bloqueada | `[Authorize(Roles="PLATFORM_ADMIN")]` |
-| AC-4 | Criar tenant via formulário → POST bem-sucedido | Network tab → POST `/admin/tenants` 201 |
-| AC-5 | Slug gerado a partir do nome | Digitar "Clínica São José" → slug `clinica_sao_jose` |
-| AC-6 | Slug inválido → erro inline antes de enviar | Digitar "AB" → erro exibido |
-| AC-7 | Suspender → badge muda para amarelo sem reload | Clicar "Suspender" → tabela atualizada |
-| AC-8 | `dotnet publish` → `wwwroot/` copiado → FastAPI serve `/admin-ui` | `curl http://localhost:8000/admin-ui/` → HTML |
-| AC-9 | Token renovado automaticamente | Aguardar 5min (TTL do token) → ação ainda funciona |
+```
+VITE_KEYCLOAK_URL=http://localhost:8080
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+> Usar porta `5174` no dev para não conflitar com ClinicoUI (`5173`).
+
+---
+
+## 15. Checklist de Aceite Técnico
+
+- [ ] `npm run build` sem erros TypeScript
+- [ ] Login OIDC redireciona para Keycloak com `client_id=admin-ui`
+- [ ] Apenas usuários com role `PLATFORM_ADMIN` conseguem acessar (`403` para outros roles)
+- [ ] Lista de tenants carrega com paginação
+- [ ] Formulário gera slug automaticamente a partir do nome
+- [ ] Suspender/reativar tenant atualiza badge sem reload da página
+- [ ] `sessionStorage` tem token; `localStorage` vazio
+- [ ] Build copiado para `intellicare_core/static/admin-ui/`
+- [ ] FastAPI serve `GET /admin-ui/` com status 200
