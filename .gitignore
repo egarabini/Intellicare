@@ -1,0 +1,62 @@
+# ============================================================
+# IntelliCare V3 — .gitignore
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# Node / Frontend
+node_modules/
+dist/
+.next/
+.nuxt/
+.cache/
+*.local
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+keycloak_client_secrets.json
+secrets/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Docker
+*.override.yml
+
+# Alembic
+alembic/versions/*.pyc
+
+# Generated docs
+docs/generated/*.md
+!docs/generated/.gitkeep
+
+# Worktrees
+.worktrees/
