@@ -26,6 +26,39 @@ triad central de IA clínica.
 
 SDK compartilhado: `packages/intellicare-core/`
 
+## Como Subir o Ambiente (Desenvolvimento)
+
+**Pré-requisitos:** Docker Desktop rodando, Python 3.11+
+
+```bash
+# 1. Copiar variáveis de ambiente
+Copy-Item infra\.env.example infra\.env   # PowerShell
+# ou: cp infra/.env.example infra/.env   # bash
+
+# 2. Subir infraestrutura
+docker compose --env-file infra/.env -f infra/docker-compose.yml up -d
+
+# 3. Aguardar serviços ficarem healthy (~60s no primeiro boot)
+docker compose -f infra/docker-compose.yml ps
+
+# 4. Baixar modelo de embedding OLLAMA (primeira vez, ~270MB)
+docker exec intellicare-ollama ollama pull nomic-embed-text
+
+# 5. Indexar vault no pgvector
+pip install -r tools/scripts/requirements.txt
+python tools/scripts/ingest_docs.py --tenant tenant_dev
+
+# 6. Verificar tudo
+bash tools/scripts/smoke_test.sh
+```
+
+Serviços disponíveis após `docker compose up`:
+- PostgreSQL: `localhost:5432`
+- Redis: `localhost:6379`
+- Keycloak: `http://localhost:8080` (admin/admin_dev_password)
+- OLLAMA: `http://localhost:11434`
+- Traefik dashboard: `http://localhost:8090`
+
 ---
 
 ## 5 Regras que Nunca Quebram

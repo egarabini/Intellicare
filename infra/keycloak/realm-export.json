@@ -1,0 +1,45 @@
+{
+  "realm": "intellicare",
+  "displayName": "IntelliCare",
+  "enabled": true,
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "bruteForceProtected": true,
+  "accessTokenLifespan": 900,
+  "ssoSessionMaxLifespan": 28800,
+  "roles": {
+    "realm": [
+      { "name": "PLATFORM_ADMIN", "description": "Administrador da plataforma IntelliCare" },
+      { "name": "TENANT_GESTOR", "description": "Gestor de um tenant especifico" },
+      { "name": "CLINICO", "description": "Profissional de saude" },
+      { "name": "PACIENTE", "description": "Paciente" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "intellicare-service",
+      "name": "IntelliCare Service",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "redirectUris": ["http://localhost/*", "http://localhost:8010/*"],
+      "webOrigins": ["http://localhost:8010"]
+    }
+  ],
+  "users": [
+    {
+      "username": "platform-admin",
+      "email": "admin@intellicare.local",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials": [{ "type": "password", "value": "admin123", "temporary": false }],
+      "realmRoles": ["PLATFORM_ADMIN"]
+    }
+  ]
+}
