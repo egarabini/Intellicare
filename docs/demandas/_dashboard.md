@@ -1,77 +1,64 @@
----
-tipo: dashboard
-titulo: Dashboard de Demandas
-atualizado: 2026-03-13
----
+# IntelliCare V3 — Dashboard de Demandas
 
-# Dashboard de Demandas — IntelliCare V3
-
-> Abra no Obsidian com o plugin Dataview ativado para ver os dados dinâmicos.
-> No GitHub, as queries aparecem como blocos de código (comportamento esperado).
+> Atualizado em: 2026-03-13
+> Arquiteto: Eduardo (ARQUITETO) | Planejador: Claude (PLANEJADOR)
 
 ---
 
-## Em Execução
+## Status Geral
 
-```dataview
-TABLE fase, modulo, dev, criado AS "Criado"
-FROM "demandas"
-WHERE tipo = "especificacao-funcional" AND status = "em-execucao"
-SORT fase ASC
-```
-
----
-
-## Aprovadas (aguardando execução)
-
-```dataview
-TABLE fase, sprint, modulo
-FROM "demandas"
-WHERE tipo = "especificacao-funcional" AND status = "aprovado"
-SORT fase ASC
-```
+| Fase | DEMs | 01_FUNCIONAL | 02_TECNICA | 03-05 Dev |
+|------|------|:---:|:---:|:---:|
+| Fase 0 — Fundação | 001-003 | ✅ | ✅ | ⏳ |
+| Fase 1 — Core | 004-009 | ✅ | ✅ | ⏳ |
+| Fase 2 — Inteligência | 010-011 | ✅ | ✅ | ⏳ |
+| Fase 3 — Frontends | 012-015 | ✅ | ✅ | ⏳ |
 
 ---
 
-## Concluídas
+## Detalhamento por DEM
 
-```dataview
-TABLE fase, modulo, concluido AS "Concluído"
-FROM "demandas"
-WHERE tipo = "finalizacao"
-SORT concluido DESC
-```
+| DEM | Nome | 01_FUNCIONAL | 02_TECNICA | Commit | Observações |
+|-----|------|:---:|:---:|--------|-------------|
+| DEM-001 | Estrutura Base do Repositório | ✅ | ✅ | — | ADR-001/002 definidos |
+| DEM-002 | Infraestrutura Docker + PostgreSQL | ✅ | ✅ | — | pgvector, OLLAMA |
+| DEM-003 | Core FastAPI + TenantContext | ✅ | ✅ | — | BaseModule ABC |
+| DEM-004 | Keycloak Config | ✅ | ✅ | `48ae2c9` | realm-export.json, setup_keycloak.py |
+| DEM-005 | Admin Backend | ✅ | ✅ | `c2055bc` | TenantService, CRUD /admin/ |
+| DEM-006 | Admin Frontend (Blazor) | ✅ | ✅ | `381a85c` | MudBlazor, OIDC |
+| DEM-007 | Módulo Financeiro | ✅ | ✅ | `c8746c7` | APScheduler, fatura overdue |
+| DEM-008 | Testes E2E | ✅ | ✅ | `1392358` | pytest + httpx, conftest |
+| DEM-009 | RAG Ingest Pipeline | ✅ | ✅ | `5ff6139` | pdfplumber, pgvector, watcher |
+| DEM-010 | SLM + OLLAMA | ✅ | ✅ | `6ec3592` | streaming SSE, RAG+SLM |
+| DEM-011 | Gestor Backend | ✅ | ✅ | `6ec3592` | profile, docs, usage_report |
+| DEM-012 | Gestor Frontend (Blazor) | ✅ | ✅ | `6ec3592` | MudBlazor, upload |
+| DEM-013 | Cuidado Backend | ✅ | ✅ | `6ec3592` | pacientes, encontros, notas SOAP |
+| DEM-014 | Programas de Saúde | ✅ | ✅ | `6ec3592` | matrículas, overdue, coverage |
+| DEM-015 | Frontend Clínico (React) | ✅ | ✅ | `6ec3592` | SSE streaming, Mantine UI |
 
 ---
 
-## Todas as DEMs
+## Legenda
 
-```dataview
-TABLE fase, sprint, status, modulo
-FROM "demandas"
-WHERE tipo = "especificacao-funcional"
-SORT fase ASC, sprint ASC
-```
+| Símbolo | Significado |
+|---------|-------------|
+| ✅ | Concluído / Aprovado |
+| 🔄 | Em andamento |
+| ⏳ | Aguardando início |
+| ❌ | Bloqueado |
 
 ---
 
-## Referência rápida — Mapeamento fases → DEMs
+## Próximos Passos (Fase Dev)
 
-| DEM | Fase | Sprint | Módulo | Status |
-|-----|------|--------|--------|--------|
-| DEM-000 | 0 | 0.0 | — | ✅ Concluído |
-| DEM-001 | 0 | 0.1 | docs | ✅ Concluído |
-| DEM-002 | 1 | 1.0 | infra | ⏳ Pendente |
-| DEM-003 | 1 | 1.1 | core | ⏳ Pendente |
-| DEM-004 | 1 | 1.2 | keycloak | ⏳ Pendente |
-| DEM-005 | 1 | 1.3 | admin | ⏳ Pendente |
-| DEM-006 | 1 | 1.4 | admin | ⏳ Pendente |
-| DEM-007 | 1 | 1.5 | admin | ⏳ Pendente |
-| DEM-008 | 2 | 2.1 | gestor | ⏳ Pendente |
-| DEM-009 | 2 | 2.2 | gestor | ⏳ Pendente |
-| DEM-010 | 2 | 2.3 | gestor | ⏳ Pendente |
-| DEM-011 | 3 | 3.1 | cuidado | ⏳ Pendente |
-| DEM-012 | 3 | 3.2 | cuidado | ⏳ Pendente |
-| DEM-013 | 3 | 3.3 | cuidado | ⏳ Pendente |
-| DEM-014 | 3 | 3.4 | cuidado | ⏳ Pendente |
-| DEM-015 | 3 | 3.5 | cuidado | ⏳ Pendente |
+Os documentos 01_FUNCIONAL e 02_TECNICA de todas as 15 DEMs estão aprovados e commitados.
+A Fase Dev (03_IMPLEMENTACAO → 04_TESTES → 05_REVISAO) pode iniciar a partir de DEM-001.
+
+**Ordem sugerida de implementação**:
+1. DEM-001 → DEM-003 (estrutura + core)
+2. DEM-004 → DEM-005 (auth + admin)
+3. DEM-007 + DEM-009 (financeiro + RAG)
+4. DEM-010 → DEM-011 (SLM + gestor)
+5. DEM-013 → DEM-014 (cuidado + programas)
+6. DEM-006 + DEM-012 + DEM-015 (frontends)
+7. DEM-008 (E2E cobrindo tudo)
