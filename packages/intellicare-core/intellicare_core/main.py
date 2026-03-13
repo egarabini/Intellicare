@@ -24,3 +24,7 @@ async def root_health() -> JSONResponse:
 admin_ui_dir = STATIC_ROOT / "admin-ui"
 if admin_ui_dir.exists():
     app.mount("/admin-ui", StaticFiles(directory=str(admin_ui_dir), html=True), name="admin-ui")
+
+gestor_ui_dir = STATIC_ROOT / "gestor-ui"
+if gestor_ui_dir.exists():
+    app.mount("/gestor-ui", StaticFiles(directory=str(gestor_ui_dir), html=True), name="gestor-ui")

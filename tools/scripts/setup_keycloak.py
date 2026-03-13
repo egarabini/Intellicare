@@ -335,7 +335,39 @@ def main(args: argparse.Namespace) -> None:
         },
     )
 
-    print("\n6. Usuarios dev")
+    print("\n6. Client admin-ui")
+    ensure_client(
+        kc,
+        "admin-ui",
+        {
+            "clientId": "admin-ui",
+            "name": "Admin UI",
+            "enabled": True,
+            "publicClient": True,
+            "standardFlowEnabled": True,
+            "directAccessGrantsEnabled": False,
+            "redirectUris": ["http://localhost:5174/*", "http://localhost:8000/admin-ui/*"],
+            "webOrigins": ["http://localhost:5174", "http://localhost:8000"],
+        },
+    )
+
+    print("\n7. Client gestor-ui")
+    ensure_client(
+        kc,
+        "gestor-ui",
+        {
+            "clientId": "gestor-ui",
+            "name": "Gestor UI",
+            "enabled": True,
+            "publicClient": True,
+            "standardFlowEnabled": True,
+            "directAccessGrantsEnabled": False,
+            "redirectUris": ["http://localhost:5175/*", "http://localhost:8000/gestor-ui/*"],
+            "webOrigins": ["http://localhost:5175", "http://localhost:8000"],
+        },
+    )
+
+    print("\n8. Usuarios dev")
     ensure_user(
         kc,
         "platform-admin",

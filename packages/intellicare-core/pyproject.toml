@@ -29,7 +29,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["intellicare_core*"]
+include = ["intellicare_core*", "intellicare_service*"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
