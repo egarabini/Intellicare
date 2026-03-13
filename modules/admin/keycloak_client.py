@@ -79,3 +79,42 @@ class KeycloakAdminClient:
             groups = [g for g in resp.json() if g["name"] == f"tenant_{slug}"]
             return groups[0]["id"] if groups else None
 
+    async def invite_user(
+        self,
+        group_id: str,
+        email: str,
+        name: str,
+        role: str,
+    ) -> str:
+        """Cria usuario no Keycloak e adiciona ao grupo do tenant."""
+        headers = await self._headers()
+        user_payload = {
+            "email": email,
+            "username": email,
+            "firstName": name,
+            "enabled": True,
+            "groups": [group_id],
+            "realmRoles": [role],
+            "requiredActions": ["UPDATE_PASSWORD"],
+        }
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(
+                f"{KC_URL}/admin/realms/{KC_REALM}/users",
+                json=user_payload,
+                headers=headers,
+                timeout=15,
+            )
+            resp.raise_for_status()
+            return resp.headers["Location"].split("/")[-1]
+
+    async def deactivate_user(self, user_id: str) -> None:
+        """Desativa usuario no Keycloak (enabled=false)."""
+        async with httpx.AsyncClient() as client:
+            resp = await client.put(
+                f"{KC_URL}/admin/realms/{KC_REALM}/users/{user_id}",
+                json={"enabled": False},
+                headers=await self._headers(),
+                timeout=15,
+            )
+            resp.raise_for_status()
+
