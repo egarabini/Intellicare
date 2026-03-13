@@ -96,6 +96,24 @@ tools/scripts/ingest_docs.py
   → INSERT INTO tenant_{slug}.protocols
 ```
 
+## Consequências
+
+- Toda inferência roda localmente — zero custo por token, zero dependência de API externa
+- Dados clínicos nunca saem do servidor (LGPD compliance by design)
+- Modelo SLM é substituível sem alterar código (troca via env `SLM_MODEL`)
+- Embeddings vivem no mesmo `pg_dump` que os dados clínicos — backup unificado
+- Requer servidor com RAM suficiente para OLLAMA (~4GB para modelos 3B)
+- Qualidade de resposta limitada pelo modelo local (trade-off vs. GPT-4/Claude)
+
+## Alternativas rejeitadas
+
+| Alternativa | Por que foi descartada |
+|-------------|----------------------|
+| **APIs externas (OpenAI, Anthropic)** | Dados clínicos sensíveis (LGPD) não podem trafegar para servidores externos. Custo por token imprevisível. Latência de rede adicional (~500ms+). Dependência de disponibilidade de terceiros. |
+| **Banco vetorial dedicado (Pinecone, Milvus, Qdrant)** | Serviço extra para operar. Dados ficam separados do PostgreSQL — backup e restore mais complexos. pgvector é suficiente para o volume esperado (<1M chunks por tenant). |
+| **LangChain/LangGraph como orquestrador** | V2 usava LangGraph. Adicionava 4-5 hops de rede por consulta (>2s latência). Abstração desnecessária quando o pipeline é linear (embed → search → generate). |
+| **Fine-tuning de modelo próprio** | Custo de treinamento e manutenção. RAG com modelo genérico + contexto de protocolos é suficiente e atualizável em tempo real (re-ingestão). |
+
 ## Implementação
 
 - DEM-002: `CREATE EXTENSION vector`, docker-compose com OLLAMA

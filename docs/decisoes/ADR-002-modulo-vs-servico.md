@@ -78,6 +78,14 @@ A customização de um tenant nunca afeta os demais.
 - WANDA será um módulo carregado quando o plano inclui orquestração (Fase 4+)
 - `configs/plans/*.yaml` é a fonte de verdade de quais módulos estão ativos
 
+## Alternativas rejeitadas
+
+| Alternativa | Por que foi descartada |
+|-------------|----------------------|
+| **Microserviços puros (1 container por módulo)** | V2 tinha 10+ containers. Overhead operacional inaceitável: N health checks, N logs, latência inter-container para funcionalidades simples. Complexidade de deploy desproporcional para o tamanho da equipe. |
+| **Monolito sem fronteiras internas** | Sem separação de módulos, qualquer dev pode importar qualquer coisa. Acoplamento cresce exponencialmente. Impossibilita habilitar/desabilitar funcionalidades por plano do tenant. |
+| **Serverless (Lambda/Cloud Functions)** | Cold start incompatível com latência <300ms do RAG. Vendor lock-in. Custo imprevisível com muitas invocações. OLLAMA não roda em serverless. |
+
 ## Implementação
 
 - `packages/intellicare-core/module_loader/` — DEM-003

@@ -62,6 +62,14 @@ tenant_{slug}.protocols         -- content + embedding vector(384)
 - Catálogo de planos = YAML no repo (`configs/plans/*.yaml`), não tabela global
 - Provisionamento = operação simples e reversível
 
+## Alternativas rejeitadas
+
+| Alternativa | Por que foi descartada |
+|-------------|----------------------|
+| **Schema único com coluna `tenant_id`** | Risco de vazamento de dados entre tenants por query sem filtro. Impossibilita `DROP SCHEMA CASCADE` para encerramento limpo. Backup/restore exige filtragem por tenant_id — lento e propenso a erro. |
+| **Banco de dados separado por tenant** | Overhead operacional: 1 connection pool por tenant, N bancos para migrar no Alembic. Inviável com >50 tenants em servidor compartilhado. |
+| **NoSQL (MongoDB/DynamoDB)** | Perde joins relacionais necessários para relatórios clínicos. pgvector não tem equivalente nativo em NoSQL. Equipe tem expertise em PostgreSQL. |
+
 ## Implementação
 
 - `packages/intellicare-core/tenant/` — `TenantContext`, `TenantResolver`
