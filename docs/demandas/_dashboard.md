@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-14 | Branch: main | Último commit: 5b66208
+> Atualizado: 2026-03-14 | Branch: main | Último commit: 51465d0
 
 ## Status Geral
 
@@ -24,23 +24,10 @@
 | DEM-015 | Frontend Clínico — spec técnica completa | ✅ Concluído | — |
 | DEM-016 | Portal (landing page institucional) | ✅ Concluído | `eb7e082` |
 | DEM-017 | Seed de homologação (50 pacientes × 3 tenants) | ✅ Concluído | `1a26523` |
-| DEM-018 | Admin Módulo Completo + Traefik SSL | 🔄 Spec pronta — aguardando execução | `eb7e082` |
+| DEM-018 | Admin Módulo Completo + Traefik SSL | ✅ Concluído | `51465d0` |
 | DEM-019 | Gestor Módulo Completo | 🔄 Spec pronta — aguardando execução | `5b66208` |
 
-## Fila de execução
-
-### 🔥 DEM-018 — Admin Módulo Completo (PRIORIDADE ALTA)
-
-**Arquivo:** `docs/demandas/DEM-018_ADMIN_COMPLETO/02_TECNICA.md`
-
-Entregáveis:
-- 6 novos endpoints admin (dashboard/stats, invite user, deactivate user, audit log, edit tenant, delete tenant)
-- 3 novas páginas AdminUI (Dashboard KPIs, TenantUsers, AuditLog)
-- Traefik labels para `admin.intellicare.ia.br` + Let's Encrypt SSL
-
-**DNS pendente:** configurar A record `admin.intellicare.ia.br` → IP do servidor antes do deploy.
-
----
+## Próximos passos
 
 ### 🔥 DEM-019 — Gestor Módulo Completo (PRIORIDADE ALTA)
 
@@ -49,13 +36,20 @@ Entregáveis:
 Entregáveis:
 - 8 grupos de endpoints gestor (dashboard, pacientes, agendamentos, faturas, RAG, equipe, programas, configurações)
 - 8 páginas GestorUI (Dashboard, PatientList, PatientProfile, AppointmentCalendar, InvoiceList, RagDocuments, ProgramList, TenantSettings)
-- Migrations SQL, SSE progresso RAG, export CSV, validação CPF
-
-**Pode ser executado em paralelo com DEM-018.**
+- Migrations SQL, SSE progresso RAG, export CSV, validação CPF + conflito de horário
 
 ---
 
-## Demandas futuras
+### ⚠️ Ação manual necessária — DNS + SSL Admin
+
+Para que `admin.intellicare.ia.br` funcione em produção:
+1. Configurar registro A: `admin.intellicare.ia.br` → IP do servidor
+2. Aguardar propagação DNS (até 24h)
+3. Traefik ACME (Let's Encrypt) emite o certificado automaticamente na primeira requisição
+
+---
+
+## Fila futura
 
 | DEM | Título | Prioridade |
 |-----|--------|-----------|
