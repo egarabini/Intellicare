@@ -1,68 +1,68 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-14 | Branch: main | Último commit: 921200d
+> Atualizado: 2026-03-14 | Branch: main | Último commit: c8a1123
 
-## Status Geral
+## ✅ Concluídas (DEMs 000–019)
 
-| DEM | Título | Status | Commit |
-|-----|--------|--------|--------|
-| DEM-000 | Limpeza e bootstrap do repo V3 | ✅ Concluído | — |
-| DEM-001 | Estrutura de pacotes Python | ✅ Concluído | — |
-| DEM-002 | Infraestrutura Docker | ✅ Concluído | `a3e4184` |
-| DEM-003 | Core: settings, DB, middleware, ModuleLoader | ✅ Concluído | — |
-| DEM-004 | Módulo Admin (backend) | ✅ Concluído | — |
-| DEM-005 | Módulo Gestor (backend) | ✅ Concluído | — |
-| DEM-006 | Admin Frontend (React + Vite + Mantine) | ✅ Concluído | `3683878` |
-| DEM-007 | Módulo Cuidado/Clínico (backend) | ✅ Concluído | — |
-| DEM-008 | Módulo SLM / OLLAMA | ✅ Concluído | `bdd94f6` |
-| DEM-009 | Módulo Financeiro | ✅ Concluído | — |
-| DEM-010 | Módulo RAG | ✅ Concluído | — |
-| DEM-011 | Módulo Programas de Saúde (backend) | ✅ Concluído | — |
-| DEM-012 | Gestor Frontend (React + Vite + Mantine) | ✅ Concluído | `3683878` |
-| DEM-013 | Clínico Frontend (React + Vite + Mantine) | ✅ Concluído | — |
-| DEM-014 | Programas de Saúde — spec técnica completa | ✅ Concluído | — |
-| DEM-015 | Frontend Clínico — spec técnica completa | ✅ Concluído | — |
-| DEM-016 | Portal (landing page institucional) | ✅ Concluído | `eb7e082` |
-| DEM-017 | Seed de homologação (50 pacientes × 3 tenants) | ✅ Concluído | `1a26523` |
-| DEM-018 | Admin Módulo Completo + Traefik SSL | ✅ Concluído | `51465d0` |
-| DEM-019 | Gestor Módulo Completo | ✅ Concluído | `c01d007` |
-| DEM-020 | Clínico Frontend Completo | 🔄 Spec pronta — aguardando execução | `921200d` |
-
-## Fila de execução
-
-### 🔥 DEM-020 — Clínico Frontend Completo
-
-**Arquivo:** `docs/demandas/DEM-020_CLINICO_COMPLETO/02_TECNICA.md`
-
-O que transforma o MVP (2 páginas soltas) em módulo completo:
-
-| Componente | Estado atual | Alvo |
-|---|---|---|
-| AppShell / navegação | ❌ ausente | Sidebar com 5 itens + header |
-| Role Guard | ❌ ausente | Verifica role `CLINICO` no JWT |
-| Dashboard (agenda hoje) | ❌ ausente | Lista do dia + botão "Atender" |
-| Agenda (calendário) | ❌ ausente | Semanal/mensal filtrado pelo clínico |
-| PatientList | ✅ MVP | + paginação + última consulta + programas |
-| PatientProfile | ❌ ausente | 3 abas: resumo / atendimentos / docs |
-| EncounterView | ✅ MVP | + CID-10 autocomplete + prescrição |
-| AIAssistant standalone | ❌ ausente | Página própria, histórico em memória |
-| MyProfile | ❌ ausente | Nome, especialidade, CRM |
-
-Backend adicional necessário: `/cuidado/my-agenda`, `/cuidado/patients/:id/profile`,
-`/cuidado/patients/:id/clinical`, `/cuidado/cid10`, `PATCH /cuidado/encounters/:id`
+| DEM | Título | Commit |
+|-----|--------|--------|
+| DEM-000 a DEM-017 | Infraestrutura, backend, frontends base, seed | vários |
+| DEM-018 | Admin Módulo Completo + Traefik SSL | `51465d0` |
+| DEM-019 | Gestor Módulo Completo | `c01d007` |
 
 ---
 
-## Fila futura
+## 🔄 Em execução
 
-| DEM | Título | Prioridade | Dependências |
-|-----|--------|-----------|--------------|
-| DEM-021 | Deploy produção (VPS + DNS + SSL end-to-end) | 🔥 Alta | DNS A record + DEM-020 |
-| DEM-022 | Testes E2E (Playwright) | Média | DEMs estáveis |
-| DEM-023 | Observabilidade (Prometheus + Grafana) | Média | DEM-021 |
+| DEM | Título | Dev | Status |
+|-----|--------|-----|--------|
+| DEM-020 | Clínico Frontend Completo | dev em andamento | em desenvolvimento |
+| DEM-021 | Fix Frontends (GestorUI token + rebuild Docker) | — | **spec pronta** |
 
-## Ação manual pendente (DNS)
+---
 
-Para `admin.intellicare.ia.br` funcionar em produção:
-1. Configurar registro A: `admin.intellicare.ia.br` → IP do servidor VPS
-2. Aguardar propagação DNS (até 24h) — Traefik emite SSL automaticamente
+## 📋 Fila — specs prontas para distribuir
+
+| DEM | Título | Arquivo spec | Pode paralelo com |
+|-----|--------|-------------|-------------------|
+| DEM-021 | Fix GestorUI token + rebuild Docker | `DEM-021_FIX_FRONTENDS/02_TECNICA.md` | DEM-020, DEM-022 |
+| DEM-022 | Portal do Paciente (novo frontend) | `DEM-022_PACIENTE_PORTAL/02_TECNICA.md` | DEM-020, DEM-021 |
+| DEM-023 | Deploy Produção (VPS + DNS + SSL) | `DEM-023_DEPLOY_PRODUCAO/02_TECNICA.md` | após DEM-021 estável |
+
+---
+
+## 🗓️ Planejadas (sem spec ainda)
+
+| DEM | Título | Prioridade |
+|-----|--------|-----------|
+| DEM-024 | Testes E2E (Playwright) | Média |
+| DEM-025 | Observabilidade (Prometheus + Grafana) | Média |
+
+---
+
+## Distribuição sugerida para devs parados
+
+```
+DEV-A → DEM-021  Fix GestorUI token + rebuild Docker (< 2h)
+DEV-B → DEM-022  Portal do Paciente (novo projeto frontend, ~1 dia)
+DEV-C → DEM-020  Clínico Frontend (já em andamento)
+Eduardo → DEM-023  Deploy Produção (requer ação manual: VPS + DNS)
+```
+
+## Credenciais de teste (ambiente local)
+
+| Usuário | Senha | Módulo |
+|---------|-------|--------|
+| `platform-admin` | `Admin@2025!` | AdminUI — `http://127.0.0.1:9000/admin-ui/` |
+| `gestor.alfa` | `Demo@1234` | GestorUI — `http://127.0.0.1:9000/gestor-ui/` |
+| `dr.silva` | `Demo@1234` | ClinicoUI — `http://127.0.0.1:9000/clinico-ui/` |
+| `paciente.alfa` | `Demo@1234` | PacienteUI — após DEM-022 |
+
+## Ação pendente (Eduardo — DNS)
+
+Antes de executar DEM-023, criar registros DNS:
+```
+A  admin.intellicare.ia.br   → IP do VPS
+A  api.intellicare.ia.br     → IP do VPS
+A  auth.intellicare.ia.br    → IP do VPS
+```
