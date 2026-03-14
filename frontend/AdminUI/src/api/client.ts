@@ -1,14 +1,15 @@
 import axios, { InternalAxiosRequestConfig } from 'axios'
+import { getToken } from '../auth/tokenRef'
 
-// VITE_API_BASE_URL pode ser definido em .env.local para desenvolvimento
-// Default: path relativo /admin (funciona em qualquer porta, sem duplo-prefixo)
+// Path relativo — funciona em qualquer porta, sem duplo prefixo.
+// Em dev com npm run dev, definir VITE_API_BASE_URL=http://localhost:9000/admin no .env.local
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL ?? '/admin',
   timeout: 30_000,
 })
 
 apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const token = sessionStorage.getItem('oidc.access_token')
+  const token = getToken()
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }

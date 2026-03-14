@@ -1,50 +1,81 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import {
-  AppShell,
-  Button,
-  Group,
-  Loader,
-  MantineProvider,
-  Paper,
-  Stack,
-  Text,
-  Title,
+  AppShell, Button, Group, Loader, MantineProvider,
+  NavLink, Paper, Stack, Text, Title,
 } from '@mantine/core'
 import { Notifications, notifications } from '@mantine/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from 'react-oidc-context'
+import {
+  IconDashboard, IconBuilding, IconShield, IconLogout,
+} from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
-import { TokenSync } from './auth/TokenSync'
+import { setToken } from './auth/tokenRef'
 import { DashboardPage } from './pages/DashboardPage'
 import { TenantDetail } from './pages/TenantDetail'
 import { TenantForm } from './pages/TenantForm'
 import { TenantList } from './pages/TenantList'
 import { TenantUsers } from './pages/TenantUsers'
 import { AuditLog } from './pages/AuditLog'
-import { IconShield } from '@tabler/icons-react'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { retry: 1, staleTime: 30_000 } },
+})
 
-function ForbiddenPage() {
+const NAV_ITEMS = [
+  { path: '/',        label: 'Dashboard', icon: IconDashboard },
+  { path: '/tenants', label: 'Tenants',   icon: IconBuilding  },
+  { path: '/audit',   label: 'Auditoria', icon: IconShield    },
+]
+
+function Sidebar() {
+  const location = useLocation()
+  const navigate = useNavigate()
   const auth = useAuth()
 
   return (
-    <Stack align="center" justify="center" h="100%">
+    <AppShell.Navbar p="sm" style={{ display: 'flex', flexDirection: 'column' }}>
+      <Stack gap={4} style={{ flex: 1 }}>
+        {NAV_ITEMS.map(item => (
+          <NavLink
+            key={item.path}
+            label={item.label}
+            leftSection={<item.icon size={16} />}
+            active={
+              item.path === '/'
+                ? location.pathname === '/'
+                : location.pathname.startsWith(item.path)
+            }
+            onClick={() => navigate(item.path)}
+          />
+        ))}
+      </Stack>
+      <NavLink
+        label="Sair"
+        leftSection={<IconLogout size={16} />}
+        color="red"
+        onClick={() => auth.signoutRedirect()}
+        mt="auto"
+      />
+    </AppShell.Navbar>
+  )
+}
+
+function ForbiddenPage() {
+  const auth = useAuth()
+  return (
+    <Stack align="center" justify="center" h="100vh">
       <Paper withBorder radius="lg" p="xl" maw={460}>
         <Stack gap="md">
           <Title order={2}>Acesso negado</Title>
           <Text c="dimmed">
-            Esta interface e exclusiva para usuarios com role <code>PLATFORM_ADMIN</code>.
+            Esta interface é exclusiva para <code>PLATFORM_ADMIN</code>.
           </Text>
-          <Group justify="flex-end">
-            <Button variant="light" onClick={() => auth.signoutRedirect()}>
-              Sair
-            </Button>
-          </Group>
+          <Button variant="light" onClick={() => auth.signoutRedirect()}>Sair</Button>
         </Stack>
       </Paper>
     </Stack>
@@ -53,15 +84,17 @@ function ForbiddenPage() {
 
 function AppRoutes() {
   const auth = useAuth()
-  const roles = (auth.user?.profile.realm_access as { roles?: string[] } | undefined)?.roles ?? []
+
+  // ── Token síncrono: atualizado a cada render, antes de qualquer query ──
+  setToken(auth.user?.access_token ?? null)
+
+  const roles =
+    (auth.user?.profile?.realm_access as { roles?: string[] } | undefined)
+      ?.roles ?? []
   const isPlatformAdmin = roles.includes('PLATFORM_ADMIN')
 
   if (auth.isLoading) {
-    return (
-      <Group justify="center" mt="xl">
-        <Loader />
-      </Group>
-    )
+    return <Group justify="center" mt="xl"><Loader /></Group>
   }
 
   if (!auth.isAuthenticated) {
@@ -71,7 +104,7 @@ function AppRoutes() {
 
   if (!isPlatformAdmin) {
     notifications.show({
-      title: 'Permissao insuficiente',
+      title: 'Permissão insuficiente',
       message: 'Somente PLATFORM_ADMIN pode acessar o Admin UI.',
       color: 'red',
     })
@@ -79,40 +112,32 @@ function AppRoutes() {
   }
 
   return (
-    <>
-      <TokenSync />
-      <AppShell header={{ height: 64 }} navbar={{ width: 220, breakpoint: 'sm' }} padding="lg">
-        <AppShell.Header>
-          <Group h="100%" px="lg" justify="space-between">
-            <Title order={3}>IntelliCare Admin</Title>
-            <Group gap="sm">
-              <Text size="sm" c="dimmed">
-                {auth.user?.profile.email as string | undefined}
-              </Text>
-              <Button size="xs" variant="subtle" onClick={() => auth.signoutRedirect()}>
-                Sair
-              </Button>
-            </Group>
-          </Group>
-        </AppShell.Header>
-        <AppShell.Navbar p="sm">
-          <Button variant="subtle" justify="left" fullWidth component="a" href="/admin-ui/audit" leftSection={<IconShield size={16} />}>
-            Audit Log
-          </Button>
-        </AppShell.Navbar>
-        <AppShell.Main>
-          <Routes>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/tenants" element={<TenantList />} />
-            <Route path="/tenants/new" element={<TenantForm />} />
-            <Route path="/tenants/:slug" element={<TenantDetail />} />
-            <Route path="/tenants/:slug/users" element={<TenantUsers />} />
-            <Route path="/audit" element={<AuditLog />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </AppShell.Main>
-      </AppShell>
-    </>
+    <AppShell
+      header={{ height: 56 }}
+      navbar={{ width: 200, breakpoint: 'sm' }}
+      padding="lg"
+    >
+      <AppShell.Header>
+        <Group h="100%" px="lg" justify="space-between">
+          <Title order={4} c="blue">IntelliCare Admin</Title>
+          <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
+        </Group>
+      </AppShell.Header>
+
+      <Sidebar />
+
+      <AppShell.Main>
+        <Routes>
+          <Route path="/"                    element={<DashboardPage />} />
+          <Route path="/tenants"             element={<TenantList />} />
+          <Route path="/tenants/new"         element={<TenantForm />} />
+          <Route path="/tenants/:slug"       element={<TenantDetail />} />
+          <Route path="/tenants/:slug/users" element={<TenantUsers />} />
+          <Route path="/audit"               element={<AuditLog />} />
+          <Route path="*"                    element={<Navigate to="/" replace />} />
+        </Routes>
+      </AppShell.Main>
+    </AppShell>
   )
 }
 
