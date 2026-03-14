@@ -1,51 +1,64 @@
+# IntelliCare V3 — Dashboard de Demandas
+
+> Atualizado: 2026-03-14 | Branch: main | Último commit: 5b66208
+
+## Status Geral
+
+| DEM | Título | Status | Commit |
+|-----|--------|--------|--------|
+| DEM-000 | Limpeza e bootstrap do repo V3 | ✅ Concluído | — |
+| DEM-001 | Estrutura de pacotes Python | ✅ Concluído | — |
+| DEM-002 | Infraestrutura Docker (postgres/redis/keycloak/ollama/traefik) | ✅ Concluído | `a3e4184` |
+| DEM-003 | Core: settings, DB, middleware, ModuleLoader | ✅ Concluído | — |
+| DEM-004 | Módulo Admin (backend) | ✅ Concluído | — |
+| DEM-005 | Módulo Gestor (backend) | ✅ Concluído | — |
+| DEM-006 | Admin Frontend (React + Vite + Mantine) | ✅ Concluído | `3683878` |
+| DEM-007 | Módulo Cuidado/Clínico (backend) | ✅ Concluído | — |
+| DEM-008 | Módulo SLM / OLLAMA | ✅ Concluído | `bdd94f6` |
+| DEM-009 | Módulo Financeiro | ✅ Concluído | — |
+| DEM-010 | Módulo RAG | ✅ Concluído | — |
+| DEM-011 | Módulo Programas de Saúde (backend) | ✅ Concluído | — |
+| DEM-012 | Gestor Frontend (React + Vite + Mantine) | ✅ Concluído | `3683878` |
+| DEM-013 | Clínico Frontend (React + Vite + Mantine) | ✅ Concluído | — |
+| DEM-014 | Programas de Saúde — spec técnica completa | ✅ Concluído | — |
+| DEM-015 | Frontend Clínico — spec técnica completa | ✅ Concluído | — |
+| DEM-016 | Portal (landing page institucional) | ✅ Concluído | `eb7e082` |
+| DEM-017 | Seed de homologação (50 pacientes × 3 tenants) | ✅ Concluído | `1a26523` |
+| DEM-018 | Admin Módulo Completo + Traefik SSL | 🔄 Spec pronta — aguardando execução | `eb7e082` |
+| DEM-019 | Gestor Módulo Completo | 🔄 Spec pronta — aguardando execução | `5b66208` |
+
+## Fila de execução
+
+### 🔥 DEM-018 — Admin Módulo Completo (PRIORIDADE ALTA)
+
+**Arquivo:** `docs/demandas/DEM-018_ADMIN_COMPLETO/02_TECNICA.md`
+
+Entregáveis:
+- 6 novos endpoints admin (dashboard/stats, invite user, deactivate user, audit log, edit tenant, delete tenant)
+- 3 novas páginas AdminUI (Dashboard KPIs, TenantUsers, AuditLog)
+- Traefik labels para `admin.intellicare.ia.br` + Let's Encrypt SSL
+
+**DNS pendente:** configurar A record `admin.intellicare.ia.br` → IP do servidor antes do deploy.
+
 ---
-tipo: dashboard
-titulo: Dashboard de Demandas
-atualizado: 2026-03-13
----
 
-# Dashboard de Demandas — IntelliCare V3
+### 🔥 DEM-019 — Gestor Módulo Completo (PRIORIDADE ALTA)
 
-## Status de Implementação
+**Arquivo:** `docs/demandas/DEM-019_GESTOR_COMPLETO/02_TECNICA.md`
 
-| DEM | Nome | Módulo | Status | Commit 03 |
-|-----|------|--------|--------|-----------|
-| DEM-001 | Vault Obsidian | docs | ✅ implementado | `2e77d2c` |
-| DEM-002 | Infra Docker | infra | ✅ implementado | `984f565` |
-| DEM-003 | IntelliCare Core | intellicare-core | ✅ implementado | `1df59c6` |
-| DEM-004 | Keycloak Config | infra/keycloak | ✅ implementado | `3266b58` |
-| DEM-005 | Admin Backend | admin | ✅ implementado | `73c85d0` |
-| DEM-006 | Admin Frontend | admin (React) | ✅ implementado | `095fd51` |
-| DEM-007 | Financeiro | financeiro | ✅ implementado | `e61846d` |
-| DEM-008 | E2E Integration | tests | ✅ implementado | `1392358` |
-| DEM-009 | PGVector RAG | vector | ✅ implementado | `5d9f39b` |
-| DEM-010 | SLM Ollama | slm | ✅ implementado | `4b026fb` |
-| DEM-011 | Gestor Backend | gestor | ✅ implementado | `16b2b93` |
-| DEM-012 | Gestor Frontend | gestor (React) | ✅ implementado | `4448449` |
-| DEM-013 | Cuidado Backend | cuidado | ✅ implementado | `13b1e26` |
-| DEM-014 | Programas Saúde | programas | ✅ implementado | `6c4d2f2` |
-| DEM-015 | Frontend Clínico | cuidado (React) | ✅ implementado | `96ac614` |
+Entregáveis:
+- 8 grupos de endpoints gestor (dashboard, pacientes, agendamentos, faturas, RAG, equipe, programas, configurações)
+- 8 páginas GestorUI (Dashboard, PatientList, PatientProfile, AppointmentCalendar, InvoiceList, RagDocuments, ProgramList, TenantSettings)
+- Migrations SQL, SSE progresso RAG, export CSV, validação CPF
+
+**Pode ser executado em paralelo com DEM-018.**
 
 ---
 
-## Dataview (Obsidian)
+## Demandas futuras
 
-> As queries abaixo funcionam apenas no Obsidian com plugin Dataview ativo.
-
-### Em Execução
-
-```dataview
-TABLE fase, modulo, dev, criado AS "Criado"
-FROM "demandas"
-WHERE tipo = "especificacao-funcional" AND status = "em-execucao"
-SORT fase ASC
-```
-
-### Concluídas
-
-```dataview
-TABLE fase, modulo, concluido AS "Concluído"
-FROM "demandas"
-WHERE tipo = "finalizacao"
-SORT concluido DESC
-```
+| DEM | Título | Prioridade |
+|-----|--------|-----------|
+| DEM-020 | Deploy produção (VPS + DNS + SSL end-to-end) | Alta |
+| DEM-021 | Testes E2E (Playwright) | Média |
+| DEM-022 | Observabilidade (Prometheus + Grafana) | Média |
