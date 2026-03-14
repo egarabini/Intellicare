@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 AVAILABLE_MODULES: dict[str, str] = {
     "admin": "modules.admin.main",
     "financeiro": "modules.financeiro.main",
+    "programas": "modules.programas.main",
     "vector": "modules.vector.main",
     "gestor": "modules.gestor.main",
     "cuidado": "modules.cuidado.main",
