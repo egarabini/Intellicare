@@ -67,7 +67,7 @@ class IngestService:
                         INSERT INTO knowledge_base
                             (title, content, source_path, chunk_index, embedding)
                         VALUES
-                            (:title, :content, :source_path, :chunk_index, :embedding::vector)
+                            (:title, :content, :source_path, :chunk_index, CAST(:embedding AS vector))
                         ON CONFLICT (source_path, chunk_index)
                         DO UPDATE SET
                             content   = EXCLUDED.content,

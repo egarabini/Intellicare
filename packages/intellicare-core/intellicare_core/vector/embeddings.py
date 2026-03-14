@@ -14,7 +14,7 @@ from intellicare_core.config.settings import get_settings
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.db.session import tenant_session
 
-OLLAMA_URL  = os.getenv("OLLAMA_URL",   "http://ollama:11434")
+OLLAMA_URL  = os.getenv("OLLAMA_URL") or os.getenv("OLLAMA_API_URL", "http://localhost:11434")
 EMBED_MODEL = os.getenv("EMBED_MODEL",  "nomic-embed-text")
 EMBED_DIM   = 768
 BATCH_SIZE  = 32
