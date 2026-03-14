@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-14 | Branch: main | Último commit: 93e42aa
+> Atualizado: 2026-03-14 | Branch: main | Último commit: c01d007
 
 ## Status Geral
 
@@ -25,27 +25,19 @@
 | DEM-016 | Portal (landing page institucional) | ✅ Concluído | `eb7e082` |
 | DEM-017 | Seed de homologação (50 pacientes × 3 tenants) | ✅ Concluído | `1a26523` |
 | DEM-018 | Admin Módulo Completo + Traefik SSL | ✅ Concluído | `51465d0` |
-| DEM-019 | Gestor Módulo Completo | ✅ Concluído | `93e42aa` |
+| DEM-019 | Gestor Módulo Completo | ✅ Concluído | `c01d007` |
 
-## Fixes aplicados (commit 93e42aa)
+## Fila futura
 
-| Fix | Problema | Solução |
-|-----|----------|---------|
-| POSTGRES_HOST | `settings.py` usava `localhost` dentro do container | `POSTGRES_HOST=postgres` no docker-compose |
-| AdminUI baseURL | `http://localhost:8000/admin/admin` — porta errada + duplo prefixo | `/admin` (path relativo) |
-| Rebuild AdminUI | Bundle antigo baked com URL errada | `npm run build` → novo bundle `index-269ofa-c.js` |
+| DEM | Título | Prioridade | Dependências |
+|-----|--------|-----------|--------------|
+| DEM-020 | Deploy produção (VPS + DNS + SSL end-to-end) | 🔥 Alta | DNS A record pendente |
+| DEM-021 | Testes E2E (Playwright) | Média | DEMs 018+019 estáveis |
+| DEM-022 | Observabilidade (Prometheus + Grafana) | Média | DEM-020 |
 
-## Ação pendente — DNS
+## Ação manual pendente
 
 Para `admin.intellicare.ia.br` funcionar em produção:
 1. Configurar registro A: `admin.intellicare.ia.br` → IP do servidor VPS
 2. Aguardar propagação DNS (até 24h)
 3. Traefik ACME emite certificado Let's Encrypt automaticamente
-
-## Fila futura
-
-| DEM | Título | Prioridade |
-|-----|--------|-----------|
-| DEM-020 | Deploy produção (VPS + DNS + SSL end-to-end) | Alta |
-| DEM-021 | Testes E2E (Playwright) | Média |
-| DEM-022 | Observabilidade (Prometheus + Grafana) | Média |
