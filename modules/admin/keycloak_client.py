@@ -118,3 +118,13 @@ class KeycloakAdminClient:
             )
             resp.raise_for_status()
 
+    async def delete_group(self, group_id: str) -> None:
+        """Remove grupo do Keycloak."""
+        async with httpx.AsyncClient() as client:
+            resp = await client.delete(
+                f"{KC_URL}/admin/realms/{KC_REALM}/groups/{group_id}",
+                headers=await self._headers(),
+                timeout=15,
+            )
+            resp.raise_for_status()
+

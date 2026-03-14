@@ -20,6 +20,9 @@ import { DashboardPage } from './pages/DashboardPage'
 import { TenantDetail } from './pages/TenantDetail'
 import { TenantForm } from './pages/TenantForm'
 import { TenantList } from './pages/TenantList'
+import { TenantUsers } from './pages/TenantUsers'
+import { AuditLog } from './pages/AuditLog'
+import { IconShield } from '@tabler/icons-react'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -78,7 +81,7 @@ function AppRoutes() {
   return (
     <>
       <TokenSync />
-      <AppShell header={{ height: 64 }} padding="lg">
+      <AppShell header={{ height: 64 }} navbar={{ width: 220, breakpoint: 'sm' }} padding="lg">
         <AppShell.Header>
           <Group h="100%" px="lg" justify="space-between">
             <Title order={3}>IntelliCare Admin</Title>
@@ -92,12 +95,19 @@ function AppRoutes() {
             </Group>
           </Group>
         </AppShell.Header>
+        <AppShell.Navbar p="sm">
+          <Button variant="subtle" justify="left" fullWidth component="a" href="/admin-ui/audit" leftSection={<IconShield size={16} />}>
+            Audit Log
+          </Button>
+        </AppShell.Navbar>
         <AppShell.Main>
           <Routes>
             <Route path="/" element={<DashboardPage />} />
             <Route path="/tenants" element={<TenantList />} />
             <Route path="/tenants/new" element={<TenantForm />} />
             <Route path="/tenants/:slug" element={<TenantDetail />} />
+            <Route path="/tenants/:slug/users" element={<TenantUsers />} />
+            <Route path="/audit" element={<AuditLog />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AppShell.Main>

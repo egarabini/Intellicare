@@ -134,6 +134,16 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.intellicare.rule=Host(`localhost`)"
       - "traefik.http.services.intellicare.loadbalancer.server.port=8000"
+      # Rota por subdomínio (produção)
+      - "traefik.http.routers.intellicare-admin.rule=Host(`admin.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-admin.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-admin.tls.certresolver=letsencrypt"
+      - "traefik.http.services.intellicare-admin.loadbalancer.server.port=8000"
+      # Redirect HTTP → HTTPS
+      - "traefik.http.routers.intellicare-admin-http.rule=Host(`admin.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-admin-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-admin-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -151,13 +161,20 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.letsencrypt.acme.email=egarabini@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
       - "--log.level=INFO"
       - "--ping=true"
     ports:
-      - "8088:80"
+      - "80:80"
+      - "443:443"
       - "${TRAEFIK_DASHBOARD_PORT}:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
     networks:
       - intellicare-net
     healthcheck:

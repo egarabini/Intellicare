@@ -58,6 +58,30 @@ class TenantListResponse(BaseModel):
     size: int
 
 
+class TenantUpdateRequest(BaseModel):
+    name: str | None = Field(None, min_length=3)
+
+
+# ---------------------------------------------------------------------------
+# Audit Log
+# ---------------------------------------------------------------------------
+
+class AuditLogEntry(BaseModel):
+    id: int
+    actor_id: str
+    actor_email: str | None = None
+    action: str
+    target_type: str
+    target_id: str | None = None
+    payload: dict | None = None
+    created_at: datetime
+
+
+class AuditLogResponse(BaseModel):
+    items: list[AuditLogEntry]
+    total: int
+
+
 # ---------------------------------------------------------------------------
 # Usuario (view do Keycloak)
 # ---------------------------------------------------------------------------
@@ -74,4 +98,17 @@ class TenantUsersResponse(BaseModel):
     tenant_slug: str
     users: list[TenantUser]
     total: int
+
+
+class UserInviteRequest(BaseModel):
+    email: str
+    name: str = Field(..., min_length=3)
+    role: Literal["TENANT_GESTOR", "CLINICO", "PACIENTE"]
+
+
+class UserInviteResponse(BaseModel):
+    keycloak_id: str
+    email: str
+    role: str
+    invited: bool  # True=criado, False=já existia
 

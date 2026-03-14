@@ -1,31 +1,31 @@
-import { Grid, Loader, Paper, SimpleGrid, Stack, Text, Title } from '@mantine/core'
+import { Grid, Loader, Paper, SimpleGrid, Stack, Text, Title, Card } from '@mantine/core'
 
-import { useTenants } from '../hooks/useTenants'
+import { useDashboardStats } from '../hooks/useTenants'
 import { TenantList } from './TenantList'
 
-function StatCard({ label, value, accent }: { label: string; value: number; accent: string }) {
+function StatCard({ label, value, accent, isCurrency = false }: { label: string; value: number; accent: string, isCurrency?: boolean }) {
+  const displayValue = isCurrency 
+    ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
+    : value;
+
   return (
-    <Paper withBorder radius="lg" p="lg" style={{ borderTop: `4px solid ${accent}` }}>
+    <Card withBorder radius="lg" p="lg" style={{ borderTop: `4px solid ${accent}` }}>
       <Stack gap={4}>
         <Text size="sm" c="dimmed">
           {label}
         </Text>
-        <Title order={2}>{value}</Title>
+        <Title order={2}>{displayValue}</Title>
       </Stack>
-    </Paper>
+    </Card>
   )
 }
 
 export function DashboardPage() {
-  const { data, isLoading } = useTenants(1, 100)
+  const { data: stats, isLoading } = useDashboardStats()
 
   if (isLoading) {
     return <Loader />
   }
-
-  const items = data?.items ?? []
-  const active = items.filter((item) => item.status === 'active').length
-  const suspended = items.filter((item) => item.status === 'suspended').length
 
   return (
     <Stack gap="xl">
@@ -34,10 +34,11 @@ export function DashboardPage() {
         <Text c="dimmed">Visao geral da plataforma e dos tenants provisionados.</Text>
       </Stack>
 
-      <SimpleGrid cols={{ base: 1, md: 3 }}>
-        <StatCard label="Total de tenants" value={items.length} accent="#0f766e" />
-        <StatCard label="Tenants ativos" value={active} accent="#16a34a" />
-        <StatCard label="Tenants suspensos" value={suspended} accent="#ea580c" />
+      <SimpleGrid cols={{ base: 1, md: 4 }}>
+        <StatCard label="Total de tenants" value={stats?.total_tenants ?? 0} accent="#0f766e" />
+        <StatCard label="Tenants ativos" value={stats?.active_tenants ?? 0} accent="#16a34a" />
+        <StatCard label="Tenants suspensos" value={stats?.suspended_tenants ?? 0} accent="#ea580c" />
+        <StatCard label="Receita Mensal" value={stats?.monthly_revenue ?? 0} accent="#2563eb" isCurrency />
       </SimpleGrid>
 
       <Grid>

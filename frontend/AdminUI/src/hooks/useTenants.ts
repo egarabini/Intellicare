@@ -87,3 +87,46 @@ export function useTenantUsers(slug: string) {
     enabled: !!slug,
   })
 }
+
+export function useDashboardStats() {
+  return useQuery({
+    queryKey: ['dashboard-stats'],
+    queryFn: () => apiClient.get('/admin/dashboard/stats').then(r => r.data),
+    refetchInterval: 30_000,
+  })
+}
+
+export function useInviteUser(slug: string) {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (body: { email: string; name: string; role: string }) =>
+      apiClient.post(`/admin/tenants/${slug}/users/invite`, body).then(r => r.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenant-users', slug] }),
+  })
+}
+
+export function useDeactivateUser(slug: string) {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (userId: string) =>
+      apiClient.patch(`/admin/tenants/${slug}/users/${userId}/deactivate`),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenant-users', slug] }),
+  })
+}
+
+export function useDeleteTenant() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (slug: string) => apiClient.delete(`/admin/tenants/${slug}`),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenants'] }),
+  })
+}
+
+export function useAuditLog(page = 1, action?: string) {
+  return useQuery({
+    queryKey: ['audit-log', page, action],
+    queryFn: () => apiClient.get('/admin/audit', {
+      params: { page, size: 50, action }
+    }).then(r => r.data),
+  })
+}
