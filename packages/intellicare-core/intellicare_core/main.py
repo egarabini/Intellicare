@@ -34,3 +34,8 @@ if gestor_ui_dir.exists():
 clinico_ui_dir = STATIC_ROOT / "clinico-ui"
 if clinico_ui_dir.exists():
     app.mount("/clinico-ui", StaticFiles(directory=str(clinico_ui_dir), html=True), name="clinico-ui")
+
+# Portal por último — captura /
+portal_dir = STATIC_ROOT / "portal"
+if portal_dir.exists():
+    app.mount("/", StaticFiles(directory=str(portal_dir), html=True), name="portal")

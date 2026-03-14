@@ -383,7 +383,23 @@ def main(args: argparse.Namespace) -> None:
         },
     )
 
-    print("\n9. Usuarios dev")
+    print("\n9. Client portal")
+    ensure_client(
+        kc,
+        "portal",
+        {
+            "clientId": "portal",
+            "name": "IntelliCare Portal",
+            "enabled": True,
+            "publicClient": True,
+            "standardFlowEnabled": True,
+            "directAccessGrantsEnabled": False,
+            "redirectUris": ["http://localhost:5176/*", "http://localhost:8000/*"],
+            "webOrigins": ["http://localhost:5176", "http://localhost:8000"],
+        },
+    )
+
+    print("\n10. Usuarios dev")
     ensure_user(
         kc,
         "platform-admin",
