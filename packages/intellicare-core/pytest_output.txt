@@ -1,0 +1,81 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\packages\intellicare-core
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 4 items
+
+tests/test_gestor.py::test_dashboard_stats ERROR                         [ 25%]
+tests/test_gestor.py::test_create_patient_cpf_duplicate ERROR            [ 50%]
+tests/test_gestor.py::test_appointment_conflict ERROR                    [ 75%]
+tests/test_gestor.py::test_tenant_isolation ERROR                        [100%]
+
+=================================== ERRORS ====================================
+___________________ ERROR at setup of test_dashboard_stats ____________________
+file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py, line 3
+  @pytest.mark.asyncio
+  async def test_dashboard_stats(client, gestor_token, seed_tenant):
+      r = await client.get("/gestor/dashboard/stats",
+                           headers={"Authorization": f"Bearer {gestor_token}"})
+      assert r.status_code == 200
+      data = r.json()
+      assert "patients_active" in data
+      assert "appointments_today" in data
+E       fixture 'client' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py:3
+_____________ ERROR at setup of test_create_patient_cpf_duplicate _____________
+file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py, line 12
+  @pytest.mark.asyncio
+  async def test_create_patient_cpf_duplicate(client, gestor_token, db_session):
+      payload = {"name": "Ana", "cpf": "12345678901", "birth_date": "1990-01-01"}
+      await client.post("/gestor/patients", json=payload,
+                        headers={"Authorization": f"Bearer {gestor_token}"})
+      r = await client.post("/gestor/patients", json=payload,
+                            headers={"Authorization": f"Bearer {gestor_token}"})
+      assert r.status_code == 409
+E       fixture 'client' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py:12
+_________________ ERROR at setup of test_appointment_conflict _________________
+file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py, line 21
+  @pytest.mark.asyncio
+  async def test_appointment_conflict(client, gestor_token, seed_patient, seed_clinician):
+      slot = {"patient_id": str(seed_patient), "clinician_id": str(seed_clinician),
+              "scheduled_at": "2026-04-01T09:00:00Z", "type": "consulta"}
+      await client.post("/gestor/appointments", json=slot,
+                        headers={"Authorization": f"Bearer {gestor_token}"})
+      r = await client.post("/gestor/appointments", json=slot,
+                            headers={"Authorization": f"Bearer {gestor_token}"})
+      assert r.status_code == 409
+E       fixture 'client' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py:21
+___________________ ERROR at setup of test_tenant_isolation ___________________
+file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py, line 31
+  @pytest.mark.asyncio
+  async def test_tenant_isolation(client, gestor_token_tenant_b):
+      r = await client.get("/gestor/patients",
+                           headers={"Authorization": f"Bearer {gestor_token_tenant_b}"})
+      # deve retornar lista vazia do tenant B, não pacientes do tenant A
+      assert r.status_code == 200
+      assert r.json() == [] # Notice it returns list, not dict with items
+E       fixture 'client' not found
+>       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
+>       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_gestor.py:31
+=========================== short test summary info ===========================
+ERROR tests/test_gestor.py::test_dashboard_stats
+ERROR tests/test_gestor.py::test_create_patient_cpf_duplicate
+ERROR tests/test_gestor.py::test_appointment_conflict
+ERROR tests/test_gestor.py::test_tenant_isolation
+============================== 4 errors in 0.04s ==============================

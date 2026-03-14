@@ -2,11 +2,11 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Optional
 from uuid import UUID
 import re
 
-from pydantic import BaseModel, field_validator, ConfigDict
+from pydantic import BaseModel, EmailStr, Field, field_validator, ConfigDict
 
 
 SLUG_PATTERN = re.compile(r'^[a-z0-9_]{3,30}$')
