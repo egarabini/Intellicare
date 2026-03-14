@@ -110,12 +110,18 @@ services:
     env_file:
       - .env
     environment:
+      # Hosts Docker internos — sobrescrevem os defaults "localhost" do settings.py
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      REDIS_HOST: redis
+      OLLAMA_API_URL: http://ollama:11434
+      KEYCLOAK_INTERNAL_URL: http://keycloak:8080
+      # Variáveis de app
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
       KEYCLOAK_URL: ${KEYCLOAK_INTERNAL_URL}
       KEYCLOAK_REALM: ${KEYCLOAK_REALM}
       KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
-      OLLAMA_API_URL: http://ollama:11434
       ENVIRONMENT: ${ENVIRONMENT}
       SECRET_KEY: ${SECRET_KEY}
       LOG_LEVEL: ${LOG_LEVEL}

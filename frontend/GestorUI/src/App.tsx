@@ -1,34 +1,42 @@
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Navigate, Route, Routes, NavLink } from 'react-router-dom'
 import {
   AppShell,
   Button,
   Group,
   Loader,
   MantineProvider,
-  NavLink,
   Paper,
   Stack,
   Text,
   Title,
+  NavLink as MantineNavLink,
+  ActionIcon,
 } from '@mantine/core'
 import { Notifications, notifications } from '@mantine/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from 'react-oidc-context'
 import {
-  IconBuildingHospital,
-  IconChartBar,
   IconDashboard,
-  IconFiles,
   IconUsers,
+  IconCalendarEvent,
+  IconFileInvoice,
+  IconDatabase,
+  IconStethoscope,
+  IconSettings,
+  IconLogout,
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
 import { TokenSync } from './auth/TokenSync'
 import { Dashboard } from './pages/Dashboard'
-import { DocumentUpload } from './pages/DocumentUpload'
-import { ProfilePage } from './pages/ProfilePage'
-import { UsageReport } from './pages/UsageReport'
-import { UserList } from './pages/UserList'
+import { PatientList } from './pages/PatientList'
+import { PatientProfile } from './pages/PatientProfile'
+import { AppointmentCalendar } from './pages/AppointmentCalendar'
+import { InvoiceList } from './pages/InvoiceList'
+import { RagDocuments } from './pages/RagDocuments'
+import { ProgramList } from './pages/ProgramList'
+import { ClinicianList } from './pages/ClinicianList'
+import { TenantSettings } from './pages/TenantSettings'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -83,6 +91,21 @@ function AppRoutes() {
     return <ForbiddenPage />
   }
 
+  function NavLinks() {
+    return (
+      <>
+        <MantineNavLink component={NavLink} to="/dashboard" label="Dashboard" leftSection={<IconDashboard size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/patients" label="Pacientes" leftSection={<IconUsers size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/appointments" label="Agenda" leftSection={<IconCalendarEvent size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/financeiro" label="Faturamento" leftSection={<IconFileInvoice size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/programas" label="Programas de Saúde" leftSection={<IconStethoscope size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/rag" label="Base de Conhecimento" leftSection={<IconDatabase size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/equipe" label="Equipe Clínica" leftSection={<IconStethoscope size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/settings" label="Configurações" leftSection={<IconSettings size="1rem"/>} />
+      </>
+    );
+  }
+
   return (
     <>
       <TokenSync />
@@ -105,20 +128,20 @@ function AppRoutes() {
           </Group>
         </AppShell.Header>
         <AppShell.Navbar p="sm">
-          <NavLink component={Link} to="/" label="Dashboard" leftSection={<IconDashboard size={16} />} />
-          <NavLink component={Link} to="/users" label="Usuarios" leftSection={<IconUsers size={16} />} />
-          <NavLink component={Link} to="/documents" label="Documentos" leftSection={<IconFiles size={16} />} />
-          <NavLink component={Link} to="/reports" label="Relatorios" leftSection={<IconChartBar size={16} />} />
-          <NavLink component={Link} to="/profile" label="Perfil" leftSection={<IconBuildingHospital size={16} />} />
+          <NavLinks />
         </AppShell.Navbar>
         <AppShell.Main>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/users" element={<UserList />} />
-            <Route path="/documents" element={<DocumentUpload />} />
-            <Route path="/reports" element={<UsageReport />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/patients" element={<PatientList />} />
+            <Route path="/patients/:id" element={<PatientProfile />} />
+            <Route path="/appointments" element={<AppointmentCalendar />} />
+            <Route path="/financeiro" element={<InvoiceList />} />
+            <Route path="/rag" element={<RagDocuments />} />
+            <Route path="/programas" element={<ProgramList />} />
+            <Route path="/equipe" element={<ClinicianList />} />
+            <Route path="/settings" element={<TenantSettings />} />
           </Routes>
         </AppShell.Main>
       </AppShell>

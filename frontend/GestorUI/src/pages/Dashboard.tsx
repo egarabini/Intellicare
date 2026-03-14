@@ -1,92 +1,65 @@
-import {
-  Center,
-  Grid,
-  Loader,
-  Paper,
-  SimpleGrid,
-  Stack,
-  Text,
-  Title,
-} from '@mantine/core'
-import { useQuery } from '@tanstack/react-query'
-
-import apiClient from '../api/client'
-import { useDocuments } from '../hooks/useDocuments'
-import { useUsers } from '../hooks/useUsers'
-
-interface UsageData {
-  total_queries: number
-  avg_latency_ms: number
-  period_start: string | null
-  period_end: string | null
-  top_queries: string[]
-}
-
-function StatCard({ label, value, accent }: { label: string; value: string | number; accent: string }) {
-  return (
-    <Paper withBorder radius="lg" p="lg" style={{ borderTop: `4px solid ${accent}` }}>
-      <Stack gap={4}>
-        <Text size="sm" c="dimmed">{label}</Text>
-        <Title order={2}>{value}</Title>
-      </Stack>
-    </Paper>
-  )
-}
+import { Box, SimpleGrid, Card, Group, Text, Title, Stack, ThemeIcon, Loader, Center } from '@mantine/core';
+import { IconUsers, IconCalendar, IconFileInvoice, IconDatabase, IconActivity } from '@tabler/icons-react';
+import { useDashboardStats } from '../hooks/useGestor';
 
 export function Dashboard() {
-  const { data: users, isLoading: loadingUsers } = useUsers()
-  const { data: docs, isLoading: loadingDocs } = useDocuments()
-  const { data: usage, isLoading: loadingUsage } = useQuery<UsageData>({
-    queryKey: ['usage-report'],
-    queryFn: async () => {
-      const { data } = await apiClient.get('/gestor/reports/usage')
-      return data
-    },
-  })
+  const { data, isLoading, error } = useDashboardStats();
 
-  if (loadingUsers || loadingDocs || loadingUsage) {
-    return <Center mt="xl"><Loader /></Center>
-  }
+  if (isLoading) return <Center h="100%"><Loader /></Center>;
+  if (error) return <Text color="red">Erro ao carregar dashboard.</Text>;
+  if (!data) return null;
+
+  const stats = [
+    { title: 'Pacientes Ativos', value: data.patients_active, icon: IconUsers, color: 'blue' },
+    { title: 'Consultas Hoje', value: data.appointments_today, icon: IconCalendar, color: 'green' },
+    { title: 'Consultas na Semana', value: data.appointments_week, icon: IconCalendar, color: 'teal' },
+    { title: 'Consultas no Mês', value: data.appointments_month, icon: IconCalendar, color: 'cyan' },
+    { title: 'Faturas (R$)', value: `R$ ${data.invoices_pending_total.toFixed(2)}`, icon: IconFileInvoice, color: 'orange' },
+    { title: 'Documentos RAG', value: data.rag_documents_count, icon: IconDatabase, color: 'grape' },
+  ];
 
   return (
-    <Stack gap="xl">
-      <Stack gap={4}>
-        <Title order={2}>Dashboard</Title>
-        <Text c="dimmed">Visao geral da unidade de saude.</Text>
-      </Stack>
-
-      <SimpleGrid cols={{ base: 1, md: 3 }}>
-        <StatCard label="Usuarios" value={users?.length ?? 0} accent="#0f766e" />
-        <StatCard label="Documentos RAG" value={docs?.length ?? 0} accent="#2563eb" />
-        <StatCard label="Queries SLM (30d)" value={usage?.total_queries ?? 0} accent="#7c3aed" />
+    <Box>
+      <Title order={2} mb="md">Visão Geral do Tenant</Title>
+      
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="md" mb="xl">
+        {stats.map((stat, i) => (
+          <Card key={i} withBorder padding="md" radius="md">
+            <Group justify="space-between">
+              <div>
+                <Text c="dimmed" tt="uppercase" fw={700} fz="xs">
+                  {stat.title}
+                </Text>
+                <Text fw={700} fz="xl">
+                  {stat.value}
+                </Text>
+              </div>
+              <ThemeIcon color={stat.color} variant="light" size={38} radius="md">
+                <stat.icon size={20} />
+              </ThemeIcon>
+            </Group>
+          </Card>
+        ))}
       </SimpleGrid>
 
-      <Grid>
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper withBorder p="lg" radius="md">
-            <Stack gap="sm">
-              <Title order={4}>Latencia media</Title>
-              <Text size="xl" fw={700}>
-                {usage?.avg_latency_ms ? `${Math.round(usage.avg_latency_ms)} ms` : '—'}
-              </Text>
-            </Stack>
-          </Paper>
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Paper withBorder p="lg" radius="md">
-            <Stack gap="sm">
-              <Title order={4}>Top queries</Title>
-              {usage?.top_queries?.length ? (
-                usage.top_queries.map((q, i) => (
-                  <Text key={i} size="sm" c="dimmed">{i + 1}. {q}</Text>
-                ))
-              ) : (
-                <Text size="sm" c="dimmed">Nenhuma query registrada.</Text>
-              )}
-            </Stack>
-          </Paper>
-        </Grid.Col>
-      </Grid>
-    </Stack>
-  )
+      <Title order={3} mb="md">Atividades Recentes</Title>
+      <Card withBorder>
+        {data.recent_activity.length === 0 ? (
+          <Text c="dimmed">Nenhuma atividade recente.</Text>
+        ) : (
+          <Stack gap="sm">
+            {data.recent_activity.map((act, i) => (
+              <Group key={i} wrap="nowrap">
+                <ThemeIcon variant="light" radius="xl" color="blue"><IconActivity size={16}/></ThemeIcon>
+                <div>
+                  <Text size="sm" fw={500}>{act.action}</Text>
+                  <Text size="xs" c="dimmed">{act.timestamp}</Text>
+                </div>
+              </Group>
+            ))}
+          </Stack>
+        )}
+      </Card>
+    </Box>
+  );
 }
