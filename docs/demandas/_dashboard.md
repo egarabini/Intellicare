@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-14 | Branch: main | Último commit: 51465d0
+> Atualizado: 2026-03-14 | Branch: main | Último commit: 93e42aa
 
 ## Status Geral
 
@@ -8,7 +8,7 @@
 |-----|--------|--------|--------|
 | DEM-000 | Limpeza e bootstrap do repo V3 | ✅ Concluído | — |
 | DEM-001 | Estrutura de pacotes Python | ✅ Concluído | — |
-| DEM-002 | Infraestrutura Docker (postgres/redis/keycloak/ollama/traefik) | ✅ Concluído | `a3e4184` |
+| DEM-002 | Infraestrutura Docker | ✅ Concluído | `a3e4184` |
 | DEM-003 | Core: settings, DB, middleware, ModuleLoader | ✅ Concluído | — |
 | DEM-004 | Módulo Admin (backend) | ✅ Concluído | — |
 | DEM-005 | Módulo Gestor (backend) | ✅ Concluído | — |
@@ -25,29 +25,22 @@
 | DEM-016 | Portal (landing page institucional) | ✅ Concluído | `eb7e082` |
 | DEM-017 | Seed de homologação (50 pacientes × 3 tenants) | ✅ Concluído | `1a26523` |
 | DEM-018 | Admin Módulo Completo + Traefik SSL | ✅ Concluído | `51465d0` |
-| DEM-019 | Gestor Módulo Completo | 🔄 Spec pronta — aguardando execução | `5b66208` |
+| DEM-019 | Gestor Módulo Completo | ✅ Concluído | `93e42aa` |
 
-## Próximos passos
+## Fixes aplicados (commit 93e42aa)
 
-### 🔥 DEM-019 — Gestor Módulo Completo (PRIORIDADE ALTA)
+| Fix | Problema | Solução |
+|-----|----------|---------|
+| POSTGRES_HOST | `settings.py` usava `localhost` dentro do container | `POSTGRES_HOST=postgres` no docker-compose |
+| AdminUI baseURL | `http://localhost:8000/admin/admin` — porta errada + duplo prefixo | `/admin` (path relativo) |
+| Rebuild AdminUI | Bundle antigo baked com URL errada | `npm run build` → novo bundle `index-269ofa-c.js` |
 
-**Arquivo:** `docs/demandas/DEM-019_GESTOR_COMPLETO/02_TECNICA.md`
+## Ação pendente — DNS
 
-Entregáveis:
-- 8 grupos de endpoints gestor (dashboard, pacientes, agendamentos, faturas, RAG, equipe, programas, configurações)
-- 8 páginas GestorUI (Dashboard, PatientList, PatientProfile, AppointmentCalendar, InvoiceList, RagDocuments, ProgramList, TenantSettings)
-- Migrations SQL, SSE progresso RAG, export CSV, validação CPF + conflito de horário
-
----
-
-### ⚠️ Ação manual necessária — DNS + SSL Admin
-
-Para que `admin.intellicare.ia.br` funcione em produção:
-1. Configurar registro A: `admin.intellicare.ia.br` → IP do servidor
+Para `admin.intellicare.ia.br` funcionar em produção:
+1. Configurar registro A: `admin.intellicare.ia.br` → IP do servidor VPS
 2. Aguardar propagação DNS (até 24h)
-3. Traefik ACME (Let's Encrypt) emite o certificado automaticamente na primeira requisição
-
----
+3. Traefik ACME emite certificado Let's Encrypt automaticamente
 
 ## Fila futura
 
