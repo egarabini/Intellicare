@@ -23,6 +23,7 @@ AVAILABLE_MODULES: dict[str, str] = {
     "cuidado": "modules.cuidado.main",
     "florence": "modules.florence.main",
     "oswaldo": "modules.oswaldo.main",
+    "slm": "modules.slm.main",
 }
 
 
