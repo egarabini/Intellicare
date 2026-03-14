@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-14 | Branch: main | Último commit: c01d007
+> Atualizado: 2026-03-14 | Branch: main | Último commit: 921200d
 
 ## Status Geral
 
@@ -26,18 +26,43 @@
 | DEM-017 | Seed de homologação (50 pacientes × 3 tenants) | ✅ Concluído | `1a26523` |
 | DEM-018 | Admin Módulo Completo + Traefik SSL | ✅ Concluído | `51465d0` |
 | DEM-019 | Gestor Módulo Completo | ✅ Concluído | `c01d007` |
+| DEM-020 | Clínico Frontend Completo | 🔄 Spec pronta — aguardando execução | `921200d` |
+
+## Fila de execução
+
+### 🔥 DEM-020 — Clínico Frontend Completo
+
+**Arquivo:** `docs/demandas/DEM-020_CLINICO_COMPLETO/02_TECNICA.md`
+
+O que transforma o MVP (2 páginas soltas) em módulo completo:
+
+| Componente | Estado atual | Alvo |
+|---|---|---|
+| AppShell / navegação | ❌ ausente | Sidebar com 5 itens + header |
+| Role Guard | ❌ ausente | Verifica role `CLINICO` no JWT |
+| Dashboard (agenda hoje) | ❌ ausente | Lista do dia + botão "Atender" |
+| Agenda (calendário) | ❌ ausente | Semanal/mensal filtrado pelo clínico |
+| PatientList | ✅ MVP | + paginação + última consulta + programas |
+| PatientProfile | ❌ ausente | 3 abas: resumo / atendimentos / docs |
+| EncounterView | ✅ MVP | + CID-10 autocomplete + prescrição |
+| AIAssistant standalone | ❌ ausente | Página própria, histórico em memória |
+| MyProfile | ❌ ausente | Nome, especialidade, CRM |
+
+Backend adicional necessário: `/cuidado/my-agenda`, `/cuidado/patients/:id/profile`,
+`/cuidado/patients/:id/clinical`, `/cuidado/cid10`, `PATCH /cuidado/encounters/:id`
+
+---
 
 ## Fila futura
 
 | DEM | Título | Prioridade | Dependências |
 |-----|--------|-----------|--------------|
-| DEM-020 | Deploy produção (VPS + DNS + SSL end-to-end) | 🔥 Alta | DNS A record pendente |
-| DEM-021 | Testes E2E (Playwright) | Média | DEMs 018+019 estáveis |
-| DEM-022 | Observabilidade (Prometheus + Grafana) | Média | DEM-020 |
+| DEM-021 | Deploy produção (VPS + DNS + SSL end-to-end) | 🔥 Alta | DNS A record + DEM-020 |
+| DEM-022 | Testes E2E (Playwright) | Média | DEMs estáveis |
+| DEM-023 | Observabilidade (Prometheus + Grafana) | Média | DEM-021 |
 
-## Ação manual pendente
+## Ação manual pendente (DNS)
 
 Para `admin.intellicare.ia.br` funcionar em produção:
 1. Configurar registro A: `admin.intellicare.ia.br` → IP do servidor VPS
-2. Aguardar propagação DNS (até 24h)
-3. Traefik ACME emite certificado Let's Encrypt automaticamente
+2. Aguardar propagação DNS (até 24h) — Traefik emite SSL automaticamente
