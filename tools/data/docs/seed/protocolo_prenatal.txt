@@ -1,0 +1,18 @@
+PROTOCOLO FICTICIO - PRE-NATAL
+
+Este texto de seed descreve um roteiro ficticio de acompanhamento pre-natal para fins de homologacao.
+
+Etapas resumidas:
+1. Cadastro inicial com historico obstetrico, sinais vitais e orientacoes gerais.
+2. Solicitar exames por trimestre conforme calendario local.
+3. Revisar vacinas, suplementacao e sinais de alerta em toda consulta.
+4. Encaminhar para alto risco quando houver achados clinicos relevantes.
+
+Sinais de alerta destacados:
+- sangramento vaginal
+- perda de liquido
+- cefaleia intensa com alteracao visual
+- dor abdominal persistente
+- reducao importante de movimentos fetais
+
+Todas as orientacoes aqui sao ficticias e existem apenas para validar fluxos de RAG e interface.

@@ -1,0 +1,18 @@
+MANUAL FICTICIO - CONDUTAS CLINICAS NA APS
+
+Guia rapido de demonstracao para situacoes clinicas frequentes em atencao primaria.
+
+Capitulos resumidos:
+1. Dor toracica sem sinais de instabilidade
+2. Crise hipertensiva sem lesao aguda de orgao-alvo
+3. Hipoglicemia leve e moderada
+4. Dispneia sem sinais de gravidade imediata
+5. Encaminhamentos e orientacoes de retorno
+
+Regras gerais:
+- sempre registrar sinais vitais e contexto clinico
+- reconhecer red flags cedo
+- orientar retorno precoce se houver piora
+- documentar fonte da conduta e profissional responsavel
+
+Este manual e completamente ficticio e nao deve ser utilizado em assistencia real.

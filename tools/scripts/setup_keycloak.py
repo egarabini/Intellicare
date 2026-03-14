@@ -37,10 +37,30 @@ DEFAULT_ADMIN = os.getenv("KEYCLOAK_ADMIN", "admin")
 DEFAULT_PASSWORD = os.getenv("KEYCLOAK_ADMIN_PASSWORD", "admin")
 CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET", "CHANGE_ME_ON_DEPLOY")
 
+DEMO_USERS = [
+    {"username": "gestor.alfa", "password": "Demo@1234", "role": "TENANT_GESTOR", "tenant": "clinica_alfa", "name": "Ana Gestora", "email": "gestor.alfa@demo.intellicare"},
+    {"username": "dr.silva", "password": "Demo@1234", "role": "CLINICO", "tenant": "clinica_alfa", "name": "Carlos Silva", "email": "dr.silva@demo.intellicare"},
+    {"username": "dr.santos", "password": "Demo@1234", "role": "CLINICO", "tenant": "clinica_alfa", "name": "Maria Santos", "email": "dr.santos@demo.intellicare"},
+    {"username": "dr.oliveira", "password": "Demo@1234", "role": "CLINICO", "tenant": "clinica_alfa", "name": "Paulo Oliveira", "email": "dr.oliveira@demo.intellicare"},
+    {"username": "paciente.alfa", "password": "Demo@1234", "role": "PACIENTE", "tenant": "clinica_alfa", "name": "Joao Paciente", "email": "paciente.alfa@demo.intellicare"},
+    {"username": "gestor.beta", "password": "Demo@1234", "role": "TENANT_GESTOR", "tenant": "hospital_beta", "name": "Pedro Gestor", "email": "gestor.beta@demo.intellicare"},
+    {"username": "dr.costa", "password": "Demo@1234", "role": "CLINICO", "tenant": "hospital_beta", "name": "Lucia Costa", "email": "dr.costa@demo.intellicare"},
+    {"username": "dr.ferreira", "password": "Demo@1234", "role": "CLINICO", "tenant": "hospital_beta", "name": "Bruno Ferreira", "email": "dr.ferreira@demo.intellicare"},
+    {"username": "dr.almeida", "password": "Demo@1234", "role": "CLINICO", "tenant": "hospital_beta", "name": "Sofia Almeida", "email": "dr.almeida@demo.intellicare"},
+    {"username": "paciente.beta", "password": "Demo@1234", "role": "PACIENTE", "tenant": "hospital_beta", "name": "Maria Paciente", "email": "paciente.beta@demo.intellicare"},
+    {"username": "gestor.gamma", "password": "Demo@1234", "role": "TENANT_GESTOR", "tenant": "consultorio_gamma", "name": "Lucas Gestor", "email": "gestor.gamma@demo.intellicare"},
+    {"username": "dr.rocha", "password": "Demo@1234", "role": "CLINICO", "tenant": "consultorio_gamma", "name": "Felipe Rocha", "email": "dr.rocha@demo.intellicare"},
+    {"username": "dr.mendes", "password": "Demo@1234", "role": "CLINICO", "tenant": "consultorio_gamma", "name": "Renata Mendes", "email": "dr.mendes@demo.intellicare"},
+    {"username": "dr.castro", "password": "Demo@1234", "role": "CLINICO", "tenant": "consultorio_gamma", "name": "Andre Castro", "email": "dr.castro@demo.intellicare"},
+    {"username": "paciente.gamma", "password": "Demo@1234", "role": "PACIENTE", "tenant": "consultorio_gamma", "name": "Ana Paciente", "email": "paciente.gamma@demo.intellicare"},
+]
+
 
 class KeycloakAdmin:
     def __init__(self, base_url: str, admin: str, password: str):
         self.base_url = base_url.rstrip("/")
+        self.admin = admin
+        self.password = password
         self.token = self._get_admin_token(admin, password)
         self.headers = {
             "Authorization": f"Bearer {self.token}",
@@ -62,18 +82,53 @@ class KeycloakAdmin:
         return response.json()["access_token"]
 
     def get(self, path: str, **params: Any) -> httpx.Response:
-        return httpx.get(
+        response = httpx.get(
             f"{self.base_url}{path}",
             headers=self.headers,
             params=params or None,
             timeout=20,
         )
+        if response.status_code == 401:
+            self.refresh_token()
+            response = httpx.get(
+                f"{self.base_url}{path}",
+                headers=self.headers,
+                params=params or None,
+                timeout=20,
+            )
+        return response
 
     def post(self, path: str, body: dict[str, Any]) -> httpx.Response:
-        return httpx.post(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        response = httpx.post(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        if response.status_code == 401:
+            self.refresh_token()
+            response = httpx.post(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        return response
 
     def put(self, path: str, body: dict[str, Any]) -> httpx.Response:
-        return httpx.put(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        response = httpx.put(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        if response.status_code == 401:
+            self.refresh_token()
+            response = httpx.put(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        return response
+
+    def delete(self, path: str) -> httpx.Response:
+        response = httpx.delete(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+        if response.status_code == 401:
+            self.refresh_token()
+            response = httpx.delete(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+        return response
+
+    def put_no_body(self, path: str) -> httpx.Response:
+        response = httpx.put(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+        if response.status_code == 401:
+            self.refresh_token()
+            response = httpx.put(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+        return response
+
+    def refresh_token(self) -> None:
+        self.token = self._get_admin_token(self.admin, self.password)
+        self.headers["Authorization"] = f"Bearer {self.token}"
 
 
 def ensure_realm(kc: KeycloakAdmin) -> None:
@@ -152,6 +207,22 @@ def ensure_group(
         print(f"  [OK] Roles {[role['name'] for role in to_add]} associadas ao grupo '{group_name}'")
 
     return group_id
+
+
+def split_name(full_name: str) -> tuple[str, str]:
+    parts = full_name.split()
+    if len(parts) == 1:
+        return parts[0], ""
+    return parts[0], " ".join(parts[1:])
+
+
+def ensure_demo_group(kc: KeycloakAdmin, tenant_slug: str) -> str:
+    return ensure_group(
+        kc,
+        group_name=f"tenant_{tenant_slug}",
+        attributes={"tenant_id": [tenant_slug]},
+        role_names=[],
+    )
 
 
 def tenant_id_mapper_payload() -> dict[str, Any]:
@@ -256,10 +327,8 @@ def ensure_user(
         group_members = kc.get(f"/admin/realms/{REALM}/users/{user_id}/groups")
         group_members.raise_for_status()
         if all(group["id"] != group_id for group in group_members.json()):
-            httpx.put(
-                f"{kc.base_url}/admin/realms/{REALM}/users/{user_id}/groups/{group_id}",
-                headers=kc.headers,
-                timeout=20,
+            kc.put_no_body(
+                f"/admin/realms/{REALM}/users/{user_id}/groups/{group_id}"
             ).raise_for_status()
 
 
@@ -271,6 +340,52 @@ def export_realm(kc: KeycloakAdmin) -> dict[str, Any]:
     )
     response.raise_for_status()
     return response.json()
+
+
+def seed_demo_users(kc: KeycloakAdmin, tenant_filter: str | None = None) -> None:
+    seeded_groups: dict[str, str] = {}
+    for user in DEMO_USERS:
+        if tenant_filter and user["tenant"] != tenant_filter:
+            continue
+        group_id = seeded_groups.get(user["tenant"])
+        if not group_id:
+            group_id = ensure_demo_group(kc, user["tenant"])
+            seeded_groups[user["tenant"]] = group_id
+        first_name, last_name = split_name(user["name"])
+        ensure_user(
+            kc,
+            user["username"],
+            user["email"],
+            first_name,
+            last_name,
+            user["password"],
+            [user["role"]],
+            group_id=group_id,
+            attributes={"tenant_id": [user["tenant"]]},
+        )
+        print(f"  [DEMO] {user['username']} ({user['role']} @ {user['tenant']})")
+
+
+def delete_demo_users(kc: KeycloakAdmin, tenant_filter: str | None = None) -> None:
+    target_tenants = {user["tenant"] for user in DEMO_USERS if not tenant_filter or user["tenant"] == tenant_filter}
+    for user in DEMO_USERS:
+        if tenant_filter and user["tenant"] != tenant_filter:
+            continue
+        response = kc.get(f"/admin/realms/{REALM}/users", username=user["username"])
+        response.raise_for_status()
+        users = [item for item in response.json() if item["username"] == user["username"]]
+        for item in users:
+            kc.delete(f"/admin/realms/{REALM}/users/{item['id']}").raise_for_status()
+            print(f"  [REMOVIDO] user {user['username']}")
+
+    for tenant_slug in sorted(target_tenants):
+        group_name = f"tenant_{tenant_slug}"
+        response = kc.get(f"/admin/realms/{REALM}/groups", search=group_name)
+        response.raise_for_status()
+        groups = [group for group in response.json() if group["name"] == group_name]
+        for group in groups:
+            kc.delete(f"/admin/realms/{REALM}/groups/{group['id']}").raise_for_status()
+            print(f"  [REMOVIDO] grupo {group_name}")
 
 
 def main(args: argparse.Namespace) -> None:
@@ -432,6 +547,14 @@ def main(args: argparse.Namespace) -> None:
         attributes={"tenant_id": ["dev"]},
     )
 
+    if args.seed_demo_users:
+        print("\n11. Usuarios demo")
+        seed_demo_users(kc, tenant_filter=args.demo_tenant)
+
+    if args.purge_demo_users:
+        print("\n12. Remocao de usuarios demo")
+        delete_demo_users(kc, tenant_filter=args.demo_tenant)
+
     try:
         exported = export_realm(kc)
     except httpx.HTTPStatusError as exc:
@@ -449,4 +572,7 @@ if __name__ == "__main__":
     parser.add_argument("--keycloak-url", default=DEFAULT_KC_URL)
     parser.add_argument("--admin", default=DEFAULT_ADMIN)
     parser.add_argument("--password", default=DEFAULT_PASSWORD)
+    parser.add_argument("--seed-demo-users", action="store_true")
+    parser.add_argument("--purge-demo-users", action="store_true")
+    parser.add_argument("--demo-tenant")
     main(parser.parse_args())

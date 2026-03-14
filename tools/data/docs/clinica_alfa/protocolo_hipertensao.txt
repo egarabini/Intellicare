@@ -1,0 +1,19 @@
+PROTOCOLO FICTICIO - HIPERTENSAO ARTERIAL
+
+Este documento de demonstracao descreve uma linha de cuidado ficticia para hipertensao arterial.
+Objetivo: manter a pressao arterial abaixo da meta individual, reforcar adesao terapeutica e identificar sinais de risco.
+
+Passos sugeridos:
+1. Confirmar afericoes repetidas em condicoes padronizadas.
+2. Classificar risco cardiovascular com base em comorbidades e historico clinico.
+3. Iniciar intervencoes de estilo de vida com foco em sono, atividade fisica e alimentacao.
+4. Escalonar medicacao conforme resposta clinica e tolerabilidade.
+5. Encaminhar para avaliacao especializada em casos refratarios ou com lesao de orgao-alvo.
+
+Sinais de alerta para encaminhamento rapido:
+- dor toracica persistente
+- deficit neurologico focal
+- dispneia importante
+- pressao arterial muito elevada com sintomas
+
+Orientacao final: toda decisao deve ser revisada pelo profissional responsavel e registrada em prontuario.

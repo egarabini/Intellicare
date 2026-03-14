@@ -1,0 +1,22 @@
+PROTOCOLO FICTICIO - DIABETES MELLITUS
+
+Documento de demonstracao para acompanhamento de pessoas com diabetes mellitus em ambiente ambulatorial.
+
+Metas ficticias de acompanhamento:
+- revisar adesao a medicacao em toda consulta
+- reforcar plano alimentar e metas de atividade fisica
+- rastrear sintomas de hipoglicemia e hiperglicemia
+- monitorar pe diabetico, funcao renal e saude ocular
+
+Fluxo sugerido:
+1. Avaliar glicemias recentes e eventos adversos.
+2. Ajustar o plano terapeutico se houver controle inadequado.
+3. Programar retorno em intervalo compativel com a complexidade do caso.
+4. Registrar orientacoes de autocuidado e sinais de descompensacao.
+
+Sinais de alerta:
+- confusao mental
+- sonolencia progressiva
+- vomitos persistentes
+- perda de peso acelerada
+- infeccao sem resposta clinica

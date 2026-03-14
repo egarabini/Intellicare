@@ -1,0 +1,17 @@
+PROTOCOLO FICTICIO - OBESIDADE
+
+Documento ficticio para acompanhamento multiprofissional de obesidade em atencao ambulatorial.
+
+Pontos de cuidado:
+- definir metas graduais e realistas
+- revisar barreiras de adesao
+- combinar estrategia nutricional, atividade fisica e suporte comportamental
+- avaliar comorbidades e risco cardiovascular
+
+Quando discutir encaminhamento especializado:
+- suspeita de apneia do sono
+- limitacao funcional importante
+- fracasso de tentativas anteriores bem estruturadas
+- necessidade de avaliacao cirurgica conforme criterios locais
+
+O objetivo deste documento e gerar chunks semanticamente coerentes para o pipeline de embeddings.
