@@ -16,6 +16,9 @@ loader.load("admin")
 loader.load("financeiro")
 loader.load("programas")
 loader.load("vector")
+loader.load("gestor")
+loader.load("cuidado")
+loader.load("slm")
 
 
 @app.get("/health")

@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     redis_port: int = 6379
 
     keycloak_url: str = "http://localhost:8080"
+    keycloak_internal_url: str = ""
     keycloak_realm: str = "intellicare"
     keycloak_client_id: str = "intellicare-service"
 
@@ -58,9 +59,14 @@ class Settings(BaseSettings):
         )
 
     @property
+    def keycloak_base_url(self) -> str:
+        """URL interna (docker) tem prioridade sobre a externa."""
+        return self.keycloak_internal_url or self.keycloak_url
+
+    @property
     def keycloak_jwks_url(self) -> str:
         return (
-            f"{self.keycloak_url}/realms/{self.keycloak_realm}"
+            f"{self.keycloak_base_url}/realms/{self.keycloak_realm}"
             f"/protocol/openid-connect/certs"
         )
 

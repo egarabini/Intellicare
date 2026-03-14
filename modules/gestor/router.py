@@ -14,7 +14,7 @@ from modules.vector.ingest_service import IngestService
 from .schemas import InviteUserRequest, UnitProfile
 from .service import GestorService
 
-router = APIRouter(prefix="/gestor", tags=["gestor"])
+router = APIRouter(tags=["gestor"])
 _svc = GestorService()
 _ingest = IngestService()
 

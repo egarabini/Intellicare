@@ -11,7 +11,7 @@ from intellicare_core.contracts.base import TenantContext
 from .schemas import AskRequest, AskResponse, ModelInfo
 from .service import SLMService
 
-router = APIRouter(prefix="/slm", tags=["slm"])
+router = APIRouter(tags=["slm"])
 _svc = SLMService()
 Auth = Annotated[TenantContext, Depends(get_current_tenant)]
 

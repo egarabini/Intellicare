@@ -4,6 +4,7 @@ Validacao de JWT emitido pelo Keycloak.
 
 from __future__ import annotations
 
+import logging
 from functools import lru_cache
 from typing import Annotated, Any
 
@@ -11,10 +12,13 @@ import httpx
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwk, jwt
+from sqlalchemy import text
 
 from intellicare_core.config.settings import get_settings
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.contracts.errors import api_error
+
+logger = logging.getLogger(__name__)
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token", auto_error=True)
 
@@ -78,10 +82,35 @@ async def verify_token(token: str) -> TenantContext:
     )
 
 
+async def _check_tenant_active(ctx: TenantContext) -> None:
+    """Verifica se o tenant esta ativo no banco. Bloqueia suspensos/inativos."""
+    # Platform admin nao esta vinculado a tenant — skip
+    if ctx.has_role("PLATFORM_ADMIN"):
+        return
+
+    from intellicare_core.db.session import get_engine
+
+    async with get_engine().connect() as conn:
+        row = (await conn.execute(
+            text("SELECT status FROM public.tenants WHERE slug = :slug"),
+            {"slug": ctx.tenant_id},
+        )).mappings().first()
+
+    if not row or row["status"] != "active":
+        logger.warning(
+            "Acesso bloqueado: tenant '%s' com status '%s'",
+            ctx.tenant_id,
+            row["status"] if row else "nao_encontrado",
+        )
+        raise api_error(403, "tenant_inactive", "Tenant suspenso ou inativo")
+
+
 async def get_current_tenant(
     token: Annotated[str, Depends(oauth2_scheme)],
 ) -> TenantContext:
-    return await verify_token(token)
+    ctx = await verify_token(token)
+    await _check_tenant_active(ctx)
+    return ctx
 
 
 def require_role(role: str):

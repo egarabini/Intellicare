@@ -12,7 +12,7 @@ from modules.slm.service import SLMService
 from .schemas import ClinicalAskRequest, EncounterCreate, NoteCreate, PatientCreate
 from .service import CuidadoService
 
-router = APIRouter(prefix="/cuidado", tags=["cuidado"])
+router = APIRouter(tags=["cuidado"])
 _svc = CuidadoService()
 _slm = SLMService()
 Clinico = Annotated[TenantContext, Depends(require_role("CLINICO"))]
