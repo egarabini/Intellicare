@@ -16,7 +16,7 @@ from .schemas import (
 )
 from .service import TenantService
 
-router = APIRouter(prefix="/admin", tags=["admin"])
+router = APIRouter(tags=["admin"])
 _service = TenantService()
 
 AdminRequired = Annotated[TenantContext, Depends(require_role("PLATFORM_ADMIN"))]
@@ -91,4 +91,3 @@ async def list_tenant_users(slug: str, actor: AdminRequired) -> TenantUsersRespo
         for u in users
     ]
     return TenantUsersResponse(tenant_slug=slug, users=mapped, total=len(mapped))
-

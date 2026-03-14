@@ -14,7 +14,7 @@ from .schemas import (
 )
 from .service import FinanceiroService
 
-router = APIRouter(prefix="/financeiro", tags=["financeiro"])
+router = APIRouter(tags=["financeiro"])
 _svc = FinanceiroService()
 AdminOnly = Annotated[TenantContext, Depends(require_role("PLATFORM_ADMIN"))]
 
@@ -70,4 +70,3 @@ async def billing_report(
     month: int = Query(..., ge=1, le=12),
 ) -> dict:
     return await _svc.billing_report(year, month)
-

@@ -13,7 +13,8 @@ STATIC_ROOT = Path(__file__).resolve().parent / "static"
 app = FastAPI(title="IntelliCare Service")
 loader = ModuleLoader(app)
 loader.load("admin")
-loader.load("gestor")
+loader.load("financeiro")
+loader.load("vector")
 
 
 @app.get("/health")

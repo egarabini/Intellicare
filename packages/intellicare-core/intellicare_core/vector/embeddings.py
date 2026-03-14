@@ -4,9 +4,15 @@ from __future__ import annotations
 import asyncio
 import logging
 import os
+from typing import Any
 from typing import Sequence
 
 import httpx
+from sqlalchemy import text
+
+from intellicare_core.config.settings import get_settings
+from intellicare_core.contracts.base import TenantContext
+from intellicare_core.db.session import tenant_session
 
 OLLAMA_URL  = os.getenv("OLLAMA_URL",   "http://ollama:11434")
 EMBED_MODEL = os.getenv("EMBED_MODEL",  "nomic-embed-text")
@@ -64,3 +70,63 @@ async def batch_embed(texts: Sequence[str]) -> list[list[float]]:
                 await asyncio.sleep(wait)
 
     return all_embeddings
+
+
+async def semantic_search(
+    query: str,
+    ctx: TenantContext,
+    table: str = "knowledge_base",
+    limit: int = 5,
+    min_similarity: float = 0.5,
+) -> list[dict[str, Any]]:
+    """Executa busca semantica no schema do tenant usando pgvector."""
+    embedding = await get_embedding(query)
+    embedding_str = "[" + ",".join(str(value) for value in embedding) + "]"
+
+    async with tenant_session(ctx) as db:
+        result = await db.execute(
+            text(
+                f"""
+                SELECT
+                    id,
+                    title,
+                    content,
+                    source_path,
+                    chunk_index,
+                    created_at,
+                    1 - (embedding <=> :emb::vector) AS similarity
+                FROM {table}
+                WHERE 1 - (embedding <=> :emb::vector) >= :min_similarity
+                ORDER BY embedding <=> :emb::vector
+                LIMIT :limit
+                """
+            ),
+            {
+                "emb": embedding_str,
+                "min_similarity": min_similarity,
+                "limit": limit,
+            },
+        )
+        return [dict(row) for row in result.mappings().all()]
+
+
+async def generate(prompt: str, context_chunks: list[str], model: str | None = None) -> str:
+    """Gera resposta textual a partir de contexto recuperado."""
+    settings = get_settings()
+    generate_model = model or settings.ollama_generate_model
+    context = "\n---\n".join(context_chunks)
+    full_prompt = (
+        "Voce e um assistente clinico. Com base nos protocolos abaixo, "
+        "responda de forma objetiva e fundamentada.\n\n"
+        f"PROTOCOLOS:\n{context}\n\n"
+        f"PERGUNTA: {prompt}\n\n"
+        "RESPOSTA:"
+    )
+
+    async with httpx.AsyncClient(timeout=60.0) as client:
+        response = await client.post(
+            f"{settings.ollama_api_url}/api/generate",
+            json={"model": generate_model, "prompt": full_prompt, "stream": False},
+        )
+        response.raise_for_status()
+        return response.json()["response"]
