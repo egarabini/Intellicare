@@ -367,7 +367,23 @@ def main(args: argparse.Namespace) -> None:
         },
     )
 
-    print("\n8. Usuarios dev")
+    print("\n8. Client clinico-ui")
+    ensure_client(
+        kc,
+        "clinico-ui",
+        {
+            "clientId": "clinico-ui",
+            "name": "Clinico UI",
+            "enabled": True,
+            "publicClient": True,
+            "standardFlowEnabled": True,
+            "directAccessGrantsEnabled": False,
+            "redirectUris": ["http://localhost:5173/*", "http://localhost:8000/clinico-ui/*"],
+            "webOrigins": ["http://localhost:5173", "http://localhost:8000"],
+        },
+    )
+
+    print("\n9. Usuarios dev")
     ensure_user(
         kc,
         "platform-admin",

@@ -14,6 +14,7 @@ app = FastAPI(title="IntelliCare Service")
 loader = ModuleLoader(app)
 loader.load("admin")
 loader.load("financeiro")
+loader.load("programas")
 loader.load("vector")
 
 
@@ -29,3 +30,7 @@ if admin_ui_dir.exists():
 gestor_ui_dir = STATIC_ROOT / "gestor-ui"
 if gestor_ui_dir.exists():
     app.mount("/gestor-ui", StaticFiles(directory=str(gestor_ui_dir), html=True), name="gestor-ui")
+
+clinico_ui_dir = STATIC_ROOT / "clinico-ui"
+if clinico_ui_dir.exists():
+    app.mount("/clinico-ui", StaticFiles(directory=str(clinico_ui_dir), html=True), name="clinico-ui")
