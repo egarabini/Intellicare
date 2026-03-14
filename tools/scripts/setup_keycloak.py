@@ -242,6 +242,24 @@ def tenant_id_mapper_payload() -> dict[str, Any]:
     }
 
 
+def realm_roles_mapper_payload() -> dict[str, Any]:
+    """Mapper que inclui realm_access.roles no ID token e userinfo."""
+    return {
+        "name": "realm-roles-mapper",
+        "protocol": "openid-connect",
+        "protocolMapper": "oidc-usermodel-realm-role-mapper",
+        "consentRequired": False,
+        "config": {
+            "multivalued": "true",
+            "claim.name": "realm_access.roles",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "jsonType.label": "String",
+        },
+    }
+
+
 def ensure_client(kc: KeycloakAdmin, client_id: str, payload: dict[str, Any]) -> str:
     response = kc.get(f"/admin/realms/{REALM}/clients", clientId=client_id)
     response.raise_for_status()
@@ -428,8 +446,8 @@ def main(args: argparse.Namespace) -> None:
             "serviceAccountsEnabled": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": True,
-            "redirectUris": ["http://localhost:8000/*"],
-            "webOrigins": ["http://localhost:8000"],
+            "redirectUris": ["http://localhost:8000/*", "http://localhost:9000/*", "http://127.0.0.1:9000/*"],
+            "webOrigins": ["http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
             "protocolMappers": [tenant_id_mapper_payload()],
         },
     )
@@ -461,8 +479,9 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5174/*", "http://localhost:8000/admin-ui/*"],
-            "webOrigins": ["http://localhost:5174", "http://localhost:8000"],
+            "redirectUris": ["http://localhost:5174/*", "http://localhost:8000/admin-ui/*", "http://localhost:9000/admin-ui/*", "http://127.0.0.1:9000/admin-ui/*"],
+            "webOrigins": ["http://localhost:5174", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
 
@@ -477,8 +496,9 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5175/*", "http://localhost:8000/gestor-ui/*"],
-            "webOrigins": ["http://localhost:5175", "http://localhost:8000"],
+            "redirectUris": ["http://localhost:5175/*", "http://localhost:8000/gestor-ui/*", "http://localhost:9000/gestor-ui/*", "http://127.0.0.1:9000/gestor-ui/*"],
+            "webOrigins": ["http://localhost:5175", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
 
@@ -493,8 +513,9 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5173/*", "http://localhost:8000/clinico-ui/*"],
-            "webOrigins": ["http://localhost:5173", "http://localhost:8000"],
+            "redirectUris": ["http://localhost:5173/*", "http://localhost:8000/clinico-ui/*", "http://localhost:9000/clinico-ui/*", "http://127.0.0.1:9000/clinico-ui/*"],
+            "webOrigins": ["http://localhost:5173", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
 
@@ -509,8 +530,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5176/*", "http://localhost:8000/*"],
-            "webOrigins": ["http://localhost:5176", "http://localhost:8000"],
+            "redirectUris": ["http://localhost:5176/*", "http://localhost:8000/*", "http://localhost:9000/*", "http://127.0.0.1:9000/*"],
+            "webOrigins": ["http://localhost:5176", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
         },
     )
 

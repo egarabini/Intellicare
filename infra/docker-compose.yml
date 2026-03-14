@@ -120,7 +120,7 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       LOG_LEVEL: ${LOG_LEVEL}
     ports:
-      - "8000:8000"
+      - "9000:8000"
     networks:
       - intellicare-net
     depends_on:

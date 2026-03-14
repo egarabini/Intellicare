@@ -5,7 +5,7 @@ const oidcConfig: AuthProviderProps = {
   authority: `${import.meta.env.VITE_KEYCLOAK_URL}/realms/intellicare`,
   client_id: 'admin-ui',
   redirect_uri: `${window.location.origin}/admin-ui/`,
-  post_logout_redirect_uri: `${window.location.origin}/admin-ui/`,
+  post_logout_redirect_uri: `${window.location.origin}/`,
   scope: 'openid profile email',
   userStore: undefined,
   onSigninCallback: () => {
