@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-15 | Branch: main | Último commit: 2f49d54
+> Atualizado: 2026-03-15 | Branch: main | Último commit: bc796d1
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -14,7 +14,9 @@
 | DEM-022 | Portal do Paciente — 6 páginas + backend + Keycloak client | `3f5a615` |
 | DEM-024 | Testes E2E Playwright — 13/13 passando em 1.2min, 4 workers (Admin 4, Clínico 3, Gestor 3, Paciente 3) | `0418bc4` |
 | DEM-025 | Observabilidade — Prometheus v2.51 + Grafana v10.4, 5 targets UP, 10 panels | `45c0d0b` |
+| DEM-031 | Gestão Completa — 4 tabelas, 11 endpoints, 3 páginas (Units, UnitDetail, TenantUsers) | `bc796d1` |
 | DEM-033 | Portal — EnvironmentSelector modal (4 ambientes) + Fix Traefik HTTP `intellicare.ia.br` | `2f49d54` |
+| DEM-INF | Infra — Dockerfile multi-stage Node+Python, docker-compose.dev.yml, fix static files staging | `a94cfcd` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -40,9 +42,7 @@
 |-----|--------|-------------|-------------------|
 | DEM-023 | Deploy Produção (VPS + DNS + SSL) | `DEM-023_DEPLOY_PRODUCAO/02_TECNICA.md` | independente |
 | DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | `DEM-030_ADMINISTRATIVO_COMPLETO/02_TECNICA.md` | DEM-031 |
-| DEM-031 | Gestão Completa (Unidades de Saúde, Usuários do Tenant) | `DEM-031_GESTAO_COMPLETA/02_TECNICA.md` | DEM-030 |
-| DEM-032 | Clínico Gestão (Grupos, Profissionais, Equipe) | `DEM-032_CLINICO_GESTAO/02_TECNICA.md` | após DEM-031 (depende de `units`) |
-| DEM-033 | Portal — Seletor de Ambiente + Fix Traefik HTTP | `DEM-033_PORTAL_ENVIRONMENT_SELECTOR/02_TECNICA.md` | independente |
+| DEM-032 | Clínico Gestão (Grupos, Profissionais, Equipe) | `DEM-032_CLINICO_GESTAO/02_TECNICA.md` | pode iniciar — migration 005 já aplicada |
 
 ---
 
@@ -61,8 +61,8 @@
 
 ```
 DEV-A      → DEM-030  Administrativo Completo (maior escopo — 4 áreas)
-DEV-B      → DEM-031  Gestão Completa (Unidades + Usuários do Tenant)
-DEV-C      → DEM-032  Clínico Gestão (após DEV-B aplicar migration 005)
+DEV-B      → ✅ DEM-031 entregue! Próximo: suporte a DEM-032 ou DEM-030
+DEV-C      → DEM-032  Clínico Gestão (migration 005 já aplicada — pode iniciar)
 Eduardo    → DEM-023  Deploy Produção (requer ação manual: VPS + DNS)
 ```
 
