@@ -135,6 +135,9 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       LOG_LEVEL: ${LOG_LEVEL}
       ENABLE_METRICS: ${ENABLE_METRICS:-true}
+    volumes:
+      # Monta os estáticos do host diretamente — vite build atualiza sem precisar rebuildar o container
+      - ../packages/intellicare-core/intellicare_core/static:/app/packages/intellicare-core/intellicare_core/static:ro
     ports:
       - "9000:8000"
     networks:
