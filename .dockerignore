@@ -13,8 +13,8 @@
 *.pyc
 *.pyo
 
-# Frontend source (not needed in service image)
-frontend/
+# Frontend source (built in multi-stage, keep in context)
+# frontend/
 
 # Tests (not needed in production image)
 tests/
