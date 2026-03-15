@@ -72,6 +72,15 @@ services:
       timeout: 10s
       retries: 10
       start_period: 90s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.intellicare-auth.rule=Host(`auth.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-auth.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-auth.tls.certresolver=letsencrypt"
+      - "traefik.http.services.intellicare-auth.loadbalancer.server.port=8080"
+      - "traefik.http.routers.intellicare-auth-http.rule=Host(`auth.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-auth-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-auth-http.middlewares=redirect-to-https"
 
   ollama:
     image: ollama/ollama:latest
@@ -108,7 +117,7 @@ services:
     container_name: intellicare-service
     restart: unless-stopped
     env_file:
-      - .env
+      - ${INTELLICARE_ENV_FILE:-.env}
     environment:
       # Hosts Docker internos — sobrescrevem os defaults "localhost" do settings.py
       POSTGRES_HOST: postgres
@@ -141,6 +150,16 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.intellicare.rule=Host(`localhost`)"
       - "traefik.http.services.intellicare.loadbalancer.server.port=8000"
+      # Portal (raiz)
+      - "traefik.http.routers.intellicare-portal.rule=Host(`intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-portal.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-portal.tls.certresolver=letsencrypt"
+      - "traefik.http.services.intellicare-portal.loadbalancer.server.port=8000"
+      # API
+      - "traefik.http.routers.intellicare-api.rule=Host(`api.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-api.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.intellicare-api.loadbalancer.server.port=8000"
       # Rota por subdomínio (produção)
       - "traefik.http.routers.intellicare-admin.rule=Host(`admin.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-admin.entrypoints=websecure"
@@ -151,6 +170,12 @@ services:
       - "traefik.http.routers.intellicare-admin-http.entrypoints=web"
       - "traefik.http.routers.intellicare-admin-http.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.intellicare-api-http.rule=Host(`api.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-api-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-api-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.intellicare-portal-http.rule=Host(`intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-portal-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-portal-http.middlewares=redirect-to-https"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -253,7 +278,7 @@ services:
   # ── Reverse Proxy ─────────────────────────────────────────────
 
   traefik:
-    image: traefik:v3.0
+    image: traefik:v3.2
     container_name: intellicare-traefik
     restart: unless-stopped
     command:

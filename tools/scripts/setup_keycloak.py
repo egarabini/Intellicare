@@ -36,6 +36,12 @@ DEFAULT_KC_URL = os.getenv("KEYCLOAK_URL", "http://localhost:8080")
 DEFAULT_ADMIN = os.getenv("KEYCLOAK_ADMIN", "admin")
 DEFAULT_PASSWORD = os.getenv("KEYCLOAK_ADMIN_PASSWORD", "admin")
 CLIENT_SECRET = os.getenv("KEYCLOAK_CLIENT_SECRET", "CHANGE_ME_ON_DEPLOY")
+SERVICE_BASE_URL = os.getenv("SERVICE_BASE_URL", "http://localhost:9000")
+ADMIN_UI_URL = os.getenv("ADMIN_UI_URL", "http://localhost:5174")
+GESTOR_UI_URL = os.getenv("GESTOR_UI_URL", "http://localhost:5175")
+CLINICO_UI_URL = os.getenv("CLINICO_UI_URL", "http://localhost:5173")
+PORTAL_URL = os.getenv("PORTAL_URL", "http://localhost:5176")
+PACIENTE_UI_URL = os.getenv("PACIENTE_UI_URL", "http://localhost:5177")
 
 DEMO_USERS = [
     {"username": "gestor.alfa", "password": "Demo@1234", "role": "TENANT_GESTOR", "tenant": "clinica_alfa", "name": "Ana Gestora", "email": "gestor.alfa@demo.intellicare"},
@@ -446,8 +452,8 @@ def main(args: argparse.Namespace) -> None:
             "serviceAccountsEnabled": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": True,
-            "redirectUris": ["http://localhost:8000/*", "http://localhost:9000/*", "http://127.0.0.1:9000/*"],
-            "webOrigins": ["http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "redirectUris": [f"{SERVICE_BASE_URL}/*"],
+            "webOrigins": [SERVICE_BASE_URL],
             "protocolMappers": [tenant_id_mapper_payload()],
         },
     )
@@ -479,8 +485,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5174/*", "http://localhost:8000/admin-ui/*", "http://localhost:9000/admin-ui/*", "http://127.0.0.1:9000/admin-ui/*"],
-            "webOrigins": ["http://localhost:5174", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "redirectUris": [f"{ADMIN_UI_URL}/*", f"{SERVICE_BASE_URL}/admin-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [ADMIN_UI_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
@@ -496,8 +502,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5175/*", "http://localhost:8000/gestor-ui/*", "http://localhost:9000/gestor-ui/*", "http://127.0.0.1:9000/gestor-ui/*"],
-            "webOrigins": ["http://localhost:5175", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "redirectUris": [f"{GESTOR_UI_URL}/*", f"{SERVICE_BASE_URL}/gestor-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [GESTOR_UI_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
@@ -513,8 +519,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5173/*", "http://localhost:8000/clinico-ui/*", "http://localhost:9000/clinico-ui/*", "http://127.0.0.1:9000/clinico-ui/*"],
-            "webOrigins": ["http://localhost:5173", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "redirectUris": [f"{CLINICO_UI_URL}/*", f"{SERVICE_BASE_URL}/clinico-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [CLINICO_UI_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
@@ -530,8 +536,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5176/*", "http://localhost:8000/*", "http://localhost:9000/*", "http://127.0.0.1:9000/*"],
-            "webOrigins": ["http://localhost:5176", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "redirectUris": [f"{PORTAL_URL}/*", f"{SERVICE_BASE_URL}/*"],
+            "webOrigins": [PORTAL_URL, SERVICE_BASE_URL],
         },
     )
 
@@ -546,8 +552,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": ["http://localhost:5177/*", "http://localhost:8000/paciente-ui/*", "http://localhost:9000/paciente-ui/*", "http://127.0.0.1:9000/paciente-ui/*"],
-            "webOrigins": ["http://localhost:5177", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "redirectUris": [f"{PACIENTE_UI_URL}/*", f"{SERVICE_BASE_URL}/paciente-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [PACIENTE_UI_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )

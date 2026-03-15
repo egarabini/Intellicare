@@ -14,6 +14,7 @@ import shutil
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import quote
 from uuid import UUID
 
 import asyncpg
@@ -124,7 +125,7 @@ PLATFORM_MIGRATIONS = [
 
 def build_asyncpg_dsn() -> str:
     return (
-        f"postgresql://{settings.postgres_user}:{settings.postgres_password}"
+        f"postgresql://{quote(settings.postgres_user, safe='')}:{quote(settings.postgres_password, safe='')}"
         f"@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_db}"
     )
 
