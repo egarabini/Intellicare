@@ -52,14 +52,17 @@ class TenantService:
                 return stats
             stats = dict(row._mapping)
 
-            # Receita mensal estimada (soma de faturas do mes corrente)
-            rev = (await conn.execute(text("""
-                SELECT COALESCE(SUM(i.amount), 0) AS monthly_revenue
-                FROM public.invoices i
-                WHERE i.status = 'paid'
-                  AND i.paid_at >= date_trunc('month', NOW())
-            """))).scalar_one()
-            stats["monthly_revenue"] = float(rev)
+            # Receita mensal — coluna correta é amount_brl (inteiro em centavos)
+            try:
+                rev = (await conn.execute(text("""
+                    SELECT COALESCE(SUM(i.amount_brl), 0) AS monthly_revenue
+                    FROM public.invoices i
+                    WHERE i.status = 'paid'
+                      AND i.paid_at >= date_trunc('month', NOW())
+                """))).scalar_one()
+                stats["monthly_revenue"] = float(rev) / 100.0  # centavos → reais
+            except Exception:
+                stats["monthly_revenue"] = 0.0
         return stats
 
     async def get_audit_log(
