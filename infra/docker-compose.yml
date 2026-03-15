@@ -278,7 +278,7 @@ services:
   # ── Reverse Proxy ─────────────────────────────────────────────
 
   traefik:
-    image: traefik:v3.2
+    image: traefik:v2.11.31
     container_name: intellicare-traefik
     restart: unless-stopped
     environment:
