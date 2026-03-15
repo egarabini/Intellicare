@@ -178,7 +178,7 @@ services:
       - "traefik.http.routers.intellicare-api-http.middlewares=redirect-to-https"
       - "traefik.http.routers.intellicare-portal-http.rule=Host(`intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-portal-http.entrypoints=web"
-      - "traefik.http.routers.intellicare-portal-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.intellicare-portal-http.service=intellicare-portal"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
