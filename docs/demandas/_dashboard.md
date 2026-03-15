@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-15 | Branch: main | Último commit: pendente DEM-033
+> Atualizado: 2026-03-15 | Branch: main | Último commit: 2f49d54
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -14,7 +14,7 @@
 | DEM-022 | Portal do Paciente — 6 páginas + backend + Keycloak client | `3f5a615` |
 | DEM-024 | Testes E2E Playwright — 13/13 passando em 1.2min, 4 workers (Admin 4, Clínico 3, Gestor 3, Paciente 3) | `0418bc4` |
 | DEM-025 | Observabilidade — Prometheus v2.51 + Grafana v10.4, 5 targets UP, 10 panels | `45c0d0b` |
-| DEM-033 | Portal — EnvironmentSelector modal (4 ambientes) + Fix Traefik HTTP `intellicare.ia.br` | pendente commit |
+| DEM-033 | Portal — EnvironmentSelector modal (4 ambientes) + Fix Traefik HTTP `intellicare.ia.br` | `2f49d54` |
 
 ### Fixes colaterais aplicados no DEM-024
 
