@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { TextInput, Table, Text, Stack, Title, Loader, Center } from '@mantine/core'
+import { TextInput, Table, Text, Stack, Title, Loader, Center, Pagination, Badge } from '@mantine/core'
 import { useDebouncedValue } from '@mantine/hooks'
 import { usePatients } from '../hooks/usePatients'
 
 export function PatientList() {
   const [search, setSearch] = useState('')
+  const [page, setPage] = useState(1)
   const [debounced] = useDebouncedValue(search, 400)
   const { data, isLoading, isFetching } = usePatients(debounced)
   const navigate = useNavigate()
@@ -29,30 +30,49 @@ export function PatientList() {
       )}
 
       {data && data.length > 0 && (
-        <Table highlightOnHover striped withTableBorder>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th>Nome</Table.Th>
-              <Table.Th>Data Nasc.</Table.Th>
-              <Table.Th>CPF</Table.Th>
-              <Table.Th>Telefone</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>
-            {data.map(p => (
-              <Table.Tr
-                key={p.id}
-                onClick={() => navigate(`/encounter/${p.id}`)}
-                style={{ cursor: 'pointer' }}
-              >
-                <Table.Td>{p.full_name}</Table.Td>
-                <Table.Td>{new Date(p.birth_date).toLocaleDateString('pt-BR')}</Table.Td>
-                <Table.Td>{p.cpf}</Table.Td>
-                <Table.Td>{p.phone ?? '—'}</Table.Td>
+        <>
+          <Table highlightOnHover striped withTableBorder>
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th>Nome</Table.Th>
+                <Table.Th>Idade</Table.Th>
+                <Table.Th>CPF</Table.Th>
+                <Table.Th>Status</Table.Th>
               </Table.Tr>
-            ))}
-          </Table.Tbody>
-        </Table>
+            </Table.Thead>
+            <Table.Tbody>
+              {data.slice((page - 1) * 15, page * 15).map(p => {
+                const age = new Date().getFullYear() - new Date(p.birth_date).getFullYear();
+                return (
+                  <Table.Tr
+                    key={p.id}
+                    onClick={() => navigate(`/patients/${p.id}`)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Table.Td fw={500}>{p.full_name}</Table.Td>
+                    <Table.Td>{age} anos</Table.Td>
+                    <Table.Td>{p.cpf}</Table.Td>
+                    <Table.Td>
+                      <Badge color={p.active ? 'green' : 'red'} variant="light">
+                        {p.active ? 'Ativo' : 'Inativo'}
+                      </Badge>
+                    </Table.Td>
+                  </Table.Tr>
+                );
+              })}
+            </Table.Tbody>
+          </Table>
+          
+          {data.length > 15 && (
+            <Center mt="md">
+              <Pagination 
+                value={page} 
+                onChange={setPage} 
+                total={Math.ceil(data.length / 15)} 
+              />
+            </Center>
+          )}
+        </>
       )}
     </Stack>
   )

@@ -7,26 +7,40 @@ import { AuthProvider } from './auth/AuthProvider'
 import { TokenSync } from './auth/TokenSync'
 import { PatientList } from './pages/PatientList'
 import { EncounterView } from './pages/EncounterView'
+import { Dashboard } from './pages/Dashboard'
+import { Agenda } from './pages/Agenda'
+import { PatientProfile } from './pages/PatientProfile'
+import { AIAssistant } from './pages/AIAssistant'
+import { MyProfile } from './pages/MyProfile'
+import { UnauthorizedPage } from './pages/UnauthorizedPage'
+import { RoleGuard } from './auth/RoleGuard'
+import { ClinicoShell } from './components/AppShell'
+
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
 
 const queryClient = new QueryClient()
 
 function AppRoutes() {
-  const auth = useAuth()
-  if (auth.isLoading) return <div>Carregando...</div>
-  if (!auth.isAuthenticated) {
-    auth.signinRedirect()
-    return null
-  }
   return (
     <>
       <TokenSync />
-      <Routes>
-        <Route path="/" element={<PatientList />} />
-        <Route path="/encounter/:patientId" element={<EncounterView />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+      <RoleGuard>
+        <ClinicoShell>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/agenda" element={<Agenda />} />
+            <Route path="/patients" element={<PatientList />} />
+            <Route path="/patients/:id" element={<PatientProfile />} />
+            <Route path="/patients/:patientId/encounter" element={<EncounterView />} />
+            <Route path="/assistant" element={<AIAssistant />} />
+            <Route path="/profile" element={<MyProfile />} />
+            <Route path="/unauthorized" element={<UnauthorizedPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </ClinicoShell>
+      </RoleGuard>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import { Button, Paper, ScrollArea, Text, Textarea, Stack, Badge } from '@mantine/core'
+import { useAuth } from 'react-oidc-context'
 
 interface Props {
   encounterContext?: string
@@ -12,6 +13,8 @@ export function SLMAssistant({ encounterContext }: Props) {
   const [error, setError] = useState<string | null>(null)
   const abortRef = useRef<AbortController | null>(null)
 
+  const auth = useAuth()
+
   const handleAsk = async () => {
     if (!question.trim()) return
     setAnswer('')
@@ -19,7 +22,7 @@ export function SLMAssistant({ encounterContext }: Props) {
     setStreaming(true)
 
     abortRef.current = new AbortController()
-    const token = sessionStorage.getItem('oidc.access_token') ?? ''
+    const token = auth.user?.access_token ?? ''
 
     try {
       const res = await fetch('/slm/ask', {
