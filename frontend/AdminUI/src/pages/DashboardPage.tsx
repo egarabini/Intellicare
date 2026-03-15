@@ -41,6 +41,11 @@ export function DashboardPage() {
         <StatCard label="Receita Mensal" value={stats?.monthly_revenue ?? 0} accent="#2563eb" isCurrency />
       </SimpleGrid>
 
+      <SimpleGrid cols={{ base: 1, md: 2 }}>
+        <StatCard label="Servidores ativos" value={stats?.servers_active ?? 0} accent="#7c3aed" />
+        <StatCard label="Custo infra mensal" value={stats?.infra_cost_monthly ?? 0} accent="#b45309" isCurrency />
+      </SimpleGrid>
+
       <Grid>
         <Grid.Col span={12}>
           <TenantList embedded />

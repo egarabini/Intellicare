@@ -1,8 +1,8 @@
 """Pydantic models (request/response) do modulo admin."""
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Literal, Optional
+from datetime import date, datetime
+from typing import Any, Literal, Optional
 from uuid import UUID
 import re
 
@@ -112,3 +112,182 @@ class UserInviteResponse(BaseModel):
     role: str
     invited: bool  # True=criado, False=já existia
 
+
+# ---------------------------------------------------------------------------
+# Servidores
+# ---------------------------------------------------------------------------
+
+
+class ServerCreate(BaseModel):
+    name: str
+    type: Literal["vps", "dedicated", "cloud"]
+    provider: str
+    region: str
+    hostname: str | None = None
+    vcpu: int = Field(gt=0)
+    ram_gb: int = Field(gt=0)
+    disk_gb: int = Field(gt=0)
+    cost_brl: int = Field(ge=0, description="Centavos")
+    status: Literal["active", "inactive", "maintenance"] = "active"
+    notes: str | None = None
+
+
+class ServerUpdate(BaseModel):
+    name: str | None = None
+    type: Literal["vps", "dedicated", "cloud"] | None = None
+    provider: str | None = None
+    region: str | None = None
+    hostname: str | None = None
+    vcpu: int | None = Field(default=None, gt=0)
+    ram_gb: int | None = Field(default=None, gt=0)
+    disk_gb: int | None = Field(default=None, gt=0)
+    cost_brl: int | None = Field(default=None, ge=0)
+    status: Literal["active", "inactive", "maintenance"] | None = None
+    notes: str | None = None
+
+
+class ServerOut(BaseModel):
+    id: int
+    name: str
+    type: str
+    provider: str
+    region: str
+    hostname: str | None
+    vcpu: int
+    ram_gb: int
+    disk_gb: int
+    cost_brl: int
+    cost_brl_display: float
+    status: str
+    notes: str | None
+    created_at: datetime
+    updated_at: datetime
+
+
+# ---------------------------------------------------------------------------
+# Modulos
+# ---------------------------------------------------------------------------
+
+
+class ModuleStatusUpdate(BaseModel):
+    status: Literal["active", "inactive", "dev"]
+
+
+class TenantModuleUpdate(BaseModel):
+    enabled: bool
+
+
+class ModuleOut(BaseModel):
+    id: int
+    slug: str
+    name: str
+    description: str | None
+    version: str
+    status: str
+    tenant_count: int = 0
+
+
+class TenantModuleOut(BaseModel):
+    tenant_slug: str
+    module_slug: str
+    name: str
+    description: str | None
+    version: str
+    status: str
+    enabled: bool
+    enabled_at: datetime | None = None
+
+
+# ---------------------------------------------------------------------------
+# Financeiro
+# ---------------------------------------------------------------------------
+
+
+class ExpenseCreate(BaseModel):
+    category: Literal["infrastructure", "license", "personnel", "other"]
+    description: str
+    amount_brl: int = Field(gt=0, description="Centavos")
+    expense_date: date
+    tenant_slug: str | None = None
+
+
+class ExpenseUpdate(BaseModel):
+    category: Literal["infrastructure", "license", "personnel", "other"] | None = None
+    description: str | None = None
+    amount_brl: int | None = Field(default=None, gt=0, description="Centavos")
+    expense_date: date | None = None
+    tenant_slug: str | None = None
+
+
+class ExpenseOut(BaseModel):
+    id: int
+    category: str
+    description: str
+    amount_brl: int
+    amount_brl_display: float
+    expense_date: date
+    tenant_slug: str | None
+    created_at: datetime
+
+
+class InvoiceStatusUpdate(BaseModel):
+    status: Literal["paid", "overdue", "cancelled", "pending"]
+    paid_at: datetime | None = None
+
+
+class FinanceiroDashboard(BaseModel):
+    receita_mes: float
+    despesa_mes: float
+    resultado_mes: float
+    inadimplencia: float
+    historico: list[dict[str, Any]]
+
+
+class InvoiceOut(BaseModel):
+    id: str
+    contract_id: str
+    tenant_slug: str
+    amount_brl: int
+    amount_brl_display: float
+    due_date: date
+    paid_at: datetime | None
+    status: str
+    period_start: date
+    period_end: date
+    created_at: datetime
+
+
+class PagedResponse(BaseModel):
+    items: list[Any]
+    total: int
+    page: int
+    size: int
+
+
+# ---------------------------------------------------------------------------
+# Usuarios administrativos
+# ---------------------------------------------------------------------------
+
+
+class AdminUserCreate(BaseModel):
+    email: EmailStr
+    name: str = Field(..., min_length=3)
+    role: Literal["admin", "financ", "coordenador"] = "coordenador"
+    status: Literal["active", "inactive"] = "active"
+
+
+class AdminUserUpdate(BaseModel):
+    name: str | None = Field(default=None, min_length=3)
+    role: Literal["admin", "financ", "coordenador"] | None = None
+    status: Literal["active", "inactive"] | None = None
+
+
+class AdminUserOut(BaseModel):
+    id: int
+    keycloak_id: str | None = None
+    email: EmailStr
+    name: str
+    role: str
+    status: str
+    last_login_at: datetime | None
+    created_at: datetime

@@ -1,18 +1,28 @@
-"""TenantService — logica de negocio do modulo admin."""
+"""Logica de negocio do modulo admin."""
 from __future__ import annotations
 
 import json
 import logging
-from datetime import datetime, timezone
+import pathlib
+from datetime import UTC, date, datetime
+from typing import Any
 
 from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.db.session import get_engine
 from .keycloak_client import KeycloakAdminClient
 from .schemas import (
+    AdminUserCreate,
+    AdminUserUpdate,
+    ExpenseCreate,
+    ExpenseUpdate,
+    InvoiceStatusUpdate,
+    ModuleStatusUpdate,
+    ServerCreate,
+    ServerUpdate,
     TenantCreate,
+    TenantModuleUpdate,
     TenantStatusUpdate,
     TenantUpdateRequest,
     UserInviteRequest,
@@ -20,57 +30,65 @@ from .schemas import (
 
 logger = logging.getLogger("intellicare.admin.service")
 
-# Caminho para a migration de schema de tenant
-import pathlib
 _TENANT_MIGRATION = (
     pathlib.Path(__file__).parent / "migrations" / "001_tenant_base.sql"
-).read_text()
+).read_text(encoding="utf-8")
 
 
 class TenantService:
     def __init__(self) -> None:
         self._kc = KeycloakAdminClient()
 
-    # ------------------------------------------------------------------
-    # Leitura
-    # ------------------------------------------------------------------
-
-    async def get_dashboard_stats(self) -> dict:
+    async def get_dashboard_stats(self) -> dict[str, Any]:
         async with get_engine().connect() as conn:
-            row = (await conn.execute(text("""
-                SELECT
-                    COUNT(*)                                    AS total_tenants,
-                    COUNT(*) FILTER (WHERE status = 'active')  AS active_tenants,
-                    COUNT(*) FILTER (WHERE status = 'suspended') AS suspended_tenants,
-                    COUNT(*) FILTER (WHERE created_at >= NOW() - INTERVAL '30 days') AS new_last_30d
-                FROM public.tenants
-            """))).first()
-            if not row:
-                stats = {
-                    "total_tenants": 0, "active_tenants": 0, "suspended_tenants": 0, "new_last_30d": 0, "monthly_revenue": 0.0
-                }
-                return stats
-            stats = dict(row._mapping)
+            row = (
+                await conn.execute(text("""
+                    SELECT
+                        COUNT(*) AS total_tenants,
+                        COUNT(*) FILTER (WHERE status = 'active') AS active_tenants,
+                        COUNT(*) FILTER (WHERE status = 'suspended') AS suspended_tenants,
+                        COUNT(*) FILTER (WHERE created_at >= NOW() - INTERVAL '30 days') AS new_last_30d
+                    FROM public.tenants
+                """))
+            ).mappings().first()
+            stats = dict(row) if row else {
+                "total_tenants": 0,
+                "active_tenants": 0,
+                "suspended_tenants": 0,
+                "new_last_30d": 0,
+            }
 
-            # Receita mensal — coluna correta é amount_brl (inteiro em centavos)
-            try:
-                rev = (await conn.execute(text("""
-                    SELECT COALESCE(SUM(i.amount_brl), 0) AS monthly_revenue
-                    FROM public.invoices i
-                    WHERE i.status = 'paid'
-                      AND i.paid_at >= date_trunc('month', NOW())
-                """))).scalar_one()
-                stats["monthly_revenue"] = float(rev) / 100.0  # centavos → reais
-            except Exception:
-                stats["monthly_revenue"] = 0.0
+            revenue = (
+                await conn.execute(text("""
+                    SELECT COALESCE(SUM(amount_brl), 0)
+                    FROM public.invoices
+                    WHERE status = 'paid'
+                      AND paid_at >= date_trunc('month', NOW())
+                """))
+            ).scalar_one()
+            infra = (
+                await conn.execute(text("""
+                    SELECT
+                        COUNT(*) FILTER (WHERE status = 'active') AS servers_active,
+                        COALESCE(SUM(cost_brl) FILTER (WHERE status = 'active'), 0) AS infra_cost_monthly
+                    FROM public.servers
+                """))
+            ).mappings().first()
+
+        stats["monthly_revenue"] = float(revenue or 0) / 100.0
+        stats["servers_active"] = int((infra or {}).get("servers_active", 0))
+        stats["infra_cost_monthly"] = float((infra or {}).get("infra_cost_monthly", 0) or 0) / 100.0
         return stats
 
     async def get_audit_log(
-        self, page: int, size: int,
-        action: str | None, from_date: datetime | None
-    ) -> dict:
+        self,
+        page: int,
+        size: int,
+        action: str | None,
+        from_date: datetime | None,
+    ) -> dict[str, Any]:
         where = ["1=1"]
-        params: dict = {"limit": size, "offset": (page - 1) * size}
+        params: dict[str, Any] = {"limit": size, "offset": (page - 1) * size}
         if action:
             where.append("action = :action")
             params["action"] = action
@@ -80,251 +98,789 @@ class TenantService:
 
         where_clause = " AND ".join(where)
         async with get_engine().connect() as conn:
-            rows = (await conn.execute(
-                text(f"""
-                    SELECT id, actor_id, actor_email, action, target_type,
-                           target_id, payload, created_at
-                    FROM public.platform_audit_log
-                    WHERE {where_clause}
-                    ORDER BY created_at DESC
-                    LIMIT :limit OFFSET :offset
-                """), params
-            )).mappings().all()
-            
-            count = (await conn.execute(
-                text(f"SELECT COUNT(*) FROM public.platform_audit_log WHERE {where_clause}"),
-                {k: v for k, v in params.items() if k not in ("limit", "offset")},
-            )).scalar_one()
+            rows = (
+                await conn.execute(
+                    text(f"""
+                        SELECT id, actor_id, actor_email, action, target_type, target_id, payload, created_at
+                        FROM public.platform_audit_log
+                        WHERE {where_clause}
+                        ORDER BY created_at DESC
+                        LIMIT :limit OFFSET :offset
+                    """),
+                    params,
+                )
+            ).mappings().all()
+            total = (
+                await conn.execute(
+                    text(f"SELECT COUNT(*) FROM public.platform_audit_log WHERE {where_clause}"),
+                    {k: v for k, v in params.items() if k not in {'limit', 'offset'}},
+                )
+            ).scalar_one()
+        return {"items": [dict(row) for row in rows], "total": total}
 
-        return {
-            "items": [dict(r) for r in rows],
-            "total": count,
-        }
-
-    async def list_tenants(
-        self,
-        page: int,
-        size: int,
-        actor: TenantContext,
-    ) -> tuple[list[dict], int]:
+    async def list_tenants(self, page: int, size: int, actor: TenantContext) -> tuple[list[dict[str, Any]], int]:
+        del actor
         async with get_engine().connect() as conn:
-            count = (await conn.execute(
-                text("SELECT COUNT(*) FROM public.tenants")
-            )).scalar_one()
-            rows = (await conn.execute(
-                text("""
-                    SELECT id, slug, name, status, created_at, updated_at
-                    FROM public.tenants
-                    ORDER BY created_at DESC
-                    LIMIT :size OFFSET :offset
-                """),
-                {"size": size, "offset": (page - 1) * size},
-            )).mappings().all()
-        return [dict(r) for r in rows], count
+            total = (await conn.execute(text("SELECT COUNT(*) FROM public.tenants"))).scalar_one()
+            rows = (
+                await conn.execute(
+                    text("""
+                        SELECT id, slug, name, status, created_at, updated_at
+                        FROM public.tenants
+                        ORDER BY created_at DESC
+                        LIMIT :size OFFSET :offset
+                    """),
+                    {"size": size, "offset": (page - 1) * size},
+                )
+            ).mappings().all()
+        return [dict(row) for row in rows], total
 
-    async def get_tenant(self, slug: str) -> dict | None:
+    async def get_tenant(self, slug: str) -> dict[str, Any] | None:
         async with get_engine().connect() as conn:
-            row = (await conn.execute(
-                text("SELECT * FROM public.tenants WHERE slug = :slug"),
-                {"slug": slug},
-            )).mappings().first()
+            row = (
+                await conn.execute(
+                    text("SELECT id, slug, name, status, created_at, updated_at FROM public.tenants WHERE slug = :slug"),
+                    {"slug": slug},
+                )
+            ).mappings().first()
         return dict(row) if row else None
 
-    async def get_tenant_users(self, slug: str) -> list[dict]:
+    async def get_tenant_users(self, slug: str) -> list[dict[str, Any]]:
         group_id = await self._kc.get_tenant_group_id(slug)
         if not group_id:
             return []
         return await self._kc.get_group_users(group_id)
 
-    # ------------------------------------------------------------------
-    # Escrita
-    # ------------------------------------------------------------------
-
-    async def invite_user(self, slug: str, req: UserInviteRequest, actor: TenantContext) -> dict:
+    async def invite_user(self, slug: str, req: UserInviteRequest, actor: TenantContext) -> dict[str, Any]:
         tenant = await self.get_tenant(slug)
         if not tenant:
             raise ValueError(f"Tenant '{slug}' nao encontrado")
         group_id = await self._kc.get_tenant_group_id(slug)
         if not group_id:
             raise ValueError(f"Grupo Keycloak para tenant '{slug}' nao encontrado")
-            
-        result = await self._kc.invite_user(
-            group_id=group_id,
-            email=req.email,
-            name=req.name,
-            role=req.role,
-        )
+
+        result = await self._kc.invite_user(group_id=group_id, email=req.email, name=req.name, role=req.role)
         async with get_engine().begin() as conn:
-            await self._audit(
-                conn, actor, action="USER_INVITED",
-                target_type="user", target_id=req.email,
-                payload={"tenant": slug, "role": req.role},
-            )
-        return {
-            "keycloak_id": result,
-            "email": req.email,
-            "role": req.role,
-            "invited": True,
-        }
+            await self._audit(conn, actor, "USER_INVITED", "user", req.email, {"tenant": slug, "role": req.role})
+        return {"keycloak_id": result, "email": req.email, "role": req.role, "invited": True}
 
     async def deactivate_user(self, slug: str, user_id: str, actor: TenantContext) -> None:
         await self._kc.deactivate_user(user_id)
         async with get_engine().begin() as conn:
-            await self._audit(
-                conn, actor, action="USER_DEACTIVATED",
-                target_type="user", target_id=user_id,
-                payload={"tenant": slug},
-            )
+            await self._audit(conn, actor, "USER_DEACTIVATED", "user", user_id, {"tenant": slug})
 
-    async def update_tenant(self, slug: str, req: TenantUpdateRequest, actor: TenantContext) -> dict:
+    async def update_tenant(self, slug: str, req: TenantUpdateRequest, actor: TenantContext) -> dict[str, Any]:
         async with get_engine().begin() as conn:
-            await conn.execute(
-                text("UPDATE public.tenants SET name=:name, updated_at=NOW() WHERE slug=:slug"),
+            result = await conn.execute(
+                text("""
+                    UPDATE public.tenants
+                    SET name = COALESCE(:name, name), updated_at = NOW()
+                    WHERE slug = :slug
+                    RETURNING id, slug, name, status, created_at, updated_at
+                """),
                 {"name": req.name, "slug": slug},
             )
-            await self._audit(
-                conn, actor, action="TENANT_UPDATED",
-                target_type="tenant", target_id=slug,
-                payload={"name": req.name},
-            )
-        tenant = await self.get_tenant(slug)
-        if not tenant:
-            raise ValueError(f"Tenant '{slug}' nao encontrado")
-        return tenant
+            row = result.mappings().first()
+            if not row:
+                raise ValueError(f"Tenant '{slug}' nao encontrado")
+            await self._audit(conn, actor, "TENANT_UPDATED", "tenant", slug, req.model_dump(exclude_none=True))
+        return dict(row)
 
     async def delete_tenant(self, slug: str, actor: TenantContext) -> None:
         async with get_engine().begin() as conn:
             schema = f"tenant_{slug.replace('-', '_')}"
-            # 1. Drop schema com todos os dados
             await conn.execute(text(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE'))
-            # 2. Soft delete na tabela de tenants
             await conn.execute(
-                text("UPDATE public.tenants SET status='terminated', updated_at=NOW() WHERE slug=:slug"),
+                text("UPDATE public.tenants SET status = 'terminated', updated_at = NOW() WHERE slug = :slug"),
                 {"slug": slug},
             )
-            await self._audit(
-                conn, actor, action="TENANT_DELETED",
-                target_type="tenant", target_id=slug, payload={},
-            )
-            
-        # 3. Remover grupo do Keycloak
+            await self._audit(conn, actor, "TENANT_DELETED", "tenant", slug, {})
         group_id = await self._kc.get_tenant_group_id(slug)
         if group_id:
             await self._kc.delete_group(group_id)
 
-
-
-    async def create_tenant(
-        self,
-        payload: TenantCreate,
-        actor: TenantContext,
-    ) -> dict:
-        """
-        Cria tenant de forma transacional:
-        1. Verifica slug livre
-        2. CREATE SCHEMA + migrations
-        3. Registra em public.tenants
-        4. Cria grupo no Keycloak
-        5. Auditoria
-        """
-        engine = get_engine()
-
-        async with engine.begin() as conn:
-            # 1. Verificar slug
-            existing = (await conn.execute(
-                text("SELECT 1 FROM public.tenants WHERE slug = :slug"),
-                {"slug": payload.slug},
-            )).first()
+    async def create_tenant(self, payload: TenantCreate, actor: TenantContext) -> dict[str, Any]:
+        async with get_engine().begin() as conn:
+            existing = (
+                await conn.execute(
+                    text("SELECT 1 FROM public.tenants WHERE slug = :slug"),
+                    {"slug": payload.slug},
+                )
+            ).first()
             if existing:
                 raise ValueError(f"slug '{payload.slug}' ja existe")
 
-            # 2. Schema + migrations
             schema = f"tenant_{payload.slug}"
             await conn.execute(text(f'CREATE SCHEMA IF NOT EXISTS "{schema}"'))
             await conn.execute(text(f'SET search_path TO "{schema}", public'))
             await conn.execute(text(_TENANT_MIGRATION))
             await conn.execute(text("SET search_path TO public"))
-
-            # 3. Registrar tenant
-            row = (await conn.execute(
-                text("""
-                    INSERT INTO public.tenants (slug, name)
-                    VALUES (:slug, :name)
-                    RETURNING id, slug, name, status, created_at, updated_at
-                """),
-                {"slug": payload.slug, "name": payload.name},
-            )).mappings().first()
-            tenant = dict(row)  # type: ignore[arg-type]
-
-            # 4. Grupo Keycloak (dentro do bloco begin — se falhar, rollback)
+            row = (
+                await conn.execute(
+                    text("""
+                        INSERT INTO public.tenants (slug, name)
+                        VALUES (:slug, :name)
+                        RETURNING id, slug, name, status, created_at, updated_at
+                    """),
+                    {"slug": payload.slug, "name": payload.name},
+                )
+            ).mappings().first()
             try:
-                group_id = await self._kc.create_tenant_group(payload.slug)
-                logger.info("Grupo Keycloak criado: %s (id=%s)", payload.slug, group_id)
+                await self._kc.create_tenant_group(payload.slug)
             except Exception as exc:
                 raise RuntimeError(f"Falha ao criar grupo no Keycloak: {exc}") from exc
+            await self._audit(
+                conn,
+                actor,
+                "tenant.create",
+                "tenant",
+                payload.slug,
+                {"name": payload.name, "gestor_email": payload.gestor_email},
+            )
+        return dict(row) if row else {}
 
-            # 5. Auditoria
-            await self._audit(conn, actor, "tenant.create", "tenant", payload.slug, {
-                "name": payload.name,
-                "gestor_email": payload.gestor_email,
-            })
-
-        logger.info("Tenant '%s' provisionado por %s", payload.slug, actor.user_id)
-        return tenant
-
-    async def update_status(
-        self,
-        slug: str,
-        update: TenantStatusUpdate,
-        actor: TenantContext,
-    ) -> dict:
+    async def update_status(self, slug: str, update: TenantStatusUpdate, actor: TenantContext) -> dict[str, Any]:
         async with get_engine().begin() as conn:
-            row = (await conn.execute(
-                text("""
-                    UPDATE public.tenants
-                    SET status = :status, updated_at = now()
-                    WHERE slug = :slug
-                    RETURNING id, slug, name, status, created_at, updated_at
-                """),
-                {"slug": slug, "status": update.status},
-            )).mappings().first()
-
+            row = (
+                await conn.execute(
+                    text("""
+                        UPDATE public.tenants
+                        SET status = :status, updated_at = NOW()
+                        WHERE slug = :slug
+                        RETURNING id, slug, name, status, created_at, updated_at
+                    """),
+                    {"slug": slug, "status": update.status},
+                )
+            ).mappings().first()
             if not row:
                 raise LookupError(f"Tenant '{slug}' nao encontrado")
-
-            await self._audit(conn, actor, f"tenant.{update.status}", "tenant", slug, {
-                "new_status": update.status,
-            })
-
+            await self._audit(conn, actor, f"tenant.{update.status}", "tenant", slug, {"new_status": update.status})
         return dict(row)
 
-    # ------------------------------------------------------------------
-    # Auditoria (privada)
-    # ------------------------------------------------------------------
+    async def list_servers(self) -> list[dict[str, Any]]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text("""
+                        SELECT id, name, type, provider, region, hostname, vcpu, ram_gb, disk_gb,
+                               cost_brl, status, notes, created_at, updated_at
+                        FROM public.servers
+                        ORDER BY name
+                    """)
+                )
+            ).mappings().all()
+        return [self._map_server(row) for row in rows]
+
+    async def create_server(self, payload: ServerCreate, actor: TenantContext) -> dict[str, Any]:
+        values = payload.model_dump()
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text("""
+                        INSERT INTO public.servers
+                            (name, type, provider, region, hostname, vcpu, ram_gb, disk_gb, cost_brl, status, notes)
+                        VALUES
+                            (:name, :type, :provider, :region, :hostname, :vcpu, :ram_gb, :disk_gb, :cost_brl, :status, :notes)
+                        RETURNING *
+                    """),
+                    values,
+                )
+            ).mappings().first()
+            await self._audit(conn, actor, "SERVER_CREATED", "server", str(row["id"]), values)
+        return self._map_server(row)
+
+    async def update_server(self, server_id: int, payload: ServerUpdate, actor: TenantContext) -> dict[str, Any]:
+        updates = payload.model_dump(exclude_none=True)
+        if not updates:
+            async with get_engine().connect() as conn:
+                row = (
+                    await conn.execute(text("SELECT * FROM public.servers WHERE id = :id"), {"id": server_id})
+                ).mappings().first()
+            if not row:
+                raise LookupError(f"Servidor '{server_id}' nao encontrado")
+            return self._map_server(row)
+
+        set_clause = ", ".join(f"{key} = :{key}" for key in updates)
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text(f"""
+                        UPDATE public.servers
+                        SET {set_clause}, updated_at = NOW()
+                        WHERE id = :id
+                        RETURNING *
+                    """),
+                    {**updates, "id": server_id},
+                )
+            ).mappings().first()
+            if not row:
+                raise LookupError(f"Servidor '{server_id}' nao encontrado")
+            await self._audit(conn, actor, "SERVER_UPDATED", "server", str(server_id), updates)
+        return self._map_server(row)
+
+    async def delete_server(self, server_id: int, actor: TenantContext) -> None:
+        async with get_engine().begin() as conn:
+            exists = (
+                await conn.execute(text("SELECT id FROM public.servers WHERE id = :id"), {"id": server_id})
+            ).scalar_one_or_none()
+            if not exists:
+                raise LookupError(f"Servidor '{server_id}' nao encontrado")
+            await conn.execute(text("DELETE FROM public.servers WHERE id = :id"), {"id": server_id})
+            await self._audit(conn, actor, "SERVER_DELETED", "server", str(server_id), {})
+
+    async def list_modules(self) -> list[dict[str, Any]]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(text("""
+                    SELECT
+                        pm.id, pm.slug, pm.name, pm.description, pm.version, pm.status,
+                        COALESCE(COUNT(tm.tenant_slug) FILTER (WHERE tm.enabled), 0) AS tenant_count
+                    FROM public.platform_modules pm
+                    LEFT JOIN public.tenant_modules tm ON tm.module_slug = pm.slug
+                    GROUP BY pm.id, pm.slug, pm.name, pm.description, pm.version, pm.status
+                    ORDER BY pm.name
+                """))
+            ).mappings().all()
+        return [dict(row) for row in rows]
+
+    async def update_module_status(self, slug: str, payload: ModuleStatusUpdate, actor: TenantContext) -> dict[str, Any]:
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text("""
+                        UPDATE public.platform_modules
+                        SET status = :status, updated_at = NOW()
+                        WHERE slug = :slug
+                        RETURNING id, slug, name, description, version, status
+                    """),
+                    {"slug": slug, "status": payload.status},
+                )
+            ).mappings().first()
+            if not row:
+                raise LookupError(f"Modulo '{slug}' nao encontrado")
+            await self._audit(conn, actor, "MODULE_STATUS_UPDATED", "platform_module", slug, payload.model_dump())
+        row_dict = dict(row)
+        row_dict["tenant_count"] = await self._count_enabled_tenants(slug)
+        return row_dict
+
+    async def list_tenant_modules(self, tenant_slug: str) -> list[dict[str, Any]]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text("""
+                        SELECT
+                            :tenant_slug AS tenant_slug,
+                            pm.slug AS module_slug,
+                            pm.name,
+                            pm.description,
+                            pm.version,
+                            pm.status,
+                            COALESCE(tm.enabled, false) AS enabled,
+                            tm.enabled_at
+                        FROM public.platform_modules pm
+                        LEFT JOIN public.tenant_modules tm
+                          ON tm.module_slug = pm.slug
+                         AND tm.tenant_slug = :tenant_slug
+                        ORDER BY pm.name
+                    """),
+                    {"tenant_slug": tenant_slug},
+                )
+            ).mappings().all()
+        return [dict(row) for row in rows]
+
+    async def update_tenant_module(
+        self,
+        tenant_slug: str,
+        module_slug: str,
+        payload: TenantModuleUpdate,
+        actor: TenantContext,
+    ) -> dict[str, Any]:
+        async with get_engine().begin() as conn:
+            module = (
+                await conn.execute(
+                    text("SELECT slug, status FROM public.platform_modules WHERE slug = :slug"),
+                    {"slug": module_slug},
+                )
+            ).mappings().first()
+            if not module:
+                raise LookupError(f"Modulo '{module_slug}' nao encontrado")
+            if payload.enabled and module["status"] == "dev":
+                raise ValueError(f"Modulo '{module_slug}' em desenvolvimento nao pode ser habilitado")
+
+            await conn.execute(
+                text("""
+                    INSERT INTO public.tenant_modules (tenant_slug, module_slug, enabled, enabled_at)
+                    VALUES (:tenant_slug, :module_slug, :enabled, NOW())
+                    ON CONFLICT (tenant_slug, module_slug)
+                    DO UPDATE SET enabled = EXCLUDED.enabled, enabled_at = NOW()
+                """),
+                {"tenant_slug": tenant_slug, "module_slug": module_slug, "enabled": payload.enabled},
+            )
+            row = (
+                await conn.execute(
+                    text("""
+                        SELECT
+                            :tenant_slug AS tenant_slug,
+                            pm.slug AS module_slug,
+                            pm.name,
+                            pm.description,
+                            pm.version,
+                            pm.status,
+                            tm.enabled,
+                            tm.enabled_at
+                        FROM public.platform_modules pm
+                        JOIN public.tenant_modules tm
+                          ON tm.module_slug = pm.slug
+                         AND tm.tenant_slug = :tenant_slug
+                        WHERE pm.slug = :module_slug
+                    """),
+                    {"tenant_slug": tenant_slug, "module_slug": module_slug},
+                )
+            ).mappings().first()
+            await self._audit(
+                conn,
+                actor,
+                "TENANT_MODULE_UPDATED",
+                "tenant_module",
+                f"{tenant_slug}:{module_slug}",
+                payload.model_dump(),
+            )
+        return dict(row) if row else {}
+
+    async def get_financeiro_dashboard(self) -> dict[str, Any]:
+        async with get_engine().connect() as conn:
+            receita_mes = (
+                await conn.execute(text("""
+                    SELECT COALESCE(SUM(amount_brl), 0)
+                    FROM public.invoices
+                    WHERE status = 'paid'
+                      AND paid_at >= date_trunc('month', NOW())
+                """))
+            ).scalar_one()
+            despesas_avulsas = (
+                await conn.execute(text("""
+                    SELECT COALESCE(SUM(amount_brl), 0)
+                    FROM public.expenses
+                    WHERE expense_date >= date_trunc('month', CURRENT_DATE)
+                """))
+            ).scalar_one()
+            custo_servidores = (
+                await conn.execute(text("""
+                    SELECT COALESCE(SUM(cost_brl), 0)
+                    FROM public.servers
+                    WHERE status = 'active'
+                """))
+            ).scalar_one()
+            inadimplencia = (
+                await conn.execute(text("""
+                    SELECT COALESCE(SUM(amount_brl), 0)
+                    FROM public.invoices
+                    WHERE status = 'overdue'
+                       OR (status = 'pending' AND due_date < CURRENT_DATE)
+                """))
+            ).scalar_one()
+            historico_rows = (
+                await conn.execute(text("""
+                    WITH months AS (
+                        SELECT generate_series(
+                            date_trunc('month', CURRENT_DATE) - INTERVAL '5 months',
+                            date_trunc('month', CURRENT_DATE),
+                            INTERVAL '1 month'
+                        ) AS month_start
+                    ),
+                    revenue AS (
+                        SELECT date_trunc('month', paid_at) AS month_start, SUM(amount_brl) AS total
+                        FROM public.invoices
+                        WHERE status = 'paid' AND paid_at >= date_trunc('month', CURRENT_DATE) - INTERVAL '5 months'
+                        GROUP BY 1
+                    ),
+                    expenses AS (
+                        SELECT date_trunc('month', expense_date::timestamp) AS month_start, SUM(amount_brl) AS total
+                        FROM public.expenses
+                        WHERE expense_date >= date_trunc('month', CURRENT_DATE) - INTERVAL '5 months'
+                        GROUP BY 1
+                    ),
+                    infra AS (
+                        SELECT COALESCE(SUM(cost_brl), 0) AS total
+                        FROM public.servers
+                        WHERE status = 'active'
+                    )
+                    SELECT
+                        to_char(months.month_start, 'YYYY-MM') AS mes,
+                        COALESCE(revenue.total, 0) AS receita_brl,
+                        COALESCE(expenses.total, 0) + infra.total AS despesa_brl
+                    FROM months
+                    LEFT JOIN revenue ON revenue.month_start = months.month_start
+                    LEFT JOIN expenses ON expenses.month_start = months.month_start
+                    CROSS JOIN infra
+                    ORDER BY months.month_start
+                """))
+            ).mappings().all()
+
+        despesa_mes_total = int(despesas_avulsas or 0) + int(custo_servidores or 0)
+        return {
+            "receita_mes": float(receita_mes or 0) / 100.0,
+            "despesa_mes": float(despesa_mes_total) / 100.0,
+            "resultado_mes": float((receita_mes or 0) - despesa_mes_total) / 100.0,
+            "inadimplencia": float(inadimplencia or 0) / 100.0,
+            "historico": [
+                {
+                    "mes": row["mes"],
+                    "receita": float(row["receita_brl"] or 0) / 100.0,
+                    "despesa": float(row["despesa_brl"] or 0) / 100.0,
+                    "resultado": float((row["receita_brl"] or 0) - (row["despesa_brl"] or 0)) / 100.0,
+                }
+                for row in historico_rows
+            ],
+        }
+
+    async def list_invoices(
+        self,
+        page: int,
+        size: int,
+        status: str | None,
+        tenant_slug: str | None,
+    ) -> dict[str, Any]:
+        where = ["1=1"]
+        params: dict[str, Any] = {"limit": size, "offset": (page - 1) * size}
+        if status:
+            where.append("i.status = :status")
+            params["status"] = status
+        if tenant_slug:
+            where.append("i.tenant_slug = :tenant_slug")
+            params["tenant_slug"] = tenant_slug
+        where_clause = " AND ".join(where)
+
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text(f"""
+                        SELECT i.*
+                        FROM public.invoices i
+                        WHERE {where_clause}
+                        ORDER BY i.due_date DESC, i.created_at DESC
+                        LIMIT :limit OFFSET :offset
+                    """),
+                    params,
+                )
+            ).mappings().all()
+            total = (
+                await conn.execute(
+                    text(f"SELECT COUNT(*) FROM public.invoices i WHERE {where_clause}"),
+                    {k: v for k, v in params.items() if k not in {'limit', 'offset'}},
+                )
+            ).scalar_one()
+        return {
+            "items": [self._map_invoice(row) for row in rows],
+            "total": total,
+            "page": page,
+            "size": size,
+        }
+
+    async def update_invoice_status(
+        self,
+        invoice_id: str,
+        payload: InvoiceStatusUpdate,
+        actor: TenantContext,
+    ) -> dict[str, Any]:
+        paid_at = payload.paid_at
+        if payload.status == "paid" and paid_at is None:
+            paid_at = datetime.now(UTC)
+        if payload.status != "paid":
+            paid_at = None
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text("""
+                        UPDATE public.invoices
+                        SET status = :status, paid_at = :paid_at
+                        WHERE id = :id
+                        RETURNING *
+                    """),
+                    {"id": invoice_id, "status": payload.status, "paid_at": paid_at},
+                )
+            ).mappings().first()
+            if not row:
+                raise LookupError(f"Fatura '{invoice_id}' nao encontrada")
+            audit_payload = payload.model_dump()
+            audit_payload["paid_at"] = paid_at.isoformat() if paid_at else None
+            await self._audit(conn, actor, "INVOICE_STATUS_UPDATED", "invoice", invoice_id, audit_payload)
+        return self._map_invoice(row)
+
+    async def list_expenses(self, page: int, size: int) -> dict[str, Any]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text("""
+                        SELECT id, category, description, amount_brl, expense_date, tenant_slug, created_at
+                        FROM public.expenses
+                        ORDER BY expense_date DESC, id DESC
+                        LIMIT :limit OFFSET :offset
+                    """),
+                    {"limit": size, "offset": (page - 1) * size},
+                )
+            ).mappings().all()
+            total = (await conn.execute(text("SELECT COUNT(*) FROM public.expenses"))).scalar_one()
+        return {
+            "items": [self._map_expense(row) for row in rows],
+            "total": total,
+            "page": page,
+            "size": size,
+        }
+
+    async def create_expense(self, payload: ExpenseCreate, actor: TenantContext) -> dict[str, Any]:
+        values = payload.model_dump()
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text("""
+                        INSERT INTO public.expenses (category, description, amount_brl, expense_date, tenant_slug)
+                        VALUES (:category, :description, :amount_brl, :expense_date, :tenant_slug)
+                        RETURNING id, category, description, amount_brl, expense_date, tenant_slug, created_at
+                    """),
+                    values,
+                )
+            ).mappings().first()
+            await self._audit(conn, actor, "EXPENSE_CREATED", "expense", str(row["id"]), values)
+        return self._map_expense(row)
+
+    async def update_expense(self, expense_id: int, payload: ExpenseUpdate, actor: TenantContext) -> dict[str, Any]:
+        updates = payload.model_dump(exclude_none=True)
+        if not updates:
+            async with get_engine().connect() as conn:
+                row = (
+                    await conn.execute(
+                        text("""
+                            SELECT id, category, description, amount_brl, expense_date, tenant_slug, created_at
+                            FROM public.expenses
+                            WHERE id = :id
+                        """),
+                        {"id": expense_id},
+                    )
+                ).mappings().first()
+            if not row:
+                raise LookupError(f"Despesa '{expense_id}' nao encontrada")
+            return self._map_expense(row)
+
+        set_clause = ", ".join(f"{key} = :{key}" for key in updates)
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text(f"""
+                        UPDATE public.expenses
+                        SET {set_clause}
+                        WHERE id = :id
+                        RETURNING id, category, description, amount_brl, expense_date, tenant_slug, created_at
+                    """),
+                    {**updates, "id": expense_id},
+                )
+            ).mappings().first()
+            if not row:
+                raise LookupError(f"Despesa '{expense_id}' nao encontrada")
+            await self._audit(conn, actor, "EXPENSE_UPDATED", "expense", str(expense_id), updates)
+        return self._map_expense(row)
+
+    async def delete_expense(self, expense_id: int, actor: TenantContext) -> None:
+        async with get_engine().begin() as conn:
+            exists = (
+                await conn.execute(text("SELECT id FROM public.expenses WHERE id = :id"), {"id": expense_id})
+            ).scalar_one_or_none()
+            if not exists:
+                raise LookupError(f"Despesa '{expense_id}' nao encontrada")
+            await conn.execute(text("DELETE FROM public.expenses WHERE id = :id"), {"id": expense_id})
+            await self._audit(conn, actor, "EXPENSE_DELETED", "expense", str(expense_id), {})
+
+    async def list_admin_users(self) -> list[dict[str, Any]]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(text("""
+                    SELECT id, keycloak_id, email, name, role, status, last_login_at, created_at
+                    FROM public.admin_users
+                    ORDER BY created_at DESC
+                """))
+            ).mappings().all()
+        return [dict(row) for row in rows]
+
+    async def create_admin_user(self, payload: AdminUserCreate, actor: TenantContext) -> dict[str, Any]:
+        kc_result = await self._kc.create_admin_user(payload.email, payload.name, enabled=payload.status == "active")
+        async with get_engine().begin() as conn:
+            row = (
+                await conn.execute(
+                    text("""
+                        INSERT INTO public.admin_users (keycloak_id, email, name, role, status)
+                        VALUES (:keycloak_id, :email, :name, :role, :status)
+                        ON CONFLICT (email)
+                        DO UPDATE SET
+                            keycloak_id = EXCLUDED.keycloak_id,
+                            name = EXCLUDED.name,
+                            role = EXCLUDED.role,
+                            status = EXCLUDED.status
+                        RETURNING id, keycloak_id, email, name, role, status, last_login_at, created_at
+                    """),
+                    {
+                        "keycloak_id": kc_result["id"],
+                        "email": payload.email,
+                        "name": payload.name,
+                        "role": payload.role,
+                        "status": payload.status,
+                    },
+                )
+            ).mappings().first()
+            await self._audit(
+                conn,
+                actor,
+                "ADMIN_USER_CREATED",
+                "admin_user",
+                payload.email,
+                {**payload.model_dump(), "temporary_password": kc_result["temporary_password"]},
+            )
+        return dict(row) if row else {}
+
+    async def update_admin_user(self, user_id: int, payload: AdminUserUpdate, actor: TenantContext) -> dict[str, Any]:
+        updates = payload.model_dump(exclude_none=True)
+        async with get_engine().begin() as conn:
+            current = (
+                await conn.execute(
+                    text("""
+                        SELECT id, keycloak_id, email, name, role, status, last_login_at, created_at
+                        FROM public.admin_users
+                        WHERE id = :id
+                    """),
+                    {"id": user_id},
+                )
+            ).mappings().first()
+            if not current:
+                raise LookupError(f"Usuario admin '{user_id}' nao encontrado")
+
+            if current["keycloak_id"]:
+                await self._kc.update_admin_user(
+                    current["keycloak_id"],
+                    name=updates.get("name"),
+                    enabled=(updates.get("status", current["status"]) == "active"),
+                )
+
+            set_clause = ", ".join(f"{key} = :{key}" for key in updates) or "name = name"
+            row = (
+                await conn.execute(
+                    text(f"""
+                        UPDATE public.admin_users
+                        SET {set_clause}
+                        WHERE id = :id
+                        RETURNING id, keycloak_id, email, name, role, status, last_login_at, created_at
+                    """),
+                    {**updates, "id": user_id},
+                )
+            ).mappings().first()
+            await self._audit(conn, actor, "ADMIN_USER_UPDATED", "admin_user", str(user_id), updates)
+        return dict(row) if row else {}
+
+    async def delete_admin_user(self, user_id: int, actor: TenantContext) -> None:
+        async with get_engine().begin() as conn:
+            current = (
+                await conn.execute(
+                    text("SELECT id, keycloak_id, email FROM public.admin_users WHERE id = :id"),
+                    {"id": user_id},
+                )
+            ).mappings().first()
+            if not current:
+                raise LookupError(f"Usuario admin '{user_id}' nao encontrado")
+            if current["keycloak_id"]:
+                await self._kc.delete_user(current["keycloak_id"])
+            await conn.execute(text("DELETE FROM public.admin_users WHERE id = :id"), {"id": user_id})
+            await self._audit(conn, actor, "ADMIN_USER_DELETED", "admin_user", str(user_id), {"email": current["email"]})
+
+    async def _count_enabled_tenants(self, module_slug: str) -> int:
+        async with get_engine().connect() as conn:
+            total = (
+                await conn.execute(
+                    text("""
+                        SELECT COUNT(*)
+                        FROM public.tenant_modules
+                        WHERE module_slug = :module_slug
+                          AND enabled = true
+                    """),
+                    {"module_slug": module_slug},
+                )
+            ).scalar_one()
+        return int(total)
 
     async def _audit(
         self,
-        conn: AsyncSession,
+        conn: Any,
         actor: TenantContext,
         action: str,
         target_type: str,
-        target_id: str,
-        payload: dict,
+        target_id: str | None,
+        payload: dict[str, Any],
     ) -> None:
+        actor_id = getattr(actor, "user_id", None) or getattr(actor, "sub", None) or "system"
+        actor_email = getattr(actor, "email", None)
         await conn.execute(
             text("""
                 INSERT INTO public.platform_audit_log
                     (actor_id, actor_email, action, target_type, target_id, payload)
                 VALUES
-                    (:actor_id, :actor_email, :action, :target_type, :target_id, :payload::jsonb)
+                    (:actor_id, :actor_email, :action, :target_type, :target_id, CAST(:payload AS jsonb))
             """),
             {
-                "actor_id":    actor.user_id,
-                "actor_email": actor.email,
-                "action":      action,
+                "actor_id": actor_id,
+                "actor_email": actor_email,
+                "action": action,
                 "target_type": target_type,
-                "target_id":   target_id,
-                "payload":     json.dumps(payload),
+                "target_id": target_id,
+                "payload": json.dumps(payload, default=self._json_default),
             },
         )
 
+    def _map_server(self, row: Any) -> dict[str, Any]:
+        return {
+            "id": row["id"],
+            "name": row["name"],
+            "type": row["type"],
+            "provider": row["provider"],
+            "region": row["region"],
+            "hostname": row["hostname"],
+            "vcpu": row["vcpu"],
+            "ram_gb": row["ram_gb"],
+            "disk_gb": row["disk_gb"],
+            "cost_brl": row["cost_brl"],
+            "cost_brl_display": float(row["cost_brl"] or 0) / 100.0,
+            "status": row["status"],
+            "notes": row["notes"],
+            "created_at": row["created_at"],
+            "updated_at": row["updated_at"],
+        }
+
+    def _map_invoice(self, row: Any) -> dict[str, Any]:
+        return {
+            "id": str(row["id"]),
+            "contract_id": str(row["contract_id"]),
+            "tenant_slug": row["tenant_slug"],
+            "amount_brl": row["amount_brl"],
+            "amount_brl_display": float(row["amount_brl"] or 0) / 100.0,
+            "due_date": row["due_date"],
+            "paid_at": row["paid_at"],
+            "status": row["status"],
+            "period_start": row["period_start"],
+            "period_end": row["period_end"],
+            "created_at": row["created_at"],
+        }
+
+    def _map_expense(self, row: Any) -> dict[str, Any]:
+        return {
+            "id": row["id"],
+            "category": row["category"],
+            "description": row["description"],
+            "amount_brl": row["amount_brl"],
+            "amount_brl_display": float(row["amount_brl"] or 0) / 100.0,
+            "expense_date": row["expense_date"],
+            "tenant_slug": row["tenant_slug"],
+            "created_at": row["created_at"],
+        }
+
+    def _json_default(self, value: Any) -> Any:
+        if isinstance(value, datetime):
+            return value.isoformat()
+        if isinstance(value, date):
+            return value.isoformat()
+        return str(value)

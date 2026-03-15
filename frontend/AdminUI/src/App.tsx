@@ -7,7 +7,7 @@ import { Notifications, notifications } from '@mantine/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from 'react-oidc-context'
 import {
-  IconDashboard, IconBuilding, IconShield, IconLogout,
+  IconDashboard, IconBuilding, IconShield, IconLogout, IconServer, IconPackages, IconCash, IconUsers,
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
@@ -18,6 +18,10 @@ import { TenantForm } from './pages/TenantForm'
 import { TenantList } from './pages/TenantList'
 import { TenantUsers } from './pages/TenantUsers'
 import { AuditLog } from './pages/AuditLog'
+import { ServersPage } from './pages/ServersPage'
+import { ModulesPage } from './pages/ModulesPage'
+import { FinanceiroPage } from './pages/FinanceiroPage'
+import { AdminUsersPage } from './pages/AdminUsersPage'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -29,6 +33,10 @@ const queryClient = new QueryClient({
 const NAV_ITEMS = [
   { path: '/',        label: 'Dashboard', icon: IconDashboard },
   { path: '/tenants', label: 'Tenants',   icon: IconBuilding  },
+  { path: '/servers', label: 'Servidores', icon: IconServer },
+  { path: '/modules', label: 'Modulos', icon: IconPackages },
+  { path: '/financeiro', label: 'Financeiro', icon: IconCash },
+  { path: '/users', label: 'Usuarios Admin', icon: IconUsers },
   { path: '/audit',   label: 'Auditoria', icon: IconShield    },
 ]
 
@@ -133,6 +141,10 @@ function AppRoutes() {
           <Route path="/tenants/new"         element={<TenantForm />} />
           <Route path="/tenants/:slug"       element={<TenantDetail />} />
           <Route path="/tenants/:slug/users" element={<TenantUsers />} />
+          <Route path="/servers"             element={<ServersPage />} />
+          <Route path="/modules"             element={<ModulesPage />} />
+          <Route path="/financeiro"          element={<FinanceiroPage />} />
+          <Route path="/users"               element={<AdminUsersPage />} />
           <Route path="/audit"               element={<AuditLog />} />
           <Route path="*"                    element={<Navigate to="/" replace />} />
         </Routes>

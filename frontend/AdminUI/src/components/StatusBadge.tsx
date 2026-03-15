@@ -5,6 +5,17 @@ const colorMap: Record<string, string> = {
   suspended: 'orange',
   terminated: 'gray',
   trial: 'yellow',
+  inactive: 'gray',
+  maintenance: 'yellow',
+  dev: 'violet',
+  overdue: 'red',
+  pending: 'yellow',
+  cancelled: 'gray',
+  paid: 'green',
+  infrastructure: 'blue',
+  license: 'grape',
+  personnel: 'teal',
+  other: 'gray',
 }
 
 export function StatusBadge({ status }: { status: string }) {
