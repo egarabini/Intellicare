@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS patients (
     birth_date DATE,
     sex CHAR(1) CHECK (sex IN ('M','F','O')),
     phone TEXT, email TEXT, address TEXT,
+    allergies TEXT,
+    medications TEXT,
     active BOOLEAN NOT NULL DEFAULT true,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -19,6 +21,8 @@ CREATE TABLE IF NOT EXISTS encounters (
     chief_complaint TEXT,
     priority TEXT NOT NULL DEFAULT 'normal'
               CHECK (priority IN ('emergency','urgent','normal','low')),
+    cid10_code TEXT,
+    prescription TEXT,
     opened_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     closed_at TIMESTAMPTZ
 );
@@ -35,3 +39,10 @@ CREATE INDEX IF NOT EXISTS idx_encounters_patient ON encounters (patient_id, ope
 CREATE INDEX IF NOT EXISTS idx_notes_encounter    ON encounter_notes (encounter_id, created_at);
 CREATE INDEX IF NOT EXISTS idx_patients_name      ON patients USING gin (to_tsvector('portuguese', full_name));
 
+ALTER TABLE patients
+    ADD COLUMN IF NOT EXISTS allergies TEXT,
+    ADD COLUMN IF NOT EXISTS medications TEXT;
+
+ALTER TABLE encounters
+    ADD COLUMN IF NOT EXISTS cid10_code TEXT,
+    ADD COLUMN IF NOT EXISTS prescription TEXT;
