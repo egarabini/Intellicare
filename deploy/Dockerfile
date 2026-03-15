@@ -15,27 +15,27 @@ RUN mkdir -p packages/intellicare-core/intellicare_core/static
 
 # Build Portal  → static/portal/
 RUN cd frontend/Portal \
-    && npm ci --prefer-offline \
+    && npm install --prefer-offline \
     && npx vite build
 
 # Build AdminUI → static/admin-ui/
 RUN cd frontend/AdminUI \
-    && npm ci --prefer-offline \
+    && npm install --prefer-offline \
     && npx vite build
 
 # Build GestorUI → static/gestor-ui/
 RUN cd frontend/GestorUI \
-    && npm ci --prefer-offline \
+    && npm install --prefer-offline \
     && npx vite build
 
 # Build ClinicoUI → static/clinico-ui/
 RUN cd frontend/ClinicoUI \
-    && npm ci --prefer-offline \
+    && npm install --prefer-offline \
     && npx vite build
 
 # Build PacienteUI → static/paciente-ui/
 RUN cd frontend/PacienteUI \
-    && npm ci --prefer-offline \
+    && npm install --prefer-offline \
     && npx vite build
 
 
