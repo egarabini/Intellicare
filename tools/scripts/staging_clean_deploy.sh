@@ -14,8 +14,15 @@ set -euo pipefail
 BRANCH="${1:-main}"
 REPO_URL="https://github.com/egarabini/Intellicare.git"
 DEPLOY_DIR="/opt/intellicare"
-ENV_FILE="infra/.env"          # trocar por infra/.env.staging se existir
 COMPOSE_FILE="infra/docker-compose.yml"
+# Auto-detecta env: .env.staging tem prioridade sobre .env
+if [ -f "$DEPLOY_DIR/infra/.env.staging" ]; then
+  ENV_FILE="infra/.env.staging"
+elif [ -f "$DEPLOY_DIR/infra/.env" ]; then
+  ENV_FILE="infra/.env"
+else
+  fail "Nenhum .env encontrado em $DEPLOY_DIR/infra/ — crie o arquivo antes de rodar este script"
+fi
 LOG_FILE="/var/log/intellicare_deploy.log"
 
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
