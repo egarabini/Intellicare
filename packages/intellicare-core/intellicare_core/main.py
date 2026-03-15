@@ -7,6 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
+from prometheus_fastapi_instrumentator import Instrumentator
+
 from intellicare_core.module_loader import ModuleLoader
 
 STATIC_ROOT = Path(__file__).resolve().parent / "static"
@@ -20,6 +22,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+Instrumentator(
+    should_group_status_codes=False,
+    should_ignore_untemplated=True,
+    should_respect_env_var=True,
+    should_instrument_requests_inprogress=True,
+    excluded_handlers=["/health", "/metrics"],
+    env_var_name="ENABLE_METRICS",
+    inprogress_name="intellicare_requests_inprogress",
+    inprogress_labels=True,
+).instrument(app).expose(app, endpoint="/metrics", include_in_schema=False)
+
 loader = ModuleLoader(app)
 loader.load("admin")
 loader.load("financeiro")
