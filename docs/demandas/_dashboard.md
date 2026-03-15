@@ -1,8 +1,8 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-15 | Branch: main | Último commit: 0418bc4
+> Atualizado: 2026-03-15 | Branch: main | Último commit: fae6fee
 
-## ✅ Concluídas (DEMs 000–025 + DEM-024)
+## ✅ Concluídas (DEMs 000–025)
 
 | DEM | Título | Commit |
 |-----|--------|--------|
@@ -38,6 +38,9 @@
 | DEM | Título | Arquivo spec | Pode paralelo com |
 |-----|--------|-------------|-------------------|
 | DEM-023 | Deploy Produção (VPS + DNS + SSL) | `DEM-023_DEPLOY_PRODUCAO/02_TECNICA.md` | independente |
+| DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | `DEM-030_ADMINISTRATIVO_COMPLETO/02_TECNICA.md` | DEM-031 |
+| DEM-031 | Gestão Completa (Unidades de Saúde, Usuários do Tenant) | `DEM-031_GESTAO_COMPLETA/02_TECNICA.md` | DEM-030 |
+| DEM-032 | Clínico Gestão (Grupos, Profissionais, Equipe) | `DEM-032_CLINICO_GESTAO/02_TECNICA.md` | após DEM-031 (depende de `units`) |
 
 ---
 
@@ -55,9 +58,10 @@
 ## Distribuição sugerida para devs disponíveis
 
 ```
+DEV-A      → DEM-030  Administrativo Completo (maior escopo — 4 áreas)
+DEV-B      → DEM-031  Gestão Completa (Unidades + Usuários do Tenant)
+DEV-C      → DEM-032  Clínico Gestão (após DEV-B aplicar migration 005)
 Eduardo    → DEM-023  Deploy Produção (requer ação manual: VPS + DNS)
-DEV-livre  → DEM-026  Notificações tempo real (spec a criar)
-DEV-livre  → DEM-027  Relatórios PDF (spec a criar)
 ```
 
 ## Credenciais de teste (ambiente local)
