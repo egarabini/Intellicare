@@ -1,0 +1,13 @@
+{
+  "name": "intellicare",
+  "private": true,
+  "scripts": {
+    "test:e2e": "npx playwright test",
+    "test:e2e:report": "npx playwright show-report tests/e2e/report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "typescript": "^5.4.0"
+  }
+}
+
