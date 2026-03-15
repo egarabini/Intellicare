@@ -281,6 +281,8 @@ services:
     image: traefik:v3.2
     container_name: intellicare-traefik
     restart: unless-stopped
+    environment:
+      DOCKER_API_VERSION: "1.44"
     command:
       - "--api.insecure=true"
       - "--api.dashboard=true"
