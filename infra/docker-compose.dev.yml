@@ -1,0 +1,21 @@
+# ── Sobreposição para DESENVOLVIMENTO LOCAL ──────────────────────────────────
+#
+# Uso (a partir da raiz do repo):
+#   docker compose --env-file infra/.env \
+#     -f infra/docker-compose.yml \
+#     -f infra/docker-compose.dev.yml \
+#     up -d
+#
+# NÃO usado no staging/produção (scripts usam apenas docker-compose.yml).
+#
+# Benefício: após qualquer "npx vite build" no frontend, basta:
+#   docker compose --env-file infra/.env \
+#     -f infra/docker-compose.yml -f infra/docker-compose.dev.yml \
+#     restart intellicare-service
+# — sem precisar rebuildar a imagem Docker.
+
+services:
+  intellicare-service:
+    volumes:
+      # Monta os estáticos do host diretamente — vite build atualiza sem precisar rebuildar o container
+      - ../packages/intellicare-core/intellicare_core/static:/app/packages/intellicare-core/intellicare_core/static:ro
