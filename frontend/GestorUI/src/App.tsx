@@ -27,7 +27,7 @@ import {
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
-import { TokenSync } from './auth/TokenSync'
+import { setToken } from './auth/tokenRef'
 import { Dashboard } from './pages/Dashboard'
 import { PatientList } from './pages/PatientList'
 import { PatientProfile } from './pages/PatientProfile'
@@ -66,6 +66,10 @@ function ForbiddenPage() {
 
 function AppRoutes() {
   const auth = useAuth()
+
+  // Token síncrono — antes de qualquer query disparar
+  setToken(auth.user?.access_token ?? null)
+
   const roles = (auth.user?.profile.realm_access as { roles?: string[] } | undefined)?.roles ?? []
   const isGestor = roles.includes('TENANT_GESTOR')
 
@@ -108,7 +112,6 @@ function AppRoutes() {
 
   return (
     <>
-      <TokenSync />
       <AppShell
         navbar={{ width: 220, breakpoint: 'sm' }}
         header={{ height: 56 }}

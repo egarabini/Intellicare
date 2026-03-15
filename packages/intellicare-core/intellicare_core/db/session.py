@@ -61,6 +61,21 @@ class TenantAwareSessionFactory:
 
 
 @asynccontextmanager
+async def async_session_maker() -> AsyncGenerator[AsyncSession, None]:
+    """Non-tenant-scoped session (public schema only)."""
+    factory = async_sessionmaker(
+        bind=get_engine(), class_=AsyncSession, expire_on_commit=False,
+    )
+    async with factory() as session:
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
+
+
+@asynccontextmanager
 async def tenant_session(ctx: TenantContext) -> AsyncGenerator[AsyncSession, None]:
     factory = TenantAwareSessionFactory()
     async with factory.session(ctx) as session:
