@@ -18,7 +18,10 @@ from .schemas import (
     InviteUserRequest, UnitProfile, DashboardStats,
     PatientCreate, PatientUpdate, PatientResponse,
     AppointmentCreate, AppointmentUpdate, AppointmentResponse,
-    ProgramCreate, ProgramResponse, CoverageReport
+    ProgramCreate, ProgramResponse, CoverageReport,
+    UnitCreate, UnitUpdate, UnitOut,
+    AllocateProfessional, UnitProfessionalOut,
+    TenantUserCreate, TenantUserUpdate, TenantUserOut,
 )
 from .service import GestorService
 
@@ -258,3 +261,83 @@ async def rag_progress_stream(doc_id: str, ctx: GestorOnly):
 @router.get("/reports/usage")
 async def usage_report(ctx: GestorOnly, days: int = 30):
     return await _svc.usage_report(ctx, days)
+
+
+# -----------------------------------------------------------------------------
+# Units (DEM-031)
+# -----------------------------------------------------------------------------
+
+@router.get("/units", response_model=list[UnitOut])
+async def list_units(ctx: GestorOnly, status: str | None = None):
+    return await _svc.list_units(ctx, status)
+
+@router.post("/units", response_model=UnitOut, status_code=201)
+async def create_unit(data: UnitCreate, ctx: GestorOnly):
+    return await _svc.create_unit(ctx, data)
+
+@router.get("/units/{unit_id}", response_model=UnitOut)
+async def get_unit(unit_id: int, ctx: GestorOnly):
+    u = await _svc.get_unit(ctx, unit_id)
+    if not u:
+        raise HTTPException(404, "Unidade não encontrada")
+    return u
+
+@router.patch("/units/{unit_id}", response_model=UnitOut)
+async def update_unit(unit_id: int, data: UnitUpdate, ctx: GestorOnly):
+    u = await _svc.update_unit(ctx, unit_id, data)
+    if not u:
+        raise HTTPException(404, "Unidade não encontrada")
+    return u
+
+@router.patch("/units/{unit_id}/status", response_model=UnitOut)
+async def toggle_unit_status(unit_id: int, ctx: GestorOnly):
+    u = await _svc.toggle_unit_status(ctx, unit_id)
+    if not u:
+        raise HTTPException(404, "Unidade não encontrada")
+    return u
+
+
+# -----------------------------------------------------------------------------
+# Unit Professionals (DEM-031)
+# -----------------------------------------------------------------------------
+
+@router.get("/units/{unit_id}/professionals", response_model=list[UnitProfessionalOut])
+async def list_unit_professionals(unit_id: int, ctx: GestorOnly):
+    return await _svc.list_unit_professionals(ctx, unit_id)
+
+@router.post("/units/{unit_id}/professionals", response_model=UnitProfessionalOut, status_code=201)
+async def allocate_professional(unit_id: int, data: AllocateProfessional, ctx: GestorOnly):
+    return await _svc.allocate_professional(ctx, unit_id, data)
+
+@router.delete("/units/{unit_id}/professionals/{prof_id}", status_code=204)
+async def remove_professional(unit_id: int, prof_id: int, ctx: GestorOnly):
+    await _svc.remove_professional(ctx, unit_id, prof_id)
+
+
+# -----------------------------------------------------------------------------
+# Tenant Users (DEM-031)
+# -----------------------------------------------------------------------------
+
+@router.get("/tenant-users", response_model=list[TenantUserOut])
+async def list_tenant_users(ctx: GestorOnly):
+    return await _svc.list_tenant_users(ctx)
+
+@router.post("/tenant-users", response_model=TenantUserOut, status_code=201)
+async def create_tenant_user(data: TenantUserCreate, ctx: GestorOnly):
+    try:
+        return await _svc.create_tenant_user(ctx, data)
+    except Exception as exc:
+        if "duplicate key" in str(exc).lower() or "unique" in str(exc).lower():
+            raise HTTPException(409, "Email já cadastrado")
+        raise
+
+@router.patch("/tenant-users/{user_id}", response_model=TenantUserOut)
+async def update_tenant_user(user_id: int, data: TenantUserUpdate, ctx: GestorOnly):
+    u = await _svc.update_tenant_user(ctx, user_id, data)
+    if not u:
+        raise HTTPException(404, "Usuário não encontrado")
+    return u
+
+@router.delete("/tenant-users/{user_id}", status_code=204)
+async def delete_tenant_user(user_id: int, ctx: GestorOnly):
+    await _svc.delete_tenant_user(ctx, user_id)

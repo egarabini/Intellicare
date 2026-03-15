@@ -1,5 +1,5 @@
 import { Box, SimpleGrid, Card, Group, Text, Title, Stack, ThemeIcon, Loader, Center } from '@mantine/core';
-import { IconUsers, IconCalendar, IconFileInvoice, IconDatabase, IconActivity } from '@tabler/icons-react';
+import { IconUsers, IconCalendar, IconFileInvoice, IconDatabase, IconActivity, IconBuilding, IconStethoscope } from '@tabler/icons-react';
 import { useDashboardStats } from '../hooks/useGestor';
 
 export function Dashboard() {
@@ -16,6 +16,8 @@ export function Dashboard() {
     { title: 'Consultas no Mês', value: data.appointments_month, icon: IconCalendar, color: 'cyan' },
     { title: 'Faturas (R$)', value: `R$ ${data.invoices_pending_total.toFixed(2)}`, icon: IconFileInvoice, color: 'orange' },
     { title: 'Documentos RAG', value: data.rag_documents_count, icon: IconDatabase, color: 'grape' },
+    { title: 'Unidades Ativas', value: data.units_active ?? 0, icon: IconBuilding, color: 'violet' },
+    { title: 'Profissionais Alocados', value: data.professionals_allocated ?? 0, icon: IconStethoscope, color: 'pink' },
   ];
 
   return (

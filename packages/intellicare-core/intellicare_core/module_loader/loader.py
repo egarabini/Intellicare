@@ -32,6 +32,10 @@ class ModuleLoader:
         self.app = app
         self._loaded: dict[str, BaseModule] = {}
 
+    @property
+    def loaded(self) -> dict[str, BaseModule]:
+        return self._loaded
+
     def load(self, module_name: str) -> BaseModule:
         if module_name in self._loaded:
             return self._loaded[module_name]

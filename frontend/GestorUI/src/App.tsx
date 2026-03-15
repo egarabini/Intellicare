@@ -24,6 +24,8 @@ import {
   IconStethoscope,
   IconSettings,
   IconLogout,
+  IconBuilding,
+  IconUserShield,
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
@@ -37,6 +39,9 @@ import { RagDocuments } from './pages/RagDocuments'
 import { ProgramList } from './pages/ProgramList'
 import { ClinicianList } from './pages/ClinicianList'
 import { TenantSettings } from './pages/TenantSettings'
+import { UnitsPage } from './pages/UnitsPage'
+import { UnitDetailPage } from './pages/UnitDetailPage'
+import { TenantUsersPage } from './pages/TenantUsersPage'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -105,6 +110,8 @@ function AppRoutes() {
         <MantineNavLink component={NavLink} to="/programas" label="Programas de Saúde" leftSection={<IconStethoscope size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/rag" label="Base de Conhecimento" leftSection={<IconDatabase size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/equipe" label="Equipe Clínica" leftSection={<IconStethoscope size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/units" label="Unidades" leftSection={<IconBuilding size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/tenant-users" label="Usuários" leftSection={<IconUserShield size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/settings" label="Configurações" leftSection={<IconSettings size="1rem"/>} />
       </>
     );
@@ -144,6 +151,9 @@ function AppRoutes() {
             <Route path="/rag" element={<RagDocuments />} />
             <Route path="/programas" element={<ProgramList />} />
             <Route path="/equipe" element={<ClinicianList />} />
+            <Route path="/units" element={<UnitsPage />} />
+            <Route path="/units/:id" element={<UnitDetailPage />} />
+            <Route path="/tenant-users" element={<TenantUsersPage />} />
             <Route path="/settings" element={<TenantSettings />} />
           </Routes>
         </AppShell.Main>

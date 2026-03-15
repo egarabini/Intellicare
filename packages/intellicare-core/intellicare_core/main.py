@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -12,8 +14,22 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from intellicare_core.module_loader import ModuleLoader
 
 STATIC_ROOT = Path(__file__).resolve().parent / "static"
+logger = logging.getLogger(__name__)
 
-app = FastAPI(title="IntelliCare Service")
+
+@asynccontextmanager
+async def lifespan(application: FastAPI):
+    # Startup: call startup() on all loaded modules
+    for name, mod in loader.loaded.items():
+        if hasattr(mod, "startup") and callable(mod.startup):
+            try:
+                await mod.startup()
+                logger.info("Modulo '%s' startup concluido.", name)
+            except Exception:
+                logger.exception("Erro no startup do modulo '%s'", name)
+    yield
+
+app = FastAPI(title="IntelliCare Service", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

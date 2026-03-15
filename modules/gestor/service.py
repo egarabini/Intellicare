@@ -11,7 +11,10 @@ import io
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.db.session import tenant_session
 from modules.admin.keycloak_client import KeycloakAdminClient
-from .schemas import PatientCreate, PatientUpdate, AppointmentCreate, AppointmentUpdate, ProgramCreate
+from .schemas import (
+    PatientCreate, PatientUpdate, AppointmentCreate, AppointmentUpdate, ProgramCreate,
+    UnitCreate, UnitUpdate, AllocateProfessional, TenantUserCreate, TenantUserUpdate,
+)
 
 logger = logging.getLogger("intellicare.gestor.service")
 
@@ -57,22 +60,33 @@ class GestorService:
 
     async def dashboard_stats(self, ctx: TenantContext) -> dict:
         async with tenant_session(ctx) as db:
-            active_patients = (await db.execute(text("SELECT COUNT(*) FROM patients WHERE active = TRUE"))).scalar_one()
-            appts_today = (await db.execute(text("SELECT COUNT(*) FROM appointments WHERE date_trunc('day', scheduled_at) = CURRENT_DATE"))).scalar_one()
-            appts_week = (await db.execute(text("SELECT COUNT(*) FROM appointments WHERE scheduled_at >= date_trunc('week', NOW())"))).scalar_one()
-            appts_month = (await db.execute(text("SELECT COUNT(*) FROM appointments WHERE scheduled_at >= date_trunc('month', NOW())"))).scalar_one()
-            
-            invoices = (await db.execute(text("SELECT COUNT(*), COALESCE(SUM(amount),0) FROM invoices WHERE status = 'pending'"))).fetchall()
-            if invoices and len(invoices) > 0:
-                inv_count, inv_total = invoices[0][0], invoices[0][1]
-            else:
-                inv_count, inv_total = 0, 0.0
+            schema = ctx.schema
 
-            rag_docs = (await db.execute(text("SELECT COUNT(*) FROM knowledge_base"))).scalar_one()
-            
-            # Since audit_log may not exist in this database for gestor we use platform_audit_log at public schema, 
-            # or skip it if it's too complex. For now we will return an empty list for recent_activity to fulfill the schema.
-            # In a real scenario we'd query the audit table with tenant context.
+            async def _count(sql: str, default=0):
+                try:
+                    return (await db.execute(text(sql))).scalar_one()
+                except Exception:
+                    await db.rollback()
+                    await db.execute(text(f'SET search_path TO "{schema}", public'))
+                    return default
+
+            async def _row(sql: str, defaults=(0, 0.0)):
+                try:
+                    row = (await db.execute(text(sql))).first()
+                    return (row[0], row[1]) if row else defaults
+                except Exception:
+                    await db.rollback()
+                    await db.execute(text(f'SET search_path TO "{schema}", public'))
+                    return defaults
+
+            active_patients = await _count("SELECT COUNT(*) FROM patients WHERE active = TRUE")
+            appts_today = await _count("SELECT COUNT(*) FROM appointments WHERE date_trunc('day', scheduled_at) = CURRENT_DATE")
+            appts_week = await _count("SELECT COUNT(*) FROM appointments WHERE scheduled_at >= date_trunc('week', NOW())")
+            appts_month = await _count("SELECT COUNT(*) FROM appointments WHERE scheduled_at >= date_trunc('month', NOW())")
+            inv_count, inv_total = await _row("SELECT COUNT(*), COALESCE(SUM(amount),0) FROM invoices WHERE status = 'pending'")
+            rag_docs = await _count("SELECT COUNT(*) FROM knowledge_base")
+            units_active = await _count("SELECT COUNT(*) FROM units WHERE status = 'active'")
+            profs_allocated = await _count("SELECT COUNT(*) FROM unit_professionals")
             
             return {
                 "patients_active": active_patients,
@@ -82,6 +96,8 @@ class GestorService:
                 "invoices_pending_count": inv_count,
                 "invoices_pending_total": float(inv_total),
                 "rag_documents_count": rag_docs,
+                "units_active": units_active,
+                "professionals_allocated": profs_allocated,
                 "recent_activity": []
             }
 
@@ -352,3 +368,216 @@ class GestorService:
                 "coverage_pct": round(pct, 2),
                 "overdue_patients": 0
             }
+
+    # -------------------------------------------------------------------------
+    # Units (DEM-031)
+    # -------------------------------------------------------------------------
+
+    async def list_units(self, ctx: TenantContext, status: str | None = None) -> list[dict]:
+        where = "1=1"
+        params: dict = {}
+        if status:
+            where += " AND u.status = :status"
+            params["status"] = status
+
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text(f"""
+                SELECT u.*,
+                       COALESCE(up_cnt.cnt, 0) AS professional_count,
+                       0 AS patient_count
+                FROM units u
+                LEFT JOIN (
+                    SELECT unit_id, COUNT(*) AS cnt FROM unit_professionals GROUP BY unit_id
+                ) up_cnt ON up_cnt.unit_id = u.id
+                WHERE {where}
+                ORDER BY u.name
+            """), params)).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def create_unit(self, ctx: TenantContext, data: UnitCreate) -> dict:
+        d = data.model_dump()
+        cols = ", ".join(d.keys())
+        vals = ", ".join(f":{k}" for k in d.keys())
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text(f"""
+                INSERT INTO units ({cols}) VALUES ({vals}) RETURNING *
+            """), d)).mappings().first()
+        result = dict(row)
+        result["professional_count"] = 0
+        result["patient_count"] = 0
+        return result
+
+    async def get_unit(self, ctx: TenantContext, unit_id: int) -> dict | None:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text("""
+                SELECT u.*,
+                       COALESCE(up_cnt.cnt, 0) AS professional_count,
+                       0 AS patient_count
+                FROM units u
+                LEFT JOIN (
+                    SELECT unit_id, COUNT(*) AS cnt FROM unit_professionals GROUP BY unit_id
+                ) up_cnt ON up_cnt.unit_id = u.id
+                WHERE u.id = :uid
+            """), {"uid": unit_id})).mappings().first()
+        return dict(row) if row else None
+
+    async def update_unit(self, ctx: TenantContext, unit_id: int, data: UnitUpdate) -> dict | None:
+        update_data = {k: v for k, v in data.model_dump().items() if v is not None}
+        if not update_data:
+            return await self.get_unit(ctx, unit_id)
+
+        set_clause = ", ".join(f"{k} = :{k}" for k in update_data)
+        set_clause += ", updated_at = NOW()"
+        update_data["uid"] = unit_id
+
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text(
+                f"UPDATE units SET {set_clause} WHERE id = :uid RETURNING *"
+            ), update_data)).mappings().first()
+        if not row:
+            return None
+        result = dict(row)
+        result.setdefault("professional_count", 0)
+        result.setdefault("patient_count", 0)
+        return result
+
+    async def toggle_unit_status(self, ctx: TenantContext, unit_id: int) -> dict | None:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text("""
+                UPDATE units
+                SET status = CASE WHEN status = 'active' THEN 'inactive' ELSE 'active' END,
+                    updated_at = NOW()
+                WHERE id = :uid RETURNING *
+            """), {"uid": unit_id})).mappings().first()
+        if not row:
+            return None
+        result = dict(row)
+        result.setdefault("professional_count", 0)
+        result.setdefault("patient_count", 0)
+        return result
+
+    # -------------------------------------------------------------------------
+    # Unit Professionals (DEM-031)
+    # -------------------------------------------------------------------------
+
+    async def list_unit_professionals(self, ctx: TenantContext, unit_id: int) -> list[dict]:
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text("""
+                SELECT up.professional_id, p.name, p.specialty,
+                       up.role_in_unit, up.workload_hours, up.allocated_at
+                FROM unit_professionals up
+                JOIN professionals p ON p.id = up.professional_id
+                WHERE up.unit_id = :uid
+                ORDER BY p.name
+            """), {"uid": unit_id})).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def allocate_professional(self, ctx: TenantContext, unit_id: int, data: AllocateProfessional) -> dict:
+        async with tenant_session(ctx) as db:
+            await db.execute(text("""
+                INSERT INTO unit_professionals (unit_id, professional_id, role_in_unit, workload_hours)
+                VALUES (:uid, :pid, :role, :hours)
+                ON CONFLICT (unit_id, professional_id)
+                DO UPDATE SET role_in_unit = EXCLUDED.role_in_unit,
+                              workload_hours = EXCLUDED.workload_hours,
+                              allocated_at = NOW()
+            """), {"uid": unit_id, "pid": data.professional_id, "role": data.role_in_unit, "hours": data.workload_hours})
+
+            row = (await db.execute(text("""
+                SELECT up.professional_id, p.name, p.specialty,
+                       up.role_in_unit, up.workload_hours, up.allocated_at
+                FROM unit_professionals up
+                JOIN professionals p ON p.id = up.professional_id
+                WHERE up.unit_id = :uid AND up.professional_id = :pid
+            """), {"uid": unit_id, "pid": data.professional_id})).mappings().first()
+        return dict(row)
+
+    async def remove_professional(self, ctx: TenantContext, unit_id: int, prof_id: int) -> None:
+        async with tenant_session(ctx) as db:
+            await db.execute(text(
+                "DELETE FROM unit_professionals WHERE unit_id = :uid AND professional_id = :pid"
+            ), {"uid": unit_id, "pid": prof_id})
+
+    # -------------------------------------------------------------------------
+    # Tenant Users (DEM-031)
+    # -------------------------------------------------------------------------
+
+    async def list_tenant_users(self, ctx: TenantContext) -> list[dict]:
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text("""
+                SELECT tu.*, u.name AS unit_name
+                FROM tenant_users tu
+                LEFT JOIN units u ON u.id = tu.unit_id
+                ORDER BY tu.name
+            """))).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def create_tenant_user(self, ctx: TenantContext, data: TenantUserCreate) -> dict:
+        kc_id: str | None = None
+        try:
+            gid = await self._kc.get_tenant_group_id(ctx.tenant_id)
+            if gid:
+                role_map = {"gestor": "TENANT_GESTOR", "clinico": "CLINICO", "recepcionista": "CLINICO"}
+                kc_id = await self._kc.invite_user(
+                    group_id=gid, email=data.email, name=data.name, role=role_map.get(data.role, "CLINICO")
+                )
+        except Exception:
+            logger.warning("Keycloak invite failed for %s — user created locally only", data.email)
+
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text("""
+                INSERT INTO tenant_users (keycloak_id, email, name, role, unit_id)
+                VALUES (:kc_id, :email, :name, :role, :unit_id)
+                RETURNING *
+            """), {"kc_id": kc_id, "email": data.email, "name": data.name, "role": data.role, "unit_id": data.unit_id})).mappings().first()
+
+            # fetch unit_name
+            result = dict(row)
+            if result.get("unit_id"):
+                uname = (await db.execute(text("SELECT name FROM units WHERE id = :uid"), {"uid": result["unit_id"]})).scalar()
+                result["unit_name"] = uname
+            else:
+                result["unit_name"] = None
+        return result
+
+    async def update_tenant_user(self, ctx: TenantContext, user_id: int, data: TenantUserUpdate) -> dict | None:
+        update_data = {k: v for k, v in data.model_dump().items() if v is not None}
+        if not update_data:
+            return await self._get_tenant_user(ctx, user_id)
+
+        set_clause = ", ".join(f"{k} = :{k}" for k in update_data)
+        update_data["uid"] = user_id
+
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text(
+                f"UPDATE tenant_users SET {set_clause} WHERE id = :uid RETURNING *"
+            ), update_data)).mappings().first()
+            if not row:
+                return None
+            result = dict(row)
+            if result.get("unit_id"):
+                uname = (await db.execute(text("SELECT name FROM units WHERE id = :uid2"), {"uid2": result["unit_id"]})).scalar()
+                result["unit_name"] = uname
+            else:
+                result["unit_name"] = None
+        return result
+
+    async def delete_tenant_user(self, ctx: TenantContext, user_id: int) -> None:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text("SELECT keycloak_id FROM tenant_users WHERE id = :uid"), {"uid": user_id})).first()
+            if row and row[0]:
+                try:
+                    await self._kc.deactivate_user(row[0])
+                except Exception:
+                    logger.warning("Failed to deactivate Keycloak user %s", row[0])
+            await db.execute(text("DELETE FROM tenant_users WHERE id = :uid"), {"uid": user_id})
+
+    async def _get_tenant_user(self, ctx: TenantContext, user_id: int) -> dict | None:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(text("""
+                SELECT tu.*, u.name AS unit_name
+                FROM tenant_users tu
+                LEFT JOIN units u ON u.id = tu.unit_id
+                WHERE tu.id = :uid
+            """), {"uid": user_id})).mappings().first()
+        return dict(row) if row else None

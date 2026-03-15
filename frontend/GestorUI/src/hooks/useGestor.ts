@@ -10,6 +10,8 @@ export interface DashboardStats {
   invoices_pending_count: number;
   invoices_pending_total: number;
   rag_documents_count: number;
+  units_active: number;
+  professionals_allocated: number;
   recent_activity: any[];
 }
 
