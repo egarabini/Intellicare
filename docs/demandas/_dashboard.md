@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-15 | Branch: main | Último commit: bc796d1
+> Atualizado: 2026-03-15 | Branch: main | Último commit: 9639e61
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -17,6 +17,9 @@
 | DEM-031 | Gestão Completa — 4 tabelas, 11 endpoints, 3 páginas (Units, UnitDetail, TenantUsers) | `bc796d1` |
 | DEM-033 | Portal — EnvironmentSelector modal (4 ambientes) + Fix Traefik HTTP `intellicare.ia.br` | `2f49d54` |
 | DEM-INF | Infra — Dockerfile multi-stage Node+Python, docker-compose.dev.yml, fix static files staging | `a94cfcd` |
+| DEM-INF | Fix .dockerignore excluía frontend/ do contexto Docker | `a2390eb` |
+| DEM-INF | Fix Dockerfile: npm ci → npm install (sem package-lock.json em 3 frontends) | `9639e61` |
+| DEM-INF | Fix Traefik: DOCKER_API_VERSION=1.44 (daemon exige min 1.44, cliente negociava 1.24) | `9639e61` |
 
 ### Fixes colaterais aplicados no DEM-024
 
