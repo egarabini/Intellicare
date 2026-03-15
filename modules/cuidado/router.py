@@ -9,13 +9,18 @@ from fastapi import APIRouter, Depends, HTTPException
 from intellicare_core.auth.jwt import require_role
 from intellicare_core.contracts.base import TenantContext
 from modules.slm.service import SLMService
-from .schemas import ClinicalAskRequest, EncounterCreate, NoteCreate, PatientCreate
+from intellicare_core.auth.jwt import get_current_tenant
+from .schemas import (
+    ClinicalAskRequest, EncounterCreate, NoteCreate, PatientCreate,
+    PatientClinicalUpdate, EncounterUpdate, PacienteMeUpdate,
+)
 from .service import CuidadoService
 
 router = APIRouter(tags=["cuidado"])
 _svc = CuidadoService()
 _slm = SLMService()
 Clinico = Annotated[TenantContext, Depends(require_role("CLINICO"))]
+Paciente = Annotated[TenantContext, Depends(require_role("PACIENTE"))]
 
 
 @router.get("/health")
@@ -23,9 +28,33 @@ async def health() -> dict:
     return {"status": "healthy", "module": "cuidado", "version": "1.0.0"}
 
 
+@router.get("/cid10")
+async def search_cid10(ctx: Clinico, q: str, limit: int = 10):
+    return await _svc.search_cid10(q, limit)
+
 @router.post("/patients", status_code=201)
 async def create_patient(p: PatientCreate, ctx: Clinico):
     return await _svc.create_patient(ctx, p.model_dump())
+
+@router.get("/my-agenda")
+async def my_agenda(ctx: Clinico, date: str | None = None, from_: str | None = None, to: str | None = None):
+    # Depending on query params map to service
+    if date:
+        return await _svc.get_agenda(ctx, ctx.user_id, date, date)
+    elif from_ and to:
+        return await _svc.get_agenda(ctx, ctx.user_id, from_, to)
+    else:
+        # Default to today
+        from datetime import date as d
+        return await _svc.get_agenda(ctx, ctx.user_id, str(d.today()), str(d.today()))
+
+@router.get("/patients/{pid}/profile")
+async def patient_profile(pid: UUID, ctx: Clinico):
+    return await _svc.get_patient_profile(ctx, pid)
+
+@router.patch("/patients/{pid}/clinical")
+async def update_clinical(pid: UUID, p: PatientClinicalUpdate, ctx: Clinico):
+    return await _svc.update_patient_clinical(ctx, pid, p.model_dump(exclude_unset=True))
 
 
 @router.get("/patients")
@@ -59,6 +88,13 @@ async def close_encounter(eid: UUID, ctx: Clinico):
         raise HTTPException(404, str(e))
 
 
+@router.patch("/encounters/{eid}")
+async def update_encounter(eid: UUID, u: EncounterUpdate, ctx: Clinico):
+    try:
+        return await _svc.update_encounter(ctx, eid, u.model_dump(exclude_unset=True))
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
 @router.post("/encounters/{eid}/ask")
 async def clinical_ask(eid: UUID, req: ClinicalAskRequest, ctx: Clinico):
     try:
@@ -66,3 +102,49 @@ async def clinical_ask(eid: UUID, req: ClinicalAskRequest, ctx: Clinico):
     except (ConnectionError, RuntimeError) as e:
         raise HTTPException(503, str(e))
 
+
+# ── Endpoints do Paciente ────────────────────────────────────────────────────
+
+@router.get("/paciente/painel")
+async def paciente_painel(ctx: Paciente):
+    return await _svc.paciente_painel(ctx)
+
+
+@router.get("/paciente/appointments")
+async def paciente_appointments(ctx: Paciente, status: str = "upcoming"):
+    return await _svc.paciente_appointments(ctx, status)
+
+
+@router.patch("/paciente/appointments/{appt_id}/confirm")
+async def paciente_confirm_appointment(appt_id: UUID, ctx: Paciente):
+    return await _svc.paciente_confirm_appointment(ctx, appt_id)
+
+
+@router.delete("/paciente/appointments/{appt_id}")
+async def paciente_cancel_appointment(appt_id: UUID, ctx: Paciente):
+    return await _svc.paciente_cancel_appointment(ctx, appt_id)
+
+
+@router.get("/paciente/history")
+async def paciente_history(ctx: Paciente, page: int = 1, size: int = 10):
+    return await _svc.paciente_history(ctx, page, size)
+
+
+@router.get("/paciente/programs")
+async def paciente_programs(ctx: Paciente):
+    return await _svc.paciente_programs(ctx)
+
+
+@router.get("/paciente/me")
+async def paciente_me(ctx: Paciente):
+    return await _svc.paciente_me(ctx)
+
+
+@router.patch("/paciente/me")
+async def paciente_update_me(body: PacienteMeUpdate, ctx: Paciente):
+    return await _svc.paciente_update_me(ctx, body.model_dump(exclude_unset=True))
+
+
+@router.get("/paciente/clinic-info")
+async def paciente_clinic_info(ctx: Paciente):
+    return await _svc.paciente_clinic_info(ctx)

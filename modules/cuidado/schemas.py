@@ -18,11 +18,36 @@ class PatientCreate(BaseModel):
     address: Optional[str] = None
 
 
-class PatientResponse(PatientCreate):
+class PatientResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: UUID
+    name: str # The spec returned "name" in Gestor and Profile, but db is full_name let's map it.
+    cpf: Optional[str] = None
+    birth_date: Optional[date] = None
+    sex: Optional[str] = None
+    phone: Optional[str] = None
+    email: Optional[str] = None
+    health_plan: Optional[str] = None
+    allergies: Optional[str] = None
+    medications: Optional[str] = None
     active: bool
     created_at: datetime
+    last_encounter: Optional[date] = None
+    encounter_count: int = 0
+    programs: list[str] = []
+
+class PatientClinicalUpdate(BaseModel):
+    allergies: Optional[str] = None
+    medications: Optional[str] = None
+
+class AgendaItem(BaseModel):
+    id: UUID
+    patient_id: UUID
+    patient_name: str
+    scheduled_at: datetime
+    type: str
+    status: str
+    encounter_id: Optional[UUID] = None
 
 
 class EncounterCreate(BaseModel):
@@ -30,6 +55,10 @@ class EncounterCreate(BaseModel):
     chief_complaint: Optional[str] = None
     priority: Literal["emergency", "urgent", "normal", "low"] = "normal"
 
+
+class EncounterUpdate(BaseModel):
+    cid10_code: Optional[str] = None
+    prescription: Optional[str] = None
 
 class EncounterResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -39,6 +68,8 @@ class EncounterResponse(BaseModel):
     status: str
     chief_complaint: Optional[str]
     priority: str
+    cid10_code: Optional[str] = None
+    prescription: Optional[str] = None
     opened_at: datetime
     closed_at: Optional[datetime]
 
@@ -58,8 +89,77 @@ class NoteResponse(NoteCreate):
     created_at: datetime
 
 
+class Cid10Response(BaseModel):
+    code: str
+    description: str
+
 class ClinicalAskRequest(BaseModel):
     query: str
     limit: int = 5
     min_similarity: float = 0.5
 
+
+# ── Paciente Portal Schemas ──────────────────────────────────────────────────
+
+class PacientePainelResponse(BaseModel):
+    patient_name: str
+    next_appointment: Optional[dict] = None
+    clinic_notice: Optional[str] = None
+    upcoming_count: int = 0
+    past_count: int = 0
+
+
+class PacienteAppointmentItem(BaseModel):
+    id: UUID
+    scheduled_at: datetime
+    clinician_name: str
+    type: str
+    status: str
+
+
+class PacienteHistoryItem(BaseModel):
+    id: UUID
+    date: date
+    clinician_name: str
+    type: str
+    cid10_code: Optional[str] = None
+    cid10_description: Optional[str] = None
+    prescription: Optional[str] = None
+
+
+class PacienteHistoryResponse(BaseModel):
+    items: list[PacienteHistoryItem]
+    total: int
+    page: int
+    size: int
+
+
+class PacienteProgramItem(BaseModel):
+    id: int
+    name: str
+    clinician_name: Optional[str] = None
+    enrolled_at: Optional[date] = None
+    status: str
+    next_action: Optional[str] = None
+
+
+class PacienteMeResponse(BaseModel):
+    full_name: str
+    cpf: Optional[str] = None
+    birth_date: Optional[date] = None
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    health_plan: Optional[str] = None
+
+
+class PacienteMeUpdate(BaseModel):
+    email: Optional[str] = None
+    phone: Optional[str] = None
+
+
+class ClinicInfoResponse(BaseModel):
+    name: str
+    phone: Optional[str] = None
+    address: Optional[str] = None
+    email: Optional[str] = None
+    hours: Optional[str] = None

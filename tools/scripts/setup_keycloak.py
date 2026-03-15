@@ -535,6 +535,23 @@ def main(args: argparse.Namespace) -> None:
         },
     )
 
+    print("\n9b. Client paciente-ui")
+    ensure_client(
+        kc,
+        "paciente-ui",
+        {
+            "clientId": "paciente-ui",
+            "name": "Paciente UI",
+            "enabled": True,
+            "publicClient": True,
+            "standardFlowEnabled": True,
+            "directAccessGrantsEnabled": False,
+            "redirectUris": ["http://localhost:5177/*", "http://localhost:8000/paciente-ui/*", "http://localhost:9000/paciente-ui/*", "http://127.0.0.1:9000/paciente-ui/*"],
+            "webOrigins": ["http://localhost:5177", "http://localhost:8000", "http://localhost:9000", "http://127.0.0.1:9000"],
+            "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
+        },
+    )
+
     print("\n10. Usuarios dev")
     ensure_user(
         kc,
