@@ -1,0 +1,236 @@
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: infraestrutura
+    folder: IntelliCare
+    interval: 1m
+    rules:
+
+      - uid: alt-i01
+        title: "Serviço API Down"
+        condition: C
+        data:
+          - refId: A
+            queryType: ''
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: 'up{job="intellicare-api"}'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [1], type: lt}
+        noDataState: Alerting
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "API do IntelliCare está fora do ar"
+          description: "up{job=intellicare-api} = 0 por mais de 1 minuto"
+
+      - uid: alt-i02
+        title: "CPU Alta (> 85%)"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: '100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [85], type: gt}
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU acima de 85%"
+          description: "Uso de CPU acima de 85% nos últimos 5 minutos"
+
+      - uid: alt-i03
+        title: "Memória Alta (> 90%)"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: '(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [90], type: gt}
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memória acima de 90%"
+          description: "Uso de memória acima de 90%"
+
+      - uid: alt-i04
+        title: "Disco Crítico (< 10% livre)"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: '(node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [10], type: lt}
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Espaço em disco crítico"
+          description: "Espaço livre em / abaixo de 10%"
+
+      - uid: alt-i05
+        title: "PostgreSQL Down"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: 'pg_up'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [1], type: lt}
+        noDataState: Alerting
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL está inacessível"
+          description: "pg_up = 0"
+
+      - uid: alt-i06
+        title: "Redis Down"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: 'redis_up'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [1], type: lt}
+        noDataState: Alerting
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis está inacessível"
+          description: "redis_up = 0"
+
+  - orgId: 1
+    name: aplicacao
+    folder: IntelliCare
+    interval: 1m
+    rules:
+
+      - uid: alt-a01
+        title: "Taxa de Erros HTTP Alta (> 5%)"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: 'rate(http_requests_total{status=~"5.."}[2m]) / rate(http_requests_total[2m]) * 100'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [5], type: gt}
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Muitos erros HTTP 5xx"
+          description: "Taxa de erro 5xx acima de 5% nos últimos 2 minutos"
+
+      - uid: alt-a02
+        title: "Latência API Alta (p95 > 2s)"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: 'histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [2], type: gt}
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latência p95 acima de 2s"
+          description: "p95 latência acima de 2 segundos"
+
+      - uid: alt-a03
+        title: "Keycloak Down"
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange: {from: 300, to: 0}
+            datasourceUid: prometheus
+            model:
+              expr: 'up{job="keycloak"}'
+              refId: A
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator: {params: [1], type: lt}
+        noDataState: Alerting
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Keycloak está inacessível"
+          description: "up{job=keycloak} = 0"
+
