@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-16 | Branch: main | Último commit: 323182b
+> Atualizado: 2026-03-16 | Branch: main | Último commit: pending
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -50,18 +50,21 @@
 
 ## 📋 Fila — specs prontas para distribuir
 
-Nenhuma demanda com spec pronta aguardando. Próximas a especificar:
-- Integração frontend DEM-026 (sino de notificações nos 4 módulos)
-- DEM-035 E2E atualizado (cobrir DEM-029, DEM-026, DEM-027, DEM-028)
+| DEM | Título | Spec |
+|-----|--------|------|
+| DEM-035 | Notificações Frontend — sino nos 4 módulos | `docs/demandas/DEM-035_NOTIFICACOES_FRONTEND/01_FUNCIONAL.md` + `02_TECNICA.md` |
+| DEM-036 | E2E Atualizado — cobertura DEM-026 a DEM-035 | `docs/demandas/DEM-036_E2E_ATUALIZADO/01_FUNCIONAL.md` + `02_TECNICA.md` |
+
+**Dependência:** DEM-036 requer DEM-035 implementada (sino deve estar presente para teste Playwright do badge).
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → ✅ DEM-030 + DEM-027 entregues! Aguardando próxima spec
-DEV-B      → ✅ DEM-031 + DEM-029 + DEM-028 entregues! Aguardando próxima spec
-DEV-C      → ✅ DEM-032 + DEM-026 entregues! Aguardando próxima spec
+DEV-A      → DEM-035 (sino de notificações — 4 módulos)
+DEV-B      → DEM-036 (E2E atualizado — aguarda DEM-035 finalizada)
+DEV-C      → Disponível — aguardando próxima spec
 Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para prod
 ```
 
