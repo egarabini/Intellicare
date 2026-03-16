@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-15 | Branch: main | Último commit: 9639e61
+> Atualizado: 2026-03-16 | Branch: main | Último commit: 0ce31e0
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -19,7 +19,11 @@
 | DEM-INF | Infra — Dockerfile multi-stage Node+Python, docker-compose.dev.yml, fix static files staging | `a94cfcd` |
 | DEM-INF | Fix .dockerignore excluía frontend/ do contexto Docker | `a2390eb` |
 | DEM-INF | Fix Dockerfile: npm ci → npm install (sem package-lock.json em 3 frontends) | `9639e61` |
-| DEM-INF | Fix Traefik: DOCKER_API_VERSION=1.44 (daemon exige min 1.44, cliente negociava 1.24) | `9639e61` |
+| DEM-INF | Fix Traefik: downgrade v3.2 → v2.11.31 (API Docker 1.24 incompatível com v3.x no VPS) | `59fd4c1` |
+| DEM-INF | Fix Traefik: routers explicitam service (admin/api/portal) | `41f159a` |
+| DEM-023 | Deploy Staging — HTTPS ativo, Let's Encrypt emitido, 5 endpoints validados ✅ | `41f159a` |
+| DEM-032 | Clínico Gestão — migration 006, 16 endpoints, 4 páginas (Groups, GroupDetail, Professionals, ClinicalUsers) | `04c5d37` |
+| DEM-034 | Fix Traefik: redirectregex admin.intellicare.ia.br/ → /admin-ui/ | `0ce31e0` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -35,7 +39,7 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-023 | Deploy Produção (VPS + DNS + SSL + Traefik) | Eduardo | aguardando DNS + VPS |
+| DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | DEV-A | aguardando |
 
 ---
 
@@ -43,9 +47,7 @@
 
 | DEM | Título | Arquivo spec | Pode paralelo com |
 |-----|--------|-------------|-------------------|
-| DEM-023 | Deploy Produção (VPS + DNS + SSL) | `DEM-023_DEPLOY_PRODUCAO/02_TECNICA.md` | independente |
-| DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | `DEM-030_ADMINISTRATIVO_COMPLETO/02_TECNICA.md` | DEM-031 |
-| DEM-032 | Clínico Gestão (Grupos, Profissionais, Equipe) | `DEM-032_CLINICO_GESTAO/02_TECNICA.md` | pode iniciar — migration 005 já aplicada |
+| DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | `DEM-030_ADMINISTRATIVO_COMPLETO/02_TECNICA.md` | independente |
 
 ---
 
@@ -65,8 +67,8 @@
 ```
 DEV-A      → DEM-030  Administrativo Completo (maior escopo — 4 áreas)
 DEV-B      → ✅ DEM-031 entregue! Próximo: suporte a DEM-032 ou DEM-030
-DEV-C      → DEM-032  Clínico Gestão (migration 005 já aplicada — pode iniciar)
-Eduardo    → DEM-023  Deploy Produção (requer ação manual: VPS + DNS)
+DEV-C      → ✅ DEM-032 entregue! Próximo: suporte a DEM-030
+Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para prod
 ```
 
 ## Credenciais de teste (ambiente local)
