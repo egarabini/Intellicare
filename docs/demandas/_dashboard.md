@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-16 | Branch: main | Último commit: pending
+> Atualizado: 2026-03-16 | Branch: main | Último commit: 627fee2
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -29,6 +29,8 @@
 | DEM-026 | Notificações Realtime — 12 endpoints, SSE+WS, Redis Pub/Sub, 39 testes, migration 007 | `ceaffff` |
 | DEM-028 | Alertas Grafana — 9 regras provisionadas, SMTP, Keycloak scrape, Slack pronto p/ ativar | `bd30de8` |
 | DEM-027 | Relatórios PDF — WeasyPrint, 6 templates, 6 endpoints, hook useDownloadPdf nos 3 módulos | `323182b` |
+| DEM-035 | Notificações Frontend — sino (NotificationBell) nos 4 módulos, SSE, badge unread, popover | `48e5ea8` |
+| DEM-036 | E2E Atualizado — 14 pytest novos + 11 Playwright novos (24 total), cobertura DEM-026 a DEM-035 | `627fee2` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -50,22 +52,17 @@
 
 ## 📋 Fila — specs prontas para distribuir
 
-| DEM | Título | Spec |
-|-----|--------|------|
-| DEM-035 | Notificações Frontend — sino nos 4 módulos | `docs/demandas/DEM-035_NOTIFICACOES_FRONTEND/01_FUNCIONAL.md` + `02_TECNICA.md` |
-| DEM-036 | E2E Atualizado — cobertura DEM-026 a DEM-035 | `docs/demandas/DEM-036_E2E_ATUALIZADO/01_FUNCIONAL.md` + `02_TECNICA.md` |
-
-**Dependência:** DEM-036 requer DEM-035 implementada (sino deve estar presente para teste Playwright do badge).
+Nenhuma demanda com spec pronta aguardando. Todos os devs disponíveis.
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-035 (sino de notificações — 4 módulos)
-DEV-B      → DEM-036 (E2E atualizado — aguarda DEM-035 finalizada)
+DEV-A      → ✅ DEM-035 entregue! Disponível — aguardando próxima spec
+DEV-B      → ✅ DEM-036 entregue! Disponível — aguardando próxima spec
 DEV-C      → Disponível — aguardando próxima spec
-Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para prod
+Eduardo    → Deploy staging pendente (DEM-035 + DEM-036 + statics)
 ```
 
 ## Credenciais de teste (ambiente local)
@@ -79,13 +76,21 @@ Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para p
 
 ## Ações pendentes
 
-**Staging — aplicar DEM-032 + DEM-034 + DEM-030:**
+**Staging — aplicar DEM-030 a DEM-036 (statics novos incluídos no build):**
 ```bash
 cd /opt/intellicare && git pull origin main
 docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
   build --no-cache intellicare-service
 docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
-  up -d intellicare-service traefik
+  up -d intellicare-service
+```
+
+**⚠️ Gitignore — artefatos de build entraram nos commits DEM-035/036:**
+Adicionar ao `.gitignore` (ou ao `frontend/.gitignore`):
+```
+frontend/AdminUI/build_admin.txt
+frontend/AdminUI/build_out.txt
+tests/e2e/report/
 ```
 
 **Produção — DNS subdomínios (Eduardo):**
