@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-16 | Branch: main | Último commit: 0ce31e0
+> Atualizado: 2026-03-16 | Branch: main | Último commit: 4bc75ce
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -24,6 +24,7 @@
 | DEM-023 | Deploy Staging — HTTPS ativo, Let's Encrypt emitido, 5 endpoints validados ✅ | `41f159a` |
 | DEM-032 | Clínico Gestão — migration 006, 16 endpoints, 4 páginas (Groups, GroupDetail, Professionals, ClinicalUsers) | `04c5d37` |
 | DEM-034 | Fix Traefik: redirectregex admin.intellicare.ia.br/ → /admin-ui/ | `0ce31e0` |
+| DEM-030 | Administrativo Completo — migration 004, 31 endpoints, 4 páginas (Servers, Modules, Financeiro, AdminUsers) | `4bc75ce` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -39,15 +40,15 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | DEV-A | aguardando |
+| — | Nenhuma demanda técnica em aberto | — | — |
 
 ---
 
 ## 📋 Fila — specs prontas para distribuir
 
-| DEM | Título | Arquivo spec | Pode paralelo com |
-|-----|--------|-------------|-------------------|
-| DEM-030 | Administrativo Completo (Servidores, Módulos, Financeiro, Usuários Admin) | `DEM-030_ADMINISTRATIVO_COMPLETO/02_TECNICA.md` | independente |
+| DEM | Título | Arquivo spec | Observação |
+|-----|--------|-------------|------------|
+| DEM-029 | Agendamento de consultas (ClinicoUI + PacienteUI) | a criar | Alta prioridade — próxima spec |
 
 ---
 
@@ -65,7 +66,7 @@
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-030  Administrativo Completo (maior escopo — 4 áreas)
+DEV-A      → ✅ DEM-030 entregue! Próximo: DEM-029 Agendamento (após spec)
 DEV-B      → ✅ DEM-031 entregue! Próximo: suporte a DEM-032 ou DEM-030
 DEV-C      → ✅ DEM-032 entregue! Próximo: suporte a DEM-030
 Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para prod
@@ -80,11 +81,20 @@ Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para p
 | `dr.silva` | `Demo@1234` | ClinicoUI — `http://127.0.0.1:9000/clinico-ui/` |
 | `paciente.alfa` | `Demo@1234` | PacienteUI — `http://127.0.0.1:9000/paciente-ui/` |
 
-## Ação pendente (Eduardo — DNS)
+## Ações pendentes
 
-Antes de executar DEM-023, criar registros DNS:
+**Staging — aplicar DEM-032 + DEM-034 + DEM-030:**
+```bash
+cd /opt/intellicare && git pull origin main
+docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
+  build --no-cache intellicare-service
+docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
+  up -d intellicare-service traefik
 ```
-A  admin.intellicare.ia.br   → IP do VPS
-A  api.intellicare.ia.br     → IP do VPS
-A  auth.intellicare.ia.br    → IP do VPS
+
+**Produção — DNS subdomínios (Eduardo):**
+```
+A  admin.intellicare.ia.br   → IP do VPS de produção
+A  api.intellicare.ia.br     → IP do VPS de produção
+A  auth.intellicare.ia.br    → IP do VPS de produção
 ```
