@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Title, Tabs, Box, Group, Text, Card, Stack, Badge, Button, Loader, Center, TextInput, Textarea, Avatar, Timeline, Grid } from '@mantine/core';
 import { useParams, useNavigate } from 'react-router-dom';
 import { usePatientProfile, usePatientHistory, useUpdatePatientClinical } from '../hooks/usePatients';
-import { IconUser, IconHistory, IconHeartRateMonitor, IconStethoscope, IconEdit, IconCheck } from '@tabler/icons-react';
+import { IconUser, IconHistory, IconHeartRateMonitor, IconStethoscope, IconEdit, IconCheck, IconFileTypePdf } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
+import { useDownloadPdf } from '../hooks/useDownloadPdf';
 
 export function PatientProfile() { 
   const { id } = useParams() as { id: string };
@@ -11,6 +12,7 @@ export function PatientProfile() {
   const { data: profile, isLoading } = usePatientProfile(id);
   const { data: history } = usePatientHistory(id);
   const updateClinical = useUpdatePatientClinical();
+  const { downloadPdf, isDownloading } = useDownloadPdf();
   
   const [editingClinical, setEditingClinical] = useState(false);
   
@@ -50,13 +52,25 @@ export function PatientProfile() {
             <Text c="dimmed">{age} anos • {profile.cpf} • {profile.phone || 'Sem telefone'}</Text>
           </div>
         </Group>
-        <Button 
-          leftSection={<IconStethoscope size={20} />} 
-          size="md" 
-          onClick={() => navigate(`/patients/${id}/encounter`)}
-        >
-          Novo Atendimento
-        </Button>
+        <Group>
+          <Button 
+            leftSection={<IconStethoscope size={20} />} 
+            size="md" 
+            onClick={() => navigate(`/patients/${id}/encounter`)}
+          >
+            Novo Atendimento
+          </Button>
+          <Button
+            leftSection={<IconFileTypePdf size={16} />}
+            variant="light"
+            color="red"
+            size="md"
+            loading={isDownloading}
+            onClick={() => void downloadPdf(`/cuidado/relatorios/prontuario/${id}`, `prontuario_${id}.pdf`)}
+          >
+            Exportar Prontuário
+          </Button>
+        </Group>
       </Group>
 
       <Tabs defaultValue="perfil">

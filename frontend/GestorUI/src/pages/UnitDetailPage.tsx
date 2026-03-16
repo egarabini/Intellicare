@@ -5,8 +5,9 @@ import {
   Modal, TextInput, NumberInput, ActionIcon, Tooltip,
 } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
-import { IconArrowLeft, IconPlus, IconTrash } from '@tabler/icons-react'
+import { IconArrowLeft, IconPlus, IconTrash, IconFileTypePdf } from '@tabler/icons-react'
 import { useUnit, useUnitProfessionals, useAllocateProfessional, useRemoveProfessional } from '../hooks/useUnits'
+import { useDownloadPdf } from '../hooks/useDownloadPdf'
 
 const TYPE_LABELS: Record<string, string> = {
   ubs: 'UBS', hospital: 'Hospital', clinic: 'Clínica', secretary: 'Secretaria', other: 'Outro',
@@ -21,6 +22,7 @@ export function UnitDetailPage() {
   const { data: professionals, isLoading: loadingProfs } = useUnitProfessionals(unitId)
   const allocate = useAllocateProfessional()
   const remove = useRemoveProfessional()
+  const { downloadPdf, isDownloading } = useDownloadPdf()
 
   const [allocModalOpen, setAllocModalOpen] = useState(false)
   const [profId, setProfId] = useState<number | ''>('')
@@ -60,12 +62,23 @@ export function UnitDetailPage() {
 
   return (
     <Box>
-      <Group mb="md">
-        <ActionIcon variant="subtle" onClick={() => navigate('/units')}><IconArrowLeft size={20} /></ActionIcon>
-        <Title order={2}>{unit.name}</Title>
-        <Badge color={unit.status === 'active' ? 'green' : 'gray'} size="lg">
-          {unit.status === 'active' ? 'Ativa' : 'Inativa'}
-        </Badge>
+      <Group mb="md" justify="space-between">
+        <Group>
+          <ActionIcon variant="subtle" onClick={() => navigate('/units')}><IconArrowLeft size={20} /></ActionIcon>
+          <Title order={2}>{unit.name}</Title>
+          <Badge color={unit.status === 'active' ? 'green' : 'gray'} size="lg">
+            {unit.status === 'active' ? 'Ativa' : 'Inativa'}
+          </Badge>
+        </Group>
+        <Button
+          leftSection={<IconFileTypePdf size={16} />}
+          variant="light"
+          color="red"
+          loading={isDownloading}
+          onClick={() => void downloadPdf(`/gestor/relatorios/profissionais/${unitId}`, `profissionais-unidade-${unitId}.pdf`)}
+        >
+          Exportar Profissionais
+        </Button>
       </Group>
 
       <Card withBorder mb="lg" p="md">

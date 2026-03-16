@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 2cm 1.5cm;
+    @top-left   { content: "IntelliCare v3"; font-size: 9px; color: #666; }
+    @top-right  { content: "{{ generated_at }}"; font-size: 9px; color: #666; }
+    @bottom-right { content: "Página " counter(page) " de " counter(pages);
+                    font-size: 9px; color: #666; }
+  }
+  body { font-family: Helvetica, Arial, sans-serif; font-size: 11px; color: #1a1a1a; }
+  h1   { color: #0f766e; font-size: 18px; margin-bottom: 4px; }
+  h2   { color: #0f766e; font-size: 13px; margin-top: 16px; margin-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 16px; }
+  th    { background: #0f766e; color: white; padding: 6px 8px; text-align: left; }
+  td    { padding: 5px 8px; border-bottom: 1px solid #e5e7eb; }
+  tr:nth-child(even) td { background: #f9fafb; }
+  .empty { text-align: center; color: #6b7280; padding: 24px; font-style: italic; }
+  .total { font-weight: bold; background: #f0fdf4 !important; }
+</style>
+</head>
+<body>
+  <h1>{% block titulo %}{% endblock %}</h1>
+  <p style="color:#6b7280; font-size:10px; margin-top:0">
+    {% block subtitulo %}{% endblock %}
+  </p>
+  <hr style="border:none; border-top:2px solid #0f766e; margin:12px 0">
+  {% block conteudo %}{% endblock %}
+</body>
+</html>

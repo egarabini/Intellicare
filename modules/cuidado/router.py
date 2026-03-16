@@ -4,10 +4,11 @@ from __future__ import annotations
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query, Response
 
 from intellicare_core.auth.jwt import require_role
 from intellicare_core.contracts.base import TenantContext
+from intellicare_core.pdf.renderer import render_pdf
 from modules.slm.service import SLMService
 from intellicare_core.auth.jwt import get_current_tenant
 from .schemas import (
@@ -262,3 +263,73 @@ async def list_clinical_users(ctx: Clinico):
 @router.get("/dashboard-team-stats")
 async def dashboard_team_stats(ctx: Clinico):
     return await _svc.dashboard_team_stats(ctx)
+
+
+# -----------------------------------------------------------------------------
+# Reports (DEM-027)
+# -----------------------------------------------------------------------------
+
+@router.get("/relatorios/prontuario/{patient_id}")
+async def report_prontuario(patient_id: UUID, ctx: Clinico) -> Response:
+    patient = await _svc.get_patient_profile(ctx, patient_id)
+    if not patient:
+        raise HTTPException(404, "Paciente não encontrado")
+        
+    history = await _svc.patient_history(ctx, patient_id)
+    
+    # Mock some data for the report context using the patient profile
+    mapped_consultas = []
+    for h in history:
+        mapped_consultas.append({
+            "data": str(h.get("created_at", ""))[:10],
+            "profissional": h.get("clinician_id", "Clínico"),
+            "diagnostico": h.get("cid10_code", "Não informado"),
+            "observacoes": h.get("notes", "")[:100] + "..." if h.get("notes") else "Nenhuma"
+        })
+
+    context = {
+        "paciente_nome": getattr(patient, 'name', 'Desconhecido'),
+        "paciente_nascimento": str(getattr(patient, 'birth_date', ''))[:10],
+        "paciente_cpf": "***" + str(getattr(patient, 'cpf', '00000000000'))[3:9] + "**",
+        "consultas": mapped_consultas,
+        "profissional_logado": ctx.user_id, # Can be enriched with Keycloak name
+        "crm_profissional": "N/A"
+    }
+    
+    pdf_bytes = render_pdf("clinico_prontuario.html", context)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="prontuario_{patient_id}.pdf"'}
+    )
+
+
+@router.get("/relatorios/agenda")
+async def report_agenda(
+    ctx: Clinico,
+    data: str = Query(...)
+) -> Response:
+    agenda = await _svc.get_agenda(ctx, ctx.user_id, data, data)
+    
+    mapped_agendamentos = []
+    for a in agenda:
+        mapped_agendamentos.append({
+            "horario": a.get("start_time", ""),
+            "paciente": a.get("patient_name", "Desconhecido"),
+            "tipo_consulta": a.get("type", "Consulta"),
+            "status": a.get("status", "Agendado")
+        })
+
+    context = {
+        "data_agenda": data,
+        "profissional_nome": ctx.user_id,
+        "especialidade": "Clínico Geral",
+        "agendamentos": mapped_agendamentos
+    }
+    
+    pdf_bytes = render_pdf("clinico_agenda.html", context)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="agenda_{data}.pdf"'}
+    )

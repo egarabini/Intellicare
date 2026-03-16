@@ -3,6 +3,8 @@ import { Box, Title, Group, Badge, Card, Text, Button, Stack, Loader, Center, Gr
 import { DatePicker } from '@mantine/dates';
 import { useNavigate } from 'react-router-dom';
 import { useMyAgenda } from '../hooks/useMyAgenda';
+import { useDownloadPdf } from '../hooks/useDownloadPdf';
+import { IconFileTypePdf } from '@tabler/icons-react';
 
 import '@mantine/dates/styles.css';
 
@@ -27,6 +29,7 @@ export function Agenda() {
   
   const dateStr = date ? toLocalDateParam(date) : undefined;
   const { data: agenda, isLoading } = useMyAgenda(dateStr);
+  const { downloadPdf, isDownloading } = useDownloadPdf();
   const navigate = useNavigate();
 
   const filteredAgenda = agenda?.filter((item) => {
@@ -45,7 +48,23 @@ export function Agenda() {
 
   return (
     <Box>
-      <Title order={2} mb="lg">Agenda Clínica</Title>
+      <Group justify="space-between" mb="lg">
+        <Title order={2}>Agenda Clínica</Title>
+        <Button
+          leftSection={<IconFileTypePdf size={16} />}
+          variant="light"
+          color="red"
+          disabled={!dateStr}
+          loading={isDownloading}
+          onClick={() => {
+            if (dateStr) {
+              void downloadPdf(`/cuidado/relatorios/agenda?data=${dateStr}`, `agenda_${dateStr}.pdf`)
+            }
+          }}
+        >
+          Exportar Agenda Diária
+        </Button>
+      </Group>
 
       <Grid gutter="xl">
         <Grid.Col span={{ base: 12, md: 4 }}>

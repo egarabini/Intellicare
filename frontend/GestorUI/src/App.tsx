@@ -42,6 +42,7 @@ import { TenantSettings } from './pages/TenantSettings'
 import { UnitsPage } from './pages/UnitsPage'
 import { UnitDetailPage } from './pages/UnitDetailPage'
 import { TenantUsersPage } from './pages/TenantUsersPage'
+import { RelatoriosPage } from './pages/RelatoriosPage'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -112,6 +113,7 @@ function AppRoutes() {
         <MantineNavLink component={NavLink} to="/equipe" label="Equipe Clínica" leftSection={<IconStethoscope size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/units" label="Unidades" leftSection={<IconBuilding size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/tenant-users" label="Usuários" leftSection={<IconUserShield size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/relatorios" label="Relatórios" leftSection={<IconStethoscope size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/settings" label="Configurações" leftSection={<IconSettings size="1rem"/>} />
       </>
     );
@@ -154,6 +156,7 @@ function AppRoutes() {
             <Route path="/units" element={<UnitsPage />} />
             <Route path="/units/:id" element={<UnitDetailPage />} />
             <Route path="/tenant-users" element={<TenantUsersPage />} />
+            <Route path="/relatorios" element={<RelatoriosPage />} />
             <Route path="/settings" element={<TenantSettings />} />
           </Routes>
         </AppShell.Main>

@@ -2,6 +2,9 @@ import { Grid, Loader, Paper, SimpleGrid, Stack, Text, Title, Card } from '@mant
 
 import { useDashboardStats } from '../hooks/useTenants'
 import { TenantList } from './TenantList'
+import { useDownloadPdf } from '../hooks/useDownloadPdf'
+import { Button, Group } from '@mantine/core'
+import { IconFileTypePdf } from '@tabler/icons-react'
 
 function StatCard({ label, value, accent, isCurrency = false }: { label: string; value: number; accent: string, isCurrency?: boolean }) {
   const displayValue = isCurrency 
@@ -22,6 +25,7 @@ function StatCard({ label, value, accent, isCurrency = false }: { label: string;
 
 export function DashboardPage() {
   const { data: stats, isLoading } = useDashboardStats()
+  const { downloadPdf, isDownloading } = useDownloadPdf()
 
   if (isLoading) {
     return <Loader />
@@ -29,10 +33,21 @@ export function DashboardPage() {
 
   return (
     <Stack gap="xl">
-      <Stack gap={4}>
-        <Title order={2}>Dashboard</Title>
-        <Text c="dimmed">Visao geral da plataforma e dos tenants provisionados.</Text>
-      </Stack>
+      <Group justify="space-between" align="flex-start">
+        <Stack gap={4}>
+          <Title order={2}>Dashboard</Title>
+          <Text c="dimmed">Visao geral da plataforma e dos tenants provisionados.</Text>
+        </Stack>
+        <Button
+          leftSection={<IconFileTypePdf size={16} />}
+          variant="light"
+          color="red"
+          loading={isDownloading}
+          onClick={() => void downloadPdf('/admin/relatorios/tenants', 'tenants-ativos.pdf')}
+        >
+          Exportar Tenants (PDF)
+        </Button>
+      </Group>
 
       <SimpleGrid cols={{ base: 1, md: 4 }}>
         <StatCard label="Total de tenants" value={stats?.total_tenants ?? 0} accent="#0f766e" />

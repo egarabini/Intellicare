@@ -16,6 +16,7 @@ triad central de IA clínica.
 
 ## Mapa de Módulos
 
+
 | Módulo | Diretório | Porto | Papel |
 |--------|-----------|-------|-------|
 | admin | `modules/admin/` | 8010 | Administração do sistema |

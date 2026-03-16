@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block titulo %}Lista de Tenants Ativos{% endblock %}
+{% block subtitulo %}Todos os clientes cadastrados operacionais no IntelliCare.{% endblock %}
+
+{% block conteudo %}
+<h2>Relação de Clientes</h2>
+{% if tenants %}
+<table>
+  <thead>
+    <tr>
+      <th>Nome do Tenant</th>
+      <th>Slug</th>
+      <th>Plano</th>
+      <th>Módulos</th>
+      <th>Criação</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tenant in tenants %}
+    <tr>
+      <td>{{ tenant.name }}</td>
+      <td>{{ tenant.slug }}</td>
+      <td>{{ tenant.plan }}</td>
+      <td>{{ tenant.modules|join(", ") }}</td>
+      <td>{{ tenant.created_at }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum registro encontrado.</p>
+{% endif %}
+{% endblock %}

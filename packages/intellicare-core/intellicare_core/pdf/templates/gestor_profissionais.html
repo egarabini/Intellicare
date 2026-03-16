@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %}Profissionais da Unidade: {{ unidade.name }}{% endblock %}
+{% block subtitulo %}Endereço: {{ unidade.address }}{% endblock %}
+
+{% block conteudo %}
+<h2>Equipe Alocada</h2>
+{% if profissionais %}
+<table>
+  <thead>
+    <tr>
+      <th>Nome do Profissional</th>
+      <th>Especialidade</th>
+      <th>CRM/Registro</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in profissionais %}
+    <tr>
+      <td>{{ p.nome }}</td>
+      <td>{{ p.especialidade }}</td>
+      <td>{{ p.registro }}</td>
+      <td>{{ p.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum profissional alocado nesta unidade no momento.</p>
+{% endif %}
+{% endblock %}

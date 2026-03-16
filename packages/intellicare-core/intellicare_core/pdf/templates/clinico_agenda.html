@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %}Agenda do Profissional{% endblock %}
+{% block subtitulo %}Data base: {{ data_agenda }} | Profissional: {{ profissional_nome }} ({{ especialidade }}){% endblock %}
+
+{% block conteudo %}
+<h2>Agendamentos</h2>
+{% if agendamentos %}
+<table>
+  <thead>
+    <tr>
+      <th>Horário</th>
+      <th>Paciente</th>
+      <th>Tipo de Consulta</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in agendamentos %}
+    <tr>
+      <td>{{ a.horario }}</td>
+      <td>{{ a.paciente }}</td>
+      <td>{{ a.tipo_consulta }}</td>
+      <td>{{ a.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum agendamento encontrado para este período.</p>
+{% endif %}
+{% endblock %}

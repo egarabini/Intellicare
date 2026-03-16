@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo %}Relatório de Receita Mensal{% endblock %}
+{% block subtitulo %}Mês de Referência: {{ mes }} | Total Geral: R$ {{ "%.2f"|format(total_geral) }}{% endblock %}
+
+{% block conteudo %}
+<h2>Resumo por Tenant</h2>
+{% if tenants_data %}
+<table>
+  <thead>
+    <tr>
+      <th>Tenant</th>
+      <th>Data de Pagamento</th>
+      <th style="text-align: right">Valor (R$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in tenants_data %}
+    <tr>
+      <td>{{ row.tenant_name }}</td>
+      <td>{{ row.payment_date }}</td>
+      <td style="text-align: right">{{ "%.2f"|format(row.amount) }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2" class="total">Total Geral</td>
+      <td class="total" style="text-align: right">R$ {{ "%.2f"|format(total_geral) }}</td>
+    </tr>
+  </tfoot>
+</table>
+{% else %}
+<p class="empty">Nenhum registro encontrado para este período.</p>
+{% endif %}
+{% endblock %}

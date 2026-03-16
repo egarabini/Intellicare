@@ -5,9 +5,11 @@ from datetime import datetime
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import Response
 
 from intellicare_core.auth.jwt import require_role
 from intellicare_core.contracts.base import TenantContext
+from intellicare_core.pdf.renderer import render_pdf
 from .schemas import (
     AdminUserCreate,
     AdminUserOut,
@@ -344,3 +346,63 @@ async def delete_admin_user(user_id: int, actor: AdminRequired) -> None:
         await _service.delete_admin_user(user_id, actor)
     except LookupError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.get("/relatorios/receita")
+async def report_receita(
+    actor: AdminRequired,
+    mes: str = Query(..., description="Mês no formato YYYY-MM")
+) -> Response:
+    del actor
+    invoices_result = await _service.list_invoices(1, 1000)
+    invoices = invoices_result.get("items", [])
+    
+    # Filter by month (basic filtering)
+    filtered = []
+    total = 0.0
+    for inv in invoices:
+        if inv["status"] == "PAID" and inv.get("due_date", "").startswith(mes):
+            amount = float(inv.get("amount", 0))
+            filtered.append({
+                "tenant_name": inv.get("tenant_slug", "Desconhecido"),
+                "payment_date": inv.get("due_date", ""),
+                "amount": amount
+            })
+            total += amount
+
+    context = {
+        "mes": mes,
+        "total_geral": total,
+        "tenants_data": filtered
+    }
+    
+    pdf_bytes = render_pdf("admin_receita.html", context)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="receita-{mes}.pdf"'}
+    )
+
+
+@router.get("/relatorios/tenants")
+async def report_tenants(actor: AdminRequired) -> Response:
+    del actor
+    tenants, _ = await _service.list_tenants(1, 1000, actor=None) # Note: we bypass actor for fetching in list_tenants in reporting endpoint if necessary, or pass actor
+    
+    mapped_tenants = []
+    for t in tenants:
+        mapped_tenants.append({
+            "name": t.get("name", ""),
+            "slug": t.get("slug", ""),
+            "plan": t.get("plan", "FREE"),
+            "modules": [m.get("slug", "") for m in t.get("modules", [])],
+            "created_at": str(t.get("created_at", ""))[:10]
+        })
+
+    context = {"tenants": mapped_tenants}
+    pdf_bytes = render_pdf("admin_tenants.html", context)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": 'attachment; filename="tenants-ativos.pdf"'}
+    )

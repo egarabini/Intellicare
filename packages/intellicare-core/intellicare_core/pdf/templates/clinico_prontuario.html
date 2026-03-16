@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}Resumo Clínico do Paciente{% endblock %}
+{% block subtitulo %}Paciente: {{ paciente_nome }} | Nasc.: {{ paciente_nascimento }} | CPF: {{ paciente_cpf }} {% endblock %}
+
+{% block conteudo %}
+<h2>Histórico de Consultas</h2>
+{% if consultas %}
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Profissional</th>
+      <th>Diagnóstico (CID-10)</th>
+      <th>Observações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in consultas %}
+    <tr>
+      <td>{{ c.data }}</td>
+      <td>{{ c.profissional }}</td>
+      <td>{{ c.diagnostico }}</td>
+      <td>{{ c.observacoes }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum histórico clínico encontrado para o paciente.</p>
+{% endif %}
+
+<div style="margin-top: 50px; text-align: center;">
+  <p>___________________________________________________</p>
+  <p><strong>{{ profissional_logado }}</strong></p>
+  <p>CRM: {{ crm_profissional }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block titulo %}Consultas por Período{% endblock %}
+{% block subtitulo %}De {{ data_inicio }} até {{ data_fim }} | Total de Atendimentos: {{ total_consultas }}{% endblock %}
+
+{% block conteudo %}
+<h2>Métricas de Atendimento</h2>
+{% if consultas %}
+<table>
+  <thead>
+    <tr>
+      <th>Data/Hora</th>
+      <th>Paciente</th>
+      <th>Profissional</th>
+      <th>Unidade</th>
+      <th>Tipo</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in consultas %}
+    <tr>
+      <td>{{ c.data_hora }}</td>
+      <td>{{ c.paciente }}</td>
+      <td>{{ c.profissional }}</td>
+      <td>{{ c.unidade }}</td>
+      <td>{{ c.tipo }}</td>
+      <td>{{ c.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum registro encontrado para este período.</p>
+{% endif %}
+{% endblock %}

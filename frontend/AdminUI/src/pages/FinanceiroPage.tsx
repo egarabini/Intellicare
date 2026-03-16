@@ -15,8 +15,10 @@ import {
   TextInput,
   Title,
 } from '@mantine/core'
-import { IconCash, IconDeviceFloppy, IconTrash } from '@tabler/icons-react'
+import { IconCash, IconDeviceFloppy, IconTrash, IconFileTypePdf } from '@tabler/icons-react'
 import { notifications } from '@mantine/notifications'
+import { MonthPickerInput } from '@mantine/dates'
+import '@mantine/dates/styles.css'
 
 import { StatusBadge } from '../components/StatusBadge'
 import {
@@ -28,6 +30,7 @@ import {
   useInvoices,
   useUpdateInvoiceStatus,
 } from '../hooks/useFinanceiro'
+import { useDownloadPdf } from '../hooks/useDownloadPdf'
 
 const INVOICE_STATUS_OPTIONS = [
   { value: 'pending', label: 'Pendente' },
@@ -67,6 +70,8 @@ export function FinanceiroPage() {
   const updateInvoiceStatus = useUpdateInvoiceStatus()
   const createExpense = useCreateExpense()
   const deleteExpense = useDeleteExpense()
+  const { downloadPdf, isDownloading } = useDownloadPdf()
+  const [reportMonth, setReportMonth] = useState<Date | null>(new Date())
 
   const saveExpense = async () => {
     try {
@@ -112,10 +117,34 @@ export function FinanceiroPage() {
 
   return (
     <Stack gap="lg">
-      <Stack gap={4}>
-        <Title order={2}>Financeiro</Title>
-        <Text c="dimmed">Receita, despesas de plataforma e acompanhamento de faturas.</Text>
-      </Stack>
+      <Group justify="space-between" align="flex-start">
+        <Stack gap={4}>
+          <Title order={2}>Financeiro</Title>
+          <Text c="dimmed">Receita, despesas de plataforma e acompanhamento de faturas.</Text>
+        </Stack>
+        <Group>
+          <MonthPickerInput
+            placeholder="Mês do relatório"
+            value={reportMonth}
+            onChange={setReportMonth}
+            w={160}
+          />
+          <Button
+            leftSection={<IconFileTypePdf size={16} />}
+            variant="light"
+            color="red"
+            disabled={!reportMonth}
+            loading={isDownloading}
+            onClick={() => {
+              if (!reportMonth) return;
+              const mesStr = reportMonth.toISOString().slice(0, 7);
+              void downloadPdf(`/admin/relatorios/receita?mes=${mesStr}`, `receita-${mesStr}.pdf`);
+            }}
+          >
+            Exportar Receita
+          </Button>
+        </Group>
+      </Group>
 
       <SimpleGrid cols={{ base: 1, md: 4 }}>
         <Card withBorder radius="lg" p="lg"><Stack gap={4}><Text c="dimmed">Receita do mes</Text><Title order={3}>{currency(dashboard?.receita_mes ?? 0)}</Title></Stack></Card>

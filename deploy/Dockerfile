@@ -20,22 +20,22 @@ RUN cd frontend/Portal \
 
 # Build AdminUI → static/admin-ui/
 RUN cd frontend/AdminUI \
-    && npm install --prefer-offline \
+    && npm install --legacy-peer-deps --prefer-offline \
     && npx vite build
 
 # Build GestorUI → static/gestor-ui/
 RUN cd frontend/GestorUI \
-    && npm install --prefer-offline \
+    && npm install --legacy-peer-deps --prefer-offline \
     && npx vite build
 
 # Build ClinicoUI → static/clinico-ui/
 RUN cd frontend/ClinicoUI \
-    && npm install --prefer-offline \
+    && npm install --legacy-peer-deps --prefer-offline \
     && npx vite build
 
 # Build PacienteUI → static/paciente-ui/
 RUN cd frontend/PacienteUI \
-    && npm install --prefer-offline \
+    && npm install --legacy-peer-deps --prefer-offline \
     && npx vite build
 
 
@@ -46,6 +46,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     build-essential \
     libpq-dev \
+    libpango-1.0-0 \
+    libpangoft2-1.0-0 \
+    libharfbuzz0b \
+    libfontconfig1 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
