@@ -57,6 +57,7 @@ loader.load("vector")
 loader.load("gestor")
 loader.load("cuidado")
 loader.load("slm")
+loader.load("notifications")
 
 
 @app.get("/health")
