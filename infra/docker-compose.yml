@@ -163,12 +163,16 @@ services:
       - "traefik.http.routers.intellicare-api.tls.certresolver=letsencrypt"
       - "traefik.http.routers.intellicare-api.service=intellicare-api"
       - "traefik.http.services.intellicare-api.loadbalancer.server.port=8000"
-      # Rota por subdomínio (produção)
+      # Rota por subdomínio (produção) — redirect raiz para o path correto do frontend
       - "traefik.http.routers.intellicare-admin.rule=Host(`admin.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-admin.entrypoints=websecure"
       - "traefik.http.routers.intellicare-admin.tls.certresolver=letsencrypt"
       - "traefik.http.routers.intellicare-admin.service=intellicare-admin"
+      - "traefik.http.routers.intellicare-admin.middlewares=admin-ui-redirect"
       - "traefik.http.services.intellicare-admin.loadbalancer.server.port=8000"
+      - "traefik.http.middlewares.admin-ui-redirect.redirectregex.regex=^(https://admin\\.intellicare\\.ia\\.br)/?$$"
+      - "traefik.http.middlewares.admin-ui-redirect.redirectregex.replacement=$${1}/admin-ui/"
+      - "traefik.http.middlewares.admin-ui-redirect.redirectregex.permanent=false"
       # Redirect HTTP → HTTPS
       - "traefik.http.routers.intellicare-admin-http.rule=Host(`admin.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-admin-http.entrypoints=web"
