@@ -49,5 +49,44 @@ test.describe('ClinicoUI', () => {
       { timeout: 15_000 }
     )
   })
-})
 
+  // DEM-032 — Gestão clínica (grupos, profissionais, equipe)
+  test('navegação para Grupos (DEM-032)', async ({ page }) => {
+    await page.goto('/clinico-ui/')
+    await keycloakLogin(page, USERS.clinico)
+    await expect(page.locator('text=Início')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Grupos')
+    await page.waitForURL(/\/groups/)
+    await expect(page.locator('text=Grupos').first()).toBeVisible()
+  })
+
+  test('navegação para Profissionais (DEM-032)', async ({ page }) => {
+    await page.goto('/clinico-ui/')
+    await keycloakLogin(page, USERS.clinico)
+    await expect(page.locator('text=Início')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Profissionais')
+    await page.waitForURL(/\/professionals/)
+    await expect(page.locator('text=Profissionais').first()).toBeVisible()
+  })
+
+  test('navegação para Equipe (DEM-032)', async ({ page }) => {
+    await page.goto('/clinico-ui/')
+    await keycloakLogin(page, USERS.clinico)
+    await expect(page.locator('text=Início')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Equipe')
+    await page.waitForURL(/\/clinical-users/)
+    await expect(page.locator('text=Equipe').first()).toBeVisible()
+  })
+
+  // DEM-035 — Sino de notificações
+  test('sino de notificações visível no header (DEM-035)', async ({ page }) => {
+    await page.goto('/clinico-ui/')
+    await keycloakLogin(page, USERS.clinico)
+    await expect(page.locator('text=Início')).toBeVisible({ timeout: 10_000 })
+
+    await expect(page.locator('[aria-label="Notificações"]')).toBeVisible()
+  })
+})

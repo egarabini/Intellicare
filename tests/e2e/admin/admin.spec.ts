@@ -54,5 +54,44 @@ test.describe('AdminUI', () => {
       { timeout: 15_000 }
     )
   })
-})
 
+  // DEM-030 — Páginas novas de administração
+  test('navegação para Servidores (DEM-030)', async ({ page }) => {
+    await page.goto('/admin-ui/')
+    await keycloakLogin(page, USERS.admin)
+    await expect(page.locator('text=IntelliCare Admin')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Servidores')
+    await page.waitForURL(/\/servers/)
+    await expect(page.locator('text=Servidores').first()).toBeVisible()
+  })
+
+  test('navegação para Módulos (DEM-030)', async ({ page }) => {
+    await page.goto('/admin-ui/')
+    await keycloakLogin(page, USERS.admin)
+    await expect(page.locator('text=IntelliCare Admin')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Modulos')
+    await page.waitForURL(/\/modules/)
+    await expect(page.locator('text=Modulos').first()).toBeVisible()
+  })
+
+  test('navegação para Financeiro (DEM-030)', async ({ page }) => {
+    await page.goto('/admin-ui/')
+    await keycloakLogin(page, USERS.admin)
+    await expect(page.locator('text=IntelliCare Admin')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Financeiro')
+    await page.waitForURL(/\/financeiro/)
+    await expect(page.locator('text=Financeiro').first()).toBeVisible()
+  })
+
+  // DEM-035 — Sino de notificações
+  test('sino de notificações visível no header (DEM-035)', async ({ page }) => {
+    await page.goto('/admin-ui/')
+    await keycloakLogin(page, USERS.admin)
+    await expect(page.locator('text=IntelliCare Admin')).toBeVisible({ timeout: 10_000 })
+
+    await expect(page.locator('[aria-label="Notificações"]')).toBeVisible()
+  })
+})

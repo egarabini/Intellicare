@@ -75,6 +75,12 @@ def gestor_headers() -> dict[str, str]:
     return auth_headers(get_token("gestor-dev", "Gestor@2025!"))
 
 
+@pytest.fixture(scope="session")
+def clinico_headers() -> dict[str, str]:
+    """Token do clinico-dev (tenant_dev)."""
+    return auth_headers(get_token("clinico-dev", "Clinico@2025!"))
+
+
 @pytest.fixture(scope="session", autouse=True)
 def e2e_tenant(api: httpx.Client, admin_headers: dict):
     """Cria o tenant e2e_test no início da sessão e faz cleanup ao final."""
@@ -105,4 +111,3 @@ def e2e_tenant(api: httpx.Client, admin_headers: dict):
         json={"status": "active"},
         headers=admin_headers,
     )
-

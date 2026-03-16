@@ -55,5 +55,24 @@ test.describe('GestorUI', () => {
       { timeout: 15_000 }
     )
   })
-})
 
+  // DEM-027 — Página de Relatórios
+  test('navegação para Relatórios (DEM-027)', async ({ page }) => {
+    await page.goto('/gestor-ui/')
+    await keycloakLogin(page, USERS.gestor)
+    await expect(page.locator('text=IntelliCare — Gestor')).toBeVisible({ timeout: 10_000 })
+
+    await page.click('text=Relatórios')
+    await page.waitForURL(/\/relatorios/)
+    await expect(page.locator('text=Relatórios').first()).toBeVisible()
+  })
+
+  // DEM-035 — Sino de notificações
+  test('sino de notificações visível no header (DEM-035)', async ({ page }) => {
+    await page.goto('/gestor-ui/')
+    await keycloakLogin(page, USERS.gestor)
+    await expect(page.locator('text=IntelliCare — Gestor')).toBeVisible({ timeout: 10_000 })
+
+    await expect(page.locator('[aria-label="Notificações"]')).toBeVisible()
+  })
+})

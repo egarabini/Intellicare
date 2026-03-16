@@ -54,5 +54,13 @@ test.describe('PacienteUI', () => {
       { timeout: 15_000 }
     )
   })
-})
 
+  // DEM-035 — Sino de notificações
+  test('sino de notificações visível no header (DEM-035)', async ({ page }) => {
+    await page.goto('/paciente-ui/')
+    await keycloakLogin(page, USERS.paciente)
+    await expect(page.locator('text=IntelliCare — Paciente')).toBeVisible({ timeout: 10_000 })
+
+    await expect(page.locator('[aria-label="Notificações"]')).toBeVisible()
+  })
+})
