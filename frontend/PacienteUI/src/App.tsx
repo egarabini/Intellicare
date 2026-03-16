@@ -19,6 +19,7 @@ import { HistoricoPage } from './pages/HistoricoPage'
 import { ProgramasPage } from './pages/ProgramasPage'
 import { CadastroPage } from './pages/CadastroPage'
 import { ContatoPage } from './pages/ContatoPage'
+import { NotificationBell } from './components/NotificationBell'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -117,7 +118,10 @@ function AppRoutes() {
       <AppShell.Header>
         <Group h="100%" px="lg" justify="space-between">
           <Title order={4} c="teal">IntelliCare — Paciente</Title>
-          <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
+          <Group gap="sm">
+            <NotificationBell />
+            <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
+          </Group>
         </Group>
       </AppShell.Header>
 
@@ -152,4 +156,3 @@ export default function App() {
     </AuthProvider>
   )
 }
-

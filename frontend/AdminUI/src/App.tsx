@@ -22,6 +22,7 @@ import { ServersPage } from './pages/ServersPage'
 import { ModulesPage } from './pages/ModulesPage'
 import { FinanceiroPage } from './pages/FinanceiroPage'
 import { AdminUsersPage } from './pages/AdminUsersPage'
+import { NotificationBell } from './components/NotificationBell'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -128,7 +129,10 @@ function AppRoutes() {
       <AppShell.Header>
         <Group h="100%" px="lg" justify="space-between">
           <Title order={4} c="blue">IntelliCare Admin</Title>
-          <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
+          <Group gap="sm">
+            <NotificationBell />
+            <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
+          </Group>
         </Group>
       </AppShell.Header>
 

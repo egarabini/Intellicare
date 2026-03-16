@@ -126,7 +126,7 @@ export function FinanceiroPage() {
           <MonthPickerInput
             placeholder="Mês do relatório"
             value={reportMonth}
-            onChange={setReportMonth}
+            onChange={(value) => setReportMonth(value ? new Date(value) : null)}
             w={160}
           />
           <Button

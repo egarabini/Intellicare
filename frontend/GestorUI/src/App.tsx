@@ -43,6 +43,7 @@ import { UnitsPage } from './pages/UnitsPage'
 import { UnitDetailPage } from './pages/UnitDetailPage'
 import { TenantUsersPage } from './pages/TenantUsersPage'
 import { RelatoriosPage } from './pages/RelatoriosPage'
+import { NotificationBell } from './components/NotificationBell'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -130,6 +131,7 @@ function AppRoutes() {
           <Group h="100%" px="md" justify="space-between">
             <Title order={4}>IntelliCare — Gestor</Title>
             <Group gap="sm">
+              <NotificationBell />
               <Text size="sm" c="dimmed">
                 {auth.user?.profile.email as string | undefined}
               </Text>

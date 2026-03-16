@@ -1,7 +1,8 @@
-import { AppShell, NavLink, Group, Avatar, Text, Badge } from '@mantine/core';
+import { AppShell, NavLink, Group, Avatar, Text, Badge, Title } from '@mantine/core';
 import { IconHome, IconCalendar, IconUsers, IconRobot, IconSettings, IconUsersGroup, IconStethoscope } from '@tabler/icons-react';
 import { useAuth } from 'react-oidc-context';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { NotificationBell } from './NotificationBell';
 
 const NAV_ITEMS = [
   { path: '/dashboard',  icon: IconHome,      label: 'Início' },
@@ -22,7 +23,20 @@ export function ClinicoShell({ children }: { children: React.ReactNode }) {
   const tenant = auth.user?.profile?.['tenant_slug'] ?? ''
 
   return (
-    <AppShell navbar={{ width: 220, breakpoint: 'sm' }} padding="md">
+    <AppShell
+      navbar={{ width: 220, breakpoint: 'sm' }}
+      header={{ height: 56 }}
+      padding="md"
+    >
+      <AppShell.Header>
+        <Group h="100%" px="md" justify="space-between">
+          <Title order={4} c="teal">IntelliCare Clínico</Title>
+          <Group gap="sm">
+            <NotificationBell />
+            <Text size="sm" c="dimmed">{name as string}</Text>
+          </Group>
+        </Group>
+      </AppShell.Header>
       <AppShell.Navbar p="xs">
         <Group mb="md" px="xs">
           <Avatar radius="xl" color="blue">{name[0]}</Avatar>
