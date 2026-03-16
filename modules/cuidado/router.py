@@ -118,12 +118,18 @@ async def paciente_appointments(ctx: Paciente, status: str = "upcoming"):
 
 @router.patch("/paciente/appointments/{appt_id}/confirm")
 async def paciente_confirm_appointment(appt_id: UUID, ctx: Paciente):
-    return await _svc.paciente_confirm_appointment(ctx, appt_id)
+    try:
+        return await _svc.paciente_confirm_appointment(ctx, appt_id)
+    except ValueError as e:
+        raise HTTPException(404, str(e))
 
 
 @router.delete("/paciente/appointments/{appt_id}")
 async def paciente_cancel_appointment(appt_id: UUID, ctx: Paciente):
-    return await _svc.paciente_cancel_appointment(ctx, appt_id)
+    try:
+        return await _svc.paciente_cancel_appointment(ctx, appt_id)
+    except ValueError as e:
+        raise HTTPException(404, str(e))
 
 
 @router.get("/paciente/history")

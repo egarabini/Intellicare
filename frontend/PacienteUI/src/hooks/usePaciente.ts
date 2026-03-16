@@ -1,13 +1,34 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import apiClient from '../api/client'
 
+export interface PacientePainel {
+  patient_name: string
+  next_appointment: {
+    scheduled_at: string
+    clinician_name: string
+    type: string
+  } | null
+  clinic_notice: string | null
+  upcoming_count: number
+  past_count: number
+}
+
+export interface PacienteAppointment {
+  id: string
+  scheduled_at: string
+  clinician_name: string
+  type: string
+  status: string
+}
+
 export function usePainel() {
   return useQuery({
     queryKey: ['paciente', 'painel'],
     queryFn: async () => {
-      const { data } = await apiClient.get('/cuidado/paciente/painel')
+      const { data } = await apiClient.get<PacientePainel>('/cuidado/paciente/painel')
       return data
     },
+    refetchInterval: 30_000,
   })
 }
 
@@ -15,9 +36,10 @@ export function useAppointments(status: 'upcoming' | 'past') {
   return useQuery({
     queryKey: ['paciente', 'appointments', status],
     queryFn: async () => {
-      const { data } = await apiClient.get('/cuidado/paciente/appointments', { params: { status } })
+      const { data } = await apiClient.get<PacienteAppointment[]>('/cuidado/paciente/appointments', { params: { status } })
       return data
     },
+    refetchInterval: 30_000,
   })
 }
 
@@ -28,7 +50,10 @@ export function useConfirmAppointment() {
       const { data } = await apiClient.patch(`/cuidado/paciente/appointments/${apptId}/confirm`)
       return data
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['paciente', 'appointments'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['paciente', 'appointments'] })
+      qc.invalidateQueries({ queryKey: ['paciente', 'painel'] })
+    },
   })
 }
 
@@ -39,7 +64,10 @@ export function useCancelAppointment() {
       const { data } = await apiClient.delete(`/cuidado/paciente/appointments/${apptId}`)
       return data
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['paciente', 'appointments'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['paciente', 'appointments'] })
+      qc.invalidateQueries({ queryKey: ['paciente', 'painel'] })
+    },
   })
 }
 
@@ -93,4 +121,3 @@ export function useClinicInfo() {
     },
   })
 }
-

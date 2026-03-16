@@ -21,6 +21,7 @@ export function useMyAgenda(date?: string, from?: string, to?: string) {
       if (to) params.append('to', to);
       const { data } = await api.get<AgendaItem[]>(`/cuidado/my-agenda?${params.toString()}`);
       return data;
-    }
+    },
+    refetchInterval: 30_000,
   });
 }

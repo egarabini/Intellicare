@@ -3,13 +3,14 @@ import {
   Badge, Button, Card, Group, Loader, SegmentedControl, Stack, Table, Text, Title,
 } from '@mantine/core'
 import { notifications } from '@mantine/notifications'
-import { useAppointments, useConfirmAppointment, useCancelAppointment } from '../hooks/usePaciente'
+import { useAppointments, useConfirmAppointment, useCancelAppointment, PacienteAppointment } from '../hooks/usePaciente'
 
 const STATUS_COLOR: Record<string, string> = {
   agendado: 'blue',
   confirmado: 'green',
   cancelado: 'red',
   concluido: 'gray',
+  realizado: 'gray',
 }
 
 export function AgendaPage() {
@@ -17,6 +18,7 @@ export function AgendaPage() {
   const { data, isLoading } = useAppointments(tab)
   const confirm = useConfirmAppointment()
   const cancel = useCancelAppointment()
+  const appointments = data ?? []
 
   return (
     <Stack gap="lg">
@@ -34,7 +36,7 @@ export function AgendaPage() {
 
       {isLoading ? (
         <Group justify="center" mt="xl"><Loader /></Group>
-      ) : !data?.length ? (
+      ) : !appointments.length ? (
         <Card withBorder padding="lg"><Text c="dimmed">Nenhum agendamento encontrado.</Text></Card>
       ) : (
         <Table striped highlightOnHover>
@@ -42,16 +44,18 @@ export function AgendaPage() {
             <Table.Tr>
               <Table.Th>Data</Table.Th>
               <Table.Th>Horário</Table.Th>
+              <Table.Th>Profissional</Table.Th>
               <Table.Th>Tipo</Table.Th>
               <Table.Th>Status</Table.Th>
               {tab === 'upcoming' && <Table.Th>Ações</Table.Th>}
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {data.map((a: any) => (
+            {appointments.map((a: PacienteAppointment) => (
               <Table.Tr key={a.id}>
                 <Table.Td>{new Date(a.scheduled_at).toLocaleDateString('pt-BR')}</Table.Td>
                 <Table.Td>{new Date(a.scheduled_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</Table.Td>
+                <Table.Td>{a.clinician_name || 'Equipe clínica'}</Table.Td>
                 <Table.Td>{a.type ?? 'consulta'}</Table.Td>
                 <Table.Td>
                   <Badge color={STATUS_COLOR[a.status] ?? 'gray'} variant="light">{a.status}</Badge>
@@ -65,6 +69,7 @@ export function AgendaPage() {
                           loading={confirm.isPending}
                           onClick={() => confirm.mutate(a.id, {
                             onSuccess: () => notifications.show({ message: 'Confirmado!', color: 'green' }),
+                            onError: () => notifications.show({ message: 'Não foi possível confirmar.', color: 'red' }),
                           })}
                         >
                           Confirmar
@@ -76,6 +81,7 @@ export function AgendaPage() {
                           loading={cancel.isPending}
                           onClick={() => cancel.mutate(a.id, {
                             onSuccess: () => notifications.show({ message: 'Cancelado', color: 'orange' }),
+                            onError: () => notifications.show({ message: 'Não foi possível cancelar.', color: 'red' }),
                           })}
                         >
                           Cancelar
@@ -92,4 +98,3 @@ export function AgendaPage() {
     </Stack>
   )
 }
-

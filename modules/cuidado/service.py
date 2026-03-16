@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Iterable
 from uuid import UUID
 
 from sqlalchemy import text
@@ -13,6 +14,81 @@ logger = logging.getLogger("intellicare.cuidado")
 
 class CuidadoService:
     """CRUD de pacientes, consultas e evoluções SOAP."""
+
+    def __init__(self) -> None:
+        self._patient_columns_cache: dict[str, set[str]] = {}
+        self._table_exists_cache: dict[tuple[str, str], bool] = {}
+
+    async def _get_patient_columns(self, ctx: TenantContext) -> set[str]:
+        cached = self._patient_columns_cache.get(ctx.schema)
+        if cached is not None:
+            return cached
+
+        async with tenant_session(ctx) as db:
+            rows = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT column_name
+                        FROM information_schema.columns
+                        WHERE table_schema = :schema
+                          AND table_name = 'patients'
+                        """
+                    ),
+                    {"schema": ctx.schema},
+                )
+            ).scalars().all()
+
+        columns = set(rows)
+        self._patient_columns_cache[ctx.schema] = columns
+        return columns
+
+    async def _patient_name_column(self, ctx: TenantContext) -> str:
+        columns = await self._get_patient_columns(ctx)
+        if "full_name" in columns:
+            return "full_name"
+        if "name" in columns:
+            return "name"
+        raise RuntimeError("Tabela patients sem coluna de nome compatível")
+
+    async def _patient_name_expr(self, ctx: TenantContext, alias: str = "p") -> str:
+        return f"{alias}.{await self._patient_name_column(ctx)}"
+
+    async def _patient_name_select(self, ctx: TenantContext, alias: str = "p", out: str = "name") -> str:
+        return f"{await self._patient_name_expr(ctx, alias)} AS {out}"
+
+    async def _patient_has_user_id(self, ctx: TenantContext) -> bool:
+        return "user_id" in await self._get_patient_columns(ctx)
+
+    async def _table_exists(self, ctx: TenantContext, table_name: str) -> bool:
+        cache_key = (ctx.schema, table_name)
+        cached = self._table_exists_cache.get(cache_key)
+        if cached is not None:
+            return cached
+
+        async with tenant_session(ctx) as db:
+            exists = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT EXISTS (
+                            SELECT 1
+                            FROM information_schema.tables
+                            WHERE table_schema = :schema
+                              AND table_name = :table_name
+                        )
+                        """
+                    ),
+                    {"schema": ctx.schema, "table_name": table_name},
+                )
+            ).scalar()
+
+        value = bool(exists)
+        self._table_exists_cache[cache_key] = value
+        return value
+
+    async def _map_rows(self, rows: Iterable) -> list[dict]:
+        return [dict(r) for r in rows]
 
     async def search_cid10(self, q: str, limit: int = 10) -> list[dict]:
         async with async_session_maker() as db:
@@ -31,27 +107,33 @@ class CuidadoService:
     # ------------------------------------------------------------------
 
     async def create_patient(self, ctx: TenantContext, data: dict) -> dict:
+        patient_name_column = await self._patient_name_column(ctx)
+        insert_data = dict(data)
+        if patient_name_column == "name" and "full_name" in insert_data:
+            insert_data["name"] = insert_data.pop("full_name")
+
         async with tenant_session(ctx) as db:
             row = (
                 await db.execute(
                     text(
-                        "INSERT INTO patients (full_name,cpf,birth_date,sex,phone,email,address) "
-                        "VALUES (:full_name,:cpf,:birth_date,:sex,:phone,:email,:address) RETURNING *"
+                        f"INSERT INTO patients ({patient_name_column},cpf,birth_date,sex,phone,email,address) "
+                        f"VALUES (:{patient_name_column},:cpf,:birth_date,:sex,:phone,:email,:address) RETURNING *"
                     ),
-                    data,
+                    insert_data,
                 )
             ).mappings().first()
         return dict(row)
 
     async def search_patients(self, ctx: TenantContext, q: str, limit: int = 20) -> list[dict]:
+        patient_name_column = await self._patient_name_column(ctx)
         async with tenant_session(ctx) as db:
             if q and q.strip():
                 rows = (
                     await db.execute(
                         text(
-                            "SELECT * FROM patients WHERE active=true "
-                            "AND to_tsvector('portuguese',full_name) @@ plainto_tsquery('portuguese',:q) "
-                            "ORDER BY full_name LIMIT :lim"
+                            f"SELECT * FROM patients WHERE active=true "
+                            f"AND to_tsvector('portuguese',{patient_name_column}) @@ plainto_tsquery('portuguese',:q) "
+                            f"ORDER BY {patient_name_column} LIMIT :lim"
                         ),
                         {"q": q, "lim": limit},
                     )
@@ -59,16 +141,17 @@ class CuidadoService:
             else:
                 rows = (
                     await db.execute(
-                        text("SELECT * FROM patients WHERE active=true ORDER BY full_name LIMIT :lim"),
+                        text(f"SELECT * FROM patients WHERE active=true ORDER BY {patient_name_column} LIMIT :lim"),
                         {"lim": limit},
                     )
                 ).mappings().all()
-        return [dict(r) for r in rows]
+        return await self._map_rows(rows)
 
     async def get_patient_profile(self, ctx: TenantContext, patient_id: UUID) -> dict:
+        name_select = await self._patient_name_select(ctx)
         async with tenant_session(ctx) as db:
             row = (await db.execute(
-                text("SELECT id, full_name as name, cpf, birth_date, sex, phone, email, health_plan, allergies, medications, active, created_at FROM patients WHERE id = :pid"),
+                text(f"SELECT id, {name_select}, cpf, birth_date, sex, phone, email, health_plan, allergies, medications, active, created_at FROM patients WHERE id = :pid"),
                 {"pid": str(patient_id)}
             )).mappings().first()
             if not row:
@@ -104,10 +187,11 @@ class CuidadoService:
     # ------------------------------------------------------------------
 
     async def get_agenda(self, ctx: TenantContext, clinician_id: str, from_date: str, to_date: str) -> list[dict]:
+        patient_name_expr = await self._patient_name_expr(ctx)
         async with tenant_session(ctx) as db:
             rows = (await db.execute(
                 text('''
-                    SELECT a.id, a.patient_id, p.full_name AS patient_name,
+                    SELECT a.id, a.patient_id, ''' + patient_name_expr + ''' AS patient_name,
                            a.scheduled_at, a.type, a.status,
                            e.id AS encounter_id
                     FROM appointments a
@@ -122,7 +206,7 @@ class CuidadoService:
                 '''),
                 {"cid": clinician_id, "from_date": from_date, "to_date": to_date}
             )).mappings().all()
-        return [dict(r) for r in rows]
+        return await self._map_rows(rows)
 
     async def open_encounter(self, ctx: TenantContext, clinician_id: str, data: dict) -> dict:
         async with tenant_session(ctx) as db:
@@ -207,13 +291,15 @@ class CuidadoService:
 
     async def _get_patient_id_for_user(self, ctx: TenantContext) -> UUID | None:
         """Resolve patient_id from the Keycloak user_id (sub claim)."""
+        has_user_id = await self._patient_has_user_id(ctx)
         async with tenant_session(ctx) as db:
-            row = (await db.execute(
-                text("SELECT id FROM patients WHERE user_id = :uid AND active = true LIMIT 1"),
-                {"uid": ctx.user_id},
-            )).first()
-            if row:
-                return row[0]
+            if has_user_id:
+                row = (await db.execute(
+                    text("SELECT id FROM patients WHERE user_id = :uid AND active = true LIMIT 1"),
+                    {"uid": ctx.user_id},
+                )).first()
+                if row:
+                    return row[0]
             # fallback: try email
             if ctx.email:
                 row = (await db.execute(
@@ -234,17 +320,31 @@ class CuidadoService:
                 "upcoming_count": 0,
                 "past_count": 0,
             }
+        patient_name_column = await self._patient_name_column(ctx)
         async with tenant_session(ctx) as db:
             patient = (await db.execute(
-                text("SELECT full_name FROM patients WHERE id = :pid"),
+                text(f"SELECT {patient_name_column} FROM patients WHERE id = :pid"),
                 {"pid": str(pid)},
             )).first()
             name = patient[0] if patient else "Paciente"
 
+            join_tenant_users = ""
+            clinician_select = "a.clinician_id::text"
+            if await self._table_exists(ctx, "tenant_users"):
+                join_tenant_users = """
+                    LEFT JOIN tenant_users tu
+                      ON tu.keycloak_id = a.clinician_id::text
+                """
+                clinician_select = "COALESCE(tu.name, a.clinician_id::text)"
+
             upcoming = (await db.execute(
-                text("""
-                    SELECT a.scheduled_at, a.type, a.status
+                text(f"""
+                    SELECT a.scheduled_at,
+                           a.type,
+                           a.status,
+                           {clinician_select} AS clinician_name
                     FROM appointments a
+                    {join_tenant_users}
                     WHERE a.patient_id = :pid AND a.scheduled_at >= now()
                       AND a.status NOT IN ('cancelado','cancelled')
                     ORDER BY a.scheduled_at LIMIT 1
@@ -273,7 +373,7 @@ class CuidadoService:
         if upcoming:
             next_appt = {
                 "scheduled_at": upcoming[0].isoformat() if upcoming[0] else None,
-                "clinician_name": "",
+                "clinician_name": upcoming[3] or "",
                 "type": upcoming[1] or "consulta",
             }
 
@@ -296,17 +396,27 @@ class CuidadoService:
             where = "a.scheduled_at >= now() AND a.status NOT IN ('cancelado','cancelled')"
             order = "a.scheduled_at ASC"
         async with tenant_session(ctx) as db:
+            join_tenant_users = ""
+            clinician_select = "COALESCE(a.clinician_id::text, '')"
+            if await self._table_exists(ctx, "tenant_users"):
+                join_tenant_users = """
+                    LEFT JOIN tenant_users tu
+                      ON tu.keycloak_id = a.clinician_id::text
+                """
+                clinician_select = "COALESCE(tu.name, a.clinician_id::text, '')"
+
             rows = (await db.execute(
                 text(f"""
                     SELECT a.id, a.scheduled_at, a.type, a.status,
-                           COALESCE(a.clinician_id, '') as clinician_name
+                           {clinician_select} AS clinician_name
                     FROM appointments a
+                    {join_tenant_users}
                     WHERE a.patient_id = :pid AND {where}
                     ORDER BY {order} LIMIT 50
                 """),
                 {"pid": str(pid)},
             )).mappings().all()
-        return [dict(r) for r in rows]
+        return await self._map_rows(rows)
 
     async def paciente_confirm_appointment(self, ctx: TenantContext, appt_id: UUID) -> dict:
         pid = await self._get_patient_id_for_user(ctx)
@@ -403,9 +513,10 @@ class CuidadoService:
                 "cpf": None, "birth_date": None,
                 "email": ctx.email, "phone": None, "health_plan": None,
             }
+        patient_name_select = await self._patient_name_select(ctx, out="full_name")
         async with tenant_session(ctx) as db:
             row = (await db.execute(
-                text("SELECT full_name, cpf, birth_date, email, phone, health_plan FROM patients WHERE id = :pid"),
+                text(f"SELECT {patient_name_select}, cpf, birth_date, email, phone, health_plan FROM patients WHERE id = :pid"),
                 {"pid": str(pid)},
             )).mappings().first()
         return dict(row) if row else {"full_name": "Paciente"}

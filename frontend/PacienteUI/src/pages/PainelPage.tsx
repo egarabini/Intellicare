@@ -30,6 +30,9 @@ export function PainelPage() {
                 {new Date(d.next_appointment.scheduled_at).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}
                 {' — '}{d.next_appointment.type}
               </Text>
+              <Text size="sm" mt={4}>
+                {d.next_appointment.clinician_name || 'Equipe clínica'}
+              </Text>
             </>
           ) : (
             <Text size="sm" c="dimmed">Nenhuma consulta agendada</Text>
@@ -66,4 +69,3 @@ export function PainelPage() {
     </Stack>
   )
 }
-
