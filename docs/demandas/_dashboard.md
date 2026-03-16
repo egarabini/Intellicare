@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-16 | Branch: main | Último commit: ab2f48c
+> Atualizado: 2026-03-16 | Branch: main | Último commit: ceaffff
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -26,7 +26,7 @@
 | DEM-034 | Fix Traefik: redirectregex admin.intellicare.ia.br/ → /admin-ui/ | `0ce31e0` |
 | DEM-030 | Administrativo Completo — migration 004, 31 endpoints, 4 páginas (Servers, Modules, Financeiro, AdminUsers) | `4bc75ce` |
 | DEM-029 | Integração Agendamento ClinicoUI+PacienteUI — fallbacks backend, polling, filtros, 3 testes | `695a236` |
-| DEM-026 | Notificações Realtime — módulo notifications, SSE, WebSocket, Redis Pub/Sub | `ab2f48c` |
+| DEM-026 | Notificações Realtime — 12 endpoints, SSE+WS, Redis Pub/Sub, 39 testes, migration 007 | `ceaffff` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -51,15 +51,7 @@
 | DEM | Título | Arquivo spec | Observação |
 |-----|--------|-------------|------------|
 | DEM-027 | Relatórios PDF exportáveis | `docs/demandas/DEM-027_RELATORIOS_PDF/02_TECNICA.md` | em execução |
-
----
-
-## 🗓️ Planejadas (sem spec ainda)
-
-| DEM | Título | Prioridade |
-|-----|--------|-----------|
-| DEM-027 | Relatórios PDF exportáveis | Média — spec pronta, em execução |
-| DEM-028 | Alertas Grafana (Alertmanager — e-mail + Slack) | Baixa |
+| DEM-028 | Alertas Grafana — 9 regras, e-mail + Slack | `docs/demandas/DEM-028_ALERTAS_GRAFANA/02_TECNICA.md` | disponível |
 
 ---
 
@@ -68,7 +60,7 @@
 ```
 DEV-A      → ✅ DEM-030 entregue! Próximo: DEM-027 Relatórios PDF (spec pronta)
 DEV-B      → ✅ DEM-031 + DEM-029 entregues! Próximo: DEM-027 ou DEM-028
-DEV-C      → ✅ DEM-032 + DEM-026 entregues! Próximo: integração frontend DEM-026
+DEV-C      → ✅ DEM-032 + DEM-026 entregues! Próximo: DEM-028 Alertas Grafana (spec pronta)
 Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para prod
 ```
 
