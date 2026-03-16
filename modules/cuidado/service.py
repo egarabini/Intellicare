@@ -433,3 +433,243 @@ class CuidadoService:
         if row:
             return dict(row)
         return {"name": ctx.tenant_id, "phone": None, "address": None, "email": None, "hours": None}
+
+    # ------------------------------------------------------------------
+    # DEM-032: Grupos de Profissionais
+    # ------------------------------------------------------------------
+
+    async def list_groups(self, ctx: TenantContext) -> list[dict]:
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text("""
+                SELECT g.*, u.name AS unit_name,
+                       (SELECT count(*) FROM group_members gm WHERE gm.group_id = g.id) AS member_count
+                FROM professional_groups g
+                LEFT JOIN units u ON u.id = g.unit_id
+                ORDER BY g.name
+            """))).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def create_group(self, ctx: TenantContext, data: dict) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    INSERT INTO professional_groups (name, specialty, unit_id, description)
+                    VALUES (:name, :specialty, :unit_id, :description)
+                    RETURNING *
+                """),
+                data,
+            )).mappings().first()
+        return dict(row)
+
+    async def get_group(self, ctx: TenantContext, group_id: int) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    SELECT g.*, u.name AS unit_name,
+                           (SELECT count(*) FROM group_members gm WHERE gm.group_id = g.id) AS member_count
+                    FROM professional_groups g
+                    LEFT JOIN units u ON u.id = g.unit_id
+                    WHERE g.id = :gid
+                """),
+                {"gid": group_id},
+            )).mappings().first()
+            if not row:
+                raise LookupError("Grupo não encontrado")
+        return dict(row)
+
+    async def update_group(self, ctx: TenantContext, group_id: int, data: dict) -> dict:
+        if not data:
+            return await self.get_group(ctx, group_id)
+        set_clause = ", ".join([f"{k} = :{k}" for k in data.keys()])
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text(f"UPDATE professional_groups SET {set_clause} WHERE id = :gid RETURNING *"),
+                {"gid": group_id, **data},
+            )).mappings().first()
+            if not row:
+                raise LookupError("Grupo não encontrado")
+        return dict(row)
+
+    async def toggle_group_status(self, ctx: TenantContext, group_id: int) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    UPDATE professional_groups
+                    SET status = CASE WHEN status = 'active' THEN 'inactive' ELSE 'active' END
+                    WHERE id = :gid RETURNING *
+                """),
+                {"gid": group_id},
+            )).mappings().first()
+            if not row:
+                raise LookupError("Grupo não encontrado")
+        return dict(row)
+
+    async def list_group_members(self, ctx: TenantContext, group_id: int) -> list[dict]:
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(
+                text("""
+                    SELECT p.id AS professional_id, p.name, p.council_type,
+                           p.council_number, p.specialty, gm.added_at
+                    FROM group_members gm
+                    JOIN professionals p ON p.id = gm.professional_id
+                    WHERE gm.group_id = :gid
+                    ORDER BY p.name
+                """),
+                {"gid": group_id},
+            )).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def add_member(self, ctx: TenantContext, group_id: int, professional_id: int) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    INSERT INTO group_members (group_id, professional_id)
+                    VALUES (:gid, :pid)
+                    ON CONFLICT DO NOTHING
+                    RETURNING *
+                """),
+                {"gid": group_id, "pid": professional_id},
+            )).mappings().first()
+            if not row:
+                raise ValueError("Membro já existe no grupo ou IDs inválidos")
+        return dict(row)
+
+    async def remove_member(self, ctx: TenantContext, group_id: int, professional_id: int) -> dict:
+        async with tenant_session(ctx) as db:
+            result = await db.execute(
+                text("DELETE FROM group_members WHERE group_id = :gid AND professional_id = :pid"),
+                {"gid": group_id, "pid": professional_id},
+            )
+            if result.rowcount == 0:
+                raise LookupError("Membro não encontrado no grupo")
+        return {"ok": True}
+
+    # ------------------------------------------------------------------
+    # DEM-032: Profissionais
+    # ------------------------------------------------------------------
+
+    async def list_professionals(self, ctx: TenantContext, unit_id: int | None = None,
+                                  specialty: str | None = None, group_id: int | None = None,
+                                  status: str | None = None) -> list[dict]:
+        conditions = []
+        params: dict = {}
+        if unit_id is not None:
+            conditions.append("p.unit_id = :unit_id")
+            params["unit_id"] = unit_id
+        if specialty:
+            conditions.append("p.specialty ILIKE :specialty")
+            params["specialty"] = f"%{specialty}%"
+        if group_id is not None:
+            conditions.append("EXISTS (SELECT 1 FROM group_members gm WHERE gm.professional_id = p.id AND gm.group_id = :group_id)")
+            params["group_id"] = group_id
+        if status:
+            conditions.append("p.status = :status")
+            params["status"] = status
+        where = "WHERE " + " AND ".join(conditions) if conditions else ""
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text(f"""
+                SELECT p.*, u.name AS unit_name,
+                       COALESCE(
+                           (SELECT array_agg(pg.name ORDER BY pg.name)
+                            FROM group_members gm2
+                            JOIN professional_groups pg ON pg.id = gm2.group_id
+                            WHERE gm2.professional_id = p.id), ARRAY[]::text[]
+                       ) AS groups
+                FROM professionals p
+                LEFT JOIN units u ON u.id = p.unit_id
+                {where}
+                ORDER BY p.name
+            """), params)).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def create_professional(self, ctx: TenantContext, data: dict) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    INSERT INTO professionals (name, council_type, council_number, specialty, unit_id, phone, email)
+                    VALUES (:name, :council_type, :council_number, :specialty, :unit_id, :phone, :email)
+                    RETURNING *
+                """),
+                data,
+            )).mappings().first()
+        return dict(row)
+
+    async def get_professional(self, ctx: TenantContext, prof_id: int) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    SELECT p.*, u.name AS unit_name,
+                           COALESCE(
+                               (SELECT array_agg(pg.name ORDER BY pg.name)
+                                FROM group_members gm
+                                JOIN professional_groups pg ON pg.id = gm.group_id
+                                WHERE gm.professional_id = p.id), ARRAY[]::text[]
+                           ) AS groups
+                    FROM professionals p
+                    LEFT JOIN units u ON u.id = p.unit_id
+                    WHERE p.id = :pid
+                """),
+                {"pid": prof_id},
+            )).mappings().first()
+            if not row:
+                raise LookupError("Profissional não encontrado")
+        return dict(row)
+
+    async def update_professional(self, ctx: TenantContext, prof_id: int, data: dict) -> dict:
+        if not data:
+            return await self.get_professional(ctx, prof_id)
+        set_clause = ", ".join([f"{k} = :{k}" for k in data.keys()])
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text(f"UPDATE professionals SET {set_clause}, updated_at = now() WHERE id = :pid RETURNING *"),
+                {"pid": prof_id, **data},
+            )).mappings().first()
+            if not row:
+                raise LookupError("Profissional não encontrado")
+        return dict(row)
+
+    async def toggle_professional_status(self, ctx: TenantContext, prof_id: int) -> dict:
+        async with tenant_session(ctx) as db:
+            row = (await db.execute(
+                text("""
+                    UPDATE professionals
+                    SET status = CASE WHEN status = 'active' THEN 'inactive' ELSE 'active' END,
+                        updated_at = now()
+                    WHERE id = :pid RETURNING *
+                """),
+                {"pid": prof_id},
+            )).mappings().first()
+            if not row:
+                raise LookupError("Profissional não encontrado")
+        return dict(row)
+
+    # ------------------------------------------------------------------
+    # DEM-032: Usuários do Clínico (tenant_users read-only)
+    # ------------------------------------------------------------------
+
+    async def list_clinical_users(self, ctx: TenantContext) -> list[dict]:
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text("""
+                SELECT id, keycloak_id, name, email, role, status
+                FROM tenant_users
+                ORDER BY name
+            """))).mappings().all()
+        return [dict(r) for r in rows]
+
+    async def dashboard_team_stats(self, ctx: TenantContext) -> dict:
+        async with tenant_session(ctx) as db:
+            try:
+                prof_count = (await db.execute(
+                    text("SELECT count(*) FROM professionals WHERE status = 'active'")
+                )).scalar() or 0
+            except Exception:
+                await db.rollback()
+                prof_count = 0
+            try:
+                group_count = (await db.execute(
+                    text("SELECT count(*) FROM professional_groups WHERE status = 'active'")
+                )).scalar() or 0
+            except Exception:
+                await db.rollback()
+                group_count = 0
+        return {"professionals_active": prof_count, "groups_active": group_count}

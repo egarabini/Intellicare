@@ -13,6 +13,10 @@ import { PatientProfile } from './pages/PatientProfile'
 import { AIAssistant } from './pages/AIAssistant'
 import { MyProfile } from './pages/MyProfile'
 import { UnauthorizedPage } from './pages/UnauthorizedPage'
+import { GroupsPage } from './pages/GroupsPage'
+import { GroupDetailPage } from './pages/GroupDetailPage'
+import { ProfessionalsPage } from './pages/ProfessionalsPage'
+import { ClinicalUsersPage } from './pages/ClinicalUsersPage'
 import { RoleGuard } from './auth/RoleGuard'
 import { ClinicoShell } from './components/AppShell'
 
@@ -34,6 +38,10 @@ function AppRoutes() {
             <Route path="/patients" element={<PatientList />} />
             <Route path="/patients/:id" element={<PatientProfile />} />
             <Route path="/patients/:patientId/encounter" element={<EncounterView />} />
+            <Route path="/groups" element={<GroupsPage />} />
+            <Route path="/groups/:id" element={<GroupDetailPage />} />
+            <Route path="/professionals" element={<ProfessionalsPage />} />
+            <Route path="/clinical-users" element={<ClinicalUsersPage />} />
             <Route path="/assistant" element={<AIAssistant />} />
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/unauthorized" element={<UnauthorizedPage />} />

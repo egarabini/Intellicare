@@ -1,13 +1,16 @@
 import { AppShell, NavLink, Group, Avatar, Text, Badge } from '@mantine/core';
-import { IconHome, IconCalendar, IconUsers, IconRobot, IconSettings } from '@tabler/icons-react';
+import { IconHome, IconCalendar, IconUsers, IconRobot, IconSettings, IconUsersGroup, IconStethoscope } from '@tabler/icons-react';
 import { useAuth } from 'react-oidc-context';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const NAV_ITEMS = [
   { path: '/dashboard',  icon: IconHome,      label: 'Início' },
   { path: '/agenda',     icon: IconCalendar,  label: 'Agenda' },
-  { path: '/patients',   icon: IconUsers,     label: 'Pacientes' },
-  { path: '/assistant',  icon: IconRobot,     label: 'Assistente IA' },
+  { path: '/patients',       icon: IconUsers,       label: 'Pacientes' },
+  { path: '/groups',          icon: IconUsersGroup,  label: 'Grupos' },
+  { path: '/professionals',   icon: IconStethoscope, label: 'Profissionais' },
+  { path: '/clinical-users',  icon: IconUsers,       label: 'Equipe' },
+  { path: '/assistant',       icon: IconRobot,       label: 'Assistente IA' },
   { path: '/profile',    icon: IconSettings,  label: 'Meu Perfil' },
 ];
 

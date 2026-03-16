@@ -163,3 +163,85 @@ class ClinicInfoResponse(BaseModel):
     address: Optional[str] = None
     email: Optional[str] = None
     hours: Optional[str] = None
+
+
+# ── DEM-032: Clínico Gestão ──────────────────────────────────────────────────
+
+class ProfessionalCreate(BaseModel):
+    name: str
+    council_type: Literal["CRM", "COREN", "CRO", "CRP", "CREFITO", "other"]
+    council_number: str
+    specialty: str
+    unit_id: Optional[int] = None
+    phone: Optional[str] = None
+    email: Optional[str] = None
+
+
+class ProfessionalUpdate(BaseModel):
+    name: Optional[str] = None
+    council_type: Optional[Literal["CRM", "COREN", "CRO", "CRP", "CREFITO", "other"]] = None
+    council_number: Optional[str] = None
+    specialty: Optional[str] = None
+    unit_id: Optional[int] = None
+    phone: Optional[str] = None
+    email: Optional[str] = None
+
+
+class ProfessionalOut(BaseModel):
+    id: int
+    name: str
+    council_type: str
+    council_number: str
+    specialty: str
+    unit_id: Optional[int] = None
+    unit_name: Optional[str] = None
+    groups: list[str] = []
+    status: str
+    keycloak_id: Optional[str] = None
+
+
+class GroupCreate(BaseModel):
+    name: str
+    specialty: Optional[str] = None
+    unit_id: Optional[int] = None
+    description: Optional[str] = None
+
+
+class GroupUpdate(BaseModel):
+    name: Optional[str] = None
+    specialty: Optional[str] = None
+    unit_id: Optional[int] = None
+    description: Optional[str] = None
+
+
+class GroupOut(BaseModel):
+    id: int
+    name: str
+    specialty: Optional[str] = None
+    unit_id: Optional[int] = None
+    unit_name: Optional[str] = None
+    description: Optional[str] = None
+    status: str
+    member_count: int = 0
+
+
+class AddMember(BaseModel):
+    professional_id: int
+
+
+class GroupMemberOut(BaseModel):
+    professional_id: int
+    name: str
+    council_type: str
+    council_number: str
+    specialty: str
+    added_at: datetime
+
+
+class ClinicalUserOut(BaseModel):
+    id: int
+    keycloak_id: str
+    name: str
+    email: Optional[str] = None
+    role: str
+    status: str

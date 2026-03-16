@@ -1,11 +1,13 @@
 import { Box, Title, Group, Badge, Card, Text, Button, Stack, Loader, Center } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useMyAgenda } from '../hooks/useMyAgenda';
+import { useTeamStats } from '../hooks/useClinicalUsers';
 
 export function Dashboard() {
   const navigate = useNavigate();
   const today = new Date().toISOString().split('T')[0];
   const { data: agenda, isLoading } = useMyAgenda(today);
+  const { data: teamStats } = useTeamStats();
 
   if (isLoading) return <Center h="100%"><Loader /></Center>;
 
@@ -20,6 +22,18 @@ export function Dashboard() {
           {pending > 0 && <Badge color="red" size="lg">{pending} em andamento</Badge>}
         </Group>
       </Group>
+
+      {teamStats && (
+        <Card withBorder shadow="sm" radius="md" mb="lg">
+          <Group>
+            <div>
+              <Text size="xs" c="dimmed">Equipe</Text>
+              <Text fw={600}>{teamStats.professionals_active} profissionais ativos</Text>
+              <Text size="sm" c="dimmed">{teamStats.groups_active} grupos</Text>
+            </div>
+          </Group>
+        </Card>
+      )}
 
       {agenda?.length === 0 ? (
         <Text c="dimmed">Nenhum agendamento para hoje.</Text>

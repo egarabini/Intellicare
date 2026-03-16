@@ -13,6 +13,7 @@ from intellicare_core.auth.jwt import get_current_tenant
 from .schemas import (
     ClinicalAskRequest, EncounterCreate, NoteCreate, PatientCreate,
     PatientClinicalUpdate, EncounterUpdate, PacienteMeUpdate,
+    GroupCreate, GroupUpdate, AddMember, ProfessionalCreate, ProfessionalUpdate,
 )
 from .service import CuidadoService
 
@@ -148,3 +149,110 @@ async def paciente_update_me(body: PacienteMeUpdate, ctx: Paciente):
 @router.get("/paciente/clinic-info")
 async def paciente_clinic_info(ctx: Paciente):
     return await _svc.paciente_clinic_info(ctx)
+
+
+# ── DEM-032: Grupos de Profissionais ─────────────────────────────────────────
+
+@router.get("/groups")
+async def list_groups(ctx: Clinico):
+    return await _svc.list_groups(ctx)
+
+
+@router.post("/groups", status_code=201)
+async def create_group(body: GroupCreate, ctx: Clinico):
+    return await _svc.create_group(ctx, body.model_dump())
+
+
+@router.get("/groups/{group_id}")
+async def get_group(group_id: int, ctx: Clinico):
+    try:
+        return await _svc.get_group(ctx, group_id)
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+@router.patch("/groups/{group_id}")
+async def update_group(group_id: int, body: GroupUpdate, ctx: Clinico):
+    try:
+        return await _svc.update_group(ctx, group_id, body.model_dump(exclude_unset=True))
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+@router.patch("/groups/{group_id}/status")
+async def toggle_group_status(group_id: int, ctx: Clinico):
+    try:
+        return await _svc.toggle_group_status(ctx, group_id)
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+@router.get("/groups/{group_id}/members")
+async def list_group_members(group_id: int, ctx: Clinico):
+    return await _svc.list_group_members(ctx, group_id)
+
+
+@router.post("/groups/{group_id}/members", status_code=201)
+async def add_member(group_id: int, body: AddMember, ctx: Clinico):
+    try:
+        return await _svc.add_member(ctx, group_id, body.professional_id)
+    except ValueError as e:
+        raise HTTPException(409, str(e))
+
+
+@router.delete("/groups/{group_id}/members/{prof_id}")
+async def remove_member(group_id: int, prof_id: int, ctx: Clinico):
+    try:
+        return await _svc.remove_member(ctx, group_id, prof_id)
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+# ── DEM-032: Profissionais ───────────────────────────────────────────────────
+
+@router.get("/professionals")
+async def list_professionals(ctx: Clinico, unit_id: int | None = None,
+                              specialty: str | None = None, group_id: int | None = None,
+                              status: str | None = None):
+    return await _svc.list_professionals(ctx, unit_id, specialty, group_id, status)
+
+
+@router.post("/professionals", status_code=201)
+async def create_professional(body: ProfessionalCreate, ctx: Clinico):
+    return await _svc.create_professional(ctx, body.model_dump())
+
+
+@router.get("/professionals/{prof_id}")
+async def get_professional(prof_id: int, ctx: Clinico):
+    try:
+        return await _svc.get_professional(ctx, prof_id)
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+@router.patch("/professionals/{prof_id}")
+async def update_professional(prof_id: int, body: ProfessionalUpdate, ctx: Clinico):
+    try:
+        return await _svc.update_professional(ctx, prof_id, body.model_dump(exclude_unset=True))
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+@router.patch("/professionals/{prof_id}/status")
+async def toggle_professional_status(prof_id: int, ctx: Clinico):
+    try:
+        return await _svc.toggle_professional_status(ctx, prof_id)
+    except LookupError as e:
+        raise HTTPException(404, str(e))
+
+
+# ── DEM-032: Usuários Clínicos ───────────────────────────────────────────────
+
+@router.get("/clinical-users")
+async def list_clinical_users(ctx: Clinico):
+    return await _svc.list_clinical_users(ctx)
+
+
+@router.get("/dashboard-team-stats")
+async def dashboard_team_stats(ctx: Clinico):
+    return await _svc.dashboard_team_stats(ctx)
