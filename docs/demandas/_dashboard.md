@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-16 | Branch: main | Último commit: 4bc75ce
+> Atualizado: 2026-03-16 | Branch: main | Último commit: ab2f48c
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -25,6 +25,8 @@
 | DEM-032 | Clínico Gestão — migration 006, 16 endpoints, 4 páginas (Groups, GroupDetail, Professionals, ClinicalUsers) | `04c5d37` |
 | DEM-034 | Fix Traefik: redirectregex admin.intellicare.ia.br/ → /admin-ui/ | `0ce31e0` |
 | DEM-030 | Administrativo Completo — migration 004, 31 endpoints, 4 páginas (Servers, Modules, Financeiro, AdminUsers) | `4bc75ce` |
+| DEM-029 | Integração Agendamento ClinicoUI+PacienteUI — fallbacks backend, polling, filtros, 3 testes | `695a236` |
+| DEM-026 | Notificações Realtime — módulo notifications, SSE, WebSocket, Redis Pub/Sub | `ab2f48c` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -48,7 +50,7 @@
 
 | DEM | Título | Arquivo spec | Observação |
 |-----|--------|-------------|------------|
-| DEM-029 | Agendamento de consultas (ClinicoUI + PacienteUI) | a criar | Alta prioridade — próxima spec |
+| DEM-027 | Relatórios PDF exportáveis | `docs/demandas/DEM-027_RELATORIOS_PDF/02_TECNICA.md` | em execução |
 
 ---
 
@@ -56,19 +58,17 @@
 
 | DEM | Título | Prioridade |
 |-----|--------|-----------|
-| DEM-026 | Notificações em tempo real (WebSocket / SSE) | Média |
-| DEM-027 | Relatórios PDF exportáveis | Média |
+| DEM-027 | Relatórios PDF exportáveis | Média — spec pronta, em execução |
 | DEM-028 | Alertas Grafana (Alertmanager — e-mail + Slack) | Baixa |
-| DEM-029 | Agendamento de consultas (ClinicoUI + PacienteUI integrado) | Alta |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → ✅ DEM-030 entregue! Próximo: DEM-029 Agendamento (após spec)
-DEV-B      → ✅ DEM-031 entregue! Próximo: suporte a DEM-032 ou DEM-030
-DEV-C      → ✅ DEM-032 entregue! Próximo: suporte a DEM-030
+DEV-A      → ✅ DEM-030 entregue! Próximo: DEM-027 Relatórios PDF (spec pronta)
+DEV-B      → ✅ DEM-031 + DEM-029 entregues! Próximo: DEM-027 ou DEM-028
+DEV-C      → ✅ DEM-032 + DEM-026 entregues! Próximo: integração frontend DEM-026
 Eduardo    → ✅ DEM-023 staging operacional! DNS subdomínios pendente para prod
 ```
 
