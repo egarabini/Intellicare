@@ -111,6 +111,190 @@ services:
       retries: 5
       start_period: 30s
 
+  kestra:
+    image: kestra/kestra:latest-full
+    container_name: kestra
+    restart: unless-stopped
+    command: server standalone --worker-thread=128
+    environment:
+      KESTRA_CONFIGURATION: |
+        datasources:
+          postgres:
+            url: jdbc:postgresql://postgres:5432/kestra
+            username: ${POSTGRES_USER}
+            password: ${POSTGRES_PASSWORD}
+        kestra:
+          server:
+            basic-auth:
+              enabled: false
+          repository:
+            type: postgres
+          storage:
+            type: local
+            local:
+              base-path: /app/storage
+          queue:
+            type: postgres
+          tasks:
+            defaults: []
+          url: http://kestra:8080
+    volumes:
+      - kestra_data:/app/storage
+    networks:
+      - intellicare-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kestra.rule=Host(`kestra.intellicare.ia.br`)"
+      - "traefik.http.routers.kestra.entrypoints=websecure"
+      - "traefik.http.routers.kestra.tls.certresolver=letsencrypt"
+      - "traefik.http.services.kestra.loadbalancer.server.port=8080"
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: unless-stopped
+    command: mongod --oplogSize 128 --replSet rs0
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - intellicare-net
+
+  mongo-init-replica:
+    image: mongo:6
+    restart: on-failure
+    command: >
+      bash -c "sleep 5 && mongosh --host mongo --eval \"rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'mongo:27017'}]})\""
+    networks:
+      - intellicare-net
+    depends_on:
+      - mongo
+
+  rocketchat:
+    image: rocket.chat:latest
+    container_name: rocketchat
+    restart: unless-stopped
+    environment:
+      MONGO_URL: "mongodb://mongo:27017/rocketchat?replicaSet=rs0"
+      MONGO_OPLOG_URL: "mongodb://mongo:27017/local?replicaSet=rs0"
+      ROOT_URL: "https://chat.intellicare.ia.br"
+      PORT: "3001"
+      DEPLOY_PLATFORM: docker
+    volumes:
+      - rocketchat_uploads:/app/uploads
+    networks:
+      - intellicare-net
+    depends_on:
+      - mongo
+      - mongo-init-replica
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rocketchat.rule=Host(`chat.intellicare.ia.br`)"
+      - "traefik.http.routers.rocketchat.entrypoints=websecure"
+      - "traefik.http.routers.rocketchat.tls.certresolver=letsencrypt"
+      - "traefik.http.services.rocketchat.loadbalancer.server.port=3001"
+
+  jitsi-web:
+    image: jitsi/web:stable
+    container_name: jitsi-web
+    restart: unless-stopped
+    environment:
+      PUBLIC_URL: "https://meet.intellicare.ia.br"
+      ENABLE_AUTH: 1
+      AUTH_TYPE: jwt
+      JWT_APP_ID: "${JITSI_APP_ID}"
+      JWT_APP_SECRET: "${JITSI_APP_SECRET}"
+      JWT_ACCEPTED_ISSUERS: "${JITSI_APP_ID}"
+      JWT_ACCEPTED_AUDIENCES: "jitsi"
+      XMPP_DOMAIN: "meet.jitsi"
+      XMPP_AUTH_DOMAIN: "auth.meet.jitsi"
+      XMPP_MUC_DOMAIN: "muc.meet.jitsi"
+      XMPP_INTERNAL_MUC_DOMAIN: "internal-muc.meet.jitsi"
+      JICOFO_AUTH_USER: focus
+      TZ: America/Sao_Paulo
+    volumes:
+      - jitsi_web:/config
+    networks:
+      - intellicare-net
+    depends_on:
+      - jitsi-prosody
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jitsi.rule=Host(`meet.intellicare.ia.br`)"
+      - "traefik.http.routers.jitsi.entrypoints=websecure"
+      - "traefik.http.routers.jitsi.tls.certresolver=letsencrypt"
+      - "traefik.http.services.jitsi.loadbalancer.server.port=80"
+
+  jitsi-prosody:
+    image: jitsi/prosody:stable
+    container_name: jitsi-prosody
+    restart: unless-stopped
+    environment:
+      XMPP_DOMAIN: "meet.jitsi"
+      XMPP_AUTH_DOMAIN: "auth.meet.jitsi"
+      XMPP_MUC_DOMAIN: "muc.meet.jitsi"
+      XMPP_INTERNAL_MUC_DOMAIN: "internal-muc.meet.jitsi"
+      JICOFO_AUTH_USER: focus
+      JICOFO_AUTH_PASSWORD: "${JICOFO_AUTH_PASSWORD}"
+      JVB_AUTH_USER: jvb
+      JVB_AUTH_PASSWORD: "${JVB_AUTH_PASSWORD}"
+      JWT_APP_ID: "${JITSI_APP_ID}"
+      JWT_APP_SECRET: "${JITSI_APP_SECRET}"
+      ENABLE_AUTH: 1
+      AUTH_TYPE: jwt
+      TZ: America/Sao_Paulo
+    volumes:
+      - jitsi_prosody:/config
+    networks:
+      - intellicare-net
+
+  jitsi-jicofo:
+    image: jitsi/jicofo:stable
+    container_name: jitsi-jicofo
+    restart: unless-stopped
+    environment:
+      XMPP_SERVER: jitsi-prosody
+      XMPP_DOMAIN: "meet.jitsi"
+      XMPP_AUTH_DOMAIN: "auth.meet.jitsi"
+      XMPP_INTERNAL_MUC_DOMAIN: "internal-muc.meet.jitsi"
+      JICOFO_AUTH_USER: focus
+      JICOFO_AUTH_PASSWORD: "${JICOFO_AUTH_PASSWORD}"
+      JVB_BREWERY_MUC: jvbbrewery
+      TZ: America/Sao_Paulo
+    volumes:
+      - jitsi_jicofo:/config
+    networks:
+      - intellicare-net
+    depends_on:
+      - jitsi-prosody
+
+  jitsi-jvb:
+    image: jitsi/jvb:stable
+    container_name: jitsi-jvb
+    restart: unless-stopped
+    environment:
+      XMPP_SERVER: jitsi-prosody
+      XMPP_DOMAIN: "meet.jitsi"
+      XMPP_AUTH_DOMAIN: "auth.meet.jitsi"
+      XMPP_INTERNAL_MUC_DOMAIN: "internal-muc.meet.jitsi"
+      JVB_AUTH_USER: jvb
+      JVB_AUTH_PASSWORD: "${JVB_AUTH_PASSWORD}"
+      JVB_BREWERY_MUC: jvbbrewery
+      JVB_PORT: 10000
+      JVB_TCP_HARVESTER_DISABLED: "true"
+      PUBLIC_URL: "https://meet.intellicare.ia.br"
+      TZ: America/Sao_Paulo
+    ports:
+      - "10000:10000/udp"
+    volumes:
+      - jitsi_jvb:/config
+    networks:
+      - intellicare-net
+    depends_on:
+      - jitsi-prosody
+
   intellicare-service:
     build:
       context: ..
@@ -337,6 +521,13 @@ volumes:
   ollama_models:
   prometheus_data:
   grafana_data:
+  kestra_data:
+  mongo_data:
+  rocketchat_uploads:
+  jitsi_web:
+  jitsi_prosody:
+  jitsi_jicofo:
+  jitsi_jvb:
 
 networks:
   intellicare-net:

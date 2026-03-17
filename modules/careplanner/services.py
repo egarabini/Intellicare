@@ -1,0 +1,348 @@
+"""Servicos de orquestracao do CarePlanner."""
+from __future__ import annotations
+
+import logging
+from datetime import datetime, timedelta, timezone
+from uuid import UUID, uuid4
+
+from sqlalchemy import text
+
+from intellicare_core.contracts.base import TenantContext
+from intellicare_core.contracts.errors import api_error
+from intellicare_core.db.session import get_engine
+
+from .adapters.jitsi import JitsiAdapter
+from .adapters.kestra import KestraAdapter
+from .adapters.rocketchat import RocketChatAdapter
+from .config import CareplannerSettings, get_careplanner_settings
+from .contracts import (
+    CareConversationUpsert,
+    CareEventCreate,
+    CareTaskCreate,
+    CareVideoSessionCreate,
+    Channel,
+    EventType,
+    ParticipantRole,
+    TaskStatus,
+    cast_channel_conversation_id,
+)
+from .repository import CareplannerRepository
+
+logger = logging.getLogger(__name__)
+
+
+class CareplannerService:
+    def __init__(
+        self,
+        repo: CareplannerRepository,
+        rc: RocketChatAdapter,
+        jitsi: JitsiAdapter,
+        kestra: KestraAdapter,
+        settings: CareplannerSettings | None = None,
+    ) -> None:
+        self._repo = repo
+        self._rc = rc
+        self._jitsi = jitsi
+        self._kestra = kestra
+        self._settings = settings or get_careplanner_settings()
+
+    async def open_task(
+        self,
+        ctx: TenantContext,
+        kestra_execution_id: str,
+        patient_ref: str,
+        task_type: str,
+        template_code: str,
+        template_variables: dict,
+        contact_phone: str | None = None,
+        contact_role: str = "PACIENTE",
+    ) -> dict:
+        correlation_id = uuid4()
+        task = await self._repo.create_task(
+            ctx,
+            CareTaskCreate(
+                correlation_id=correlation_id,
+                kestra_execution_id=kestra_execution_id,
+                patient_ref=patient_ref,
+                task_type=task_type,
+                metadata={
+                    "template_code": template_code,
+                    "template_variables": template_variables,
+                },
+            ),
+        )
+        rc_room_id = await self._rc.ensure_room(ctx.tenant_id, patient_ref)
+        template = await self._repo.get_template_by_code(ctx, template_code)
+        text_content = (template.content if template else template_code).format(**template_variables)
+        await self._rc.post_message(rc_room_id, text_content)
+        await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.DISPATCHED)
+        await self._repo.upsert_conversation(
+            ctx,
+            CareConversationUpsert(
+                correlation_id=correlation_id,
+                channel=Channel.ROCKETCHAT,
+                channel_conversation_id=0,
+                rc_room_id=rc_room_id,
+                phone_e164=contact_phone,
+                participant_role=ParticipantRole(contact_role),
+            ),
+        )
+        return {"ok": True, "correlation_id": str(task.correlation_id), "status": TaskStatus.CREATED.value}
+
+    async def process_message_sent(
+        self,
+        ctx: TenantContext,
+        event_id: str,
+        correlation_id: UUID,
+        rc_room_id: str,
+        channel_conversation_id: str | int,
+    ) -> dict:
+        conversation_id = cast_channel_conversation_id(channel_conversation_id)
+        record, created = await self._repo.record_event_if_new(
+            ctx,
+            CareEventCreate(
+                event_id=event_id,
+                correlation_id=correlation_id,
+                event_type=EventType.MESSAGE_SENT,
+                status=TaskStatus.SENT,
+                payload={
+                    "rc_room_id": rc_room_id,
+                    "channel_conversation_id": conversation_id,
+                },
+            ),
+        )
+        if not created:
+            return {"ok": True, "duplicate": True, "event_id": record.event_id}
+
+        current_conversation = await self._repo.get_conversation(ctx, correlation_id)
+        await self._repo.upsert_conversation(
+            ctx,
+            CareConversationUpsert(
+                correlation_id=correlation_id,
+                channel=Channel.ROCKETCHAT,
+                channel_conversation_id=conversation_id,
+                rc_room_id=rc_room_id,
+                phone_e164=current_conversation.phone_e164 if current_conversation else None,
+                participant_role=ParticipantRole(current_conversation.participant_role)
+                if current_conversation and current_conversation.participant_role
+                else None,
+                last_interaction_at=current_conversation.last_interaction_at if current_conversation else None,
+            ),
+        )
+        await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.SENT)
+        return {"ok": True, "status": TaskStatus.SENT.value}
+
+    async def process_inbound(
+        self,
+        ctx: TenantContext,
+        event_id: str,
+        rc_room_id: str,
+        channel_conversation_id: str | int,
+        content: str,
+        occurred_at: str | None = None,
+    ) -> dict:
+        conversation_id = cast_channel_conversation_id(channel_conversation_id)
+        conversation = await self._repo.find_conversation(
+            ctx,
+            rc_room_id=rc_room_id,
+            channel_conversation_id=conversation_id,
+        )
+        if not conversation:
+            await self._repo.record_event_if_new(
+                ctx,
+                CareEventCreate(
+                    event_id=event_id,
+                    correlation_id=None,
+                    event_type=EventType.ORPHAN_INBOUND,
+                    payload={
+                        "rc_room_id": rc_room_id,
+                        "channel_conversation_id": conversation_id,
+                    },
+                ),
+            )
+            return {"ok": True, "orphan": True}
+
+        record, created = await self._repo.record_event_if_new(
+            ctx,
+            CareEventCreate(
+                event_id=event_id,
+                correlation_id=conversation.correlation_id,
+                event_type=EventType.INBOUND_RECEIVED,
+                status=TaskStatus.REPLIED,
+                payload={
+                    "rc_room_id": rc_room_id,
+                    "channel_conversation_id": conversation_id,
+                    "content": content,
+                    "occurred_at": occurred_at,
+                },
+            ),
+        )
+        if not created:
+            return {
+                "ok": True,
+                "duplicate": True,
+                "correlation_id": str(record.correlation_id) if record.correlation_id else None,
+            }
+
+        task = await self._repo.get_task(ctx, conversation.correlation_id)
+        if not task:
+            raise api_error(404, "task_not_found", "Jornada nao encontrada")
+
+        current_status = TaskStatus(task.status)
+        if current_status in {TaskStatus.SENT, TaskStatus.DISPATCHED}:
+            await self._repo.transition_task_status(ctx, conversation.correlation_id, TaskStatus.REPLIED)
+
+        interaction_at = (
+            datetime.fromisoformat(occurred_at.replace("Z", "+00:00"))
+            if occurred_at
+            else datetime.now(tz=timezone.utc)
+        )
+        await self._repo.upsert_conversation(
+            ctx,
+            CareConversationUpsert(
+                correlation_id=conversation.correlation_id,
+                channel=conversation.channel,
+                channel_conversation_id=conversation_id,
+                rc_room_id=conversation.rc_room_id,
+                phone_e164=conversation.phone_e164,
+                participant_role=ParticipantRole(conversation.participant_role)
+                if conversation.participant_role
+                else None,
+                last_interaction_at=interaction_at,
+            ),
+        )
+        if task.kestra_execution_id:
+            await self._kestra.resume_execution(task.kestra_execution_id, {"content": content})
+        return {
+            "ok": True,
+            "status": TaskStatus.REPLIED.value,
+            "correlation_id": str(conversation.correlation_id),
+        }
+
+    async def process_inbound_from_webhook(
+        self,
+        event_id: str,
+        rc_room_id: str,
+        channel_conversation_id: str | int,
+        content: str,
+        occurred_at: str | None = None,
+    ) -> dict:
+        async with get_engine().begin() as conn:
+            tenants = (await conn.execute(text("SELECT slug FROM public.tenants"))).scalars().all()
+        for slug in tenants:
+            ctx = TenantContext.from_slug(slug=slug, user_id="rocketchat-webhook")
+            conversation = await self._repo.find_conversation(
+                ctx,
+                rc_room_id=rc_room_id,
+                channel_conversation_id=channel_conversation_id,
+            )
+            if conversation:
+                return await self.process_inbound(
+                    ctx,
+                    event_id=event_id,
+                    rc_room_id=rc_room_id,
+                    channel_conversation_id=channel_conversation_id,
+                    content=content,
+                    occurred_at=occurred_at,
+                )
+        logger.warning("Inbound Rocket.Chat sem correlacao: room=%s", rc_room_id)
+        return {"ok": True, "orphan": True}
+
+    async def open_video_session(
+        self,
+        ctx: TenantContext,
+        correlation_id: UUID,
+        clinico_ref: str,
+    ) -> dict:
+        task = await self._repo.get_task(ctx, correlation_id)
+        if not task:
+            raise api_error(404, "task_not_found", "Jornada nao encontrada")
+        room_name = self._jitsi.build_room_name(ctx.tenant_id, str(correlation_id))
+        clinico_jwt = self._jitsi.generate_room_jwt(room_name, clinico_ref, clinico_ref, is_moderator=True)
+        patient_jwt = self._jitsi.generate_room_jwt(
+            room_name,
+            task.patient_ref,
+            task.patient_ref,
+            is_moderator=False,
+        )
+        expires_at = datetime.now(tz=timezone.utc) + timedelta(
+            minutes=self._settings.jitsi_default_room_duration
+        )
+        await self._repo.create_video_session(
+            ctx,
+            CareVideoSessionCreate(
+                correlation_id=correlation_id,
+                room_name=room_name,
+                clinico_jwt=clinico_jwt,
+                patient_jwt=patient_jwt,
+                expires_at=expires_at,
+                clinico_ref=clinico_ref,
+                patient_ref=task.patient_ref,
+            ),
+        )
+        clinico_url = self._jitsi.get_room_url(room_name, clinico_jwt)
+        patient_url = self._jitsi.get_room_url(room_name, patient_jwt)
+        conversation = await self._repo.get_conversation(ctx, correlation_id)
+        if conversation and conversation.rc_room_id:
+            await self._rc.post_message(conversation.rc_room_id, f"Sua videoconsulta: {patient_url}")
+        await self._repo.record_event_if_new(
+            ctx,
+            CareEventCreate(
+                event_id=f"video-{correlation_id}",
+                correlation_id=correlation_id,
+                event_type=EventType.VIDEO_SESSION_OPENED,
+                payload={"room_name": room_name},
+            ),
+        )
+        return {
+            "room_name": room_name,
+            "clinico_url": clinico_url,
+            "patient_url": patient_url,
+            "expires_at": expires_at.isoformat(),
+        }
+
+    async def close_task(self, ctx: TenantContext, correlation_id: UUID) -> dict:
+        task = await self._repo.get_task(ctx, correlation_id)
+        if not task:
+            raise api_error(404, "task_not_found", "Jornada nao encontrada")
+        await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.CLOSED)
+        conversation = await self._repo.get_conversation(ctx, correlation_id)
+        if conversation and conversation.rc_room_id:
+            await self._rc.archive_room(conversation.rc_room_id)
+        await self._repo.record_event_if_new(
+            ctx,
+            CareEventCreate(
+                event_id=f"close-{correlation_id}",
+                correlation_id=correlation_id,
+                event_type=EventType.TASK_CLOSED,
+                status=TaskStatus.CLOSED,
+                payload={},
+            ),
+        )
+        return {"ok": True, "status": TaskStatus.CLOSED.value}
+
+    async def get_task_details(self, ctx: TenantContext, correlation_id: UUID) -> dict:
+        task = await self._repo.get_task(ctx, correlation_id)
+        if not task:
+            raise api_error(404, "task_not_found", "Jornada nao encontrada")
+        conversation = await self._repo.get_conversation(ctx, correlation_id)
+        events = await self._repo.list_events(ctx, correlation_id, limit=10)
+        return {
+            "task": task.model_dump(mode="json"),
+            "conversation": conversation.model_dump(mode="json") if conversation else None,
+            "events": [event.model_dump(mode="json") for event in events],
+        }
+
+    async def list_tasks(self, ctx: TenantContext, status_filter: str | None = None, page: int = 1) -> dict:
+        normalized = TaskStatus(status_filter) if status_filter else None
+        tasks = await self._repo.list_tasks(ctx, status_filter=normalized, page=page)
+        return {"items": [task.model_dump(mode="json") for task in tasks], "page": page}
+
+
+def build_careplanner_service() -> CareplannerService:
+    settings = get_careplanner_settings()
+    repo = CareplannerRepository()
+    rc = RocketChatAdapter(settings)
+    jitsi = JitsiAdapter(settings)
+    kestra = KestraAdapter(settings)
+    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, settings=settings)

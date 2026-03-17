@@ -25,6 +25,7 @@ AVAILABLE_MODULES: dict[str, str] = {
     "oswaldo": "modules.oswaldo.main",
     "slm": "modules.slm.main",
     "notifications": "modules.notifications.main",
+    "careplanner": "modules.careplanner.main",
 }
 
 

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from typing import Any
 from uuid import UUID
 
 from sqlalchemy import text
@@ -215,6 +216,45 @@ class CareplannerRepository:
             ).mappings().first()
         return CareConversationRecord(**dict(row)) if row else None
 
+    async def find_conversation(
+        self,
+        ctx: TenantContext,
+        *,
+        rc_room_id: str | None = None,
+        channel_conversation_id: int | str | None = None,
+    ) -> CareConversationRecord | None:
+        conversation_id = None
+        if channel_conversation_id is not None:
+            conversation_id = cast_channel_conversation_id(channel_conversation_id)
+
+        clauses: list[str] = []
+        params: dict[str, Any] = {}
+        if rc_room_id:
+            clauses.append("rc_room_id = :rc_room_id")
+            params["rc_room_id"] = rc_room_id
+        if conversation_id is not None:
+            clauses.append("channel_conversation_id = :channel_conversation_id")
+            params["channel_conversation_id"] = conversation_id
+        if not clauses:
+            return None
+
+        async with tenant_session(ctx) as db:
+            row = (
+                await db.execute(
+                    text(
+                        f"""
+                        SELECT *
+                        FROM care_conversations
+                        WHERE {" OR ".join(clauses)}
+                        ORDER BY updated_at DESC
+                        LIMIT 1
+                        """
+                    ),
+                    params,
+                )
+            ).mappings().first()
+        return CareConversationRecord(**dict(row)) if row else None
+
     async def create_template(self, ctx: TenantContext, payload: CareTemplateCreate) -> CareTemplateRecord:
         async with tenant_session(ctx) as db:
             row = (
@@ -251,6 +291,31 @@ class CareplannerRepository:
             ).mappings().all()
         return [CareTemplateRecord(**dict(row)) for row in rows]
 
+    async def get_template_by_code(
+        self,
+        ctx: TenantContext,
+        template_code: str,
+        channel: str = "rocketchat",
+    ) -> CareTemplateRecord | None:
+        async with tenant_session(ctx) as db:
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT *
+                        FROM care_templates
+                        WHERE template_code = :template_code
+                          AND channel = :channel
+                          AND active = TRUE
+                        ORDER BY updated_at DESC
+                        LIMIT 1
+                        """
+                    ),
+                    {"template_code": template_code, "channel": channel},
+                )
+            ).mappings().first()
+        return CareTemplateRecord(**dict(row)) if row else None
+
     async def create_video_session(
         self,
         ctx: TenantContext,
@@ -285,3 +350,26 @@ class CareplannerRepository:
                 )
             ).mappings().first()
         return CareVideoSessionRecord(**dict(row))
+
+    async def list_tasks(
+        self,
+        ctx: TenantContext,
+        *,
+        status_filter: TaskStatus | None = None,
+        page: int = 1,
+        page_size: int = 20,
+    ) -> list[CareTaskRecord]:
+        offset = max(page - 1, 0) * page_size
+        query = """
+            SELECT *
+            FROM care_tasks
+        """
+        params: dict[str, Any] = {"limit": page_size, "offset": offset}
+        if status_filter:
+            query += " WHERE status = :status"
+            params["status"] = status_filter.value
+        query += " ORDER BY created_at DESC LIMIT :limit OFFSET :offset"
+
+        async with tenant_session(ctx) as db:
+            rows = (await db.execute(text(query), params)).mappings().all()
+        return [CareTaskRecord(**dict(row)) for row in rows]

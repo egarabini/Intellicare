@@ -58,6 +58,7 @@ loader.load("gestor")
 loader.load("cuidado")
 loader.load("slm")
 loader.load("notifications")
+loader.load("careplanner")
 
 
 @app.get("/health")
