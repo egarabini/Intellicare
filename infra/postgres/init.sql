@@ -11,6 +11,11 @@ CREATE DATABASE keycloak
     WITH OWNER = intellicare
     ENCODING = 'UTF8';
 
+-- Banco do Kestra (CarePlanner)
+CREATE DATABASE kestra
+    WITH OWNER = intellicare
+    ENCODING = 'UTF8';
+
 -- Schema de desenvolvimento (tenant ficticio para testes locais)
 CREATE SCHEMA IF NOT EXISTS tenant_dev;
 
