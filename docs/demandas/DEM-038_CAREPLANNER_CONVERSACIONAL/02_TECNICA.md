@@ -530,7 +530,7 @@ class RocketChatAdapter:
         ...
 
     def verify_webhook_signature(self, payload: bytes, signature: str) -> bool:
-        """HMAC-SHA256 com ROCKETCHAT_WEBHOOK_SECRET.
+        """HMAC-SHA256 com ROCKETCHAT_WEBHOOK_TOKEN.
         Header: X-Rocketchat-Signature"""
         ...
 ```

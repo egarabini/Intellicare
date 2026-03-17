@@ -67,7 +67,7 @@ DEV-B      → DEM-038 Fase B (adaptadores RC/Jitsi/Kestra + endpoints — porta
 DEV-C      → Disponível — aguardando próxima spec
 Eduardo    → Deploy staging pendente (DEM-030 a DEM-037, statics incluídos neste commit)
              Gerar segredos: ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET, JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
-             DNS staging: chat.intellicare.ia.br / meet.intellicare.ia.br / kestra.intellicare.ia.br
+             DNS staging: ✅ chat / meet / kestra.intellicare.ia.br configurados
              Firewall VPS: abrir UDP 10000 (Jitsi JVB)
              PostgreSQL: CREATE DATABASE kestra (antes do deploy Fase B)
 ```
