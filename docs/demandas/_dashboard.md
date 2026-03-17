@@ -52,15 +52,17 @@
 
 ## 📋 Fila — specs prontas para distribuir
 
-Nenhuma demanda com spec pronta aguardando. Todos os devs disponíveis.
+| DEM | Título | Spec |
+|-----|--------|------|
+| DEM-037 | AdminUI Fixes — Dashboard vazio, editar tenant, gestor visível, senha admin, role badge | `docs/demandas/DEM-037_ADMINUI_FIXES/01_FUNCIONAL.md` + `02_TECNICA.md` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → ✅ DEM-035 entregue! Disponível — aguardando próxima spec
-DEV-B      → ✅ DEM-036 entregue! Disponível — aguardando próxima spec
+DEV-A      → DEM-037 (AdminUI Fixes — 6 itens, backend + frontend)
+DEV-B      → Disponível — aguardando próxima spec
 DEV-C      → Disponível — aguardando próxima spec
 Eduardo    → Deploy staging pendente (DEM-035 + DEM-036 + statics)
 ```
