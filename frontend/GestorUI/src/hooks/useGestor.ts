@@ -15,6 +15,18 @@ export interface DashboardStats {
   recent_activity: any[];
 }
 
+export interface CareplannerStats {
+  total: number;
+  by_status: Record<string, number>;
+  recent_tasks: {
+    correlation_id: string;
+    patient_ref: string;
+    task_type: string;
+    status: string;
+    updated_at: string | null;
+  }[];
+}
+
 export interface Patient {
   id: string;
   name: string;
@@ -62,6 +74,17 @@ export function useDashboardStats() {
       return data;
     },
     refetchInterval: 60000,
+  });
+}
+
+export function useCareplannerStats() {
+  return useQuery<CareplannerStats>({
+    queryKey: ['careplanner_stats'],
+    queryFn: async () => {
+      const { data } = await api.get('/careplanner/dashboard/stats');
+      return data;
+    },
+    refetchInterval: 30_000,
   });
 }
 

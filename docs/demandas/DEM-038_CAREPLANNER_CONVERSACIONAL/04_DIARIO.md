@@ -75,3 +75,37 @@
 - Resultado:
   - Fase B: `10 passed`
   - Fase A: `3 passed`
+
+## 2026-03-17 — Fase C
+
+- Lido `PROMPT_FASE_C_CODEX.md`.
+- Criados:
+  - `modules/careplanner/metrics.py`
+  - `modules/careplanner/integrations.py`
+  - `frontend/GestorUI/src/pages/CareplannerDashboard.tsx`
+  - `packages/intellicare-core/tests/test_careplanner_phase_c.py`
+- Modificados:
+  - `modules/careplanner/services.py`
+  - `modules/careplanner/api/routes.py`
+  - `frontend/GestorUI/src/hooks/useGestor.ts`
+  - `frontend/GestorUI/src/App.tsx`
+- Instrumentadas 6 métricas Prometheus nos pontos de dispatch, eventos, órfãos,
+  vídeo e fechamento.
+- Integrado `process_inbound()` com:
+  - `notify_clinico_replied`
+  - `trigger_cuidado_encounter`
+- Mantido o comportamento non-blocking: falhas de notificação/evento só geram warning.
+- Adicionado endpoint `GET /careplanner/dashboard/stats`.
+- Adicionada página operacional do CarePlanner no GestorUI com KPIs por status e
+  atividade recente, ligada à rota `/careplanner`.
+- Build executado em `frontend/GestorUI` com sucesso.
+- Validação executada em sequência para evitar interferência entre suítes que usam
+  o mesmo schema de teste:
+  - `PYTHONPATH=c:\Users\egara\INTELLICARE pytest packages/intellicare-core/tests/test_careplanner_phase_c.py -q`
+  - `PYTHONPATH=c:\Users\egara\INTELLICARE pytest packages/intellicare-core/tests/test_careplanner_phase_b.py -q`
+  - `PYTHONPATH=c:\Users\egara\INTELLICARE pytest packages/intellicare-core/tests/test_careplanner_phase_a.py -q`
+  - `npm run build` em `frontend/GestorUI`
+- Resultado:
+  - Fase C: `7 passed`
+  - Fase B: `10 passed`
+  - Fase A: `3 passed`

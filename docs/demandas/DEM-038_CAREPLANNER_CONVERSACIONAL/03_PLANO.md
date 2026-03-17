@@ -42,3 +42,14 @@ Implementar apenas a **Fase A — Fundação técnica** da DEM-038.
 4. Acrescentar serviços da stack conversacional no `infra/docker-compose.yml`.
 5. Criar a suíte `test_careplanner_phase_b.py` com 10 testes.
 6. Revalidar a Fase A para garantir não-regressão.
+
+## Complemento — Fase C
+
+1. Criar `metrics.py` com 6 métricas Prometheus do CarePlanner.
+2. Criar `integrations.py` para:
+   - notificação realtime ao clínico via Redis/pubsub
+   - publicação de evento Redis `careplanner:{tenant}:replied`
+3. Instrumentar `services.py` e chamar as integrações após `REPLIED`.
+4. Expor `GET /careplanner/dashboard/stats`.
+5. Criar dashboard operacional no GestorUI e integrar em rota/navegação.
+6. Criar `test_careplanner_phase_c.py` e revalidar Fases B e A.

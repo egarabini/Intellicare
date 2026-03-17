@@ -26,6 +26,7 @@ import {
   IconLogout,
   IconBuilding,
   IconUserShield,
+  IconMessage,
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
@@ -43,6 +44,7 @@ import { UnitsPage } from './pages/UnitsPage'
 import { UnitDetailPage } from './pages/UnitDetailPage'
 import { TenantUsersPage } from './pages/TenantUsersPage'
 import { RelatoriosPage } from './pages/RelatoriosPage'
+import { CareplannerDashboard } from './pages/CareplannerDashboard'
 import { NotificationBell } from './components/NotificationBell'
 
 import '@mantine/core/styles.css'
@@ -106,6 +108,7 @@ function AppRoutes() {
     return (
       <>
         <MantineNavLink component={NavLink} to="/dashboard" label="Dashboard" leftSection={<IconDashboard size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/careplanner" label="CarePlanner" leftSection={<IconMessage size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/patients" label="Pacientes" leftSection={<IconUsers size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/appointments" label="Agenda" leftSection={<IconCalendarEvent size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/financeiro" label="Faturamento" leftSection={<IconFileInvoice size="1rem"/>} />
@@ -148,6 +151,7 @@ function AppRoutes() {
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/careplanner" element={<CareplannerDashboard />} />
             <Route path="/patients" element={<PatientList />} />
             <Route path="/patients/:id" element={<PatientProfile />} />
             <Route path="/appointments" element={<AppointmentCalendar />} />

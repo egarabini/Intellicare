@@ -56,3 +56,31 @@ A próxima etapa é a **Fase B**:
 - A validação HTTP da Fase B foi feita contra um app FastAPI mínimo com o router do
   `careplanner`, para não depender de módulos externos do stack principal que exigem
   dependências opcionais não presentes no ambiente de teste local.
+
+## Complemento — Fase C concluída
+
+### Entrega técnica
+
+- Métricas Prometheus adicionadas em `metrics.py`.
+- Integrações internas adicionadas em `integrations.py`:
+  - notificação realtime para clínico via Redis/pubsub
+  - publicação do evento `careplanner:{tenant}:replied`
+- `services.py` instrumentado e integrado com notificações/eventos após `REPLIED`.
+- Endpoint `GET /careplanner/dashboard/stats` implementado.
+- Dashboard operacional entregue no GestorUI e integrado ao App.
+- Testes da Fase C adicionados com cobertura de notificação, evento Redis,
+  métricas, integração do `process_inbound` e stats do dashboard.
+
+### Validação
+
+- `PYTHONPATH=c:\Users\egara\INTELLICARE pytest packages/intellicare-core/tests/test_careplanner_phase_c.py -q` → `7 passed`
+- `PYTHONPATH=c:\Users\egara\INTELLICARE pytest packages/intellicare-core/tests/test_careplanner_phase_b.py -q` → `10 passed`
+- `PYTHONPATH=c:\Users\egara\INTELLICARE pytest packages/intellicare-core/tests/test_careplanner_phase_a.py -q` → `3 passed`
+- `npm run build` em `frontend/GestorUI` → ok
+
+### Observações
+
+- As integrações com notifications/cuidado são non-blocking por design: exceções
+  são logadas como warning e o fluxo principal da jornada segue.
+- O gatilho para `cuidado` nesta fase é apenas o evento Redis desacoplado;
+  integração HTTP com service account fica para a Fase D.

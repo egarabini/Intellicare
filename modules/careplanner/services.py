@@ -9,7 +9,7 @@ from sqlalchemy import text
 
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.contracts.errors import api_error
-from intellicare_core.db.session import get_engine
+from intellicare_core.db.session import get_engine, tenant_session
 
 from .adapters.jitsi import JitsiAdapter
 from .adapters.kestra import KestraAdapter
@@ -25,6 +25,15 @@ from .contracts import (
     ParticipantRole,
     TaskStatus,
     cast_channel_conversation_id,
+)
+from .integrations import notify_clinico_replied, trigger_cuidado_encounter
+from .metrics import (
+    careplanner_dispatch_to_sent_seconds,
+    careplanner_dispatch_total,
+    careplanner_event_total,
+    careplanner_inbound_to_close_seconds,
+    careplanner_orphan_inbound_total,
+    careplanner_video_session_total,
 )
 from .repository import CareplannerRepository
 
@@ -71,22 +80,27 @@ class CareplannerService:
                 },
             ),
         )
-        rc_room_id = await self._rc.ensure_room(ctx.tenant_id, patient_ref)
-        template = await self._repo.get_template_by_code(ctx, template_code)
-        text_content = (template.content if template else template_code).format(**template_variables)
-        await self._rc.post_message(rc_room_id, text_content)
-        await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.DISPATCHED)
-        await self._repo.upsert_conversation(
-            ctx,
-            CareConversationUpsert(
-                correlation_id=correlation_id,
-                channel=Channel.ROCKETCHAT,
-                channel_conversation_id=0,
-                rc_room_id=rc_room_id,
-                phone_e164=contact_phone,
-                participant_role=ParticipantRole(contact_role),
-            ),
-        )
+        try:
+            rc_room_id = await self._rc.ensure_room(ctx.tenant_id, patient_ref)
+            template = await self._repo.get_template_by_code(ctx, template_code)
+            text_content = (template.content if template else template_code).format(**template_variables)
+            await self._rc.post_message(rc_room_id, text_content)
+            await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.DISPATCHED)
+            careplanner_dispatch_total.labels(tenant_slug=ctx.tenant_id, status="dispatched").inc()
+            await self._repo.upsert_conversation(
+                ctx,
+                CareConversationUpsert(
+                    correlation_id=correlation_id,
+                    channel=Channel.ROCKETCHAT,
+                    channel_conversation_id=0,
+                    rc_room_id=rc_room_id,
+                    phone_e164=contact_phone,
+                    participant_role=ParticipantRole(contact_role),
+                ),
+            )
+        except Exception:
+            careplanner_dispatch_total.labels(tenant_slug=ctx.tenant_id, status="failed").inc()
+            raise
         return {"ok": True, "correlation_id": str(task.correlation_id), "status": TaskStatus.CREATED.value}
 
     async def process_message_sent(
@@ -129,7 +143,12 @@ class CareplannerService:
                 last_interaction_at=current_conversation.last_interaction_at if current_conversation else None,
             ),
         )
+        task = await self._repo.get_task(ctx, correlation_id)
         await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.SENT)
+        careplanner_event_total.labels(tenant_slug=ctx.tenant_id, event_type="MESSAGE_SENT").inc()
+        if task:
+            delta = max((datetime.now(tz=timezone.utc) - task.updated_at).total_seconds(), 0)
+            careplanner_dispatch_to_sent_seconds.labels(tenant_slug=ctx.tenant_id).observe(delta)
         return {"ok": True, "status": TaskStatus.SENT.value}
 
     async def process_inbound(
@@ -160,6 +179,7 @@ class CareplannerService:
                     },
                 ),
             )
+            careplanner_orphan_inbound_total.labels(tenant_slug=ctx.tenant_id).inc()
             return {"ok": True, "orphan": True}
 
         record, created = await self._repo.record_event_if_new(
@@ -191,6 +211,7 @@ class CareplannerService:
         current_status = TaskStatus(task.status)
         if current_status in {TaskStatus.SENT, TaskStatus.DISPATCHED}:
             await self._repo.transition_task_status(ctx, conversation.correlation_id, TaskStatus.REPLIED)
+            careplanner_event_total.labels(tenant_slug=ctx.tenant_id, event_type="INBOUND_RECEIVED").inc()
 
         interaction_at = (
             datetime.fromisoformat(occurred_at.replace("Z", "+00:00"))
@@ -213,6 +234,21 @@ class CareplannerService:
         )
         if task.kestra_execution_id:
             await self._kestra.resume_execution(task.kestra_execution_id, {"content": content})
+        clinico_ref = task.metadata.get("clinico_ref") if task.metadata else None
+        await notify_clinico_replied(
+            ctx,
+            correlation_id=conversation.correlation_id,
+            task_type=task.task_type,
+            patient_ref=task.patient_ref,
+            clinico_ref=clinico_ref,
+            content=content,
+        )
+        await trigger_cuidado_encounter(
+            ctx,
+            correlation_id=conversation.correlation_id,
+            task_type=task.task_type,
+            patient_ref=task.patient_ref,
+        )
         return {
             "ok": True,
             "status": TaskStatus.REPLIED.value,
@@ -294,6 +330,8 @@ class CareplannerService:
                 payload={"room_name": room_name},
             ),
         )
+        careplanner_video_session_total.labels(tenant_slug=ctx.tenant_id).inc()
+        careplanner_event_total.labels(tenant_slug=ctx.tenant_id, event_type="VIDEO_SESSION_OPENED").inc()
         return {
             "room_name": room_name,
             "clinico_url": clinico_url,
@@ -305,6 +343,7 @@ class CareplannerService:
         task = await self._repo.get_task(ctx, correlation_id)
         if not task:
             raise api_error(404, "task_not_found", "Jornada nao encontrada")
+        replied_at = task.updated_at if task.status == TaskStatus.REPLIED else None
         await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.CLOSED)
         conversation = await self._repo.get_conversation(ctx, correlation_id)
         if conversation and conversation.rc_room_id:
@@ -319,6 +358,10 @@ class CareplannerService:
                 payload={},
             ),
         )
+        careplanner_event_total.labels(tenant_slug=ctx.tenant_id, event_type="TASK_CLOSED").inc()
+        if replied_at:
+            delta = max((datetime.now(tz=timezone.utc) - replied_at).total_seconds(), 0)
+            careplanner_inbound_to_close_seconds.labels(tenant_slug=ctx.tenant_id).observe(delta)
         return {"ok": True, "status": TaskStatus.CLOSED.value}
 
     async def get_task_details(self, ctx: TenantContext, correlation_id: UUID) -> dict:
@@ -337,6 +380,53 @@ class CareplannerService:
         normalized = TaskStatus(status_filter) if status_filter else None
         tasks = await self._repo.list_tasks(ctx, status_filter=normalized, page=page)
         return {"items": [task.model_dump(mode="json") for task in tasks], "page": page}
+
+    async def get_dashboard_stats(self, ctx: TenantContext) -> dict:
+        async with tenant_session(ctx) as db:
+            rows = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT status, COUNT(*) as cnt
+                        FROM care_tasks
+                        GROUP BY status
+                        """
+                    )
+                )
+            ).mappings().all()
+            recent = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT correlation_id, patient_ref, task_type, status, updated_at
+                        FROM care_tasks
+                        ORDER BY updated_at DESC
+                        LIMIT 5
+                        """
+                    )
+                )
+            ).mappings().all()
+
+        by_status = {status.value: 0 for status in TaskStatus}
+        total = 0
+        for row in rows:
+            by_status[row["status"]] = row["cnt"]
+            total += row["cnt"]
+
+        return {
+            "total": total,
+            "by_status": by_status,
+            "recent_tasks": [
+                {
+                    "correlation_id": str(row["correlation_id"]),
+                    "patient_ref": row["patient_ref"],
+                    "task_type": row["task_type"],
+                    "status": row["status"],
+                    "updated_at": row["updated_at"].isoformat() if row["updated_at"] else None,
+                }
+                for row in recent
+            ],
+        }
 
 
 def build_careplanner_service() -> CareplannerService:

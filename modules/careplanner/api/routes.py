@@ -142,6 +142,14 @@ async def list_tasks(
     return await service.list_tasks(ctx, status_filter=status_filter, page=page)
 
 
+@router.get("/dashboard/stats")
+async def dashboard_stats(
+    ctx: TenantContext = Depends(get_current_tenant),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    return await service.get_dashboard_stats(ctx)
+
+
 @router.post("/tasks/{correlation_id}/close", status_code=status.HTTP_200_OK)
 async def close_task(
     correlation_id: UUID,
