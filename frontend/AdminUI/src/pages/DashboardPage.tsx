@@ -1,10 +1,11 @@
-import { Grid, Loader, Paper, SimpleGrid, Stack, Text, Title, Card } from '@mantine/core'
+import { Alert, Grid, Loader, Paper, SimpleGrid, Stack, Text, Title, Card } from '@mantine/core'
+import { useNavigate } from 'react-router-dom'
 
 import { useDashboardStats } from '../hooks/useTenants'
 import { TenantList } from './TenantList'
 import { useDownloadPdf } from '../hooks/useDownloadPdf'
 import { Button, Group } from '@mantine/core'
-import { IconFileTypePdf } from '@tabler/icons-react'
+import { IconFileTypePdf, IconInfoCircle } from '@tabler/icons-react'
 
 function StatCard({ label, value, accent, isCurrency = false }: { label: string; value: number; accent: string, isCurrency?: boolean }) {
   const displayValue = isCurrency 
@@ -26,6 +27,7 @@ function StatCard({ label, value, accent, isCurrency = false }: { label: string;
 export function DashboardPage() {
   const { data: stats, isLoading } = useDashboardStats()
   const { downloadPdf, isDownloading } = useDownloadPdf()
+  const navigate = useNavigate()
 
   if (isLoading) {
     return <Loader />
@@ -48,6 +50,25 @@ export function DashboardPage() {
           Exportar Tenants (PDF)
         </Button>
       </Group>
+
+      {stats?.total_tenants === 0 && (
+        <Alert
+          icon={<IconInfoCircle size={18} />}
+          title="Nenhum tenant cadastrado"
+          color="blue"
+          variant="light"
+        >
+          A plataforma ainda não tem tenants. Crie o primeiro para começar.{' '}
+          <Button
+            size="xs"
+            variant="subtle"
+            onClick={() => navigate('/tenants/new')}
+            px={4}
+          >
+            Criar tenant
+          </Button>
+        </Alert>
+      )}
 
       <SimpleGrid cols={{ base: 1, md: 4 }}>
         <StatCard label="Total de tenants" value={stats?.total_tenants ?? 0} accent="#0f766e" />

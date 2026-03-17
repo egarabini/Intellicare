@@ -24,7 +24,7 @@ from .schemas import (
     TenantCreate,
     TenantModuleUpdate,
     TenantStatusUpdate,
-    TenantUpdateRequest,
+    TenantUpdate,
     UserInviteRequest,
 )
 
@@ -125,7 +125,7 @@ class TenantService:
             rows = (
                 await conn.execute(
                     text("""
-                        SELECT id, slug, name, status, created_at, updated_at
+                        SELECT id, slug, name, status, gestor_email, created_at, updated_at
                         FROM public.tenants
                         ORDER BY created_at DESC
                         LIMIT :size OFFSET :offset
@@ -139,7 +139,7 @@ class TenantService:
         async with get_engine().connect() as conn:
             row = (
                 await conn.execute(
-                    text("SELECT id, slug, name, status, created_at, updated_at FROM public.tenants WHERE slug = :slug"),
+                    text("SELECT id, slug, name, status, gestor_email, created_at, updated_at FROM public.tenants WHERE slug = :slug"),
                     {"slug": slug},
                 )
             ).mappings().first()
@@ -169,22 +169,42 @@ class TenantService:
         async with get_engine().begin() as conn:
             await self._audit(conn, actor, "USER_DEACTIVATED", "user", user_id, {"tenant": slug})
 
-    async def update_tenant(self, slug: str, req: TenantUpdateRequest, actor: TenantContext) -> dict[str, Any]:
+    async def update_tenant(self, slug: str, payload: TenantUpdate, actor: TenantContext) -> dict[str, Any]:
+        updates: dict[str, Any] = {}
+        if payload.name is not None:
+            updates["name"] = payload.name
+        if payload.gestor_email is not None:
+            updates["gestor_email"] = payload.gestor_email
+
+        if not updates:
+            async with get_engine().connect() as conn:
+                row = (
+                    await conn.execute(
+                        text("SELECT id, slug, name, status, gestor_email, created_at, updated_at FROM public.tenants WHERE slug = :slug"),
+                        {"slug": slug},
+                    )
+                ).mappings().first()
+            return dict(row) if row else {}
+
+        set_clause = ", ".join(f"{key} = :{key}" for key in updates)
+        updates["slug"] = slug
+
         async with get_engine().begin() as conn:
-            result = await conn.execute(
-                text("""
-                    UPDATE public.tenants
-                    SET name = COALESCE(:name, name), updated_at = NOW()
-                    WHERE slug = :slug
-                    RETURNING id, slug, name, status, created_at, updated_at
-                """),
-                {"name": req.name, "slug": slug},
-            )
-            row = result.mappings().first()
+            row = (
+                await conn.execute(
+                    text(f"""
+                        UPDATE public.tenants
+                        SET {set_clause}, updated_at = now()
+                        WHERE slug = :slug
+                        RETURNING id, slug, name, status, gestor_email, created_at, updated_at
+                    """),
+                    updates,
+                )
+            ).mappings().first()
             if not row:
-                raise ValueError(f"Tenant '{slug}' nao encontrado")
-            await self._audit(conn, actor, "TENANT_UPDATED", "tenant", slug, req.model_dump(exclude_none=True))
-        return dict(row)
+                return {}
+            await self._audit(conn, actor, "TENANT_UPDATED", "tenant", slug, payload.model_dump(exclude_none=True))
+        return dict(row) if row else {}
 
     async def delete_tenant(self, slug: str, actor: TenantContext) -> None:
         async with get_engine().begin() as conn:
@@ -218,11 +238,11 @@ class TenantService:
             row = (
                 await conn.execute(
                     text("""
-                        INSERT INTO public.tenants (slug, name)
-                        VALUES (:slug, :name)
-                        RETURNING id, slug, name, status, created_at, updated_at
+                        INSERT INTO public.tenants (slug, name, gestor_email)
+                        VALUES (:slug, :name, :gestor_email)
+                        RETURNING id, slug, name, status, gestor_email, created_at, updated_at
                     """),
-                    {"slug": payload.slug, "name": payload.name},
+                    {"slug": payload.slug, "name": payload.name, "gestor_email": payload.gestor_email},
                 )
             ).mappings().first()
             try:
@@ -237,7 +257,9 @@ class TenantService:
                 payload.slug,
                 {"name": payload.name, "gestor_email": payload.gestor_email},
             )
-        return dict(row) if row else {}
+        result = dict(row) if row else {}
+        result["temporary_password"] = kc_result["temporary_password"]
+        return result
 
     async def update_status(self, slug: str, update: TenantStatusUpdate, actor: TenantContext) -> dict[str, Any]:
         async with get_engine().begin() as conn:

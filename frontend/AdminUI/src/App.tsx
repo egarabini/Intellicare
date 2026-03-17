@@ -14,7 +14,7 @@ import { AuthProvider } from './auth/AuthProvider'
 import { setToken } from './auth/tokenRef'
 import { DashboardPage } from './pages/DashboardPage'
 import { TenantDetail } from './pages/TenantDetail'
-import { TenantForm } from './pages/TenantForm'
+import { TenantEditForm, TenantForm } from './pages/TenantForm'
 import { TenantList } from './pages/TenantList'
 import { TenantUsers } from './pages/TenantUsers'
 import { AuditLog } from './pages/AuditLog'
@@ -143,6 +143,7 @@ function AppRoutes() {
           <Route path="/"                    element={<DashboardPage />} />
           <Route path="/tenants"             element={<TenantList />} />
           <Route path="/tenants/new"         element={<TenantForm />} />
+          <Route path="/tenants/:slug/edit"  element={<TenantEditForm />} />
           <Route path="/tenants/:slug"       element={<TenantDetail />} />
           <Route path="/tenants/:slug/users" element={<TenantUsers />} />
           <Route path="/servers"             element={<ServersPage />} />

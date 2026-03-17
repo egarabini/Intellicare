@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-16 | Branch: main | Último commit: 627fee2
+> Atualizado: 2026-03-17 | Branch: main | Último commit: (pendente)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -31,6 +31,7 @@
 | DEM-027 | Relatórios PDF — WeasyPrint, 6 templates, 6 endpoints, hook useDownloadPdf nos 3 módulos | `323182b` |
 | DEM-035 | Notificações Frontend — sino (NotificationBell) nos 4 módulos, SSE, badge unread, popover | `48e5ea8` |
 | DEM-036 | E2E Atualizado — 14 pytest novos + 11 Playwright novos (24 total), cobertura DEM-026 a DEM-035 | `627fee2` |
+| DEM-037 | AdminUI Fixes — migration gestor_email, PUT /admin/tenants/{slug}, senha admin, role badge, statics rebuilt | pendente |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -54,17 +55,21 @@
 
 | DEM | Título | Spec |
 |-----|--------|------|
-| DEM-037 | AdminUI Fixes — Dashboard vazio, editar tenant, gestor visível, senha admin, role badge | `docs/demandas/DEM-037_ADMINUI_FIXES/01_FUNCIONAL.md` + `02_TECNICA.md` |
+| DEM-038 | CarePlanner Conversacional — Rocket.Chat + Kestra + Jitsi, correlation_id, async ACK, multi-tenant | `docs/demandas/DEM-038_CAREPLANNER_CONVERSACIONAL/01_FUNCIONAL.md` + `02_TECNICA.md` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-037 (AdminUI Fixes — 6 itens, backend + frontend)
-DEV-B      → Disponível — aguardando próxima spec
+DEV-A      → DEM-038 Fase A (fundação técnica: migrations + repository + contracts)
+DEV-B      → DEM-038 Fase B (adaptadores RC/Jitsi/Kestra + endpoints — portar de V2)
 DEV-C      → Disponível — aguardando próxima spec
-Eduardo    → Deploy staging pendente (DEM-035 + DEM-036 + statics)
+Eduardo    → Deploy staging pendente (DEM-030 a DEM-037, statics incluídos neste commit)
+             Gerar segredos: ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET, JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
+             DNS staging: chat.intellicare.ia.br / meet.intellicare.ia.br / kestra.intellicare.ia.br
+             Firewall VPS: abrir UDP 10000 (Jitsi JVB)
+             PostgreSQL: CREATE DATABASE kestra (antes do deploy Fase B)
 ```
 
 ## Credenciais de teste (ambiente local)

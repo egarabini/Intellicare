@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import {
   ActionIcon,
+  Alert,
   Button,
   Card,
+  Code,
+  CopyButton,
   Group,
   Loader,
+  Modal,
   Select,
   SimpleGrid,
   Stack,
@@ -13,7 +17,7 @@ import {
   TextInput,
   Title,
 } from '@mantine/core'
-import { IconDeviceFloppy, IconPencil, IconTrash, IconX } from '@tabler/icons-react'
+import { IconCheck, IconCopy, IconDeviceFloppy, IconInfoCircle, IconPencil, IconTrash, IconX } from '@tabler/icons-react'
 import { notifications } from '@mantine/notifications'
 
 import { StatusBadge } from '../components/StatusBadge'
@@ -46,6 +50,7 @@ export function AdminUsersPage() {
   const deleteUser = useDeleteAdminUser()
   const [editing, setEditing] = useState<AdminUser | null>(null)
   const [form, setForm] = useState<AdminUserPayload>(emptyUser())
+  const [tempPassword, setTempPassword] = useState<string | null>(null)
 
   const reset = () => {
     setEditing(null)
@@ -59,13 +64,19 @@ export function AdminUsersPage() {
           id: editing.id,
           payload: { name: form.name, role: form.role, status: form.status },
         })
+        notifications.show({ title: 'Usuario salvo', message: 'Cadastro administrativo atualizado.', color: 'green' })
       } else {
-        await createUser.mutateAsync(form)
+        const result = await createUser.mutateAsync(form)
+        if (result.temporary_password) {
+          setTempPassword(result.temporary_password)
+        }
       }
-      notifications.show({ title: 'Usuario salvo', message: 'Cadastro administrativo atualizado.', color: 'green' })
       reset()
     } catch (error) {
-      notifications.show({ title: 'Erro', message: 'Falha ao salvar usuario admin.', color: 'red' })
+      const message =
+        (error as { response?: { data?: { detail?: string } } })?.response?.data?.detail ??
+        'Falha ao salvar usuario admin.'
+      notifications.show({ title: 'Erro', message, color: 'red' })
       console.error(error)
     }
   }
@@ -127,6 +138,38 @@ export function AdminUsersPage() {
           </Group>
         </Stack>
       </Card>
+
+      <Modal
+        opened={!!tempPassword}
+        onClose={() => setTempPassword(null)}
+        title="Usuário criado com sucesso"
+        centered
+      >
+        <Stack gap="md">
+          <Text size="sm">Senha temporária de primeiro acesso:</Text>
+          <Group gap="xs">
+            <Code fz="lg" style={{ flex: 1 }}>{tempPassword}</Code>
+            <CopyButton value={tempPassword ?? ''} timeout={2000}>
+              {({ copied, copy }) => (
+                <Button
+                  size="xs"
+                  color={copied ? 'teal' : 'blue'}
+                  leftSection={copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
+                  onClick={copy}
+                >
+                  {copied ? 'Copiado' : 'Copiar'}
+                </Button>
+              )}
+            </CopyButton>
+          </Group>
+          <Alert color="orange" variant="light" icon={<IconInfoCircle size={16} />}>
+            Esta senha não será exibida novamente. Anote antes de fechar.
+          </Alert>
+          <Group justify="flex-end">
+            <Button onClick={() => setTempPassword(null)}>Fechar</Button>
+          </Group>
+        </Stack>
+      </Modal>
 
       <Table withTableBorder striped>
         <Table.Thead>

@@ -14,7 +14,7 @@ import {
   Title,
   Tooltip,
 } from '@mantine/core'
-import { IconEye, IconPlayerPause, IconPlayerPlay, IconPlus, IconSearch } from '@tabler/icons-react'
+import { IconEye, IconPencil, IconPlayerPause, IconPlayerPlay, IconPlus, IconSearch } from '@tabler/icons-react'
 import { notifications } from '@mantine/notifications'
 
 import { StatusBadge } from '../components/StatusBadge'
@@ -84,6 +84,7 @@ export function TenantList({ embedded = false }: { embedded?: boolean }) {
             <Table.Th>Nome</Table.Th>
             <Table.Th>Slug</Table.Th>
             <Table.Th>Status</Table.Th>
+            <Table.Th>Gestor</Table.Th>
             <Table.Th>Criado em</Table.Th>
             <Table.Th>Acoes</Table.Th>
           </Table.Tr>
@@ -100,12 +101,20 @@ export function TenantList({ embedded = false }: { embedded?: boolean }) {
               <Table.Td>
                 <StatusBadge status={tenant.status} />
               </Table.Td>
+              <Table.Td>
+                <Text size="sm" c="dimmed">{tenant.gestor_email ?? '—'}</Text>
+              </Table.Td>
               <Table.Td>{new Date(tenant.created_at).toLocaleDateString('pt-BR')}</Table.Td>
               <Table.Td>
                 <Group gap="xs">
                   <Tooltip label="Ver detalhe">
                     <ActionIcon variant="subtle" onClick={() => navigate(`/tenants/${tenant.slug}`)}>
                       <IconEye size={16} />
+                    </ActionIcon>
+                  </Tooltip>
+                  <Tooltip label="Editar">
+                    <ActionIcon variant="subtle" color="blue" onClick={() => navigate(`/tenants/${tenant.slug}/edit`)}>
+                      <IconPencil size={16} />
                     </ActionIcon>
                   </Tooltip>
                   <Tooltip label={tenant.status === 'active' ? 'Suspender' : 'Reativar'}>

@@ -47,6 +47,7 @@ class TenantResponse(BaseModel):
     slug: str
     name: str
     status: str
+    gestor_email: str | None = None
     created_at: datetime
     updated_at: datetime
 
@@ -58,8 +59,9 @@ class TenantListResponse(BaseModel):
     size: int
 
 
-class TenantUpdateRequest(BaseModel):
-    name: str | None = Field(None, min_length=3)
+class TenantUpdate(BaseModel):
+    name: str | None = Field(default=None, min_length=3)
+    gestor_email: str | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -291,3 +293,4 @@ class AdminUserOut(BaseModel):
     status: str
     last_login_at: datetime | None
     created_at: datetime
+    temporary_password: str | None = None

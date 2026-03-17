@@ -33,7 +33,7 @@ from .schemas import (
     TenantModuleUpdate,
     TenantResponse,
     TenantStatusUpdate,
-    TenantUpdateRequest,
+    TenantUpdate,
     TenantUsersResponse,
     UserInviteRequest,
     UserInviteResponse,
@@ -135,16 +135,15 @@ async def list_tenant_users(slug: str, actor: AdminRequired) -> TenantUsersRespo
     return TenantUsersResponse(tenant_slug=slug, users=mapped, total=len(mapped))
 
 
-@router.patch("/tenants/{slug}", response_model=TenantResponse)
+@router.put("/tenants/{slug}", response_model=TenantResponse)
 async def update_tenant(
     slug: str,
-    body: TenantUpdateRequest,
+    body: TenantUpdate,
     actor: AdminRequired,
 ) -> TenantResponse:
-    try:
-        tenant = await _service.update_tenant(slug, body, actor)
-    except ValueError as exc:
-        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    tenant = await _service.update_tenant(slug, body, actor)
+    if not tenant:
+        raise HTTPException(status_code=404, detail="Tenant not found")
     return TenantResponse(**tenant)
 
 

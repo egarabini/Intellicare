@@ -66,6 +66,10 @@ export function TenantDetail() {
           <Text>
             <strong>Atualizado em:</strong> {new Date(tenant.updated_at).toLocaleString('pt-BR')}
           </Text>
+          <Text>
+            <strong>Gestor:</strong>{' '}
+            <Text component="span" c="dimmed">{tenant.gestor_email ?? 'Não informado'}</Text>
+          </Text>
         </Stack>
       </Paper>
 

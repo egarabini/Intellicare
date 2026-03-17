@@ -61,7 +61,11 @@ export function TenantUsers() {
             <Table.Tr key={u.keycloak_id}>
               <Table.Td>{u.email}</Table.Td>
               <Table.Td>{u.username}</Table.Td>
-              <Table.Td><Badge variant="light">{u.roles?.[0]}</Badge></Table.Td>
+              <Table.Td>
+                <Badge variant="light" color={u.roles?.[0] ? 'blue' : 'gray'}>
+                  {u.roles?.[0] ?? 'Sem role'}
+                </Badge>
+              </Table.Td>
               <Table.Td>
                 <Badge color={u.enabled ? 'green' : 'red'} variant="light">
                   {u.enabled ? 'Ativo' : 'Inativo'}

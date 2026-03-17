@@ -7,6 +7,7 @@ export interface Tenant {
   name: string
   slug: string
   status: 'active' | 'suspended' | 'trial'
+  gestor_email?: string
   created_at: string
   updated_at: string
 }
@@ -61,6 +62,18 @@ export function useCreateTenant() {
     mutationFn: (body: TenantCreateRequest) => apiClient.post('/admin/tenants', body).then((r) => r.data),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['tenants'] })
+    },
+  })
+}
+
+export function useUpdateTenant() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: ({ slug, body }: { slug: string; body: { name?: string; gestor_email?: string } }) =>
+      apiClient.put(`/admin/tenants/${slug}`, body).then((r) => r.data),
+    onSuccess: (_, variables) => {
+      void queryClient.invalidateQueries({ queryKey: ['tenants'] })
+      void queryClient.invalidateQueries({ queryKey: ['tenant', variables.slug] })
     },
   })
 }

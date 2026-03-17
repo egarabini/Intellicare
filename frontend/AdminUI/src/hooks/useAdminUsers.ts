@@ -11,6 +11,7 @@ export interface AdminUser {
   status: 'active' | 'inactive'
   last_login_at: string | null
   created_at: string
+  temporary_password?: string
 }
 
 export interface AdminUserPayload {
