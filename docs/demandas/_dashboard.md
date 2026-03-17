@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-17 | Branch: main | Último commit: f7597fe
+> Atualizado: 2026-03-17 | Branch: main | Último commit: b6a3966
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -32,6 +32,7 @@
 | DEM-035 | Notificações Frontend — sino (NotificationBell) nos 4 módulos, SSE, badge unread, popover | `48e5ea8` |
 | DEM-036 | E2E Atualizado — 14 pytest novos + 11 Playwright novos (24 total), cobertura DEM-026 a DEM-035 | `627fee2` |
 | DEM-037 | AdminUI Fixes — migration gestor_email, PUT /admin/tenants/{slug}, senha admin, role badge, statics rebuilt | `b0c6f51` |
+| DEM-038 Fase A | CarePlanner — contracts, config, migrations (5 tabelas), repository, 3 testes (estados, idempotência, BIGINT) | `b6a3966` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -47,7 +48,7 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| — | Nenhuma demanda técnica em aberto | — | — |
+| DEM-038 | CarePlanner Conversacional — Fase B (adaptadores RC/Jitsi/Kestra + services + routes) | DEV-B | aguardando infra staging |
 
 ---
 
@@ -55,21 +56,22 @@
 
 | DEM | Título | Spec |
 |-----|--------|------|
-| DEM-038 | CarePlanner Conversacional — Rocket.Chat + Kestra + Jitsi, correlation_id, async ACK, multi-tenant | `docs/demandas/DEM-038_CAREPLANNER_CONVERSACIONAL/01_FUNCIONAL.md` + `02_TECNICA.md` |
+| — | Fila vazia | — |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-038 Fase A (fundação técnica: migrations + repository + contracts)
-DEV-B      → DEM-038 Fase B (adaptadores RC/Jitsi/Kestra + endpoints — portar de V2)
+DEV-A      → Disponível — aguardando próxima spec
+DEV-B      → DEM-038 Fase B — liberar após Eduardo confirmar itens de infra abaixo
 DEV-C      → Disponível — aguardando próxima spec
-Eduardo    → Deploy staging pendente (DEM-030 a DEM-037, statics incluídos neste commit)
-             Gerar segredos: ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET, JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
+Eduardo    → Deploy staging (DEM-030 a DEM-038 Fase A): git pull + docker compose build --no-cache + up -d
+             ⚠ Pendentes antes de liberar Fase B:
+             [ ] Firewall VPS: abrir UDP 10000 (Jitsi JVB)
+             [ ] PostgreSQL staging: CREATE DATABASE kestra;
+             [ ] Gerar segredos: ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET, JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
              DNS staging: ✅ chat / meet / kestra.intellicare.ia.br configurados
-             Firewall VPS: abrir UDP 10000 (Jitsi JVB)
-             PostgreSQL: CREATE DATABASE kestra (antes do deploy Fase B)
 ```
 
 ## Credenciais de teste (ambiente local)
