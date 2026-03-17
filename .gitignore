@@ -67,3 +67,9 @@ frontend/**/*.txt
 tests/e2e/report/
 docker_build.txt
 pytest_errors.txt
+pytest_output.txt
+packages/intellicare-core/pytest_output.txt
+test-results/
+
+# Let's Encrypt — nunca commitar (contém chaves privadas dos certificados)
+infra/letsencrypt/
