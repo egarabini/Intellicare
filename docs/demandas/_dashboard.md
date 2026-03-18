@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: 415643e
+> Atualizado: 2026-03-18 | Branch: main | Último commit: e572dba
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -60,14 +60,14 @@
 
 | DEM | Título | Spec |
 |-----|--------|------|
-| — | Fila vazia | — |
+| DEM-040 | CarePlanner UI Completo — lista paginada, detalhe+timeline, modal Nova Jornada, encerrar, link vídeo | ✅ pronta em `docs/demandas/DEM-040_CAREPLANNER_UI/` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → livre — aguardando próxima spec (DEM-040 candidata)
+DEV-A      → DEM-040 — spec pronta, pode iniciar
 DEV-B      → livre
 DEV-C      → livre
 Eduardo    → Deploy staging (DEM-038 completa após Fase D):
