@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-17 | Branch: main | Último commit: b6a3966
+> Atualizado: 2026-03-17 | Branch: main | Último commit: 83b9df6
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -33,6 +33,8 @@
 | DEM-036 | E2E Atualizado — 14 pytest novos + 11 Playwright novos (24 total), cobertura DEM-026 a DEM-035 | `627fee2` |
 | DEM-037 | AdminUI Fixes — migration gestor_email, PUT /admin/tenants/{slug}, senha admin, role badge, statics rebuilt | `b0c6f51` |
 | DEM-038 Fase A | CarePlanner — contracts, config, migrations (5 tabelas), repository, 3 testes (estados, idempotência, BIGINT) | `b6a3966` |
+| DEM-038 Fase B | CarePlanner — adapters RC/Jitsi/Kestra + services + routes + docker-compose (Kestra/RC/Jitsi/Mongo) + 10 testes | `a646bc2` |
+| DEM-038 Fase C | CarePlanner — metrics.py (6 métricas), integrations.py (notify+trigger), dashboard/stats, CareplannerDashboard.tsx + 7 testes | `c818cc1` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -48,7 +50,7 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-038 | CarePlanner Conversacional — Fase B (adaptadores RC/Jitsi/Kestra + services + routes) | DEV-B | aguardando infra staging |
+| DEM-038 Fase D | CarePlanner — dispatcher Redis+retry+dead-letter, expiry_worker, security.py, Playwright 4 testes | CODEX | em andamento |
 
 ---
 
@@ -56,22 +58,26 @@
 
 | DEM | Título | Spec |
 |-----|--------|------|
-| — | Fila vazia | — |
+| DEM-039 | Kestra Workflow CarePlanner — flows YAML, seed, trigger_flow(), POST /journeys/trigger | ✅ pronta em `docs/demandas/DEM-039_KESTRA_CAREPLANNER/` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → Disponível — aguardando próxima spec
-DEV-B      → DEM-038 Fase B — liberar após Eduardo confirmar itens de infra abaixo
-DEV-C      → Disponível — aguardando próxima spec
-Eduardo    → Deploy staging (DEM-030 a DEM-038 Fase A): git pull + docker compose build --no-cache + up -d
-             ⚠ Pendentes antes de liberar Fase B:
+DEV-A      → DEM-039 — disponível após DEM-038 Fase D concluída
+DEV-B      → livre
+DEV-C      → livre
+Eduardo    → Deploy staging (DEM-038 completa após Fase D):
+             ⚠ Pendentes antes do deploy staging:
              [ ] Firewall VPS: abrir UDP 10000 (Jitsi JVB)
              [ ] PostgreSQL staging: CREATE DATABASE kestra;
-             [ ] Gerar segredos: ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET, JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
+             [ ] Gerar segredos reais no .env.staging:
+                 ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET,
+                 JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
              DNS staging: ✅ chat / meet / kestra.intellicare.ia.br configurados
+             Após Fase D commitada:
+               git pull + docker compose --env-file infra/.env.staging up -d --build
 ```
 
 ## Credenciais de teste (ambiente local)
