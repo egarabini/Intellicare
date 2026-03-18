@@ -36,6 +36,8 @@ from .metrics import (
     careplanner_video_session_total,
 )
 from .repository import CareplannerRepository
+from .security import mask_content, mask_phone
+from .workers.dispatcher import enqueue_dispatch
 
 logger = logging.getLogger(__name__)
 
@@ -67,6 +69,12 @@ class CareplannerService:
         contact_role: str = "PACIENTE",
     ) -> dict:
         correlation_id = uuid4()
+        logger.debug(
+            "open_task: tenant=%s patient=%s phone=%s",
+            ctx.tenant_id,
+            patient_ref,
+            mask_phone(contact_phone),
+        )
         task = await self._repo.create_task(
             ctx,
             CareTaskCreate(
@@ -77,30 +85,12 @@ class CareplannerService:
                 metadata={
                     "template_code": template_code,
                     "template_variables": template_variables,
+                    "contact_phone": contact_phone,
+                    "contact_role": contact_role,
                 },
             ),
         )
-        try:
-            rc_room_id = await self._rc.ensure_room(ctx.tenant_id, patient_ref)
-            template = await self._repo.get_template_by_code(ctx, template_code)
-            text_content = (template.content if template else template_code).format(**template_variables)
-            await self._rc.post_message(rc_room_id, text_content)
-            await self._repo.transition_task_status(ctx, correlation_id, TaskStatus.DISPATCHED)
-            careplanner_dispatch_total.labels(tenant_slug=ctx.tenant_id, status="dispatched").inc()
-            await self._repo.upsert_conversation(
-                ctx,
-                CareConversationUpsert(
-                    correlation_id=correlation_id,
-                    channel=Channel.ROCKETCHAT,
-                    channel_conversation_id=0,
-                    rc_room_id=rc_room_id,
-                    phone_e164=contact_phone,
-                    participant_role=ParticipantRole(contact_role),
-                ),
-            )
-        except Exception:
-            careplanner_dispatch_total.labels(tenant_slug=ctx.tenant_id, status="failed").inc()
-            raise
+        await enqueue_dispatch(str(task.correlation_id), ctx.tenant_id)
         return {"ok": True, "correlation_id": str(task.correlation_id), "status": TaskStatus.CREATED.value}
 
     async def process_message_sent(
@@ -161,6 +151,12 @@ class CareplannerService:
         occurred_at: str | None = None,
     ) -> dict:
         conversation_id = cast_channel_conversation_id(channel_conversation_id)
+        logger.info(
+            "inbound: tenant=%s room=%s content=%s",
+            ctx.tenant_id,
+            rc_room_id,
+            mask_content(content),
+        )
         conversation = await self._repo.find_conversation(
             ctx,
             rc_room_id=rc_room_id,
@@ -304,6 +300,8 @@ class CareplannerService:
         expires_at = datetime.now(tz=timezone.utc) + timedelta(
             minutes=self._settings.jitsi_default_room_duration
         )
+        if self._jitsi.is_expired(expires_at):
+            raise api_error(400, "jwt_expired", "JWT Jitsi expirado imediatamente — checar JITSI_DEFAULT_ROOM_DURATION")
         await self._repo.create_video_session(
             ctx,
             CareVideoSessionCreate(
@@ -426,6 +424,18 @@ class CareplannerService:
                 }
                 for row in recent
             ],
+        }
+
+    async def get_video_session_info(self, ctx: TenantContext, correlation_id: UUID) -> dict:
+        session = await self._repo.get_video_session(ctx, correlation_id)
+        if not session:
+            raise api_error(404, "video_session_not_found", "Sessao de video nao encontrada")
+        return {
+            "room_name": session.room_name,
+            "clinico_url": self._jitsi.get_room_url(session.room_name, session.clinico_jwt),
+            "patient_url": self._jitsi.get_room_url(session.room_name, session.patient_jwt),
+            "expires_at": session.expires_at.isoformat(),
+            "expired": self._jitsi.is_expired(session.expires_at),
         }
 
 

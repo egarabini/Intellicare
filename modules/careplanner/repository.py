@@ -351,6 +351,28 @@ class CareplannerRepository:
             ).mappings().first()
         return CareVideoSessionRecord(**dict(row))
 
+    async def get_video_session(
+        self,
+        ctx: TenantContext,
+        correlation_id: UUID,
+    ) -> CareVideoSessionRecord | None:
+        async with tenant_session(ctx) as db:
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT *
+                        FROM care_video_sessions
+                        WHERE correlation_id = :correlation_id
+                        ORDER BY created_at DESC
+                        LIMIT 1
+                        """
+                    ),
+                    {"correlation_id": str(correlation_id)},
+                )
+            ).mappings().first()
+        return CareVideoSessionRecord(**dict(row)) if row else None
+
     async def list_tasks(
         self,
         ctx: TenantContext,

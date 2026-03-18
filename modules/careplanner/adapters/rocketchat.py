@@ -138,12 +138,16 @@ class RocketChatAdapter:
         )
 
     def verify_webhook_signature(self, payload: bytes, signature: str) -> bool:
+        if not signature:
+            return False
+        received = signature.removeprefix("sha256=")
+        if len(received) != 64:
+            return False
         expected = hmac.new(
             self._settings.rocketchat_webhook_token.encode(),
             payload,
             hashlib.sha256,
         ).hexdigest()
-        received = signature.removeprefix("sha256=")
         return hmac.compare_digest(expected, received)
 
     async def close(self) -> None:

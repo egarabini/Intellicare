@@ -16,9 +16,8 @@ from intellicare_core.db.migrations import provision_tenant_schema
 from intellicare_core.db.session import get_engine
 from modules.careplanner.api.routes import get_service, router as careplanner_router
 from modules.careplanner.config import CareplannerSettings
-from modules.careplanner.contracts import CareTaskCreate, TaskStatus
+from modules.careplanner.contracts import CareConversationUpsert, CareTaskCreate, TaskStatus
 from modules.careplanner.integrations import notify_clinico_replied, trigger_cuidado_encounter
-from modules.careplanner.metrics import careplanner_dispatch_total
 from modules.careplanner.migrations import CAREPLANNER_MIGRATIONS
 from modules.careplanner.repository import CareplannerRepository
 from modules.careplanner.services import CareplannerService
@@ -205,19 +204,18 @@ async def test_trigger_cuidado_encounter_publishes_redis_event():
 
 
 @pytest.mark.asyncio
-async def test_open_task_increments_dispatch_metric(service: CareplannerService, tenant_ctx: TenantContext, clean_phase_c_tables):
-    child = careplanner_dispatch_total.labels(tenant_slug=tenant_ctx.tenant_id, status="dispatched")
-    before = child._value.get()
-    await service.open_task(
-        tenant_ctx,
-        kestra_execution_id="exec-metric-001",
-        patient_ref="PAC-METRIC",
-        task_type="CONTATO_INICIAL",
-        template_code="BOAS_VINDAS",
-        template_variables={},
-    )
-    after = child._value.get()
-    assert after == before + 1
+async def test_open_task_enqueues_dispatch(service: CareplannerService, tenant_ctx: TenantContext, clean_phase_c_tables):
+    with patch("modules.careplanner.services.enqueue_dispatch", new_callable=AsyncMock) as mock_enqueue:
+        result = await service.open_task(
+            tenant_ctx,
+            kestra_execution_id="exec-metric-001",
+            patient_ref="PAC-METRIC",
+            task_type="CONTATO_INICIAL",
+            template_code="BOAS_VINDAS",
+            template_variables={},
+        )
+    mock_enqueue.assert_called_once()
+    assert result["status"] == "CREATED"
 
 
 @pytest.mark.asyncio
@@ -226,21 +224,25 @@ async def test_process_inbound_invokes_notify_integration(
     tenant_ctx: TenantContext,
     clean_phase_c_tables,
 ):
-    opened = await service.open_task(
+    repo = CareplannerRepository()
+    correlation_id = uuid4()
+    await repo.create_task(
         tenant_ctx,
-        kestra_execution_id="exec-inbound-001",
-        patient_ref="PAC-123",
-        task_type="CONTATO_INICIAL",
-        template_code="BOAS_VINDAS",
-        template_variables={},
+        CareTaskCreate(
+            correlation_id=correlation_id,
+            kestra_execution_id="exec-inbound-001",
+            patient_ref="PAC-123",
+            task_type="CONTATO_INICIAL",
+            status=TaskStatus.SENT,
+        ),
     )
-    correlation_id = UUID(opened["correlation_id"])
-    await service.process_message_sent(
+    await repo.upsert_conversation(
         tenant_ctx,
-        event_id="evt-msg-sent-c-001",
-        correlation_id=correlation_id,
-        rc_room_id="ROOM_ic_careplanner_test_PAC-123",
-        channel_conversation_id="85",
+        CareConversationUpsert(
+            correlation_id=correlation_id,
+            channel_conversation_id="85",
+            rc_room_id="ROOM_ic_careplanner_test_PAC-123",
+        ),
     )
 
     with patch("modules.careplanner.services.notify_clinico_replied", new_callable=AsyncMock) as mock_notify, \

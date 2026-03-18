@@ -1,6 +1,7 @@
 """Modulo CarePlanner — ponto de entrada compativel com BaseModule."""
 from __future__ import annotations
 
+import asyncio
 import logging
 
 from fastapi import APIRouter
@@ -11,12 +12,18 @@ from intellicare_core.db.session import get_engine
 
 from .api.routes import router as careplanner_router
 from .migrations import CAREPLANNER_MIGRATIONS
+from .workers.dispatcher import dispatcher_worker
+from .workers.expiry_worker import expiry_worker
 
 logger = logging.getLogger(__name__)
 
 
 class Module(BaseModule):
     """Modulo CarePlanner Conversacional (DEM-038)."""
+
+    def __init__(self) -> None:
+        self._dispatcher_task: asyncio.Task | None = None
+        self._expiry_task: asyncio.Task | None = None
 
     @property
     def name(self) -> str:
@@ -42,9 +49,18 @@ class Module(BaseModule):
                 except Exception:
                     logger.exception("Erro ao migrar careplanner para %s", schema)
             await conn.execute(text("SET search_path TO public"))
+        self._dispatcher_task = asyncio.create_task(dispatcher_worker())
+        self._expiry_task = asyncio.create_task(expiry_worker())
+        logger.info("CarePlanner workers agendados.")
 
     async def shutdown(self) -> None:
-        return None
+        for task in [self._dispatcher_task, self._expiry_task]:
+            if task and not task.done():
+                task.cancel()
+                try:
+                    await task
+                except asyncio.CancelledError:
+                    pass
 
     async def health(self) -> HealthResponse:
         return HealthResponse(

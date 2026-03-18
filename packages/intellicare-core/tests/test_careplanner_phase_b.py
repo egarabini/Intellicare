@@ -5,6 +5,7 @@ import hashlib
 import hmac
 import json
 from datetime import datetime, timezone
+from unittest.mock import AsyncMock, patch
 from uuid import UUID
 
 import pytest
@@ -32,6 +33,7 @@ from modules.careplanner.contracts import (
 from modules.careplanner.migrations import CAREPLANNER_MIGRATIONS
 from modules.careplanner.repository import CareplannerRepository
 from modules.careplanner.services import CareplannerService
+from modules.careplanner.workers.dispatcher import _do_dispatch
 
 
 class MockRocketChatAdapter:
@@ -270,19 +272,25 @@ async def test_full_flow_open_dispatch_sent_reply(
     tenant_ctx: TenantContext,
     clean_phase_b_tables,
 ):
-    opened = await service.open_task(
-        tenant_ctx,
-        kestra_execution_id="exec-001",
-        patient_ref="PAC-123",
-        task_type="CONTATO_INICIAL",
-        template_code="BOAS_VINDAS",
-        template_variables={"nome": "Maria"},
-        contact_phone="+5531999999999",
-    )
+    with patch("modules.careplanner.services.enqueue_dispatch", new_callable=AsyncMock) as mock_enqueue:
+        opened = await service.open_task(
+            tenant_ctx,
+            kestra_execution_id="exec-001",
+            patient_ref="PAC-123",
+            task_type="CONTATO_INICIAL",
+            template_code="BOAS_VINDAS",
+            template_variables={"nome": "Maria"},
+            contact_phone="+5531999999999",
+        )
+        mock_enqueue.assert_called_once()
+
     correlation_id = UUID(opened["correlation_id"])
+    with patch("modules.careplanner.services.build_careplanner_service", return_value=service):
+        await _do_dispatch({"correlation_id": str(correlation_id), "tenant_slug": tenant_ctx.tenant_id, "attempts": 0})
     task = await repo.get_task(tenant_ctx, correlation_id)
     assert task is not None
     assert task.status == TaskStatus.DISPATCHED
+    assert opened["status"] == TaskStatus.CREATED.value
 
     sent = await service.process_message_sent(
         tenant_ctx,
@@ -316,14 +324,15 @@ async def test_multi_tenant_isolation(
     tenant_ctx_b: TenantContext,
     clean_phase_b_tables,
 ):
-    opened = await service.open_task(
-        tenant_ctx,
-        kestra_execution_id="exec-002",
-        patient_ref="PAC-A",
-        task_type="FOLLOW_UP",
-        template_code="FOLLOWUP",
-        template_variables={},
-    )
+    with patch("modules.careplanner.services.enqueue_dispatch", new_callable=AsyncMock):
+        opened = await service.open_task(
+            tenant_ctx,
+            kestra_execution_id="exec-002",
+            patient_ref="PAC-A",
+            task_type="FOLLOW_UP",
+            template_code="FOLLOWUP",
+            template_variables={},
+        )
     correlation_id = UUID(opened["correlation_id"])
 
     assert await repo.get_task(tenant_ctx, correlation_id) is not None
@@ -400,15 +409,19 @@ async def test_close_task_archives_room(
     tenant_ctx: TenantContext,
     clean_phase_b_tables,
 ):
-    opened = await service.open_task(
-        tenant_ctx,
-        kestra_execution_id="exec-003",
-        patient_ref="PAC-CLOSE",
-        task_type="FOLLOW_UP",
-        template_code="FOLLOWUP",
-        template_variables={},
-    )
+    with patch("modules.careplanner.services.enqueue_dispatch", new_callable=AsyncMock) as mock_enqueue:
+        opened = await service.open_task(
+            tenant_ctx,
+            kestra_execution_id="exec-003",
+            patient_ref="PAC-CLOSE",
+            task_type="FOLLOW_UP",
+            template_code="FOLLOWUP",
+            template_variables={},
+        )
+        mock_enqueue.assert_called_once()
     correlation_id = UUID(opened["correlation_id"])
+    with patch("modules.careplanner.services.build_careplanner_service", return_value=service):
+        await _do_dispatch({"correlation_id": str(correlation_id), "tenant_slug": tenant_ctx.tenant_id, "attempts": 0})
     await service.process_message_sent(
         tenant_ctx,
         event_id="evt-msg-sent-002",

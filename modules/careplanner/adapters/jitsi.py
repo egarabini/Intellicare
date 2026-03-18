@@ -21,6 +21,8 @@ class JitsiAdapter:
         expires_in_minutes: int | None = None,
     ) -> str:
         duration = expires_in_minutes or self._settings.jitsi_default_room_duration
+        if duration <= 0:
+            raise ValueError("JITSI_DEFAULT_ROOM_DURATION deve ser maior que zero")
         now = datetime.now(tz=timezone.utc)
         payload = {
             "iss": self._settings.jitsi_app_id,
@@ -40,6 +42,10 @@ class JitsiAdapter:
     def get_room_url(self, room_name: str, jwt_token: str) -> str:
         base = self._settings.jitsi_base_url.rstrip("/")
         return f"{base}/{room_name}?jwt={jwt_token}"
+
+    @staticmethod
+    def is_expired(expires_at: datetime) -> bool:
+        return expires_at <= datetime.now(tz=timezone.utc)
 
     @staticmethod
     def build_room_name(tenant_slug: str, correlation_id_str: str) -> str:

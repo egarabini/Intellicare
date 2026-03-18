@@ -123,6 +123,15 @@ async def open_video_session(
     )
 
 
+@router.get("/consultations/video/{correlation_id}")
+async def get_video_session(
+    correlation_id: UUID,
+    ctx: TenantContext = Depends(get_current_tenant),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    return await service.get_video_session_info(ctx, correlation_id)
+
+
 @router.get("/tasks/{correlation_id}")
 async def get_task(
     correlation_id: UUID,
