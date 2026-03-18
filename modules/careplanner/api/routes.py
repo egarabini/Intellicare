@@ -184,6 +184,32 @@ async def whatsapp_webhook(
     return {"status": "ok"}
 
 
+@router.post("/webhook/sms/{token}", status_code=status.HTTP_200_OK)
+async def sms_webhook(
+    token: str,
+    request: Request,
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    """Recebe respostas SMS via Jasmin MO webhook."""
+    from ..config import get_careplanner_settings
+    from ..adapters.sms import SMSAdapter
+    settings = get_careplanner_settings()
+    sms = SMSAdapter(settings)
+    if not sms.verify_webhook_secret(token):
+        raise api_error(401, "unauthorized", "Token invalido")
+
+    body = await request.json()
+    phone_raw = body.get("from", "")
+    text = body.get("content", "")
+
+    if not phone_raw or not text:
+        return {"status": "ignored", "reason": "sem phone ou texto"}
+
+    phone_e164 = f"+{phone_raw.lstrip('+')}"
+    await service.handle_whatsapp_inbound(phone=phone_e164.lstrip("+"), text=text)
+    return {"status": "ok"}
+
+
 @router.post("/consultations/video", status_code=status.HTTP_201_CREATED)
 async def open_video_session(
     body: VideoRequest,

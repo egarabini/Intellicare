@@ -40,7 +40,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     validate: {
       patient_ref: (v) => (!v.trim() ? 'Referência do paciente obrigatória' : null),
       task_type: (v) => (!v ? 'Tipo de jornada obrigatório' : null),
-      contact_phone_e164: (v, values) => (values.channel === 'whatsapp' && !v.trim() ? 'Telefone obrigatório para WhatsApp' : null),
+      contact_phone_e164: (v, values) => ((values.channel === 'whatsapp' || values.channel === 'sms') && !v.trim() ? 'Telefone obrigatório para WhatsApp/SMS' : null),
       clinico_ref: (v, values) =>
         values.include_video && !v.trim()
           ? 'Referência do clínico obrigatória para videoconsulta'
@@ -60,6 +60,8 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     let flow = 'careplanner_jornada_basica';
     if (values.channel === 'whatsapp') {
       flow = 'careplanner_jornada_whatsapp';
+    } else if (values.channel === 'sms') {
+      flow = 'careplanner_jornada_sms';
     } else if (values.include_video) {
       flow = 'careplanner_jornada_video';
     }
@@ -98,7 +100,8 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
             label="Canal de Comunicação"
             data={[
               { value: 'rocketchat', label: 'Rocket.Chat Público' },
-              { value: 'whatsapp', label: 'WhatsApp via Evolution' }
+              { value: 'whatsapp', label: 'WhatsApp via Evolution' },
+              { value: 'sms', label: 'SMS via Jasmin' },
             ]}
             required
             data-testid="select-channel"
@@ -113,12 +116,14 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
             data-testid="select-template-code"
             {...form.getInputProps('template_code')}
           />
-          <TextInput
-            label="Telefone (E.164)"
-            placeholder="+5511999999999"
-            required={form.values.channel === 'whatsapp'}
-            {...form.getInputProps('contact_phone_e164')}
-          />
+          {(form.values.channel === 'whatsapp' || form.values.channel === 'sms') && (
+            <TextInput
+              label="Telefone (E.164)"
+              placeholder="+5511999999999"
+              required
+              {...form.getInputProps('contact_phone_e164')}
+            />
+          )}
           <Switch
             label="Incluir videoconsulta após resposta"
             data-testid="switch-video"

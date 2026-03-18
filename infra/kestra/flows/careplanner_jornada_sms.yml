@@ -1,0 +1,52 @@
+id: careplanner_jornada_sms
+namespace: intellicare.careplanner
+description: "Jornada CarePlanner via SMS"
+
+inputs:
+  - id: tenant_slug
+    type: STRING
+  - id: patient_ref
+    type: STRING
+  - id: contact_phone_e164
+    type: STRING
+  - id: task_type
+    type: STRING
+    defaults: CHECK_IN
+  - id: template_code
+    type: STRING
+    defaults: check_in_sms
+
+variables:
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  - id: open_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "{{ inputs.template_code }}",
+        "channel": "sms",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "kestra_execution_id": "{{ execution.id }}"
+      }
+
+  - id: wait_for_reply
+    type: io.kestra.plugin.core.flow.Pause
+    delay: PT72H
+    onResume:
+      - id: patient_reply
+        type: STRING
+
+  - id: close_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/{{ outputs.open_task.body.correlation_id }}/close"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"

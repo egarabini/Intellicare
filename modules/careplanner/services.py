@@ -14,6 +14,7 @@ from intellicare_core.db.session import get_engine, tenant_session
 from .adapters.jitsi import JitsiAdapter
 from .adapters.kestra import KestraAdapter
 from .adapters.rocketchat import RocketChatAdapter
+from .adapters.sms import SMSAdapter
 from .adapters.whatsapp import WhatsAppAdapter
 from .config import CareplannerSettings, get_careplanner_settings
 from .contracts import (
@@ -51,6 +52,7 @@ class CareplannerService:
         jitsi: JitsiAdapter,
         kestra: KestraAdapter,
         whatsapp: WhatsAppAdapter,
+        sms: SMSAdapter,
         settings: CareplannerSettings | None = None,
     ) -> None:
         self._repo = repo
@@ -58,6 +60,7 @@ class CareplannerService:
         self._jitsi = jitsi
         self._kestra = kestra
         self._whatsapp = whatsapp
+        self._sms = sms
         self._settings = settings or get_careplanner_settings()
 
     async def _send_to_channel(
@@ -71,6 +74,10 @@ class CareplannerService:
             if not phone_e164:
                 raise ValueError("phone_e164 obrigatorio para canal WHATSAPP")
             return await self._whatsapp.send_message(phone_e164, text)
+        elif channel == Channel.SMS:
+            if not phone_e164:
+                raise ValueError("phone_e164 obrigatorio para canal SMS")
+            return await self._sms.send_message(phone_e164, text)
         else:
             if not rc_room_id:
                 raise ValueError("rc_room_id obrigatorio para canal ROCKETCHAT")
@@ -606,6 +613,26 @@ class CareplannerService:
                 channel=Channel.WHATSAPP,
                 content="Sua teleconsulta está confirmada para {{data_hora}}. Link: {{link_video}}",
             ),
+            CareTemplateCreate(
+                template_code="boas_vindas_sms",
+                channel=Channel.SMS,
+                content="Ola {{nome_paciente}}! Bem-vindo ao IntelliCare. Responda a esta msg.",
+            ),
+            CareTemplateCreate(
+                template_code="check_in_sms",
+                channel=Channel.SMS,
+                content="{{nome_paciente}}, como se sente hoje? Responda 1-10. IntelliCare",
+            ),
+            CareTemplateCreate(
+                template_code="lembrete_sms",
+                channel=Channel.SMS,
+                content="Lembrete: {{medicamento}} agora. IntelliCare",
+            ),
+            CareTemplateCreate(
+                template_code="confirmacao_sms",
+                channel=Channel.SMS,
+                content="Consulta confirmada: {{data_hora}}. Link: {{link_video}} IntelliCare",
+            ),
         ]
         for template in defaults:
             try:
@@ -621,4 +648,5 @@ def build_careplanner_service() -> CareplannerService:
     jitsi = JitsiAdapter(settings)
     kestra = KestraAdapter(settings)
     whatsapp = WhatsAppAdapter(settings)
-    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, whatsapp=whatsapp, settings=settings)
+    sms = SMSAdapter(settings)
+    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, whatsapp=whatsapp, sms=sms, settings=settings)

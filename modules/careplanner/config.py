@@ -42,6 +42,13 @@ class CareplannerSettings(BaseSettings):
     evolution_webhook_secret: str = ""
     evolution_max_retries: int = 3
 
+    # Jasmin SMS Gateway
+    jasmin_url: str = "http://jasmin:1401"
+    jasmin_username: str = "admin"
+    jasmin_password: str = ""
+    jasmin_sender_id: str = "INTELLICARE"
+    jasmin_webhook_secret: str = ""
+
 
 @lru_cache
 def get_careplanner_settings() -> CareplannerSettings:
