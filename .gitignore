@@ -68,8 +68,17 @@ tests/e2e/report/
 docker_build.txt
 pytest_errors.txt
 pytest_output.txt
+pytest_log.txt
 packages/intellicare-core/pytest_output.txt
 test-results/
+
+# Arquivos de debug / smoke test (raiz do repo — nunca commitar)
+token.json
+swagger.yml
+trigger.py
+put_kv.py
+*_logs.txt
+*_logs2.txt
 
 # Let's Encrypt — nunca commitar (contém chaves privadas dos certificados)
 infra/letsencrypt/

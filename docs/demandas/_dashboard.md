@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: fef17db
+> Atualizado: 2026-03-18 | Branch: main | Último commit: 415643e
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -36,6 +36,7 @@
 | DEM-038 Fase B | CarePlanner — adapters RC/Jitsi/Kestra + services + routes + docker-compose (Kestra/RC/Jitsi/Mongo) + 10 testes | `a646bc2` |
 | DEM-038 Fase C | CarePlanner — metrics.py (6 métricas), integrations.py (notify+trigger), dashboard/stats, CareplannerDashboard.tsx + 7 testes | `c818cc1` |
 | DEM-038 Fase D | CarePlanner — dispatcher Redis+retry+dead-letter+FAILED, expiry_worker (DISPATCHED>24h/SENT>72h→EXPIRED), security.py (mask_phone/content/jwt), hardening HMAC/Jitsi, Playwright 4 E2E + 10 testes Python | `fef17db` |
+| DEM-039 | Kestra Workflow CarePlanner — flows YAML (jornada_basica+video), seed_flows.py (POST Kestra 0.20), trigger_flow(), POST /journeys/trigger, smoke test JWT end-to-end | `415643e` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -51,7 +52,7 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| — | Fila vazia | — | — |
+| — | Fila vazia — aguardando próxima spec | — | — |
 
 ---
 
@@ -59,14 +60,14 @@
 
 | DEM | Título | Spec |
 |-----|--------|------|
-| DEM-039 | Kestra Workflow CarePlanner — flows YAML, seed, trigger_flow(), POST /journeys/trigger | ✅ pronta em `docs/demandas/DEM-039_KESTRA_CAREPLANNER/` |
+| — | Fila vazia | — |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-039 — spec pronta, pode iniciar
+DEV-A      → livre — aguardando próxima spec (DEM-040 candidata)
 DEV-B      → livre
 DEV-C      → livre
 Eduardo    → Deploy staging (DEM-038 completa após Fase D):
