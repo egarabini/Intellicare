@@ -55,6 +55,21 @@ class TriggerJourneyRequest(BaseModel):
     clinico_ref: str | None = None
 
 
+class TemplateCreateRequest(BaseModel):
+    template_code: str = Field(..., pattern=r"^[a-z0-9_]{2,64}$",
+                               description="snake_case, 2-64 chars")
+    channel: str = "rocketchat"
+    content: str = Field(..., min_length=1, max_length=2000)
+    variables: list[str] = Field(default_factory=list)
+    active: bool = True
+
+
+class TemplateUpdateRequest(BaseModel):
+    content: str = Field(..., min_length=1, max_length=2000)
+    variables: list[str] = Field(default_factory=list)
+    active: bool = True
+
+
 @lru_cache(maxsize=1)
 def get_service() -> CareplannerService:
     return build_careplanner_service()
@@ -192,3 +207,51 @@ async def trigger_journey(
     if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
         raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
     return await service.trigger_journey(ctx, body)
+
+
+@router.get("/templates")
+async def list_templates_route(
+    active: bool | None = None,
+    ctx: TenantContext = Depends(get_current_tenant),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    items = await service.list_templates(ctx, active_only=bool(active))
+    return {"items": items}
+
+
+@router.post("/templates", status_code=status.HTTP_201_CREATED)
+async def create_template(
+    body: TemplateCreateRequest,
+    ctx: TenantContext = Depends(require_role("GESTOR")),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    from ..contracts import CareTemplateCreate, Channel
+    payload = CareTemplateCreate(
+        template_code=body.template_code,
+        channel=Channel(body.channel),
+        content=body.content,
+        variables=body.variables,
+        active=body.active,
+    )
+    return await service.create_template_record(ctx, payload)
+
+
+@router.put("/templates/{template_id}")
+async def update_template(
+    template_id: UUID,
+    body: TemplateUpdateRequest,
+    ctx: TenantContext = Depends(require_role("GESTOR")),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    return await service.update_template_record(
+        ctx, template_id, body.content, body.variables, body.active
+    )
+
+
+@router.patch("/templates/{template_id}/toggle", status_code=status.HTTP_200_OK)
+async def toggle_template(
+    template_id: UUID,
+    ctx: TenantContext = Depends(require_role("GESTOR")),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    return await service.toggle_template(ctx, template_id)

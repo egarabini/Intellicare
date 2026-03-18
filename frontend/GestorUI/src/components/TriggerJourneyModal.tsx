@@ -1,6 +1,6 @@
-import { Button, Group, Modal, NativeSelect, Stack, Switch, TextInput } from '@mantine/core';
+import { Button, Group, Modal, NativeSelect, Stack, Switch, TextInput, Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import type { TriggerJourneyPayload } from '../hooks/useGestor';
+import { useTemplates, type TriggerJourneyPayload } from '../hooks/useGestor';
 
 interface Props {
   opened: boolean;
@@ -17,6 +17,12 @@ const TASK_TYPES = [
 ];
 
 export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Props) {
+  const { data: templates } = useTemplates(true);
+  const templateOptions = (templates ?? []).map((t) => ({
+    value: t.template_code,
+    label: `${t.template_code} — ${t.content.slice(0, 40)}${t.content.length > 40 ? '…' : ''}`,
+  }));
+
   const form = useForm<{
     patient_ref: string;
     task_type: string;
@@ -73,9 +79,13 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
             data-testid="select-task-type"
             {...form.getInputProps('task_type')}
           />
-          <TextInput
-            label="Código do Template"
-            placeholder="ex. boas_vindas (opcional)"
+          <Select
+            label="Template de Mensagem"
+            placeholder="Selecione um template (opcional)"
+            data={templateOptions}
+            clearable
+            searchable
+            data-testid="select-template-code"
             {...form.getInputProps('template_code')}
           />
           <TextInput

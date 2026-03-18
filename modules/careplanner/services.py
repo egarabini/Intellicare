@@ -472,6 +472,85 @@ class CareplannerService:
             "status": "CREATED",
         }
 
+    async def list_templates(
+        self, ctx: TenantContext, active_only: bool = False
+    ) -> list[dict]:
+        records = await self._repo.list_templates(ctx, active_only=active_only)
+        return [r.model_dump(mode="json") for r in records]
+
+    async def create_template_record(
+        self, ctx: TenantContext, payload: CareTemplateCreate
+    ) -> dict:
+        from sqlalchemy.exc import IntegrityError
+        try:
+            record = await self._repo.create_template(ctx, payload)
+        except IntegrityError:
+            raise api_error(409, "template_already_exists",
+                            f"Template '{payload.template_code}' já existe neste canal e tenant")
+        return record.model_dump(mode="json")
+
+    async def update_template_record(
+        self,
+        ctx: TenantContext,
+        template_id: UUID,
+        content: str,
+        variables: list[str],
+        active: bool,
+    ) -> dict:
+        record = await self._repo.update_template(ctx, template_id, content, variables, active)
+        if not record:
+            raise api_error(404, "template_not_found", "Template não encontrado")
+        return record.model_dump(mode="json")
+
+    async def toggle_template(self, ctx: TenantContext, template_id: UUID) -> dict:
+        record = await self._repo.get_template(ctx, template_id)
+        if not record:
+            raise api_error(404, "template_not_found", "Template não encontrado")
+        updated = await self._repo.update_template(
+            ctx, template_id,
+            content=record.content,
+            variables=record.variables,
+            active=not record.active,
+        )
+        return {"id": str(template_id), "active": updated.active if updated else not record.active}
+
+    async def seed_default_templates(self, ctx: TenantContext) -> None:
+        """Cria templates padrão se ainda não existirem no tenant."""
+        from .contracts import CareTemplateCreate, Channel
+        defaults = [
+            CareTemplateCreate(
+                template_code="boas_vindas",
+                content="Olá! Sou o assistente do IntelliCare. "
+                        "Estamos iniciando seu acompanhamento. "
+                        "Você confirma que está disponível para conversar?",
+                variables=[],
+            ),
+            CareTemplateCreate(
+                template_code="check_in",
+                content="Olá! Como você está se sentindo hoje? "
+                        "Está conseguindo seguir o plano de cuidados?",
+                variables=[],
+            ),
+            CareTemplateCreate(
+                template_code="lembrete_medicacao",
+                content="Lembrete: é hora de tomar seu medicamento. "
+                        "Você já tomou hoje?",
+                variables=[],
+            ),
+            CareTemplateCreate(
+                template_code="teleconsulta_confirmacao",
+                content="Sua teleconsulta está confirmada. "
+                        "Em breve você receberá o link para a videochamada. "
+                        "Responda SIM para confirmar sua presença.",
+                variables=[],
+            ),
+        ]
+        for template in defaults:
+            try:
+                await self._repo.create_template(ctx, template)
+            except Exception:
+                pass  # ON CONFLICT DO NOTHING equivalente
+
 
 def build_careplanner_service() -> CareplannerService:
     settings = get_careplanner_settings()

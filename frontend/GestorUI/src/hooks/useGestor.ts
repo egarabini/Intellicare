@@ -393,3 +393,69 @@ export function useCloseTask(correlationId: string) {
     },
   });
 }
+
+// ── Templates ─────────────────────────────────────────────────────────────
+
+export interface CareTemplate {
+  id: string;
+  template_code: string;
+  channel: string;
+  content: string;
+  variables: string[];
+  active: boolean;
+  tenant_slug: string;
+  created_at: string;
+  updated_at: string | null;
+}
+
+export interface CareTemplatePayload {
+  template_code: string;
+  channel?: string;
+  content: string;
+  variables: string[];
+  active: boolean;
+}
+
+export function useTemplates(activeOnly = false) {
+  return useQuery({
+    queryKey: ['careplanner_templates', activeOnly],
+    queryFn: async () => {
+      const qs = activeOnly ? '?active=true' : '';
+      const { data } = await api.get<{ items: CareTemplate[] }>(`/careplanner/templates${qs}`);
+      return data.items;
+    },
+  });
+}
+
+export function useCreateTemplate() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (payload: CareTemplatePayload) => {
+      const { data } = await api.post<CareTemplate>('/careplanner/templates', payload);
+      return data;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['careplanner_templates'] }),
+  });
+}
+
+export function useUpdateTemplate() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async ({ id, payload }: { id: string; payload: Omit<CareTemplatePayload, 'template_code' | 'channel'> }) => {
+      const { data } = await api.put<CareTemplate>(`/careplanner/templates/${id}`, payload);
+      return data;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['careplanner_templates'] }),
+  });
+}
+
+export function useToggleTemplate() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { data } = await api.patch<{ id: string; active: boolean }>(`/careplanner/templates/${id}/toggle`);
+      return data;
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['careplanner_templates'] }),
+  });
+}

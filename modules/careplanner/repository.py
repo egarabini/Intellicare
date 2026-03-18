@@ -282,14 +282,61 @@ class CareplannerRepository:
             ).mappings().first()
         return CareTemplateRecord(**dict(row))
 
-    async def list_templates(self, ctx: TenantContext) -> list[CareTemplateRecord]:
+    async def list_templates(
+        self, ctx: TenantContext, active_only: bool = False
+    ) -> list[CareTemplateRecord]:
         async with tenant_session(ctx) as db:
-            rows = (
-                await db.execute(
-                    text("SELECT * FROM care_templates ORDER BY created_at DESC")
-                )
-            ).mappings().all()
+            sql = "SELECT * FROM care_templates"
+            if active_only:
+                sql += " WHERE active = TRUE"
+            sql += " ORDER BY template_code ASC"
+            rows = (await db.execute(text(sql))).mappings().all()
         return [CareTemplateRecord(**dict(row)) for row in rows]
+
+    async def get_template(
+        self, ctx: TenantContext, template_id: UUID
+    ) -> CareTemplateRecord | None:
+        async with tenant_session(ctx) as db:
+            row = (
+                await db.execute(
+                    text("SELECT * FROM care_templates WHERE id = :id"),
+                    {"id": str(template_id)},
+                )
+            ).mappings().first()
+        return CareTemplateRecord(**dict(row)) if row else None
+
+    async def update_template(
+        self,
+        ctx: TenantContext,
+        template_id: UUID,
+        content: str,
+        variables: list[str],
+        active: bool,
+    ) -> CareTemplateRecord | None:
+        async with tenant_session(ctx) as db:
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        UPDATE care_templates
+                        SET content   = :content,
+                            variables = CAST(:variables AS jsonb),
+                            active    = :active,
+                            updated_at = NOW()
+                        WHERE id = :id AND tenant_slug = :tenant_slug
+                        RETURNING *
+                        """
+                    ),
+                    {
+                        "content": content,
+                        "variables": json.dumps(variables),
+                        "active": active,
+                        "id": str(template_id),
+                        "tenant_slug": ctx.tenant_id,
+                    },
+                )
+            ).mappings().first()
+        return CareTemplateRecord(**dict(row)) if row else None
 
     async def get_template_by_code(
         self,

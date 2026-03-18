@@ -49,6 +49,15 @@ class Module(BaseModule):
                 except Exception:
                     logger.exception("Erro ao migrar careplanner para %s", schema)
             await conn.execute(text("SET search_path TO public"))
+            
+        from .services import build_careplanner_service
+        from intellicare_core.contracts.base import TenantContext
+        
+        svc = build_careplanner_service()
+        for slug in tenants:
+            ctx = TenantContext.from_slug(slug=slug, user_id="startup-seed")
+            await svc.seed_default_templates(ctx)
+
         self._dispatcher_task = asyncio.create_task(dispatcher_worker())
         self._expiry_task = asyncio.create_task(expiry_worker())
         logger.info("CarePlanner workers agendados.")
