@@ -1,5 +1,7 @@
 # IntelliCare V3
 
+[![CI](https://github.com/egarabini/Intellicare/actions/workflows/ci.yml/badge.svg)](https://github.com/egarabini/Intellicare/actions/workflows/ci.yml)
+
 > Plataforma modular de saúde — 1 serviço, módulos dinâmicos, RAG/SLM/pgvector.
 
 ## Arquitetura

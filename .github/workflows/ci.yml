@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-backend:
+    name: pytest - Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar dependencias de sistema (weasyprint)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libpango-1.0-0 libcairo2 libgdk-pixbuf-2.0-0 \
+            libffi-dev shared-mime-info
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias Python
+        run: |
+          pip install -e "packages/intellicare-core[dev]"
+
+      - name: Rodar pytest
+        run: |
+          pytest packages/intellicare-core/tests/ -q --tb=short \
+            --co -q 2>/dev/null | tail -5 || true
+          pytest packages/intellicare-core/tests/ -q --tb=short
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+  build-frontend-gestor:
+    name: Build - GestorUI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/GestorUI/package-lock.json
+
+      - name: Instalar dependencias
+        working-directory: frontend/GestorUI
+        run: npm install
+
+      - name: Build
+        working-directory: frontend/GestorUI
+        run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
+
+  build-frontend-clinico:
+    name: Build - ClinicoUI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/ClinicoUI/package-lock.json
+
+      - name: Instalar dependencias
+        working-directory: frontend/ClinicoUI
+        run: npm install
+
+      - name: Build
+        working-directory: frontend/ClinicoUI
+        run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
