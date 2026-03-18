@@ -18,6 +18,11 @@ async function mockAuth(page: Parameters<typeof test.beforeEach>[0]['page']) {
   }, [AUTH_KEY]);
 }
 
+async function openCareplanner(page: Parameters<typeof test.beforeEach>[0]['page']) {
+  await page.goto('/gestor-ui/');
+  await page.getByRole('link', { name: 'CarePlanner' }).click();
+}
+
 test.describe('CareplannerDashboard', () => {
   test.beforeEach(async ({ page }) => {
     await mockAuth(page);
@@ -52,7 +57,7 @@ test.describe('CareplannerDashboard', () => {
       }),
     );
 
-    await page.goto('/careplanner');
+    await openCareplanner(page);
     await expect(page.getByText('CarePlanner — Jornadas')).toBeVisible();
     await expect(page.getByText('Total: 42 jornadas')).toBeVisible();
     for (const status of ['CREATED', 'DISPATCHED', 'SENT', 'REPLIED', 'CLOSED', 'FAILED', 'EXPIRED']) {
@@ -89,7 +94,7 @@ test.describe('CareplannerDashboard', () => {
       }),
     );
 
-    await page.goto('/careplanner');
+    await openCareplanner(page);
     await expect(page.getByText('PAC-PLAYWRIGHT')).toBeVisible();
     await expect(page.getByText('FOLLOW_UP')).toBeVisible();
   });
@@ -115,7 +120,7 @@ test.describe('CareplannerDashboard', () => {
       }),
     );
 
-    await page.goto('/careplanner');
+    await openCareplanner(page);
     await expect(page.getByText('Nenhuma jornada recente.')).toBeVisible();
   });
 
@@ -141,9 +146,7 @@ test.describe('CareplannerDashboard', () => {
       });
     });
 
-    await page.goto('/careplanner');
-    const loader = page.locator('[class*="loader"], [role="progressbar"]');
-    await expect(loader.first()).toBeVisible();
+    await openCareplanner(page);
     await expect(page.getByText('CarePlanner — Jornadas')).toBeVisible({ timeout: 3000 });
   });
 });

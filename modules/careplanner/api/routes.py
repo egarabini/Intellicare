@@ -45,6 +45,16 @@ class VideoRequest(BaseModel):
     clinico_ref: str
 
 
+class TriggerJourneyRequest(BaseModel):
+    patient_ref: str
+    task_type: str
+    template_code: str = ""
+    template_variables: dict = Field(default_factory=dict)
+    contact_phone_e164: str = ""
+    flow_id: str = "careplanner_jornada_basica"
+    clinico_ref: str | None = None
+
+
 @lru_cache(maxsize=1)
 def get_service() -> CareplannerService:
     return build_careplanner_service()
@@ -166,3 +176,19 @@ async def close_task(
     service: CareplannerService = Depends(get_service),
 ) -> dict:
     return await service.close_task(ctx, correlation_id)
+
+
+@router.post("/journeys/trigger", status_code=status.HTTP_202_ACCEPTED)
+async def trigger_journey(
+    body: TriggerJourneyRequest,
+    ctx: TenantContext = Depends(get_current_tenant),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    """Inicia uma nova jornada CarePlanner via Kestra.
+
+    Requer role GESTOR ou CLINICO.
+    Retorna o execution_id do Kestra e o correlation_id gerado pelo IntelliCare.
+    """
+    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    return await service.trigger_journey(ctx, body)

@@ -1,0 +1,112 @@
+id: careplanner_jornada_basica
+namespace: intellicare.careplanner
+description: |
+  Jornada conversacional básica do IntelliCare CarePlanner.
+  Abre uma task no IntelliCare, aguarda a resposta do paciente via
+  Rocket.Chat (o IntelliCare resume esta execution quando REPLIED),
+  e fecha a jornada.
+
+inputs:
+  - id: patient_ref
+    type: STRING
+    description: "Keycloak ID do paciente (sub do JWT Keycloak)"
+  - id: task_type
+    type: STRING
+    description: "Tipo de jornada: ex. ADESAO, MONITORAMENTO, CHECK_IN"
+  - id: template_code
+    type: STRING
+    description: "Código do template de mensagem a enviar"
+    defaults: ""
+  - id: template_variables
+    type: JSON
+    description: "Variáveis para substituição no template"
+    defaults: "{}"
+  - id: contact_phone_e164
+    type: STRING
+    description: "Telefone do paciente em formato E.164"
+    defaults: ""
+  - id: tenant_slug
+    type: STRING
+    description: "Slug do tenant (ex. alfa, beta)"
+  - id: intellicare_base_url
+    type: STRING
+    description: "URL base do IntelliCare (interno Docker)"
+    defaults: "http://intellicare-service:8000"
+
+variables:
+  # JWT do tenant armazenado no KV Store do Kestra.
+  # Chave: intellicare_jwt_{{ inputs.tenant_slug }}
+  # Provisionado manualmente ou via script de seed por tenant.
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  # ── 1. Abre a task no IntelliCare ──────────────────────────────────────────
+  - id: open_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "{{ inputs.intellicare_base_url }}/careplanner/tasks/open"
+    method: POST
+    contentType: application/json
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+    body: |
+      {
+        "kestra_execution_id": "{{ execution.id }}",
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "contact": {
+          "phone_e164": "{{ inputs.contact_phone_e164 }}",
+          "role": "PACIENTE"
+        },
+        "message": {
+          "template_code": "{{ inputs.template_code }}",
+          "variables": {{ inputs.template_variables }}
+        }
+      }
+    # IntelliCare retorna 202. Kestra não considera 202 como erro.
+    allowFailed: false
+
+  # ── 2. Aguarda resposta do paciente ────────────────────────────────────────
+  # O IntelliCare chama POST /api/v1/executions/{execution.id}/resume
+  # quando o evento REPLIED chega (process_inbound → kestra.resume_execution).
+  # timeout = SLA máximo SENT→EXPIRED (72h). Se estourar, o flow falha
+  # e o expiry_worker já terá marcado a task como EXPIRED no IntelliCare.
+  - id: wait_for_reply
+    type: io.kestra.plugin.core.flow.Pause
+    timeout: PT72H
+    onResume:
+      - id: patient_reply
+        type: STRING
+        required: true
+        description: "Conteúdo da resposta do paciente"
+
+  # ── 3. Fecha a jornada ─────────────────────────────────────────────────────
+  - id: close_task
+    type: io.kestra.plugin.core.http.Request
+    uri: >-
+      {{ inputs.intellicare_base_url }}/careplanner/tasks/
+      {{- outputs.open_task.body | jq('.correlation_id') | trim -}}
+      /close
+    method: POST
+    contentType: application/json
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+    body: "{}"
+
+outputs:
+  - id: correlation_id
+    type: STRING
+    value: "{{ outputs.open_task.body | jq('.correlation_id') }}"
+  - id: patient_reply
+    type: STRING
+    value: "{{ outputs.wait_for_reply.onResume.patient_reply }}"
+  - id: final_status
+    type: STRING
+    value: "{{ outputs.close_task.body | jq('.status') }}"
+
+errors:
+  - id: handle_timeout
+    type: io.kestra.plugin.core.log.Log
+    level: WARN
+    message: |
+      Jornada {{ outputs.open_task.body | jq('.correlation_id') }} expirou
+      por timeout (72h sem resposta). IntelliCare expiry_worker já tratou o EXPIRED.

@@ -50,3 +50,34 @@ class KestraAdapter:
                 return response.status_code == 200
         except httpx.HTTPError:
             return False
+
+    async def trigger_flow(
+        self,
+        namespace: str,
+        flow_id: str,
+        inputs: dict | None = None,
+    ) -> dict:
+        """Dispara uma nova execution de um flow Kestra.
+
+        Args:
+            namespace: Namespace Kestra, ex. 'intellicare.careplanner'.
+            flow_id: ID do flow, ex. 'careplanner_jornada_basica'.
+            inputs: Dicionário de inputs conforme declarados no flow YAML.
+
+        Returns:
+            Objeto execution do Kestra com campos: id, state, namespace, flowId.
+
+        Raises:
+            httpx.HTTPStatusError: Em caso de 4xx/5xx do Kestra.
+        """
+        async with httpx.AsyncClient(
+            base_url=self._settings.kestra_url.rstrip("/"),
+            timeout=self._settings.kestra_timeout,
+        ) as client:
+            response = await client.post(
+                f"/api/v1/executions/{namespace}/{flow_id}",
+                json=inputs or {},
+                headers=self._headers(),
+            )
+            response.raise_for_status()
+            return response.json()

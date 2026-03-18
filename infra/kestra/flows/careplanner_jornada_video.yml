@@ -1,0 +1,110 @@
+id: careplanner_jornada_video
+namespace: intellicare.careplanner
+description: |
+  Jornada conversacional com videoconsulta do IntelliCare CarePlanner.
+  Após a resposta do paciente, abre automaticamente uma sessão Jitsi
+  e envia o link de videoconsulta via Rocket.Chat antes de fechar.
+
+inputs:
+  - id: patient_ref
+    type: STRING
+  - id: task_type
+    type: STRING
+    defaults: "TELECONSULTA"
+  - id: template_code
+    type: STRING
+    defaults: ""
+  - id: template_variables
+    type: JSON
+    defaults: "{}"
+  - id: contact_phone_e164
+    type: STRING
+    defaults: ""
+  - id: clinico_ref
+    type: STRING
+    description: "Keycloak ID do clínico que conduzirá a videoconsulta"
+  - id: tenant_slug
+    type: STRING
+  - id: intellicare_base_url
+    type: STRING
+    defaults: "http://intellicare-service:8000"
+
+variables:
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  - id: open_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "{{ inputs.intellicare_base_url }}/careplanner/tasks/open"
+    method: POST
+    contentType: application/json
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+    body: |
+      {
+        "kestra_execution_id": "{{ execution.id }}",
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "contact": {
+          "phone_e164": "{{ inputs.contact_phone_e164 }}",
+          "role": "PACIENTE"
+        },
+        "message": {
+          "template_code": "{{ inputs.template_code }}",
+          "variables": {{ inputs.template_variables }}
+        }
+      }
+
+  - id: wait_for_reply
+    type: io.kestra.plugin.core.flow.Pause
+    timeout: PT72H
+    onResume:
+      - id: patient_reply
+        type: STRING
+        required: true
+
+  # ── Abre sessão Jitsi e envia link ao paciente via Rocket.Chat ─────────────
+  - id: open_video_session
+    type: io.kestra.plugin.core.http.Request
+    uri: "{{ inputs.intellicare_base_url }}/careplanner/consultations/video"
+    method: POST
+    contentType: application/json
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+    body: |
+      {
+        "correlation_id": "{{ outputs.open_task.body | jq('.correlation_id') | trim }}",
+        "clinico_ref": "{{ inputs.clinico_ref }}"
+      }
+
+  - id: close_task
+    type: io.kestra.plugin.core.http.Request
+    uri: >-
+      {{ inputs.intellicare_base_url }}/careplanner/tasks/
+      {{- outputs.open_task.body | jq('.correlation_id') | trim -}}
+      /close
+    method: POST
+    contentType: application/json
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+    body: "{}"
+
+outputs:
+  - id: correlation_id
+    type: STRING
+    value: "{{ outputs.open_task.body | jq('.correlation_id') }}"
+  - id: patient_reply
+    type: STRING
+    value: "{{ outputs.wait_for_reply.onResume.patient_reply }}"
+  - id: patient_video_url
+    type: STRING
+    value: "{{ outputs.open_video_session.body | jq('.patient_url') }}"
+  - id: clinico_video_url
+    type: STRING
+    value: "{{ outputs.open_video_session.body | jq('.clinico_url') }}"
+
+errors:
+  - id: handle_timeout
+    type: io.kestra.plugin.core.log.Log
+    level: WARN
+    message: "Jornada de vídeo expirou sem resposta do paciente (72h)."

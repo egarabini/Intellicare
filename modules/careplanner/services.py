@@ -438,6 +438,40 @@ class CareplannerService:
             "expired": self._jitsi.is_expired(session.expires_at),
         }
 
+    async def trigger_journey(
+        self,
+        ctx: TenantContext,
+        body: "TriggerJourneyRequest",
+    ) -> dict:
+        """Dispara um flow Kestra que chamara de volta /tasks/open."""
+        inputs: dict = {
+            "patient_ref": body.patient_ref,
+            "task_type": body.task_type,
+            "template_code": body.template_code,
+            "template_variables": body.template_variables,
+            "contact_phone_e164": body.contact_phone_e164,
+            "tenant_slug": ctx.tenant_id,
+        }
+        if body.clinico_ref:
+            inputs["clinico_ref"] = body.clinico_ref
+
+        try:
+            execution = await self._kestra.trigger_flow(
+                namespace="intellicare.careplanner",
+                flow_id=body.flow_id,
+                inputs=inputs,
+            )
+        except Exception as exc:
+            logger.error("Falha ao acionar Kestra: %s", exc)
+            raise api_error(502, "kestra_unavailable", "Kestra indisponivel") from exc
+
+        return {
+            "ok": True,
+            "execution_id": execution.get("id"),
+            "flow_id": body.flow_id,
+            "status": "CREATED",
+        }
+
 
 def build_careplanner_service() -> CareplannerService:
     settings = get_careplanner_settings()

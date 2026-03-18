@@ -1,0 +1,27 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0
+rootdir: C:\Users\egara\INTELLICARE\packages\intellicare-core
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 4 items
+
+packages\intellicare-core\tests\test_careplanner_phase_e.py .F.F         [100%]
+
+================================== FAILURES ===================================
+____________________ test_trigger_flow_kestra_indisponivel ____________________
+packages\intellicare-core\tests\test_careplanner_phase_e.py:74: in test_trigger_flow_kestra_indisponivel
+    assert excinfo.value.detail["code"] == "kestra_unavailable"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'code'
+------------------------------ Captured log call ------------------------------
+ERROR    modules.careplanner.services:services.py:465 Falha ao acionar Kestra: Connection refused
+_________________________ test_seed_flows_idempotente _________________________
+packages\intellicare-core\tests\test_careplanner_phase_e.py:119: in test_seed_flows_idempotente
+    seed_module.provision_flows()
+    ^^^^^^^^^^^
+E   NameError: name 'seed_module' is not defined
+=========================== short test summary info ===========================
+FAILED packages\intellicare-core\tests\test_careplanner_phase_e.py::test_trigger_flow_kestra_indisponivel
+FAILED packages\intellicare-core\tests\test_careplanner_phase_e.py::test_seed_flows_idempotente
+========================= 2 failed, 2 passed in 4.87s =========================
