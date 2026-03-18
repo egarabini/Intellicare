@@ -36,6 +36,7 @@ dist/
 .env
 .env.*
 !.env.example
+infra/.env.staging
 *.pem
 *.key
 keycloak_client_secrets.json
