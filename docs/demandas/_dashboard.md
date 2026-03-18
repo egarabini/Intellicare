@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-17 | Branch: main | Último commit: 83b9df6
+> Atualizado: 2026-03-18 | Branch: main | Último commit: fef17db
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -35,6 +35,7 @@
 | DEM-038 Fase A | CarePlanner — contracts, config, migrations (5 tabelas), repository, 3 testes (estados, idempotência, BIGINT) | `b6a3966` |
 | DEM-038 Fase B | CarePlanner — adapters RC/Jitsi/Kestra + services + routes + docker-compose (Kestra/RC/Jitsi/Mongo) + 10 testes | `a646bc2` |
 | DEM-038 Fase C | CarePlanner — metrics.py (6 métricas), integrations.py (notify+trigger), dashboard/stats, CareplannerDashboard.tsx + 7 testes | `c818cc1` |
+| DEM-038 Fase D | CarePlanner — dispatcher Redis+retry+dead-letter+FAILED, expiry_worker (DISPATCHED>24h/SENT>72h→EXPIRED), security.py (mask_phone/content/jwt), hardening HMAC/Jitsi, Playwright 4 E2E + 10 testes Python | `fef17db` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -50,7 +51,7 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-038 Fase D | CarePlanner — dispatcher Redis+retry+dead-letter, expiry_worker, security.py, Playwright 4 testes | CODEX | em andamento |
+| — | Fila vazia | — | — |
 
 ---
 
@@ -65,7 +66,7 @@
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-039 — disponível após DEM-038 Fase D concluída
+DEV-A      → DEM-039 — spec pronta, pode iniciar
 DEV-B      → livre
 DEV-C      → livre
 Eduardo    → Deploy staging (DEM-038 completa após Fase D):
