@@ -1,11 +1,13 @@
 import { AppShell, NavLink, Group, Avatar, Text, Badge, Title } from '@mantine/core';
-import { IconHome, IconCalendar, IconUsers, IconRobot, IconSettings, IconUsersGroup, IconStethoscope } from '@tabler/icons-react';
+import { IconHome, IconCalendar, IconUsers, IconRobot, IconSettings, IconUsersGroup, IconStethoscope, IconHeartbeat } from '@tabler/icons-react';
 import { useAuth } from 'react-oidc-context';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { NotificationBell } from './NotificationBell';
+import { useCareplannerTasks } from '../hooks/useCareplanner';
 
 const NAV_ITEMS = [
   { path: '/dashboard',  icon: IconHome,      label: 'Início' },
+  { path: '/careplanner', icon: IconHeartbeat, label: 'Jornadas' },
   { path: '/agenda',     icon: IconCalendar,  label: 'Agenda' },
   { path: '/patients',       icon: IconUsers,       label: 'Pacientes' },
   { path: '/groups',          icon: IconUsersGroup,  label: 'Grupos' },
@@ -21,6 +23,9 @@ export function ClinicoShell({ children }: { children: React.ReactNode }) {
   const location = useLocation()
   const name = auth.user?.profile?.name ?? 'Clínico'
   const tenant = auth.user?.profile?.['tenant_slug'] ?? ''
+
+  const { data: repliedData } = useCareplannerTasks('REPLIED')
+  const repliedCount = repliedData?.total ?? 0
 
   return (
     <AppShell
@@ -45,16 +50,30 @@ export function ClinicoShell({ children }: { children: React.ReactNode }) {
             <Badge size="xs" color="gray">{tenant as string}</Badge>
           </div>
         </Group>
-        {NAV_ITEMS.map(item => (
-          <NavLink
-            key={item.path}
-            label={item.label}
-            leftSection={<item.icon size={18} />}
-            active={location.pathname.startsWith(item.path)}
-            onClick={() => navigate(item.path)}
-            mb={4}
-          />
-        ))}
+        {NAV_ITEMS.map(item => {
+          let itemLabel: React.ReactNode = item.label;
+          if (item.path === '/careplanner' && repliedCount > 0) {
+            itemLabel = (
+              <Group gap="xs" wrap="nowrap">
+                <span>{item.label}</span>
+                <Badge size="xs" color="red" circle>
+                  {repliedCount > 9 ? '9+' : repliedCount}
+                </Badge>
+              </Group>
+            );
+          }
+
+          return (
+            <NavLink
+              key={item.path}
+              label={itemLabel}
+              leftSection={<item.icon size={18} />}
+              active={location.pathname.startsWith(item.path)}
+              onClick={() => navigate(item.path)}
+              mb={4}
+            />
+          );
+        })}
         <NavLink
           label="Sair"
           mt="auto"

@@ -525,4 +525,102 @@ test.describe('CareplannerDashboard', () => {
     await expect(page).toHaveURL(`/gestor-ui/careplanner/jornadas/${correlationId}`);
     await expect(page.getByText('Detalhe da Jornada')).toBeVisible();
   });
+
+  test('DEM044-01: botão Criar Videoconsulta abre modal com links', async ({ page }) => {
+    const correlationId = 'corr-uuid-video-create';
+
+    await page.route('**/careplanner/dashboard/stats', route =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          total: 1,
+          by_status: {
+            CREATED: 0, DISPATCHED: 0, SENT: 0,
+            REPLIED: 1, CLOSED: 0, FAILED: 0, EXPIRED: 0,
+          },
+          recent_tasks: [],
+        }),
+      }),
+    );
+
+    await page.route('**/careplanner/tasks*', route => {
+      if (route.request().url().includes(correlationId)) {
+        route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            task: {
+              id: 'uuid-video',
+              correlation_id: correlationId,
+              kestra_execution_id: 'exec-v',
+              patient_ref: 'paciente.video',
+              task_type: 'CHECK_IN',
+              status: 'REPLIED',
+              channel: 'rocketchat',
+              metadata: {},
+              created_at: '2026-03-18T10:00:00Z',
+              updated_at: '2026-03-18T11:00:00Z',
+            },
+            conversation: null,
+            events: [],
+          }),
+        });
+      } else {
+        route.fulfill({
+          status: 200,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            items: [{
+              id: 'uuid-video',
+              correlation_id: correlationId,
+              kestra_execution_id: 'exec-v',
+              patient_ref: 'paciente.video',
+              task_type: 'CHECK_IN',
+              status: 'REPLIED',
+              channel: 'rocketchat',
+              metadata: {},
+              created_at: '2026-03-18T10:00:00Z',
+              updated_at: '2026-03-18T11:00:00Z',
+            }],
+            page: 1,
+          }),
+        });
+      }
+    });
+
+    // No video session exists initially
+    await page.route(`**/careplanner/consultations/video/${correlationId}`, route =>
+      route.fulfill({ status: 404 }),
+    );
+
+    // Mock POST create video
+    await page.route('**/careplanner/consultations/video', route => {
+      if (route.request().method() === 'POST') {
+        route.fulfill({
+          status: 201,
+          contentType: 'application/json',
+          body: JSON.stringify({
+            correlation_id: correlationId,
+            clinico_url: 'https://meet.intellicare.ia.br/sala-test-clinico',
+            patient_url: 'https://meet.intellicare.ia.br/sala-test-paciente',
+            room_name: 'sala-test',
+            expires_at: '2026-03-18T14:00:00Z',
+          }),
+        });
+      }
+    });
+
+    await openCareplanner(page);
+    await page.getByTestId(`row-${correlationId}`).click();
+    await expect(page.getByTestId('btn-criar-video')).toBeVisible();
+    await page.getByTestId('btn-criar-video').click();
+
+    // Modal should appear with links
+    await expect(page.getByText('Videoconsulta criada')).toBeVisible();
+    await expect(page.getByTestId('input-patient-url')).toHaveValue(
+      'https://meet.intellicare.ia.br/sala-test-paciente',
+    );
+    await expect(page.getByTestId('btn-entrar-clinico')).toBeVisible();
+  });
 });

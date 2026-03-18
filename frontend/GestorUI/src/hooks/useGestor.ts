@@ -353,6 +353,14 @@ export function useCareplannerTask(correlationId: string) {
   });
 }
 
+export interface VideoSessionCreate {
+  correlation_id: string;
+  clinico_url: string;
+  patient_url: string;
+  room_name: string;
+  expires_at: string;
+}
+
 export function useVideoSession(correlationId: string, enabled: boolean) {
   return useQuery<VideoSession>({
     queryKey: ['careplanner_video', correlationId],
@@ -362,6 +370,21 @@ export function useVideoSession(correlationId: string, enabled: boolean) {
     },
     enabled,
     retry: false,
+  });
+}
+
+export function useCreateVideoSession(correlationId: string) {
+  const queryClient = useQueryClient();
+  return useMutation<VideoSessionCreate, Error>({
+    mutationFn: async () => {
+      const res = await api.post('/careplanner/consultations/video', {
+        correlation_id: correlationId,
+      });
+      return res.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['careplanner_video', correlationId] });
+    },
   });
 }
 

@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: 88614ac
+> Atualizado: 2026-03-18 | Branch: main | Último commit: a6eb346 (DEM-042) / 3fd71c3 (DEM-041)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -38,6 +38,10 @@
 | DEM-038 Fase D | CarePlanner — dispatcher Redis+retry+dead-letter+FAILED, expiry_worker (DISPATCHED>24h/SENT>72h→EXPIRED), security.py (mask_phone/content/jwt), hardening HMAC/Jitsi, Playwright 4 E2E + 10 testes Python | `fef17db` |
 | DEM-039 | Kestra Workflow CarePlanner — flows YAML (jornada_basica+video), seed_flows.py (POST Kestra 0.20), trigger_flow(), POST /journeys/trigger, smoke test JWT end-to-end | `415643e` |
 | DEM-040 | CarePlanner UI Completo — lista paginada+filtro, CareplannerJourneyDetail+timeline, TriggerJourneyModal, 6 hooks TypeScript, 7 testes Playwright, OOM fix Dockerfile | `88614ac` |
+| DEM-041 | Templates CarePlanner — CRUD backend (get_template, update_template, active_only), seed 4 defaults no startup, CareplannerTemplates.tsx, TriggerModal Select dinâmico, sub-nav expansível | `3fd71c3` |
+| DEM-042 | Notificações CarePlanner — notify_clinico_replied persiste no banco, notify_task_expired, careplannerUnread em useNotifications, badge NavLink, navegação NotificationBell → jornada, 2 testes Python + 11 Playwright | `a6eb346` |
+| DEM-INF | Fix WeasyPrint — lazy import em renderer.py, conftest skip condicional — pytest global: 59 passed, 0 collection errors | `a6eb346` |
+| DEM-043 | Grafana CarePlanner Overview — 8 panels (disparos, REPLIED/h, EXPIRED/h, videoconsultas, órfãos, eventos, p95 DISPATCHED→SENT, p95 REPLIED→CLOSED), UID careplanner-overview | `a6eb346` |
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -53,7 +57,10 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| — | Fila vazia — aguardando próxima spec | — | — |
+| DEM-044 | Criar Videoconsulta — botão + modal links Jitsi (GestorUI) | DEV-1 | Aguardando início |
+| DEM-045 | CarePlanner ClinicoUI — lista jornadas + detalhe read-only | DEV-2 | Aguardando início |
+| DEM-046 | CI/CD Pipeline — GitHub Actions (pytest + build) | CODEX | Aguardando início |
+| DEM-INF | Staging Update Script + .env.example + README deploy | DEV-3/4 | Aguardando início |
 
 ---
 
@@ -61,17 +68,20 @@
 
 | DEM | Título | Spec |
 |-----|--------|------|
-| DEM-040 | CarePlanner UI Completo — lista paginada, detalhe+timeline, modal Nova Jornada, encerrar, link vídeo | ✅ pronta em `docs/demandas/DEM-040_CAREPLANNER_UI/` |
-| DEM-041 | Templates CarePlanner — CRUD backend (4 endpoints), seed 4 defaults, página GestorUI, TriggerModal Select | ✅ pronta em `docs/demandas/DEM-041_TEMPLATES_CAREPLANNER/` |
+| DEM-044 | Criar Videoconsulta — hook useCreateVideoSession, modal patient_url + CopyButton | ✅ `docs/demandas/DEM-044_VIDEO_SESSION_UI/` |
+| DEM-045 | CarePlanner ClinicoUI — useCareplanner.ts, CareplannerPage, CareplannerDetail, NavLink badge REPLIED | ✅ `docs/demandas/DEM-045_CAREPLANNER_CLINICO/` |
+| DEM-046 | CI/CD GitHub Actions — pytest + build GestorUI + ClinicoUI, badge README | ✅ `docs/demandas/DEM-046_CI_CD_PIPELINE/` |
+| DEM-INF | Staging Script — staging_update.sh, .env.staging.example, deploy/README.md | ✅ `docs/demandas/DEM-INF_STAGING_SCRIPT/` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-040 — em execução (Codex)
-DEV-B      → DEM-041 — spec pronta, pode iniciar em paralelo
-DEV-C      → livre
+DEV-1      → DEM-044 (Criar Videoconsulta — ~1h)
+DEV-2      → DEM-045 (CarePlanner ClinicoUI — ~2h)
+CODEX      → DEM-046 (CI/CD Pipeline — ~1h)
+DEV-3/4    → DEM-INF (Staging Script — ~45min)
 Eduardo    → Deploy staging (DEM-038 completa após Fase D):
              ⚠ Pendentes antes do deploy staging:
              [ ] Firewall VPS: abrir UDP 10000 (Jitsi JVB)

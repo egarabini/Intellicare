@@ -154,6 +154,8 @@ async def get_video_session(
     ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
+    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
     return await service.get_video_session_info(ctx, correlation_id)
 
 
@@ -163,6 +165,8 @@ async def get_task(
     ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
+    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
     return await service.get_task_details(ctx, correlation_id)
 
 
@@ -173,6 +177,8 @@ async def list_tasks(
     ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
+    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
     return await service.list_tasks(ctx, status_filter=status_filter, page=page)
 
 

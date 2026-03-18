@@ -17,6 +17,8 @@ import { GroupsPage } from './pages/GroupsPage'
 import { GroupDetailPage } from './pages/GroupDetailPage'
 import { ProfessionalsPage } from './pages/ProfessionalsPage'
 import { ClinicalUsersPage } from './pages/ClinicalUsersPage'
+import { CareplannerPage } from './pages/CareplannerPage'
+import { CareplannerDetail } from './pages/CareplannerDetail'
 import { RoleGuard } from './auth/RoleGuard'
 import { ClinicoShell } from './components/AppShell'
 
@@ -34,6 +36,8 @@ function AppRoutes() {
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/careplanner" element={<CareplannerPage />} />
+            <Route path="/careplanner/:id" element={<CareplannerDetail />} />
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/patients" element={<PatientList />} />
             <Route path="/patients/:id" element={<PatientProfile />} />

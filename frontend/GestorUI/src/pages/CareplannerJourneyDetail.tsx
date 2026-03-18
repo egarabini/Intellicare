@@ -1,22 +1,28 @@
+import { useState } from 'react';
 import {
+  ActionIcon,
   Badge,
   Box,
   Button,
   Card,
   Center,
+  CopyButton,
   Divider,
   Group,
   Loader,
+  Modal,
   Stack,
   Text,
+  TextInput,
   ThemeIcon,
   Title,
+  Tooltip,
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
-import { IconArrowLeft, IconMessage, IconPlayerStop, IconVideo } from '@tabler/icons-react';
+import { IconArrowLeft, IconCheck, IconCopy, IconMessage, IconPlayerStop, IconVideo } from '@tabler/icons-react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useCareplannerTask, useCloseTask, useVideoSession } from '../hooks/useGestor';
+import { useCareplannerTask, useCloseTask, useCreateVideoSession, useVideoSession, VideoSessionCreate } from '../hooks/useGestor';
 
 const STATUS_META: Record<string, { color: string }> = {
   CREATED: { color: 'gray' },
@@ -45,6 +51,8 @@ export function CareplannerJourneyDetail() {
 
   const canHaveVideo = ['REPLIED', 'CLOSED', 'SENT'].includes(data?.task.status ?? '');
   const { data: video } = useVideoSession(id!, canHaveVideo);
+  const createVideo = useCreateVideoSession(id!);
+  const [videoCreated, setVideoCreated] = useState<VideoSessionCreate | null>(null);
 
   if (isLoading) return <Center h="100%"><Loader /></Center>;
   if (error || !data) return <Text c="red">Jornada não encontrada.</Text>;
@@ -139,6 +147,29 @@ export function CareplannerJourneyDetail() {
         </Group>
 
         <Group mt="md" gap="sm">
+          {canHaveVideo && (!video || video.expired) && (
+            <Button
+              leftSection={<IconVideo size={16} />}
+              variant="light"
+              color="violet"
+              loading={createVideo.isPending}
+              onClick={async () => {
+                try {
+                  const result = await createVideo.mutateAsync();
+                  setVideoCreated(result);
+                } catch {
+                  notifications.show({
+                    title: 'Erro ao criar videoconsulta',
+                    message: 'Tente novamente.',
+                    color: 'red',
+                  });
+                }
+              }}
+              data-testid="btn-criar-video"
+            >
+              Criar Videoconsulta
+            </Button>
+          )}
           {video && !video.expired && (
             <Button
               component="a"
@@ -208,6 +239,57 @@ export function CareplannerJourneyDetail() {
           </Stack>
         )}
       </Card>
+
+      <Modal
+        opened={!!videoCreated}
+        onClose={() => setVideoCreated(null)}
+        title="Videoconsulta criada"
+        size="md"
+      >
+        {videoCreated && (
+          <Stack gap="md">
+            <Text size="sm">A sala foi criada com sucesso. Compartilhe o link com o paciente.</Text>
+
+            <div>
+              <Text size="xs" c="dimmed" mb={4}>Link do paciente</Text>
+              <Group gap="xs">
+                <TextInput
+                  value={videoCreated.patient_url}
+                  readOnly
+                  style={{ flex: 1 }}
+                  styles={{ input: { fontFamily: 'monospace', fontSize: 12 } }}
+                  data-testid="input-patient-url"
+                />
+                <CopyButton value={videoCreated.patient_url} timeout={2000}>
+                  {({ copied, copy }) => (
+                    <Tooltip label={copied ? 'Copiado!' : 'Copiar'} withArrow>
+                      <ActionIcon color={copied ? 'teal' : 'gray'} variant="light" onClick={copy}>
+                        {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                      </ActionIcon>
+                    </Tooltip>
+                  )}
+                </CopyButton>
+              </Group>
+            </div>
+
+            <Button
+              component="a"
+              href={videoCreated.clinico_url}
+              target="_blank"
+              leftSection={<IconVideo size={16} />}
+              color="violet"
+              fullWidth
+              data-testid="btn-entrar-clinico"
+            >
+              Entrar como Clínico
+            </Button>
+
+            <Button variant="subtle" onClick={() => setVideoCreated(null)} fullWidth>
+              Fechar
+            </Button>
+          </Stack>
+        )}
+      </Modal>
     </Box>
   );
 }
