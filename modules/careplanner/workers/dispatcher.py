@@ -9,7 +9,7 @@ from uuid import UUID
 
 from intellicare_core.contracts.base import TenantContext
 
-from ..contracts import CareConversationUpsert, ParticipantRole, TaskStatus
+from ..contracts import CareConversationUpsert, ParticipantRole, TaskStatus, Channel
 from ..metrics import careplanner_dispatch_total
 from ..repository import CareplannerRepository
 
@@ -84,16 +84,32 @@ async def _do_dispatch(item: dict) -> None:
     for attempt in range(attempts + 1, MAX_RETRIES + 1):
         try:
             svc = build_careplanner_service()
-            rc_room_id = await svc._rc.ensure_room(tenant_slug, task.patient_ref)
+            channel = Channel(task.channel if hasattr(task, "channel") and task.channel else "rocketchat")
+            rc_room_id = None
+            if channel != Channel.WHATSAPP:
+                rc_room_id = await svc._rc.ensure_room(tenant_slug, task.patient_ref)
+
             template = await repo.get_template_by_code(ctx, metadata.get("template_code", ""))
-            text_content = (template.content if template else metadata.get("template_code", "")).format(
-                **metadata.get("template_variables", {})
+            
+            raw_content = template.content if template else metadata.get("template_code", "")
+            text_content = raw_content
+            variables = metadata.get("template_variables", {})
+            if variables and "{" in raw_content:
+                for k, v in variables.items():
+                    text_content = text_content.replace(f"{{{{{k}}}}}", str(v))
+            
+            await svc._send_to_channel(
+                channel=channel, 
+                rc_room_id=rc_room_id, 
+                phone_e164=metadata.get("contact_phone"), 
+                text=text_content
             )
-            await svc._rc.post_message(rc_room_id, text_content)
+
             await repo.upsert_conversation(
                 ctx,
                 CareConversationUpsert(
                     correlation_id=UUID(correlation_id),
+                    channel=channel,
                     channel_conversation_id=0,
                     rc_room_id=rc_room_id,
                     phone_e164=metadata.get("contact_phone"),

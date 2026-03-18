@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: a6eb346 (DEM-042) / 3fd71c3 (DEM-041)
+> Atualizado: 2026-03-18 | Branch: main | Último commit: 9ff6a05 (DEM-INF Staging) | Próxima: DEM-047
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -42,6 +42,12 @@
 | DEM-042 | Notificações CarePlanner — notify_clinico_replied persiste no banco, notify_task_expired, careplannerUnread em useNotifications, badge NavLink, navegação NotificationBell → jornada, 2 testes Python + 11 Playwright | `a6eb346` |
 | DEM-INF | Fix WeasyPrint — lazy import em renderer.py, conftest skip condicional — pytest global: 59 passed, 0 collection errors | `a6eb346` |
 | DEM-043 | Grafana CarePlanner Overview — 8 panels (disparos, REPLIED/h, EXPIRED/h, videoconsultas, órfãos, eventos, p95 DISPATCHED→SENT, p95 REPLIED→CLOSED), UID careplanner-overview | `a6eb346` |
+| DEM-044 | Criar Videoconsulta GestorUI — useCreateVideoSession hook, botão btn-criar-video, modal patient_url + CopyButton + btn Entrar como Clínico, 1 teste Playwright | `d7a61dd` ¹ |
+| DEM-045 | CarePlanner ClinicoUI — fix role CLINICO nos GETs, useCareplanner.ts, CareplannerPage (filtro Minhas), CareplannerDetail read-only, NavLink badge REPLIED, 2 testes Playwright | `d7a61dd` |
+| DEM-046 | CI/CD Pipeline — GitHub Actions (pytest backend + build GestorUI + ClinicoUI), badge README, repo egarabini/Intellicare | `0c88a9d` |
+| DEM-INF | Staging Script — staging_update.sh (6 etapas), .env.staging.example (todos os segredos), deploy/README.md, .gitignore protege .env.staging | `9ff6a05` |
+
+¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -57,41 +63,37 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-044 | Criar Videoconsulta — botão + modal links Jitsi (GestorUI) | DEV-1 | Aguardando início |
-| DEM-045 | CarePlanner ClinicoUI — lista jornadas + detalhe read-only | DEV-2 | Aguardando início |
-| DEM-046 | CI/CD Pipeline — GitHub Actions (pytest + build) | CODEX | Aguardando início |
-| DEM-INF | Staging Update Script + .env.example + README deploy | DEV-3/4 | Aguardando início |
+| DEM-044 | Criar Videoconsulta GestorUI | DEV-1 | ✅ Commitado `d7a61dd` (agrupado com DEM-045) |
+| DEM-045 | CarePlanner ClinicoUI | DEV-2 | ✅ Commitado `d7a61dd` |
+| DEM-046 | CI/CD Pipeline GitHub Actions | CODEX | ✅ Commitado `0c88a9d` |
+| DEM-INF | Staging Script | DEV-3/4 | ✅ Commitado `9ff6a05` |
+| **DEM-047** | **WhatsApp via Evolution API** | **DEV-1** | ⏳ Spec pronta — aguardando execução |
 
 ---
 
 ## 📋 Fila — specs prontas para distribuir
 
-| DEM | Título | Spec |
-|-----|--------|------|
-| DEM-044 | Criar Videoconsulta — hook useCreateVideoSession, modal patient_url + CopyButton | ✅ `docs/demandas/DEM-044_VIDEO_SESSION_UI/` |
-| DEM-045 | CarePlanner ClinicoUI — useCareplanner.ts, CareplannerPage, CareplannerDetail, NavLink badge REPLIED | ✅ `docs/demandas/DEM-045_CAREPLANNER_CLINICO/` |
-| DEM-046 | CI/CD GitHub Actions — pytest + build GestorUI + ClinicoUI, badge README | ✅ `docs/demandas/DEM-046_CI_CD_PIPELINE/` |
-| DEM-INF | Staging Script — staging_update.sh, .env.staging.example, deploy/README.md | ✅ `docs/demandas/DEM-INF_STAGING_SCRIPT/` |
+| DEM | Título | Dev | Spec |
+|-----|--------|-----|------|
+| DEM-044 | Criar Videoconsulta — hook useCreateVideoSession, modal patient_url + CopyButton | DEV-1 | ✅ `docs/demandas/DEM-044_VIDEO_SESSION_UI/` |
+| DEM-045 | CarePlanner ClinicoUI — useCareplanner.ts, CareplannerPage, CareplannerDetail, NavLink badge REPLIED | DEV-2 | ✅ `docs/demandas/DEM-045_CAREPLANNER_CLINICO/` |
+| DEM-046 | CI/CD GitHub Actions — pytest + build GestorUI + ClinicoUI, badge README | CODEX | ✅ `docs/demandas/DEM-046_CI_CD_PIPELINE/` |
+| DEM-INF | Staging Script — staging_update.sh, .env.staging.example, deploy/README.md | DEV-3/4 | ✅ `docs/demandas/DEM-INF_STAGING_SCRIPT/` |
+| **DEM-047** | **WhatsApp via Evolution API — WhatsAppAdapter, webhook, TriggerModal canal, Kestra flow** | **DEV-1** | ✅ `docs/demandas/DEM-047_WHATSAPP_EVOLUTION/` |
+
+> **Próximas na esteira (a especificar):**
+> DEM-048 — E-mail via Listmonk (canal 3 do CarePlanner)
+> DEM-049 — SMS via Jasmin (canal 4 do CarePlanner)
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-1      → DEM-044 (Criar Videoconsulta — ~1h)
-DEV-2      → DEM-045 (CarePlanner ClinicoUI — ~2h)
-CODEX      → DEM-046 (CI/CD Pipeline — ~1h)
-DEV-3/4    → DEM-INF (Staging Script — ~45min)
-Eduardo    → Deploy staging (DEM-038 completa após Fase D):
-             ⚠ Pendentes antes do deploy staging:
-             [ ] Firewall VPS: abrir UDP 10000 (Jitsi JVB)
-             [ ] PostgreSQL staging: CREATE DATABASE kestra;
-             [ ] Gerar segredos reais no .env.staging:
-                 ROCKETCHAT_WEBHOOK_TOKEN, JITSI_APP_SECRET,
-                 JICOFO_AUTH_PASSWORD, JVB_AUTH_PASSWORD
-             DNS staging: ✅ chat / meet / kestra.intellicare.ia.br configurados
-             Após Fase D commitada:
-               git pull + docker compose --env-file infra/.env.staging up -d --build
+DEV-1      → DEM-047 (WhatsApp Evolution API — ~3.5h)
+DEV-2      → aguardando nova DEM
+CODEX      → aguardando nova DEM
+DEV-3/4    → aguardando nova DEM
 ```
 
 ## Credenciais de teste (ambiente local)

@@ -19,7 +19,6 @@ from .contracts import (
     CareTaskRecord,
     CareTemplateCreate,
     CareTemplateRecord,
-    CareVideoSessionCreate,
     CareVideoSessionRecord,
     TaskStatus,
     cast_channel_conversation_id,
@@ -27,6 +26,46 @@ from .contracts import (
 
 
 class CareplannerRepository:
+    async def _get_active_tenant_slugs(self) -> list[str]:
+        from intellicare_core.db.session import get_engine
+        async with get_engine().begin() as conn:
+            tenants = (await conn.execute(text("SELECT slug FROM public.tenants"))).scalars().all()
+        return list(tenants)
+
+    async def find_active_task_by_phone(self, phone_e164: str) -> UUID | None:
+        """Busca correlation_id de tarefa ativa pelo phone_e164 (cross-tenant)."""
+        tenants = await self._get_active_tenant_slugs()
+        for slug in tenants:
+            ctx = TenantContext.from_slug(slug=slug, user_id="system")
+            async with tenant_session(ctx) as db:
+                row = (await db.execute(text("""
+                    SELECT ct.correlation_id
+                    FROM care_conversations cc
+                    JOIN care_tasks ct ON ct.correlation_id = cc.correlation_id
+                    WHERE cc.phone_e164 = :phone
+                      AND ct.status NOT IN ('CLOSED', 'FAILED', 'EXPIRED')
+                      AND ct.channel = 'whatsapp'
+                    ORDER BY ct.created_at DESC
+                    LIMIT 1
+                """), {"phone": phone_e164})).mappings().first()
+                if row:
+                    return row["correlation_id"]
+        return None
+
+    async def get_tenant_by_correlation(self, correlation_id: UUID) -> str:
+        """Retorna tenant_slug de uma care_task pelo correlation_id."""
+        tenants = await self._get_active_tenant_slugs()
+        for slug in tenants:
+            ctx = TenantContext.from_slug(slug=slug, user_id="system")
+            async with tenant_session(ctx) as db:
+                row = (await db.execute(text("""
+                    SELECT tenant_slug FROM care_tasks
+                    WHERE correlation_id = :cid LIMIT 1
+                """), {"cid": str(correlation_id)})).mappings().first()
+                if row:
+                    return row["tenant_slug"]
+        raise ValueError(f"Tenant nao encontrado para correlation_id={correlation_id}")
+
     async def create_task(self, ctx: TenantContext, payload: CareTaskCreate) -> CareTaskRecord:
         async with tenant_session(ctx) as db:
             row = (

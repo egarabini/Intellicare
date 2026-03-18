@@ -196,6 +196,29 @@ services:
       - "traefik.http.routers.rocketchat.tls.certresolver=letsencrypt"
       - "traefik.http.services.rocketchat.loadbalancer.server.port=3001"
 
+  evolution-api:
+    image: atendai/evolution-api:v2.2.0
+    container_name: intellicare_evolution
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    environment:
+      SERVER_URL: http://evolution-api:8080
+      AUTHENTICATION_API_KEY: ${EVOLUTION_API_KEY}
+      AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES: "true"
+      DATABASE_PROVIDER: postgresql
+      DATABASE_CONNECTION_URI: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/evolution
+      DATABASE_CONNECTION_CLIENT_NAME: evolution_client
+      WEBHOOK_GLOBAL_URL: http://intellicare-service:8000/api/v1/careplanner/webhook/whatsapp/${EVOLUTION_WEBHOOK_SECRET}
+      WEBHOOK_GLOBAL_ENABLED: "true"
+      WEBHOOK_EVENTS_MESSAGES_UPSERT: "true"
+      WEBHOOK_EVENTS_CONNECTION_UPDATE: "false"
+      WEBHOOK_EVENTS_QRCODE_UPDATED: "false"
+    depends_on:
+      - postgres
+    networks:
+      - intellicare-net
+
   jitsi-web:
     image: jitsi/web:stable
     container_name: jitsi-web

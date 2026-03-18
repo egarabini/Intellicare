@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 
 class Channel(StrEnum):
     ROCKETCHAT = "rocketchat"
+    WHATSAPP = "whatsapp"
 
 
 class TaskStatus(StrEnum):

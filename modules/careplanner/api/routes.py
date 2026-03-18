@@ -11,6 +11,7 @@ from intellicare_core.auth.jwt import get_current_tenant, require_role
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.contracts.errors import api_error
 
+from ..contracts import Channel
 from ..services import CareplannerService, build_careplanner_service
 
 router = APIRouter()
@@ -48,9 +49,10 @@ class VideoRequest(BaseModel):
 class TriggerJourneyRequest(BaseModel):
     patient_ref: str
     task_type: str
-    template_code: str = ""
+    template_code: str | None = None
     template_variables: dict = Field(default_factory=dict)
-    contact_phone_e164: str = ""
+    contact_phone_e164: str | None = None
+    channel: Channel = Channel.ROCKETCHAT
     flow_id: str = "careplanner_jornada_basica"
     clinico_ref: str | None = None
 
@@ -133,6 +135,53 @@ async def rocketchat_inbound(
         content=body.content,
         occurred_at=body.occurred_at,
     )
+
+
+@router.post("/webhook/whatsapp/{token}", status_code=status.HTTP_200_OK)
+async def whatsapp_webhook(
+    token: str,
+    request: Request,
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    """Recebe eventos inbound do WhatsApp via Evolution API."""
+    body = await request.json()
+
+    # Verificar token de segurança
+    from ..config import get_careplanner_settings
+    from ..adapters.whatsapp import WhatsAppAdapter
+    settings = get_careplanner_settings()
+    wa = WhatsAppAdapter(settings)
+    if not wa.verify_webhook_secret(token):
+        raise api_error(401, "unauthorized", "Token invalido")
+
+    # Processar apenas eventos de mensagem recebida
+    event = body.get("event", "")
+    if event != "messages.upsert":
+        return {"status": "ignored", "event": event}
+
+    data = body.get("data", {})
+    key = data.get("key", {})
+
+    # Ignorar mensagens enviadas pelo bot (fromMe=True)
+    if key.get("fromMe", False):
+        return {"status": "ignored", "reason": "fromMe"}
+
+    remote_jid = key.get("remoteJid", "")
+    phone = wa.extract_phone_from_jid(remote_jid)
+    message_obj = data.get("message", {})
+    text = (
+        message_obj.get("conversation")
+        or message_obj.get("extendedTextMessage", {}).get("text")
+        or ""
+    )
+
+    if not phone or not text:
+        return {"status": "ignored", "reason": "sem phone ou texto"}
+
+    # Processar como inbound — mesmo handler do RC
+    # O service.handle_whatsapp_inbound busca care_conversation pelo phone_e164
+    await service.handle_whatsapp_inbound(phone=phone, text=text)
+    return {"status": "ok"}
 
 
 @router.post("/consultations/video", status_code=status.HTTP_201_CREATED)

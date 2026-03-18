@@ -35,6 +35,13 @@ class CareplannerSettings(BaseSettings):
     jicofo_auth_password: str = ""
     jvb_auth_password: str = ""
 
+    # Evolution API (WhatsApp)
+    evolution_api_url: str = "http://evolution-api:8080"
+    evolution_api_key: str = ""
+    evolution_instance_name: str = "intellicare"
+    evolution_webhook_secret: str = ""
+    evolution_max_retries: int = 3
+
 
 @lru_cache
 def get_careplanner_settings() -> CareplannerSettings:

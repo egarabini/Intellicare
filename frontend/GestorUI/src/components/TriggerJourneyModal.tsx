@@ -18,14 +18,11 @@ const TASK_TYPES = [
 
 export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Props) {
   const { data: templates } = useTemplates(true);
-  const templateOptions = (templates ?? []).map((t) => ({
-    value: t.template_code,
-    label: `${t.template_code} — ${t.content.slice(0, 40)}${t.content.length > 40 ? '…' : ''}`,
-  }));
 
   const form = useForm<{
     patient_ref: string;
     task_type: string;
+    channel: string;
     template_code: string;
     contact_phone_e164: string;
     include_video: boolean;
@@ -34,6 +31,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     initialValues: {
       patient_ref: '',
       task_type: 'CHECK_IN',
+      channel: 'rocketchat',
       template_code: '',
       contact_phone_e164: '',
       include_video: false,
@@ -42,6 +40,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     validate: {
       patient_ref: (v) => (!v.trim() ? 'Referência do paciente obrigatória' : null),
       task_type: (v) => (!v ? 'Tipo de jornada obrigatório' : null),
+      contact_phone_e164: (v, values) => (values.channel === 'whatsapp' && !v.trim() ? 'Telefone obrigatório para WhatsApp' : null),
       clinico_ref: (v, values) =>
         values.include_video && !v.trim()
           ? 'Referência do clínico obrigatória para videoconsulta'
@@ -49,13 +48,29 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     },
   });
 
+  const templateOptions = (templates ?? [])
+    .filter((t) => t.channel === form.values.channel)
+    .map((t) => ({
+      value: t.template_code,
+      label: `${t.template_code} — ${t.content.slice(0, 40)}${t.content.length > 40 ? '…' : ''}`,
+    }));
+
+
   const handleSubmit = form.onSubmit(async (values) => {
+    let flow = 'careplanner_jornada_basica';
+    if (values.channel === 'whatsapp') {
+      flow = 'careplanner_jornada_whatsapp';
+    } else if (values.include_video) {
+      flow = 'careplanner_jornada_video';
+    }
+
     await onSubmit({
       patient_ref: values.patient_ref.trim(),
       task_type: values.task_type,
+      channel: values.channel,
       template_code: values.template_code.trim() || undefined,
       contact_phone_e164: values.contact_phone_e164.trim() || undefined,
-      flow_id: values.include_video ? 'careplanner_jornada_video' : 'careplanner_jornada_basica',
+      flow_id: flow,
       clinico_ref: values.include_video ? values.clinico_ref.trim() : undefined,
     });
     form.reset();
@@ -79,6 +94,16 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
             data-testid="select-task-type"
             {...form.getInputProps('task_type')}
           />
+          <NativeSelect
+            label="Canal de Comunicação"
+            data={[
+              { value: 'rocketchat', label: 'Rocket.Chat Público' },
+              { value: 'whatsapp', label: 'WhatsApp via Evolution' }
+            ]}
+            required
+            data-testid="select-channel"
+            {...form.getInputProps('channel')}
+          />
           <Select
             label="Template de Mensagem"
             placeholder="Selecione um template (opcional)"
@@ -90,7 +115,8 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
           />
           <TextInput
             label="Telefone (E.164)"
-            placeholder="+5511999999999 (opcional)"
+            placeholder="+5511999999999"
+            required={form.values.channel === 'whatsapp'}
             {...form.getInputProps('contact_phone_e164')}
           />
           <Switch

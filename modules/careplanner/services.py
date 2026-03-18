@@ -14,6 +14,7 @@ from intellicare_core.db.session import get_engine, tenant_session
 from .adapters.jitsi import JitsiAdapter
 from .adapters.kestra import KestraAdapter
 from .adapters.rocketchat import RocketChatAdapter
+from .adapters.whatsapp import WhatsAppAdapter
 from .config import CareplannerSettings, get_careplanner_settings
 from .contracts import (
     CareConversationUpsert,
@@ -49,13 +50,31 @@ class CareplannerService:
         rc: RocketChatAdapter,
         jitsi: JitsiAdapter,
         kestra: KestraAdapter,
+        whatsapp: WhatsAppAdapter,
         settings: CareplannerSettings | None = None,
     ) -> None:
         self._repo = repo
         self._rc = rc
         self._jitsi = jitsi
         self._kestra = kestra
+        self._whatsapp = whatsapp
         self._settings = settings or get_careplanner_settings()
+
+    async def _send_to_channel(
+        self,
+        channel: Channel,
+        rc_room_id: str | None,
+        phone_e164: str | None,
+        text: str,
+    ) -> dict[str, Any]:
+        if channel == Channel.WHATSAPP:
+            if not phone_e164:
+                raise ValueError("phone_e164 obrigatorio para canal WHATSAPP")
+            return await self._whatsapp.send_message(phone_e164, text)
+        else:
+            if not rc_room_id:
+                raise ValueError("rc_room_id obrigatorio para canal ROCKETCHAT")
+            return await self._rc.post_message(rc_room_id, text)
 
     async def open_task(
         self,
@@ -67,6 +86,7 @@ class CareplannerService:
         template_variables: dict,
         contact_phone: str | None = None,
         contact_role: str = "PACIENTE",
+        channel: Channel = Channel.ROCKETCHAT,
     ) -> dict:
         correlation_id = uuid4()
         logger.debug(
@@ -82,6 +102,7 @@ class CareplannerService:
                 kestra_execution_id=kestra_execution_id,
                 patient_ref=patient_ref,
                 task_type=task_type,
+                channel=channel,
                 metadata={
                     "template_code": template_code,
                     "template_variables": template_variables,
@@ -279,6 +300,27 @@ class CareplannerService:
                 )
         logger.warning("Inbound Rocket.Chat sem correlacao: room=%s", rc_room_id)
         return {"ok": True, "orphan": True}
+
+    async def handle_whatsapp_inbound(self, phone: str, text: str) -> None:
+        """Processa mensagem inbound WhatsApp — identifica tarefa pelo phone_e164."""
+        phone_e164 = f"+{phone}"
+        correlation_id = await self._repo.find_active_task_by_phone(phone_e164)
+        if not correlation_id:
+            logger.warning("WhatsApp inbound órfão: phone=%s", phone)
+            careplanner_orphan_inbound_total.labels(tenant_slug="unknown").inc()
+            return
+
+        tenant_slug = await self._repo.get_tenant_by_correlation(correlation_id)
+        ctx = TenantContext.from_slug(slug=tenant_slug, user_id="whatsapp-webhook", roles=[])
+        
+        # We reuse process_inbound passing a dummy/NULL channel_conversation_id/rc_room_id since WhatsApp identification resolves globally earlier
+        await self.process_inbound(
+            ctx=ctx,
+            event_id=f"wa-{uuid4()}",
+            rc_room_id="",
+            channel_conversation_id=0,
+            content=text,
+        )
 
     async def open_video_session(
         self,
@@ -544,6 +586,26 @@ class CareplannerService:
                         "Responda SIM para confirmar sua presença.",
                 variables=[],
             ),
+            CareTemplateCreate(
+                template_code="boas_vindas_wa",
+                channel=Channel.WHATSAPP,
+                content="Olá {{nome_paciente}}! Bem-vindo ao IntelliCare. Como posso ajudá-lo hoje?",
+            ),
+            CareTemplateCreate(
+                template_code="check_in_wa",
+                channel=Channel.WHATSAPP,
+                content="Olá {{nome_paciente}}! Como você está se sentindo hoje? Responda com um número de 1 a 10.",
+            ),
+            CareTemplateCreate(
+                template_code="lembrete_medicacao_wa",
+                channel=Channel.WHATSAPP,
+                content="Lembrete: não esqueça de tomar sua medicação {{medicamento}} agora. ✅",
+            ),
+            CareTemplateCreate(
+                template_code="teleconsulta_confirmacao_wa",
+                channel=Channel.WHATSAPP,
+                content="Sua teleconsulta está confirmada para {{data_hora}}. Link: {{link_video}}",
+            ),
         ]
         for template in defaults:
             try:
@@ -558,4 +620,5 @@ def build_careplanner_service() -> CareplannerService:
     rc = RocketChatAdapter(settings)
     jitsi = JitsiAdapter(settings)
     kestra = KestraAdapter(settings)
-    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, settings=settings)
+    whatsapp = WhatsAppAdapter(settings)
+    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, whatsapp=whatsapp, settings=settings)
