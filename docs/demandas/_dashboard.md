@@ -61,14 +61,15 @@
 | DEM | Título | Spec |
 |-----|--------|------|
 | DEM-040 | CarePlanner UI Completo — lista paginada, detalhe+timeline, modal Nova Jornada, encerrar, link vídeo | ✅ pronta em `docs/demandas/DEM-040_CAREPLANNER_UI/` |
+| DEM-041 | Templates CarePlanner — CRUD backend (4 endpoints), seed 4 defaults, página GestorUI, TriggerModal Select | ✅ pronta em `docs/demandas/DEM-041_TEMPLATES_CAREPLANNER/` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-A      → DEM-040 — spec pronta, pode iniciar
-DEV-B      → livre
+DEV-A      → DEM-040 — em execução (Codex)
+DEV-B      → DEM-041 — spec pronta, pode iniciar em paralelo
 DEV-C      → livre
 Eduardo    → Deploy staging (DEM-038 completa após Fase D):
              ⚠ Pendentes antes do deploy staging:
