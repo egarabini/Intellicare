@@ -6,6 +6,7 @@
 FROM node:20-slim AS frontend-builder
 
 WORKDIR /build
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Copiar todos os frontends
 COPY frontend/ frontend/

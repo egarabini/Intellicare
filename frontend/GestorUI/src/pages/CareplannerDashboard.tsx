@@ -1,9 +1,29 @@
+import { useState } from 'react';
 import {
-  Box, Card, Center, Group, Loader, SimpleGrid,
-  Stack, Text, ThemeIcon, Title, Badge,
+  Box,
+  Button,
+  Card,
+  Center,
+  Group,
+  Loader,
+  Select,
+  SimpleGrid,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+  Badge,
 } from '@mantine/core';
-import { IconMessage } from '@tabler/icons-react';
-import { useCareplannerStats } from '../hooks/useGestor';
+import { notifications } from '@mantine/notifications';
+import { IconMessage, IconPlus } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
+import {
+  useCareplannerStats,
+  useCareplannerTasks,
+  useTriggerJourney,
+  type TriggerJourneyPayload,
+} from '../hooks/useGestor';
+import { TriggerJourneyModal } from '../components/TriggerJourneyModal';
 
 const STATUS_META: Record<string, { color: string; label: string }> = {
   CREATED: { color: 'gray', label: 'Criadas' },
@@ -15,44 +35,117 @@ const STATUS_META: Record<string, { color: string; label: string }> = {
   EXPIRED: { color: 'orange', label: 'Expiradas' },
 };
 
-export function CareplannerDashboard() {
-  const { data, isLoading, error } = useCareplannerStats();
+const STATUS_OPTIONS = [
+  { value: '', label: 'Todos os status' },
+  ...Object.entries(STATUS_META).map(([value, meta]) => ({ value, label: meta.label })),
+];
 
-  if (isLoading) return <Center h="100%"><Loader /></Center>;
-  if (error) return <Text c="red">Erro ao carregar CarePlanner.</Text>;
-  if (!data) return null;
+export function CareplannerDashboard() {
+  const navigate = useNavigate();
+  const [statusFilter, setStatusFilter] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [triggerOpen, setTriggerOpen] = useState(false);
+
+  const { data: stats, isLoading: statsLoading, error: statsError } = useCareplannerStats();
+  const { data: tasks, isLoading: tasksLoading, error: tasksError } = useCareplannerTasks(statusFilter, page);
+  const trigger = useTriggerJourney();
+
+  const handleTrigger = async (payload: TriggerJourneyPayload) => {
+    try {
+      const result = await trigger.mutateAsync(payload);
+      setTriggerOpen(false);
+      notifications.show({
+        title: 'Jornada iniciada',
+        message: `Execution: ${result.execution_id}`,
+        color: 'teal',
+      });
+    } catch {
+      notifications.show({
+        title: 'Erro ao iniciar jornada',
+        message: 'Kestra indisponível ou credenciais inválidas.',
+        color: 'red',
+      });
+    }
+  };
+
+  if (statsLoading) return <Center h="100%"><Loader /></Center>;
+  if (statsError) return <Text c="red">Erro ao carregar CarePlanner.</Text>;
 
   return (
     <Box>
       <Group justify="space-between" mb="md">
         <Title order={2}>CarePlanner — Jornadas</Title>
-        <Text c="dimmed" size="sm">Total: {data.total} jornadas</Text>
+        <Group>
+          <Text c="dimmed" size="sm">Total: {stats?.total ?? 0} jornadas</Text>
+          <Button
+            leftSection={<IconPlus size={16} />}
+            onClick={() => setTriggerOpen(true)}
+            data-testid="btn-nova-jornada"
+          >
+            Nova Jornada
+          </Button>
+        </Group>
       </Group>
 
       <SimpleGrid cols={{ base: 2, sm: 3, md: 4 }} spacing="md" mb="xl">
         {Object.entries(STATUS_META).map(([status, meta]) => (
-          <Card key={status} withBorder padding="md" radius="md">
+          <Card
+            key={status}
+            withBorder
+            padding="md"
+            radius="md"
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              setStatusFilter(status);
+              setPage(1);
+            }}
+          >
             <Group justify="space-between">
               <div>
                 <Text c="dimmed" tt="uppercase" fw={700} fz="xs">{meta.label}</Text>
-                <Text fw={700} fz="xl">{data.by_status[status] ?? 0}</Text>
+                <Text fw={700} fz="xl">{stats?.by_status[status] ?? 0}</Text>
               </div>
-              <Badge color={meta.color} variant="light" size="lg">
-                {status}
-              </Badge>
+              <Badge color={meta.color} variant="light" size="lg">{status}</Badge>
             </Group>
           </Card>
         ))}
       </SimpleGrid>
 
-      <Title order={3} mb="md">Atividade Recente</Title>
-      <Card withBorder>
-        {data.recent_tasks.length === 0 ? (
-          <Text c="dimmed">Nenhuma jornada recente.</Text>
+      <Group justify="space-between" mb="sm">
+        <Title order={3}>Jornadas</Title>
+        <Select
+          data={STATUS_OPTIONS}
+          value={statusFilter ?? ''}
+          onChange={(value) => {
+            setStatusFilter(value || null);
+            setPage(1);
+          }}
+          w={200}
+          placeholder="Filtrar por status"
+          data-testid="select-status"
+        />
+      </Group>
+
+      <Card withBorder mb="md">
+        {tasksLoading ? (
+          <Center py="xl"><Loader /></Center>
+        ) : tasksError ? (
+          <Text c="red" ta="center" py="xl">Erro ao carregar jornadas.</Text>
+        ) : !tasks || tasks.items.length === 0 ? (
+          <Text c="dimmed" ta="center" py="xl">Nenhuma jornada encontrada.</Text>
         ) : (
-          <Stack gap="sm">
-            {data.recent_tasks.map((task) => (
-              <Group key={task.correlation_id} wrap="nowrap" justify="space-between">
+          <Stack gap="xs">
+            {tasks.items.map((task) => (
+              <Group
+                key={task.correlation_id}
+                justify="space-between"
+                py="xs"
+                px="sm"
+                style={{ borderRadius: 6, cursor: 'pointer' }}
+                className="hover-row"
+                onClick={() => navigate(`/careplanner/jornadas/${task.correlation_id}`)}
+                data-testid={`row-${task.correlation_id}`}
+              >
                 <Group wrap="nowrap">
                   <ThemeIcon
                     variant="light"
@@ -79,6 +172,31 @@ export function CareplannerDashboard() {
           </Stack>
         )}
       </Card>
+
+      <Group justify="center">
+        <Button
+          variant="subtle"
+          disabled={page <= 1}
+          onClick={() => setPage((current) => current - 1)}
+        >
+          Anterior
+        </Button>
+        <Text size="sm">Página {page}</Text>
+        <Button
+          variant="subtle"
+          disabled={!tasks || tasks.items.length < 10}
+          onClick={() => setPage((current) => current + 1)}
+        >
+          Próxima
+        </Button>
+      </Group>
+
+      <TriggerJourneyModal
+        opened={triggerOpen}
+        onClose={() => setTriggerOpen(false)}
+        onSubmit={handleTrigger}
+        loading={trigger.isPending}
+      />
     </Box>
   );
 }

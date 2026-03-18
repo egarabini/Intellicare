@@ -254,3 +254,142 @@ export function useDeactivateClinician() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ['clinicians'] }),
   });
 }
+
+// ── Tipos ──────────────────────────────────────────────────────────────────
+
+export interface CareTask {
+  id: string;
+  correlation_id: string;
+  kestra_execution_id: string | null;
+  patient_ref: string;
+  task_type: string;
+  status: string;
+  channel: string;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string | null;
+}
+
+export interface CareEvent {
+  id: string;
+  event_id: string;
+  correlation_id: string;
+  event_type: string;
+  status: string | null;
+  payload: Record<string, unknown>;
+  recorded_at: string;
+}
+
+export interface CareConversation {
+  id: string;
+  correlation_id: string;
+  channel: string;
+  channel_conversation_id: number;
+  rc_room_id: string | null;
+  phone_e164: string | null;
+  participant_role: string | null;
+}
+
+export interface CareTaskDetail {
+  task: CareTask;
+  conversation: CareConversation | null;
+  events: CareEvent[];
+}
+
+export interface CareTaskList {
+  items: CareTask[];
+  page: number;
+}
+
+export interface TriggerJourneyPayload {
+  patient_ref: string;
+  task_type: string;
+  template_code?: string;
+  template_variables?: Record<string, string>;
+  contact_phone_e164?: string;
+  flow_id?: string;
+  clinico_ref?: string;
+}
+
+export interface TriggerJourneyResult {
+  ok: boolean;
+  execution_id: string;
+  flow_id: string;
+  status: string;
+}
+
+export interface VideoSession {
+  room_name: string;
+  clinico_url: string;
+  patient_url: string;
+  expires_at: string;
+  expired: boolean;
+}
+
+// ── Hooks ──────────────────────────────────────────────────────────────────
+
+export function useCareplannerTasks(statusFilter: string | null, page: number) {
+  return useQuery<CareTaskList>({
+    queryKey: ['careplanner_tasks', statusFilter, page],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      if (statusFilter) params.set('status_filter', statusFilter);
+      params.set('page', String(page));
+      const { data } = await api.get(`/careplanner/tasks?${params.toString()}`);
+      return data;
+    },
+    refetchInterval: 15_000,
+  });
+}
+
+export function useCareplannerTask(correlationId: string) {
+  return useQuery<CareTaskDetail>({
+    queryKey: ['careplanner_task', correlationId],
+    queryFn: async () => {
+      const { data } = await api.get(`/careplanner/tasks/${correlationId}`);
+      return data;
+    },
+    refetchInterval: 10_000,
+  });
+}
+
+export function useVideoSession(correlationId: string, enabled: boolean) {
+  return useQuery<VideoSession>({
+    queryKey: ['careplanner_video', correlationId],
+    queryFn: async () => {
+      const { data } = await api.get(`/careplanner/consultations/video/${correlationId}`);
+      return data;
+    },
+    enabled,
+    retry: false,
+  });
+}
+
+export function useTriggerJourney() {
+  const queryClient = useQueryClient();
+  return useMutation<TriggerJourneyResult, Error, TriggerJourneyPayload>({
+    mutationFn: async (payload) => {
+      const { data } = await api.post('/careplanner/journeys/trigger', payload);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['careplanner_tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['careplanner_stats'] });
+    },
+  });
+}
+
+export function useCloseTask(correlationId: string) {
+  const queryClient = useQueryClient();
+  return useMutation<{ ok: boolean; status: string }, Error, void>({
+    mutationFn: async () => {
+      const { data } = await api.post(`/careplanner/tasks/${correlationId}/close`);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['careplanner_task', correlationId] });
+      queryClient.invalidateQueries({ queryKey: ['careplanner_tasks'] });
+      queryClient.invalidateQueries({ queryKey: ['careplanner_stats'] });
+    },
+  });
+}

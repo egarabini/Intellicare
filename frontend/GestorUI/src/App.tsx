@@ -13,6 +13,7 @@ import {
   ActionIcon,
 } from '@mantine/core'
 import { Notifications, notifications } from '@mantine/notifications'
+import { ModalsProvider } from '@mantine/modals'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from 'react-oidc-context'
 import {
@@ -45,6 +46,7 @@ import { UnitDetailPage } from './pages/UnitDetailPage'
 import { TenantUsersPage } from './pages/TenantUsersPage'
 import { RelatoriosPage } from './pages/RelatoriosPage'
 import { CareplannerDashboard } from './pages/CareplannerDashboard'
+import { CareplannerJourneyDetail } from './pages/CareplannerJourneyDetail'
 import { NotificationBell } from './components/NotificationBell'
 
 import '@mantine/core/styles.css'
@@ -152,6 +154,7 @@ function AppRoutes() {
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/careplanner" element={<CareplannerDashboard />} />
+            <Route path="/careplanner/jornadas/:id" element={<CareplannerJourneyDetail />} />
             <Route path="/patients" element={<PatientList />} />
             <Route path="/patients/:id" element={<PatientProfile />} />
             <Route path="/appointments" element={<AppointmentCalendar />} />
@@ -176,10 +179,12 @@ export default function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <MantineProvider>
-          <Notifications />
-          <BrowserRouter basename="/gestor-ui">
-            <AppRoutes />
-          </BrowserRouter>
+          <ModalsProvider>
+            <Notifications />
+            <BrowserRouter basename="/gestor-ui">
+              <AppRoutes />
+            </BrowserRouter>
+          </ModalsProvider>
         </MantineProvider>
       </QueryClientProvider>
     </AuthProvider>
