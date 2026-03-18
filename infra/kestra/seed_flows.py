@@ -23,6 +23,7 @@ FLOW_FILES = [
     "careplanner_jornada_basica.yml",
     "careplanner_jornada_video.yml",
     "careplanner_jornada_whatsapp.yml",
+    "careplanner_jornada_email.yml",
 ]
 
 

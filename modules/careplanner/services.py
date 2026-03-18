@@ -16,6 +16,7 @@ from .adapters.kestra import KestraAdapter
 from .adapters.rocketchat import RocketChatAdapter
 from .adapters.sms import SMSAdapter
 from .adapters.whatsapp import WhatsAppAdapter
+from .adapters.email import EmailAdapter
 from .config import CareplannerSettings, get_careplanner_settings
 from .contracts import (
     CareConversationUpsert,
@@ -53,6 +54,7 @@ class CareplannerService:
         kestra: KestraAdapter,
         whatsapp: WhatsAppAdapter,
         sms: SMSAdapter,
+        email: EmailAdapter,
         settings: CareplannerSettings | None = None,
     ) -> None:
         self._repo = repo
@@ -61,6 +63,7 @@ class CareplannerService:
         self._kestra = kestra
         self._whatsapp = whatsapp
         self._sms = sms
+        self._email = email
         self._settings = settings or get_careplanner_settings()
 
     async def _send_to_channel(
@@ -68,12 +71,18 @@ class CareplannerService:
         channel: Channel,
         rc_room_id: str | None,
         phone_e164: str | None,
+        email: str | None,
         text: str,
     ) -> dict[str, Any]:
         if channel == Channel.WHATSAPP:
             if not phone_e164:
                 raise ValueError("phone_e164 obrigatorio para canal WHATSAPP")
             return await self._whatsapp.send_message(phone_e164, text)
+        elif channel == Channel.EMAIL:
+            if not email:
+                raise ValueError("email obrigatorio para canal EMAIL")
+            subject = "IntelliCare — Mensagem da sua equipe de saúde"
+            return await self._email.send_message(email, subject, text)
         elif channel == Channel.SMS:
             if not phone_e164:
                 raise ValueError("phone_e164 obrigatorio para canal SMS")
@@ -92,15 +101,17 @@ class CareplannerService:
         template_code: str,
         template_variables: dict,
         contact_phone: str | None = None,
+        contact_email: str | None = None,
         contact_role: str = "PACIENTE",
         channel: Channel = Channel.ROCKETCHAT,
     ) -> dict:
         correlation_id = uuid4()
         logger.debug(
-            "open_task: tenant=%s patient=%s phone=%s",
+            "open_task: tenant=%s patient=%s phone=%s email=%s",
             ctx.tenant_id,
             patient_ref,
             mask_phone(contact_phone),
+            contact_email,
         )
         task = await self._repo.create_task(
             ctx,
@@ -114,6 +125,7 @@ class CareplannerService:
                     "template_code": template_code,
                     "template_variables": template_variables,
                     "contact_phone": contact_phone,
+                    "contact_email": contact_email,
                     "contact_role": contact_role,
                 },
             ),
@@ -499,6 +511,7 @@ class CareplannerService:
             "template_code": body.template_code,
             "template_variables": body.template_variables,
             "contact_phone_e164": body.contact_phone_e164,
+            "contact_email": body.contact_email,
             "tenant_slug": ctx.tenant_id,
         }
         if body.clinico_ref:
@@ -633,6 +646,26 @@ class CareplannerService:
                 channel=Channel.SMS,
                 content="Consulta confirmada: {{data_hora}}. Link: {{link_video}} IntelliCare",
             ),
+            CareTemplateCreate(
+                template_code="boas_vindas_email",
+                channel=Channel.EMAIL,
+                content="Olá {{nome_paciente}}! Bem-vindo ao IntelliCare. Estamos iniciando seu acompanhamento por e-mail.",
+            ),
+            CareTemplateCreate(
+                template_code="check_in_email",
+                channel=Channel.EMAIL,
+                content="Olá {{nome_paciente}}! Como você está se sentindo hoje? Responda a este e-mail para nos informar.",
+            ),
+            CareTemplateCreate(
+                template_code="lembrete_email",
+                channel=Channel.EMAIL,
+                content="Lembrete importante: não esqueça de tomar sua medicação {{medicamento}} agora.",
+            ),
+            CareTemplateCreate(
+                template_code="teleconsulta_email",
+                channel=Channel.EMAIL,
+                content="Sua teleconsulta está confirmada para {{data_hora}}. Link: {{link_video}}",
+            ),
         ]
         for template in defaults:
             try:
@@ -649,4 +682,5 @@ def build_careplanner_service() -> CareplannerService:
     kestra = KestraAdapter(settings)
     whatsapp = WhatsAppAdapter(settings)
     sms = SMSAdapter(settings)
-    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, whatsapp=whatsapp, sms=sms, settings=settings)
+    email = EmailAdapter(settings)
+    return CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra, whatsapp=whatsapp, sms=sms, email=email, settings=settings)

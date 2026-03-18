@@ -554,6 +554,28 @@ services:
     networks:
       - intellicare-net
 
+  listmonk:
+    image: listmonk/listmonk:v3.0.0
+    container_name: intellicare-listmonk
+    restart: unless-stopped
+    ports:
+      - "9001:9000"
+    environment:
+      LISTMONK_app__address: "0.0.0.0:9000"
+      LISTMONK_db__host: postgres
+      LISTMONK_db__port: 5432
+      LISTMONK_db__user: ${POSTGRES_USER}
+      LISTMONK_db__password: ${POSTGRES_PASSWORD}
+      LISTMONK_db__database: listmonk
+      LISTMONK_app__admin_username: ${LISTMONK_USERNAME}
+      LISTMONK_app__admin_password: ${LISTMONK_PASSWORD}
+    command: [ "sh", "-c", "yes | ./listmonk --install --idempotent && ./listmonk" ]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - intellicare-net
+
 volumes:
   postgres_data:
   redis_data:

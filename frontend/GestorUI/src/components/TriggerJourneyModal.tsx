@@ -25,6 +25,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     channel: string;
     template_code: string;
     contact_phone_e164: string;
+    contact_email: string;
     include_video: boolean;
     clinico_ref: string;
   }>({
@@ -34,6 +35,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
       channel: 'rocketchat',
       template_code: '',
       contact_phone_e164: '',
+      contact_email: '',
       include_video: false,
       clinico_ref: '',
     },
@@ -41,6 +43,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
       patient_ref: (v) => (!v.trim() ? 'Referência do paciente obrigatória' : null),
       task_type: (v) => (!v ? 'Tipo de jornada obrigatório' : null),
       contact_phone_e164: (v, values) => ((values.channel === 'whatsapp' || values.channel === 'sms') && !v.trim() ? 'Telefone obrigatório para WhatsApp/SMS' : null),
+      contact_email: (v, values) => (values.channel === 'email' && !v.trim() ? 'E-mail obrigatório para o canal selecionado' : null),
       clinico_ref: (v, values) =>
         values.include_video && !v.trim()
           ? 'Referência do clínico obrigatória para videoconsulta'
@@ -60,6 +63,8 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     let flow = 'careplanner_jornada_basica';
     if (values.channel === 'whatsapp') {
       flow = 'careplanner_jornada_whatsapp';
+    } else if (values.channel === 'email') {
+      flow = 'careplanner_jornada_email';
     } else if (values.channel === 'sms') {
       flow = 'careplanner_jornada_sms';
     } else if (values.include_video) {
@@ -72,6 +77,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
       channel: values.channel,
       template_code: values.template_code.trim() || undefined,
       contact_phone_e164: values.contact_phone_e164.trim() || undefined,
+      contact_email: values.contact_email.trim() || undefined,
       flow_id: flow,
       clinico_ref: values.include_video ? values.clinico_ref.trim() : undefined,
     });
@@ -102,6 +108,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
               { value: 'rocketchat', label: 'Rocket.Chat Público' },
               { value: 'whatsapp', label: 'WhatsApp via Evolution' },
               { value: 'sms', label: 'SMS via Jasmin' },
+              { value: 'email', label: 'E-mail via Listmonk' },
             ]}
             required
             data-testid="select-channel"
@@ -122,6 +129,14 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
               placeholder="+5511999999999"
               required
               {...form.getInputProps('contact_phone_e164')}
+            />
+          )}
+          {form.values.channel === 'email' && (
+            <TextInput
+              label="E-mail do paciente"
+              placeholder="paciente@email.com"
+              required
+              {...form.getInputProps('contact_email')}
             />
           )}
           <Switch

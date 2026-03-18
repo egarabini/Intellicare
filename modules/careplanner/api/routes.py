@@ -52,6 +52,7 @@ class TriggerJourneyRequest(BaseModel):
     template_code: str | None = None
     template_variables: dict = Field(default_factory=dict)
     contact_phone_e164: str | None = None
+    contact_email: str | None = None
     channel: Channel = Channel.ROCKETCHAT
     flow_id: str = "careplanner_jornada_basica"
     clinico_ref: str | None = None
@@ -98,6 +99,7 @@ async def open_task(
         template_code=message.get("template_code", ""),
         template_variables=message.get("variables", {}),
         contact_phone=contact.get("phone_e164"),
+        contact_email=contact.get("contact_email"),
         contact_role=contact.get("role", "PACIENTE"),
     )
 

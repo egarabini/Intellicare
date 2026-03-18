@@ -41,6 +41,12 @@ class CareplannerSettings(BaseSettings):
     evolution_instance_name: str = "intellicare"
     evolution_webhook_secret: str = ""
     evolution_max_retries: int = 3
+    
+    # Listmonk (E-mail transacional)
+    listmonk_url: str = "http://listmonk:9000"
+    listmonk_username: str = "intellicare"
+    listmonk_password: str = ""
+    listmonk_sender_email: str = "noreply@intellicare.ia.br"
 
     # Jasmin SMS Gateway
     jasmin_url: str = "http://jasmin:1401"

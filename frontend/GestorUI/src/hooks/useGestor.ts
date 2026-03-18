@@ -307,6 +307,7 @@ export interface TriggerJourneyPayload {
   template_code?: string;
   template_variables?: Record<string, string>;
   contact_phone_e164?: string;
+  contact_email?: string;
   channel?: string;
   flow_id?: string;
   clinico_ref?: string;

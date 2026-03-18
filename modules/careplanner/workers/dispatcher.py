@@ -89,7 +89,11 @@ async def _do_dispatch(item: dict) -> None:
             if channel != Channel.WHATSAPP:
                 rc_room_id = await svc._rc.ensure_room(tenant_slug, task.patient_ref)
 
-            template = await repo.get_template_by_code(ctx, metadata.get("template_code", ""))
+            template = await repo.get_template_by_code(
+                ctx,
+                metadata.get("template_code", ""),
+                channel=channel.value,
+            )
             
             raw_content = template.content if template else metadata.get("template_code", "")
             text_content = raw_content
@@ -99,10 +103,11 @@ async def _do_dispatch(item: dict) -> None:
                     text_content = text_content.replace(f"{{{{{k}}}}}", str(v))
             
             await svc._send_to_channel(
-                channel=channel, 
-                rc_room_id=rc_room_id, 
-                phone_e164=metadata.get("contact_phone"), 
-                text=text_content
+                channel=channel,
+                rc_room_id=rc_room_id,
+                phone_e164=metadata.get("contact_phone"),
+                email=metadata.get("contact_email"),
+                text=text_content,
             )
 
             await repo.upsert_conversation(
@@ -119,7 +124,14 @@ async def _do_dispatch(item: dict) -> None:
                 ),
             )
             await repo.transition_task_status(ctx, UUID(correlation_id), TaskStatus.DISPATCHED)
-            careplanner_dispatch_total.labels(tenant_slug=tenant_slug, status="dispatched").inc()
+            next_status = TaskStatus.DISPATCHED
+            if channel in {Channel.WHATSAPP, Channel.SMS}:
+                await repo.transition_task_status(ctx, UUID(correlation_id), TaskStatus.SENT)
+                next_status = TaskStatus.SENT
+            careplanner_dispatch_total.labels(
+                tenant_slug=tenant_slug,
+                status=next_status.value.lower(),
+            ).inc()
             logger.info("dispatch ok: %s (tentativa %d)", correlation_id, attempt)
             return
         except Exception as exc:

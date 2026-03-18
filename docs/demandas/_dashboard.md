@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: 9ff6a05 (DEM-INF Staging) | Próxima: DEM-047
+> Atualizado: 2026-03-18 | Branch: main | Último commit: da98ce2 (DEM-047 WhatsApp)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -46,8 +46,11 @@
 | DEM-045 | CarePlanner ClinicoUI — fix role CLINICO nos GETs, useCareplanner.ts, CareplannerPage (filtro Minhas), CareplannerDetail read-only, NavLink badge REPLIED, 2 testes Playwright | `d7a61dd` |
 | DEM-046 | CI/CD Pipeline — GitHub Actions (pytest backend + build GestorUI + ClinicoUI), badge README, repo egarabini/Intellicare | `0c88a9d` |
 | DEM-INF | Staging Script — staging_update.sh (6 etapas), .env.staging.example (todos os segredos), deploy/README.md, .gitignore protege .env.staging | `9ff6a05` |
+| DEM-047 | WhatsApp via Evolution API — `WhatsAppAdapter`, webhook inbound, dispatcher multi-canal, `TriggerJourneyModal` seletor canal, Kestra flow WhatsApp, init DB `evolution`, 4 testes Phase H | `da98ce2` |
+| DEM-049 | SMS via Jasmin — `SMSAdapter` (truncamento 160 chars, retry), webhook /sms/{token}, Kestra flow SMS, opção SMS no TriggerModal, seed 4 templates, 4 testes Phase J | `375253a` ² |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
+² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
 
 ### Fixes colaterais aplicados no DEM-024
 
@@ -63,11 +66,10 @@
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-044 | Criar Videoconsulta GestorUI | DEV-1 | ✅ Commitado `d7a61dd` (agrupado com DEM-045) |
-| DEM-045 | CarePlanner ClinicoUI | DEV-2 | ✅ Commitado `d7a61dd` |
-| DEM-046 | CI/CD Pipeline GitHub Actions | CODEX | ✅ Commitado `0c88a9d` |
-| DEM-INF | Staging Script | DEV-3/4 | ✅ Commitado `9ff6a05` |
-| **DEM-047** | **WhatsApp via Evolution API** | **DEV-1** | ⏳ Spec pronta — aguardando execução |
+| DEM-048 | E-mail via Listmonk (Canal 3) | DEV-1 | ⏳ Spec pronta |
+| DEM-049 | SMS via Jasmin (Canal 4) | DEV-2 | ✅ Commitado `375253a` |
+| DEM-050 | Testes E2E Multi-Canal | CODEX | ⏳ Spec pronta |
+| DEM-INF | Staging Deploy + Evolution API | DEV-3/4 | ⏳ Spec pronta |
 
 ---
 
@@ -75,25 +77,20 @@
 
 | DEM | Título | Dev | Spec |
 |-----|--------|-----|------|
-| DEM-044 | Criar Videoconsulta — hook useCreateVideoSession, modal patient_url + CopyButton | DEV-1 | ✅ `docs/demandas/DEM-044_VIDEO_SESSION_UI/` |
-| DEM-045 | CarePlanner ClinicoUI — useCareplanner.ts, CareplannerPage, CareplannerDetail, NavLink badge REPLIED | DEV-2 | ✅ `docs/demandas/DEM-045_CAREPLANNER_CLINICO/` |
-| DEM-046 | CI/CD GitHub Actions — pytest + build GestorUI + ClinicoUI, badge README | CODEX | ✅ `docs/demandas/DEM-046_CI_CD_PIPELINE/` |
-| DEM-INF | Staging Script — staging_update.sh, .env.staging.example, deploy/README.md | DEV-3/4 | ✅ `docs/demandas/DEM-INF_STAGING_SCRIPT/` |
-| **DEM-047** | **WhatsApp via Evolution API — WhatsAppAdapter, webhook, TriggerModal canal, Kestra flow** | **DEV-1** | ✅ `docs/demandas/DEM-047_WHATSAPP_EVOLUTION/` |
-
-> **Próximas na esteira (a especificar):**
-> DEM-048 — E-mail via Listmonk (canal 3 do CarePlanner)
-> DEM-049 — SMS via Jasmin (canal 4 do CarePlanner)
+| DEM-048 | E-mail via Listmonk — `EmailAdapter`, Kestra flow, TriggerModal opção e-mail, 4 testes Phase I | DEV-1 | ✅ `docs/demandas/DEM-048_EMAIL_LISTMONK/` |
+| DEM-049 | SMS via Jasmin — `SMSAdapter`, webhook inbound SMS, Kestra flow, 4 testes Phase J | DEV-2 | ✅ `docs/demandas/DEM-049_SMS_JASMIN/` |
+| DEM-050 | E2E Multi-Canal — mock Evolution, 4 pytest integração, 3 Playwright seletor canal | CODEX | ✅ `docs/demandas/DEM-050_E2E_MULTICANAL/` |
+| DEM-INF | Staging Deploy — pull main@da98ce2, provisionar Evolution API, smoke test WA | DEV-3/4 | ✅ `docs/demandas/DEM-INF_STAGING_EVOLUTION/` |
 
 ---
 
 ## Distribuição sugerida para devs disponíveis
 
 ```
-DEV-1      → DEM-047 (WhatsApp Evolution API — ~3.5h)
-DEV-2      → aguardando nova DEM
-CODEX      → aguardando nova DEM
-DEV-3/4    → aguardando nova DEM
+DEV-1      → DEM-048 (Email/Listmonk — ~2.5h)
+DEV-2      → DEM-049 (SMS/Jasmin     — ~2h)
+CODEX      → DEM-050 (E2E multi-canal — ~2h)
+DEV-3/4    → DEM-INF (Staging deploy  — ~1.5h) ⚠ requer acesso SSH ao VPS
 ```
 
 ## Credenciais de teste (ambiente local)
