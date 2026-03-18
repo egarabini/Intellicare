@@ -23,6 +23,14 @@ async function openCareplanner(page: Parameters<typeof test.beforeEach>[0]['page
   await page.getByRole('link', { name: 'CarePlanner' }).click();
 }
 
+async function navigateClient(page: Parameters<typeof test.beforeEach>[0]['page'], path: string) {
+  await page.goto('/gestor-ui/');
+  await page.evaluate((nextPath) => {
+    window.history.pushState({}, '', nextPath);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  }, path);
+}
+
 test.describe('CareplannerDashboard', () => {
   test.beforeEach(async ({ page }) => {
     await mockAuth(page);
@@ -385,5 +393,136 @@ test.describe('CareplannerDashboard', () => {
     await page.getByTestId('select-task-type').selectOption('CHECK_IN');
     await page.getByTestId('btn-submit-trigger').click();
     await expect(page.getByText('Execution: exec-novo-123')).toBeVisible();
+  });
+
+  test('DEM041-01: página de templates lista seed defaults', async ({ page }) => {
+    await page.route('**/careplanner/templates*', (route) => {
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          items: [
+            {
+              id: 'tpl-uuid-1', template_code: 'boas_vindas',
+              channel: 'rocketchat', content: 'Olá! Sou o assistente...',
+              variables: [], active: true,
+              tenant_slug: 'alfa', created_at: '2026-03-18T00:00:00Z',
+              updated_at: '2026-03-18T00:00:00Z',
+            },
+          ],
+        }),
+      });
+    });
+    await navigateClient(page, '/gestor-ui/careplanner/templates');
+    await expect(page.getByTestId('table-templates')).toBeVisible();
+    await expect(page.getByTestId('row-template-boas_vindas')).toBeVisible();
+  });
+
+  test('DEM041-02: criar template com código duplicado exibe erro inline', async ({ page }) => {
+    await page.route('**/careplanner/templates*', (route) => {
+      if (route.request().method() === 'POST') {
+        route.fulfill({ status: 409, contentType: 'application/json',
+          body: JSON.stringify({ detail: { code: 'template_already_exists' } }) });
+      } else {
+        route.fulfill({ status: 200, contentType: 'application/json',
+          body: JSON.stringify({ items: [] }) });
+      }
+    });
+    await navigateClient(page, '/gestor-ui/careplanner/templates');
+    await page.getByTestId('btn-novo-template').click();
+    await page.getByTestId('input-template-code').fill('boas_vindas');
+    await page.getByTestId('input-template-content').fill('Conteúdo de teste');
+    await page.getByTestId('btn-salvar-template').click();
+    await expect(page.getByText('Já existe um template com este código')).toBeVisible();
+  });
+
+  test('DEM042-01: badge CarePlanner no NavLink aparece com notificacao pendente', async ({ page }) => {
+    const notificationsPayload = [
+      {
+        id: 'notif-careplanner-1',
+        title: 'Paciente respondeu',
+        message: 'paciente.demo respondeu à jornada CHECK_IN',
+        is_read: false,
+        created_at: '2026-03-18T12:00:00Z',
+        data: {
+          module: 'careplanner',
+          correlation_id: 'corr-notif-1',
+          event: 'REPLIED',
+        },
+      },
+    ];
+
+    await page.route('**/notifications/?limit=20', route =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(notificationsPayload),
+      }),
+    );
+
+    await page.goto('/gestor-ui/');
+    await expect(page.getByText('CarePlanner')).toBeVisible();
+    await expect(page.getByTestId('careplanner-badge')).toHaveText('1');
+  });
+
+  test('DEM042-02: notificacao CarePlanner navega para jornada ao clicar', async ({ page }) => {
+    const correlationId = 'corr-notif-2';
+    const notificationsPayload = [
+      {
+        id: 'notif-careplanner-2',
+        title: 'Paciente respondeu',
+        message: 'paciente.demo respondeu à jornada CHECK_IN',
+        is_read: false,
+        created_at: '2026-03-18T12:00:00Z',
+        data: {
+          module: 'careplanner',
+          correlation_id: correlationId,
+          event: 'REPLIED',
+        },
+      },
+    ];
+
+    await page.route('**/notifications/?limit=20', route =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(notificationsPayload),
+      }),
+    );
+    await page.route('**/notifications/*/read', route =>
+      route.fulfill({ status: 204, body: '' }),
+    );
+    await page.route(`**/careplanner/tasks/${correlationId}`, route =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          task: {
+            id: 'uuid-nav',
+            correlation_id: correlationId,
+            kestra_execution_id: 'exec-nav',
+            patient_ref: 'paciente.demo',
+            task_type: 'CHECK_IN',
+            status: 'REPLIED',
+            channel: 'rocketchat',
+            metadata: {},
+            created_at: '2026-03-18T10:00:00Z',
+            updated_at: '2026-03-18T11:00:00Z',
+          },
+          conversation: null,
+          events: [],
+        }),
+      }),
+    );
+    await page.route(`**/careplanner/consultations/video/${correlationId}`, route =>
+      route.fulfill({ status: 404 }),
+    );
+
+    await page.goto('/gestor-ui/');
+    await page.click('[aria-label="Notificações"]');
+    await expect(page.getByText('Notificações')).toBeVisible();
+    await page.getByText('Paciente respondeu').click();
+    await expect(page).toHaveURL(`/gestor-ui/careplanner/jornadas/${correlationId}`);
+    await expect(page.getByText('Detalhe da Jornada')).toBeVisible();
   });
 });

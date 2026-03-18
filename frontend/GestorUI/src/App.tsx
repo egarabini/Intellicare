@@ -1,6 +1,7 @@
 import { BrowserRouter, Link, Navigate, Route, Routes, NavLink } from 'react-router-dom'
 import {
   AppShell,
+  Badge,
   Button,
   Group,
   Loader,
@@ -47,7 +48,9 @@ import { TenantUsersPage } from './pages/TenantUsersPage'
 import { RelatoriosPage } from './pages/RelatoriosPage'
 import { CareplannerDashboard } from './pages/CareplannerDashboard'
 import { CareplannerJourneyDetail } from './pages/CareplannerJourneyDetail'
+import { CareplannerTemplates } from './pages/CareplannerTemplates'
 import { NotificationBell } from './components/NotificationBell'
+import { useNotifications } from './hooks/useNotifications'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -107,10 +110,26 @@ function AppRoutes() {
   }
 
   function NavLinks() {
+    const { careplannerUnread } = useNotifications()
+
     return (
       <>
         <MantineNavLink component={NavLink} to="/dashboard" label="Dashboard" leftSection={<IconDashboard size="1rem"/>} />
-        <MantineNavLink component={NavLink} to="/careplanner" label="CarePlanner" leftSection={<IconMessage size="1rem"/>} />
+        <MantineNavLink
+          component={NavLink}
+          to="/careplanner"
+          leftSection={<IconMessage size="1rem"/>}
+          label={(
+            <Group gap="xs">
+              <span>CarePlanner</span>
+              {careplannerUnread > 0 && (
+                <Badge size="xs" color="red" circle data-testid="careplanner-badge">
+                  {careplannerUnread > 9 ? '9+' : careplannerUnread}
+                </Badge>
+              )}
+            </Group>
+          )}
+        />
         <MantineNavLink component={NavLink} to="/patients" label="Pacientes" leftSection={<IconUsers size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/appointments" label="Agenda" leftSection={<IconCalendarEvent size="1rem"/>} />
         <MantineNavLink component={NavLink} to="/financeiro" label="Faturamento" leftSection={<IconFileInvoice size="1rem"/>} />
@@ -155,6 +174,7 @@ function AppRoutes() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/careplanner" element={<CareplannerDashboard />} />
             <Route path="/careplanner/jornadas/:id" element={<CareplannerJourneyDetail />} />
+            <Route path="/careplanner/templates" element={<CareplannerTemplates />} />
             <Route path="/patients" element={<PatientList />} />
             <Route path="/patients/:id" element={<PatientProfile />} />
             <Route path="/appointments" element={<AppointmentCalendar />} />

@@ -10,6 +10,7 @@ from intellicare_core.contracts.base import TenantContext
 from intellicare_core.db.session import get_engine, tenant_session
 
 from ..contracts import TaskStatus
+from ..integrations import notify_task_expired
 from ..repository import CareplannerRepository
 
 logger = logging.getLogger(__name__)
@@ -53,7 +54,7 @@ async def _expire_for_tenant(ctx: TenantContext, repo: CareplannerRepository) ->
             await db.execute(
                 text(
                     f"""
-                    SELECT correlation_id, status
+                    SELECT correlation_id, status, task_type, patient_ref
                     FROM care_tasks
                     WHERE (
                         (status = 'DISPATCHED' AND updated_at < NOW() - INTERVAL '{SLA_DISPATCHED_HOURS} hours')
@@ -68,6 +69,12 @@ async def _expire_for_tenant(ctx: TenantContext, repo: CareplannerRepository) ->
     for row in rows:
         try:
             await repo.transition_task_status(ctx, row["correlation_id"], TaskStatus.EXPIRED)
+            await notify_task_expired(
+                ctx=ctx,
+                correlation_id=row["correlation_id"],
+                task_type=row["task_type"],
+                patient_ref=row["patient_ref"],
+            )
             logger.info("task expirada: %s (era %s)", row["correlation_id"], row["status"])
         except ValueError:
             pass

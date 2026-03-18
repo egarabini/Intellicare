@@ -4,6 +4,7 @@ import {
   ScrollArea, Stack, Text,
 } from '@mantine/core'
 import { IconBell } from '@tabler/icons-react'
+import { useNavigate } from 'react-router-dom'
 import { useNotifications, AppNotification } from '../hooks/useNotifications'
 
 function timeAgo(iso: string): string {
@@ -17,21 +18,31 @@ function timeAgo(iso: string): string {
 function NotificationItem({
   notification,
   onRead,
+  onNavigate,
 }: {
   notification: AppNotification
   onRead: (id: string) => void
+  onNavigate?: (path: string) => void
 }) {
+  const handleClick = () => {
+    if (!notification.is_read) onRead(notification.id)
+    const data = notification.data as Record<string, unknown> | undefined
+    if (data?.module === 'careplanner' && data?.correlation_id) {
+      onNavigate?.(`/careplanner/jornadas/${data.correlation_id}`)
+    }
+  }
+
   return (
     <Stack
       gap={2}
       p="xs"
       style={{
-        cursor: notification.is_read ? 'default' : 'pointer',
+        cursor: 'pointer',
         borderRadius: 6,
         background: notification.is_read ? 'transparent' : 'var(--mantine-color-blue-0)',
         borderBottom: '1px solid var(--mantine-color-gray-2)',
       }}
-      onClick={() => !notification.is_read && onRead(notification.id)}
+      onClick={handleClick}
     >
       <Group justify="space-between" gap={4}>
         <Text size="sm" fw={notification.is_read ? 400 : 600} lineClamp={1}>
@@ -49,10 +60,15 @@ function NotificationItem({
 export function NotificationBell() {
   const { notifications, unreadCount, markRead, available } = useNotifications()
   const [opened, setOpened] = useState(false)
+  const navigate = useNavigate()
 
   if (!available) return null
 
   const label = unreadCount >= 10 ? '9+' : String(unreadCount)
+  const handleNavigate = (path: string) => {
+    setOpened(false)
+    navigate(path)
+  }
 
   return (
     <Popover
@@ -96,7 +112,12 @@ export function NotificationBell() {
             </Text>
           ) : (
             notifications.map(n => (
-              <NotificationItem key={n.id} notification={n} onRead={markRead} />
+              <NotificationItem
+                key={n.id}
+                notification={n}
+                onRead={markRead}
+                onNavigate={handleNavigate}
+              />
             ))
           )}
         </ScrollArea.Autosize>

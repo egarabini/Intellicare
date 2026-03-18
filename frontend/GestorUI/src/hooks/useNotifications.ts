@@ -9,9 +9,18 @@ export interface AppNotification {
   is_read: boolean
   created_at: string
   category?: string
+  data?: Record<string, unknown>
 }
 
-export function useNotifications() {
+interface UseNotificationsResult {
+  notifications: AppNotification[]
+  unreadCount: number
+  markRead: (id: string) => Promise<void>
+  available: boolean
+  careplannerUnread: number
+}
+
+export function useNotifications(): UseNotificationsResult {
   const auth = useAuth()
   const [notifications, setNotifications] = useState<AppNotification[]>([])
   const [available, setAvailable] = useState(true)
@@ -19,6 +28,9 @@ export function useNotifications() {
   const esRef = useRef<EventSource | null>(null)
 
   const unreadCount = notifications.filter(n => !n.is_read).length
+  const careplannerUnread = notifications.filter(
+    n => !n.is_read && n.data?.module === 'careplanner'
+  ).length
 
   const fetchNotifications = useCallback(async () => {
     try {
@@ -76,5 +88,5 @@ export function useNotifications() {
     }
   }, [auth.user?.access_token, available, fetchNotifications])
 
-  return { notifications, unreadCount, markRead, available }
+  return { notifications, unreadCount, markRead, available, careplannerUnread }
 }

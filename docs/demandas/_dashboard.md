@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: e572dba
+> Atualizado: 2026-03-18 | Branch: main | Último commit: 88614ac
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -37,6 +37,7 @@
 | DEM-038 Fase C | CarePlanner — metrics.py (6 métricas), integrations.py (notify+trigger), dashboard/stats, CareplannerDashboard.tsx + 7 testes | `c818cc1` |
 | DEM-038 Fase D | CarePlanner — dispatcher Redis+retry+dead-letter+FAILED, expiry_worker (DISPATCHED>24h/SENT>72h→EXPIRED), security.py (mask_phone/content/jwt), hardening HMAC/Jitsi, Playwright 4 E2E + 10 testes Python | `fef17db` |
 | DEM-039 | Kestra Workflow CarePlanner — flows YAML (jornada_basica+video), seed_flows.py (POST Kestra 0.20), trigger_flow(), POST /journeys/trigger, smoke test JWT end-to-end | `415643e` |
+| DEM-040 | CarePlanner UI Completo — lista paginada+filtro, CareplannerJourneyDetail+timeline, TriggerJourneyModal, 6 hooks TypeScript, 7 testes Playwright, OOM fix Dockerfile | `88614ac` |
 
 ### Fixes colaterais aplicados no DEM-024
 
