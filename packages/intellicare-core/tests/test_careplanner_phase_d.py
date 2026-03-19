@@ -132,7 +132,15 @@ async def test_do_dispatch_retries_and_succeeds(repo: CareplannerRepository, ten
         ),
     )
     flaky = FlakyRocketChat(fail_times=2)
-    with patch("modules.careplanner.services.build_careplanner_service", return_value=SimpleNamespace(_rc=flaky)):
+
+    async def send_to_channel(channel, rc_room_id, phone_e164, email, text):
+        return await flaky.post_message(rc_room_id, text)
+
+    service_stub = SimpleNamespace(
+        _rc=flaky,
+        _send_to_channel=AsyncMock(side_effect=send_to_channel),
+    )
+    with patch("modules.careplanner.services.build_careplanner_service", return_value=service_stub):
         await _do_dispatch({"correlation_id": str(correlation_id), "tenant_slug": tenant_ctx.tenant_id, "attempts": 0})
 
     task = await repo.get_task(tenant_ctx, correlation_id)
@@ -159,8 +167,16 @@ async def test_do_dispatch_moves_to_dead_letter_and_failed(repo: CareplannerRepo
     )
     fake_redis = FakeRedis()
     flaky = FlakyRocketChat(fail_times=3)
+
+    async def send_to_channel(channel, rc_room_id, phone_e164, email, text):
+        return await flaky.post_message(rc_room_id, text)
+
+    service_stub = SimpleNamespace(
+        _rc=flaky,
+        _send_to_channel=AsyncMock(side_effect=send_to_channel),
+    )
     with patch("modules.notifications.redis_pubsub.get_redis", new_callable=AsyncMock, return_value=fake_redis), \
-         patch("modules.careplanner.services.build_careplanner_service", return_value=SimpleNamespace(_rc=flaky)):
+         patch("modules.careplanner.services.build_careplanner_service", return_value=service_stub):
         await _do_dispatch({"correlation_id": str(correlation_id), "tenant_slug": tenant_ctx.tenant_id, "attempts": 0})
 
     task = await repo.get_task(tenant_ctx, correlation_id)

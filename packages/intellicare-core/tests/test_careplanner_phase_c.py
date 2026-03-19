@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 from uuid import UUID, uuid4
 
 import pytest
@@ -106,17 +106,36 @@ def tenant_ctx() -> TenantContext:
     )
 
 
+def _mock_channel_adapters():
+    whatsapp_mock = MagicMock()
+    whatsapp_mock.send_message = AsyncMock(return_value={"key": {"id": "mock-wa"}})
+    whatsapp_mock.close = AsyncMock()
+
+    email_mock = MagicMock()
+    email_mock.send_message = AsyncMock(return_value={"data": {}})
+    email_mock.close = AsyncMock()
+
+    sms_mock = MagicMock()
+    sms_mock.send_message = AsyncMock(return_value={"status": "sent"})
+    sms_mock.close = AsyncMock()
+    return whatsapp_mock, email_mock, sms_mock
+
+
 @pytest.fixture
 def service() -> CareplannerService:
     settings = CareplannerSettings(
         jitsi_app_secret="secret-careplanner",
         rocketchat_webhook_token="secret-hmac",
     )
+    whatsapp_mock, email_mock, sms_mock = _mock_channel_adapters()
     return CareplannerService(
         repo=CareplannerRepository(),
         rc=MockRocketChatAdapter(),
         jitsi=MockJitsiAdapter(),
         kestra=MockKestraAdapter(),
+        whatsapp=whatsapp_mock,
+        email=email_mock,
+        sms=sms_mock,
         settings=settings,
     )
 
@@ -130,7 +149,8 @@ def test_app() -> FastAPI:
 
 @pytest.mark.asyncio
 async def test_notify_clinico_replied_calls_publish_notification():
-    with patch("modules.notifications.redis_pubsub.publish_notification", new_callable=AsyncMock) as mock_pub:
+    with patch("modules.notifications.service.NotificationService.send", new_callable=AsyncMock) as mock_send, \
+         patch("modules.notifications.redis_pubsub.publish_broadcast", new_callable=AsyncMock) as mock_broadcast:
         ctx = TenantContext.from_slug("test_c", "user-1", roles=["CLINICO"])
         correlation_id = uuid4()
         await notify_clinico_replied(
@@ -142,20 +162,21 @@ async def test_notify_clinico_replied_calls_publish_notification():
             content="SIM",
         )
 
-        mock_pub.assert_called_once()
-        args = mock_pub.call_args.args
-        assert args[0] == "test_c"
-        assert args[1] == "dr.silva"
-        assert args[2]["type"] == "message"
-        assert args[2]["priority"] == "high"
-        assert args[2]["data"]["event"] == "REPLIED"
-        assert args[2]["data"]["correlation_id"] == str(correlation_id)
+        mock_send.assert_called_once()
+        args = mock_send.call_args.args
+        assert args[0].tenant_id == "test_c"
+        assert args[1].user_id == "dr.silva"
+        assert args[1].type == "message"
+        assert args[1].priority == "high"
+        assert args[1].data["event"] == "REPLIED"
+        assert args[1].data["correlation_id"] == str(correlation_id)
+        mock_broadcast.assert_called_once()
 
 
 @pytest.mark.asyncio
 async def test_notify_clinico_replied_swallows_errors():
-    with patch("modules.notifications.redis_pubsub.publish_notification", new_callable=AsyncMock) as mock_pub:
-        mock_pub.side_effect = RuntimeError("redis down")
+    with patch("modules.notifications.service.NotificationService.send", new_callable=AsyncMock) as mock_send:
+        mock_send.side_effect = RuntimeError("notification down")
         ctx = TenantContext.from_slug("test_c", "user-1", roles=["CLINICO"])
         await notify_clinico_replied(
             ctx,

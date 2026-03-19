@@ -113,7 +113,7 @@ test.describe('CarePlanner - seletor de canal', () => {
 
     await page.getByTestId('select-channel').selectOption('whatsapp');
     await expect(page.getByLabel('Telefone (E.164)')).toBeVisible();
-    await expect(page.getByLabel('Template de Mensagem')).toBeVisible();
+    await expect(page.getByTestId('select-template-code')).toBeVisible();
   });
 
   test('ao selecionar RocketChat, campo de telefone fica oculto', async ({ page }) => {

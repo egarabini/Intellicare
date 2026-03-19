@@ -1,0 +1,1 @@
+test(careplanner): DEM-050 E2E multi-canal + fix regressões fixtures Phases B/C/E

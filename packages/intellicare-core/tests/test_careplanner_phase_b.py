@@ -5,7 +5,7 @@ import hashlib
 import hmac
 import json
 from datetime import datetime, timezone
-from unittest.mock import AsyncMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 from uuid import UUID
 
 import pytest
@@ -159,17 +159,36 @@ def repo() -> CareplannerRepository:
     return CareplannerRepository()
 
 
+def _mock_channel_adapters():
+    whatsapp_mock = MagicMock()
+    whatsapp_mock.send_message = AsyncMock(return_value={"key": {"id": "mock-wa"}})
+    whatsapp_mock.close = AsyncMock()
+
+    email_mock = MagicMock()
+    email_mock.send_message = AsyncMock(return_value={"data": {}})
+    email_mock.close = AsyncMock()
+
+    sms_mock = MagicMock()
+    sms_mock.send_message = AsyncMock(return_value={"status": "sent"})
+    sms_mock.close = AsyncMock()
+    return whatsapp_mock, email_mock, sms_mock
+
+
 @pytest.fixture
 def service() -> CareplannerService:
     settings = CareplannerSettings(
         jitsi_app_secret="secret-careplanner",
         rocketchat_webhook_token="secret-hmac",
     )
+    whatsapp_mock, email_mock, sms_mock = _mock_channel_adapters()
     return CareplannerService(
         repo=CareplannerRepository(),
         rc=MockRocketChatAdapter(),
         jitsi=MockJitsiAdapter(),
         kestra=MockKestraAdapter(),
+        whatsapp=whatsapp_mock,
+        email=email_mock,
+        sms=sms_mock,
         settings=settings,
     )
 
@@ -341,11 +360,15 @@ async def test_multi_tenant_isolation(
 
 @pytest.mark.asyncio
 async def test_webhook_invalid_signature_returns_403(clean_phase_b_tables):
+    whatsapp_mock, email_mock, sms_mock = _mock_channel_adapters()
     mock_service = CareplannerService(
         repo=CareplannerRepository(),
         rc=MockRocketChatAdapter(),
         jitsi=MockJitsiAdapter(),
         kestra=MockKestraAdapter(),
+        whatsapp=whatsapp_mock,
+        email=email_mock,
+        sms=sms_mock,
         settings=CareplannerSettings(rocketchat_webhook_token="secret-hmac", jitsi_app_secret="secret"),
     )
 

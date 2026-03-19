@@ -54,7 +54,24 @@ async def test_trigger_flow_kestra_indisponivel(kestra_adapter, respx_mock):
     repo = MagicMock()
     rc = MagicMock()
     jitsi = MagicMock()
-    service = CareplannerService(repo=repo, rc=rc, jitsi=jitsi, kestra=kestra_adapter)
+    whatsapp_mock = MagicMock()
+    whatsapp_mock.send_message = AsyncMock(return_value={"key": {"id": "mock-wa"}})
+    whatsapp_mock.close = AsyncMock()
+    email_mock = MagicMock()
+    email_mock.send_message = AsyncMock(return_value={"data": {}})
+    email_mock.close = AsyncMock()
+    sms_mock = MagicMock()
+    sms_mock.send_message = AsyncMock(return_value={"status": "sent"})
+    sms_mock.close = AsyncMock()
+    service = CareplannerService(
+        repo=repo,
+        rc=rc,
+        jitsi=jitsi,
+        kestra=kestra_adapter,
+        whatsapp=whatsapp_mock,
+        email=email_mock,
+        sms=sms_mock,
+    )
     
     ctx = TenantContext.from_slug("alfa", "user123")
     
@@ -64,6 +81,7 @@ async def test_trigger_flow_kestra_indisponivel(kestra_adapter, respx_mock):
         template_code = "foo"
         template_variables = {}
         contact_phone_e164 = "+55"
+        contact_email = None
         flow_id = "careplanner_jornada_basica"
         clinico_ref = None
 
@@ -110,8 +128,8 @@ async def test_trigger_journey_endpoint_202():
 
 
 def test_seed_flows_idempotente(respx_mock):
-    # Mocka httpx.put retornando Response(200, ...)
-    respx_mock.put("http://localhost:8080/api/v1/flows").mock(return_value=Response(200, json={}))
+    # Mocka httpx.post retornando Response(200, ...)
+    respx_mock.post("http://localhost:8080/api/v1/flows").mock(return_value=Response(200, json={}))
     
     import infra.kestra.seed_flows as seed_module
     
@@ -119,5 +137,5 @@ def test_seed_flows_idempotente(respx_mock):
     seed_module.provision_flows()
     seed_module.provision_flows()
     
-    # Cada chamada do PUT e feita exatamente 1x por yaml (tem 2 no total), entao 4 chamadas.
-    assert respx_mock.calls.call_count == 4
+    # Sao 4 flows por execucao; duas execucoes devem resultar em 8 chamadas.
+    assert respx_mock.calls.call_count == 8
