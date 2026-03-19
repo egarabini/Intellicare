@@ -10,6 +10,33 @@ ENV_FILE="${STAGING_ENV_FILE:-infra/.env.staging}"
 COMPOSE_FILE="infra/docker-compose.yml"
 COMPOSE_CMD=(docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE")
 
+seed_kestra_flows() {
+  local flow_path
+
+  for flow_path in infra/kestra/flows/*.yml; do
+    [[ -f "$flow_path" ]] || continue
+
+    echo "   -> $(basename "$flow_path")"
+    cat "$flow_path" | "${COMPOSE_CMD[@]}" exec -T intellicare-service python -c '
+import os
+import sys
+
+import httpx
+
+flow_yaml = sys.stdin.read()
+kestra_url = os.getenv("KESTRA_URL", "http://kestra:8080").rstrip("/")
+response = httpx.post(
+    f"{kestra_url}/api/v1/flows",
+    content=flow_yaml,
+    headers={"Content-Type": "application/x-yaml"},
+    timeout=30,
+)
+print(f"HTTP {response.status_code}")
+raise SystemExit(0 if response.status_code in (200, 201) else 1)
+'
+  done
+}
+
 echo "======================================"
 echo " IntelliCare Staging Update"
 echo " $(date '+%Y-%m-%d %H:%M:%S')"
@@ -50,8 +77,7 @@ sleep 30
 
 echo ""
 echo "==> [6/7] Seed dos flows Kestra..."
-"${COMPOSE_CMD[@]}" exec -T intellicare-service python infra/kestra/seed_flows.py || \
-  echo "AVISO: seed_flows.py falhou (Kestra pode estar inicializando)."
+seed_kestra_flows || echo "AVISO: seed dos flows Kestra falhou (Kestra pode estar inicializando)."
 
 echo ""
 echo "==> [7/7] Status final dos servicos..."
