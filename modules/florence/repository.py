@@ -68,8 +68,8 @@ async def get_encounter_full(ctx: TenantContext, encounter_id: str) -> dict | No
             text("""
             SELECT e.*, p.name as patient_name, tu.name as professional_name 
             FROM encounters e
-            LEFT JOIN public.patients p ON CAST(e.patient_id AS TEXT) = CAST(p.id AS TEXT)
-            LEFT JOIN public.tenant_users tu ON tu.keycloak_id = e.clinician_id
+            LEFT JOIN patients p ON CAST(e.patient_id AS TEXT) = CAST(p.id AS TEXT)
+            LEFT JOIN tenant_users tu ON tu.keycloak_id = e.clinician_id
             WHERE e.id = :encounter_id
             """),
             {"encounter_id": str(encounter_id)}
