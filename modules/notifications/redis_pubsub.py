@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import os
 from collections.abc import AsyncGenerator
 from typing import Any
 
@@ -18,7 +19,8 @@ _redis_pool: aioredis.Redis | None = None
 
 def _get_redis_url() -> str:
     s = get_settings()
-    return f"redis://:{s.redis_password}@{s.redis_host}:{s.redis_port}/0"
+    redis_pass = os.getenv("REDIS_PASSWORD_URLENC") or s.redis_password
+    return f"redis://:{redis_pass}@{s.redis_host}:{s.redis_port}/0"
 
 
 async def get_redis() -> aioredis.Redis:
