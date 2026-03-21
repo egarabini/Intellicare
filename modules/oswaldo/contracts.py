@@ -36,3 +36,19 @@ class Prescription(BaseModel):
 class CID10Result(BaseModel):
     code: str
     description: str
+
+
+class OswaldoSuggestRequest(BaseModel):
+    encounter_id: int
+    patient_id: int
+    chief_complaint: str
+    recent_diagnoses: list[str] | None = None
+    current_medications: list[str] | None = None
+
+
+class OswaldoSuggestion(BaseModel):
+    cid10_code: str
+    cid10_desc: str
+    prescription_items: list[PrescriptionItem]
+    model: str
+    confidence: str

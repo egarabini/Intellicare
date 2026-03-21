@@ -1,8 +1,7 @@
-"""Testes DEM-057 — Florence IA: Sugestão SOAP (Hybrid)."""
+"""Testes DEM-061 — Oswaldo IA: Sugestão CID-10 + Prescrição (Hybrid)."""
 from __future__ import annotations
 
 import asyncio
-from unittest.mock import patch
 
 import pytest
 from fastapi import FastAPI
@@ -10,17 +9,17 @@ from httpx import ASGITransport, AsyncClient
 
 from intellicare_core.auth.jwt import get_current_tenant
 from intellicare_core.contracts.base import TenantContext
-from modules.florence.api.routes import router as florence_router
+from modules.oswaldo.api.routes import router as oswaldo_router
 
-TENANT_SLUG = "florence_test_ia"
+TENANT_SLUG = "oswaldo_test_ia"
 
 
 def _mock_ctx() -> TenantContext:
     return TenantContext.from_slug(
         slug=TENANT_SLUG,
-        user_id="clinico-ia-1",
+        user_id="clinico-ow-1",
         roles=["CLINICO"],
-        email="clinico@test.local",
+        email="clinico_ow@test.local",
     )
 
 
@@ -34,7 +33,7 @@ def event_loop():
 @pytest.fixture
 def app() -> FastAPI:
     app = FastAPI()
-    app.include_router(florence_router, prefix="/api/v1")
+    app.include_router(oswaldo_router, prefix="/api/v1/oswaldo")
     app.dependency_overrides[get_current_tenant] = _mock_ctx
     return app
 
@@ -50,28 +49,29 @@ async def client(app: FastAPI) -> AsyncClient:
 # Test 1: Sem LLM configurado, retorna sugestão rule-based
 # ────────────────────────────────────────────────────────────────────────────
 @pytest.mark.asyncio
-async def test_suggest_soap_rule_based(client: AsyncClient, monkeypatch):
-    """Sem LLM configurado, retorna sugestão de regras sem erro."""
+async def test_suggest_rule_based(client: AsyncClient, monkeypatch):
+    """Sem LLM configurado, retorna sugestão de regras."""
     monkeypatch.delenv("FLORENCE_LLM_URL", raising=False)
-    resp = await client.post("/api/v1/florence/notes/suggest", json={
+    resp = await client.post("/api/v1/oswaldo/suggest", json={
         "encounter_id": 1,
         "patient_id": 1,
-        "chief_complaint": "Dor de cabeça há 2 dias",
+        "chief_complaint": "Dor de garganta há 3 dias",
     })
     assert resp.status_code == 200
     data = resp.json()
-    assert data["soap_s"] == "Dor de cabeça há 2 dias"
     assert data["model"] == "rule-based"
     assert data["confidence"] == "low"
+    assert data["cid10_code"] == "Z00"
+    assert isinstance(data["prescription_items"], list)
 
 
 # ────────────────────────────────────────────────────────────────────────────
 # Test 2: Campo chief_complaint obrigatório
 # ────────────────────────────────────────────────────────────────────────────
 @pytest.mark.asyncio
-async def test_suggest_soap_missing_complaint(client: AsyncClient):
+async def test_suggest_missing_complaint(client: AsyncClient):
     """Campo chief_complaint obrigatório — 422 sem ele."""
-    resp = await client.post("/api/v1/florence/notes/suggest", json={
+    resp = await client.post("/api/v1/oswaldo/suggest", json={
         "encounter_id": 1,
         "patient_id": 1,
     })
@@ -79,31 +79,10 @@ async def test_suggest_soap_missing_complaint(client: AsyncClient):
 
 
 # ────────────────────────────────────────────────────────────────────────────
-# Test 3: Rule-based preenche os 4 campos corretamente
+# Test 3: Role check — não-CLINICO recebe 403
 # ────────────────────────────────────────────────────────────────────────────
 @pytest.mark.asyncio
-async def test_suggest_soap_rule_based_fields(client: AsyncClient, monkeypatch):
-    """Rule-based preenche O, A, P com placeholders."""
-    monkeypatch.delenv("FLORENCE_LLM_URL", raising=False)
-    resp = await client.post("/api/v1/florence/notes/suggest", json={
-        "encounter_id": 2,
-        "patient_id": 2,
-        "chief_complaint": "Febre há 3 dias",
-        "appointment_reason": "Consulta de retorno",
-    })
-    assert resp.status_code == 200
-    data = resp.json()
-    assert data["soap_s"] == "Febre há 3 dias"
-    assert "preenchido pelo clínico" in data["soap_o"].lower() or "clínico" in data["soap_o"]
-    assert data["soap_a"] != ""
-    assert data["soap_p"] != ""
-
-
-# ────────────────────────────────────────────────────────────────────────────
-# Test 4: Role check — não-CLINICO recebe 403
-# ────────────────────────────────────────────────────────────────────────────
-@pytest.mark.asyncio
-async def test_suggest_soap_forbidden_role():
+async def test_suggest_forbidden_role():
     """Usuário sem role CLINICO recebe 403."""
     def _gestor_ctx():
         return TenantContext.from_slug(
@@ -114,12 +93,12 @@ async def test_suggest_soap_forbidden_role():
         )
 
     app = FastAPI()
-    app.include_router(florence_router, prefix="/api/v1")
+    app.include_router(oswaldo_router, prefix="/api/v1/oswaldo")
     app.dependency_overrides[get_current_tenant] = _gestor_ctx
 
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as c:
-        resp = await c.post("/api/v1/florence/notes/suggest", json={
+        resp = await c.post("/api/v1/oswaldo/suggest", json={
             "encounter_id": 1,
             "patient_id": 1,
             "chief_complaint": "Teste",
@@ -128,28 +107,50 @@ async def test_suggest_soap_forbidden_role():
 
 
 # ────────────────────────────────────────────────────────────────────────────
-# Test 5: Mock LLM retorna sugestão com confidence high
+# Test 4: Mock LLM retorna sugestão com confidence high
 # ────────────────────────────────────────────────────────────────────────────
 @pytest.mark.asyncio
-async def test_suggest_soap_with_llm_mock(client: AsyncClient, monkeypatch):
-    """Com LLM mockado, retorna sugestão com confidence high."""
+async def test_suggest_with_llm_mock(client: AsyncClient, monkeypatch):
+    """Com LLM mockado, retorna CID-10 e itens com confidence high."""
     async def mock_call_llm(prompt: str) -> dict:
         return {
-            "S": "Paciente queixa-se de cefaleia frontal.",
-            "O": "PA 130/85, FC 78bpm.",
-            "A": "Cefaleia tensional.",
-            "P": "Dipirona 1g VO 6/6h por 3 dias.",
+            "cid10_code": "J03.9",
+            "cid10_desc": "Amigdalite aguda não especificada",
+            "items": [
+                {"drug": "Amoxicilina 500mg", "posology": "1 cap 8/8h", "duration": "7 dias"},
+            ],
             "model": "gpt-4o-mini",
         }
 
-    monkeypatch.setattr("modules.florence.services.call_llm", mock_call_llm)
-    resp = await client.post("/api/v1/florence/notes/suggest", json={
+    monkeypatch.setattr("modules.oswaldo.services.call_llm", mock_call_llm)
+    resp = await client.post("/api/v1/oswaldo/suggest", json={
         "encounter_id": 1,
         "patient_id": 1,
-        "chief_complaint": "Dor de cabeça",
+        "chief_complaint": "Dor de garganta",
     })
     assert resp.status_code == 200
     data = resp.json()
     assert data["confidence"] == "high"
-    assert data["model"] == "gpt-4o-mini"
-    assert "cefaleia" in data["soap_s"].lower()
+    assert data["cid10_code"] == "J03.9"
+    assert len(data["prescription_items"]) == 1
+    assert data["prescription_items"][0]["drug"] == "Amoxicilina 500mg"
+
+
+# ────────────────────────────────────────────────────────────────────────────
+# Test 5: Rule-based retorna lista vazia de itens
+# ────────────────────────────────────────────────────────────────────────────
+@pytest.mark.asyncio
+async def test_suggest_rule_based_empty_items(client: AsyncClient, monkeypatch):
+    """Rule-based retorna lista vazia de prescription_items."""
+    monkeypatch.delenv("FLORENCE_LLM_URL", raising=False)
+    resp = await client.post("/api/v1/oswaldo/suggest", json={
+        "encounter_id": 3,
+        "patient_id": 3,
+        "chief_complaint": "Cefaleia",
+        "recent_diagnoses": ["G43"],
+        "current_medications": ["Sumatriptano 50mg"],
+    })
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["prescription_items"] == []
+    assert data["confidence"] == "low"

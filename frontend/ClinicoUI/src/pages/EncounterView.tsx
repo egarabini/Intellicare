@@ -128,7 +128,7 @@ export function EncounterView() {
                 <Stack>
                   <OswaldoCID10Search onSelect={setOswaldoCid10} />
                   <Divider />
-                  <OswaldoPrescriptionEditor encounterId={activeEncounter.id} patientId={pid} cid10={oswaldoCid10} />
+                  <OswaldoPrescriptionEditor encounterId={activeEncounter.id} patientId={pid} cid10={oswaldoCid10} onCID10Suggest={setOswaldoCid10} />
                   <Divider my="md" />
                   <Button color="red" variant="outline" onClick={handleClose} loading={closeEncounter.isPending}>
                     Fechar Encontro

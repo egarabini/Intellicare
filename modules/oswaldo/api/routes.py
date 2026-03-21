@@ -2,10 +2,25 @@ from fastapi import APIRouter, Depends
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.contracts.errors import api_error
 from intellicare_core.auth.jwt import get_current_tenant
-from modules.oswaldo.contracts import CreatePrescriptionRequest, Prescription, CID10Result
+from modules.oswaldo.contracts import (
+    CreatePrescriptionRequest, Prescription, CID10Result,
+    OswaldoSuggestRequest, OswaldoSuggestion,
+)
 from modules.oswaldo import repository
+from modules.oswaldo import services as oswaldo_service
 
 router = APIRouter(tags=["oswaldo"])
+
+
+@router.post("/suggest", response_model=OswaldoSuggestion)
+async def suggest(
+    req: OswaldoSuggestRequest,
+    ctx: TenantContext = Depends(get_current_tenant),
+):
+    if not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'CLINICO' necessaria")
+    return await oswaldo_service.suggest(ctx, req)
+
 
 @router.get("/cid10/search", response_model=list[CID10Result])
 async def search_cid10(

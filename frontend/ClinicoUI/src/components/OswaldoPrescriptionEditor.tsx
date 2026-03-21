@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button, TextInput, Stack, Paper, Title, ActionIcon, Group, Text, Card, Badge, Box } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IconTrash } from '@tabler/icons-react';
+import { IconTrash, IconSparkles } from '@tabler/icons-react';
 import apiClient from '../api/client';
 import { CID10Result } from './OswaldoCID10Search';
 
@@ -26,14 +26,18 @@ interface OswaldoPrescriptionEditorProps {
   encounterId: string | number;
   patientId: string | number;
   cid10: CID10Result | null;
+  onCID10Suggest?: (cid: CID10Result) => void;
 }
 
-export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10 }: OswaldoPrescriptionEditorProps) {
+export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID10Suggest }: OswaldoPrescriptionEditorProps) {
   const [items, setItems] = useState<PrescriptionItem[]>([]);
   const [drug, setDrug] = useState('');
   const [posology, setPosology] = useState('');
   const [duration, setDuration] = useState('');
   const [loading, setLoading] = useState(false);
+  const [suggesting, setSuggesting] = useState(false);
+  const [chiefComplaint, setChiefComplaint] = useState('');
+  const [suggestionConfidence, setSuggestionConfidence] = useState<string | null>(null);
   
   const [history, setHistory] = useState<Prescription[]>([]);
 
@@ -92,6 +96,58 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10 }: Osw
     <Stack gap="md">
       <Paper withBorder p="md" radius="md">
         <Title order={5} mb="md">Nova Prescrição</Title>
+
+        <Stack gap="xs" mb="md">
+          <TextInput
+            label="Motivo da consulta"
+            placeholder="Descreva brevemente o motivo"
+            value={chiefComplaint}
+            onChange={(e) => setChiefComplaint(e.currentTarget.value)}
+            data-testid="input-chief-complaint"
+          />
+          <Group>
+            <Button
+              leftSection={<IconSparkles size={14} />}
+              variant="light"
+              color="teal"
+              loading={suggesting}
+              disabled={!chiefComplaint}
+              onClick={async () => {
+                setSuggesting(true);
+                setSuggestionConfidence(null);
+                try {
+                  const { data: suggestion } = await apiClient.post('/oswaldo/suggest', {
+                    encounter_id: Number(encounterId),
+                    patient_id: Number(patientId),
+                    chief_complaint: chiefComplaint,
+                  });
+                  if (onCID10Suggest) {
+                    onCID10Suggest({ code: suggestion.cid10_code, description: suggestion.cid10_desc });
+                  }
+                  setItems(suggestion.prescription_items);
+                  setSuggestionConfidence(suggestion.confidence);
+                } catch (err: any) {
+                  notifications.show({
+                    title: 'Erro',
+                    message: err.message || 'Falha ao obter sugestão IA',
+                    color: 'red',
+                  });
+                } finally {
+                  setSuggesting(false);
+                }
+              }}
+              data-testid="btn-suggest-oswaldo"
+            >
+              Sugerir CID-10 e prescrição com IA
+            </Button>
+            {suggestionConfidence === 'low' && (
+              <Text size="xs" c="dimmed">
+                Sugestão gerada por regras (LLM não configurado) — revise com atenção.
+              </Text>
+            )}
+          </Group>
+        </Stack>
+
         <Stack gap="xs" mb="md">
           {items.map((it, idx) => (
             <Group key={idx} justify="space-between" align="center" style={{ borderBottom: '1px solid #eee', paddingBottom: 4 }}>
