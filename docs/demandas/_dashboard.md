@@ -62,6 +62,8 @@
 | DEM-057 | Florence IA — `suggest_soap()`, `_call_llm()` OpenAI-compatible + fallback rule-based, `POST /florence/notes/suggest`, botão Hybrid ClinicoUI, 5 testes | `29df484` |
 | DEM-058 | Oswaldo Módulo Base — migration 014 UUID, `prescriptions`, busca CID-10, `OswaldoPrescriptionEditor`, aba ClinicoUI, 3 testes | `19799a2` |
 | DEM-059 | Portal Paciente — `GET /cuidado/paciente/me/journeys` + `/me/clinical-notes`, `JornadasPage.tsx`, `HistoricoPage.tsx`, privacidade `soap_a`, 6 testes | `d714194` |
+| DEM-062 | PDF Clínico — `get_encounter_full()`, `generate_clinical_report()`, template Florence+Oswaldo, `GET /encontros/{id}/report.pdf`, botão `IconFileTypePdf` EncounterView, 2 testes | `d4552c6` |
+| DEM-063 | E2E Clinical Squad — 8 pytest (Florence, Oswaldo, Portal) + 5 Playwright (florence, oswaldo, paciente) = 13 testes E2E | `6708521` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 ² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
@@ -114,8 +116,8 @@
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
 | DEM-061 | Oswaldo IA — sugestão CID-10 + prescrição via LLM | DEV-2 | ⏳ spec: `DEM-061_OSWALDO_IA/` |
-| DEM-062 | PDF Clínico — WeasyPrint Florence+Oswaldo, EncounterView | DEV-1 | ⏳ spec: `DEM-062_PDF_CLINICO_COMPLETO/` |
-| DEM-063 | E2E Clinical Squad — 8 pytest + 5 Playwright | CODEX | ⏳ spec: `DEM-063_E2E_CLINICAL_SQUAD/` |
+| DEM-062 | PDF Clínico — WeasyPrint Florence+Oswaldo, EncounterView | DEV-1 | ✅ `d4552c6` |
+| DEM-063 | E2E Clinical Squad — 8 pytest + 5 Playwright | CODEX | ✅ `6708521` |
 | DEM-064 | Staging Clinical Squad Validation | DEV-3/4 | ⏳ aguarda P1+P2+P3 |
 
 ---

@@ -9,6 +9,22 @@ class PrescriptionItem(BaseModel):
     notes: str | None = None
 
 
+class OswaldoSuggestRequest(BaseModel):
+    encounter_id: str | int
+    patient_id: str | int
+    chief_complaint: str
+    recent_diagnoses: list[str] | None = None
+    current_medications: list[str] | None = None
+
+
+class OswaldoSuggestion(BaseModel):
+    cid10_code: str
+    cid10_desc: str
+    prescription_items: list[PrescriptionItem]
+    model: str
+    confidence: str
+
+
 class CreatePrescriptionRequest(BaseModel):
     encounter_id: str
     patient_id: str
