@@ -164,9 +164,9 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
         </Stack>
 
         <Group align="flex-end" mb="md">
-          <TextInput label="Medicamento" placeholder="Ex: Dipirona 500mg" value={drug} onChange={e => setDrug(e.currentTarget.value)} style={{ flex: 2 }} />
-          <TextInput label="Posologia" placeholder="Ex: 1 comp 6/6h" value={posology} onChange={e => setPosology(e.currentTarget.value)} style={{ flex: 2 }} />
-          <TextInput label="Duração" placeholder="Ex: 5 dias" value={duration} onChange={e => setDuration(e.currentTarget.value)} style={{ flex: 1 }} />
+          <TextInput label="Medicamento" placeholder="Ex: Dipirona 500mg" value={drug} onChange={e => setDrug(e.currentTarget.value)} style={{ flex: 2 }} data-testid="oswaldo-drug" />
+          <TextInput label="Posologia" placeholder="Ex: 1 comp 6/6h" value={posology} onChange={e => setPosology(e.currentTarget.value)} style={{ flex: 2 }} data-testid="oswaldo-posology" />
+          <TextInput label="Duração" placeholder="Ex: 5 dias" value={duration} onChange={e => setDuration(e.currentTarget.value)} style={{ flex: 1 }} data-testid="oswaldo-duration" />
           <Button variant="light" onClick={handleAddItem}>+ Adicionar</Button>
         </Group>
 
@@ -177,6 +177,7 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
 
       <Title order={5} mt="sm">Histórico de Prescrições</Title>
       {history.length === 0 && <Text c="dimmed" fs="italic" size="sm">Nenhuma prescrição registrada neste encontro.</Text>}
+      <Stack data-testid="oswaldo-prescription-list">
       {history.map(rx => (
         <Card key={rx.id} withBorder shadow="sm" radius="md" padding="md">
            <Group justify="space-between" mb="xs">

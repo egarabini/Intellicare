@@ -51,3 +51,27 @@ def _rule_based_suggestion(req: SuggestRequest) -> dict:
         "P": "Conduta a ser definida pelo clínico.",
         "model": "rule-based",
     }
+
+
+def generate_clinical_report(data: dict) -> bytes:
+    """Gera PDF do encontro clínico. Retorna bytes."""
+    from weasyprint import HTML
+    from jinja2 import Environment, FileSystemLoader
+    from datetime import datetime
+    import os
+
+    template_dir = os.path.join(os.path.dirname(__file__), "templates")
+    env = Environment(loader=FileSystemLoader(template_dir))
+
+    def strftime(value, fmt):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            value = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        return value.strftime(fmt)
+
+    env.filters["strftime"] = strftime
+
+    template = env.get_template("clinical_report.html")
+    html_str = template.render(**data, generated_at=datetime.now())
+    return HTML(string=html_str).write_pdf()

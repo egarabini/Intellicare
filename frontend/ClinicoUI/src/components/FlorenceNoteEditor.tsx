@@ -104,7 +104,7 @@ export function FlorenceNoteEditor({ encounterId, patientId, onSaved }: Florence
               placeholder="Descreva brevemente o motivo"
               value={chiefComplaint}
               onChange={(e) => setChiefComplaint(e.currentTarget.value)}
-              data-testid="input-chief-complaint"
+              data-testid="florence-chief-complaint"
             />
             <Group>
               <Button
@@ -128,25 +128,29 @@ export function FlorenceNoteEditor({ encounterId, patientId, onSaved }: Florence
               label="S — Subjetivo" 
               placeholder="Sintomas relatados pelo paciente..."
               minRows={2} autosize 
-              value={fields.s} onChange={e => setFields({...fields, s: e.currentTarget.value})} 
+              value={fields.s} onChange={e => setFields({...fields, s: e.currentTarget.value})}
+              data-testid="florence-soap-s"
             />
             <Textarea 
               label="O — Objetivo" 
               placeholder="Sinais vitais, exame físico, exames..."
               minRows={2} autosize 
-              value={fields.o} onChange={e => setFields({...fields, o: e.currentTarget.value})} 
+              value={fields.o} onChange={e => setFields({...fields, o: e.currentTarget.value})}
+              data-testid="florence-soap-o"
             />
             <Textarea 
               label="A — Avaliação" 
               placeholder="Diagnóstico, impressão clínica..."
               minRows={2} autosize 
-              value={fields.a} onChange={e => setFields({...fields, a: e.currentTarget.value})} 
+              value={fields.a} onChange={e => setFields({...fields, a: e.currentTarget.value})}
+              data-testid="florence-soap-a"
             />
             <Textarea 
               label="P — Plano" 
               placeholder="Conduta, medicações, orientações..."
               minRows={2} autosize 
-              value={fields.p} onChange={e => setFields({...fields, p: e.currentTarget.value})} 
+              value={fields.p} onChange={e => setFields({...fields, p: e.currentTarget.value})}
+              data-testid="florence-soap-p"
             />
           </>
         ) : (

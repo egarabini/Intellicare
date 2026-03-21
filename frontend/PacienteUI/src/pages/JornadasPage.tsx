@@ -29,7 +29,7 @@ export function JornadasPage() {
   const items = data ?? []
 
   return (
-    <Stack gap="lg">
+    <Stack gap="lg" data-testid="jornadas-page">
       <Title order={2}>Minhas Jornadas</Title>
       <Text size="sm" c="dimmed">
         Acompanhe os contatos do CarePlanner por canal, status e data de abertura.

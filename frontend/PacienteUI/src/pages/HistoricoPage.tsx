@@ -10,7 +10,7 @@ export function HistoricoPage() {
   const items = data ?? []
 
   return (
-    <Stack gap="lg">
+    <Stack gap="lg" data-testid="historico-page">
       <Title order={2}>Histórico Clínico</Title>
       <Text size="sm" c="dimmed">
         Resumo das anotações clínicas compartilháveis. A avaliação clínica interna não é exibida ao paciente.
@@ -21,7 +21,7 @@ export function HistoricoPage() {
       ) : !items.length ? (
         <Card withBorder padding="lg"><Text c="dimmed">Nenhum registro encontrado.</Text></Card>
       ) : (
-        <Timeline active={items.length} bulletSize={28} lineWidth={2}>
+        <Timeline active={items.length} bulletSize={28} lineWidth={2} data-testid="historico-timeline">
           {items.map((note, index) => (
             <Timeline.Item
               key={`${note.encounter_date}-${index}`}

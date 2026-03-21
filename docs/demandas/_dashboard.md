@@ -60,7 +60,7 @@
 | DEM-055 | Florence Módulo Base — migration 013 `clinical_notes`, endpoints SOAP/FREE, `FlorenceNoteEditor`, aba "Notas Florence" em `EncounterView`, 3 testes | `e50a2c2` |
 | DEM-056 | Executor Matrix ADR — `docs/adr/ADR-001-executor-matrix.md`, 24 componentes reais classificados (Worker/Agent/Hybrid/Human), referência IA-FRAMEWORK | `c571823` |
 | DEM-057 | Florence IA — `suggest_soap()`, `_call_llm()` OpenAI-compatible + fallback rule-based, `POST /florence/notes/suggest`, botão Hybrid ClinicoUI, 5 testes | `29df484` |
-| DEM-058 | Oswaldo Módulo Base — migration 014 UUID, `prescriptions`, busca CID-10, `OswaldoPrescriptionEditor`, aba ClinicoUI — testes pendentes (404 ModuleLoader) | `5a3a17a` |
+| DEM-058 | Oswaldo Módulo Base — migration 014 UUID, `prescriptions`, busca CID-10, `OswaldoPrescriptionEditor`, aba ClinicoUI, 3 testes | `19799a2` |
 | DEM-059 | Portal Paciente — `GET /cuidado/paciente/me/journeys` + `/me/clinical-notes`, `JornadasPage.tsx`, `HistoricoPage.tsx`, privacidade `soap_a`, 6 testes | `d714194` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
@@ -98,14 +98,25 @@
 
 ---
 
-## 🔄 Em execução — Sprint 2026-04-04
+## ✅ Sprint 2026-04-04 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-057 | Florence IA — suggest SOAP, LLM + fallback, 5 testes | DEV-2 | `29df484` |
+| DEM-058 | Oswaldo Módulo Base — migration 014, CID-10, prescrições, 3 testes | DEV-1 | `19799a2` |
+| DEM-059 | Portal Paciente — jornadas + histórico, privacidade soap_a, 6 testes | CODEX | `d714194` |
+| DEM-060 | Staging Full Sync — migrations 012–014, Florence+Oswaldo UP | DEV-3/4 | ⏳ em execução |
+
+---
+
+## 🔄 Em execução — Sprint 2026-04-11
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-057 | Florence IA — sugestão SOAP com LLM + fallback rule-based | DEV-2 | ✅ `29df484` |
-| DEM-058 | Oswaldo Módulo Base — prescrições + CID-10 + EncounterView | DEV-1 | ⚠️ `5a3a17a` — código OK, testes 0/3 (404 ModuleLoader) |
-| DEM-059 | Portal Paciente Notas — jornadas + histórico clínico | CODEX | ✅ `d714194` |
-| DEM-060 | Staging Full Sync — migrations 012–014, Florence+Oswaldo UP | DEV-3/4 | ⏳ spec: `DEM-060_STAGING_FULL_SYNC/` |
+| DEM-061 | Oswaldo IA — sugestão CID-10 + prescrição via LLM | DEV-2 | ⏳ spec: `DEM-061_OSWALDO_IA/` |
+| DEM-062 | PDF Clínico — WeasyPrint Florence+Oswaldo, EncounterView | DEV-1 | ⏳ spec: `DEM-062_PDF_CLINICO_COMPLETO/` |
+| DEM-063 | E2E Clinical Squad — 8 pytest + 5 Playwright | CODEX | ⏳ spec: `DEM-063_E2E_CLINICAL_SQUAD/` |
+| DEM-064 | Staging Clinical Squad Validation | DEV-3/4 | ⏳ aguarda P1+P2+P3 |
 
 ---
 
@@ -113,20 +124,20 @@
 
 | DEM | Dev | Spec |
 |-----|-----|------|
-| DEM-057 Florence IA | DEV-2 | ✅ `docs/demandas/DEM-057_FLORENCE_IA/BRIEFING.md` |
-| DEM-058 Oswaldo Módulo Base | DEV-1 | ✅ `docs/demandas/DEM-058_OSWALDO_MODULO_BASE/BRIEFING.md` |
-| DEM-059 Portal Paciente Notas | CODEX | ✅ `docs/demandas/DEM-059_PORTAL_PACIENTE_NOTAS/BRIEFING.md` |
-| DEM-060 Staging Full Sync | DEV-3/4 | ✅ `docs/demandas/DEM-060_STAGING_FULL_SYNC/BRIEFING.md` |
+| DEM-061 Oswaldo IA | DEV-2 | ✅ `docs/demandas/DEM-061_OSWALDO_IA/BRIEFING.md` |
+| DEM-062 PDF Clínico | DEV-1 | ✅ `docs/demandas/DEM-062_PDF_CLINICO_COMPLETO/BRIEFING.md` |
+| DEM-063 E2E Clinical Squad | CODEX | ✅ `docs/demandas/DEM-063_E2E_CLINICAL_SQUAD/BRIEFING.md` |
+| DEM-064 Staging Clinical Squad | DEV-3/4 | ✅ `docs/demandas/DEM-064_STAGING_CLINICAL_SQUAD/BRIEFING.md` |
 
 ---
 
 ## Distribuição sprint atual
 
 ```
-DEV-2   → DEM-057 Florence IA         (~4h)   — suggest SOAP, fallback rule-based, botão Hybrid
-DEV-1   → DEM-058 Oswaldo Módulo Base (~4h)   — migration 014, CID-10, prescrições, EncounterView
-CODEX   → DEM-059 Portal Paciente     (~3h)   — /me/journeys, /me/clinical-notes, PacienteUI
-DEV-3/4 → DEM-060 Staging Full Sync   (~1.5h) — após P1+P2+P3 em main
+DEV-2   → DEM-061 Oswaldo IA           (~3.5h) — suggest CID-10+prescrição, Hybrid, fallback
+DEV-1   → DEM-062 PDF Clínico Completo (~3.5h) — WeasyPrint Florence+Oswaldo, EncounterView
+CODEX   → DEM-063 E2E Clinical Squad   (~3h)   — 8 pytest + 5 Playwright
+DEV-3/4 → DEM-064 Staging Validation  (~1.5h)  — após P1+P2+P3 em main
 ```
 
 ## Credenciais de teste (ambiente local)

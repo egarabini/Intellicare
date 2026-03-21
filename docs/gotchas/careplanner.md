@@ -72,3 +72,22 @@ rg -n "CareplannerService\\(" packages/intellicare-core/tests
 ### Fix
 - Manter log + metrica para órfãos.
 - Retornar `ok` ou `ignored` ao provedor e investigar pelo observability depois.
+
+## `TenantContext` nao tem `.db` na V3 — usar `tenant_session(ctx)`
+
+### Situacao real
+- O briefing da DEM-058 (Oswaldo) usou `ctx.db.fetch()` baseado no padrao da V2.
+- Na V3, `TenantContext` e um `@dataclass(frozen=True)` que nao expoe handler `db`.
+- O acesso ao banco e feito via `tenant_session(ctx)` conforme padrao de
+  `modules/careplanner/repository.py`.
+
+### Sintoma
+- Testes retornam `500 Internal Server Error`.
+- Log: `AttributeError: 'TenantContext' object has no attribute 'db'`.
+
+### Fix
+- Consultar `modules/careplanner/repository.py` ou `modules/florence/repository.py`
+  como fonte de verdade para o padrao de acesso ao banco.
+- Substituir `ctx.db.fetch(...)` / `ctx.db.fetchrow(...)` pelo equivalente com
+  `tenant_session(ctx)`.
+- Nunca copiar padroes de repositorios da V2 sem verificar se `TenantContext` expoe `.db`.

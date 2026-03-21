@@ -28,7 +28,7 @@ export function FlorenceNoteList({ notes }: FlorenceNoteListProps) {
   }
 
   return (
-    <Stack gap="sm" mt="md">
+    <Stack gap="sm" mt="md" data-testid="florence-note-list">
       {notes.map((note) => (
         <Card key={note.id} withBorder shadow="sm" radius="md" padding="md">
           <Group justify="space-between" mb="xs">

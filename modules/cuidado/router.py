@@ -105,6 +105,22 @@ async def clinical_ask(eid: UUID, req: ClinicalAskRequest, ctx: Clinico):
     except (ConnectionError, RuntimeError) as e:
         raise HTTPException(503, str(e))
 
+@router.get("/encounters/{eid}/report.pdf")
+async def encounter_report(eid: UUID, ctx: Clinico):
+    from modules.florence.repository import get_encounter_full
+    from modules.florence.services import generate_clinical_report
+
+    data = await get_encounter_full(ctx, str(eid))
+    if not data:
+        raise HTTPException(404, "Encontro não encontrado")
+
+    pdf_bytes = generate_clinical_report(data)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename=encontro_{eid}.pdf"},
+    )
+
 
 # ── Endpoints do Paciente ────────────────────────────────────────────────────
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 12px; color: #1a1a1a; }
+    .header { background: #1a5276; color: white; padding: 16px; margin-bottom: 24px; }
+    .header h1 { margin: 0; font-size: 18px; }
+    .header p { margin: 4px 0 0; font-size: 11px; opacity: 0.85; }
+    .section { margin-bottom: 20px; }
+    .section h2 { color: #2874a6; border-bottom: 1px solid #aed6f1; padding-bottom: 4px; }
+    .soap-field { margin-bottom: 10px; }
+    .soap-label { font-weight: bold; color: #1a5276; }
+    .prescription-item { padding: 6px 0; border-bottom: 1px solid #eee; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px;
+             background: #d6eaf8; color: #1a5276; font-size: 10px; }
+    .footer { margin-top: 32px; font-size: 10px; color: #888; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Relatório de Encontro Clínico — IntelliCare</h1>
+    <p>{{ encounter.patient_name }} | {{ encounter.scheduled_at | strftime('%d/%m/%Y %H:%M') }}
+       | Dr(a). {{ encounter.professional_name }}</p>
+  </div>
+
+  {% if notes %}
+  <div class="section">
+    <h2>Notas Clínicas</h2>
+    {% for note in notes %}
+      <div style="margin-bottom:16px;">
+        <span class="badge">{{ note.note_type }}</span>
+        <span style="margin-left:8px; color:#888; font-size:10px;">
+          {{ note.created_at | strftime('%d/%m/%Y %H:%M') }} — {{ note.author_name }}
+        </span>
+        {% if note.note_type == 'SOAP' %}
+          {% if note.soap_s %}<div class="soap-field"><span class="soap-label">S:</span> {{ note.soap_s }}</div>{% endif %}
+          {% if note.soap_o %}<div class="soap-field"><span class="soap-label">O:</span> {{ note.soap_o }}</div>{% endif %}
+          {% if note.soap_a %}<div class="soap-field"><span class="soap-label">A:</span> {{ note.soap_a }}</div>{% endif %}
+          {% if note.soap_p %}<div class="soap-field"><span class="soap-label">P:</span> {{ note.soap_p }}</div>{% endif %}
+        {% else %}
+          <p>{{ note.free_text }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if prescriptions %}
+  <div class="section">
+    <h2>Prescrições</h2>
+    {% for rx in prescriptions %}
+      <div style="margin-bottom:12px;">
+        {% if rx.cid10_code %}
+          <strong>CID-10: {{ rx.cid10_code }}</strong> — {{ rx.cid10_desc }}<br>
+        {% endif %}
+        {% for item in rx.items %}
+          <div class="prescription-item">
+            <strong>{{ item.drug }}</strong> — {{ item.posology }}
+            {% if item.duration %} ({{ item.duration }}){% endif %}
+          </div>
+        {% endfor %}
+        {% if rx.notes %}<p style="color:#555;">{{ rx.notes }}</p>{% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if not notes and not prescriptions %}
+  <p style="color:#888;">Nenhum registro clínico encontrado para este encontro.</p>
+  {% endif %}
+
+  <div class="footer">
+    Gerado em {{ generated_at | strftime('%d/%m/%Y %H:%M') }} · IntelliCare V3 · Documento confidencial
+  </div>
+</body>
+</html>

@@ -5,7 +5,7 @@ import {
   Group, Text, Divider, Alert, Select, Tabs
 } from '@mantine/core'
 import { useDebouncedValue } from '@mantine/hooks'
-import { IconAlertCircle, IconNotes, IconStethoscope, IconPill } from '@tabler/icons-react'
+import { IconAlertCircle, IconNotes, IconStethoscope, IconPill, IconFileTypePdf } from '@tabler/icons-react'
 import {
   useEncounterHistory,
   useOpenEncounter,
@@ -87,17 +87,32 @@ export function EncounterView() {
         <Stack>
           <Group justify="space-between">
             <Title order={3}>Encontro Atual</Title>
-            {activeEncounter ? (
-              <Badge color="green">Aberto</Badge>
-            ) : (
-              <Badge color="gray">Nenhum Aberto</Badge>
-            )}
+            <Group>
+              {activeEncounter && (
+                <Button
+                  component="a"
+                  href={`${apiClient.defaults.baseURL || ''}/cuidado/encounters/${activeEncounter.id}/report.pdf`}
+                  target="_blank"
+                  variant="light"
+                  size="xs"
+                  leftSection={<IconFileTypePdf size={14} />}
+                >
+                  Exportar PDF
+                </Button>
+              )}
+              {activeEncounter ? (
+                <Badge color="green">Aberto</Badge>
+              ) : (
+                <Badge color="gray">Nenhum Aberto</Badge>
+              )}
+            </Group>
           </Group>
 
           {!activeEncounter && (
             <Button
               onClick={() => openEncounter.mutate(pid)}
               loading={openEncounter.isPending}
+              data-testid="btn-open-encounter"
             >
               Abrir Novo Encontro
             </Button>
@@ -106,8 +121,8 @@ export function EncounterView() {
           {activeEncounter && (
             <Tabs defaultValue="florence" mt="md">
               <Tabs.List>
-                <Tabs.Tab value="florence" leftSection={<IconNotes size={14} />}>Notas Florence</Tabs.Tab>
-                <Tabs.Tab value="oswaldo" leftSection={<IconPill size={14} />}>Prescrição</Tabs.Tab>
+                <Tabs.Tab value="florence" leftSection={<IconNotes size={14} />} data-testid="tab-florence">Notas Florence</Tabs.Tab>
+                <Tabs.Tab value="oswaldo" leftSection={<IconPill size={14} />} data-testid="tab-oswaldo">Prescrição</Tabs.Tab>
                 <Tabs.Tab value="legado" leftSection={<IconStethoscope size={14} />}>Legado</Tabs.Tab>
               </Tabs.List>
 
@@ -192,9 +207,23 @@ export function EncounterView() {
           <Divider label="Histórico" labelPosition="left" />
           {encounters?.filter(e => e.status === 'closed').map(enc => (
             <Alert key={enc.id} icon={<IconAlertCircle />} color="gray" variant="light">
-              <Text fw={500}>Encontro concluído em {new Date(enc.closed_at || '').toLocaleDateString('pt-BR')}</Text>
-              {enc.cid10_code && <Text size="sm">CID: {enc.cid10_code}</Text>}
-              {enc.prescription && <Text size="sm">Prescrição elaborada.</Text>}
+              <Group justify="space-between" wrap="nowrap">
+                <div>
+                  <Text fw={500}>Encontro concluído em {new Date(enc.closed_at || '').toLocaleDateString('pt-BR')}</Text>
+                  {enc.cid10_code && <Text size="sm">CID: {enc.cid10_code}</Text>}
+                  {enc.prescription && <Text size="sm">Prescrição elaborada.</Text>}
+                </div>
+                <Button
+                  component="a"
+                  href={`${apiClient.defaults.baseURL || ''}/cuidado/encounters/${enc.id}/report.pdf`}
+                  target="_blank"
+                  variant="light"
+                  size="xs"
+                  leftSection={<IconFileTypePdf size={14} />}
+                >
+                  PDF Clínico
+                </Button>
+              </Group>
             </Alert>
           ))}
         </Stack>

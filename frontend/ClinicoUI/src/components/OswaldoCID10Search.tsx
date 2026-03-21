@@ -63,6 +63,7 @@ export function OswaldoCID10Search({ onSelect }: OswaldoCID10SearchProps) {
       onOptionSubmit={handleSelect}
       rightSection={loading ? <Loader size="xs" /> : null}
       mb="sm"
+      data-testid="oswaldo-cid10-search"
     />
   );
 }
