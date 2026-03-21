@@ -17,6 +17,8 @@ import { TenantDetail } from './pages/TenantDetail'
 import { TenantEditForm, TenantForm } from './pages/TenantForm'
 import { TenantList } from './pages/TenantList'
 import { TenantUsers } from './pages/TenantUsers'
+import { TenantsManager } from './pages/TenantsManager'
+import { TenantConfigPage } from './pages/TenantConfigPage'
 import { AuditLog } from './pages/AuditLog'
 import { ServersPage } from './pages/ServersPage'
 import { ModulesPage } from './pages/ModulesPage'
@@ -141,11 +143,12 @@ function AppRoutes() {
       <AppShell.Main>
         <Routes>
           <Route path="/"                    element={<DashboardPage />} />
-          <Route path="/tenants"             element={<TenantList />} />
+          <Route path="/tenants"             element={<TenantsManager />} />
           <Route path="/tenants/new"         element={<TenantForm />} />
           <Route path="/tenants/:slug/edit"  element={<TenantEditForm />} />
           <Route path="/tenants/:slug"       element={<TenantDetail />} />
           <Route path="/tenants/:slug/users" element={<TenantUsers />} />
+          <Route path="/tenants/:slug/config" element={<TenantConfigPage />} />
           <Route path="/servers"             element={<ServersPage />} />
           <Route path="/modules"             element={<ModulesPage />} />
           <Route path="/financeiro"          element={<FinanceiroPage />} />

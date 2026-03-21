@@ -21,8 +21,10 @@ from .schemas import (
     ModuleStatusUpdate,
     ServerCreate,
     ServerUpdate,
+    TenantConfigItem,
     TenantCreate,
     TenantModuleUpdate,
+    TenantProvisionRequest,
     TenantStatusUpdate,
     TenantUpdate,
     UserInviteRequest,
@@ -118,15 +120,18 @@ class TenantService:
             ).scalar_one()
         return {"items": [dict(row) for row in rows], "total": total}
 
+    _TENANT_COLS = "id, slug, name, status, gestor_email, suspended_at, suspended_by, deleted_at, created_at, updated_at"
+
     async def list_tenants(self, page: int, size: int, actor: TenantContext) -> tuple[list[dict[str, Any]], int]:
         del actor
         async with get_engine().connect() as conn:
-            total = (await conn.execute(text("SELECT COUNT(*) FROM public.tenants"))).scalar_one()
+            total = (await conn.execute(text("SELECT COUNT(*) FROM public.tenants WHERE deleted_at IS NULL"))).scalar_one()
             rows = (
                 await conn.execute(
-                    text("""
-                        SELECT id, slug, name, status, gestor_email, created_at, updated_at
+                    text(f"""
+                        SELECT {self._TENANT_COLS}
                         FROM public.tenants
+                        WHERE deleted_at IS NULL
                         ORDER BY created_at DESC
                         LIMIT :size OFFSET :offset
                     """),
@@ -139,7 +144,7 @@ class TenantService:
         async with get_engine().connect() as conn:
             row = (
                 await conn.execute(
-                    text("SELECT id, slug, name, status, gestor_email, created_at, updated_at FROM public.tenants WHERE slug = :slug"),
+                    text(f"SELECT {self._TENANT_COLS} FROM public.tenants WHERE slug = :slug AND deleted_at IS NULL"),
                     {"slug": slug},
                 )
             ).mappings().first()
@@ -177,14 +182,7 @@ class TenantService:
             updates["gestor_email"] = payload.gestor_email
 
         if not updates:
-            async with get_engine().connect() as conn:
-                row = (
-                    await conn.execute(
-                        text("SELECT id, slug, name, status, gestor_email, created_at, updated_at FROM public.tenants WHERE slug = :slug"),
-                        {"slug": slug},
-                    )
-                ).mappings().first()
-            return dict(row) if row else {}
+            return await self.get_tenant(slug) or {}
 
         set_clause = ", ".join(f"{key} = :{key}" for key in updates)
         updates["slug"] = slug
@@ -195,8 +193,8 @@ class TenantService:
                     text(f"""
                         UPDATE public.tenants
                         SET {set_clause}, updated_at = now()
-                        WHERE slug = :slug
-                        RETURNING id, slug, name, status, gestor_email, created_at, updated_at
+                        WHERE slug = :slug AND deleted_at IS NULL
+                        RETURNING {self._TENANT_COLS}
                     """),
                     updates,
                 )
@@ -207,17 +205,72 @@ class TenantService:
         return dict(row) if row else {}
 
     async def delete_tenant(self, slug: str, actor: TenantContext) -> None:
+        """Soft-delete: marca deleted_at + status='terminated'. Não dropa schema."""
         async with get_engine().begin() as conn:
-            schema = f"tenant_{slug.replace('-', '_')}"
-            await conn.execute(text(f'DROP SCHEMA IF EXISTS "{schema}" CASCADE'))
-            await conn.execute(
-                text("UPDATE public.tenants SET status = 'terminated', updated_at = NOW() WHERE slug = :slug"),
-                {"slug": slug},
+            row = (
+                await conn.execute(
+                    text("""
+                        UPDATE public.tenants
+                        SET status = 'terminated', deleted_at = NOW(), updated_at = NOW()
+                        WHERE slug = :slug AND deleted_at IS NULL
+                        RETURNING slug
+                    """),
+                    {"slug": slug},
+                )
+            ).first()
+            if not row:
+                raise LookupError(f"Tenant '{slug}' nao encontrado")
+            await self._audit(conn, actor, "TENANT_DELETED", "tenant", slug, {"soft_delete": True})
+
+    async def provision_tenant(self, payload: TenantProvisionRequest, actor: TenantContext) -> dict[str, Any]:
+        """Provisiona tenant completo: schema + todas as migrations + Keycloak."""
+        import os
+        from tools.scripts.tenant_provisioner import full_provision
+        from intellicare_core.config.settings import get_settings
+
+        settings = get_settings()
+        result = await full_provision(
+            database_url=settings.sync_database_url,
+            slug=payload.slug,
+            name=payload.name,
+            gestor_email=payload.gestor_email,
+            keycloak_url=settings.keycloak_url,
+            realm=settings.keycloak_realm,
+            kc_admin=os.getenv("KEYCLOAK_ADMIN", "admin"),
+            kc_password=os.getenv("KEYCLOAK_ADMIN_PASSWORD", "admin_dev_password"),
+        )
+        async with get_engine().begin() as conn:
+            await self._audit(
+                conn, actor, "tenant.provision", "tenant", payload.slug,
+                {"name": payload.name, "gestor_email": payload.gestor_email},
             )
-            await self._audit(conn, actor, "TENANT_DELETED", "tenant", slug, {})
-        group_id = await self._kc.get_tenant_group_id(slug)
-        if group_id:
-            await self._kc.delete_group(group_id)
+        tenant = await self.get_tenant(payload.slug)
+        return {**(tenant or {}), "provision": result}
+
+    async def get_tenant_config(self, slug: str) -> list[dict[str, str]]:
+        """Lista configurações de um tenant."""
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text("SELECT key, value FROM public.tenant_config WHERE tenant_slug = :slug ORDER BY key"),
+                    {"slug": slug},
+                )
+            ).mappings().all()
+        return [dict(row) for row in rows]
+
+    async def set_tenant_config(self, slug: str, key: str, value: str, actor: TenantContext) -> dict[str, str]:
+        """Upsert de configuração de tenant."""
+        async with get_engine().begin() as conn:
+            await conn.execute(
+                text("""
+                    INSERT INTO public.tenant_config (tenant_slug, key, value, updated_at)
+                    VALUES (:slug, :key, :value, NOW())
+                    ON CONFLICT (tenant_slug, key) DO UPDATE SET value = :value, updated_at = NOW()
+                """),
+                {"slug": slug, "key": key, "value": value},
+            )
+            await self._audit(conn, actor, "tenant.config_set", "tenant_config", slug, {"key": key})
+        return {"key": key, "value": value}
 
     async def create_tenant(self, payload: TenantCreate, actor: TenantContext) -> dict[str, Any]:
         async with get_engine().begin() as conn:
@@ -237,10 +290,10 @@ class TenantService:
             await conn.execute(text("SET search_path TO public"))
             row = (
                 await conn.execute(
-                    text("""
+                    text(f"""
                         INSERT INTO public.tenants (slug, name, gestor_email)
                         VALUES (:slug, :name, :gestor_email)
-                        RETURNING id, slug, name, status, gestor_email, created_at, updated_at
+                        RETURNING {self._TENANT_COLS}
                     """),
                     {"slug": payload.slug, "name": payload.name, "gestor_email": payload.gestor_email},
                 )
@@ -262,16 +315,23 @@ class TenantService:
         return result
 
     async def update_status(self, slug: str, update: TenantStatusUpdate, actor: TenantContext) -> dict[str, Any]:
+        extra_sets = ""
+        if update.status == "suspended":
+            extra_sets = ", suspended_at = NOW(), suspended_by = :actor_id"
+        elif update.status == "active":
+            extra_sets = ", suspended_at = NULL, suspended_by = NULL"
+
+        actor_id = getattr(actor, "user_id", None) or "system"
         async with get_engine().begin() as conn:
             row = (
                 await conn.execute(
-                    text("""
+                    text(f"""
                         UPDATE public.tenants
-                        SET status = :status, updated_at = NOW()
-                        WHERE slug = :slug
-                        RETURNING id, slug, name, status, created_at, updated_at
+                        SET status = :status, updated_at = NOW(){extra_sets}
+                        WHERE slug = :slug AND deleted_at IS NULL
+                        RETURNING {self._TENANT_COLS}
                     """),
-                    {"slug": slug, "status": update.status},
+                    {"slug": slug, "status": update.status, "actor_id": actor_id},
                 )
             ).mappings().first()
             if not row:

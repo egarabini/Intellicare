@@ -27,10 +27,13 @@ from .schemas import (
     ServerCreate,
     ServerOut,
     ServerUpdate,
+    TenantConfigItem,
+    TenantConfigResponse,
     TenantCreate,
     TenantListResponse,
     TenantModuleOut,
     TenantModuleUpdate,
+    TenantProvisionRequest,
     TenantResponse,
     TenantStatusUpdate,
     TenantUpdate,
@@ -149,7 +152,55 @@ async def update_tenant(
 
 @router.delete("/tenants/{slug}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_tenant(slug: str, actor: AdminRequired) -> None:
-    await _service.delete_tenant(slug, actor)
+    try:
+        await _service.delete_tenant(slug, actor)
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.post("/tenants/{slug}/suspend", response_model=TenantResponse)
+async def suspend_tenant(slug: str, actor: AdminRequired) -> TenantResponse:
+    """Suspende tenant — middleware bloqueia requests futuros."""
+    try:
+        tenant = await _service.update_status(slug, TenantStatusUpdate(status="suspended"), actor)
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return TenantResponse(**tenant)
+
+
+@router.post("/tenants/{slug}/reactivate", response_model=TenantResponse)
+async def reactivate_tenant(slug: str, actor: AdminRequired) -> TenantResponse:
+    """Reativa tenant suspenso."""
+    try:
+        tenant = await _service.update_status(slug, TenantStatusUpdate(status="active"), actor)
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return TenantResponse(**tenant)
+
+
+@router.post("/tenants/provision", response_model=TenantResponse, status_code=status.HTTP_201_CREATED)
+async def provision_tenant(payload: TenantProvisionRequest, actor: AdminRequired) -> TenantResponse:
+    """Provisiona tenant completo: schema + migrations + Keycloak."""
+    try:
+        result = await _service.provision_tenant(payload, actor)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    return TenantResponse(**result)
+
+
+@router.get("/tenants/{slug}/config", response_model=TenantConfigResponse)
+async def get_tenant_config(slug: str, actor: AdminRequired) -> TenantConfigResponse:
+    del actor
+    configs = await _service.get_tenant_config(slug)
+    return TenantConfigResponse(tenant_slug=slug, configs=[TenantConfigItem(**c) for c in configs])
+
+
+@router.put("/tenants/{slug}/config/{key}")
+async def set_tenant_config(slug: str, key: str, body: TenantConfigItem, actor: AdminRequired) -> TenantConfigItem:
+    result = await _service.set_tenant_config(slug, body.key, body.value, actor)
+    return TenantConfigItem(**result)
 
 
 @router.post(

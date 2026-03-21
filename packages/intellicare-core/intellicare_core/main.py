@@ -11,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 
 from prometheus_fastapi_instrumentator import Instrumentator
 
+from intellicare_core.auth.tenant_guard import TenantGuardMiddleware
 from intellicare_core.module_loader import ModuleLoader
 
 STATIC_ROOT = Path(__file__).resolve().parent / "static"
@@ -38,6 +39,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(TenantGuardMiddleware)
 Instrumentator(
     should_group_status_codes=False,
     should_ignore_untemplated=True,
