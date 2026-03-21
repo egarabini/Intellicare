@@ -124,6 +124,9 @@ async def get_encounter_full(ctx: TenantContext, encounter_id: str) -> dict | No
             return None
             
         encounter_dict = dict(encounter_row)
+        encounter_dict.setdefault("patient_name", None)
+        encounter_dict.setdefault("professional_name", None)
+        encounter_dict.setdefault("scheduled_at", encounter_dict.get("opened_at") or encounter_dict.get("closed_at"))
 
     notes = await get_notes_by_encounter(ctx, encounter_id)
     prescriptions = await get_prescriptions_by_encounter(ctx, encounter_id)
