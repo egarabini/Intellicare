@@ -40,6 +40,30 @@ class TenantStatusUpdate(BaseModel):
     status: Literal["active", "suspended"]
 
 
+class TenantProvisionRequest(BaseModel):
+    """Request para provisionar um novo tenant completo via tenant_provisioner."""
+    slug: str
+    name: str
+    gestor_email: str
+
+    @field_validator("slug")
+    @classmethod
+    def validate_slug(cls, v: str) -> str:
+        if not SLUG_PATTERN.match(v):
+            raise ValueError("slug deve ter 3-30 chars: [a-z0-9_]")
+        return v
+
+
+class TenantConfigItem(BaseModel):
+    key: str
+    value: str
+
+
+class TenantConfigResponse(BaseModel):
+    tenant_slug: str
+    configs: list[TenantConfigItem]
+
+
 class TenantResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -48,6 +72,9 @@ class TenantResponse(BaseModel):
     name: str
     status: str
     gestor_email: str | None = None
+    suspended_at: datetime | None = None
+    suspended_by: str | None = None
+    deleted_at: datetime | None = None
     created_at: datetime
     updated_at: datetime
 

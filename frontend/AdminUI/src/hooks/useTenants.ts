@@ -135,6 +135,59 @@ export function useDeleteTenant() {
   })
 }
 
+export function useSuspendTenant() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (slug: string) => apiClient.post(`/admin/tenants/${slug}/suspend`).then(r => r.data),
+    onSuccess: (_, slug) => {
+      void qc.invalidateQueries({ queryKey: ['tenants'] })
+      void qc.invalidateQueries({ queryKey: ['tenant', slug] })
+    },
+  })
+}
+
+export function useReactivateTenant() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (slug: string) => apiClient.post(`/admin/tenants/${slug}/reactivate`).then(r => r.data),
+    onSuccess: (_, slug) => {
+      void qc.invalidateQueries({ queryKey: ['tenants'] })
+      void qc.invalidateQueries({ queryKey: ['tenant', slug] })
+    },
+  })
+}
+
+export function useProvisionTenant() {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (body: { slug: string; name: string; gestor_email: string }) =>
+      apiClient.post('/admin/tenants/provision', body).then(r => r.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenants'] }),
+  })
+}
+
+export interface TenantConfig {
+  key: string
+  value: string
+}
+
+export function useTenantConfig(slug: string) {
+  return useQuery<{ tenant_slug: string; configs: TenantConfig[] }>({
+    queryKey: ['tenant-config', slug],
+    queryFn: () => apiClient.get(`/admin/tenants/${slug}/config`).then(r => r.data),
+    enabled: !!slug,
+  })
+}
+
+export function useSetTenantConfig(slug: string) {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (body: TenantConfig) =>
+      apiClient.put(`/admin/tenants/${slug}/config/${body.key}`, body).then(r => r.data),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['tenant-config', slug] }),
+  })
+}
+
 export function useAuditLog(page = 1, action?: string) {
   return useQuery({
     queryKey: ['audit-log', page, action],
