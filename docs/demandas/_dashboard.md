@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-18 | Branch: main | Último commit: da98ce2 (DEM-047 WhatsApp)
+> Atualizado: 2026-03-21 | Branch: main | Último commit: 7f708fb (DEM-INF Memória Operacional)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -47,7 +47,11 @@
 | DEM-046 | CI/CD Pipeline — GitHub Actions (pytest backend + build GestorUI + ClinicoUI), badge README, repo egarabini/Intellicare | `0c88a9d` |
 | DEM-INF | Staging Script — staging_update.sh (6 etapas), .env.staging.example (todos os segredos), deploy/README.md, .gitignore protege .env.staging | `9ff6a05` |
 | DEM-047 | WhatsApp via Evolution API — `WhatsAppAdapter`, webhook inbound, dispatcher multi-canal, `TriggerJourneyModal` seletor canal, Kestra flow WhatsApp, init DB `evolution`, 4 testes Phase H | `da98ce2` |
+| DEM-048 | E-mail via Listmonk — `EmailAdapter`, serviço listmonk Docker, init DB `03_listmonk.sql`, Kestra flow email, seed 4 templates, opção E-mail no TriggerModal, 4 testes Phase I | `18325b3` |
 | DEM-049 | SMS via Jasmin — `SMSAdapter` (truncamento 160 chars, retry), webhook /sms/{token}, Kestra flow SMS, opção SMS no TriggerModal, seed 4 templates, 4 testes Phase J | `375253a` ² |
+| DEM-050 | E2E Multi-Canal — mock Evolution, 4 pytest integração WA, Playwright seletor canal, fix regressões Phases B/C/D/E (fixtures CareplannerService + dispatcher multi-canal + seed_flows) — **53 passed** | `55c820c` |
+| DEM-INF | Fix Staging — `DATABASE_CONNECTION_URI` Evolution URL-safe, path seed_flows corrigido, evolution-api HTTP 200 no staging | `fbc7996` |
+| DEM-INF | Memória Operacional — `docs/patterns/` (backend, frontend, workers), `docs/gotchas/` (careplanner, staging, keycloak), `_templates/HANDOFF.yml` | `7f708fb` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 ² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
@@ -62,35 +66,34 @@
 
 ---
 
-## 🔄 Em execução
+## 🔄 Em execução — Sprint 2026-03-21
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-048 | E-mail via Listmonk (Canal 3) | DEV-1 | ⏳ Spec pronta |
-| DEM-049 | SMS via Jasmin (Canal 4) | DEV-2 | ✅ Commitado `375253a` |
-| DEM-050 | Testes E2E Multi-Canal | CODEX | ⏳ Spec pronta |
-| DEM-INF | Staging Deploy + Evolution API | DEV-3/4 | ⏳ Spec pronta |
+| DEM-INF | Staging follow-up — banco listmonk, JASMIN_PASSWORD, diagnóstico rede Evolution | DEV-3/4 | ⏳ spec: `DEM-INF_STAGING_EVOLUTION/05_FINALIZACAO.md` |
+| DEM-INF | Memória Operacional — patterns, gotchas, HANDOFF template | CODEX | ✅ `7f708fb` |
+| DEM-051 | Observabilidade Multicanal — healthcheck adapters + Grafana por canal | DEV-2 | ⏳ spec: `DEM-051_OBSERVABILIDADE_MULTICANAL/` |
+| DEM-052 | Relatórios PDF Jornadas — WeasyPrint template + botão GestorUI | DEV-1 | ⏳ spec: `DEM-052_RELATORIOS_PDF/` |
 
 ---
 
-## 📋 Fila — specs prontas para distribuir
+## 📋 Fila — specs prontas
 
-| DEM | Título | Dev | Spec |
-|-----|--------|-----|------|
-| DEM-048 | E-mail via Listmonk — `EmailAdapter`, Kestra flow, TriggerModal opção e-mail, 4 testes Phase I | DEV-1 | ✅ `docs/demandas/DEM-048_EMAIL_LISTMONK/` |
-| DEM-049 | SMS via Jasmin — `SMSAdapter`, webhook inbound SMS, Kestra flow, 4 testes Phase J | DEV-2 | ✅ `docs/demandas/DEM-049_SMS_JASMIN/` |
-| DEM-050 | E2E Multi-Canal — mock Evolution, 4 pytest integração, 3 Playwright seletor canal | CODEX | ✅ `docs/demandas/DEM-050_E2E_MULTICANAL/` |
-| DEM-INF | Staging Deploy — pull main@da98ce2, provisionar Evolution API, smoke test WA | DEV-3/4 | ✅ `docs/demandas/DEM-INF_STAGING_EVOLUTION/` |
+| DEM | Dev | Spec |
+|-----|-----|------|
+| DEM-INF Memória Operacional | CODEX | ✅ entregue `7f708fb` |
+| DEM-051 Observabilidade Multicanal | DEV-2 | ✅ `docs/demandas/DEM-051_OBSERVABILIDADE_MULTICANAL/BRIEFING.md` |
+| DEM-052 Relatórios PDF | DEV-1 | ✅ `docs/demandas/DEM-052_RELATORIOS_PDF/BRIEFING.md` |
 
 ---
 
-## Distribuição sugerida para devs disponíveis
+## Distribuição sprint atual
 
 ```
-DEV-1      → DEM-048 (Email/Listmonk — ~2.5h)
-DEV-2      → DEM-049 (SMS/Jasmin     — ~2h)
-CODEX      → DEM-050 (E2E multi-canal — ~2h)
-DEV-3/4    → DEM-INF (Staging deploy  — ~1.5h) ⚠ requer acesso SSH ao VPS
+DEV-3/4    → DEM-INF Staging follow-up (~1h)  — fixes: listmonk DB, JASMIN_PASSWORD, diagnóstico Evolution
+CODEX      → DEM-INF Memória Operacional (~3h) — docs/patterns + docs/gotchas + HANDOFF.yml
+DEV-2      → DEM-051 Observabilidade (~2.5h)   — healthcheck + Grafana por canal
+DEV-1      → DEM-052 Relatórios PDF (~3h)       — WeasyPrint template + botão GestorUI
 ```
 
 ## Credenciais de teste (ambiente local)

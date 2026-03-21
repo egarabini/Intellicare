@@ -6,7 +6,7 @@ from prometheus_client import Counter, Histogram
 careplanner_dispatch_total = Counter(
     "careplanner_dispatch_total",
     "Disparos de mensagem por tenant e status final",
-    ["tenant_slug", "status"],
+    ["tenant_slug", "status", "channel"],
 )
 
 careplanner_event_total = Counter(
@@ -30,7 +30,7 @@ careplanner_video_session_total = Counter(
 careplanner_dispatch_to_sent_seconds = Histogram(
     "careplanner_dispatch_to_sent_seconds",
     "Tempo entre DISPATCHED e SENT (confirmacao de entrega)",
-    ["tenant_slug"],
+    ["tenant_slug", "channel"],
     buckets=[1, 5, 10, 30, 60, 120, 300],
 )
 

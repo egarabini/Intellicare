@@ -1,0 +1,58 @@
+name: MCP Ecosystem CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate JSON Configs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Validate JSON files
+        run: |
+          echo "=== Validating JSON Configuration Files ==="
+
+          # Validate all JSON files
+          for file in $(find . -name "*.json" -type f); do
+            echo "Validating: $file"
+            node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8'))" || {
+              echo "Invalid JSON: $file"
+              exit 1
+            }
+          done
+
+          echo "All JSON files are valid"
+
+      - name: Check required files
+        run: |
+          echo "=== Checking Required Files ==="
+
+          for file in LICENSE README.md; do
+            if [ ! -f "$file" ]; then
+              echo "Missing required file: $file"
+              exit 1
+            fi
+          done
+
+          # Check preset files
+          for preset in presets/aios-dev.json presets/aios-research.json presets/aios-full.json; do
+            if [ ! -f "$preset" ]; then
+              echo "Missing preset file: $preset"
+              exit 1
+            fi
+          done
+
+          echo "All required files present"

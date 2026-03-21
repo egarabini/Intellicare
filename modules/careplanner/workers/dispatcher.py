@@ -81,10 +81,10 @@ async def _do_dispatch(item: dict) -> None:
 
     metadata = task.metadata or {}
     last_error: Exception | None = None
+    channel = Channel(task.channel if hasattr(task, "channel") and task.channel else "rocketchat")
     for attempt in range(attempts + 1, MAX_RETRIES + 1):
         try:
             svc = build_careplanner_service()
-            channel = Channel(task.channel if hasattr(task, "channel") and task.channel else "rocketchat")
             rc_room_id = None
             if channel != Channel.WHATSAPP:
                 rc_room_id = await svc._rc.ensure_room(tenant_slug, task.patient_ref)
@@ -131,6 +131,7 @@ async def _do_dispatch(item: dict) -> None:
             careplanner_dispatch_total.labels(
                 tenant_slug=tenant_slug,
                 status=next_status.value.lower(),
+                channel=channel.value,
             ).inc()
             logger.info("dispatch ok: %s (tentativa %d)", correlation_id, attempt)
             return
@@ -155,7 +156,11 @@ async def _do_dispatch(item: dict) -> None:
         correlation_id,
         last_error,
     )
-    careplanner_dispatch_total.labels(tenant_slug=tenant_slug, status="failed").inc()
+    careplanner_dispatch_total.labels(
+        tenant_slug=tenant_slug, 
+        status="failed", 
+        channel=channel.value
+    ).inc()
     item["attempts"] = MAX_RETRIES
     item["failed_at"] = datetime.now(timezone.utc).isoformat()
     item["error"] = str(last_error) if last_error else "unknown"

@@ -211,6 +211,45 @@
         "overrides": []
       },
       "datasource": { "type": "prometheus", "uid": "${DS_PROMETHEUS}" }
+    },
+    {
+      "title": "Disparos por Canal",
+      "type": "barchart",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+      "options": { "stacking": "normal" },
+      "targets": [{
+        "expr": "sum by (channel) (increase(careplanner_dispatch_total[1h]))",
+        "legendFormat": "{{channel}}"
+      }]
+    },
+    {
+      "title": "Taxa de Falha por Canal (%)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 16 },
+      "targets": [{
+        "expr": "sum by (channel) (rate(careplanner_dispatch_total{status='FAILED'}[5m])) / sum by (channel) (rate(careplanner_dispatch_total[5m])) * 100",
+        "legendFormat": "{{channel}}"
+      }]
+    },
+    {
+      "title": "Latência p95 Dispatch→Sent por Canal",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "targets": [{
+        "expr": "histogram_quantile(0.95, sum by (channel, le) (rate(careplanner_dispatch_to_sent_seconds_bucket[5m])))",
+        "legendFormat": "p95 {{channel}}"
+      }]
+    },
+    {
+      "title": "Health Adapters",
+      "type": "stat",
+      "description": "Atualizar manualmente via /health/adapters — integração futura com blackbox_exporter",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 },
+      "options": { "colorMode": "background" },
+      "targets": [{
+        "expr": "up{job=~'careplanner.*'}",
+        "legendFormat": "{{job}}"
+      }]
     }
   ],
   "schemaVersion": 39,

@@ -83,6 +83,14 @@ def _ensure_signature(request_body: bytes, signature: str | None, service: Carep
         raise api_error(403, "invalid_signature", "Assinatura Rocket.Chat invalida")
 
 
+@router.get("/health/adapters", status_code=200)
+async def adapters_health(
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    """Retorna status de conectividade de cada adapter de canal."""
+    return await service.health_check_adapters()
+
+
 @router.post("/tasks/open", status_code=status.HTTP_202_ACCEPTED)
 async def open_task(
     body: OpenTaskRequest,

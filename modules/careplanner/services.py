@@ -178,7 +178,10 @@ class CareplannerService:
         careplanner_event_total.labels(tenant_slug=ctx.tenant_id, event_type="MESSAGE_SENT").inc()
         if task:
             delta = max((datetime.now(tz=timezone.utc) - task.updated_at).total_seconds(), 0)
-            careplanner_dispatch_to_sent_seconds.labels(tenant_slug=ctx.tenant_id).observe(delta)
+            careplanner_dispatch_to_sent_seconds.labels(
+                tenant_slug=ctx.tenant_id,
+                channel=task.channel.value
+            ).observe(delta)
         return {"ok": True, "status": TaskStatus.SENT.value}
 
     async def process_inbound(
@@ -672,6 +675,51 @@ class CareplannerService:
                 await self._repo.create_template(ctx, template)
             except Exception:
                 pass  # ON CONFLICT DO NOTHING equivalente
+
+    async def health_check_adapters(self) -> dict[str, str]:
+        results = {}
+
+        # RocketChat
+        try:
+            await self._rc.login_bot()
+            results["rocketchat"] = "ok"
+        except Exception:
+            results["rocketchat"] = "degraded"
+
+        # Evolution API (WhatsApp)
+        try:
+            client = await self._whatsapp._get_client()
+            r = await client.get(f"/instance/connectionState/{self._settings.evolution_instance_name}")
+            state = r.json().get("instance", {}).get("state", "unknown")
+            results["whatsapp"] = "ok" if state == "open" else f"degraded:{state}"
+        except Exception:
+            results["whatsapp"] = "degraded"
+
+        # Listmonk (Email)
+        try:
+            client = await self._email._get_client()
+            r = await client.get("/api/health")
+            results["email"] = "ok" if r.status_code == 200 else "degraded"
+        except Exception:
+            results["email"] = "degraded"
+
+        # Jasmin (SMS)
+        try:
+            client = await self._sms._get_client()
+            r = await client.get(
+                "/send",
+                params={
+                    "username": self._settings.jasmin_username,
+                    "password": self._settings.jasmin_password,
+                    "to": "0", "from": "TEST", "content": "ping",
+                }
+            )
+            # Jasmin retorna "Error" para número inválido mas conexão está OK
+            results["sms"] = "ok" if "Error" in r.text or r.status_code == 200 else "degraded"
+        except Exception:
+            results["sms"] = "degraded"
+
+        return results
 
 
 def build_careplanner_service() -> CareplannerService:
