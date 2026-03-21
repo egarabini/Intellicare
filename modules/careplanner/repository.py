@@ -483,6 +483,43 @@ class CareplannerRepository:
             rows = (await db.execute(text(query), params)).mappings().all()
         return [CareTaskRecord(**dict(row)) for row in rows]
 
+    async def get_task_by_appointment(
+        self,
+        ctx: TenantContext,
+        appointment_id: UUID,
+    ) -> CareTaskRecord | None:
+        """Retorna a care_task ativa vinculada ao agendamento, se houver."""
+        async with tenant_session(ctx) as db:
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT * FROM care_tasks
+                        WHERE appointment_id = :appointment_id
+                          AND status NOT IN ('CLOSED','EXPIRED','FAILED')
+                        ORDER BY created_at DESC LIMIT 1
+                        """
+                    ),
+                    {"appointment_id": str(appointment_id)},
+                )
+            ).mappings().first()
+        return CareTaskRecord(**dict(row)) if row else None
+
+    async def link_task_to_appointment(
+        self,
+        ctx: TenantContext,
+        correlation_id: UUID,
+        appointment_id: UUID,
+    ) -> None:
+        """Vincula uma care_task a um agendamento."""
+        async with tenant_session(ctx) as db:
+            await db.execute(
+                text(
+                    "UPDATE care_tasks SET appointment_id = :appointment_id WHERE correlation_id = :correlation_id"
+                ),
+                {"appointment_id": str(appointment_id), "correlation_id": str(correlation_id)},
+            )
+
     async def get_journey_full(
         self, ctx: TenantContext, correlation_id: UUID
     ) -> dict:

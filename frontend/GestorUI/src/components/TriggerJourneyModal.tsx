@@ -28,6 +28,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
     contact_email: string;
     include_video: boolean;
     clinico_ref: string;
+    appointment_id: string;
   }>({
     initialValues: {
       patient_ref: '',
@@ -38,6 +39,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
       contact_email: '',
       include_video: false,
       clinico_ref: '',
+      appointment_id: '',
     },
     validate: {
       patient_ref: (v) => (!v.trim() ? 'Referência do paciente obrigatória' : null),
@@ -80,6 +82,7 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
       contact_email: values.contact_email.trim() || undefined,
       flow_id: flow,
       clinico_ref: values.include_video ? values.clinico_ref.trim() : undefined,
+      appointment_id: values.appointment_id.trim() || undefined,
     });
     form.reset();
   });
@@ -152,6 +155,12 @@ export function TriggerJourneyModal({ opened, onClose, onSubmit, loading }: Prop
               {...form.getInputProps('clinico_ref')}
             />
           )}
+          <TextInput
+            label="Agendamento vinculado (opcional)"
+            placeholder="UUID do agendamento"
+            data-testid="input-appointment-id"
+            {...form.getInputProps('appointment_id')}
+          />
           <Group justify="flex-end" mt="md">
             <Button variant="subtle" onClick={onClose} disabled={loading}>
               Cancelar

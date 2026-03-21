@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import {
   ActionIcon,
+  Alert,
+  Anchor,
   Badge,
   Box,
   Button,
@@ -20,7 +22,7 @@ import {
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
-import { IconArrowLeft, IconCheck, IconCopy, IconFileTypePdf, IconMessage, IconPlayerStop, IconVideo } from '@tabler/icons-react';
+import { IconArrowLeft, IconCalendar, IconCheck, IconCopy, IconFileTypePdf, IconMessage, IconPlayerStop, IconVideo } from '@tabler/icons-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCareplannerTask, useCloseTask, useCreateVideoSession, useVideoSession, VideoSessionCreate } from '../hooks/useGestor';
 
@@ -205,6 +207,15 @@ export function CareplannerJourneyDetail() {
             </Button>
           )}
         </Group>
+
+        {task.appointment_id && (
+          <Alert icon={<IconCalendar size={16} />} color="blue" mt="md" data-testid="appointment-link">
+            Agendamento vinculado:{' '}
+            <Anchor href={`/gestor-ui/agendamentos/${task.appointment_id}`}>
+              #{task.appointment_id}
+            </Anchor>
+          </Alert>
+        )}
       </Card>
 
       <Title order={3} mb="sm">Timeline de Eventos</Title>

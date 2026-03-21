@@ -24,6 +24,7 @@ class OpenTaskRequest(BaseModel):
     task_type: str
     contact: dict = Field(default_factory=dict)
     message: dict = Field(default_factory=dict)
+    appointment_id: str | None = None
 
 
 class MessageSentRequest(BaseModel):
@@ -57,6 +58,7 @@ class TriggerJourneyRequest(BaseModel):
     channel: Channel = Channel.ROCKETCHAT
     flow_id: str = "careplanner_jornada_basica"
     clinico_ref: str | None = None
+    appointment_id: str | None = None
 
 
 class TemplateCreateRequest(BaseModel):
@@ -110,6 +112,7 @@ async def open_task(
         contact_phone=contact.get("phone_e164"),
         contact_email=contact.get("contact_email"),
         contact_role=contact.get("role", "PACIENTE"),
+        appointment_id=body.appointment_id,
     )
 
 
@@ -291,6 +294,21 @@ async def dashboard_stats(
     service: CareplannerService = Depends(get_service),
 ) -> dict:
     return await service.get_dashboard_stats(ctx)
+
+
+@router.get("/appointments/{appointment_id}/journey")
+async def get_journey_by_appointment(
+    appointment_id: UUID,
+    ctx: TenantContext = Depends(get_current_tenant),
+    service: CareplannerService = Depends(get_service),
+) -> dict:
+    """Retorna a jornada CarePlanner ativa vinculada a um agendamento."""
+    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    task = await service.repo.get_task_by_appointment(ctx, appointment_id)
+    if not task:
+        raise api_error(404, "not_found", "Nenhuma jornada ativa para este agendamento")
+    return task.model_dump(mode="json")
 
 
 @router.post("/tasks/{correlation_id}/close", status_code=status.HTTP_200_OK)

@@ -266,6 +266,7 @@ export interface CareTask {
   status: string;
   channel: string;
   metadata: Record<string, unknown>;
+  appointment_id: string | null;
   created_at: string;
   updated_at: string | null;
 }
@@ -311,6 +312,7 @@ export interface TriggerJourneyPayload {
   channel?: string;
   flow_id?: string;
   clinico_ref?: string;
+  appointment_id?: string;
 }
 
 export interface TriggerJourneyResult {
@@ -416,6 +418,18 @@ export function useCloseTask(correlationId: string) {
       queryClient.invalidateQueries({ queryKey: ['careplanner_tasks'] });
       queryClient.invalidateQueries({ queryKey: ['careplanner_stats'] });
     },
+  });
+}
+
+export function useJourneyByAppointment(appointmentId: string | undefined) {
+  return useQuery<CareTask>({
+    queryKey: ['journey-by-appointment', appointmentId],
+    queryFn: async () => {
+      const { data } = await api.get(`/careplanner/appointments/${appointmentId}/journey`);
+      return data;
+    },
+    enabled: !!appointmentId,
+    retry: false,
   });
 }
 

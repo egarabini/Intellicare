@@ -66,6 +66,10 @@ class CareplannerService:
         self._email = email
         self._settings = settings or get_careplanner_settings()
 
+    @property
+    def repo(self) -> CareplannerRepository:
+        return self._repo
+
     async def _send_to_channel(
         self,
         channel: Channel,
@@ -104,6 +108,7 @@ class CareplannerService:
         contact_email: str | None = None,
         contact_role: str = "PACIENTE",
         channel: Channel = Channel.ROCKETCHAT,
+        appointment_id: str | None = None,
     ) -> dict:
         correlation_id = uuid4()
         logger.debug(
@@ -130,6 +135,10 @@ class CareplannerService:
                 },
             ),
         )
+        if appointment_id:
+            await self._repo.link_task_to_appointment(
+                ctx, correlation_id, UUID(appointment_id)
+            )
         await enqueue_dispatch(str(task.correlation_id), ctx.tenant_id)
         return {"ok": True, "correlation_id": str(task.correlation_id), "status": TaskStatus.CREATED.value}
 
@@ -519,6 +528,8 @@ class CareplannerService:
         }
         if body.clinico_ref:
             inputs["clinico_ref"] = body.clinico_ref
+        if body.appointment_id:
+            inputs["appointment_id"] = body.appointment_id
 
         try:
             execution = await self._kestra.trigger_flow(

@@ -80,4 +80,11 @@ CAREPLANNER_MIGRATIONS: list[str] = [
         created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
     """,
+    # DEM-054: link bidirecional CarePlanner ↔ Agendamento
+    "ALTER TABLE care_tasks ADD COLUMN IF NOT EXISTS appointment_id UUID",
+    """
+    CREATE INDEX IF NOT EXISTS idx_care_tasks_appointment_id
+        ON care_tasks(appointment_id)
+        WHERE appointment_id IS NOT NULL
+    """,
 ]

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Title, Group, Table, ActionIcon, Button, Modal, Stack, Select, Text, TextInput, Badge } from '@mantine/core';
-import { useAppointments, useCreateAppointment, useCancelAppointment, usePatients, useClinicians } from '../hooks/useGestor';
-import { IconTrash, IconCalendarPlus } from '@tabler/icons-react';
+import { useAppointments, useCreateAppointment, useCancelAppointment, usePatients, useClinicians, useJourneyByAppointment } from '../hooks/useGestor';
+import { IconTrash, IconCalendarPlus, IconMessageCircle } from '@tabler/icons-react';
 
 export function AppointmentCalendar() {
   const [date, setDate] = useState<string>(new Date().toISOString().split('T')[0]);
@@ -16,6 +16,23 @@ export function AppointmentCalendar() {
   const cancelAppointment = useCancelAppointment();
 
   const [form, setForm] = useState<{ patient_id: string; clinician_id: string; scheduled_at: string; type: 'consulta' | 'retorno' | 'exame'; notes: string }>({ patient_id: '', clinician_id: '', scheduled_at: '', type: 'consulta', notes: '' });
+
+  function JourneyBadge({ appointmentId }: { appointmentId: string }) {
+    const { data: journey } = useJourneyByAppointment(appointmentId);
+    if (!journey) return null;
+    return (
+      <Badge
+        color="teal"
+        variant="light"
+        leftSection={<IconMessageCircle size={12} />}
+        component="a"
+        href={`/gestor-ui/careplanner/${journey.correlation_id}`}
+        style={{ cursor: 'pointer' }}
+      >
+        Jornada ativa
+      </Badge>
+    );
+  }
 
   const onSubmit = async () => {
     try {
@@ -62,14 +79,15 @@ export function AppointmentCalendar() {
             <Table.Th>Paciente</Table.Th>
             <Table.Th>Tipo</Table.Th>
             <Table.Th>Status</Table.Th>
+            <Table.Th>Jornada</Table.Th>
             <Table.Th>Ações</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>
           {isLoading ? (
-            <Table.Tr><Table.Td colSpan={5}>Carregando...</Table.Td></Table.Tr>
+            <Table.Tr><Table.Td colSpan={6}>Carregando...</Table.Td></Table.Tr>
           ) : appointments?.length === 0 ? (
-            <Table.Tr><Table.Td colSpan={5}>Nenhum agendamento para esta data.</Table.Td></Table.Tr>
+            <Table.Tr><Table.Td colSpan={6}>Nenhum agendamento para esta data.</Table.Td></Table.Tr>
           ) : (
             appointments?.map(a => {
               const p = patients?.find(pat => pat.id === a.patient_id);
@@ -79,6 +97,7 @@ export function AppointmentCalendar() {
                   <Table.Td>{p?.name || a.patient_id}</Table.Td>
                   <Table.Td>{a.type}</Table.Td>
                   <Table.Td><Badge color={getStatusColor(a.status)}>{a.status}</Badge></Table.Td>
+                  <Table.Td><JourneyBadge appointmentId={a.id} /></Table.Td>
                   <Table.Td>
                     {a.status !== 'cancelado' && (
                       <ActionIcon color="red" variant="subtle" onClick={() => cancelAppointment.mutate(a.id)}>

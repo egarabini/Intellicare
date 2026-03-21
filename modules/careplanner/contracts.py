@@ -74,6 +74,7 @@ class CareTaskCreate(BaseModel):
     status: TaskStatus = TaskStatus.CREATED
     channel: Channel = Channel.ROCKETCHAT
     metadata: dict[str, Any] = Field(default_factory=dict)
+    appointment_id: UUID | None = None
 
 
 class CareTaskRecord(CareTaskCreate):
@@ -81,6 +82,7 @@ class CareTaskRecord(CareTaskCreate):
     tenant_slug: str
     created_at: datetime
     updated_at: datetime
+    appointment_id: UUID | None = None
 
 
 class CareConversationUpsert(BaseModel):
