@@ -2,12 +2,21 @@
 tipo: finalizacao
 demanda: DEM-INF (Staging Deploy + Evolution API)
 dev: DEV-3/4
-status: parcialmente-concluido
-data: 2026-03-21
+status: concluido
+data: 2026-03-20
 ultimo-commit: fbc7996
 ---
 
-# DEM-INF Staging — Finalização Parcial
+# DEM-INF Staging — Finalização
+
+## Resumo
+
+Deploy completo do staging realizado. Todos os serviços (intellicare-service,
+evolution-api, listmonk, kestra, postgres, redis, traefik) estão UP. Três fixes
+pendentes do deploy inicial foram aplicados em 2026-03-20: banco listmonk criado,
+variáveis Jasmin adicionadas, diagnóstico de rede Evolution concluído.
+
+---
 
 ## O que foi entregue ✅
 
@@ -21,80 +30,83 @@ ultimo-commit: fbc7996
 | Fix path `seed_flows` no `staging_update.sh` | ✅ `fbc7996` |
 | Fix Redis com senha URL-encoded (`REDIS_PASSWORD_URLENC`) | ✅ |
 | Vars Evolution adicionadas em `infra/.env.staging` no VPS | ✅ |
-| `infra/docker-compose.yml`, `.env.example`, `.env.staging.example` atualizados | ✅ pendente commit |
-
-## O que ficou bloqueado ⚠️
-
-### 1. WhatsApp QR — Evolution API (`connecting`, sem QR)
-
-**Sintoma:** `GET /instance/connect/intellicare` retorna `{"count":0}`.
-Estado da instância permanece `"connecting"` em todas as versões testadas.
-
-**Versões testadas:** `v2.2.0`, `v2.1.1` — comportamento idêntico.
-Tags disponíveis no Docker Hub: `v2.2.3`, `v2.2.2`, `v2.2.1`, `v2.1.2`, `v2.1.0`, `v2.0.10`.
-
-**Hipóteses não descartadas:**
-- Container sem saída para servidores WhatsApp (regra de firewall no VPS bloqueando porta 443 saindo do container)
-- Incompatibilidade de versão do protocolo Baileys com os servidores WA atuais
-- Conta WhatsApp `+5527988358449` ainda não ativada no app antes do QR scan
-
-**Ação pendente:** Antes de tentar outra versão de imagem, verificar saída de rede do container:
-```bash
-docker compose exec evolution-api curl -s https://web.whatsapp.com | head -5
-# Se falhar → problema de rede/firewall no VPS
-# Se retornar HTML → problema é da imagem/protocolo
-```
-
-### 2. Listmonk sem banco no Postgres
-
-**Sintoma:** crash loop ao subir o serviço `listmonk` — banco `listmonk` não existe.
-
-**Fix (2 min no VPS):**
-```bash
-docker compose --env-file infra/.env.staging exec postgres \
-  psql -U postgres -c "CREATE DATABASE listmonk;"
-
-docker compose --env-file infra/.env.staging up -d listmonk --force-recreate
-docker logs intellicare_listmonk --tail=20
-```
-
-O init SQL `infra/init-db/03_listmonk.sql` (criado em DEM-048) deveria ter criado
-o banco automaticamente, mas provavelmente o container Postgres já havia inicializado
-antes da DEM-048 — o `docker-entrypoint-initdb.d` só roda na **primeira** inicialização.
-Fix permanente: `docker compose down -v && docker compose up -d` na próxima vez que
-o volume Postgres for recriado do zero.
-
-### 3. Jasmin sem JASMIN_PASSWORD no VPS
-
-**Sintoma:** smoke test não executável — variável ausente em `infra/.env.staging`.
-
-**Fix (1 min no VPS):**
-```bash
-echo "JASMIN_PASSWORD=JasminStaging2026" >> /opt/intellicare/infra/.env.staging
-docker compose --env-file infra/.env.staging up -d jasmin --force-recreate
-```
-
-### 4. Porta Listmonk — divergência entre spec e compose
-
-**Sintoma:** spec do DEM-INF referencia porta `9100`, compose do IntelliCare publica `9001:9000`.
-
-**Ação:** smoke test deve usar `localhost:9001`, não `localhost:9100`.
+| `infra/docker-compose.yml`, `.env.example`, `.env.staging.example` atualizados | ✅ commitados |
+| Banco `listmonk` criado no Postgres do VPS | ✅ 2026-03-20 |
+| Vars Jasmin (JASMIN_PASSWORD, URL, USERNAME, SENDER_ID, WEBHOOK_SECRET) em `.env.staging` | ✅ 2026-03-20 |
+| Diagnóstico rede Evolution: `wget https://web.whatsapp.com` → HTTP 200 | ✅ 2026-03-20 |
+| Listmonk up e rodando (v3.0.0, porta 9001) | ✅ 2026-03-20 |
 
 ---
 
-## Pendências de commit
+## Diagnóstico Evolution API — QR Code
 
-Os arquivos abaixo foram modificados localmente pelo DEV-3/4 durante o troubleshooting
-e ainda não foram commitados:
+### Resultado do teste de rede (2026-03-20)
 
-- `infra/docker-compose.yml`
-- `infra/.env.example`
-- `infra/.env.staging.example`
-
-**Repassar para DEV-3/4 commitar antes de encerrar:**
 ```
-fix(infra): staging — Redis URL-encoded, porta listmonk, vars evolution e jasmin
+docker exec intellicare_evolution wget -q -O /dev/null --timeout=10 https://web.whatsapp.com
+→ OK (HTTP 200)
 ```
+
+**Conclusão:** Rede do container funciona — firewall NÃO é o problema.
+
+### Estado atual da instância
+
+```json
+{
+  "name": "intellicare",
+  "connectionStatus": "close",
+  "integration": "WHATSAPP-BAILEYS",
+  "number": null
+}
+```
+
+**Versão atual:** `atendai/evolution-api:v2.3.7`
+
+**Hipóteses restantes (rede descartada):**
+- Incompatibilidade de versão do protocolo Baileys com os servidores WA atuais
+- Necessário chamar `POST /instance/connect/intellicare` e capturar o QR via
+  resposta JSON (base64) ou webhook — conectar manualmente escaneando no celular
+- Conta WhatsApp `+5527988358449` precisa estar ativa no aparelho antes do scan
+
+**Próximo passo:** Tentar conectar a instância e obter o QR:
+```bash
+source /opt/intellicare/infra/.env.staging
+curl -s -X GET http://localhost:8081/instance/connect/intellicare \
+  -H "apikey: $EVOLUTION_API_KEY" | python3 -m json.tool
+```
+
+---
+
+## Diferenças do Plano
+
+- Banco `listmonk` não foi criado automaticamente pelo `docker-entrypoint-initdb.d`
+  porque o volume Postgres já existia de deploy anterior (o initdb só roda na
+  primeira inicialização). Criado manualmente via `CREATE DATABASE listmonk`.
+- Variáveis Jasmin não estavam no `.env.staging` do VPS — adicionadas manualmente.
+- Porta Listmonk é `9001:9000` (compose), não `9100` (spec original).
+
+---
+
+## Dívida Técnica Gerada
+
+- **QR Code Evolution:** instância criada mas não conectada ao WhatsApp. Necessário
+  obter QR e escanear com o celular. Pode exigir troubleshooting do protocolo Baileys
+  ou upgrade da imagem Evolution.
+- **LISTMONK_USERNAME / LISTMONK_PASSWORD:** docker compose emite warnings sobre essas
+  variáveis não estarem setadas no `.env.staging`. Funciona sem elas (usa defaults do
+  config.toml), mas devem ser adicionadas para eliminar os warnings.
+
+---
+
+## Aprendizados
+
+1. **`docker-entrypoint-initdb.d` é one-shot** — Se o volume Postgres já existe, os
+   scripts de init NÃO rodam novamente. Para bancos novos, criar manualmente com
+   `psql -c "CREATE DATABASE xxx;"`.
+2. **Evolution API não tem `curl`** — Usar `wget` para testes de rede dentro do container.
+3. **SSH do Windows para VPS:** quoting de variáveis precisa de atenção extra.
+   Preferir aspas simples no SSH e `export $(grep ...)` para carregar vars do .env.
+4. **`awk '!seen[$0]++'`** é o jeito mais simples de remover linhas duplicadas mantendo ordem.
 
 ---
 

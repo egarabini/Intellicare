@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-21 | Branch: main | Último commit: 7f708fb (DEM-INF Memória Operacional)
+> Atualizado: 2026-03-21 | Branch: main | Último commit: 2fa8949 (DEM-051 Observabilidade Multicanal)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -52,6 +52,7 @@
 | DEM-050 | E2E Multi-Canal — mock Evolution, 4 pytest integração WA, Playwright seletor canal, fix regressões Phases B/C/D/E (fixtures CareplannerService + dispatcher multi-canal + seed_flows) — **53 passed** | `55c820c` |
 | DEM-INF | Fix Staging — `DATABASE_CONNECTION_URI` Evolution URL-safe, path seed_flows corrigido, evolution-api HTTP 200 no staging | `fbc7996` |
 | DEM-INF | Memória Operacional — `docs/patterns/` (backend, frontend, workers), `docs/gotchas/` (careplanner, staging, keycloak), `_templates/HANDOFF.yml` | `7f708fb` |
+| DEM-051 | Observabilidade Multicanal — `GET /health/adapters` (RC+Evolution+Listmonk+Jasmin), label `channel` em `careplanner_dispatch_total`, 4 painéis Grafana por canal | `2fa8949` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 ² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
@@ -72,7 +73,7 @@
 |-----|--------|-----|--------|
 | DEM-INF | Staging follow-up — banco listmonk, JASMIN_PASSWORD, diagnóstico rede Evolution | DEV-3/4 | ⏳ spec: `DEM-INF_STAGING_EVOLUTION/05_FINALIZACAO.md` |
 | DEM-INF | Memória Operacional — patterns, gotchas, HANDOFF template | CODEX | ✅ `7f708fb` |
-| DEM-051 | Observabilidade Multicanal — healthcheck adapters + Grafana por canal | DEV-2 | ⏳ spec: `DEM-051_OBSERVABILIDADE_MULTICANAL/` |
+| DEM-051 | Observabilidade Multicanal — healthcheck adapters + Grafana por canal | DEV-2 | ✅ `2fa8949` |
 | DEM-052 | Relatórios PDF Jornadas — WeasyPrint template + botão GestorUI | DEV-1 | ⏳ spec: `DEM-052_RELATORIOS_PDF/` |
 
 ---
@@ -82,7 +83,7 @@
 | DEM | Dev | Spec |
 |-----|-----|------|
 | DEM-INF Memória Operacional | CODEX | ✅ entregue `7f708fb` |
-| DEM-051 Observabilidade Multicanal | DEV-2 | ✅ `docs/demandas/DEM-051_OBSERVABILIDADE_MULTICANAL/BRIEFING.md` |
+| DEM-051 Observabilidade Multicanal | DEV-2 | ✅ entregue `2fa8949` |
 | DEM-052 Relatórios PDF | DEV-1 | ✅ `docs/demandas/DEM-052_RELATORIOS_PDF/BRIEFING.md` |
 
 ---
