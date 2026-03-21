@@ -1,0 +1,7 @@
+
+=== 2026-03-21 — Clinical Squad Final Smoke ===
+Florence  GET /florence/notes/encounter/1              200 []
+Oswaldo   POST /oswaldo/suggest                        200 rule-based
+PDF       GET /cuidado/encounters/9e19223a-754d-45e0-aeb6-158ba52a8ac8/report.pdf  200 valid-pdf
+WhatsApp  connectionState/intellicare                  open
+Adapters  GET /careplanner/health/adapters             200
