@@ -33,18 +33,26 @@ async def create_note(ctx: TenantContext, req: CreateNoteRequest, author_id: str
     return ClinicalNote(**dict(row))
 
 async def get_notes_by_encounter(ctx: TenantContext, encounter_id: str) -> list[ClinicalNote]:
+    try:
+        normalized_id = str(UUID(str(encounter_id)))
+    except (TypeError, ValueError):
+        return []
     async with tenant_session(ctx) as db:
         rows = (await db.execute(
             text("SELECT * FROM clinical_notes WHERE encounter_id = :encounter_id ORDER BY created_at ASC"),
-            {"encounter_id": str(encounter_id)}
+            {"encounter_id": normalized_id}
         )).mappings().all()
     return [ClinicalNote(**dict(r)) for r in rows]
 
 async def get_notes_by_patient(ctx: TenantContext, patient_id: str) -> list[ClinicalNote]:
+    try:
+        normalized_id = str(UUID(str(patient_id)))
+    except (TypeError, ValueError):
+        return []
     async with tenant_session(ctx) as db:
         rows = (await db.execute(
             text("SELECT * FROM clinical_notes WHERE patient_id = :patient_id ORDER BY created_at DESC LIMIT 50"),
-            {"patient_id": str(patient_id)}
+            {"patient_id": normalized_id}
         )).mappings().all()
     return [ClinicalNote(**dict(r)) for r in rows]
 
