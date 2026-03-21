@@ -31,7 +31,7 @@ RUN cd frontend/GestorUI \
 
 # Build ClinicoUI → static/clinico-ui/
 RUN cd frontend/ClinicoUI \
-    && npm install --legacy-peer-deps --prefer-offline \
+    && npm install --legacy-peer-deps \
     && npx vite build
 
 # Build PacienteUI → static/paciente-ui/
