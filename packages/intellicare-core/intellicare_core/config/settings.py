@@ -44,6 +44,10 @@ class Settings(BaseSettings):
     environment: str = "development"
     log_level: str = "DEBUG"
 
+    vapid_public_key: str = ""
+    vapid_private_key: str = ""
+    vapid_subject: str = "mailto:admin@intellicare.ia.br"
+
     @property
     def database_url(self) -> str:
         return (

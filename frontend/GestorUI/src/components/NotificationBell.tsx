@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import {
   ActionIcon, Badge, Group, Indicator, Popover,
-  ScrollArea, Stack, Text,
+  ScrollArea, Stack, Text, Switch, Tooltip
 } from '@mantine/core'
-import { IconBell } from '@tabler/icons-react'
+import { IconBell, IconBellRinging, IconBellOff } from '@tabler/icons-react'
 import { useNavigate } from 'react-router-dom'
 import { useNotifications, AppNotification } from '../hooks/useNotifications'
+import { usePushNotifications } from '../hooks/usePushNotifications'
 
 function timeAgo(iso: string): string {
   const diff = Math.floor((Date.now() - new Date(iso).getTime()) / 1000)
@@ -59,6 +60,7 @@ function NotificationItem({
 
 export function NotificationBell() {
   const { notifications, unreadCount, markRead, available } = useNotifications()
+  const { isSupported, isSubscribed, isLoading, toggleSubscription } = usePushNotifications()
   const [opened, setOpened] = useState(false)
   const navigate = useNavigate()
 
@@ -100,7 +102,21 @@ export function NotificationBell() {
       <Popover.Dropdown p={0}>
         <Group px="sm" py="xs" justify="space-between"
           style={{ borderBottom: '1px solid var(--mantine-color-gray-2)' }}>
-          <Text size="sm" fw={600}>Notificações</Text>
+          <Group gap="xs">
+            <Text size="sm" fw={600}>Notificações</Text>
+            {isSupported && (
+              <Tooltip label={isSubscribed ? "Desativar notificações push" : "Ativar notificações push"}>
+                <Switch
+                  size="xs"
+                  checked={isSubscribed}
+                  onChange={toggleSubscription}
+                  disabled={isLoading}
+                  onLabel={<IconBellRinging size={12} stroke={2.5} />}
+                  offLabel={<IconBellOff size={12} stroke={2.5} />}
+                />
+              </Tooltip>
+            )}
+          </Group>
           {unreadCount > 0 && (
             <Badge size="xs" color="blue">{unreadCount} não lidas</Badge>
           )}

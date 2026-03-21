@@ -79,3 +79,16 @@ class NotificationPreferencesUpdate(BaseModel):
     enabled: bool | None = None
     types_enabled: list[NotificationType] | None = None
     priority_min: NotificationPriority | None = None
+
+
+class PushKeys(BaseModel):
+    p256dh: str
+    auth: str
+
+class PushSubscriptionCreate(BaseModel):
+    endpoint: str
+    keys: PushKeys
+    user_agent: str | None = None
+
+class PushSubscriptionUnsubscribe(BaseModel):
+    endpoint: str

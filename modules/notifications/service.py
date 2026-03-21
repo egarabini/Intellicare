@@ -45,7 +45,7 @@ class NotificationService:
                 await db.execute(
                     text("""
                         INSERT INTO notifications (user_id, type, priority, title, body, data)
-                        VALUES (:user_id, :type, :priority, :title, :body, :data::jsonb)
+                        VALUES (:user_id, :type, :priority, :title, :body, CAST(:data AS jsonb))
                         RETURNING id, user_id, type, priority, title, body, data,
                                   read, read_at, created_at
                     """),
@@ -71,6 +71,32 @@ class NotificationService:
             )
         except Exception:
             logger.warning("Falha ao publicar notificacao via Redis", exc_info=True)
+
+        # Disparar Web Push para o app (PWA)
+        try:
+            subs = await self.get_push_subscriptions(ctx, data.user_id)
+            if subs:
+                from .push_sender import send_push
+                from pywebpush import WebPushException
+                for sub in subs:
+                    info = {
+                        "endpoint": sub["endpoint"],
+                        "keys": {"p256dh": sub["p256dh"], "auth": sub["auth"]}
+                    }
+                    action_url = notif.get("data", {}).get("action_url", "/") if notif.get("data") else "/"
+                    try:
+                        await send_push(
+                            info, 
+                            title=notif["title"], 
+                            body=notif.get("body", "Nova Notificação"), 
+                            action_url=action_url
+                        )
+                    except WebPushException as ex:
+                        if ex.response and ex.response.status_code == 410:
+                            # Subscription morta, remove do banco automaticamente!
+                            await self.remove_push_subscription(ctx, sub["endpoint"])
+        except Exception:
+            logger.warning("Falha global no envio nativo WebPush", exc_info=True)
 
         return notif
 
@@ -292,6 +318,53 @@ class NotificationService:
 
         return NotificationPreferencesResponse(**dict(row))
 
+
+    # ── PUSH SUBSCRIPTIONS ───────────────────────────────────
+
+    async def save_push_subscription(
+        self,
+        ctx: TenantContext,
+        endpoint: str,
+        p256dh: str,
+        auth: str,
+        user_agent: str | None = None,
+    ) -> None:
+        async with _tenant_session(ctx) as db:
+            await db.execute(
+                text("""
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES (:user_id, :endpoint, :p256dh, :auth, :ua, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                """),
+                {
+                    "user_id": ctx.user_id,
+                    "endpoint": endpoint,
+                    "p256dh": p256dh,
+                    "auth": auth,
+                    "ua": user_agent,
+                },
+            )
+
+    async def remove_push_subscription(self, ctx: TenantContext, endpoint: str) -> None:
+        async with _tenant_session(ctx) as db:
+            await db.execute(
+                text("DELETE FROM push_subscriptions WHERE user_id = :user_id AND endpoint = :endpoint"),
+                {"user_id": ctx.user_id, "endpoint": endpoint},
+            )
+
+    async def get_push_subscriptions(self, ctx: TenantContext, user_id: str) -> list[dict[str, Any]]:
+        async with _tenant_session(ctx) as db:
+            rows = (
+                await db.execute(
+                    text("SELECT endpoint, p256dh, auth FROM push_subscriptions WHERE user_id = :user_id"),
+                    {"user_id": user_id},
+                )
+            ).mappings().all()
+        return [dict(r) for r in rows]
 
 # ── Helpers ──────────────────────────────────────────────────
 
