@@ -60,6 +60,7 @@
 | DEM-055 | Florence Módulo Base — migration 013 `clinical_notes`, endpoints SOAP/FREE, `FlorenceNoteEditor`, aba "Notas Florence" em `EncounterView`, 3 testes | `e50a2c2` |
 | DEM-056 | Executor Matrix ADR — `docs/adr/ADR-001-executor-matrix.md`, 24 componentes reais classificados (Worker/Agent/Hybrid/Human), referência IA-FRAMEWORK | `c571823` |
 | DEM-057 | Florence IA — `suggest_soap()`, `_call_llm()` OpenAI-compatible + fallback rule-based, `POST /florence/notes/suggest`, botão Hybrid ClinicoUI, 5 testes | `29df484` |
+| DEM-058 | Oswaldo Módulo Base — migration 014 UUID, `prescriptions`, busca CID-10, `OswaldoPrescriptionEditor`, aba ClinicoUI — testes pendentes (404 ModuleLoader) | `5a3a17a` |
 | DEM-059 | Portal Paciente — `GET /cuidado/paciente/me/journeys` + `/me/clinical-notes`, `JornadasPage.tsx`, `HistoricoPage.tsx`, privacidade `soap_a`, 6 testes | `d714194` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
@@ -102,7 +103,7 @@
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
 | DEM-057 | Florence IA — sugestão SOAP com LLM + fallback rule-based | DEV-2 | ✅ `29df484` |
-| DEM-058 | Oswaldo Módulo Base — prescrições + CID-10 + EncounterView | DEV-1 | ⏳ spec: `DEM-058_OSWALDO_MODULO_BASE/` |
+| DEM-058 | Oswaldo Módulo Base — prescrições + CID-10 + EncounterView | DEV-1 | ⚠️ `5a3a17a` — código OK, testes 0/3 (404 ModuleLoader) |
 | DEM-059 | Portal Paciente Notas — jornadas + histórico clínico | CODEX | ✅ `d714194` |
 | DEM-060 | Staging Full Sync — migrations 012–014, Florence+Oswaldo UP | DEV-3/4 | ⏳ spec: `DEM-060_STAGING_FULL_SYNC/` |
 

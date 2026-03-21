@@ -5,8 +5,7 @@ from intellicare_core.auth.jwt import get_current_tenant
 from modules.oswaldo.contracts import CreatePrescriptionRequest, Prescription, CID10Result
 from modules.oswaldo import repository
 
-router = APIRouter(prefix="/oswaldo", tags=["oswaldo"])
-
+router = APIRouter(tags=["oswaldo"])
 
 @router.get("/cid10/search", response_model=list[CID10Result])
 async def search_cid10(
@@ -27,7 +26,7 @@ async def create_prescription(
 ):
     if not ctx.has_role("CLINICO"):
         raise api_error(403, "forbidden", "Role 'CLINICO' necessaria")
-    return await repository.create_prescription(ctx, req, ctx.user.sub, ctx.user.name)
+    return await repository.create_prescription(ctx, req, ctx.user_id, ctx.email or "Clinico Logado")
 
 
 @router.get("/prescriptions/encounter/{encounter_id}", response_model=list[Prescription])

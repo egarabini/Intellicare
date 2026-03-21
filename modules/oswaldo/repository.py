@@ -1,13 +1,15 @@
 import json
 from intellicare_core.contracts.base import TenantContext
 from modules.oswaldo.contracts import CreatePrescriptionRequest, Prescription, CID10Result, PrescriptionItem
+from intellicare_core.db.session import tenant_session
+from sqlalchemy import text
 
 def _row_to_prescription(row: dict) -> Prescription:
     items_raw = row.get("items", "[]")
     if isinstance(items_raw, str):
         items_data = json.loads(items_raw)
     else:
-        items_data = items_raw  # jsonb output from asyncpg may be native
+        items_data = items_raw  
 
     items = [PrescriptionItem(**item) for item in items_data]
     return Prescription(
@@ -31,40 +33,48 @@ async def create_prescription(
     author_id: str,
     author_name: str,
 ) -> Prescription:
-    row = await ctx.db.fetchrow(
-        """
-        INSERT INTO prescriptions
-          (encounter_id, patient_id, author_id, author_name,
-           cid10_code, cid10_desc, items, notes)
-        VALUES ($1,$2,$3,$4,$5,$6,$7::jsonb,$8)
-        RETURNING *
-        """,
-        req.encounter_id, req.patient_id, author_id, author_name,
-        req.cid10_code, req.cid10_desc,
-        json.dumps([i.model_dump() for i in req.items]),
-        req.notes,
-    )
-    return _row_to_prescription(row)
-
+    async with tenant_session(ctx) as db:
+        row = (await db.execute(
+            text("""
+            INSERT INTO prescriptions
+              (encounter_id, patient_id, author_id, author_name,
+               cid10_code, cid10_desc, items, notes)
+            VALUES (:encounter_id, :patient_id, :author_id, :author_name,
+               :cid10_code, :cid10_desc, CAST(:items AS jsonb), :notes)
+            RETURNING *
+            """),
+            {
+                "encounter_id": req.encounter_id,
+                "patient_id": req.patient_id,
+                "author_id": author_id,
+                "author_name": author_name,
+                "cid10_code": req.cid10_code,
+                "cid10_desc": req.cid10_desc,
+                "items": json.dumps([i.model_dump() for i in req.items]),
+                "notes": req.notes,
+            }
+        )).mappings().first()
+    return _row_to_prescription(dict(row))
 
 async def get_prescriptions_by_encounter(
     ctx: TenantContext, encounter_id: str
 ) -> list[Prescription]:
-    rows = await ctx.db.fetch(
-        "SELECT * FROM prescriptions WHERE encounter_id = $1 ORDER BY created_at ASC",
-        encounter_id,
-    )
-    return [_row_to_prescription(r) for r in rows]
-
+    async with tenant_session(ctx) as db:
+        rows = (await db.execute(
+            text("SELECT * FROM prescriptions WHERE encounter_id = :encounter_id ORDER BY created_at ASC"),
+            {"encounter_id": encounter_id}
+        )).mappings().all()
+    return [_row_to_prescription(dict(r)) for r in rows]
 
 async def search_cid10(ctx: TenantContext, query: str) -> list[CID10Result]:
     """Busca textual na tabela cid10 global existente."""
-    rows = await ctx.db.fetch(
-        """
-        SELECT code, description FROM cid10
-        WHERE description ILIKE $1 OR code ILIKE $1
-        ORDER BY code LIMIT 10
-        """,
-        f"%{query}%",
-    )
+    async with tenant_session(ctx) as db:
+        rows = (await db.execute(
+            text("""
+            SELECT code, description FROM cid10
+            WHERE description ILIKE :query OR code ILIKE :query
+            ORDER BY code LIMIT 10
+            """),
+            {"query": f"%{query}%"}
+        )).mappings().all()
     return [CID10Result(code=r["code"], description=r["description"]) for r in rows]
