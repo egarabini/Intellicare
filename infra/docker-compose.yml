@@ -197,7 +197,7 @@ services:
       - "traefik.http.services.rocketchat.loadbalancer.server.port=3001"
 
   evolution-api:
-    image: atendai/evolution-api:v2.3.7
+    image: evoapicloud/evolution-api:v2.3.7
     container_name: intellicare_evolution
     restart: unless-stopped
     ports:
