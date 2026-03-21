@@ -9,8 +9,8 @@ class NoteType(StrEnum):
 
 
 class CreateNoteRequest(BaseModel):
-    encounter_id: int
-    patient_id: int
+    encounter_id: str | int
+    patient_id: str | int
     note_type: NoteType = NoteType.FREE
     soap_s: str | None = None
     soap_o: str | None = None
@@ -21,8 +21,8 @@ class CreateNoteRequest(BaseModel):
 
 class ClinicalNote(BaseModel):
     id: int
-    encounter_id: int
-    patient_id: int
+    encounter_id: str | int | None
+    patient_id: str | int | None
     author_id: str
     author_name: str
     note_type: NoteType
@@ -36,8 +36,8 @@ class ClinicalNote(BaseModel):
 
 
 class SuggestRequest(BaseModel):
-    encounter_id: int
-    patient_id: int
+    encounter_id: str | int
+    patient_id: str | int
     chief_complaint: str
     appointment_reason: str | None = None
     recent_notes: list[str] | None = None

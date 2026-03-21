@@ -67,11 +67,11 @@ async def get_prescriptions_by_encounter(
     return [_row_to_prescription(dict(r)) for r in rows]
 
 async def search_cid10(ctx: TenantContext, query: str) -> list[CID10Result]:
-    """Busca textual na tabela cid10 global existente."""
+    """Busca textual na tabela cid10 global."""
     async with tenant_session(ctx) as db:
         rows = (await db.execute(
             text("""
-            SELECT code, description FROM cid10
+            SELECT code, description FROM public.cid10
             WHERE description ILIKE :query OR code ILIKE :query
             ORDER BY code LIMIT 10
             """),

@@ -60,7 +60,10 @@ class ModuleLoader:
             )
 
         instance = module_class()
-        self.app.include_router(instance.get_router(), prefix=f"/{module_name}", tags=[module_name])
+        router = instance.get_router()
+        router_prefix = getattr(router, "prefix", "") or ""
+        include_prefix = "" if router_prefix == f"/{module_name}" else f"/{module_name}"
+        self.app.include_router(router, prefix=include_prefix, tags=[module_name])
         self._loaded[module_name] = instance
         logger.info("Modulo '%s' v%s carregado.", module_name, instance.version)
         return instance

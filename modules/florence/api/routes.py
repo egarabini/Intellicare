@@ -31,7 +31,7 @@ async def create_note(
 
 @router.get("/notes/encounter/{encounter_id}", response_model=list[ClinicalNote])
 async def list_notes_by_encounter(
-    encounter_id: int,
+    encounter_id: str,
     ctx: TenantContext = Depends(get_current_tenant),
 ):
     if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
@@ -41,7 +41,7 @@ async def list_notes_by_encounter(
 
 @router.get("/notes/patient/{patient_id}", response_model=list[ClinicalNote])
 async def list_notes_by_patient(
-    patient_id: int,
+    patient_id: str,
     ctx: TenantContext = Depends(get_current_tenant),
 ):
     if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
