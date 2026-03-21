@@ -676,6 +676,23 @@ class CareplannerService:
             except Exception:
                 pass  # ON CONFLICT DO NOTHING equivalente
 
+    async def generate_journey_report(
+        self, ctx: TenantContext, correlation_id: UUID
+    ) -> bytes:
+        """Gera PDF da jornada usando WeasyPrint."""
+        from weasyprint import HTML
+        from jinja2 import Environment, FileSystemLoader
+        import os
+
+        data = await self._repo.get_journey_full(ctx, correlation_id)
+
+        template_dir = os.path.join(os.path.dirname(__file__), "templates")
+        env = Environment(loader=FileSystemLoader(template_dir))
+        template = env.get_template("journey_report.html")
+        html_content = template.render(**data)
+
+        return HTML(string=html_content).write_pdf()
+
     async def health_check_adapters(self) -> dict[str, str]:
         results = {}
 

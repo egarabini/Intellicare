@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+from datetime import datetime
 from typing import Any
 from uuid import UUID
 
@@ -481,3 +482,45 @@ class CareplannerRepository:
         async with tenant_session(ctx) as db:
             rows = (await db.execute(text(query), params)).mappings().all()
         return [CareTaskRecord(**dict(row)) for row in rows]
+
+    async def get_journey_full(
+        self, ctx: TenantContext, correlation_id: UUID
+    ) -> dict:
+        """Retorna dados completos da jornada para o relatório PDF."""
+        async with tenant_session(ctx) as db:
+            # care_task
+            task = (await db.execute(
+                text("SELECT * FROM care_tasks WHERE correlation_id = :cid"),
+                {"cid": str(correlation_id)}
+            )).mappings().first()
+
+            if not task:
+                raise ValueError(f"Jornada {correlation_id} não encontrada")
+
+            # care_events (timeline)
+            events = (await db.execute(
+                text("""
+                    SELECT event_type, payload, created_at
+                    FROM care_events
+                    WHERE correlation_id = :cid
+                    ORDER BY created_at ASC
+                """),
+                {"cid": str(correlation_id)}
+            )).mappings().all()
+
+            # care_conversation (mensagens)
+            conversation = (await db.execute(
+                text("""
+                    SELECT * FROM care_conversations
+                    WHERE correlation_id = :cid
+                """),
+                {"cid": str(correlation_id)}
+            )).mappings().first()
+
+        return {
+            "task": dict(task),
+            "events": [dict(e) for e in events],
+            "conversation": dict(conversation) if conversation else {},
+            "tenant_slug": ctx.tenant_id,
+            "generated_at": datetime.utcnow().isoformat(),
+        }

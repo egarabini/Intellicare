@@ -5,6 +5,7 @@ from functools import lru_cache
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, Header, Request, status
+from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
 from intellicare_core.auth.jwt import get_current_tenant, require_role
@@ -242,6 +243,23 @@ async def get_video_session(
     if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
         raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
     return await service.get_video_session_info(ctx, correlation_id)
+
+
+@router.get("/journeys/{correlation_id}/report.pdf")
+async def journey_report_pdf(
+    correlation_id: UUID,
+    ctx: TenantContext = Depends(get_current_tenant),
+    service: CareplannerService = Depends(get_service),
+):
+    """Exporta jornada CarePlanner como PDF."""
+    pdf_bytes = await service.generate_journey_report(ctx, correlation_id)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f"attachment; filename=jornada_{correlation_id}.pdf"
+        },
+    )
 
 
 @router.get("/tasks/{correlation_id}")

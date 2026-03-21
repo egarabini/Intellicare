@@ -20,7 +20,7 @@ import {
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
-import { IconArrowLeft, IconCheck, IconCopy, IconMessage, IconPlayerStop, IconVideo } from '@tabler/icons-react';
+import { IconArrowLeft, IconCheck, IconCopy, IconFileTypePdf, IconMessage, IconPlayerStop, IconVideo } from '@tabler/icons-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCareplannerTask, useCloseTask, useCreateVideoSession, useVideoSession, VideoSessionCreate } from '../hooks/useGestor';
 
@@ -147,6 +147,16 @@ export function CareplannerJourneyDetail() {
         </Group>
 
         <Group mt="md" gap="sm">
+          <Button
+            variant="light"
+            leftSection={<IconFileTypePdf size={16} />}
+            component="a"
+            href={`/api/v1/careplanner/journeys/${id}/report.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Exportar PDF
+          </Button>
           {canHaveVideo && (!video || video.expired) && (
             <Button
               leftSection={<IconVideo size={16} />}

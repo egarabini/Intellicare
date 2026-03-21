@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 12px; color: #333; margin: 40px; }
+    h1 { color: #1a5276; font-size: 18px; border-bottom: 2px solid #1a5276; padding-bottom: 8px; }
+    h2 { color: #2874a6; font-size: 14px; margin-top: 24px; }
+    .header-info { background: #f4f6f7; padding: 12px; border-radius: 4px; margin-bottom: 20px; }
+    .header-info table { width: 100%; }
+    .header-info td { padding: 3px 8px; }
+    .label { font-weight: bold; color: #555; width: 160px; }
+    .event { padding: 6px 0; border-bottom: 1px solid #eee; display: flex; gap: 16px; }
+    .event-time { color: #888; min-width: 140px; }
+    .event-type { font-weight: bold; min-width: 200px; }
+    .canal { display: inline-block; background: #d5e8d4; color: #28a745; padding: 2px 8px; border-radius: 3px; }
+    .status-closed { color: #28a745; font-weight: bold; }
+    .status-failed { color: #dc3545; font-weight: bold; }
+    .status-expired { color: #fd7e14; font-weight: bold; }
+    .footer { margin-top: 40px; font-size: 10px; color: #aaa; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>IntelliCare — Relatório de Jornada de Cuidado</h1>
+
+  <div class="header-info">
+    <table>
+      <tr>
+        <td class="label">Tenant:</td>
+        <td>{{ tenant_slug }}</td>
+        <td class="label">Correlation ID:</td>
+        <td>{{ task.correlation_id }}</td>
+      </tr>
+      <tr>
+        <td class="label">Paciente:</td>
+        <td>{{ task.patient_ref }}</td>
+        <td class="label">Canal:</td>
+        <td><span class="canal">{{ task.channel }}</span></td>
+      </tr>
+      <tr>
+        <td class="label">Tipo de Tarefa:</td>
+        <td>{{ task.task_type }}</td>
+        <td class="label">Status Final:</td>
+        <td class="status-{{ task.status | lower }}">{{ task.status }}</td>
+      </tr>
+      <tr>
+        <td class="label">Aberta em:</td>
+        <td>{{ task.created_at }}</td>
+        <td class="label">Fechada em:</td>
+        <td>{{ task.updated_at }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Timeline de Eventos</h2>
+  {% for event in events %}
+  <div class="event">
+    <span class="event-time">{{ event.created_at }}</span>
+    <span class="event-type">{{ event.event_type }}</span>
+    <span>{{ event.payload | tojson if event.payload else '' }}</span>
+  </div>
+  {% endfor %}
+
+  {% if conversation %}
+  <h2>Dados da Conversa</h2>
+  <div class="header-info">
+    <table>
+      {% if conversation.rc_room_id %}
+      <tr><td class="label">Room ID (RC):</td><td>{{ conversation.rc_room_id }}</td></tr>
+      {% endif %}
+      {% if conversation.phone_e164 %}
+      <tr><td class="label">Telefone:</td><td>{{ conversation.phone_e164 }}</td></tr>
+      {% endif %}
+    </table>
+  </div>
+  {% endif %}
+
+  <div class="footer">
+    Gerado em {{ generated_at }} — IntelliCare V3 &copy; {{ generated_at[:4] }}
+  </div>
+</body>
+</html>
