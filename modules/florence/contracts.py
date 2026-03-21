@@ -33,3 +33,20 @@ class ClinicalNote(BaseModel):
     free_text: str | None
     created_at: datetime
     updated_at: datetime
+
+
+class SuggestRequest(BaseModel):
+    encounter_id: int
+    patient_id: int
+    chief_complaint: str
+    appointment_reason: str | None = None
+    recent_notes: list[str] | None = None
+
+
+class SOAPSuggestion(BaseModel):
+    soap_s: str
+    soap_o: str
+    soap_a: str
+    soap_p: str
+    model: str
+    confidence: str

@@ -2,10 +2,21 @@ from fastapi import APIRouter, Depends
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.contracts.errors import api_error
 from intellicare_core.auth.jwt import get_current_tenant
-from modules.florence.contracts import CreateNoteRequest, ClinicalNote
+from modules.florence.contracts import CreateNoteRequest, ClinicalNote, SuggestRequest, SOAPSuggestion
 from modules.florence import repository
+from modules.florence import services as florence_service
 
 router = APIRouter(prefix="/florence", tags=["florence"])
+
+
+@router.post("/notes/suggest", response_model=SOAPSuggestion)
+async def suggest_soap(
+    req: SuggestRequest,
+    ctx: TenantContext = Depends(get_current_tenant),
+):
+    if not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'CLINICO' necessaria")
+    return await florence_service.suggest_soap(ctx, req)
 
 
 @router.post("/notes", response_model=ClinicalNote)

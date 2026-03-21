@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, SegmentedControl, Textarea, Stack, Paper } from '@mantine/core';
+import { Button, Group, SegmentedControl, Text, Textarea, TextInput, Stack, Paper } from '@mantine/core';
+import { IconSparkles } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import apiClient from '../api/client';
 
@@ -9,10 +10,47 @@ interface FlorenceNoteEditorProps {
   onSaved: () => void;
 }
 
+interface SuggestionMeta {
+  confidence: string;
+  model: string;
+}
+
 export function FlorenceNoteEditor({ encounterId, patientId, onSaved }: FlorenceNoteEditorProps) {
   const [noteType, setNoteType] = useState<'FREE' | 'SOAP'>('FREE');
   const [loading, setLoading] = useState(false);
+  const [suggesting, setSuggesting] = useState(false);
   const [fields, setFields] = useState({ s: '', o: '', a: '', p: '', free: '' });
+  const [chiefComplaint, setChiefComplaint] = useState('');
+  const [suggestionMeta, setSuggestionMeta] = useState<SuggestionMeta | null>(null);
+
+  const handleSuggest = async () => {
+    setSuggesting(true);
+    setSuggestionMeta(null);
+    try {
+      const resp = await apiClient.post('/florence/notes/suggest', {
+        encounter_id: Number(encounterId),
+        patient_id: Number(patientId),
+        chief_complaint: chiefComplaint,
+      });
+      const suggestion = resp.data;
+      setFields({
+        s: suggestion.soap_s,
+        o: suggestion.soap_o,
+        a: suggestion.soap_a,
+        p: suggestion.soap_p,
+        free: fields.free,
+      });
+      setSuggestionMeta({ confidence: suggestion.confidence, model: suggestion.model });
+    } catch (err: any) {
+      notifications.show({
+        title: 'Erro',
+        message: err.message || 'Falha ao obter sugestão IA',
+        color: 'red',
+      });
+    } finally {
+      setSuggesting(false);
+    }
+  };
 
   const handleSave = async () => {
     setLoading(true);
@@ -61,6 +99,31 @@ export function FlorenceNoteEditor({ encounterId, patientId, onSaved }: Florence
 
         {noteType === 'SOAP' ? (
           <>
+            <TextInput
+              label="Motivo da consulta"
+              placeholder="Descreva brevemente o motivo"
+              value={chiefComplaint}
+              onChange={(e) => setChiefComplaint(e.currentTarget.value)}
+              data-testid="input-chief-complaint"
+            />
+            <Group>
+              <Button
+                leftSection={<IconSparkles size={14} />}
+                variant="light"
+                color="violet"
+                loading={suggesting}
+                disabled={!chiefComplaint}
+                onClick={handleSuggest}
+                data-testid="btn-suggest-soap"
+              >
+                Sugerir SOAP com IA
+              </Button>
+              {suggestionMeta?.confidence === 'low' && (
+                <Text size="xs" c="dimmed">
+                  Sugestão gerada por regras (LLM não configurado) — revise com atenção.
+                </Text>
+              )}
+            </Group>
             <Textarea 
               label="S — Subjetivo" 
               placeholder="Sintomas relatados pelo paciente..."
