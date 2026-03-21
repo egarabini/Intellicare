@@ -1,0 +1,87 @@
+# Gotchas Staging e Deploy
+
+Entradas baseadas em DEM-INF_STAGING_SCRIPT, DEM-INF_STAGING_EVOLUTION, DEM-047, DEM-048, DEM-049 e nos incidentes reproduzidos no VPS em 2026-03-20/21.
+
+## `git push` antes do deploy no VPS
+
+### Situacao real
+- O fluxo de staging depende de `git pull origin main` no VPS, conforme o briefing de [`docs/demandas/DEM-INF_STAGING_EVOLUTION/BRIEFING.md`](/c:/Users/egara/INTELLICARE/docs/demandas/DEM-INF_STAGING_EVOLUTION/BRIEFING.md).
+
+### Sintoma
+- O VPS reporta `already up to date`, mas a DEM mais recente nunca entrou porque o commit so existia na maquina do dev.
+
+### Fix
+- O dev que fechou a ultima DEM faz `git push origin main` antes de pedir deploy para DEV-3/4.
+
+## `docker-entrypoint-initdb.d` so roda no primeiro boot do Postgres
+
+### Situacao real
+- O staging mostrou isso duas vezes:
+- o banco `evolution` precisou ser recriado manualmente durante o debug do WhatsApp
+- o `listmonk` entrou em crash loop porque o banco `listmonk` nao existia, apesar de o compose prever o servico
+
+### Sintoma
+- Container sobe, mas o banco esperado nao aparece.
+- Logs do `listmonk`: `pq: database "listmonk" does not exist`.
+
+### Fix
+- Criar o banco manualmente quando o volume do Postgres ja existe.
+- Exemplo operacional:
+
+```bash
+docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
+  exec postgres psql -U intellicare_staging -d postgres -c "CREATE DATABASE listmonk;"
+```
+
+## Senha com caractere especial quebra URI
+
+### Situacao real
+- No staging, `REDIS_PASSWORD=IC_Staging#Redis2025` quebrou o `CACHE_REDIS_URI` do Evolution.
+- O container so estabilizou depois de usar senha URL-encoded em variavel separada.
+
+### Sintoma
+- `redis disconnected`, `NOAUTH` ou `WRONGPASS` mesmo com Redis `healthy`.
+
+### Fix
+- Criar variavel dedicada URL-encoded, por exemplo `REDIS_PASSWORD_URLENC`.
+- Nao interpolar senha bruta com `#`, `@` ou `!` direto em URI.
+
+## Porta publicada e porta interna nao sao a mesma coisa
+
+### Situacao real
+- O compose atual publica:
+- `listmonk` em `9001:9000`
+- `evolution-api` em `8081:8080`
+
+### Sintoma
+- Smoke test em `localhost:9100` ou `localhost:9000` falha mesmo com servico corretamente configurado no container.
+
+### Fix
+- Usar sempre a porta do host no checklist operacional.
+- Antes de testar, conferir o bloco `ports:` em [`infra/docker-compose.yml`](/c:/Users/egara/INTELLICARE/infra/docker-compose.yml).
+
+## Segredo ausente faz serviço subir torto ou ficar inutilizavel
+
+### Situacao real
+- Em 2026-03-21 o staging estava sem `LISTMONK_USERNAME`, `LISTMONK_PASSWORD` e `JASMIN_PASSWORD` no `.env.staging`.
+- O `jasmin` subiu, mas o smoke test nao era executavel com a credencial esperada.
+- O `listmonk` ainda acusava warning de env ausente antes mesmo de falhar pelo banco faltante.
+
+### Sintoma
+- Warnings do compose sobre variavel defaultando para vazio.
+- Smoke test falha sem distinguir claramente se o problema e credencial ou servico.
+
+### Fix
+- Tratar `.env.staging` como artefato de provisionamento, nao detalhe de ultima hora.
+- Validar segredos obrigatorios por canal antes de subir servico.
+
+## `infra/letsencrypt/` suja working tree do VPS
+
+### Situacao real
+- O proprio workflow de staging ja documenta que Traefik gera artefatos de runtime em `infra/letsencrypt/`.
+
+### Sintoma
+- `git status` no VPS mostra arquivo nao rastreado ou diretório sujo, mesmo sem alteracao funcional no codigo.
+
+### Fix
+- Garantir `infra/letsencrypt/` no `.gitignore` e nao usar esse ruido como sinal de deploy incompleto.

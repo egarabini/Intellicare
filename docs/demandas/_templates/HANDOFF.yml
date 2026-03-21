@@ -1,0 +1,32 @@
+# HANDOFF — modelo preenchido a partir de casos reais do IntelliCare.
+# Copiar este arquivo para a DEM ativa e substituir os valores pelo contexto da entrega.
+
+dem: DEM-047_WHATSAPP_EVOLUTION
+titulo: "WhatsApp via Evolution API no CarePlanner"
+dev: "CODEX"
+timestamp: "2026-03-20T23:30:00Z"
+status: "partial"
+
+commit: "da98ce2"
+branch: "main"
+
+files_changed:
+  - "modules/careplanner/adapters/whatsapp.py"
+  - "modules/careplanner/api/routes.py"
+  - "infra/docker-compose.yml"
+
+tests_passed: "53 passed"
+
+pending_actions:
+  - "No staging, gerar e escanear o QR da instância intellicare"
+  - "Verificar connectionState=open antes do smoke test final"
+
+notes: >
+  O codigo do canal foi entregue e os testes automatizados passaram.
+  O proximo dev precisa verificar apenas o comportamento do Evolution no ambiente
+  de staging e registrar qualquer gotcha novo em docs/gotchas/staging-deploy.md.
+
+regressao_risco:
+  - "modules/careplanner/services.py"
+  - "packages/intellicare-core/tests"
+  - "infra/.env.staging"
