@@ -1,0 +1,490 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\packages\intellicare-core
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+packages\intellicare-core\tests\test_push_notifications.py::test_subscribe_saves_subscription PASSED [ 20%]
+packages\intellicare-core\tests\test_push_notifications.py::test_duplicate_subscribe_is_idempotent PASSED [ 40%]
+packages\intellicare-core\tests\test_push_notifications.py::test_unsubscribe_removes_subscription FAILED [ 60%]
+packages\intellicare-core\tests\test_push_notifications.py::test_push_sent_on_careplanner_message FAILED [ 80%]
+packages\intellicare-core\tests\test_push_notifications.py::test_expired_subscription_auto_removed FAILED [100%]
+
+================================== FAILURES ===================================
+____________________ test_unsubscribe_removes_subscription ____________________
+
+client = <httpx.AsyncClient object at 0x000001C8E8923D90>
+
+    @pytest.mark.asyncio
+    async def test_unsubscribe_removes_subscription(client: AsyncClient):
+        await client.post("/api/v1/notifications/push/subscribe", json={
+            "endpoint": "https://fcm.googleapis.com/fcm/send/fake3",
+            "keys": {"p256dh": "p3", "auth": "a3"}
+        })
+>       resp = await client.delete("/api/v1/notifications/push/unsubscribe", json={
+            "endpoint": "https://fcm.googleapis.com/fcm/send/fake3"
+        })
+E       TypeError: AsyncClient.delete() got an unexpected keyword argument 'json'
+
+packages\intellicare-core\tests\test_push_notifications.py:113: TypeError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:16:27,660 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:27,661 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+2026-03-21 20:16:27,661 INFO sqlalchemy.engine.Engine [cached since 0.7459s ago] ()
+2026-03-21 20:16:27,665 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:16:27,665 INFO sqlalchemy.engine.Engine [cached since 0.7464s ago] ()
+2026-03-21 20:16:27,685 INFO sqlalchemy.engine.Engine INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:16:27,685 INFO sqlalchemy.engine.Engine [cached since 0.7493s ago] ()
+2026-03-21 20:16:27,689 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+2026-03-21 20:16:27,690 INFO sqlalchemy.engine.Engine [cached since 0.7503s ago] ()
+2026-03-21 20:16:27,715 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+2026-03-21 20:16:27,715 INFO sqlalchemy.engine.Engine [cached since 0.7518s ago] ()
+2026-03-21 20:16:27,732 INFO sqlalchemy.engine.Engine COMMIT
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7459s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7464s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7493s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7503s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7518s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+---------------------------- Captured stdout call -----------------------------
+2026-03-21 20:16:27,802 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:27,803 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:16:27,803 INFO sqlalchemy.engine.Engine [cached since 0.7383s ago] ()
+2026-03-21 20:16:27,807 INFO sqlalchemy.engine.Engine 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+2026-03-21 20:16:27,807 INFO sqlalchemy.engine.Engine [cached since 0.7391s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/fake3', 'p3', 'a3', None)
+2026-03-21 20:16:27,812 INFO sqlalchemy.engine.Engine COMMIT
+------------------------------ Captured log call ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7383s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 0.7391s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/fake3', 'p3', 'a3', None)
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-21 20:16:28,464 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:28,465 INFO sqlalchemy.engine.Engine DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+2026-03-21 20:16:28,465 INFO sqlalchemy.engine.Engine [cached since 1.318s ago] ()
+2026-03-21 20:16:28,474 INFO sqlalchemy.engine.Engine COMMIT
+---------------------------- Captured log teardown ----------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.318s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+____________________ test_push_sent_on_careplanner_message ____________________
+
+obj = <module 'modules.notifications.service' from 'C:\\Users\\egara\\INTELLICARE\\modules\\notifications\\service.py'>
+name = 'send_push', ann = 'modules.notifications.service'
+
+    def annotated_getattr(obj: object, name: str, ann: str) -> object:
+        try:
+>           obj = getattr(obj, name)
+                  ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'modules.notifications.service' has no attribute 'send_push'
+
+..\AppData\Roaming\Python\Python314\site-packages\_pytest\monkeypatch.py:92: AttributeError
+
+The above exception was the direct cause of the following exception:
+
+client = <httpx.AsyncClient object at 0x000001C8E8E1F5C0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C8E8D0AD00>
+
+    @pytest.mark.asyncio
+    async def test_push_sent_on_careplanner_message(client: AsyncClient, monkeypatch):
+        await client.post("/api/v1/notifications/push/subscribe", json={
+            "endpoint": "https://fcm.googleapis.com/fcm/send/target1",
+            "keys": {"p256dh": "p_target", "auth": "a_target"}
+        })
+    
+        push_call_mocked = False
+    
+        async def mock_send_push(*args, **kwargs):
+            nonlocal push_call_mocked
+            push_call_mocked = True
+            return True
+    
+>       monkeypatch.setattr("modules.notifications.service.send_push", mock_send_push)
+
+packages\intellicare-core\tests\test_push_notifications.py:132: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\_pytest\monkeypatch.py:106: in derive_importpath
+    annotated_getattr(target, attr, ann=module)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = <module 'modules.notifications.service' from 'C:\\Users\\egara\\INTELLICARE\\modules\\notifications\\service.py'>
+name = 'send_push', ann = 'modules.notifications.service'
+
+    def annotated_getattr(obj: object, name: str, ann: str) -> object:
+        try:
+            obj = getattr(obj, name)
+        except AttributeError as e:
+>           raise AttributeError(
+                f"{type(obj).__name__!r} object at {ann} has no attribute {name!r}"
+            ) from e
+E           AttributeError: 'module' object at modules.notifications.service has no attribute 'send_push'
+
+..\AppData\Roaming\Python\Python314\site-packages\_pytest\monkeypatch.py:94: AttributeError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:16:28,807 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:28,809 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+2026-03-21 20:16:28,810 INFO sqlalchemy.engine.Engine [cached since 1.895s ago] ()
+2026-03-21 20:16:28,818 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:16:28,819 INFO sqlalchemy.engine.Engine [cached since 1.9s ago] ()
+2026-03-21 20:16:28,887 INFO sqlalchemy.engine.Engine INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:16:28,888 INFO sqlalchemy.engine.Engine [cached since 1.952s ago] ()
+2026-03-21 20:16:28,894 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+2026-03-21 20:16:28,895 INFO sqlalchemy.engine.Engine [cached since 1.955s ago] ()
+2026-03-21 20:16:28,986 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+2026-03-21 20:16:28,987 INFO sqlalchemy.engine.Engine [cached since 2.023s ago] ()
+2026-03-21 20:16:29,014 INFO sqlalchemy.engine.Engine COMMIT
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.895s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.9s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.952s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.955s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.023s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+---------------------------- Captured stdout call -----------------------------
+2026-03-21 20:16:29,176 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:29,177 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:16:29,177 INFO sqlalchemy.engine.Engine [cached since 2.112s ago] ()
+2026-03-21 20:16:29,183 INFO sqlalchemy.engine.Engine 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+2026-03-21 20:16:29,183 INFO sqlalchemy.engine.Engine [cached since 2.115s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/target1', 'p_target', 'a_target', None)
+2026-03-21 20:16:29,190 INFO sqlalchemy.engine.Engine COMMIT
+------------------------------ Captured log call ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.112s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.115s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/target1', 'p_target', 'a_target', None)
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-21 20:16:29,364 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:29,365 INFO sqlalchemy.engine.Engine DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+2026-03-21 20:16:29,365 INFO sqlalchemy.engine.Engine [cached since 2.218s ago] ()
+2026-03-21 20:16:29,381 INFO sqlalchemy.engine.Engine COMMIT
+---------------------------- Captured log teardown ----------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.218s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+___________________ test_expired_subscription_auto_removed ____________________
+
+obj = <module 'modules.notifications.service' from 'C:\\Users\\egara\\INTELLICARE\\modules\\notifications\\service.py'>
+name = 'send_push', ann = 'modules.notifications.service'
+
+    def annotated_getattr(obj: object, name: str, ann: str) -> object:
+        try:
+>           obj = getattr(obj, name)
+                  ^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'modules.notifications.service' has no attribute 'send_push'
+
+..\AppData\Roaming\Python\Python314\site-packages\_pytest\monkeypatch.py:92: AttributeError
+
+The above exception was the direct cause of the following exception:
+
+client = <httpx.AsyncClient object at 0x000001C8E8E9EC40>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C8E8E238B0>
+
+    @pytest.mark.asyncio
+    async def test_expired_subscription_auto_removed(client: AsyncClient, monkeypatch):
+        await client.post("/api/v1/notifications/push/subscribe", json={
+            "endpoint": "https://fcm.googleapis.com/fcm/send/expired_ep",
+            "keys": {"p256dh": "exp", "auth": "exp"}
+        })
+    
+        class FakeResponse:
+            status_code = 410
+    
+        async def mock_send_push_broken(*args, **kwargs):
+            raise WebPushException("Gone", response=FakeResponse())
+    
+>       monkeypatch.setattr("modules.notifications.service.send_push", mock_send_push_broken)
+
+packages\intellicare-core\tests\test_push_notifications.py:157: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\_pytest\monkeypatch.py:106: in derive_importpath
+    annotated_getattr(target, attr, ann=module)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = <module 'modules.notifications.service' from 'C:\\Users\\egara\\INTELLICARE\\modules\\notifications\\service.py'>
+name = 'send_push', ann = 'modules.notifications.service'
+
+    def annotated_getattr(obj: object, name: str, ann: str) -> object:
+        try:
+            obj = getattr(obj, name)
+        except AttributeError as e:
+>           raise AttributeError(
+                f"{type(obj).__name__!r} object at {ann} has no attribute {name!r}"
+            ) from e
+E           AttributeError: 'module' object at modules.notifications.service has no attribute 'send_push'
+
+..\AppData\Roaming\Python\Python314\site-packages\_pytest\monkeypatch.py:94: AttributeError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:16:29,567 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:29,570 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+2026-03-21 20:16:29,571 INFO sqlalchemy.engine.Engine [cached since 2.655s ago] ()
+2026-03-21 20:16:29,579 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:16:29,579 INFO sqlalchemy.engine.Engine [cached since 2.661s ago] ()
+2026-03-21 20:16:29,622 INFO sqlalchemy.engine.Engine INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:16:29,622 INFO sqlalchemy.engine.Engine [cached since 2.687s ago] ()
+2026-03-21 20:16:29,631 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+2026-03-21 20:16:29,632 INFO sqlalchemy.engine.Engine [cached since 2.692s ago] ()
+2026-03-21 20:16:29,664 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+2026-03-21 20:16:29,664 INFO sqlalchemy.engine.Engine [cached since 2.701s ago] ()
+2026-03-21 20:16:29,687 INFO sqlalchemy.engine.Engine COMMIT
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.655s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.661s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.687s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.692s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.701s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+---------------------------- Captured stdout call -----------------------------
+2026-03-21 20:16:29,816 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:29,817 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:16:29,817 INFO sqlalchemy.engine.Engine [cached since 2.753s ago] ()
+2026-03-21 20:16:29,823 INFO sqlalchemy.engine.Engine 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+2026-03-21 20:16:29,823 INFO sqlalchemy.engine.Engine [cached since 2.755s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/expired_ep', 'exp', 'exp', None)
+2026-03-21 20:16:29,831 INFO sqlalchemy.engine.Engine COMMIT
+------------------------------ Captured log call ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.753s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.755s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/expired_ep', 'exp', 'exp', None)
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-21 20:16:30,017 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:16:30,018 INFO sqlalchemy.engine.Engine DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+2026-03-21 20:16:30,018 INFO sqlalchemy.engine.Engine [cached since 2.871s ago] ()
+2026-03-21 20:16:30,043 INFO sqlalchemy.engine.Engine COMMIT
+---------------------------- Captured log teardown ----------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.871s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+=========================== short test summary info ===========================
+FAILED packages\intellicare-core\tests\test_push_notifications.py::test_unsubscribe_removes_subscription
+FAILED packages\intellicare-core\tests\test_push_notifications.py::test_push_sent_on_careplanner_message
+FAILED packages\intellicare-core\tests\test_push_notifications.py::test_expired_subscription_auto_removed
+========================= 3 failed, 2 passed in 4.63s =========================

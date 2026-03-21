@@ -1,0 +1,1030 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\packages\intellicare-core
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 5 items
+
+packages\intellicare-core\tests\test_push_notifications.py::test_subscribe_saves_subscription PASSED [ 20%]
+packages\intellicare-core\tests\test_push_notifications.py::test_duplicate_subscribe_is_idempotent PASSED [ 40%]
+packages\intellicare-core\tests\test_push_notifications.py::test_unsubscribe_removes_subscription PASSED [ 60%]
+packages\intellicare-core\tests\test_push_notifications.py::test_push_sent_on_careplanner_message FAILED [ 80%]
+packages\intellicare-core\tests\test_push_notifications.py::test_expired_subscription_auto_removed FAILED [100%]
+
+================================== FAILURES ===================================
+____________________ test_push_sent_on_careplanner_message ____________________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002142A8C6D40>
+operation = '\n                        INSERT INTO notifications (user_id, type, priority, title, body, data)\n                   ... type, priority, title, body, data,\n                                  read, read_at, created_at\n                    '
+parameters = ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Mensagem CarePlanner', 'Nova msg.')
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.PostgresSyntaxError: syntax error at or near ":"
+
+asyncpg/protocol/protocol.pyx:165: PostgresSyntaxError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002142A8ACD70>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x0000021429C4B8C0>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002142A984160>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002142A8CDA90>
+parameters = [('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Mensagem CarePlanner', 'Nova msg.')]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002142A978320>>
+error = PostgresSyntaxError('syntax error at or near ":"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near ":"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+client = <httpx.AsyncClient object at 0x000002142A95F230>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002142A89A9C0>
+
+    @pytest.mark.asyncio
+    async def test_push_sent_on_careplanner_message(client: AsyncClient, monkeypatch):
+        await client.post("/api/v1/notifications/push/subscribe", json={
+            "endpoint": "https://fcm.googleapis.com/fcm/send/target1",
+            "keys": {"p256dh": "p_target", "auth": "a_target"}
+        })
+    
+        push_call_mocked = False
+    
+        async def mock_send_push(*args, **kwargs):
+            nonlocal push_call_mocked
+            push_call_mocked = True
+            return True
+    
+        monkeypatch.setattr("modules.notifications.push_sender.send_push", mock_send_push)
+    
+        # Criar notificacao no banco via POST -> Service -> send_push
+>       resp = await client.post("/api/v1/notifications/send", json={
+            "user_id": MOCK_UUID,
+            "type": "message",
+            "title": "Mensagem CarePlanner",
+            "body": "Nova msg."
+        })
+
+packages\intellicare-core\tests\test_push_notifications.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1135: in __call__
+    await super().__call__(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:115: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:101: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:355: in app
+    raw_response = await run_endpoint_function(
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:243: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modules\notifications\router.py:53: in send_notification
+    notif = await _service.send(ctx, data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modules\notifications\service.py:45: in send
+    await db.execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\session.py:449: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:2351: in execute
+    return self._execute_internal(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:2258: in _execute_internal
+    result = conn.execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002142A978320>>
+error = PostgresSyntaxError('syntax error at or near ":"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near ":"
+E                   [SQL: 
+E                                           INSERT INTO notifications (user_id, type, priority, title, body, data)
+E                                           VALUES ($1, $2, $3, $4, $5, :data::jsonb)
+E                                           RETURNING id, user_id, type, priority, title, body, data,
+E                                                     read, read_at, created_at
+E                                       ]
+E                   [parameters: ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Mensagem CarePlanner', 'Nova msg.')]
+E                   (Background on this error at: https://sqlalche.me/e/20/f405)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: ProgrammingError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:17:50,783 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:50,784 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+2026-03-21 20:17:50,784 INFO sqlalchemy.engine.Engine [cached since 1.273s ago] ()
+2026-03-21 20:17:50,787 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:17:50,787 INFO sqlalchemy.engine.Engine [cached since 1.273s ago] ()
+2026-03-21 20:17:50,803 INFO sqlalchemy.engine.Engine INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:17:50,803 INFO sqlalchemy.engine.Engine [cached since 1.271s ago] ()
+2026-03-21 20:17:50,806 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+2026-03-21 20:17:50,807 INFO sqlalchemy.engine.Engine [cached since 1.27s ago] ()
+2026-03-21 20:17:50,829 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+2026-03-21 20:17:50,829 INFO sqlalchemy.engine.Engine [cached since 1.269s ago] ()
+2026-03-21 20:17:50,845 INFO sqlalchemy.engine.Engine COMMIT
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.273s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.273s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.271s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.27s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.269s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+---------------------------- Captured stdout call -----------------------------
+2026-03-21 20:17:50,916 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:50,916 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:17:50,916 INFO sqlalchemy.engine.Engine [cached since 1.242s ago] ()
+2026-03-21 20:17:50,919 INFO sqlalchemy.engine.Engine 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+2026-03-21 20:17:50,920 INFO sqlalchemy.engine.Engine [cached since 1.238s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/target1', 'p_target', 'a_target', None)
+2026-03-21 20:17:50,924 INFO sqlalchemy.engine.Engine COMMIT
+2026-03-21 20:17:50,995 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:50,995 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:17:50,996 INFO sqlalchemy.engine.Engine [cached since 1.321s ago] ()
+2026-03-21 20:17:50,998 INFO sqlalchemy.engine.Engine 
+                        INSERT INTO notifications (user_id, type, priority, title, body, data)
+                        VALUES ($1, $2, $3, $4, $5, :data::jsonb)
+                        RETURNING id, user_id, type, priority, title, body, data,
+                                  read, read_at, created_at
+                    
+2026-03-21 20:17:50,999 INFO sqlalchemy.engine.Engine [generated in 0.00025s] ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Mensagem CarePlanner', 'Nova msg.')
+2026-03-21 20:17:51,001 INFO sqlalchemy.engine.Engine ROLLBACK
+------------------------------ Captured log call ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.242s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.238s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/target1', 'p_target', 'a_target', None)
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.321s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                        INSERT INTO notifications (user_id, type, priority, title, body, data)
+                        VALUES ($1, $2, $3, $4, $5, :data::jsonb)
+                        RETURNING id, user_id, type, priority, title, body, data,
+                                  read, read_at, created_at
+                    
+INFO     sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00025s] ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Mensagem CarePlanner', 'Nova msg.')
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-21 20:17:52,688 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:52,688 INFO sqlalchemy.engine.Engine DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+2026-03-21 20:17:52,688 INFO sqlalchemy.engine.Engine [cached since 2.9s ago] ()
+2026-03-21 20:17:52,695 INFO sqlalchemy.engine.Engine COMMIT
+---------------------------- Captured log teardown ----------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.9s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+___________________ test_expired_subscription_auto_removed ____________________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002142BAB8FA0>
+operation = '\n                        INSERT INTO notifications (user_id, type, priority, title, body, data)\n                   ... type, priority, title, body, data,\n                                  read, read_at, created_at\n                    '
+parameters = ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Aviso', 'Teste 410')
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.PostgresSyntaxError: syntax error at or near ":"
+
+asyncpg/protocol/protocol.pyx:165: PostgresSyntaxError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002142A97BB60>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x0000021429C4B8C0>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002142A985AE0>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002142A8CDA90>
+parameters = [('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Aviso', 'Teste 410')]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002142B70C5F0>>
+error = PostgresSyntaxError('syntax error at or near ":"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.ProgrammingError: <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near ":"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: ProgrammingError
+
+The above exception was the direct cause of the following exception:
+
+client = <httpx.AsyncClient object at 0x000002142A9FF360>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002142AE9FA10>
+
+    @pytest.mark.asyncio
+    async def test_expired_subscription_auto_removed(client: AsyncClient, monkeypatch):
+        await client.post("/api/v1/notifications/push/subscribe", json={
+            "endpoint": "https://fcm.googleapis.com/fcm/send/expired_ep",
+            "keys": {"p256dh": "exp", "auth": "exp"}
+        })
+    
+        class FakeResponse:
+            status_code = 410
+    
+        async def mock_send_push_broken(*args, **kwargs):
+            raise WebPushException("Gone", response=FakeResponse())
+    
+        monkeypatch.setattr("modules.notifications.push_sender.send_push", mock_send_push_broken)
+    
+>       await client.post("/api/v1/notifications/send", json={
+            "user_id": MOCK_UUID,
+            "type": "message",
+            "title": "Aviso",
+            "body": "Teste 410"
+        })
+
+packages\intellicare-core\tests\test_push_notifications.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py:1135: in __call__
+    await super().__call__(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py:107: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:186: in __call__
+    raise exc
+..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:716: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:736: in app
+    await route.handle(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py:290: in handle
+    await self.app(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:115: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:101: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:355: in app
+    raw_response = await run_endpoint_function(
+..\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py:243: in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modules\notifications\router.py:53: in send_notification
+    notif = await _service.send(ctx, data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+modules\notifications\service.py:45: in send
+    await db.execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\session.py:449: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:2351: in execute
+    return self._execute_internal(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:2258: in _execute_internal
+    result = conn.execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002142B70C5F0>>
+error = PostgresSyntaxError('syntax error at or near ":"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.ProgrammingError: (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.PostgresSyntaxError'>: syntax error at or near ":"
+E                   [SQL: 
+E                                           INSERT INTO notifications (user_id, type, priority, title, body, data)
+E                                           VALUES ($1, $2, $3, $4, $5, :data::jsonb)
+E                                           RETURNING id, user_id, type, priority, title, body, data,
+E                                                     read, read_at, created_at
+E                                       ]
+E                   [parameters: ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Aviso', 'Teste 410')]
+E                   (Background on this error at: https://sqlalche.me/e/20/f405)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: ProgrammingError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:17:52,834 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:52,835 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+2026-03-21 20:17:52,835 INFO sqlalchemy.engine.Engine [cached since 3.324s ago] ()
+2026-03-21 20:17:52,840 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:17:52,840 INFO sqlalchemy.engine.Engine [cached since 3.325s ago] ()
+2026-03-21 20:17:52,861 INFO sqlalchemy.engine.Engine INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:17:52,861 INFO sqlalchemy.engine.Engine [cached since 3.329s ago] ()
+2026-03-21 20:17:52,864 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+2026-03-21 20:17:52,864 INFO sqlalchemy.engine.Engine [cached since 3.328s ago] ()
+2026-03-21 20:17:52,889 INFO sqlalchemy.engine.Engine 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+2026-03-21 20:17:52,889 INFO sqlalchemy.engine.Engine [cached since 3.328s ago] ()
+2026-03-21 20:17:52,905 INFO sqlalchemy.engine.Engine COMMIT
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS tenant_push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.324s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.325s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO tenant_push_test_tenant.users (id, name) VALUES ('123e4567-e89b-12d3-a456-426614174000', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.329s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.push_subscriptions (
+            id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id      TEXT NOT NULL,
+            endpoint     TEXT NOT NULL,
+            p256dh       TEXT NOT NULL,
+            auth         TEXT NOT NULL,
+            user_agent   VARCHAR(255),
+            created_at   TIMESTAMPTZ DEFAULT now(),
+            last_used_at TIMESTAMPTZ,
+            UNIQUE(user_id, endpoint)
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.328s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+        CREATE TABLE IF NOT EXISTS tenant_push_test_tenant.notifications (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            user_id TEXT NOT NULL,
+            type TEXT,
+            priority TEXT,
+            title TEXT,
+            body TEXT,
+            data JSONB,
+            read BOOLEAN DEFAULT FALSE,
+            read_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ DEFAULT now()
+        );
+        
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.328s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+---------------------------- Captured stdout call -----------------------------
+2026-03-21 20:17:52,977 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:52,977 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:17:52,977 INFO sqlalchemy.engine.Engine [cached since 3.302s ago] ()
+2026-03-21 20:17:52,980 INFO sqlalchemy.engine.Engine 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+2026-03-21 20:17:52,981 INFO sqlalchemy.engine.Engine [cached since 3.299s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/expired_ep', 'exp', 'exp', None)
+2026-03-21 20:17:52,984 INFO sqlalchemy.engine.Engine COMMIT
+2026-03-21 20:17:53,048 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:53,049 INFO sqlalchemy.engine.Engine SET search_path TO "tenant_push_test_tenant", public
+2026-03-21 20:17:53,049 INFO sqlalchemy.engine.Engine [cached since 3.374s ago] ()
+2026-03-21 20:17:53,052 INFO sqlalchemy.engine.Engine 
+                        INSERT INTO notifications (user_id, type, priority, title, body, data)
+                        VALUES ($1, $2, $3, $4, $5, :data::jsonb)
+                        RETURNING id, user_id, type, priority, title, body, data,
+                                  read, read_at, created_at
+                    
+2026-03-21 20:17:53,052 INFO sqlalchemy.engine.Engine [cached since 2.054s ago] ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Aviso', 'Teste 410')
+2026-03-21 20:17:53,055 INFO sqlalchemy.engine.Engine ROLLBACK
+------------------------------ Captured log call ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.302s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                    INSERT INTO push_subscriptions (user_id, endpoint, p256dh, auth, user_agent, created_at, last_used_at)
+                    VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+                    ON CONFLICT (user_id, endpoint) DO UPDATE SET
+                        p256dh = EXCLUDED.p256dh,
+                        auth = EXCLUDED.auth,
+                        user_agent = EXCLUDED.user_agent,
+                        last_used_at = NOW()
+                
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.299s ago] ('123e4567-e89b-12d3-a456-426614174000', 'https://fcm.googleapis.com/fcm/send/expired_ep', 'exp', 'exp', None)
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 SET search_path TO "tenant_push_test_tenant", public
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.374s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 
+                        INSERT INTO notifications (user_id, type, priority, title, body, data)
+                        VALUES ($1, $2, $3, $4, $5, :data::jsonb)
+                        RETURNING id, user_id, type, priority, title, body, data,
+                                  read, read_at, created_at
+                    
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 2.054s ago] ('123e4567-e89b-12d3-a456-426614174000', 'message', 'normal', 'Aviso', 'Teste 410')
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
+-------------------------- Captured stdout teardown ---------------------------
+2026-03-21 20:17:54,328 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:17:54,328 INFO sqlalchemy.engine.Engine DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+2026-03-21 20:17:54,329 INFO sqlalchemy.engine.Engine [cached since 4.54s ago] ()
+2026-03-21 20:17:54,334 INFO sqlalchemy.engine.Engine COMMIT
+---------------------------- Captured log teardown ----------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 DROP SCHEMA IF EXISTS tenant_push_test_tenant CASCADE
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 4.54s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2716 COMMIT
+=========================== short test summary info ===========================
+FAILED packages\intellicare-core\tests\test_push_notifications.py::test_push_sent_on_careplanner_message
+FAILED packages\intellicare-core\tests\test_push_notifications.py::test_expired_subscription_auto_removed
+========================= 2 failed, 3 passed in 7.58s =========================

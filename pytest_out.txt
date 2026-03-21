@@ -1,61 +1,1550 @@
 ============================= test session starts =============================
-platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
 rootdir: C:\Users\egara\INTELLICARE\packages\intellicare-core
 configfile: pyproject.toml
 plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
 asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
-collected 3 items
+collecting ... collected 5 items
 
-packages\intellicare-core\tests\test_oswaldo.py EEE                      [100%]
+packages\intellicare-core\tests\test_push_notifications.py::test_subscribe_saves_subscription ERROR [ 20%]
+packages\intellicare-core\tests\test_push_notifications.py::test_duplicate_subscribe_is_idempotent ERROR [ 40%]
+packages\intellicare-core\tests\test_push_notifications.py::test_unsubscribe_removes_subscription ERROR [ 60%]
+packages\intellicare-core\tests\test_push_notifications.py::test_push_sent_on_careplanner_message ERROR [ 80%]
+packages\intellicare-core\tests\test_push_notifications.py::test_expired_subscription_auto_removed ERROR [100%]
 
 =================================== ERRORS ====================================
-_________________ ERROR at setup of test_create_prescription __________________
-file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_oswaldo.py, line 5
-  async def test_create_prescription(async_client):
-      resp = await async_client.post("/api/v1/oswaldo/prescriptions", json={
-          "encounter_id": 1,
-          "patient_id": 1,
-          "cid10_code": "J00",
-          "cid10_desc": "Rinofaringite aguda",
-          "items": [
-              {"drug": "Ibuprofeno 600mg", "posology": "1 comp 8/8h", "duration": "5 dias"}
-          ],
-      })
-      assert resp.status_code in (200, 403)
-      if resp.status_code == 200:
-          assert resp.json()["cid10_code"] == "J00"
-          assert len(resp.json()["items"]) == 1
-E       fixture 'async_client' not found
->       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
->       use 'pytest --fixtures [testpath]' for help on them.
+_____________ ERROR at setup of test_subscribe_saves_subscription _____________
 
-C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_oswaldo.py:5
-_____________________ ERROR at setup of test_search_cid10 _____________________
-file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_oswaldo.py, line 20
-  async def test_search_cid10(async_client):
-      resp = await async_client.get("/api/v1/oswaldo/cid10/search?q=rinofar")
-      assert resp.status_code in (200, 403)
-      if resp.status_code == 200:
-          assert isinstance(resp.json(), list)
-E       fixture 'async_client' not found
->       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
->       use 'pytest --fixtures [testpath]' for help on them.
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002717BB97460>
+operation = "INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"
+parameters = ()
 
-C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_oswaldo.py:20
-___________ ERROR at setup of test_list_prescriptions_by_encounter ____________
-file C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_oswaldo.py, line 26
-  async def test_list_prescriptions_by_encounter(async_client):
-      resp = await async_client.get("/api/v1/oswaldo/prescriptions/encounter/1")
-      assert resp.status_code in (200, 403)
-      if resp.status_code == 200:
-          assert isinstance(resp.json(), list)
-E       fixture 'async_client' not found
->       available fixtures: _class_scoped_runner, _function_scoped_runner, _module_scoped_runner, _package_scoped_runner, _session_scoped_runner, anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, cov, doctest_namespace, event_loop_policy, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_cover, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, respx_mock, subtests, tenant_ctx, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, unused_tcp_port, unused_tcp_port_factory, unused_udp_port, unused_udp_port_factory
->       use 'pytest --fixtures [testpath]' for help on them.
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
 
-C:\Users\egara\INTELLICARE\packages\intellicare-core\tests\test_oswaldo.py:26
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.InvalidTextRepresentationError: invalid input syntax for type uuid: "clinico-push-1"
+
+asyncpg/protocol/protocol.pyx:165: InvalidTextRepresentationError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002717BB9EA50>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002717B30F770>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002717B32F530>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002717BB73250>
+parameters = [()]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717BB5A6C0>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: Error
+
+The above exception was the direct cause of the following exception:
+
+app = <fastapi.applications.FastAPI object at 0x000002717BB9CD70>
+
+    @pytest.fixture(autouse=True)
+    async def isolated_schema(app: FastAPI):
+        # Setup the table in tests using sqlalchemy
+        from intellicare_core.db.session import get_engine
+        from sqlalchemy import text
+        async with get_engine().begin() as conn:
+            await conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {TENANT_SLUG}"))
+            await conn.execute(text(f"CREATE TABLE IF NOT EXISTS {TENANT_SLUG}.users (id UUID PRIMARY KEY, name TEXT);"))
+>           await conn.execute(text(f"INSERT INTO {TENANT_SLUG}.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"))
+
+packages\intellicare-core\tests\test_push_notifications.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717BB5A6C0>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+E                   [SQL: INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;]
+E                   (Background on this error at: https://sqlalche.me/e/20/dbapi)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: DBAPIError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:13:07,422 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2026-03-21 20:13:07,423 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-03-21 20:13:07,443 INFO sqlalchemy.engine.Engine select current_schema()
+2026-03-21 20:13:07,443 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-03-21 20:13:07,458 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2026-03-21 20:13:07,458 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-03-21 20:13:07,463 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:13:07,464 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS push_test_tenant
+2026-03-21 20:13:07,468 INFO sqlalchemy.engine.Engine [generated in 0.00348s] ()
+2026-03-21 20:13:07,473 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:13:07,473 INFO sqlalchemy.engine.Engine [generated in 0.00039s] ()
+2026-03-21 20:13:07,545 INFO sqlalchemy.engine.Engine INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:13:07,546 INFO sqlalchemy.engine.Engine [generated in 0.00037s] ()
+2026-03-21 20:13:07,569 INFO sqlalchemy.engine.Engine ROLLBACK
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:1846 select pg_catalog.version()
+INFO     sqlalchemy.engine.Engine:base.py:1846 [raw sql] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 select current_schema()
+INFO     sqlalchemy.engine.Engine:base.py:1846 [raw sql] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 show standard_conforming_strings
+INFO     sqlalchemy.engine.Engine:base.py:1846 [raw sql] ()
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00348s] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00039s] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [generated in 0.00037s] ()
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
+__________ ERROR at setup of test_duplicate_subscribe_is_idempotent ___________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002717C1AAE00>
+operation = "INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"
+parameters = ()
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.InvalidTextRepresentationError: invalid input syntax for type uuid: "clinico-push-1"
+
+asyncpg/protocol/protocol.pyx:165: InvalidTextRepresentationError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002717C4C47D0>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002717B30F770>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002717BFDE7A0>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002717BB73250>
+parameters = [()]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717BF6A300>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: Error
+
+The above exception was the direct cause of the following exception:
+
+app = <fastapi.applications.FastAPI object at 0x000002717BB9F230>
+
+    @pytest.fixture(autouse=True)
+    async def isolated_schema(app: FastAPI):
+        # Setup the table in tests using sqlalchemy
+        from intellicare_core.db.session import get_engine
+        from sqlalchemy import text
+        async with get_engine().begin() as conn:
+            await conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {TENANT_SLUG}"))
+            await conn.execute(text(f"CREATE TABLE IF NOT EXISTS {TENANT_SLUG}.users (id UUID PRIMARY KEY, name TEXT);"))
+>           await conn.execute(text(f"INSERT INTO {TENANT_SLUG}.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"))
+
+packages\intellicare-core\tests\test_push_notifications.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717BF6A300>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+E                   [SQL: INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;]
+E                   (Background on this error at: https://sqlalche.me/e/20/dbapi)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: DBAPIError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:13:09,426 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:13:09,427 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS push_test_tenant
+2026-03-21 20:13:09,427 INFO sqlalchemy.engine.Engine [cached since 1.963s ago] ()
+2026-03-21 20:13:09,434 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:13:09,434 INFO sqlalchemy.engine.Engine [cached since 1.962s ago] ()
+2026-03-21 20:13:09,462 INFO sqlalchemy.engine.Engine INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:13:09,462 INFO sqlalchemy.engine.Engine [cached since 1.917s ago] ()
+2026-03-21 20:13:09,468 INFO sqlalchemy.engine.Engine ROLLBACK
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.963s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.962s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 1.917s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
+___________ ERROR at setup of test_unsubscribe_removes_subscription ___________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002717CDBE8C0>
+operation = "INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"
+parameters = ()
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.InvalidTextRepresentationError: invalid input syntax for type uuid: "clinico-push-1"
+
+asyncpg/protocol/protocol.pyx:165: InvalidTextRepresentationError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002717C121350>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002717B30F770>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002717C111D00>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002717BB73250>
+parameters = [()]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717BF6B980>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: Error
+
+The above exception was the direct cause of the following exception:
+
+app = <fastapi.applications.FastAPI object at 0x000002717C0557F0>
+
+    @pytest.fixture(autouse=True)
+    async def isolated_schema(app: FastAPI):
+        # Setup the table in tests using sqlalchemy
+        from intellicare_core.db.session import get_engine
+        from sqlalchemy import text
+        async with get_engine().begin() as conn:
+            await conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {TENANT_SLUG}"))
+            await conn.execute(text(f"CREATE TABLE IF NOT EXISTS {TENANT_SLUG}.users (id UUID PRIMARY KEY, name TEXT);"))
+>           await conn.execute(text(f"INSERT INTO {TENANT_SLUG}.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"))
+
+packages\intellicare-core\tests\test_push_notifications.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717BF6B980>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+E                   [SQL: INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;]
+E                   (Background on this error at: https://sqlalche.me/e/20/dbapi)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: DBAPIError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:13:10,527 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:13:10,527 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS push_test_tenant
+2026-03-21 20:13:10,528 INFO sqlalchemy.engine.Engine [cached since 3.064s ago] ()
+2026-03-21 20:13:10,531 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:13:10,532 INFO sqlalchemy.engine.Engine [cached since 3.059s ago] ()
+2026-03-21 20:13:10,551 INFO sqlalchemy.engine.Engine INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:13:10,551 INFO sqlalchemy.engine.Engine [cached since 3.006s ago] ()
+2026-03-21 20:13:10,554 INFO sqlalchemy.engine.Engine ROLLBACK
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.064s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.059s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 3.006s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
+___________ ERROR at setup of test_push_sent_on_careplanner_message ___________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002717C126E00>
+operation = "INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"
+parameters = ()
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.InvalidTextRepresentationError: invalid input syntax for type uuid: "clinico-push-1"
+
+asyncpg/protocol/protocol.pyx:165: InvalidTextRepresentationError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002717C1088A0>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002717B30F770>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002717C0FA580>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002717BB73250>
+parameters = [()]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717C428050>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: Error
+
+The above exception was the direct cause of the following exception:
+
+app = <fastapi.applications.FastAPI object at 0x000002717C056F90>
+
+    @pytest.fixture(autouse=True)
+    async def isolated_schema(app: FastAPI):
+        # Setup the table in tests using sqlalchemy
+        from intellicare_core.db.session import get_engine
+        from sqlalchemy import text
+        async with get_engine().begin() as conn:
+            await conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {TENANT_SLUG}"))
+            await conn.execute(text(f"CREATE TABLE IF NOT EXISTS {TENANT_SLUG}.users (id UUID PRIMARY KEY, name TEXT);"))
+>           await conn.execute(text(f"INSERT INTO {TENANT_SLUG}.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"))
+
+packages\intellicare-core\tests\test_push_notifications.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717C428050>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+E                   [SQL: INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;]
+E                   (Background on this error at: https://sqlalche.me/e/20/dbapi)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: DBAPIError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:13:11,588 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:13:11,589 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS push_test_tenant
+2026-03-21 20:13:11,589 INFO sqlalchemy.engine.Engine [cached since 4.125s ago] ()
+2026-03-21 20:13:11,595 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:13:11,595 INFO sqlalchemy.engine.Engine [cached since 4.122s ago] ()
+2026-03-21 20:13:11,624 INFO sqlalchemy.engine.Engine INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:13:11,624 INFO sqlalchemy.engine.Engine [cached since 4.079s ago] ()
+2026-03-21 20:13:11,628 INFO sqlalchemy.engine.Engine ROLLBACK
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 4.125s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 4.122s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 4.079s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
+__________ ERROR at setup of test_expired_subscription_auto_removed ___________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000002717C4113C0>
+operation = "INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"
+parameters = ()
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if not adapt_connection._started:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+>               prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:526: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:773: in _prepare
+    prepared_stmt = await self._connection.prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:638: in prepare
+    return await self._prepare(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:657: in _prepare
+    stmt = await self._get_statement(
+..\AppData\Roaming\Python\Python314\site-packages\asyncpg\connection.py:443: in _get_statement
+    statement = await self._protocol.prepare(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   asyncpg.exceptions.InvalidTextRepresentationError: invalid input syntax for type uuid: "clinico-push-1"
+
+asyncpg/protocol/protocol.pyx:165: InvalidTextRepresentationError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000002717C3F8170>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000002717B30F770>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000002717C4CE140>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000002717BB73250>
+parameters = [()]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717C42A030>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: Error
+
+The above exception was the direct cause of the following exception:
+
+app = <fastapi.applications.FastAPI object at 0x000002717C0F4830>
+
+    @pytest.fixture(autouse=True)
+    async def isolated_schema(app: FastAPI):
+        # Setup the table in tests using sqlalchemy
+        from intellicare_core.db.session import get_engine
+        from sqlalchemy import text
+        async with get_engine().begin() as conn:
+            await conn.execute(text(f"CREATE SCHEMA IF NOT EXISTS {TENANT_SLUG}"))
+            await conn.execute(text(f"CREATE TABLE IF NOT EXISTS {TENANT_SLUG}.users (id UUID PRIMARY KEY, name TEXT);"))
+>           await conn.execute(text(f"INSERT INTO {TENANT_SLUG}.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;"))
+
+packages\intellicare-core\tests\test_push_notifications.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\ext\asyncio\engine.py:659: in execute
+    result = await greenlet_spawn(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:585: in execute
+    self._adapt_connection.await_(
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:563: in _prepare_and_execute
+    self._handle_exception(error)
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:513: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <AdaptedConnection <asyncpg.connection.Connection object at 0x000002717C42A030>>
+error = InvalidTextRepresentationError('invalid input syntax for type uuid: "clinico-push-1"')
+
+    def _handle_exception(self, error):
+        if self._connection.is_closed():
+            self._transaction = None
+            self._started = False
+    
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = self.dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    translated_error = exception_mapping[super_](
+                        "%s: %s" % (type(error), error)
+                    )
+                    translated_error.pgcode = translated_error.sqlstate = (
+                        getattr(error, "sqlstate", None)
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input syntax for type uuid: "clinico-push-1"
+E                   [SQL: INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;]
+E                   (Background on this error at: https://sqlalche.me/e/20/dbapi)
+
+..\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:797: DBAPIError
+---------------------------- Captured stdout setup ----------------------------
+2026-03-21 20:13:12,660 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-03-21 20:13:12,661 INFO sqlalchemy.engine.Engine CREATE SCHEMA IF NOT EXISTS push_test_tenant
+2026-03-21 20:13:12,661 INFO sqlalchemy.engine.Engine [cached since 5.197s ago] ()
+2026-03-21 20:13:12,668 INFO sqlalchemy.engine.Engine CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+2026-03-21 20:13:12,668 INFO sqlalchemy.engine.Engine [cached since 5.195s ago] ()
+2026-03-21 20:13:12,691 INFO sqlalchemy.engine.Engine INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+2026-03-21 20:13:12,692 INFO sqlalchemy.engine.Engine [cached since 5.147s ago] ()
+2026-03-21 20:13:12,696 INFO sqlalchemy.engine.Engine ROLLBACK
+----------------------------- Captured log setup ------------------------------
+INFO     sqlalchemy.engine.Engine:base.py:2710 BEGIN (implicit)
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE SCHEMA IF NOT EXISTS push_test_tenant
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 5.197s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 CREATE TABLE IF NOT EXISTS push_test_tenant.users (id UUID PRIMARY KEY, name TEXT);
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 5.195s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:1846 INSERT INTO push_test_tenant.users (id, name) VALUES ('clinico-push-1', 'Mock Clinico') ON CONFLICT DO NOTHING;
+INFO     sqlalchemy.engine.Engine:base.py:1846 [cached since 5.147s ago] ()
+INFO     sqlalchemy.engine.Engine:base.py:2713 ROLLBACK
 =========================== short test summary info ===========================
-ERROR packages\intellicare-core\tests\test_oswaldo.py::test_create_prescription
-ERROR packages\intellicare-core\tests\test_oswaldo.py::test_search_cid10
-ERROR packages\intellicare-core\tests\test_oswaldo.py::test_list_prescriptions_by_encounter
-============================== 3 errors in 0.04s ==============================
+ERROR packages\intellicare-core\tests\test_push_notifications.py::test_subscribe_saves_subscription
+ERROR packages\intellicare-core\tests\test_push_notifications.py::test_duplicate_subscribe_is_idempotent
+ERROR packages\intellicare-core\tests\test_push_notifications.py::test_unsubscribe_removes_subscription
+ERROR packages\intellicare-core\tests\test_push_notifications.py::test_push_sent_on_careplanner_message
+ERROR packages\intellicare-core\tests\test_push_notifications.py::test_expired_subscription_auto_removed
+============================== 5 errors in 7.87s ==============================

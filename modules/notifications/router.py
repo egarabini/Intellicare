@@ -148,6 +148,38 @@ async def update_preferences(
     return await _service.update_preferences(ctx, data)
 
 
+# ── Push Notifications ─────────────────────────────────────
+
+from .schemas import PushSubscriptionCreate, PushSubscriptionUnsubscribe
+from intellicare_core.config import settings
+
+@router.get("/push/vapid-public-key")
+async def get_vapid_public_key():
+    return {"vapid_public_key": settings.vapid_public_key}
+
+@router.post("/push/subscribe", status_code=201)
+async def subscribe_push(
+    data: PushSubscriptionCreate,
+    ctx: Authenticated,
+):
+    await _service.save_push_subscription(
+        ctx,
+        endpoint=data.endpoint,
+        p256dh=data.keys.p256dh,
+        auth=data.keys.auth,
+        user_agent=data.user_agent,
+    )
+    return {"status": "subscribed"}
+
+@router.delete("/push/unsubscribe")
+async def unsubscribe_push(
+    data: PushSubscriptionUnsubscribe,
+    ctx: Authenticated,
+):
+    await _service.remove_push_subscription(ctx, data.endpoint)
+    return {"status": "unsubscribed"}
+
+
 # ── SSE (Server-Sent Events) ────────────────────────────────
 
 @router.get("/stream")

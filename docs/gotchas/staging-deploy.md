@@ -86,6 +86,26 @@ docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
 ### Fix
 - Garantir `infra/letsencrypt/` no `.gitignore` e nao usar esse ruido como sinal de deploy incompleto.
 
+## `redis_pubsub.py` usa senha bruta e quebra a URL
+
+### Situacao real
+- O `.env.staging` tinha `REDIS_PASSWORD_URLENC=IC_Staging%23Redis2025` corretamente,
+  mas `redis_pubsub.py` montava a URL com `{s.redis_password}` (senha bruta com `#`).
+- O parser de URL interpreta `IC_Staging` como o campo de porta, gerando
+  `ValueError: Port could not be cast to integer value as 'IC_Staging'`.
+
+### Sintoma
+- Logs do `dispatcher_worker` poluídos com `ValueError: Port could not be cast`.
+- `GET /health/adapters` pode mascarar o erro, mas dispatcher fica inoperante.
+
+### Fix
+- `redis_pubsub.py` deve usar `REDIS_PASSWORD_URLENC` (ou `os.getenv("REDIS_PASSWORD_URLENC")`)
+  ao montar a URI, nunca a senha bruta.
+- Verificar toda montagem de URI Redis no código — busca rápida:
+  ```bash
+  grep -rn "redis_password" modules/ --include="*.py"
+  ```
+
 ## Evolution API v2.2.x nao gera QR Code — usar v2.3.7
 
 ### Situacao real

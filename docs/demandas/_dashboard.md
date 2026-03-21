@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-21 | Branch: main | Último commit: e50a2c2 (DEM-055 Florence Módulo Base)
+> Atualizado: 2026-03-21 | Branch: main | Último commit: af3e66bb (DEM-064 Staging Clinical Squad Validation)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -62,8 +62,11 @@
 | DEM-057 | Florence IA — `suggest_soap()`, `_call_llm()` OpenAI-compatible + fallback rule-based, `POST /florence/notes/suggest`, botão Hybrid ClinicoUI, 5 testes | `29df484` |
 | DEM-058 | Oswaldo Módulo Base — migration 014 UUID, `prescriptions`, busca CID-10, `OswaldoPrescriptionEditor`, aba ClinicoUI, 3 testes | `19799a2` |
 | DEM-059 | Portal Paciente — `GET /cuidado/paciente/me/journeys` + `/me/clinical-notes`, `JornadasPage.tsx`, `HistoricoPage.tsx`, privacidade `soap_a`, 6 testes | `d714194` |
+| DEM-061 | Oswaldo IA — `POST /oswaldo/suggest`, `shared/llm` wrapper, fallback rule-based, botão Hybrid `OswaldoPrescriptionEditor`, 5 testes (422, 403, success, fallback, LLM mock) | `9d14751` |
 | DEM-062 | PDF Clínico — `get_encounter_full()`, `generate_clinical_report()`, template Florence+Oswaldo, `GET /encontros/{id}/report.pdf`, botão `IconFileTypePdf` EncounterView, 2 testes | `d4552c6` |
 | DEM-063 | E2E Clinical Squad — 8 pytest (Florence, Oswaldo, Portal) + 5 Playwright (florence, oswaldo, paciente) = 13 testes E2E | `6708521` |
+| DEM-INF | Fix Redis pubsub — `redis_pubsub.py` usa `REDIS_PASSWORD_URLENC` em vez de senha bruta (fix `Port could not be cast` no staging) | `c7fabecc` |
+| DEM-INF | Fix ClinicoUI Docker build — `optimizeDeps.include: ['@tanstack/react-query']` em `vite.config.ts` (Vite SSR/Docker não pré-bundlava dependência) | `055e883` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 ² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
@@ -107,40 +110,42 @@
 | DEM-057 | Florence IA — suggest SOAP, LLM + fallback, 5 testes | DEV-2 | `29df484` |
 | DEM-058 | Oswaldo Módulo Base — migration 014, CID-10, prescrições, 3 testes | DEV-1 | `19799a2` |
 | DEM-059 | Portal Paciente — jornadas + histórico, privacidade soap_a, 6 testes | CODEX | `d714194` |
-| DEM-060 | Staging Full Sync — migrations 012–014, Florence+Oswaldo UP | DEV-3/4 | ⏳ em execução |
+| DEM-060 | Staging Full Sync — migrations 012–014, Florence+Oswaldo UP, Clinical Squad smoke ✅ | DEV-3/4 | `af3e66bb` |
 
 ---
 
-## 🔄 Em execução — Sprint 2026-04-11
+## ✅ Sprint 2026-04-11 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-061 | Oswaldo IA — sugestão CID-10 + prescrição via LLM, 5 testes | DEV-2 | `9d14751` |
+| DEM-062 | PDF Clínico — WeasyPrint Florence+Oswaldo, EncounterView | DEV-1 | `d4552c6` |
+| DEM-063 | E2E Clinical Squad — 8 pytest + 5 Playwright, 13 testes | CODEX | `6708521` |
+| DEM-064 | Staging Clinical Squad Validation — Florence ✅ Oswaldo ✅ PDF ✅ Evolution open ✅ Adapters ✅ | DEV-3/4 | `af3e66bb` |
+
+---
+
+## 🔄 Em execução — Sprint 2026-04-18
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-061 | Oswaldo IA — sugestão CID-10 + prescrição via LLM | DEV-2 | ⏳ spec: `DEM-061_OSWALDO_IA/` |
-| DEM-062 | PDF Clínico — WeasyPrint Florence+Oswaldo, EncounterView | DEV-1 | ✅ `d4552c6` |
-| DEM-063 | E2E Clinical Squad — 8 pytest + 5 Playwright | CODEX | ✅ `6708521` |
-| DEM-064 | Staging Clinical Squad Validation | DEV-3/4 | ⏳ aguarda P1+P2+P3 |
+| DEM-065 | Multi-tenant Avançado — `tenant_provisioner`, migration 015, TenantsManager + TenantConfigPage, suspend/reactivate, 16 testes | DEV-1 | ✅ `683c0f9` |
+| DEM-066 | Notificações Push PWA — `sw.js`, migration 016 `push_subscriptions`, `pywebpush`, VAPID | DEV-2 | ⏳ em execução |
+| DEM-067 | Kestra Flows Condicionais — 4 flows (fallback canal, branching resposta, retry backoff, urgência clínica), normalize_confirmation, 24 testes | CODEX | ✅ `5b7e1a42` |
+| DEM-068 | Staging Full Sync 2026-04-18 — validação DEMs 065–067 + smoke geral | DEV-3/4 | ⏳ aguarda DEV-1+2+CODEX |
 
 ---
 
-## 📋 Fila — specs prontas
+## 🔬 Backlog Estratégico — aguarda gatilho
 
-| DEM | Dev | Spec |
-|-----|-----|------|
-| DEM-061 Oswaldo IA | DEV-2 | ✅ `docs/demandas/DEM-061_OSWALDO_IA/BRIEFING.md` |
-| DEM-062 PDF Clínico | DEV-1 | ✅ `docs/demandas/DEM-062_PDF_CLINICO_COMPLETO/BRIEFING.md` |
-| DEM-063 E2E Clinical Squad | CODEX | ✅ `docs/demandas/DEM-063_E2E_CLINICAL_SQUAD/BRIEFING.md` |
-| DEM-064 Staging Clinical Squad | DEV-3/4 | ✅ `docs/demandas/DEM-064_STAGING_CLINICAL_SQUAD/BRIEFING.md` |
+| DEM | Módulo | Descrição | Gatilho |
+|-----|--------|-----------|---------|
+| DEM-069 | **Marie** (Orquestradora IA) | Bootstrap Dify como microsserviço parceiro — `marie_client.py`, flag `MARIE_ENABLED`, migração do primeiro flow Oswaldo prescrição → Marie RAG | Prompts alterados >1x/semana **ou** demanda RAG longitudinal (FHIR/histórico >6 meses) **ou** >3 etapas LLM encadeadas em Florence/Oswaldo |
+| DEM-070 | **MinIO** (Storage Médico) | Object storage S3-compatible self-hosted — `storage.py`, buckets por tenant, presigned URLs, isolamento LGPD | Primeira demanda de upload de exame real (DICOM/laudo/ECG) **ou** PDFs clínicos precisarem ser persistidos **ou** pressão de anexos WhatsApp no PostgreSQL |
 
----
-
-## Distribuição sprint atual
-
-```
-DEV-2   → DEM-061 Oswaldo IA           (~3.5h) — suggest CID-10+prescrição, Hybrid, fallback
-DEV-1   → DEM-062 PDF Clínico Completo (~3.5h) — WeasyPrint Florence+Oswaldo, EncounterView
-CODEX   → DEM-063 E2E Clinical Squad   (~3h)   — 8 pytest + 5 Playwright
-DEV-3/4 → DEM-064 Staging Validation  (~1.5h)  — após P1+P2+P3 em main
-```
+> **ADR Marie:** `docs/adr/ADR-002-marie-dify-orchestrator.md` — Marie Curie: cria os instrumentos para medir o invisível. Processa históricos complexos e RAG antes de entregar resposta validada ao Oswaldo/Florence. Não substitui — **amplifica**.
+>
+> **ADR MinIO:** `docs/adr/ADR-003-minio-medical-storage.md` — Storage S3-compatible self-hosted para exames, anexos e laudos. Zero vendor lock-in, LGPD-compliant, um container Docker. Complementa Marie: exames no MinIO → indexados por Marie → contexto RAG enriquecido.
 
 ## Credenciais de teste (ambiente local)
 

@@ -1,0 +1,102 @@
+# 4. Guia do Clinico (ClinicoUI)
+
+## Menu principal
+
+- `Início` (Dashboard)
+- `Jornadas`
+- `Agenda`
+- `Pacientes`
+- `Grupos`
+- `Profissionais`
+- `Equipe`
+- `Assistente IA`
+- `Meu Perfil`
+
+## 4.1 Dashboard clinico (Minha Agenda)
+
+### O que a tela mostra
+
+- Quantidade de consultas do dia
+- Quantidade em andamento
+- Bloco de equipe (profissionais ativos, grupos)
+- Lista de consultas com acao `Atender` ou `Retomar`
+
+### Exemplo de uso
+
+1. Abrir dashboard no inicio do turno.
+2. Clicar em `Atender` no primeiro paciente.
+3. Se houver encontro aberto, usar `Retomar`.
+
+## 4.2 Fluxo de atendimento (Encounter)
+
+## Passo a passo
+
+1. Acessar paciente e abrir `Encontro Atual`.
+2. Se nao houver encontro aberto, clicar em `Abrir Novo Encontro`.
+3. Registrar conteudo clinico nas abas:
+   - `Notas Florence`
+   - `Prescrição` (Oswaldo)
+   - `Legado` (nota SOAP + CID + prescricao textual)
+4. Finalizar em `Fechar Encontro`.
+5. Gerar `PDF Clínico` quando necessario.
+
+## 4.3 Notas Florence (documentacao clinica)
+
+### Modos disponiveis
+
+- `Texto livre (FREE)`
+- `SOAP`
+
+### Campos em SOAP
+
+- Motivo da consulta
+- `S` Subjetivo
+- `O` Objetivo
+- `A` Avaliacao
+- `P` Plano
+
+### Recurso IA
+
+- Botao `Sugerir SOAP com IA` com base no motivo da consulta.
+- Em fallback por regra, a tela sinaliza baixa confianca para revisao manual.
+
+### Exemplo preenchido (SOAP)
+
+- Motivo: `cefaleia persistente ha 3 dias`
+- S: `paciente relata dor em pressao frontal, sem vomitos`
+- O: `PA 130x80, afebril, sem rigidez de nuca`
+- A: `cefaleia tensional, sem sinais de alarme`
+- P: `analgesico sintomatico, hidratacao, retorno se piora`
+
+## 4.4 Prescricao Oswaldo
+
+### Funcionalidades
+
+- Sugestao IA de CID-10 e itens de prescricao
+- Adicao manual de itens
+- Historico de prescricoes do encontro
+
+### Campos de item
+
+- Medicamento
+- Posologia
+- Duracao (opcional)
+
+### Exemplo preenchido
+
+- CID-10: `R51 - Cefaleia`
+- Item 1: `Dipirona 500mg`, `1 comprimido 6/6h`, `3 dias`
+- Item 2: `Ibuprofeno 400mg`, `1 comprimido 8/8h`, `2 dias`
+
+## 4.5 Jornadas no contexto clinico
+
+- Tela de jornadas permite filtro `Minhas Jornadas`.
+- Clinico acompanha status das jornadas relacionadas a seus pacientes.
+- Notificacoes com sino exibem itens nao lidos quando disponiveis.
+
+## 4.6 Recomendacoes de seguranca clinica
+
+- Sempre revisar sugestoes IA antes de salvar.
+- Priorizar preenchimento completo do SOAP em casos complexos.
+- Fechar encontro apenas apos validar conduta final.
+- Usar PDF clinico para referencia e continuidade de cuidado.

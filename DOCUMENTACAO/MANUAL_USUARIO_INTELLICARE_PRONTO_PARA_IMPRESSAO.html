@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IntelliCare - Manual do Usuario</title>
+  <style>
+    :root {
+      --brand: #0f766e;
+      --brand-dark: #134e4a;
+      --ink: #111827;
+      --muted: #4b5563;
+      --line: #d1d5db;
+      --bg-soft: #f8fafc;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.5;
+      background: #fff;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 36px;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      color: var(--brand-dark);
+      line-height: 1.25;
+    }
+
+    h1 { font-size: 34px; margin-bottom: 10px; }
+    h2 { font-size: 24px; margin-bottom: 10px; }
+    h3 { font-size: 18px; margin-bottom: 8px; }
+
+    p, li { font-size: 14px; }
+    ul, ol { margin-top: 0; }
+
+    .cover {
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 8px solid var(--brand);
+      border-bottom: 2px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);
+    }
+
+    .cover h1 { font-size: 44px; margin-bottom: 4px; }
+    .cover h2 { font-size: 28px; margin-bottom: 20px; color: var(--ink); }
+
+    .meta {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--brand);
+      border-radius: 8px;
+      padding: 14px 16px;
+      max-width: 620px;
+      font-size: 14px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .section {
+      margin-top: 28px;
+      padding-top: 6px;
+    }
+
+    .toc {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .toc a {
+      color: var(--brand-dark);
+      text-decoration: none;
+    }
+
+    .toc a:hover { text-decoration: underline; }
+
+    .print-slot {
+      margin: 12px 0;
+      border: 2px dashed #9ca3af;
+      border-radius: 8px;
+      padding: 18px;
+      text-align: center;
+      color: #374151;
+      background: #fcfcfd;
+      font-size: 13px;
+    }
+
+    .highlight {
+      background: #ecfeff;
+      border: 1px solid #bae6fd;
+      border-left: 4px solid #0891b2;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .small { font-size: 12px; }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+      height: 1px;
+    }
+
+    .footer-note {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @page {
+      size: A4;
+      margin: 16mm;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+      a { color: inherit; text-decoration: none; }
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="cover">
+      <h1>INTELLICARE</h1>
+      <h2>Manual do Usuario</h2>
+      <div class="meta">
+        <p><strong>Versao:</strong> 1.0</p>
+        <p><strong>Base funcional:</strong> DEM-063</p>
+        <p><strong>Status staging clinico:</strong> DEM-064 em andamento</p>
+        <p><strong>Data:</strong> 2026-03-21</p>
+        <p><strong>Formato:</strong> Documento pronto para impressao em PDF</p>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="sumario" class="section">
+      <h2>Sumario</h2>
+      <div class="toc">
+        <ol>
+          <li><a href="#apresentacao">Apresentacao</a></li>
+          <li><a href="#como-usar">Como usar este manual</a></li>
+          <li><a href="#visao-geral">Visao geral do sistema</a></li>
+          <li><a href="#admin">Perfil Administrador da Plataforma</a></li>
+          <li><a href="#gestor">Perfil Gestor do Tenant</a></li>
+          <li><a href="#clinico">Perfil Clinico</a></li>
+          <li><a href="#paciente">Perfil Paciente</a></li>
+          <li><a href="#dashboards">Dashboards, alertas e relatorios</a></li>
+          <li><a href="#boas-praticas">Boas praticas</a></li>
+          <li><a href="#erros">Erros comuns e acao rapida</a></li>
+          <li><a href="#checklist">Checklist de treinamento</a></li>
+          <li><a href="#anexos">Anexos de impressao</a></li>
+        </ol>
+      </div>
+      <p class="small muted">Dica: no navegador, use Ctrl+P e escolha "Salvar como PDF".</p>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="apresentacao" class="section">
+      <h2>1) Apresentacao</h2>
+      <p>O IntelliCare integra gestao, atendimento clinico e acompanhamento de jornadas de cuidado em uma plataforma unica.</p>
+      <p>Este manual cobre as funcionalidades implementadas ate a DEM-063.</p>
+      <h3>Perfis cobertos</h3>
+      <ul>
+        <li>Administrador da Plataforma</li>
+        <li>Gestor do Tenant</li>
+        <li>Clinico</li>
+        <li>Paciente</li>
+      </ul>
+    </section>
+
+    <section id="como-usar" class="section">
+      <h2>2) Como usar este manual</h2>
+      <ul>
+        <li>Leia primeiro a visao geral.</li>
+        <li>Depois siga a secao do seu perfil.</li>
+        <li>Use os blocos de print para inserir capturas oficiais do sistema.</li>
+      </ul>
+      <div class="highlight">
+        Referencias: 08_PLANO_CAPTURA_PRINTS_GUIADOS.md, 09_STORYBOARD_PRINTS_POR_PERFIL.md, 10_MODELO_LEGENDAS_E_ANONIMIZACAO.md.
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="visao-geral" class="section">
+      <h2>3) Visao geral do sistema</h2>
+      <ul>
+        <li><strong>admin:</strong> governanca da plataforma e tenants.</li>
+        <li><strong>gestor:</strong> operacao do tenant.</li>
+        <li><strong>cuidado:</strong> atendimento clinico.</li>
+        <li><strong>florence:</strong> notas clinicas FREE/SOAP com apoio IA.</li>
+        <li><strong>oswaldo:</strong> CID-10 e prescricao assistida.</li>
+        <li><strong>careplanner:</strong> jornadas por Rocket.Chat, WhatsApp, SMS e e-mail.</li>
+      </ul>
+    </section>
+
+    <section id="admin" class="section">
+      <h2>4) Perfil Administrador da Plataforma (AdminUI)</h2>
+      <p>Responsavel por provisionar tenants, acompanhar indicadores de plataforma e monitorar governanca.</p>
+      <h3>Fluxo principal: criar tenant</h3>
+      <ul>
+        <li>Preencher <code>Nome</code>, <code>Slug</code> e <code>Email do gestor</code>.</li>
+        <li>Salvar e validar tenant na lista.</li>
+      </ul>
+      <div class="print-slot">[INSERIR PRINT 01 - Dashboard Admin]</div>
+      <div class="print-slot">[INSERIR PRINT 02 - Lista de Tenants]</div>
+      <div class="print-slot">[INSERIR PRINT 03 - Novo Tenant (vazio)]</div>
+      <div class="print-slot">[INSERIR PRINT 04 - Novo Tenant (preenchido)]</div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="gestor" class="section">
+      <h2>5) Perfil Gestor do Tenant (GestorUI)</h2>
+      <p>Responsavel pela operacao assistencial do tenant, com foco em agenda, equipe, unidades e CarePlanner.</p>
+      <h3>Fluxo principal: Nova Jornada</h3>
+      <ul>
+        <li>Selecionar paciente, tipo de jornada e canal.</li>
+        <li>Preencher contato correto (telefone E.164 ou e-mail).</li>
+        <li>Iniciar jornada e acompanhar status no painel.</li>
+      </ul>
+      <div class="print-slot">[INSERIR PRINT 05 - Dashboard Gestor]</div>
+      <div class="print-slot">[INSERIR PRINT 06 - CarePlanner status]</div>
+      <div class="print-slot">[INSERIR PRINT 07 - Nova Jornada formulario]</div>
+      <div class="print-slot">[INSERIR PRINT 08 - Lista de jornadas filtrada]</div>
+      <div class="print-slot">[INSERIR PRINT 09 - Agenda Gestor]</div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="clinico" class="section">
+      <h2>6) Perfil Clinico (ClinicoUI)</h2>
+      <p>Responsavel pelo atendimento: encontro, notas Florence, prescricao Oswaldo e exportacao de PDF clinico.</p>
+      <h3>Fluxo de atendimento</h3>
+      <ol>
+        <li>Abrir consulta na agenda (<code>Atender/Retomar</code>).</li>
+        <li>Registrar nota em Florence (FREE/SOAP).</li>
+        <li>Registrar CID-10 e prescricao no Oswaldo.</li>
+        <li>Fechar encontro e exportar PDF.</li>
+      </ol>
+      <div class="print-slot">[INSERIR PRINT 10 - Dashboard Clinico]</div>
+      <div class="print-slot">[INSERIR PRINT 11 - Encontro visao geral]</div>
+      <div class="print-slot">[INSERIR PRINT 12 - Florence SOAP campos]</div>
+      <div class="print-slot">[INSERIR PRINT 13 - Florence sugestao IA]</div>
+      <div class="print-slot">[INSERIR PRINT 14 - Oswaldo prescricao itens]</div>
+      <div class="print-slot">[INSERIR PRINT 15 - Historico prescricoes]</div>
+      <div class="print-slot">[INSERIR PRINT 16 - Exportacao PDF Clinico]</div>
+      <div class="print-slot">[INSERIR PRINT 17 - Jornadas do Clinico]</div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="paciente" class="section">
+      <h2>7) Perfil Paciente (PacienteUI)</h2>
+      <p>Responsavel por acompanhar agenda, jornadas e historico compartilhavel.</p>
+      <h3>Status de jornada</h3>
+      <ul>
+        <li><code>SENT</code>: mensagem enviada.</li>
+        <li><code>REPLIED</code>: paciente respondeu.</li>
+        <li><code>FAILED</code>: falha de envio.</li>
+        <li><code>EXPIRED</code>: expirou sem resposta.</li>
+      </ul>
+      <div class="print-slot">[INSERIR PRINT 18 - Painel Paciente]</div>
+      <div class="print-slot">[INSERIR PRINT 19 - Agenda Paciente]</div>
+      <div class="print-slot">[INSERIR PRINT 20 - Tabela Minhas Jornadas]</div>
+      <div class="print-slot">[INSERIR PRINT 21 - Historico Timeline]</div>
+      <div class="print-slot">[INSERIR PRINT 22 - Cadastro e Contato]</div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section id="dashboards" class="section">
+      <h2>8) Dashboards, alertas e relatorios</h2>
+      <h3>Leitura operacional</h3>
+      <ul>
+        <li><strong>Admin:</strong> tenants, receita, custo de infraestrutura.</li>
+        <li><strong>Gestor:</strong> consultas, capacidade de equipe, atividades.</li>
+        <li><strong>CarePlanner:</strong> funil de status e gargalos.</li>
+      </ul>
+      <div class="highlight">
+        Funil esperado: CREATED -> DISPATCHED -> SENT -> REPLIED -> CLOSED.
+      </div>
+      <p>Relatorios PDF: tenants (Admin), encontro clinico (Clinico), relatorios operacionais (Gestor).</p>
+    </section>
+
+    <section id="boas-praticas" class="section">
+      <h2>9) Boas praticas</h2>
+      <ul>
+        <li>Revisar todo conteudo sugerido por IA antes de salvar.</li>
+        <li>Manter contato do paciente atualizado.</li>
+        <li>Vincular jornada ao agendamento quando possivel.</li>
+        <li>Aplicar anonimização antes de publicar material de treinamento.</li>
+      </ul>
+    </section>
+
+    <section id="erros" class="section">
+      <h2>10) Erros comuns e acao rapida</h2>
+      <ul>
+        <li>Paciente nao recebeu mensagem: validar contato/canal e reenviar.</li>
+        <li>Muitas falhas em jornada: revisar credenciais e integracao do canal.</li>
+        <li>Registro clinico incompleto: reforcar preenchimento SOAP.</li>
+        <li>Indicador divergente: revisar filtros e periodo.</li>
+      </ul>
+    </section>
+
+    <section id="checklist" class="section">
+      <h2>11) Checklist de treinamento</h2>
+      <ul>
+        <li>[ ] Admin criou tenant de teste.</li>
+        <li>[ ] Gestor disparou jornada de teste.</li>
+        <li>[ ] Clinico concluiu encontro com Florence e Oswaldo.</li>
+        <li>[ ] PDF clinico gerado.</li>
+        <li>[ ] Paciente visualizou jornada e historico.</li>
+      </ul>
+    </section>
+
+    <section id="anexos" class="section">
+      <h2>12) Anexos de impressao</h2>
+      <h3>Configuracao recomendada de exportacao</h3>
+      <ul>
+        <li>Tamanho: A4</li>
+        <li>Orientacao: retrato</li>
+        <li>Margens: 16 mm</li>
+        <li>Escala: 100%</li>
+        <li>Cabecalho/rodape do navegador: desativado</li>
+      </ul>
+      <h3>Checklist de qualidade do PDF</h3>
+      <ul>
+        <li>[ ] Sumario navegavel funcionando</li>
+        <li>[ ] Quebras de pagina revisadas</li>
+        <li>[ ] Todos os prints inseridos</li>
+        <li>[ ] Legendas revisadas</li>
+        <li>[ ] Dados anonimizados</li>
+      </ul>
+      <p class="footer-note">
+        Documento interno IntelliCare para treinamento e operacao. Atualize a cada ciclo de demandas que altere fluxo de tela.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
