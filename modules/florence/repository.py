@@ -64,12 +64,30 @@ async def get_encounter_full(ctx: TenantContext, encounter_id: str) -> dict | No
     - prescriptions: lista de Prescription do encontro
     """
     async with tenant_session(ctx) as db:
+        has_patients = bool(
+            (await db.execute(text("SELECT to_regclass(current_schema() || '.patients') IS NOT NULL"))).scalar()
+        )
+        has_tenant_users = bool(
+            (await db.execute(text("SELECT to_regclass(current_schema() || '.tenant_users') IS NOT NULL"))).scalar()
+        )
+
+        patient_select = "p.name as patient_name" if has_patients else "NULL::text as patient_name"
+        professional_select = (
+            "tu.name as professional_name" if has_tenant_users else "NULL::text as professional_name"
+        )
+        patient_join = (
+            "LEFT JOIN patients p ON CAST(e.patient_id AS TEXT) = CAST(p.id AS TEXT)" if has_patients else ""
+        )
+        tenant_users_join = (
+            "LEFT JOIN tenant_users tu ON tu.keycloak_id = e.clinician_id" if has_tenant_users else ""
+        )
+
         encounter_row = (await db.execute(
-            text("""
-            SELECT e.*, p.name as patient_name, tu.name as professional_name 
+            text(f"""
+            SELECT e.*, {patient_select}, {professional_select}
             FROM encounters e
-            LEFT JOIN patients p ON CAST(e.patient_id AS TEXT) = CAST(p.id AS TEXT)
-            LEFT JOIN tenant_users tu ON tu.keycloak_id = e.clinician_id
+            {patient_join}
+            {tenant_users_join}
             WHERE e.id = :encounter_id
             """),
             {"encounter_id": str(encounter_id)}
