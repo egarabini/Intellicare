@@ -70,13 +70,40 @@ async def get_encounter_full(ctx: TenantContext, encounter_id: str) -> dict | No
         has_tenant_users = bool(
             (await db.execute(text("SELECT to_regclass(current_schema() || '.tenant_users') IS NOT NULL"))).scalar()
         )
+        patient_name_column = None
+        if has_patients:
+            patient_columns = {
+                row[0]
+                for row in (
+                    await db.execute(
+                        text(
+                            """
+                            SELECT column_name
+                            FROM information_schema.columns
+                            WHERE table_schema = current_schema()
+                              AND table_name = 'patients'
+                            """
+                        )
+                    )
+                ).all()
+            }
+            if "name" in patient_columns:
+                patient_name_column = "name"
+            elif "full_name" in patient_columns:
+                patient_name_column = "full_name"
 
-        patient_select = "p.name as patient_name" if has_patients else "NULL::text as patient_name"
+        patient_select = (
+            f"p.{patient_name_column} as patient_name"
+            if has_patients and patient_name_column
+            else "NULL::text as patient_name"
+        )
         professional_select = (
             "tu.name as professional_name" if has_tenant_users else "NULL::text as professional_name"
         )
         patient_join = (
-            "LEFT JOIN patients p ON CAST(e.patient_id AS TEXT) = CAST(p.id AS TEXT)" if has_patients else ""
+            "LEFT JOIN patients p ON CAST(e.patient_id AS TEXT) = CAST(p.id AS TEXT)"
+            if has_patients and patient_name_column
+            else ""
         )
         tenant_users_join = (
             "LEFT JOIN tenant_users tu ON tu.keycloak_id = e.clinician_id" if has_tenant_users else ""
