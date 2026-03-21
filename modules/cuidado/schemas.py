@@ -134,6 +134,21 @@ class PacienteHistoryResponse(BaseModel):
     size: int
 
 
+class PacienteJourneyItem(BaseModel):
+    correlation_id: UUID
+    channel: str
+    status: str
+    template_name: Optional[str] = None
+    opened_at: datetime
+    closed_at: Optional[datetime] = None
+
+
+class PacienteClinicalNoteItem(BaseModel):
+    encounter_date: datetime
+    professional_name: str
+    summary: str
+
+
 class PacienteProgramItem(BaseModel):
     id: int
     name: str

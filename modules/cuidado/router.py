@@ -14,6 +14,7 @@ from intellicare_core.auth.jwt import get_current_tenant
 from .schemas import (
     ClinicalAskRequest, EncounterCreate, NoteCreate, PatientCreate,
     PatientClinicalUpdate, EncounterUpdate, PacienteMeUpdate,
+    PacienteClinicalNoteItem, PacienteJourneyItem,
     GroupCreate, GroupUpdate, AddMember, ProfessionalCreate, ProfessionalUpdate,
 )
 from .service import CuidadoService
@@ -146,6 +147,23 @@ async def paciente_programs(ctx: Paciente):
 @router.get("/paciente/me")
 async def paciente_me(ctx: Paciente):
     return await _svc.paciente_me(ctx)
+
+
+@router.get("/paciente/me/journeys", response_model=list[PacienteJourneyItem])
+async def paciente_me_journeys(
+    ctx: Paciente,
+    limit: int = Query(20, le=50),
+    offset: int = Query(0, ge=0),
+):
+    return await _svc.paciente_journeys(ctx, limit, offset)
+
+
+@router.get("/paciente/me/clinical-notes", response_model=list[PacienteClinicalNoteItem])
+async def paciente_me_clinical_notes(
+    ctx: Paciente,
+    limit: int = Query(20, le=50),
+):
+    return await _svc.paciente_clinical_notes(ctx, limit)
 
 
 @router.patch("/paciente/me")

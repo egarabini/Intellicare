@@ -7,7 +7,8 @@ import { Notifications } from '@mantine/notifications'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from 'react-oidc-context'
 import {
-  IconDashboard, IconCalendar, IconHistory, IconHeartbeat,
+  IconDashboard, IconCalendar, IconHeartbeat,
+  IconMessageCircle, IconClipboardHeart,
   IconUser, IconPhone, IconLogout,
 } from '@tabler/icons-react'
 
@@ -16,6 +17,7 @@ import { setToken } from './auth/tokenRef'
 import { PainelPage } from './pages/PainelPage'
 import { AgendaPage } from './pages/AgendaPage'
 import { HistoricoPage } from './pages/HistoricoPage'
+import { JornadasPage } from './pages/JornadasPage'
 import { ProgramasPage } from './pages/ProgramasPage'
 import { CadastroPage } from './pages/CadastroPage'
 import { ContatoPage } from './pages/ContatoPage'
@@ -31,7 +33,8 @@ const queryClient = new QueryClient({
 const NAV_ITEMS = [
   { path: '/',          label: 'Painel',      icon: IconDashboard },
   { path: '/agenda',    label: 'Agenda',      icon: IconCalendar },
-  { path: '/historico', label: 'Histórico',   icon: IconHistory },
+  { path: '/jornadas',  label: 'Minhas Jornadas', icon: IconMessageCircle },
+  { path: '/historico', label: 'Histórico Clínico', icon: IconClipboardHeart },
   { path: '/programas', label: 'Programas',   icon: IconHeartbeat },
   { path: '/cadastro',  label: 'Meus Dados',  icon: IconUser },
   { path: '/contato',   label: 'Contato',     icon: IconPhone },
@@ -131,6 +134,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/"          element={<PainelPage />} />
           <Route path="/agenda"    element={<AgendaPage />} />
+          <Route path="/jornadas"  element={<JornadasPage />} />
           <Route path="/historico" element={<HistoricoPage />} />
           <Route path="/programas" element={<ProgramasPage />} />
           <Route path="/cadastro"  element={<CadastroPage />} />

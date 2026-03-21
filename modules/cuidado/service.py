@@ -488,6 +488,140 @@ class CuidadoService:
             })
         return {"items": items, "total": total, "page": page, "size": size}
 
+    async def paciente_journeys(self, ctx: TenantContext, limit: int = 20, offset: int = 0) -> list[dict]:
+        pid = await self._get_patient_id_for_user(ctx)
+        if not pid or not await self._table_exists(ctx, "care_tasks"):
+            return []
+
+        patient_name_column = await self._patient_name_column(ctx)
+        async with tenant_session(ctx) as db:
+            patient = (
+                await db.execute(
+                    text(
+                        f"""
+                        SELECT {patient_name_column} AS patient_name, email, phone
+                        FROM patients
+                        WHERE id = :pid
+                        """
+                    ),
+                    {"pid": str(pid)},
+                )
+            ).mappings().first()
+            if not patient:
+                return []
+
+            rows = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT
+                            ct.correlation_id,
+                            UPPER(ct.channel) AS channel,
+                            UPPER(ct.status) AS status,
+                            ct.metadata->>'template_code' AS template_name,
+                            ct.created_at AS opened_at,
+                            CASE
+                                WHEN UPPER(ct.status) IN ('CLOSED', 'EXPIRED')
+                                THEN ct.updated_at
+                                ELSE NULL
+                            END AS closed_at
+                        FROM care_tasks ct
+                        WHERE (
+                            ct.patient_ref = :pid_ref
+                            OR ct.patient_ref = :user_ref
+                            OR ct.patient_ref = :ctx_email_ref
+                            OR ct.patient_ref = :email_ref
+                            OR ct.patient_ref = :phone_ref
+                            OR ct.patient_ref = :name_ref
+                            OR (
+                                ct.appointment_id IS NOT NULL
+                                AND EXISTS (
+                                    SELECT 1
+                                    FROM appointments a
+                                    WHERE a.id = ct.appointment_id
+                                      AND a.patient_id = :pid
+                                )
+                            )
+                        )
+                        ORDER BY ct.created_at DESC
+                        LIMIT :limit OFFSET :offset
+                        """
+                    ),
+                    {
+                        "pid_ref": str(pid),
+                        "user_ref": ctx.user_id,
+                        "ctx_email_ref": ctx.email or "",
+                        "email_ref": patient.get("email") or "",
+                        "phone_ref": patient.get("phone") or "",
+                        "name_ref": patient.get("patient_name") or "",
+                        "pid": str(pid),
+                        "limit": limit,
+                        "offset": offset,
+                    },
+                )
+            ).mappings().all()
+
+        return [dict(row) for row in rows]
+
+    async def paciente_clinical_notes(self, ctx: TenantContext, limit: int = 20) -> list[dict]:
+        pid = await self._get_patient_id_for_user(ctx)
+        if not pid:
+            return []
+        if not await self._table_exists(ctx, "clinical_notes"):
+            return []
+
+        encounter_join = ""
+        encounter_date_expr = "cn.created_at"
+        if await self._table_exists(ctx, "encounters"):
+            encounter_join = "LEFT JOIN encounters e ON e.id = cn.encounter_id"
+            encounter_date_expr = "COALESCE(e.closed_at, e.opened_at, cn.created_at)"
+
+        async with tenant_session(ctx) as db:
+            rows = (
+                await db.execute(
+                    text(
+                        f"""
+                        SELECT
+                            {encounter_date_expr} AS encounter_date,
+                            cn.author_name AS professional_name,
+                            cn.note_type,
+                            cn.free_text,
+                            cn.soap_s,
+                            cn.soap_p
+                        FROM clinical_notes cn
+                        {encounter_join}
+                        WHERE cn.patient_id = :pid
+                        ORDER BY cn.created_at DESC
+                        LIMIT :limit
+                        """
+                    ),
+                    {"pid": str(pid), "limit": limit},
+                )
+            ).mappings().all()
+
+        notes: list[dict] = []
+        for row in rows:
+            note_type = (row.get("note_type") or "").upper()
+            if note_type == "FREE":
+                summary = (row.get("free_text") or "").strip()
+            else:
+                parts: list[str] = []
+                if row.get("soap_s"):
+                    parts.append(f"Queixa: {row['soap_s']}")
+                if row.get("soap_p"):
+                    parts.append(f"Orientações: {row['soap_p']}")
+                summary = " | ".join(parts) if parts else "Consulta registrada."
+
+            notes.append(
+                {
+                    "encounter_date": row["encounter_date"],
+                    "professional_name": row.get("professional_name") or "Equipe clínica",
+                    "summary": summary,
+                }
+            )
+
+        return notes
+
     async def paciente_programs(self, ctx: TenantContext) -> list[dict]:
         pid = await self._get_patient_id_for_user(ctx)
         if not pid:

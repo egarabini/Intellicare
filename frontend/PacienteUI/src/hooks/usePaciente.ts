@@ -21,6 +21,21 @@ export interface PacienteAppointment {
   status: string
 }
 
+export interface PacienteJourney {
+  correlation_id: string
+  channel: string
+  status: string
+  template_name: string | null
+  opened_at: string
+  closed_at: string | null
+}
+
+export interface PacienteClinicalNote {
+  encounter_date: string
+  professional_name: string
+  summary: string
+}
+
 export function usePainel() {
   return useQuery({
     queryKey: ['paciente', 'painel'],
@@ -76,6 +91,30 @@ export function useHistorico(page: number, size: number) {
     queryKey: ['paciente', 'history', page, size],
     queryFn: async () => {
       const { data } = await apiClient.get('/cuidado/paciente/history', { params: { page, size } })
+      return data
+    },
+  })
+}
+
+export function useJourneys(limit = 20, offset = 0) {
+  return useQuery({
+    queryKey: ['paciente', 'journeys', limit, offset],
+    queryFn: async () => {
+      const { data } = await apiClient.get<PacienteJourney[]>('/cuidado/paciente/me/journeys', {
+        params: { limit, offset },
+      })
+      return data
+    },
+  })
+}
+
+export function useClinicalNotes(limit = 20) {
+  return useQuery({
+    queryKey: ['paciente', 'clinical-notes', limit],
+    queryFn: async () => {
+      const { data } = await apiClient.get<PacienteClinicalNote[]>('/cuidado/paciente/me/clinical-notes', {
+        params: { limit },
+      })
       return data
     },
   })
