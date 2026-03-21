@@ -202,6 +202,7 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
           </Stack>
         </Card>
       ))}
+      </Stack>
     </Stack>
   );
 }
