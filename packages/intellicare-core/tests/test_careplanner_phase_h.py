@@ -45,3 +45,20 @@ def test_verify_webhook_secret_correto():
 def test_verify_webhook_secret_errado():
     adapter = WhatsAppAdapter(make_settings(evolution_webhook_secret="abc123"))
     assert adapter.verify_webhook_secret("errado") is False
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("Sim, confirmado", "SIM"),
+        ("ok", "SIM"),
+        ("1", "SIM"),
+        ("não vou conseguir", "NAO"),
+        ("nao", "NAO"),
+        ("2", "NAO"),
+        ("talvez amanhã", "OUTRO"),
+    ],
+)
+def test_normalize_confirmation_variants(text, expected):
+    adapter = WhatsAppAdapter(make_settings())
+    assert adapter.normalize_confirmation(text) == expected

@@ -84,6 +84,7 @@ async def test_trigger_flow_kestra_indisponivel(kestra_adapter, respx_mock):
         contact_email = None
         flow_id = "careplanner_jornada_basica"
         clinico_ref = None
+        appointment_id = None
 
     with pytest.raises(HTTPException) as excinfo:
         await service.trigger_journey(ctx, MockBody())
@@ -137,5 +138,5 @@ def test_seed_flows_idempotente(respx_mock):
     seed_module.provision_flows()
     seed_module.provision_flows()
     
-    # Sao 4 flows por execucao; duas execucoes devem resultar em 8 chamadas.
-    assert respx_mock.calls.call_count == 8
+    # Sao 9 flows por execucao; duas execucoes devem resultar em 18 chamadas.
+    assert respx_mock.calls.call_count == 18

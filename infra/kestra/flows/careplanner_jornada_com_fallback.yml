@@ -1,0 +1,89 @@
+id: careplanner_jornada_com_fallback
+namespace: intellicare.careplanner
+description: "Jornada CarePlanner com fallback automático de WhatsApp para E-mail"
+
+inputs:
+  - id: tenant_slug
+    type: STRING
+  - id: patient_ref
+    type: STRING
+  - id: contact_phone_e164
+    type: STRING
+    required: false
+  - id: contact_email
+    type: STRING
+    required: false
+  - id: task_type
+    type: STRING
+    defaults: CHECK_IN
+  - id: template_code
+    type: STRING
+    defaults: check_in_wa
+
+variables:
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  - id: open_whatsapp_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "{{ inputs.template_code }}",
+        "channel": "whatsapp",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "contact_email": "{{ inputs.contact_email }}",
+        "kestra_execution_id": "{{ execution.id }}"
+      }
+
+  - id: branch_after_whatsapp
+    type: io.kestra.plugin.core.flow.Switch
+    value: "{{ outputs.open_whatsapp_task.code }}"
+    cases:
+      202:
+        - id: wait_whatsapp_reply
+          type: io.kestra.plugin.core.flow.Pause
+          delay: PT24H
+          onResume:
+            - id: patient_reply
+              type: STRING
+      FAILED:
+        - id: open_email_fallback
+          type: io.kestra.plugin.core.http.Request
+          uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+          method: POST
+          headers:
+            Authorization: "Bearer {{ vars.tenant_jwt }}"
+            Content-Type: application/json
+          body: |
+            {
+              "patient_ref": "{{ inputs.patient_ref }}",
+              "task_type": "{{ inputs.task_type }}",
+              "template_code": "check_in_email",
+              "channel": "email",
+              "contact_email": "{{ inputs.contact_email }}",
+              "kestra_execution_id": "{{ execution.id }}"
+            }
+    defaults:
+      - id: open_email_fallback_default
+        type: io.kestra.plugin.core.http.Request
+        uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+        method: POST
+        headers:
+          Authorization: "Bearer {{ vars.tenant_jwt }}"
+          Content-Type: application/json
+        body: |
+          {
+            "patient_ref": "{{ inputs.patient_ref }}",
+            "task_type": "{{ inputs.task_type }}",
+            "template_code": "check_in_email",
+            "channel": "email",
+            "contact_email": "{{ inputs.contact_email }}",
+            "kestra_execution_id": "{{ execution.id }}"
+          }

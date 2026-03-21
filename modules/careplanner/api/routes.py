@@ -56,7 +56,7 @@ class TriggerJourneyRequest(BaseModel):
     contact_phone_e164: str | None = None
     contact_email: str | None = None
     channel: Channel = Channel.ROCKETCHAT
-    flow_id: str = "careplanner_jornada_basica"
+    flow_id: str = "careplanner_jornada_com_fallback"
     clinico_ref: str | None = None
     appointment_id: str | None = None
 
@@ -194,7 +194,12 @@ async def whatsapp_webhook(
 
     # Processar como inbound — mesmo handler do RC
     # O service.handle_whatsapp_inbound busca care_conversation pelo phone_e164
-    await service.handle_whatsapp_inbound(phone=phone, text=text)
+    normalized_response = wa.normalize_confirmation(text)
+    await service.handle_whatsapp_inbound(
+        phone=phone,
+        text=text,
+        normalized_response=normalized_response,
+    )
     return {"status": "ok"}
 
 

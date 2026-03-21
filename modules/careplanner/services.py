@@ -200,6 +200,7 @@ class CareplannerService:
         rc_room_id: str,
         channel_conversation_id: str | int,
         content: str,
+        normalized_response: str | None = None,
         occurred_at: str | None = None,
     ) -> dict:
         conversation_id = cast_channel_conversation_id(channel_conversation_id)
@@ -241,6 +242,7 @@ class CareplannerService:
                     "rc_room_id": rc_room_id,
                     "channel_conversation_id": conversation_id,
                     "content": content,
+                    "normalized_response": normalized_response,
                     "occurred_at": occurred_at,
                 },
             ),
@@ -281,7 +283,10 @@ class CareplannerService:
             ),
         )
         if task.kestra_execution_id:
-            await self._kestra.resume_execution(task.kestra_execution_id, {"content": content})
+            resume_payload = {"content": content}
+            if normalized_response:
+                resume_payload["normalized_response"] = normalized_response
+            await self._kestra.resume_execution(task.kestra_execution_id, resume_payload)
         clinico_ref = task.metadata.get("clinico_ref") if task.metadata else None
         await notify_clinico_replied(
             ctx,
@@ -309,6 +314,7 @@ class CareplannerService:
         rc_room_id: str,
         channel_conversation_id: str | int,
         content: str,
+        normalized_response: str | None = None,
         occurred_at: str | None = None,
     ) -> dict:
         async with get_engine().begin() as conn:
@@ -327,12 +333,18 @@ class CareplannerService:
                     rc_room_id=rc_room_id,
                     channel_conversation_id=channel_conversation_id,
                     content=content,
+                    normalized_response=normalized_response,
                     occurred_at=occurred_at,
                 )
         logger.warning("Inbound Rocket.Chat sem correlacao: room=%s", rc_room_id)
         return {"ok": True, "orphan": True}
 
-    async def handle_whatsapp_inbound(self, phone: str, text: str) -> None:
+    async def handle_whatsapp_inbound(
+        self,
+        phone: str,
+        text: str,
+        normalized_response: str | None = None,
+    ) -> None:
         """Processa mensagem inbound WhatsApp — identifica tarefa pelo phone_e164."""
         phone_e164 = f"+{phone}"
         correlation_id = await self._repo.find_active_task_by_phone(phone_e164)
@@ -343,6 +355,7 @@ class CareplannerService:
 
         tenant_slug = await self._repo.get_tenant_by_correlation(correlation_id)
         ctx = TenantContext.from_slug(slug=tenant_slug, user_id="whatsapp-webhook", roles=[])
+        normalized = normalized_response or self._whatsapp.normalize_confirmation(text)
         
         # We reuse process_inbound passing a dummy/NULL channel_conversation_id/rc_room_id since WhatsApp identification resolves globally earlier
         await self.process_inbound(
@@ -351,6 +364,7 @@ class CareplannerService:
             rc_room_id="",
             channel_conversation_id=0,
             content=text,
+            normalized_response=normalized,
         )
 
     async def open_video_session(
