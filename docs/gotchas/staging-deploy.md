@@ -85,3 +85,29 @@ docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
 
 ### Fix
 - Garantir `infra/letsencrypt/` no `.gitignore` e nao usar esse ruido como sinal de deploy incompleto.
+
+## Evolution API v2.2.x nao gera QR Code — usar v2.3.7
+
+### Situacao real
+- Em 2026-03-21, as imagens `atendai/evolution-api:v2.2.0`, `v2.2.1` e `v2.2.2` foram
+  testadas no staging do IntelliCare. Todas retornam `{"count":0}` no
+  `GET /instance/connect/{name}` e ficam presas em `connectionStatus: "connecting"`
+  indefinidamente, mesmo com banco limpo, Redis limpo e Prisma migrations aplicadas.
+- O problema foi isolado ao binario Node/Baileys v6 dessas imagens: o worker do WebSocket
+  morre silenciosamente sem emitir o evento `qr`, sem log de erro visivel.
+- A imagem do ambiente de desenvolvimento local ja usava `evoapicloud/evolution-api:v2.3.7`,
+  que corrige race conditions no motor do Baileys.
+
+### Sintoma
+- `GET /instance/connect/{name}` retorna `{"count":0}`.
+- `GET /instance/connectionState/{name}` retorna `{"state":"connecting"}` para sempre.
+- Logs com `grep -iE "baileys|qr|error"` ficam mudos apos o `instance/create`.
+
+### Fix
+- Usar `evoapicloud/evolution-api:v2.3.7` (registry diferente de `atendai/`).
+- No `infra/docker-compose.yml`:
+  ```yaml
+  image: evoapicloud/evolution-api:v2.3.7
+  ```
+- Apos troca de imagem, recriar a instancia do zero (DELETE + POST create) porque
+  sessoes anteriores ficam com estado invalido no Postgres/Redis.

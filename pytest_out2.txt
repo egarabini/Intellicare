@@ -1,0 +1,60 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-9.0.2, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\egara\INTELLICARE\packages\intellicare-core
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.6.0, asyncio-1.3.0, cov-7.0.0, respx-0.22.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+packages\intellicare-core\tests\test_oswaldo.py::test_create_prescription FAILED [ 33%]
+packages\intellicare-core\tests\test_oswaldo.py::test_search_cid10 FAILED [ 66%]
+packages\intellicare-core\tests\test_oswaldo.py::test_list_prescriptions_by_encounter FAILED [100%]
+
+================================== FAILURES ===================================
+__________________________ test_create_prescription ___________________________
+
+async_client = <httpx.AsyncClient object at 0x000001D0A34A2660>
+
+    async def test_create_prescription(async_client):
+        resp = await async_client.post("/api/v1/oswaldo/prescriptions", json={
+            "encounter_id": "12345678-1234-5678-1234-567812345678",
+            "patient_id": "12345678-1234-5678-1234-567812345678",
+            "cid10_code": "J00",
+            "cid10_desc": "Rinofaringite aguda",
+            "items": [
+                {"drug": "Ibuprofeno 600mg", "posology": "1 comp 8/8h", "duration": "5 dias"}
+            ],
+        })
+>       assert resp.status_code in (200, 403)
+E       assert 405 in (200, 403)
+E        +  where 405 = <Response [405 Method Not Allowed]>.status_code
+
+packages\intellicare-core\tests\test_oswaldo.py:34: AssertionError
+______________________________ test_search_cid10 ______________________________
+
+async_client = <httpx.AsyncClient object at 0x000001D0A34CD1D0>
+
+    async def test_search_cid10(async_client):
+        resp = await async_client.get("/api/v1/oswaldo/cid10/search?q=rinofar")
+>       assert resp.status_code in (200, 403)
+E       assert 404 in (200, 403)
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+packages\intellicare-core\tests\test_oswaldo.py:41: AssertionError
+____________________ test_list_prescriptions_by_encounter _____________________
+
+async_client = <httpx.AsyncClient object at 0x000001D0A34CEFD0>
+
+    async def test_list_prescriptions_by_encounter(async_client):
+        resp = await async_client.get("/api/v1/oswaldo/prescriptions/encounter/12345678-1234-5678-1234-567812345678")
+>       assert resp.status_code in (200, 403)
+E       assert 404 in (200, 403)
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+packages\intellicare-core\tests\test_oswaldo.py:47: AssertionError
+=========================== short test summary info ===========================
+FAILED packages\intellicare-core\tests\test_oswaldo.py::test_create_prescription
+FAILED packages\intellicare-core\tests\test_oswaldo.py::test_search_cid10 - a...
+FAILED packages\intellicare-core\tests\test_oswaldo.py::test_list_prescriptions_by_encounter
+============================== 3 failed in 4.24s ==============================

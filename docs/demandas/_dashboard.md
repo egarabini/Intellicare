@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-21 | Branch: main | Último commit: 2fa8949 (DEM-051 Observabilidade Multicanal)
+> Atualizado: 2026-03-21 | Branch: main | Último commit: e50a2c2 (DEM-055 Florence Módulo Base)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -53,6 +53,14 @@
 | DEM-INF | Fix Staging — `DATABASE_CONNECTION_URI` Evolution URL-safe, path seed_flows corrigido, evolution-api HTTP 200 no staging | `fbc7996` |
 | DEM-INF | Memória Operacional — `docs/patterns/` (backend, frontend, workers), `docs/gotchas/` (careplanner, staging, keycloak), `_templates/HANDOFF.yml` | `7f708fb` |
 | DEM-051 | Observabilidade Multicanal — `GET /health/adapters` (RC+Evolution+Listmonk+Jasmin), label `channel` em `careplanner_dispatch_total`, 4 painéis Grafana por canal | `2fa8949` |
+| DEM-INF | Staging follow-up — banco `listmonk` criado, 5 vars Jasmin adicionadas ao `.env.staging`, rede Evolution OK (HTTP 200), instância `intellicare` em `close` aguarda QR | `4374f11` |
+| DEM-052 | Relatórios PDF Jornadas — `get_journey_full()`, `generate_journey_report()`, `GET /journeys/{id}/report.pdf`, `journey_report.html` Jinja2, botão `IconFileTypePdf` GestorUI, 2 testes | `9ab4623` |
+| DEM-053 | Staging WA Smoke — Evolution `evoapicloud/v2.3.7` (QR fix), `state: open`, Hello World entregue, secrets deletados, smoke E2E WhatsApp ✅ | `06a0b1e` |
+| DEM-054 | CarePlanner × Agendamento — migration 012 `appointment_id`, `link_task_to_appointment()`, `GET /appointments/{id}/journey`, TriggerModal + JourneyDetail + AppointmentCalendar, 5 testes Phase K + 10 regressão | `945f08a` |
+| DEM-055 | Florence Módulo Base — migration 013 `clinical_notes`, endpoints SOAP/FREE, `FlorenceNoteEditor`, aba "Notas Florence" em `EncounterView`, 3 testes | `e50a2c2` |
+| DEM-056 | Executor Matrix ADR — `docs/adr/ADR-001-executor-matrix.md`, 24 componentes reais classificados (Worker/Agent/Hybrid/Human), referência IA-FRAMEWORK | `c571823` |
+| DEM-057 | Florence IA — `suggest_soap()`, `_call_llm()` OpenAI-compatible + fallback rule-based, `POST /florence/notes/suggest`, botão Hybrid ClinicoUI, 5 testes | `29df484` |
+| DEM-059 | Portal Paciente — `GET /cuidado/paciente/me/journeys` + `/me/clinical-notes`, `JornadasPage.tsx`, `HistoricoPage.tsx`, privacidade `soap_a`, 6 testes | `d714194` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 ² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
@@ -67,14 +75,36 @@
 
 ---
 
-## 🔄 Em execução — Sprint 2026-03-21
+## ✅ Sprint 2026-03-21 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-INF | Staging follow-up — listmonk DB, Jasmin vars, rede Evolution OK | DEV-3/4 | `4374f11` |
+| DEM-INF | Memória Operacional — patterns, gotchas, HANDOFF template | CODEX | `7f708fb` |
+| DEM-051 | Observabilidade Multicanal — healthcheck + Grafana por canal | DEV-2 | `2fa8949` |
+| DEM-052 | Relatórios PDF Jornadas — WeasyPrint + botão GestorUI | DEV-1 | `9ab4623` |
+
+---
+
+## ✅ Sprint 2026-03-28 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-053 | Staging WA Smoke — Evolution `evoapicloud/v2.3.7`, QR + Hello World | DEV-3/4 + Eduardo | `06a0b1e` |
+| DEM-054 | CarePlanner × Agendamento — link bidirecional, 5+10 testes | DEV-1 | `945f08a` |
+| DEM-055 | Florence Módulo Base — notas SOAP/FREE, aba ClinicoUI | DEV-2 | `e50a2c2` |
+| DEM-056 | Executor Matrix ADR — 24 componentes, Camada 2 IA-FRAMEWORK | CODEX | `c571823` |
+
+---
+
+## 🔄 Em execução — Sprint 2026-04-04
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-INF | Staging follow-up — banco listmonk, JASMIN_PASSWORD, diagnóstico rede Evolution | DEV-3/4 | ⏳ spec: `DEM-INF_STAGING_EVOLUTION/05_FINALIZACAO.md` |
-| DEM-INF | Memória Operacional — patterns, gotchas, HANDOFF template | CODEX | ✅ `7f708fb` |
-| DEM-051 | Observabilidade Multicanal — healthcheck adapters + Grafana por canal | DEV-2 | ✅ `2fa8949` |
-| DEM-052 | Relatórios PDF Jornadas — WeasyPrint template + botão GestorUI | DEV-1 | ⏳ spec: `DEM-052_RELATORIOS_PDF/` |
+| DEM-057 | Florence IA — sugestão SOAP com LLM + fallback rule-based | DEV-2 | ✅ `29df484` |
+| DEM-058 | Oswaldo Módulo Base — prescrições + CID-10 + EncounterView | DEV-1 | ⏳ spec: `DEM-058_OSWALDO_MODULO_BASE/` |
+| DEM-059 | Portal Paciente Notas — jornadas + histórico clínico | CODEX | ✅ `d714194` |
+| DEM-060 | Staging Full Sync — migrations 012–014, Florence+Oswaldo UP | DEV-3/4 | ⏳ spec: `DEM-060_STAGING_FULL_SYNC/` |
 
 ---
 
@@ -82,19 +112,20 @@
 
 | DEM | Dev | Spec |
 |-----|-----|------|
-| DEM-INF Memória Operacional | CODEX | ✅ entregue `7f708fb` |
-| DEM-051 Observabilidade Multicanal | DEV-2 | ✅ entregue `2fa8949` |
-| DEM-052 Relatórios PDF | DEV-1 | ✅ `docs/demandas/DEM-052_RELATORIOS_PDF/BRIEFING.md` |
+| DEM-057 Florence IA | DEV-2 | ✅ `docs/demandas/DEM-057_FLORENCE_IA/BRIEFING.md` |
+| DEM-058 Oswaldo Módulo Base | DEV-1 | ✅ `docs/demandas/DEM-058_OSWALDO_MODULO_BASE/BRIEFING.md` |
+| DEM-059 Portal Paciente Notas | CODEX | ✅ `docs/demandas/DEM-059_PORTAL_PACIENTE_NOTAS/BRIEFING.md` |
+| DEM-060 Staging Full Sync | DEV-3/4 | ✅ `docs/demandas/DEM-060_STAGING_FULL_SYNC/BRIEFING.md` |
 
 ---
 
 ## Distribuição sprint atual
 
 ```
-DEV-3/4    → DEM-INF Staging follow-up (~1h)  — fixes: listmonk DB, JASMIN_PASSWORD, diagnóstico Evolution
-CODEX      → DEM-INF Memória Operacional (~3h) — docs/patterns + docs/gotchas + HANDOFF.yml
-DEV-2      → DEM-051 Observabilidade (~2.5h)   — healthcheck + Grafana por canal
-DEV-1      → DEM-052 Relatórios PDF (~3h)       — WeasyPrint template + botão GestorUI
+DEV-2   → DEM-057 Florence IA         (~4h)   — suggest SOAP, fallback rule-based, botão Hybrid
+DEV-1   → DEM-058 Oswaldo Módulo Base (~4h)   — migration 014, CID-10, prescrições, EncounterView
+CODEX   → DEM-059 Portal Paciente     (~3h)   — /me/journeys, /me/clinical-notes, PacienteUI
+DEV-3/4 → DEM-060 Staging Full Sync   (~1.5h) — após P1+P2+P3 em main
 ```
 
 ## Credenciais de teste (ambiente local)

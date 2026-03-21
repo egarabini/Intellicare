@@ -5,7 +5,7 @@ import {
   Group, Text, Divider, Alert, Select, Tabs
 } from '@mantine/core'
 import { useDebouncedValue } from '@mantine/hooks'
-import { IconAlertCircle, IconNotes, IconStethoscope } from '@tabler/icons-react'
+import { IconAlertCircle, IconNotes, IconStethoscope, IconPill } from '@tabler/icons-react'
 import {
   useEncounterHistory,
   useOpenEncounter,
@@ -18,6 +18,8 @@ import { SLMAssistant } from '../components/SLMAssistant'
 import apiClient from '../api/client'
 import { FlorenceNoteEditor } from '../components/FlorenceNoteEditor'
 import { FlorenceNoteList, ClinicalNote } from '../components/FlorenceNoteList'
+import { OswaldoCID10Search, CID10Result } from '../components/OswaldoCID10Search'
+import { OswaldoPrescriptionEditor } from '../components/OswaldoPrescriptionEditor'
 
 export function EncounterView() {
   const { patientId } = useParams<{ patientId: string }>()
@@ -42,6 +44,7 @@ export function EncounterView() {
   const activeEncounter = encounters?.find(e => e.status === 'open')
 
   const [florenceNotes, setFlorenceNotes] = useState<ClinicalNote[]>([])
+  const [oswaldoCid10, setOswaldoCid10] = useState<CID10Result | null>(null)
 
   const fetchFlorenceNotes = async () => {
     if (!activeEncounter) return;
@@ -104,6 +107,7 @@ export function EncounterView() {
             <Tabs defaultValue="florence" mt="md">
               <Tabs.List>
                 <Tabs.Tab value="florence" leftSection={<IconNotes size={14} />}>Notas Florence</Tabs.Tab>
+                <Tabs.Tab value="oswaldo" leftSection={<IconPill size={14} />}>Prescrição</Tabs.Tab>
                 <Tabs.Tab value="legado" leftSection={<IconStethoscope size={14} />}>Legado</Tabs.Tab>
               </Tabs.List>
 
@@ -113,6 +117,18 @@ export function EncounterView() {
                   <Divider />
                   <Title order={5}>Histórico de Notas (Florence)</Title>
                   <FlorenceNoteList notes={florenceNotes} />
+                  <Divider my="md" />
+                  <Button color="red" variant="outline" onClick={handleClose} loading={closeEncounter.isPending}>
+                    Fechar Encontro
+                  </Button>
+                </Stack>
+              </Tabs.Panel>
+
+              <Tabs.Panel value="oswaldo" pt="md">
+                <Stack>
+                  <OswaldoCID10Search onSelect={setOswaldoCid10} />
+                  <Divider />
+                  <OswaldoPrescriptionEditor encounterId={activeEncounter.id} patientId={pid} cid10={oswaldoCid10} />
                   <Divider my="md" />
                   <Button color="red" variant="outline" onClick={handleClose} loading={closeEncounter.isPending}>
                     Fechar Encontro
