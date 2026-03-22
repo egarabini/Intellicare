@@ -108,5 +108,5 @@ async def api_check_interactions(
 ):
     if not ctx.has_role("CLINICO"):
         raise api_error(403, "forbidden", "Role 'CLINICO' necessaria")
-    warnings, pairs_count = check_interactions(req.medications)
+    warnings, pairs_count = await check_interactions(req.medications)
     return CheckInteractionsResponse(warnings=warnings, checked_pairs=pairs_count)

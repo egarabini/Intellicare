@@ -1,0 +1,272 @@
+[
+  {
+    "drug_a": "varfarina",
+    "drug_b": "ácido acetilsalicílico",
+    "aliases_a": ["varfarina", "warfarina", "coumadin", "marevan"],
+    "aliases_b": ["aas", "aspirina", "ácido acetilsalicílico", "asa", "somálgin"],
+    "severity": "GRAVE",
+    "effect": "Risco hemorrágico significativamente aumentado devido à inibição plaquetária e potencialização do efeito anticoagulante.",
+    "recommendation": "Evitar combinação. Se necessário, monitorar INR rigorosamente e avaliar uso de protetor gástrico."
+  },
+  {
+    "drug_a": "fluoxetina",
+    "drug_b": "tramadol",
+    "aliases_a": ["fluoxetina", "prozac", "daforin", "eufor", "psiquial"],
+    "aliases_b": ["tramadol", "tramal", "sylador", "revange"],
+    "severity": "GRAVE",
+    "effect": "Risco elevado de Síndrome Serotoninérgica (agitação, hipertermia, taquicardia, rigidez muscular) e redução do limiar convulsivo.",
+    "recommendation": "Evitar uso concomitante. Substituir por outro analgésico."
+  },
+  {
+    "drug_a": "sildenafil",
+    "drug_b": "isossorbida",
+    "aliases_a": ["sildenafil", "citrato de sildenafila", "viagra", "pramil", "dejavu"],
+    "aliases_b": ["isossorbida", "mononitrato de isossorbida", "dinitrato de isossorbida", "isordil", "monocordil", "supracordil"],
+    "severity": "GRAVE",
+    "effect": "Hipotensão profunda e perigosa devido à potencialização extrema dos efeitos vasodilatadores.",
+    "recommendation": "Contraindicação absoluta. Alternativas devem ser buscadas."
+  },
+  {
+    "drug_a": "sildenafil",
+    "drug_b": "nitroglicerina",
+    "aliases_a": ["sildenafil", "citrato de sildenafila", "viagra", "pramil", "dejavu"],
+    "aliases_b": ["nitroglicerina", "tridil", "nitradisc"],
+    "severity": "GRAVE",
+    "effect": "Hipotensão profunda, choque ou isquemia miocárdica.",
+    "recommendation": "Contraindicação absoluta."
+  },
+  {
+    "drug_a": "espironolactona",
+    "drug_b": "enalapril",
+    "aliases_a": ["espironolactona", "aldactone", "diacqua"],
+    "aliases_b": ["enalapril", "maleato de enalapril", "renitec", "enalabal"],
+    "severity": "MODERADO",
+    "effect": "Risco de hipercalemia aditiva grave. Inibidores da ECA poupam potássio assim como a espironolactona.",
+    "recommendation": "Monitorar potássio sérico e função renal frequentemente, principalmente em idosos ou nefropatas."
+  },
+  {
+    "drug_a": "espironolactona",
+    "drug_b": "losartana",
+    "aliases_a": ["espironolactona", "aldactone", "diacqua"],
+    "aliases_b": ["losartana", "losartana potássica", "cozaar", "aradois", "zart"],
+    "severity": "MODERADO",
+    "effect": "Risco de hipercalemia devido ao mecanismo aditivo.",
+    "recommendation": "Monitorar K+ e creatinina laboratorialmente."
+  },
+  {
+    "drug_a": "digoxina",
+    "drug_b": "amiodarona",
+    "aliases_a": ["digoxina", "lanoxin"],
+    "aliases_b": ["amiodarona", "cloridrato de amiodarona", "ancoron", "atlansil"],
+    "severity": "GRAVE",
+    "effect": "Elevação drástica das concentrações séricas de digoxina (até 70%), aumentando risco de toxicidade digitálica (arritmias).",
+    "recommendation": "Reduzir dose da digoxina em 30-50% e monitorar níveis e ECG. Observar sintomas de toxicidade."
+  },
+  {
+    "drug_a": "lítio",
+    "drug_b": "hidroclorotiazida",
+    "aliases_a": ["lítio", "carbonato de lítio", "carbolitium"],
+    "aliases_b": ["hidroclorotiazida", "hctz", "diuretic", "clorana"],
+    "severity": "GRAVE",
+    "effect": "Redução acentuada na excreção renal de lítio, causando acúmulo e neurotoxicidade.",
+    "recommendation": "Monitorar níveis plasmáticos de lítio. Dose de lítio geralmente precisa ser reduzida em até 50%."
+  },
+  {
+    "drug_a": "lítio",
+    "drug_b": "ibuprofeno",
+    "aliases_a": ["lítio", "carbonato de lítio", "carbolitium"],
+    "aliases_b": ["ibuprofeno", "advil", "alivium", "buprovil", "motrin"],
+    "severity": "GRAVE",
+    "effect": "Aumento dos níveis plasmáticos do lítio e risco de intoxicação em função da alteração na filtração renal.",
+    "recommendation": "Buscar alternativas sistêmicas. Avaliar exames séricos contínuos."
+  },
+  {
+    "drug_a": "simvastatina",
+    "drug_b": "claritromicina",
+    "aliases_a": ["simvastatina", "zocor", "sinvastacor", "sinvalip"],
+    "aliases_b": ["claritromicina", "klaricid", "claritrom", "clamicina"],
+    "severity": "GRAVE",
+    "effect": "A claritromicina inibe a CYP3A4, aumentando fortemente a concentração da simvastatina e o risco de rabdomiólise.",
+    "recommendation": "Suspender temporariamente a simvastatina ou usar alternativa (como azitromicina)."
+  },
+  {
+    "drug_a": "atorvastatina",
+    "drug_b": "itraconazol",
+    "aliases_a": ["atorvastatina", "atorvastatina cálcica", "lipitor", "lípide", "colastin"],
+    "aliases_b": ["itraconazol", "sporanox", "traconal", "itracol"],
+    "severity": "GRAVE",
+    "effect": "Inibição de degradação metabólica mediada por enzima, gerando acúmulo sistêmico e miopatias.",
+    "recommendation": "Monitorar rigorosamente por sintomatologias musculares ou trocar o antifúngico."
+  },
+  {
+    "drug_a": "clopidogrel",
+    "drug_b": "omeprazol",
+    "aliases_a": ["clopidogrel", "bissulfato de clopidogrel", "plavix", "iscover"],
+    "aliases_b": ["omeprazol", "prilosec", "losec", "peprazol", "omeprazol sódico"],
+    "severity": "GRAVE",
+    "effect": "Omeprazol inibe o metabolismo via CYP2C19, reduzindo os níveis do metabólito ativo do clopidogrel, diminuindo sua eficácia antitrombótica.",
+    "recommendation": "Considere pantoprazol caso inibição de prótons seja estritamente indicada."
+  },
+  {
+    "drug_a": "metformina",
+    "drug_b": "álcool",
+    "aliases_a": ["metformina", "cloridrato de metformina", "glifage", "gluformin", "dimefor"],
+    "aliases_b": ["álcool", "etanol", "bebida alcoólica"],
+    "severity": "MODERADO",
+    "effect": "Risco de precipitação de acidose lática, especialmente no fígado deficiente. Aumenta risco de hipoglicemia.",
+    "recommendation": "Instruir abstinência a pacientes ou uso excepcionalmente infrequente."
+  },
+  {
+    "drug_a": "ciprofloxacino",
+    "drug_b": "tizanidina",
+    "aliases_a": ["ciprofloxacino", "cloridrato de ciprofloxacino", "cipro", "biamotil", "quinoflox"],
+    "aliases_b": ["tizanidina", "sirdalud"],
+    "severity": "GRAVE",
+    "effect": "Ciprofloxacino inibe fortemente a CYP1A2, resultando em concentrações elevadas de tizanidina (hipotensão drástica, sonolência profunda).",
+    "recommendation": "Combinação estritamente contraindicada. Trocar o antibiótico se houver necessidade do relaxante muscular."
+  },
+  {
+    "drug_a": "alopurinol",
+    "drug_b": "azatioprina",
+    "aliases_a": ["alopurinol", "zyloric", "alopurin"],
+    "aliases_b": ["azatioprina", "imuran", "imunoprinf"],
+    "severity": "GRAVE",
+    "effect": "Alopurinol desativa enzima (imunossupressão), almentando niveis toxicos de azatioprina que pode ser fatal causando mielossupressao grave.",
+    "recommendation": "Geralmente requeridos cortes bruscos na dosagem da Azatioprina em até 75% da usual."
+  },
+  {
+    "drug_a": "varfarina",
+    "drug_b": "amiodarona",
+    "aliases_a": ["varfarina", "warfarina", "coumadin", "marevan"],
+    "aliases_b": ["amiodarona", "cloridrato de amiodarona", "ancoron", "atlansil"],
+    "severity": "GRAVE",
+    "effect": "Inibição de metabolismo de Varfarina, elevando massivelmente o INR para patamares hemorrágicos em dias.",
+    "recommendation": "Obrigatoriamente reduzir a prescrição anterior de Warfarina entre um terço a 50% e solicitar INR contínuo."
+  },
+  {
+    "drug_a": "varfarina",
+    "drug_b": "fluconazol",
+    "aliases_a": ["varfarina", "warfarina", "coumadin", "marevan"],
+    "aliases_b": ["fluconazol", "zoltec", "triazol", "candicort", "fluconal"],
+    "severity": "GRAVE",
+    "effect": "Alta inibição estérica pela CYP2C9 no sangue causando inibição grave do metabolismo reverso da warfarina com picos hemorrágicos rápidos.",
+    "recommendation": "Caso uso for temporário evitar. Reduzir a warf caso uso crônico seja forçoso e acompanhar a coagulometria."
+  },
+  {
+    "drug_a": "varfarina",
+    "drug_b": "ibuprofeno",
+    "aliases_a": ["varfarina", "warfarina", "coumadin", "marevan"],
+    "aliases_b": ["ibuprofeno", "advil", "alivium", "buprovil", "motrin"],
+    "severity": "GRAVE",
+    "effect": "Prejuízo gástrico somado ao efeito inibitório mecânico das plaquetas pelo NSAID, com alto risco de Sangramentos Ocultos Extremos digestivos.",
+    "recommendation": "Evitar NSAIDs nestes pacientes, preferir sintomáticos puros."
+  },
+  {
+    "drug_a": "sertralina",
+    "drug_b": "selegilina",
+    "aliases_a": ["sertralina", "zoloft", "tolrest", "assert", "serenata"],
+    "aliases_b": ["selegilina", "jumexil", "eldepryl", "deprenyl"],
+    "severity": "GRAVE",
+    "effect": "Combinação entre inibidores e antidepressivo (iMAO + ISRS) provocando toxicidade neurológica da via da serotonina.",
+    "recommendation": "Aguardar ao menos quinzenas (14 dias) na supressão entre uma droga para introduzir a outra. Estritamente Contra-Indicadas via simuntânea."
+  },
+  {
+    "drug_a": "citalopram",
+    "drug_b": "linezolida",
+    "aliases_a": ["citalopram", "bromidrato de citalopram", "cipramil", "procimax", "denyl"],
+    "aliases_b": ["linezolida", "zyvox"],
+    "severity": "GRAVE",
+    "effect": "O antimicrobiano (linezolida) reage bloqueando enzimas da monoaminoxidase, gerando crises serotoninérgicas quando aditiva.",
+    "recommendation": "Evitar ISRS. Caso prescrita perentoriamente de urgência considerar suspensão do Citalopram."
+  },
+  {
+    "drug_a": "tadalafila",
+    "drug_b": "propatilnitrato",
+    "aliases_a": ["tadalafila", "cialis", "zelle", "dilecta"],
+    "aliases_b": ["propatilnitrato", "sustrate"],
+    "severity": "GRAVE",
+    "effect": "Hipotensão profunda mediada por via do NO/GMPc colapsante, falência de pré-carga.",
+    "recommendation": "Evitar absoluto."
+  },
+  {
+    "drug_a": "digoxina",
+    "drug_b": "verapamil",
+    "aliases_a": ["digoxina", "lanoxin"],
+    "aliases_b": ["verapamil", "dilacoron", "isotin"],
+    "severity": "GRAVE",
+    "effect": "Verapamil diminui a clearance orgânica da digoxina de forma persistente, bloqueando emissores P-gp (toxicidade cronotrópica fatal).",
+    "recommendation": "Manejar dose de base mantenedora da Digoxina reduzindo pela metade ou menos."
+  },
+  {
+    "drug_a": "digoxina",
+    "drug_b": "claritromicina",
+    "aliases_a": ["digoxina", "lanoxin"],
+    "aliases_b": ["claritromicina", "klaricid", "claritrom", "clamicina"],
+    "severity": "GRAVE",
+    "effect": "Semelhante com verapamil, o antibiótico macrolídeo impacta na depuração orgânica e aumenta bruscamente a digoxinemia com arritmias visíveis.",
+    "recommendation": "Substituição do antibiotérico empírico perante paciente de ICC crônica para não saturar via digestiva."
+  },
+  {
+    "drug_a": "metotrexato",
+    "drug_b": "naproxeno",
+    "aliases_a": ["metotrexato", "mtx", "miantrex"],
+    "aliases_b": ["naproxeno", "flanax", "naprosyn", "naxotec"],
+    "severity": "GRAVE",
+    "effect": "A inibição de prostaglandinas tubulares por NSAIDs bloqueia o escoamento tóxico de MTX renal induzindo à supressões imunes pesadas agudas.",
+    "recommendation": "Observar rigidez nos sintomas sanguíneos e ajustar dose de MTX ao mínimo associativo prescritível."
+  },
+  {
+    "drug_a": "azitromicina",
+    "drug_b": "amiodarona",
+    "aliases_a": ["azitromicina", "zitromax", "astro"],
+    "aliases_b": ["amiodarona", "cloridrato de amiodarona", "ancoron", "atlansil"],
+    "severity": "GRAVE",
+    "effect": "Prolongamento do intervalo QT de somatória farmacodinâmica de drogas, acarretando fibrilação (tipificada como TdP - Torsades de Pointes).",
+    "recommendation": "Avaliar telemetria e evitar esta junção macrolídeo/antiarrítmico de preferência via prescrição alternativa (doxiciclina ou bactrim)."
+  },
+  {
+    "drug_a": "levofloxacino",
+    "drug_b": "ondansetrona",
+    "aliases_a": ["levofloxacino", "tavanic", "tamiram"],
+    "aliases_b": ["ondansetrona", "cloridrato de ondansetrona", "vonau", "zofran", "nausedron"],
+    "severity": "GRAVE",
+    "effect": "As associações de inibição prolongam perigosa somatória do feixe do eletrocardiograma (Intervalo QT), induzindo síncope e parada rítmica letal.",
+    "recommendation": "Verificar fator QT de risco da anamnese. Repor eletrólitos preventivamente e usar outra classe antiemética não restrita."
+  },
+  {
+    "drug_a": "metformina",
+    "drug_b": "contraste iodado",
+    "aliases_a": ["metformina", "cloridrato de metformina", "glifage", "gluformin", "dimefor"],
+    "aliases_b": ["contraste iodado", "ioexol", "iodo", "omnipaque"],
+    "severity": "GRAVE",
+    "effect": "Risco de desenvolvimento brusco e violento de injúria renal associada à acidose lática grave que leva à prostração celular e colapso.",
+    "recommendation": "Aguardar ao mínimo 48h pré/pós exame de CT resguardando o clearance sem administração."
+  },
+  {
+    "drug_a": "sulfametoxazol",
+    "drug_b": "metotrexato",
+    "aliases_a": ["sulfametoxazol", "bactrim", "sulfametoxazol + trimetoprima", "bactrisan"],
+    "aliases_b": ["metotrexato", "mtx", "miantrex"],
+    "severity": "GRAVE",
+    "effect": "Concorrimento e competição exacerbada de reações do Ácido Fólico no ciclo metabólico resultando em citopenias aplásicas intensas e toxicidade combinada.",
+    "recommendation": "Evitar a bactrimetria por completo nos usuários MTX e priorizar Beta-Lactámimicos adequados."
+  },
+  {
+    "drug_a": "amitriptilina",
+    "drug_b": "metadona",
+    "aliases_a": ["amitriptilina", "cloridrato de amitriptilina", "tryptanol", "amytril"],
+    "aliases_b": ["metadona", "mytedon", "metadon"],
+    "severity": "GRAVE",
+    "effect": "Ampliação maciça de QTc somados às inibições monoaminérgicas cerebrais que deprimem o sistema respiratório perigosa e subitamente.",
+    "recommendation": "Necessário o monitorar da respiração continuado e buscar alternativa ou titulação em decréscimo se estritamente indispensável."
+  },
+  {
+    "drug_a": "simvastatina",
+    "drug_b": "amiodarona",
+    "aliases_a": ["simvastatina", "zocor", "sinvastacor", "sinvalip"],
+    "aliases_b": ["amiodarona", "cloridrato de amiodarona", "ancoron", "atlansil"],
+    "severity": "MODERADO",
+    "effect": "Comprometimento restriitvo e parcial na depuração da estatina perante o arrítmico que pode causar quadro de dores musculares (estagio de lise fraca).",
+    "recommendation": "Prescrever apenas posologias controladas com 20mg máximos de simvastatina p/d aos usuários estabilizados de amiodarona."
+  }
+]

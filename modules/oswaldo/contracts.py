@@ -89,3 +89,19 @@ class ReceituarioData(BaseModel):
 
     prescription_validity_days: int | None = None
     prescription_number: str | None = None
+
+
+class InteractionWarning(BaseModel):
+    drug_a: str
+    drug_b: str
+    severity: Literal["GRAVE", "MODERADO", "LEVE"]
+    effect: str
+    recommendation: str
+    source: Literal["static", "llm"]
+
+class CheckInteractionsRequest(BaseModel):
+    medications: list[str]
+
+class CheckInteractionsResponse(BaseModel):
+    warnings: list[InteractionWarning]
+    checked_pairs: int

@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Button, TextInput, Stack, Paper, Title, ActionIcon, Group, Text, Card, Badge, Box, Menu } from '@mantine/core';
+import { useDebouncedValue } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { IconTrash, IconSparkles, IconPrinter } from '@tabler/icons-react';
 import apiClient from '../api/client';
 import { CID10Result } from './OswaldoCID10Search';
+import { InteractionWarningBanner, InteractionWarning } from './InteractionWarningBanner';
 
 interface PrescriptionItem {
   drug: string;
@@ -40,6 +42,31 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
   const [suggestionConfidence, setSuggestionConfidence] = useState<string | null>(null);
   
   const [history, setHistory] = useState<Prescription[]>([]);
+  const [warnings, setWarnings] = useState<InteractionWarning[]>([]);
+
+  // Extrai lista de remédios para validação (itens já na lista + digitando no input)
+  const currentMeds = [...items.map(i => i.drug), drug].filter(d => d && d.trim().length > 2);
+  const [debouncedMeds] = useDebouncedValue(currentMeds, 500);
+
+  useEffect(() => {
+    let active = true;
+    const fetchInteractions = async () => {
+      if (debouncedMeds.length < 2) {
+        setWarnings([]);
+        return;
+      }
+      try {
+        const { data } = await apiClient.post('/oswaldo/check-interactions', { medications: debouncedMeds });
+        if (active) setWarnings(data.warnings || []);
+      } catch (err) {
+        console.error("Falha ao checar interações", err);
+      }
+    };
+    fetchInteractions();
+    return () => { active = false; };
+  }, [debouncedMeds]);
+
+  const handleDismissWarning = () => setWarnings([]);
 
   const handlePrint = (rxId: number, type: 'simple' | 'special_control') => {
     const baseUrl = apiClient.defaults.baseURL || '';
@@ -174,6 +201,10 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
           <TextInput label="Duração" placeholder="Ex: 5 dias" value={duration} onChange={e => setDuration(e.currentTarget.value)} style={{ flex: 1 }} data-testid="oswaldo-duration" />
           <Button variant="light" onClick={handleAddItem}>+ Adicionar</Button>
         </Group>
+
+        {warnings.length > 0 && (
+          <InteractionWarningBanner warnings={warnings} onDismiss={handleDismissWarning} />
+        )}
 
         <Button onClick={handleSave} loading={loading} disabled={items.length === 0}>
           Salvar Prescrição
