@@ -5,11 +5,14 @@ from intellicare_core.contracts.base import TenantContext
 from modules.oswaldo.contracts import (
     OswaldoSuggestRequest, OswaldoSuggestion, PrescriptionItem,
 )
-from modules.shared.llm import call_llm
+from modules.shared.llm import call_llm, get_prompt_template
 
-OSWALDO_PROMPT = """
+OSWALDO_CID10_PROMPT_FALLBACK = """
 Você é um assistente clínico. Com base nas informações abaixo, sugira:
 1. O CID-10 mais provável (código e descrição curta)
+"""
+
+OSWALDO_PRESCRIPTION_PROMPT_FALLBACK = """
 2. Uma prescrição inicial com até 3 itens (medicamento, posologia, duração)
 
 Queixa principal: {chief_complaint}
@@ -28,7 +31,10 @@ Responda APENAS com JSON no formato:
 
 
 async def suggest(ctx: TenantContext, req: OswaldoSuggestRequest) -> OswaldoSuggestion:
-    prompt = OSWALDO_PROMPT.format(
+    del ctx
+    cid10_prompt = await get_prompt_template("oswaldo_cid10", OSWALDO_CID10_PROMPT_FALLBACK)
+    prescription_prompt = await get_prompt_template("oswaldo_prescription", OSWALDO_PRESCRIPTION_PROMPT_FALLBACK)
+    prompt = f"{cid10_prompt.strip()}\n{prescription_prompt.strip()}".format(
         chief_complaint=req.chief_complaint,
         recent_diagnoses=", ".join(req.recent_diagnoses or []) or "nenhum",
         current_medications=", ".join(req.current_medications or []) or "nenhum",

@@ -24,6 +24,10 @@ from .schemas import (
     ModuleOut,
     ModuleStatusUpdate,
     PagedResponse,
+    PromptTemplateActivateRequest,
+    PromptTemplateCreate,
+    PromptTemplateGroupOut,
+    PromptTemplateListResponse,
     ServerCreate,
     ServerOut,
     ServerUpdate,
@@ -201,6 +205,44 @@ async def get_tenant_config(slug: str, actor: AdminRequired) -> TenantConfigResp
 async def set_tenant_config(slug: str, key: str, body: TenantConfigItem, actor: AdminRequired) -> TenantConfigItem:
     result = await _service.set_tenant_config(slug, body.key, body.value, actor)
     return TenantConfigItem(**result)
+
+
+@router.get("/prompts", response_model=PromptTemplateListResponse)
+async def list_prompts(actor: AdminRequired) -> PromptTemplateListResponse:
+    del actor
+    items = await _service.list_prompt_templates()
+    return PromptTemplateListResponse(items=[PromptTemplateGroupOut(**item) for item in items])
+
+
+@router.post("/prompts", response_model=PromptTemplateGroupOut, status_code=status.HTTP_201_CREATED)
+async def create_prompt(payload: PromptTemplateCreate, actor: AdminRequired) -> PromptTemplateGroupOut:
+    await _service.create_prompt_template(payload, actor)
+    group = await _service.get_prompt_group(payload.prompt_key)
+    return PromptTemplateGroupOut(**group)
+
+
+@router.post("/prompts/{prompt_key}/activate", response_model=PromptTemplateGroupOut)
+async def activate_prompt(
+    prompt_key: str,
+    payload: PromptTemplateActivateRequest,
+    actor: AdminRequired,
+) -> PromptTemplateGroupOut:
+    try:
+        group = await _service.activate_prompt_template(prompt_key, payload, actor)
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return PromptTemplateGroupOut(**group)
+
+
+@router.post("/prompts/{prompt_key}/rollback", response_model=PromptTemplateGroupOut)
+async def rollback_prompt(prompt_key: str, actor: AdminRequired) -> PromptTemplateGroupOut:
+    try:
+        group = await _service.rollback_prompt_template(prompt_key, actor)
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    return PromptTemplateGroupOut(**group)
 
 
 @router.post(

@@ -120,6 +120,7 @@ TENANT_MIGRATIONS = [
 PLATFORM_MIGRATIONS = [
     ROOT / "db" / "platform_migrations" / "001_platform_tables.sql",
     ROOT / "db" / "platform_migrations" / "002_financeiro_tables.sql",
+    ROOT / "db" / "platform_migrations" / "017_prompt_templates.sql",
 ]
 
 
