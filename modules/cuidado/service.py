@@ -1050,6 +1050,39 @@ class CuidadoService:
         page = events[offset: offset + limit]
         return {"patient_id": pid, "total": total, "items": page}
 
+    # ------------------------------------------------------------------
+    # DEM-076: Portal Paciente Avançado — Timeline filtrada
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _apply_portal_privacy_filter(events: list[dict]) -> list[dict]:
+        """Remove ou mascara campos privados antes de expor ao paciente."""
+        filtered = []
+        for event in events:
+            meta = event.get("metadata") or {}
+            if event["event_type"] == "clinical_note":
+                meta.pop("soap_a", None)
+                meta.pop("soap_p", None)
+            if event["event_type"] == "encounter":
+                meta.pop("soap_a", None)
+            if event["event_type"] == "care_task":
+                meta.pop("triage_notes", None)
+            event["metadata"] = meta
+            filtered.append(event)
+        return filtered
+
+    async def paciente_timeline(
+        self, ctx: TenantContext, limit: int = 20, offset: int = 0,
+    ) -> dict:
+        """Timeline do paciente com filtro de privacidade aplicado."""
+        pid = await self._get_patient_id_for_user(ctx)
+        if not pid:
+            return {"patient_id": "", "total": 0, "items": []}
+
+        result = await self.clinical_timeline(ctx, pid, limit, offset)
+        result["items"] = self._apply_portal_privacy_filter(result["items"])
+        return result
+
     async def _table_exists(self, ctx: TenantContext, db, table_name: str) -> bool:
         cache_key = (ctx.schema, table_name)
         cached = self._table_exists_cache.get(cache_key)

@@ -14,7 +14,7 @@ from intellicare_core.auth.jwt import get_current_tenant
 from .schemas import (
     ClinicalAskRequest, EncounterCreate, NoteCreate, PatientCreate,
     PatientClinicalUpdate, EncounterUpdate, PacienteMeUpdate,
-    PacienteClinicalNoteItem, PacienteJourneyItem,
+    PacienteClinicalNoteItem, PacienteJourneyItem, ClinicalTimelineResponse,
     GroupCreate, GroupUpdate, AddMember, ProfessionalCreate, ProfessionalUpdate,
 )
 from .service import CuidadoService
@@ -201,6 +201,16 @@ async def paciente_update_me(body: PacienteMeUpdate, ctx: Paciente):
 @router.get("/paciente/clinic-info")
 async def paciente_clinic_info(ctx: Paciente):
     return await _svc.paciente_clinic_info(ctx)
+
+
+@router.get("/paciente/me/timeline", response_model=ClinicalTimelineResponse)
+async def paciente_me_timeline(
+    ctx: Paciente,
+    limit: int = Query(20, le=50),
+    offset: int = Query(0, ge=0),
+):
+    """DEM-076: Linha do tempo do paciente com filtro de privacidade."""
+    return await _svc.paciente_timeline(ctx, limit, offset)
 
 
 # ── DEM-032: Grupos de Profissionais ─────────────────────────────────────────
