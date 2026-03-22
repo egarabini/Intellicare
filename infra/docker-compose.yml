@@ -224,6 +224,90 @@ services:
     networks:
       - intellicare-net
 
+  marie-db:
+    image: postgres:15-alpine
+    container_name: marie-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dify
+      POSTGRES_USER: dify
+      POSTGRES_PASSWORD: ${MARIE_DB_PASSWORD}
+    volumes:
+      - marie_db_data:/var/lib/postgresql/data
+    networks:
+      - intellicare-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dify -d dify"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  marie-redis:
+    image: redis:7-alpine
+    container_name: marie-redis
+    restart: unless-stopped
+    command: redis-server --requirepass ${MARIE_REDIS_PASSWORD}
+    networks:
+      - intellicare-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${MARIE_REDIS_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  marie-api:
+    image: langgenius/dify-api:0.6.11
+    container_name: marie-api
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      MODE: api
+      DATABASE_URL: postgresql://dify:${MARIE_DB_PASSWORD}@marie-db:5432/dify
+      REDIS_URL: redis://:${MARIE_REDIS_PASSWORD}@marie-redis:6379/0
+      SECRET_KEY: ${MARIE_SECRET_KEY}
+      STORAGE_TYPE: local
+    depends_on:
+      marie-db:
+        condition: service_healthy
+      marie-redis:
+        condition: service_healthy
+    networks:
+      - intellicare-net
+
+  marie-worker:
+    image: langgenius/dify-api:0.6.11
+    container_name: marie-worker
+    restart: unless-stopped
+    environment:
+      MODE: worker
+      DATABASE_URL: postgresql://dify:${MARIE_DB_PASSWORD}@marie-db:5432/dify
+      REDIS_URL: redis://:${MARIE_REDIS_PASSWORD}@marie-redis:6379/0
+      SECRET_KEY: ${MARIE_SECRET_KEY}
+      STORAGE_TYPE: local
+    depends_on:
+      marie-db:
+        condition: service_healthy
+      marie-redis:
+        condition: service_healthy
+    networks:
+      - intellicare-net
+
+  marie-web:
+    image: langgenius/dify-web:0.6.11
+    container_name: marie-web
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    environment:
+      CONSOLE_API_URL: http://localhost:5001
+      APP_API_URL: http://localhost:5001
+    depends_on:
+      - marie-api
+    networks:
+      - intellicare-net
+
   jitsi-web:
     image: jitsi/web:stable
     container_name: jitsi-web
@@ -590,6 +674,7 @@ volumes:
   grafana_data:
   kestra_data:
   mongo_data:
+  marie_db_data:
   rocketchat_uploads:
   jitsi_web:
   jitsi_prosody:

@@ -41,6 +41,11 @@ class Settings(BaseSettings):
     ollama_embed_model: str = "nomic-embed-text"
     ollama_generate_model: str = "qwen2.5:7b"
 
+    marie_enabled: bool = False
+    marie_api_url: str = "http://marie-api:5001"
+    marie_api_key: str = ""
+    marie_timeout_seconds: int = 10
+
     secret_key: str = "dev-secret-key-change-in-production"
     environment: str = "development"
     log_level: str = "DEBUG"
