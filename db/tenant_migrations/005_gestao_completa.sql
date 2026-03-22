@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS professionals (
     council_number TEXT,
     specialty   TEXT,
     crm         TEXT,
-    unit_id     INTEGER REFERENCES units(id) ON DELETE SET NULL,
+    unit_id     INTEGER,
     keycloak_id TEXT UNIQUE,
     phone       TEXT,
     email       TEXT,
