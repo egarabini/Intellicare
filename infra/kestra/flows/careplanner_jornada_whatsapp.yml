@@ -22,7 +22,7 @@ variables:
 tasks:
   - id: open_task
     type: io.kestra.plugin.core.http.Request
-    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    uri: "http://intellicare-service:8000/careplanner/tasks/open"
     method: POST
     headers:
       Authorization: "Bearer {{ vars.tenant_jwt }}"
@@ -46,7 +46,7 @@ tasks:
 
   - id: close_task
     type: io.kestra.plugin.core.http.Request
-    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/{{ outputs.open_task.body.correlation_id }}/close"
+    uri: "http://intellicare-service:8000/careplanner/tasks/{{ outputs.open_task.body.correlation_id }}/close"
     method: POST
     headers:
       Authorization: "Bearer {{ vars.tenant_jwt }}"

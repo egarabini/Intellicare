@@ -213,7 +213,7 @@ services:
       DATABASE_PROVIDER: postgresql
       DATABASE_CONNECTION_URI: "postgresql://${POSTGRES_USER}:${EVOLUTION_DB_PASS}@postgres:5432/evolution"
       DATABASE_CONNECTION_CLIENT_NAME: evolution_client
-      WEBHOOK_GLOBAL_URL: http://intellicare-service:8000/api/v1/careplanner/webhook/whatsapp/${EVOLUTION_WEBHOOK_SECRET}
+      WEBHOOK_GLOBAL_URL: http://intellicare-service:8000/careplanner/webhook/whatsapp/${EVOLUTION_WEBHOOK_SECRET}
       WEBHOOK_GLOBAL_ENABLED: "true"
       WEBHOOK_EVENTS_MESSAGES_UPSERT: "true"
       WEBHOOK_EVENTS_CONNECTION_UPDATE: "false"
