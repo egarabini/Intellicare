@@ -19,6 +19,16 @@ CREATE TABLE IF NOT EXISTS professionals (
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+ALTER TABLE professionals
+    ADD COLUMN IF NOT EXISTS council_type   TEXT,
+    ADD COLUMN IF NOT EXISTS council_number TEXT,
+    ADD COLUMN IF NOT EXISTS unit_id        INTEGER REFERENCES units(id) ON DELETE SET NULL,
+    ADD COLUMN IF NOT EXISTS keycloak_id    TEXT UNIQUE,
+    ADD COLUMN IF NOT EXISTS phone          TEXT,
+    ADD COLUMN IF NOT EXISTS email          TEXT,
+    ADD COLUMN IF NOT EXISTS created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    ADD COLUMN IF NOT EXISTS updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW();
+
 -- Grupos de Profissionais
 CREATE TABLE IF NOT EXISTS professional_groups (
     id              SERIAL PRIMARY KEY,
