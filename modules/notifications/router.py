@@ -151,7 +151,9 @@ async def update_preferences(
 # ── Push Notifications ─────────────────────────────────────
 
 from .schemas import PushSubscriptionCreate, PushSubscriptionUnsubscribe
-from intellicare_core.config import settings
+from intellicare_core.config.settings import get_settings
+
+settings = get_settings()
 
 @router.get("/push/vapid-public-key")
 async def get_vapid_public_key():

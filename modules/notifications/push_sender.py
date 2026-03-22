@@ -5,7 +5,9 @@ from typing import Any
 
 from pywebpush import webpush, WebPushException
 
-from intellicare_core.config import settings
+from intellicare_core.config.settings import get_settings
+
+settings = get_settings()
 
 logger = logging.getLogger(__name__)
 
