@@ -4,9 +4,17 @@
 CREATE TABLE IF NOT EXISTS professionals (
     id          SERIAL PRIMARY KEY,
     name        TEXT NOT NULL,
+    council_type TEXT,
+    council_number TEXT,
     specialty   TEXT,
     crm         TEXT,
-    status      TEXT NOT NULL DEFAULT 'active'
+    unit_id     INTEGER,
+    keycloak_id TEXT UNIQUE,
+    phone       TEXT,
+    email       TEXT,
+    status      TEXT NOT NULL DEFAULT 'active',
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- Unidades de Saude

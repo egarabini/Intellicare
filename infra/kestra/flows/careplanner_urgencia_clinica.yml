@@ -1,0 +1,59 @@
+id: careplanner_urgencia_clinica
+namespace: intellicare.careplanner
+description: "Escala para clínico se mensagem urgente não tiver leitura em 1 hora"
+
+inputs:
+  - id: tenant_slug
+    type: STRING
+  - id: patient_ref
+    type: STRING
+  - id: clinico_ref
+    type: STRING
+  - id: contact_phone_e164
+    type: STRING
+  - id: task_type
+    type: STRING
+    defaults: URGENCIA_CLINICA
+
+variables:
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  - id: open_urgent_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "urgencia_clinica_wa",
+        "channel": "whatsapp",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "kestra_execution_id": "{{ execution.id }}",
+        "clinico_ref": "{{ inputs.clinico_ref }}"
+      }
+
+  - id: wait_for_read
+    type: io.kestra.plugin.core.flow.Pause
+    delay: PT1H
+
+  - id: escalate_to_clinico
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "FOLLOWUP_CLINICO",
+        "template_code": "urgencia_sem_leitura",
+        "channel": "rocketchat",
+        "kestra_execution_id": "{{ execution.id }}",
+        "clinico_ref": "{{ inputs.clinico_ref }}"
+      }

@@ -11,9 +11,9 @@ from intellicare_core.config.settings import get_settings
 
 _settings = get_settings()
 
-KC_URL = _settings.keycloak_url
+KC_URL = os.getenv("KEYCLOAK_ADMIN_URL") or _settings.keycloak_url
 KC_REALM = _settings.keycloak_realm
-KC_ADMIN = os.getenv("KEYCLOAK_ADMIN", "admin")
+KC_ADMIN = os.getenv("KEYCLOAK_ADMIN_USER") or os.getenv("KEYCLOAK_ADMIN", "admin")
 KC_ADMIN_PW = os.getenv("KEYCLOAK_ADMIN_PASSWORD", "admin_dev_password")
 
 

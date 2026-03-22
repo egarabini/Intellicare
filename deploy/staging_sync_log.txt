@@ -1,0 +1,22 @@
+
+=== 2026-03-21 — Clinical Squad Final Smoke ===
+Florence  GET /florence/notes/encounter/1              200 []
+Oswaldo   POST /oswaldo/suggest                        200 rule-based
+PDF       GET /cuidado/encounters/9e19223a-754d-45e0-aeb6-158ba52a8ac8/report.pdf  200 valid-pdf
+WhatsApp  connectionState/intellicare                  open
+Adapters  GET /careplanner/health/adapters             200
+
+=== 2026-03-22 — Sprint 2026-04-18 Smoke ===
+DEM-065  POST /admin/tenants/provision                 201
+DEM-065  GET /admin/tenants                            200 clinica_smoke presente
+DEM-065  POST /admin/tenants/clinica_alfa/suspend      200
+DEM-065  tenant suspenso -> GET /gestor/dashboard/stats 403
+DEM-065  POST /admin/tenants/clinica_alfa/reactivate   200
+DEM-066  GET /notifications/push/vapid-public-key      200
+DEM-066  POST /notifications/push/subscribe            201
+DEM-066  GET /clinico-ui/sw.js                         200 application/javascript
+DEM-067  GET Kestra flows intellicare.careplanner      200
+DEM-067  POST /careplanner/journeys/trigger            202
+Health   GET /careplanner/health/adapters              200
+WA       connectionState/intellicare                   open
+Florence GET /florence/notes/encounter/1               200

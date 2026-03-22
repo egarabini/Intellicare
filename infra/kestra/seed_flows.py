@@ -24,6 +24,11 @@ FLOW_FILES = [
     "careplanner_jornada_video.yml",
     "careplanner_jornada_whatsapp.yml",
     "careplanner_jornada_email.yml",
+    "careplanner_jornada_sms.yml",
+    "careplanner_jornada_com_fallback.yml",
+    "careplanner_resposta_confirmacao.yml",
+    "careplanner_retry_com_backoff.yml",
+    "careplanner_urgencia_clinica.yml",
 ]
 
 

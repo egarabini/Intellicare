@@ -1,0 +1,97 @@
+id: careplanner_retry_com_backoff
+namespace: intellicare.careplanner
+description: "Tenta contato com backoff progressivo de 2h, 6h e 24h"
+
+inputs:
+  - id: tenant_slug
+    type: STRING
+  - id: patient_ref
+    type: STRING
+  - id: contact_phone_e164
+    type: STRING
+  - id: task_type
+    type: STRING
+    defaults: LEMBRETE
+
+variables:
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  - id: dispatch_attempt_1
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "retry_primeira_tentativa",
+        "channel": "whatsapp",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "kestra_execution_id": "{{ execution.id }}"
+      }
+
+  - id: wait_2h
+    type: io.kestra.plugin.core.flow.Pause
+    delay: PT2H
+
+  - id: dispatch_attempt_2
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "retry_segunda_tentativa",
+        "channel": "whatsapp",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "kestra_execution_id": "{{ execution.id }}"
+      }
+
+  - id: wait_6h
+    type: io.kestra.plugin.core.flow.Pause
+    delay: PT6H
+
+  - id: dispatch_attempt_3
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "retry_terceira_tentativa",
+        "channel": "sms",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "kestra_execution_id": "{{ execution.id }}"
+      }
+
+  - id: wait_24h
+    type: io.kestra.plugin.core.flow.Pause
+    delay: PT24H
+
+  - id: escalate_after_retry
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "ESCALONAMENTO",
+        "template_code": "retry_sem_resposta",
+        "channel": "rocketchat",
+        "kestra_execution_id": "{{ execution.id }}"
+      }

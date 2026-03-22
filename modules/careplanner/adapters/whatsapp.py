@@ -62,6 +62,15 @@ class WhatsAppAdapter:
         """
         return remote_jid.split("@")[0]
 
+    def normalize_confirmation(self, text: str) -> str:
+        """Normaliza respostas curtas de confirmação para branching no Kestra."""
+        normalized = text.lower().strip()
+        if any(token in normalized for token in ("sim", "yes", "confirmo", "confirmada", "confirmar", "ok", "1")):
+            return "SIM"
+        if any(token in normalized for token in ("não", "nao", "no", "cancelar", "cancela", "2")):
+            return "NAO"
+        return "OUTRO"
+
     def verify_webhook_secret(self, token: str) -> bool:
         """Verifica token simples no path do webhook."""
         secret = self._settings.evolution_webhook_secret

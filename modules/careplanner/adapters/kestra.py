@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import httpx
+import json
 
 from ..config import CareplannerSettings
 
@@ -74,9 +75,19 @@ class KestraAdapter:
             base_url=self._settings.kestra_url.rstrip("/"),
             timeout=self._settings.kestra_timeout,
         ) as client:
+            files = None
+            if inputs:
+                files = {
+                    key: (
+                        None,
+                        value if isinstance(value, str) else json.dumps(value, ensure_ascii=True),
+                    )
+                    for key, value in inputs.items()
+                    if value is not None
+                }
             response = await client.post(
                 f"/api/v1/executions/{namespace}/{flow_id}",
-                json=inputs or {},
+                files=files,
                 headers=self._headers(),
             )
             response.raise_for_status()

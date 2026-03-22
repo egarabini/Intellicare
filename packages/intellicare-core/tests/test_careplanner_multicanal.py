@@ -204,7 +204,13 @@ async def test_whatsapp_inbound_transitions_to_replied(
     assert task is not None
     assert task.status == TaskStatus.REPLIED
     assert service._kestra.resumed == [
-        {"execution_id": "exec-wa-002", "payload": {"content": "Me sinto bem, obrigado!"}}
+        {
+            "execution_id": "exec-wa-002",
+            "payload": {
+                "content": "Me sinto bem, obrigado!",
+                "normalized_response": "OUTRO",
+            },
+        }
     ]
 
 

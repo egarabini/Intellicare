@@ -1,0 +1,88 @@
+id: careplanner_resposta_confirmacao
+namespace: intellicare.careplanner
+description: "Interpreta confirmação do paciente com branching SIM/NAO/OUTRO"
+
+inputs:
+  - id: tenant_slug
+    type: STRING
+  - id: patient_ref
+    type: STRING
+  - id: contact_phone_e164
+    type: STRING
+  - id: task_type
+    type: STRING
+    defaults: CONFIRMACAO
+
+variables:
+  tenant_jwt: "{{ kv('intellicare_jwt_' + inputs.tenant_slug) }}"
+
+tasks:
+  - id: open_confirmation_task
+    type: io.kestra.plugin.core.http.Request
+    uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+    method: POST
+    headers:
+      Authorization: "Bearer {{ vars.tenant_jwt }}"
+      Content-Type: application/json
+    body: |
+      {
+        "patient_ref": "{{ inputs.patient_ref }}",
+        "task_type": "{{ inputs.task_type }}",
+        "template_code": "confirmacao_consulta",
+        "channel": "whatsapp",
+        "contact_phone_e164": "{{ inputs.contact_phone_e164 }}",
+        "kestra_execution_id": "{{ execution.id }}"
+      }
+
+  - id: wait_confirmation
+    type: io.kestra.plugin.core.flow.Pause
+    delay: PT24H
+    onResume:
+      - id: content
+        type: STRING
+      - id: normalized_response
+        type: STRING
+
+  - id: branch_confirmation
+    type: io.kestra.plugin.core.flow.Switch
+    value: "{{ trigger.normalized_response }}"
+    cases:
+      SIM:
+        - id: close_confirmed
+          type: io.kestra.plugin.core.http.Request
+          uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/{{ outputs.open_confirmation_task.body.correlation_id }}/close"
+          method: POST
+          headers:
+            Authorization: "Bearer {{ vars.tenant_jwt }}"
+      NAO:
+        - id: notify_declined
+          type: io.kestra.plugin.core.http.Request
+          uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+          method: POST
+          headers:
+            Authorization: "Bearer {{ vars.tenant_jwt }}"
+            Content-Type: application/json
+          body: |
+            {
+              "patient_ref": "{{ inputs.patient_ref }}",
+              "task_type": "REAGENDAMENTO",
+              "template_code": "reagendamento_necessario",
+              "channel": "rocketchat",
+              "kestra_execution_id": "{{ execution.id }}"
+            }
+      OUTRO:
+        - id: request_manual_review
+          type: io.kestra.plugin.core.http.Request
+          uri: "http://intellicare-service:8000/api/v1/careplanner/tasks/open"
+          method: POST
+          headers:
+            Authorization: "Bearer {{ vars.tenant_jwt }}"
+            Content-Type: application/json
+          body: |
+            {
+              "patient_ref": "{{ inputs.patient_ref }}",
+              "task_type": "REVISAO_MANUAL",
+              "template_code": "confirmacao_ambigua",
+              "channel": "rocketchat",
+              "kestra_execution_id": "{{ execution.id }}"
+            }

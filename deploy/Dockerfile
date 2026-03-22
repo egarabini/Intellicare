@@ -31,7 +31,7 @@ RUN cd frontend/GestorUI \
 
 # Build ClinicoUI → static/clinico-ui/
 RUN cd frontend/ClinicoUI \
-    && npm install --legacy-peer-deps --prefer-offline \
+    && npm install --legacy-peer-deps \
     && npx vite build
 
 # Build PacienteUI → static/paciente-ui/
@@ -59,6 +59,8 @@ WORKDIR /app
 COPY packages/ packages/
 COPY modules/ modules/
 COPY configs/ configs/
+COPY db/ db/
+COPY tools/ tools/
 
 # Sobrescrever o static/ vazio com os arquivos buildados no stage Node
 COPY --from=frontend-builder \
