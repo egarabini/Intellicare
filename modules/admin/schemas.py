@@ -294,6 +294,56 @@ class PagedResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Prompt Versioning
+# ---------------------------------------------------------------------------
+
+
+PROMPT_KEY_PATTERN = re.compile(r"^[a-z0-9_]{3,80}$")
+
+
+class PromptTemplateCreate(BaseModel):
+    prompt_key: str
+    content: str = Field(..., min_length=10)
+    notes: str | None = None
+
+    @field_validator("prompt_key")
+    @classmethod
+    def validate_prompt_key(cls, v: str) -> str:
+        if not PROMPT_KEY_PATTERN.match(v):
+            raise ValueError("prompt_key deve ter 3-80 chars: [a-z0-9_]")
+        return v
+
+
+class PromptTemplateActivateRequest(BaseModel):
+    version: int = Field(ge=1)
+
+
+class PromptTemplateVersionOut(BaseModel):
+    id: UUID
+    prompt_key: str
+    version: int
+    content: str
+    notes: str | None = None
+    is_active: bool
+    created_at: datetime
+    created_by: str | None = None
+    created_by_email: str | None = None
+    activated_at: datetime | None = None
+    activated_by: str | None = None
+    activated_by_email: str | None = None
+
+
+class PromptTemplateGroupOut(BaseModel):
+    prompt_key: str
+    active_version: int | None = None
+    versions: list[PromptTemplateVersionOut]
+
+
+class PromptTemplateListResponse(BaseModel):
+    items: list[PromptTemplateGroupOut]
+
+
+# ---------------------------------------------------------------------------
 # Usuarios administrativos
 # ---------------------------------------------------------------------------
 

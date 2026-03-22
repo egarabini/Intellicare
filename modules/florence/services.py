@@ -3,11 +3,14 @@ from __future__ import annotations
 
 from intellicare_core.contracts.base import TenantContext
 from modules.florence.contracts import SuggestRequest, SOAPSuggestion
-from modules.shared.llm import call_llm
+from modules.shared.llm import call_llm, get_prompt_template
 
-SOAP_PROMPT = """
+SOAP_PROMPT_FALLBACK = """
 Você é um assistente clínico. Com base nas informações abaixo, preencha os campos
 SOAP de forma objetiva e concisa, em português, para uma nota clínica médica.
+"""
+
+FREE_TEXT_PROMPT_FALLBACK = """
 
 Motivo da consulta: {chief_complaint}
 Motivo do agendamento: {appointment_reason}
@@ -19,7 +22,10 @@ Responda APENAS com um JSON no formato:
 
 
 async def suggest_soap(ctx: TenantContext, req: SuggestRequest) -> SOAPSuggestion:
-    prompt = SOAP_PROMPT.format(
+    del ctx
+    soap_prompt = await get_prompt_template("florence_soap", SOAP_PROMPT_FALLBACK)
+    free_text_prompt = await get_prompt_template("florence_free_text", FREE_TEXT_PROMPT_FALLBACK)
+    prompt = f"{soap_prompt.strip()}\n\n{free_text_prompt.strip()}".format(
         chief_complaint=req.chief_complaint,
         appointment_reason=req.appointment_reason or "não informado",
         recent_notes="\n".join(req.recent_notes or []) or "nenhuma",

@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useAuth } from 'react-oidc-context'
 import {
   IconDashboard, IconBuilding, IconShield, IconLogout, IconServer, IconPackages, IconCash, IconUsers,
+  IconMessageCode,
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
@@ -24,6 +25,7 @@ import { ServersPage } from './pages/ServersPage'
 import { ModulesPage } from './pages/ModulesPage'
 import { FinanceiroPage } from './pages/FinanceiroPage'
 import { AdminUsersPage } from './pages/AdminUsersPage'
+import { PromptsPage } from './pages/PromptsPage'
 import { NotificationBell } from './components/NotificationBell'
 
 import '@mantine/core/styles.css'
@@ -39,6 +41,7 @@ const NAV_ITEMS = [
   { path: '/servers', label: 'Servidores', icon: IconServer },
   { path: '/modules', label: 'Modulos', icon: IconPackages },
   { path: '/financeiro', label: 'Financeiro', icon: IconCash },
+  { path: '/prompts', label: 'Prompts', icon: IconMessageCode },
   { path: '/users', label: 'Usuarios Admin', icon: IconUsers },
   { path: '/audit',   label: 'Auditoria', icon: IconShield    },
 ]
@@ -152,6 +155,7 @@ function AppRoutes() {
           <Route path="/servers"             element={<ServersPage />} />
           <Route path="/modules"             element={<ModulesPage />} />
           <Route path="/financeiro"          element={<FinanceiroPage />} />
+          <Route path="/prompts"             element={<PromptsPage />} />
           <Route path="/users"               element={<AdminUsersPage />} />
           <Route path="/audit"               element={<AuditLog />} />
           <Route path="*"                    element={<Navigate to="/" replace />} />

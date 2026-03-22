@@ -11,6 +11,7 @@ from sqlalchemy import text
 
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.db.session import get_engine
+from modules.shared.llm import clear_prompt_cache
 from .keycloak_client import KeycloakAdminClient
 from .schemas import (
     AdminUserCreate,
@@ -24,6 +25,8 @@ from .schemas import (
     TenantConfigItem,
     TenantCreate,
     TenantModuleUpdate,
+    PromptTemplateActivateRequest,
+    PromptTemplateCreate,
     TenantProvisionRequest,
     TenantStatusUpdate,
     TenantUpdate,
@@ -271,6 +274,214 @@ class TenantService:
             )
             await self._audit(conn, actor, "tenant.config_set", "tenant_config", slug, {"key": key})
         return {"key": key, "value": value}
+
+    async def list_prompt_templates(self) -> list[dict[str, Any]]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text("""
+                        SELECT
+                            id,
+                            prompt_key,
+                            version,
+                            content,
+                            notes,
+                            is_active,
+                            created_at,
+                            created_by,
+                            created_by_email,
+                            activated_at,
+                            activated_by,
+                            activated_by_email
+                        FROM public.prompt_templates
+                        ORDER BY prompt_key ASC, version DESC
+                    """)
+                )
+            ).mappings().all()
+        grouped: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            item = dict(row)
+            bucket = grouped.setdefault(
+                item["prompt_key"],
+                {"prompt_key": item["prompt_key"], "active_version": None, "versions": []},
+            )
+            if item["is_active"]:
+                bucket["active_version"] = item["version"]
+            bucket["versions"].append(item)
+        return list(grouped.values())
+
+    async def create_prompt_template(self, payload: PromptTemplateCreate, actor: TenantContext) -> dict[str, Any]:
+        actor_id = getattr(actor, "user_id", None) or getattr(actor, "sub", None) or "system"
+        actor_email = getattr(actor, "email", None)
+        async with get_engine().begin() as conn:
+            next_version = (
+                await conn.execute(
+                    text("""
+                        SELECT COALESCE(MAX(version), 0) + 1
+                        FROM public.prompt_templates
+                        WHERE prompt_key = :prompt_key
+                    """),
+                    {"prompt_key": payload.prompt_key},
+                )
+            ).scalar_one()
+            row = (
+                await conn.execute(
+                    text("""
+                        INSERT INTO public.prompt_templates
+                            (prompt_key, version, content, notes, created_by, created_by_email)
+                        VALUES
+                            (:prompt_key, :version, :content, :notes, :created_by, :created_by_email)
+                        RETURNING
+                            id, prompt_key, version, content, notes, is_active,
+                            created_at, created_by, created_by_email,
+                            activated_at, activated_by, activated_by_email
+                    """),
+                    {
+                        "prompt_key": payload.prompt_key,
+                        "version": next_version,
+                        "content": payload.content,
+                        "notes": payload.notes,
+                        "created_by": actor_id,
+                        "created_by_email": actor_email,
+                    },
+                )
+            ).mappings().first()
+            await self._audit(
+                conn,
+                actor,
+                "prompt_template.created",
+                "prompt_template",
+                payload.prompt_key,
+                {"prompt_key": payload.prompt_key, "version": next_version},
+            )
+        return dict(row) if row else {}
+
+    async def activate_prompt_template(
+        self,
+        prompt_key: str,
+        payload: PromptTemplateActivateRequest,
+        actor: TenantContext,
+    ) -> dict[str, Any]:
+        actor_id = getattr(actor, "user_id", None) or getattr(actor, "sub", None) or "system"
+        actor_email = getattr(actor, "email", None)
+        async with get_engine().begin() as conn:
+            current = (
+                await conn.execute(
+                    text("""
+                        SELECT id
+                        FROM public.prompt_templates
+                        WHERE prompt_key = :prompt_key
+                          AND version = :version
+                    """),
+                    {"prompt_key": prompt_key, "version": payload.version},
+                )
+            ).mappings().first()
+            if not current:
+                raise LookupError(f"Prompt '{prompt_key}' versão {payload.version} não encontrado")
+
+            await conn.execute(
+                text("""
+                    UPDATE public.prompt_templates
+                    SET is_active = false
+                    WHERE prompt_key = :prompt_key
+                """),
+                {"prompt_key": prompt_key},
+            )
+            await conn.execute(
+                text("""
+                    UPDATE public.prompt_templates
+                    SET is_active = true,
+                        activated_at = now(),
+                        activated_by = :activated_by,
+                        activated_by_email = :activated_by_email
+                    WHERE prompt_key = :prompt_key
+                      AND version = :version
+                """),
+                {
+                    "prompt_key": prompt_key,
+                    "version": payload.version,
+                    "activated_by": actor_id,
+                    "activated_by_email": actor_email,
+                },
+            )
+            await self._audit(
+                conn,
+                actor,
+                "prompt_template.activated",
+                "prompt_template",
+                prompt_key,
+                {"prompt_key": prompt_key, "version": payload.version},
+            )
+        clear_prompt_cache(prompt_key)
+        return await self.get_prompt_group(prompt_key)
+
+    async def rollback_prompt_template(self, prompt_key: str, actor: TenantContext) -> dict[str, Any]:
+        async with get_engine().connect() as conn:
+            active_version = (
+                await conn.execute(
+                    text("""
+                        SELECT version
+                        FROM public.prompt_templates
+                        WHERE prompt_key = :prompt_key
+                          AND is_active = true
+                    """),
+                    {"prompt_key": prompt_key},
+                )
+            ).scalar_one_or_none()
+            if active_version is None:
+                raise LookupError(f"Prompt '{prompt_key}' não possui versão ativa")
+
+            previous_version = (
+                await conn.execute(
+                    text("""
+                        SELECT version
+                        FROM public.prompt_templates
+                        WHERE prompt_key = :prompt_key
+                          AND version < :active_version
+                        ORDER BY version DESC
+                        LIMIT 1
+                    """),
+                    {"prompt_key": prompt_key, "active_version": active_version},
+                )
+            ).scalar_one_or_none()
+        if previous_version is None:
+            raise ValueError(f"Prompt '{prompt_key}' não possui versão anterior para rollback")
+        return await self.activate_prompt_template(
+            prompt_key,
+            PromptTemplateActivateRequest(version=int(previous_version)),
+            actor,
+        )
+
+    async def get_prompt_group(self, prompt_key: str) -> dict[str, Any]:
+        async with get_engine().connect() as conn:
+            rows = (
+                await conn.execute(
+                    text("""
+                        SELECT
+                            id,
+                            prompt_key,
+                            version,
+                            content,
+                            notes,
+                            is_active,
+                            created_at,
+                            created_by,
+                            created_by_email,
+                            activated_at,
+                            activated_by,
+                            activated_by_email
+                        FROM public.prompt_templates
+                        WHERE prompt_key = :prompt_key
+                        ORDER BY version DESC
+                    """),
+                    {"prompt_key": prompt_key},
+                )
+            ).mappings().all()
+        if not rows:
+            raise LookupError(f"Prompt '{prompt_key}' não encontrado")
+        versions = [dict(row) for row in rows]
+        active_version = next((item["version"] for item in versions if item["is_active"]), None)
+        return {"prompt_key": prompt_key, "active_version": active_version, "versions": versions}
 
     async def create_tenant(self, payload: TenantCreate, actor: TenantContext) -> dict[str, Any]:
         async with get_engine().begin() as conn:
