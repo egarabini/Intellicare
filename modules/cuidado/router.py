@@ -70,6 +70,17 @@ async def history(pid: UUID, ctx: Clinico):
     return await _svc.patient_history(ctx, pid)
 
 
+@router.get("/patients/{pid}/clinical-timeline")
+async def clinical_timeline(
+    pid: UUID,
+    ctx: Clinico,
+    limit: int = Query(50, le=200),
+    offset: int = Query(0, ge=0),
+):
+    """DEM-071: Linha do tempo clínica unificada (encounters + notas + prescrições + care tasks)."""
+    return await _svc.clinical_timeline(ctx, pid, limit, offset)
+
+
 @router.post("/encounters", status_code=201)
 async def open_encounter(e: EncounterCreate, ctx: Clinico):
     return await _svc.open_encounter(ctx, ctx.user_id, e.model_dump())

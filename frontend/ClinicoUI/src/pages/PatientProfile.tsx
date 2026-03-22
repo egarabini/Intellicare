@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Title, Tabs, Box, Group, Text, Card, Stack, Badge, Button, Loader, Center, TextInput, Textarea, Avatar, Timeline, Grid } from '@mantine/core';
 import { useParams, useNavigate } from 'react-router-dom';
 import { usePatientProfile, usePatientHistory, useUpdatePatientClinical } from '../hooks/usePatients';
-import { IconUser, IconHistory, IconHeartRateMonitor, IconStethoscope, IconEdit, IconCheck, IconFileTypePdf } from '@tabler/icons-react';
+import { IconUser, IconHistory, IconHeartRateMonitor, IconStethoscope, IconEdit, IconCheck, IconFileTypePdf, IconTimeline } from '@tabler/icons-react';
 import { useForm } from '@mantine/form';
 import { useDownloadPdf } from '../hooks/useDownloadPdf';
+import { ClinicalTimeline } from '../components/ClinicalTimeline';
 
 export function PatientProfile() { 
   const { id } = useParams() as { id: string };
@@ -73,12 +74,17 @@ export function PatientProfile() {
         </Group>
       </Group>
 
-      <Tabs defaultValue="perfil">
+      <Tabs defaultValue="timeline">
         <Tabs.List>
+          <Tabs.Tab value="timeline" leftSection={<IconTimeline size={16} />}>Linha do Tempo</Tabs.Tab>
           <Tabs.Tab value="perfil" leftSection={<IconUser size={16} />}>Perfil Clínico</Tabs.Tab>
           <Tabs.Tab value="historico" leftSection={<IconHistory size={16} />}>Histórico ({profile.encounter_count})</Tabs.Tab>
           <Tabs.Tab value="programas" leftSection={<IconHeartRateMonitor size={16} />}>Programas</Tabs.Tab>
         </Tabs.List>
+
+        <Tabs.Panel value="timeline" pt="xl">
+          <ClinicalTimeline patientId={id} />
+        </Tabs.Panel>
 
         <Tabs.Panel value="perfil" pt="xl">
           <Grid gutter="md">

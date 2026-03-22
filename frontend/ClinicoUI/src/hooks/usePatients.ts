@@ -57,6 +57,38 @@ export function usePatientHistory(id: string) {
   })
 }
 
+// ── DEM-071: Clinical Timeline ──────────────────────────────────────────
+
+export interface TimelineEvent {
+  event_type: 'encounter' | 'clinical_note' | 'prescription' | 'care_task'
+  event_id: string
+  occurred_at: string
+  title: string
+  subtitle: string | null
+  status: string | null
+  metadata: Record<string, any> | null
+}
+
+export interface ClinicalTimelineData {
+  patient_id: string
+  total: number
+  items: TimelineEvent[]
+}
+
+export function useClinicalTimeline(patientId: string, limit = 50, offset = 0) {
+  return useQuery<ClinicalTimelineData>({
+    queryKey: ['patient', patientId, 'clinical-timeline', limit, offset],
+    queryFn: async () => {
+      const { data } = await apiClient.get(
+        `/cuidado/patients/${patientId}/clinical-timeline`,
+        { params: { limit, offset } },
+      )
+      return data
+    },
+    enabled: !!patientId,
+  })
+}
+
 export function useUpdatePatientClinical() {
   const queryClient = useQueryClient()
   return useMutation({

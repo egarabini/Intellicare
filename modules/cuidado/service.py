@@ -918,3 +918,150 @@ class CuidadoService:
                 await db.rollback()
                 group_count = 0
         return {"professionals_active": prof_count, "groups_active": group_count}
+
+    # ------------------------------------------------------------------
+    # DEM-071: Linha do Tempo Clínica
+    # ------------------------------------------------------------------
+
+    async def clinical_timeline(
+        self, ctx: TenantContext, patient_id: UUID, limit: int = 50, offset: int = 0,
+    ) -> dict:
+        """Agrega encounters, notas Florence, prescrições Oswaldo e care tasks CarePlanner."""
+        pid = str(patient_id)
+        events: list[dict] = []
+
+        async with tenant_session(ctx) as db:
+            # 1) Encounters
+            enc_rows = (await db.execute(
+                text("""
+                    SELECT e.id, e.status, e.chief_complaint, e.priority,
+                           e.cid10_code, e.prescription, e.opened_at, e.closed_at
+                    FROM encounters e
+                    WHERE e.patient_id = :pid
+                    ORDER BY e.opened_at DESC
+                """),
+                {"pid": pid},
+            )).mappings().all()
+
+            for e in enc_rows:
+                events.append({
+                    "event_type": "encounter",
+                    "event_id": str(e["id"]),
+                    "occurred_at": e["opened_at"],
+                    "title": f"Consulta — {e['priority'].upper()}" if e.get("priority") else "Consulta",
+                    "subtitle": e.get("chief_complaint"),
+                    "status": e["status"],
+                    "metadata": {
+                        "cid10_code": e.get("cid10_code"),
+                        "prescription": e.get("prescription"),
+                        "closed_at": str(e["closed_at"]) if e.get("closed_at") else None,
+                    },
+                })
+
+            # 2) Clinical Notes (Florence)
+            note_rows = (await db.execute(
+                text("""
+                    SELECT id, encounter_id, note_type, author_name,
+                           soap_s, soap_o, soap_a, soap_p, free_text, created_at
+                    FROM clinical_notes
+                    WHERE patient_id = :pid
+                    ORDER BY created_at DESC
+                """),
+                {"pid": pid},
+            )).mappings().all()
+
+            for n in note_rows:
+                summary = n.get("free_text") or n.get("soap_s") or ""
+                if len(summary) > 120:
+                    summary = summary[:120] + "…"
+                events.append({
+                    "event_type": "clinical_note",
+                    "event_id": str(n["id"]),
+                    "occurred_at": n["created_at"],
+                    "title": f"Nota {n['note_type']} — {n['author_name']}",
+                    "subtitle": summary or None,
+                    "status": None,
+                    "metadata": {
+                        "encounter_id": str(n["encounter_id"]) if n.get("encounter_id") else None,
+                        "note_type": n["note_type"],
+                    },
+                })
+
+            # 3) Prescriptions (Oswaldo)
+            rx_rows = (await db.execute(
+                text("""
+                    SELECT id, encounter_id, cid10_code, cid10_desc,
+                           items, notes, status, author_name, created_at
+                    FROM prescriptions
+                    WHERE patient_id = :pid
+                    ORDER BY created_at DESC
+                """),
+                {"pid": pid},
+            )).mappings().all()
+
+            for rx in rx_rows:
+                import json as _json
+                items_data = rx["items"] if isinstance(rx["items"], list) else _json.loads(rx["items"] or "[]")
+                drug_summary = ", ".join(i.get("drug", "") for i in items_data[:3])
+                if len(items_data) > 3:
+                    drug_summary += f" (+{len(items_data) - 3})"
+                events.append({
+                    "event_type": "prescription",
+                    "event_id": str(rx["id"]),
+                    "occurred_at": rx["created_at"],
+                    "title": f"Prescrição — {rx['author_name']}",
+                    "subtitle": drug_summary or rx.get("cid10_desc"),
+                    "status": rx["status"],
+                    "metadata": {
+                        "encounter_id": str(rx["encounter_id"]) if rx.get("encounter_id") else None,
+                        "cid10_code": rx.get("cid10_code"),
+                        "item_count": len(items_data),
+                    },
+                })
+
+            # 4) Care Tasks (CarePlanner)
+            has_care = await self._table_exists(ctx, db, "care_tasks")
+            if has_care:
+                task_rows = (await db.execute(
+                    text("""
+                        SELECT correlation_id, task_type, status, channel, metadata, created_at
+                        FROM care_tasks
+                        WHERE patient_ref = :pid
+                        ORDER BY created_at DESC
+                    """),
+                    {"pid": pid},
+                )).mappings().all()
+
+                for t in task_rows:
+                    meta = t["metadata"] if isinstance(t["metadata"], dict) else {}
+                    events.append({
+                        "event_type": "care_task",
+                        "event_id": str(t["correlation_id"]),
+                        "occurred_at": t["created_at"],
+                        "title": f"Jornada {t['task_type']} ({t['channel']})",
+                        "subtitle": meta.get("template_code"),
+                        "status": t["status"],
+                        "metadata": {"channel": t["channel"], "task_type": t["task_type"]},
+                    })
+
+        # Merge e paginar
+        events.sort(key=lambda x: x["occurred_at"], reverse=True)
+        total = len(events)
+        page = events[offset: offset + limit]
+        return {"patient_id": pid, "total": total, "items": page}
+
+    async def _table_exists(self, ctx: TenantContext, db, table_name: str) -> bool:
+        cache_key = (ctx.schema, table_name)
+        cached = self._table_exists_cache.get(cache_key)
+        if cached is not None:
+            return cached
+        row = (await db.execute(
+            text("""
+                SELECT 1 FROM information_schema.tables
+                WHERE table_schema = :schema AND table_name = :tbl
+            """),
+            {"schema": ctx.schema, "tbl": table_name},
+        )).first()
+        exists = row is not None
+        self._table_exists_cache[cache_key] = exists
+        return exists

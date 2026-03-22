@@ -180,6 +180,50 @@ class ClinicInfoResponse(BaseModel):
     hours: Optional[str] = None
 
 
+# ── DEM-071: Linha do Tempo Clínica ─────────────────────────────────────────
+
+class TimelineNoteItem(BaseModel):
+    id: int
+    note_type: str
+    soap_s: Optional[str] = None
+    soap_o: Optional[str] = None
+    soap_a: Optional[str] = None
+    soap_p: Optional[str] = None
+    free_text: Optional[str] = None
+    author_name: str
+    created_at: datetime
+
+
+class TimelinePrescriptionItem(BaseModel):
+    id: int
+    cid10_code: Optional[str] = None
+    cid10_desc: Optional[str] = None
+    items: list[dict] = []
+    notes: Optional[str] = None
+    status: str
+    author_name: str
+    created_at: datetime
+
+
+class TimelineEvent(BaseModel):
+    """Um item na linha do tempo clínica unificada."""
+    event_type: Literal[
+        "encounter", "clinical_note", "prescription", "care_task",
+    ]
+    event_id: str
+    occurred_at: datetime
+    title: str
+    subtitle: Optional[str] = None
+    status: Optional[str] = None
+    metadata: Optional[dict] = None
+
+
+class ClinicalTimelineResponse(BaseModel):
+    patient_id: str
+    total: int
+    items: list[TimelineEvent]
+
+
 # ── DEM-032: Clínico Gestão ──────────────────────────────────────────────────
 
 class ProfessionalCreate(BaseModel):
