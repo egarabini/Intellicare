@@ -31,7 +31,7 @@ def kestra_adapter(mock_settings):
 @pytest.mark.asyncio
 async def test_trigger_flow_sucesso(kestra_adapter, respx_mock):
     # Mocka httpx.AsyncClient.post retornando {"id": "exec-123", "state": "RUNNING"}
-    respx_mock.post("http://kestra-mock:8080/api/v1/executions/intellicare.careplanner/careplanner_jornada_basica").mock(
+    route = respx_mock.post("http://kestra-mock:8080/api/v1/executions/intellicare.careplanner/careplanner_jornada_basica").mock(
         return_value=Response(200, json={"id": "exec-123", "state": "RUNNING"})
     )
 
@@ -42,6 +42,7 @@ async def test_trigger_flow_sucesso(kestra_adapter, respx_mock):
     )
     
     assert result == {"id": "exec-123", "state": "RUNNING"}
+    assert route.calls.last.request.headers["content-type"].startswith("multipart/form-data")
 
 
 @pytest.mark.asyncio
