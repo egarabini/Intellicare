@@ -52,3 +52,20 @@ async def list_prescriptions(
     if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
         raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
     return await repository.get_prescriptions_by_encounter(ctx, encounter_id)
+
+from fastapi.responses import Response
+
+@router.get("/prescriptions/{prescription_id}/receituario.pdf")
+async def get_receituario_pdf(
+    prescription_id: int,
+    type: str = "simple",
+    ctx: TenantContext = Depends(get_current_tenant),
+):
+    if not ctx.has_role("CLINICO"):
+        raise api_error(403, "forbidden", "Role 'CLINICO' necessaria")
+    pdf_bytes = await oswaldo_service.generate_receituario(ctx, prescription_id, type)
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="receituario_{prescription_id}.pdf"'}
+    )

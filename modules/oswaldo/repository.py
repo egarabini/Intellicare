@@ -78,3 +78,27 @@ async def search_cid10(ctx: TenantContext, query: str) -> list[CID10Result]:
             {"query": f"%{query}%"}
         )).mappings().all()
     return [CID10Result(code=r["code"], description=r["description"]) for r in rows]
+
+async def get_prescription(ctx: TenantContext, prescription_id: int) -> Prescription | None:
+    async with tenant_session(ctx) as db:
+        row = (await db.execute(
+            text("SELECT * FROM prescriptions WHERE id = :id"),
+            {"id": prescription_id}
+        )).mappings().first()
+    return _row_to_prescription(dict(row)) if row else None
+
+async def get_professional_by_keycloak_id(ctx: TenantContext, keycloak_id: str) -> dict | None:
+    async with tenant_session(ctx) as db:
+        row = (await db.execute(
+            text("SELECT * FROM professionals WHERE keycloak_id = :id"),
+            {"id": keycloak_id}
+        )).mappings().first()
+    return dict(row) if row else None
+
+async def get_patient_by_id(ctx: TenantContext, patient_id: str) -> dict | None:
+    async with tenant_session(ctx) as db:
+        row = (await db.execute(
+            text("SELECT * FROM patients WHERE id = :id"),
+            {"id": int(patient_id)}
+        )).mappings().first()
+    return dict(row) if row else None

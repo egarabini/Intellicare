@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Button, TextInput, Stack, Paper, Title, ActionIcon, Group, Text, Card, Badge, Box } from '@mantine/core';
+import { Button, TextInput, Stack, Paper, Title, ActionIcon, Group, Text, Card, Badge, Box, Menu } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IconTrash, IconSparkles } from '@tabler/icons-react';
+import { IconTrash, IconSparkles, IconPrinter } from '@tabler/icons-react';
 import apiClient from '../api/client';
 import { CID10Result } from './OswaldoCID10Search';
 
@@ -40,6 +40,11 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
   const [suggestionConfidence, setSuggestionConfidence] = useState<string | null>(null);
   
   const [history, setHistory] = useState<Prescription[]>([]);
+
+  const handlePrint = (rxId: number, type: 'simple' | 'special_control') => {
+    const baseUrl = apiClient.defaults.baseURL || '';
+    window.open(`${baseUrl}/oswaldo/prescriptions/${rxId}/receituario.pdf?type=${type}`, '_blank');
+  };
 
   const fetchHistory = async () => {
     try {
@@ -187,9 +192,22 @@ export function OswaldoPrescriptionEditor({ encounterId, patientId, cid10, onCID
                 {new Date(rx.created_at).toLocaleString('pt-BR')}
               </Text>
             </Group>
-            <Badge color={rx.status === 'SIGNED' ? 'green' : 'gray'} variant="light">
-              {rx.status}
-            </Badge>
+            <Group gap="xs">
+              <Badge color={rx.status === 'SIGNED' ? 'green' : 'gray'} variant="light">
+                {rx.status}
+              </Badge>
+              <Menu transitionProps={{ transition: 'pop-top-right' }} position="bottom-end" withinPortal>
+                 <Menu.Target>
+                   <Button variant="subtle" size="xs" leftSection={<IconPrinter size={14} />}>
+                     Imprimir
+                   </Button>
+                 </Menu.Target>
+                 <Menu.Dropdown>
+                   <Menu.Item onClick={() => handlePrint(rx.id, 'simple')}>Receituário Comum</Menu.Item>
+                   <Menu.Item onClick={() => handlePrint(rx.id, 'special_control')}>Controle Especial (Tarja Preta)</Menu.Item>
+                 </Menu.Dropdown>
+               </Menu>
+            </Group>
           </Group>
           {rx.cid10_code && <Text size="sm" fw={500} c="blue" mb="xs">CID: {rx.cid10_code} - {rx.cid10_desc}</Text>}
           <Stack gap="xs">
