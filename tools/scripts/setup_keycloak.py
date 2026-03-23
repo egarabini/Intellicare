@@ -63,18 +63,34 @@ DEMO_USERS = [
 
 
 class KeycloakAdmin:
+    """Thin wrapper around Keycloak Admin REST API.
+
+    Uses a persistent httpx.Client for connection pooling / keep-alive,
+    which prevents TCP exhaustion and hangs in Docker networking.
+    """
+
     def __init__(self, base_url: str, admin: str, password: str):
         self.base_url = base_url.rstrip("/")
         self.admin = admin
         self.password = password
+        self._client = httpx.Client(timeout=30.0)
         self.token = self._get_admin_token(admin, password)
         self.headers = {
             "Authorization": f"Bearer {self.token}",
             "Content-Type": "application/json",
         }
 
+    def close(self) -> None:
+        self._client.close()
+
+    def __enter__(self) -> "KeycloakAdmin":
+        return self
+
+    def __exit__(self, *exc: Any) -> None:
+        self.close()
+
     def _get_admin_token(self, admin: str, password: str) -> str:
-        response = httpx.post(
+        response = self._client.post(
             f"{self.base_url}/realms/master/protocol/openid-connect/token",
             data={
                 "client_id": "admin-cli",
@@ -82,54 +98,51 @@ class KeycloakAdmin:
                 "username": admin,
                 "password": password,
             },
-            timeout=20,
         )
         response.raise_for_status()
         return response.json()["access_token"]
 
     def get(self, path: str, **params: Any) -> httpx.Response:
-        response = httpx.get(
+        response = self._client.get(
             f"{self.base_url}{path}",
             headers=self.headers,
             params=params or None,
-            timeout=20,
         )
         if response.status_code == 401:
             self.refresh_token()
-            response = httpx.get(
+            response = self._client.get(
                 f"{self.base_url}{path}",
                 headers=self.headers,
                 params=params or None,
-                timeout=20,
             )
         return response
 
     def post(self, path: str, body: dict[str, Any]) -> httpx.Response:
-        response = httpx.post(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        response = self._client.post(f"{self.base_url}{path}", json=body, headers=self.headers)
         if response.status_code == 401:
             self.refresh_token()
-            response = httpx.post(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+            response = self._client.post(f"{self.base_url}{path}", json=body, headers=self.headers)
         return response
 
     def put(self, path: str, body: dict[str, Any]) -> httpx.Response:
-        response = httpx.put(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+        response = self._client.put(f"{self.base_url}{path}", json=body, headers=self.headers)
         if response.status_code == 401:
             self.refresh_token()
-            response = httpx.put(f"{self.base_url}{path}", json=body, headers=self.headers, timeout=20)
+            response = self._client.put(f"{self.base_url}{path}", json=body, headers=self.headers)
         return response
 
     def delete(self, path: str) -> httpx.Response:
-        response = httpx.delete(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+        response = self._client.delete(f"{self.base_url}{path}", headers=self.headers)
         if response.status_code == 401:
             self.refresh_token()
-            response = httpx.delete(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+            response = self._client.delete(f"{self.base_url}{path}", headers=self.headers)
         return response
 
     def put_no_body(self, path: str) -> httpx.Response:
-        response = httpx.put(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+        response = self._client.put(f"{self.base_url}{path}", headers=self.headers)
         if response.status_code == 401:
             self.refresh_token()
-            response = httpx.put(f"{self.base_url}{path}", headers=self.headers, timeout=20)
+            response = self._client.put(f"{self.base_url}{path}", headers=self.headers)
         return response
 
     def refresh_token(self) -> None:
@@ -518,7 +531,7 @@ def main(args: argparse.Namespace) -> None:
             "enabled": True,
             "publicClient": True,
             "standardFlowEnabled": True,
-            "directAccessGrantsEnabled": False,
+            "directAccessGrantsEnabled": True,
             "redirectUris": [f"{CLINICO_UI_URL}/*", f"{SERVICE_BASE_URL}/clinico-ui/*", f"{SERVICE_BASE_URL}/"],
             "webOrigins": [CLINICO_UI_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
@@ -551,7 +564,7 @@ def main(args: argparse.Namespace) -> None:
             "enabled": True,
             "publicClient": True,
             "standardFlowEnabled": True,
-            "directAccessGrantsEnabled": False,
+            "directAccessGrantsEnabled": True,
             "redirectUris": [f"{PACIENTE_UI_URL}/*", f"{SERVICE_BASE_URL}/paciente-ui/*", f"{SERVICE_BASE_URL}/"],
             "webOrigins": [PACIENTE_UI_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
