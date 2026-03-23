@@ -1,6 +1,7 @@
-from pydantic import BaseModel
 from datetime import date, datetime
 from typing import Literal
+
+from pydantic import BaseModel
 
 
 class PrescriptionItem(BaseModel):
@@ -57,36 +58,34 @@ class CID10Result(BaseModel):
 
 class MedicationItem(BaseModel):
     order: int
-    drug_name: str              
-    concentration: str          
-    pharmaceutical_form: str    
-    quantity: int               
-    quantity_unit: str          
-    dosage_instructions: str    
-    route: str                  
+    drug_name: str
+    concentration: str
+    pharmaceutical_form: str
+    quantity: int
+    quantity_unit: str
+    dosage_instructions: str
+    route: str
+
 
 PrescriptionType = Literal["simple", "special_control"]
+
 
 class ReceituarioData(BaseModel):
     prescription_id: str
     issued_at: datetime
     prescription_type: PrescriptionType
-
     professional_name: str
     crm: str
     crm_state: str
     specialty: str
     clinic_address: str
     clinic_phone: str
-
     patient_name: str
     patient_age: int
     patient_cpf: str | None = None
-
     cid10_code: str
     cid10_description: str
     medications: list[MedicationItem]
-
     prescription_validity_days: int | None = None
     prescription_number: str | None = None
 
@@ -99,8 +98,10 @@ class InteractionWarning(BaseModel):
     recommendation: str
     source: Literal["static", "llm"]
 
+
 class CheckInteractionsRequest(BaseModel):
     medications: list[str]
+
 
 class CheckInteractionsResponse(BaseModel):
     warnings: list[InteractionWarning]
