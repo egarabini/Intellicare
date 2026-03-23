@@ -1,3 +1,13 @@
+---
+tipo: finalizacao
+demanda: DEM-072
+titulo: Receituário Digital
+status: concluida
+commit: 7d1c6a9
+dev: DEV-1
+data-entrega: 2026-03-22
+---
+
 # DEM-072 — Finalização (Receituário Digital)
 
 ## Resumo da Entrega

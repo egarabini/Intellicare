@@ -3,6 +3,7 @@ tipo: finalizacao
 demanda: DEM-074
 titulo: Staging Sync 2026-04-25
 status: concluida
+commit: 33b7435
 dev: DEV-1
 data-entrega: 2026-03-22
 ---

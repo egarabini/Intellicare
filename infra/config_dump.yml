@@ -1,0 +1,936 @@
+name: intellicare
+services:
+  evolution-api:
+    container_name: intellicare_evolution
+    depends_on:
+      postgres:
+        condition: service_started
+        required: true
+      redis:
+        condition: service_started
+        required: true
+    environment:
+      AUTHENTICATION_API_KEY: ""
+      AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES: "true"
+      CACHE_REDIS_ENABLED: "true"
+      CACHE_REDIS_PREFIX_KEY: evolution
+      CACHE_REDIS_SAVE_INSTANCES: "true"
+      CACHE_REDIS_URI: redis://:@redis:6379/6
+      DATABASE_CONNECTION_CLIENT_NAME: evolution_client
+      DATABASE_CONNECTION_URI: postgresql://intellicare_staging:@postgres:5432/evolution
+      DATABASE_PROVIDER: postgresql
+      SERVER_URL: http://evolution-api:8080
+      WEBHOOK_EVENTS_CONNECTION_UPDATE: "false"
+      WEBHOOK_EVENTS_MESSAGES_UPSERT: "true"
+      WEBHOOK_EVENTS_QRCODE_UPDATED: "false"
+      WEBHOOK_GLOBAL_ENABLED: "true"
+      WEBHOOK_GLOBAL_URL: http://intellicare-service:8000/careplanner/webhook/whatsapp/
+    image: evoapicloud/evolution-api:v2.3.7
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8081"
+        protocol: tcp
+    restart: unless-stopped
+  grafana:
+    container_name: intellicare-grafana
+    depends_on:
+      prometheus:
+        condition: service_started
+        required: true
+    environment:
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+      GF_SECURITY_ADMIN_PASSWORD: IC_Staging#Grafana2025
+      GF_SMTP_ENABLED: "true"
+      GF_SMTP_FROM_ADDRESS: alertas@intellicare.ia.br
+      GF_SMTP_FROM_NAME: IntelliCare Alertas
+      GF_SMTP_HOST: smtp.gmail.com:587
+      GF_SMTP_PASSWORD: ""
+      GF_SMTP_STARTTLS_POLICY: MandatoryStartTLS
+      GF_SMTP_USER: ""
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - --spider
+        - http://localhost:3000/api/health
+      timeout: 5s
+      interval: 15s
+      retries: 3
+    image: grafana/grafana:10.4.0
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: grafana_data
+        target: /var/lib/grafana
+        volume: {}
+      - type: bind
+        source: C:\Users\egara\INTELLICARE\infra\grafana\provisioning
+        target: /etc/grafana/provisioning
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\egara\INTELLICARE\infra\grafana\dashboards
+        target: /var/lib/grafana/dashboards
+        read_only: true
+        bind:
+          create_host_path: true
+  intellicare-service:
+    build:
+      context: C:\Users\egara\INTELLICARE
+      dockerfile: deploy/Dockerfile
+    container_name: intellicare-service
+    depends_on:
+      keycloak:
+        condition: service_healthy
+        required: true
+      ollama:
+        condition: service_healthy
+        required: true
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      DATABASE_URL: postgresql+asyncpg://intellicare_staging:IC_Staging#Pg2025@postgres:5432/intellicare_staging
+      DEV_TENANT_SLUG: tenant_dev
+      ENABLE_METRICS: "true"
+      ENVIRONMENT: staging
+      GRAFANA_ALERT_EMAIL: egarabini@gmail.com
+      GRAFANA_PASSWORD: IntelliCare@Grafana2025
+      GRAFANA_PORT: "3000"
+      GRAFANA_SLACK_CHANNEL: '#intellicare-alertas'
+      GRAFANA_SLACK_WEBHOOK_URL: ""
+      GRAFANA_SMTP_HOST: smtp.gmail.com:587
+      GRAFANA_SMTP_PASSWORD: ""
+      GRAFANA_SMTP_USER: alertas@intellicare.ia.br
+      JICOFO_AUTH_PASSWORD: dev_jicofo_auth_2026
+      JITSI_APP_ID: intellicare
+      JITSI_APP_SECRET: dev_jitsi_app_secret_2026
+      JITSI_BASE_URL: https://meet.intellicare.ia.br
+      JITSI_DEFAULT_ROOM_DURATION: "120"
+      JITSI_MAX_PARTICIPANTS: "10"
+      JVB_AUTH_PASSWORD: dev_jvb_auth_2026
+      KC_DB: postgres
+      KC_DB_PASSWORD: intellicare_dev_password
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: intellicare
+      KESTRA_API_KEY: ""
+      KESTRA_TIMEOUT: "30.0"
+      KESTRA_URL: http://kestra:8080
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin_dev_password
+      KEYCLOAK_CLIENT_ID: intellicare-service
+      KEYCLOAK_CLIENT_SECRET: CHANGE_ME_ON_DEPLOY
+      KEYCLOAK_INTERNAL_URL: http://keycloak:8080
+      KEYCLOAK_REALM: intellicare
+      KEYCLOAK_URL: http://keycloak:8080
+      LOG_LEVEL: INFO
+      MONGO_OPLOG_URL: mongodb://mongo:27017/local?replicaSet=rs0
+      MONGO_URL: mongodb://mongo:27017/rocketchat?replicaSet=rs0
+      OLLAMA_API_URL: http://ollama:11434
+      OLLAMA_EMBED_MODEL: nomic-embed-text
+      OLLAMA_HOST: 0.0.0.0
+      OLLAMA_ORIGINS: '*'
+      POSTGRES_DB: intellicare
+      POSTGRES_HOST: postgres
+      POSTGRES_PASSWORD: intellicare_dev_password
+      POSTGRES_PORT: "5432"
+      POSTGRES_USER: intellicare
+      PROMETHEUS_PORT: "9090"
+      REDIS_HOST: redis
+      REDIS_PASSWORD: redis_dev_password
+      REDIS_URL: redis://:IC_Staging#Redis2025@redis:6379/0
+      ROCKETCHAT_BOT_PASSWORD: dev_rc_bot_password
+      ROCKETCHAT_BOT_USERNAME: intellicare_bot
+      ROCKETCHAT_MAX_REQUESTS_PER_SECOND: "10"
+      ROCKETCHAT_MAX_RETRIES: "3"
+      ROCKETCHAT_URL: http://rocketchat:3001
+      ROCKETCHAT_WEBHOOK_TOKEN: dev_webhook_token_intellicare_2026
+      SECRET_KEY: staging-secret-key-intellicare-v3-2025-change-for-prod
+      STAGING_REMOTE_PATH: /opt/intellicare/
+      STAGING_VPS_HOST: 167.86.97.142
+      STAGING_VPS_PASSWORD: Soeuso410863
+      STAGING_VPS_USER: root
+      TRAEFIK_DASHBOARD_PORT: "8090"
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8000/health
+      timeout: 10s
+      interval: 30s
+      retries: 3
+      start_period: 1m0s
+    labels:
+      traefik.enable: "true"
+      traefik.http.middlewares.admin-ui-redirect.redirectregex.permanent: "false"
+      traefik.http.middlewares.admin-ui-redirect.redirectregex.regex: ^(https://admin\.intellicare\.ia\.br)/?$$
+      traefik.http.middlewares.admin-ui-redirect.redirectregex.replacement: $${1}/admin-ui/
+      traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
+      traefik.http.routers.intellicare-admin-http.entrypoints: web
+      traefik.http.routers.intellicare-admin-http.middlewares: redirect-to-https
+      traefik.http.routers.intellicare-admin-http.rule: Host(`admin.intellicare.ia.br`)
+      traefik.http.routers.intellicare-admin-http.service: intellicare-admin
+      traefik.http.routers.intellicare-admin.entrypoints: websecure
+      traefik.http.routers.intellicare-admin.middlewares: admin-ui-redirect
+      traefik.http.routers.intellicare-admin.rule: Host(`admin.intellicare.ia.br`)
+      traefik.http.routers.intellicare-admin.service: intellicare-admin
+      traefik.http.routers.intellicare-admin.tls.certresolver: letsencrypt
+      traefik.http.routers.intellicare-api-http.entrypoints: web
+      traefik.http.routers.intellicare-api-http.middlewares: redirect-to-https
+      traefik.http.routers.intellicare-api-http.rule: Host(`api.intellicare.ia.br`)
+      traefik.http.routers.intellicare-api-http.service: intellicare-api
+      traefik.http.routers.intellicare-api.entrypoints: websecure
+      traefik.http.routers.intellicare-api.rule: Host(`api.intellicare.ia.br`)
+      traefik.http.routers.intellicare-api.service: intellicare-api
+      traefik.http.routers.intellicare-api.tls.certresolver: letsencrypt
+      traefik.http.routers.intellicare-portal-http.entrypoints: web
+      traefik.http.routers.intellicare-portal-http.rule: Host(`intellicare.ia.br`)
+      traefik.http.routers.intellicare-portal-http.service: intellicare-portal
+      traefik.http.routers.intellicare-portal.entrypoints: websecure
+      traefik.http.routers.intellicare-portal.rule: Host(`intellicare.ia.br`)
+      traefik.http.routers.intellicare-portal.service: intellicare-portal
+      traefik.http.routers.intellicare-portal.tls.certresolver: letsencrypt
+      traefik.http.routers.intellicare.rule: Host(`localhost`)
+      traefik.http.routers.intellicare.service: intellicare
+      traefik.http.services.intellicare-admin.loadbalancer.server.port: "8000"
+      traefik.http.services.intellicare-api.loadbalancer.server.port: "8000"
+      traefik.http.services.intellicare-portal.loadbalancer.server.port: "8000"
+      traefik.http.services.intellicare.loadbalancer.server.port: "8000"
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 8000
+        published: "9000"
+        protocol: tcp
+    restart: unless-stopped
+  jasmin:
+    container_name: intellicare-jasmin
+    depends_on:
+      redis:
+        condition: service_started
+        required: true
+    environment:
+      REDIS_CLIENT_HOST: redis
+      REDIS_CLIENT_PORT: "6379"
+    image: jookies/jasmin:0.10
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 1401
+        published: "1401"
+        protocol: tcp
+      - mode: ingress
+        target: 8990
+        published: "8990"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: jasmin_data
+        target: /etc/jasmin
+        volume: {}
+  jitsi-jicofo:
+    container_name: jitsi-jicofo
+    depends_on:
+      jitsi-prosody:
+        condition: service_started
+        required: true
+    environment:
+      JICOFO_AUTH_PASSWORD: 93d611fdc2860e56e2c0b5e2268ab14a56dfb54f799154f5
+      JICOFO_AUTH_USER: focus
+      JVB_BREWERY_MUC: jvbbrewery
+      TZ: America/Sao_Paulo
+      XMPP_AUTH_DOMAIN: auth.meet.jitsi
+      XMPP_DOMAIN: meet.jitsi
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.meet.jitsi
+      XMPP_SERVER: jitsi-prosody
+    image: jitsi/jicofo:stable
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: jitsi_jicofo
+        target: /config
+        volume: {}
+  jitsi-jvb:
+    container_name: jitsi-jvb
+    depends_on:
+      jitsi-prosody:
+        condition: service_started
+        required: true
+    environment:
+      JVB_AUTH_PASSWORD: 65b69dbc87577667ac4b2c2aecdfdb54a07df0fbc3e4dbfe
+      JVB_AUTH_USER: jvb
+      JVB_BREWERY_MUC: jvbbrewery
+      JVB_PORT: "10000"
+      JVB_TCP_HARVESTER_DISABLED: "true"
+      PUBLIC_URL: https://meet.intellicare.ia.br
+      TZ: America/Sao_Paulo
+      XMPP_AUTH_DOMAIN: auth.meet.jitsi
+      XMPP_DOMAIN: meet.jitsi
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.meet.jitsi
+      XMPP_SERVER: jitsi-prosody
+    image: jitsi/jvb:stable
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 10000
+        published: "10000"
+        protocol: udp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: jitsi_jvb
+        target: /config
+        volume: {}
+  jitsi-prosody:
+    container_name: jitsi-prosody
+    environment:
+      AUTH_TYPE: jwt
+      ENABLE_AUTH: "1"
+      JICOFO_AUTH_PASSWORD: 93d611fdc2860e56e2c0b5e2268ab14a56dfb54f799154f5
+      JICOFO_AUTH_USER: focus
+      JVB_AUTH_PASSWORD: 65b69dbc87577667ac4b2c2aecdfdb54a07df0fbc3e4dbfe
+      JVB_AUTH_USER: jvb
+      JWT_APP_ID: intellicare
+      JWT_APP_SECRET: 42dd4fd5444679986e301cc444e846c158cac7cd65d696f3
+      TZ: America/Sao_Paulo
+      XMPP_AUTH_DOMAIN: auth.meet.jitsi
+      XMPP_DOMAIN: meet.jitsi
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.meet.jitsi
+      XMPP_MUC_DOMAIN: muc.meet.jitsi
+    image: jitsi/prosody:stable
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: jitsi_prosody
+        target: /config
+        volume: {}
+  jitsi-web:
+    container_name: jitsi-web
+    depends_on:
+      jitsi-prosody:
+        condition: service_started
+        required: true
+    environment:
+      AUTH_TYPE: jwt
+      ENABLE_AUTH: "1"
+      JICOFO_AUTH_USER: focus
+      JWT_ACCEPTED_AUDIENCES: jitsi
+      JWT_ACCEPTED_ISSUERS: intellicare
+      JWT_APP_ID: intellicare
+      JWT_APP_SECRET: 42dd4fd5444679986e301cc444e846c158cac7cd65d696f3
+      PUBLIC_URL: https://meet.intellicare.ia.br
+      TZ: America/Sao_Paulo
+      XMPP_AUTH_DOMAIN: auth.meet.jitsi
+      XMPP_DOMAIN: meet.jitsi
+      XMPP_INTERNAL_MUC_DOMAIN: internal-muc.meet.jitsi
+      XMPP_MUC_DOMAIN: muc.meet.jitsi
+    image: jitsi/web:stable
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.jitsi.entrypoints: websecure
+      traefik.http.routers.jitsi.rule: Host(`meet.intellicare.ia.br`)
+      traefik.http.routers.jitsi.tls.certresolver: letsencrypt
+      traefik.http.services.jitsi.loadbalancer.server.port: "80"
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: jitsi_web
+        target: /config
+        volume: {}
+  kestra:
+    command:
+      - server
+      - standalone
+      - --worker-thread=128
+    container_name: kestra
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      KESTRA_CONFIGURATION: |
+        datasources:
+          postgres:
+            url: jdbc:postgresql://postgres:5432/kestra
+            username: intellicare_staging
+            password: IC_Staging#Pg2025
+        kestra:
+          server:
+            basic-auth:
+              enabled: false
+          repository:
+            type: postgres
+          storage:
+            type: local
+            local:
+              base-path: /app/storage
+          queue:
+            type: postgres
+          tasks:
+            defaults: []
+          url: http://kestra:8080
+    image: kestra/kestra:latest-full
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.kestra.entrypoints: websecure
+      traefik.http.routers.kestra.rule: Host(`kestra.intellicare.ia.br`)
+      traefik.http.routers.kestra.tls.certresolver: letsencrypt
+      traefik.http.services.kestra.loadbalancer.server.port: "8080"
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: kestra_data
+        target: /app/storage
+        volume: {}
+  keycloak:
+    command:
+      - start-dev
+      - --import-realm
+    container_name: intellicare-keycloak
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      KC_DB: postgres
+      KC_DB_PASSWORD: IC_Staging#Pg2025
+      KC_DB_URL: jdbc:postgresql://postgres:5432/intellicare_staging
+      KC_DB_USERNAME: intellicare_staging
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "true"
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: IC_Staging#Kc2025
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - "exec 3<>/dev/tcp/localhost/8080; echo -e 'GET /health/ready HTTP/1.1\r\nHost: localhost\r\n\r\n' >&3; grep -q 'UP' <&3"
+      timeout: 10s
+      interval: 30s
+      retries: 10
+      start_period: 1m30s
+    image: quay.io/keycloak/keycloak:24.0
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.intellicare-auth-http.entrypoints: web
+      traefik.http.routers.intellicare-auth-http.middlewares: redirect-to-https
+      traefik.http.routers.intellicare-auth-http.rule: Host(`auth.intellicare.ia.br`)
+      traefik.http.routers.intellicare-auth.entrypoints: websecure
+      traefik.http.routers.intellicare-auth.rule: Host(`auth.intellicare.ia.br`)
+      traefik.http.routers.intellicare-auth.tls.certresolver: letsencrypt
+      traefik.http.services.intellicare-auth.loadbalancer.server.port: "8080"
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 8080
+        published: "8080"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: keycloak_data
+        target: /opt/keycloak/data
+        volume: {}
+      - type: bind
+        source: C:\Users\egara\INTELLICARE\infra\keycloak\realm-export.json
+        target: /opt/keycloak/data/import/realm-export.json
+        read_only: true
+        bind:
+          create_host_path: true
+  listmonk:
+    command:
+      - sh
+      - -c
+      - yes | ./listmonk --install --idempotent && ./listmonk
+    container_name: intellicare-listmonk
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      LISTMONK_app__address: 0.0.0.0:9000
+      LISTMONK_app__admin_password: ""
+      LISTMONK_app__admin_username: ""
+      LISTMONK_db__database: listmonk
+      LISTMONK_db__host: postgres
+      LISTMONK_db__password: IC_Staging#Pg2025
+      LISTMONK_db__port: "5432"
+      LISTMONK_db__user: intellicare_staging
+    image: listmonk/listmonk:v3.0.0
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 9000
+        published: "9001"
+        protocol: tcp
+    restart: unless-stopped
+  marie-api:
+    container_name: marie-api
+    depends_on:
+      marie-db:
+        condition: service_healthy
+        required: true
+      marie-redis:
+        condition: service_healthy
+        required: true
+    environment:
+      DATABASE_URL: postgresql://dify:@marie-db:5432/dify
+      MODE: api
+      REDIS_URL: redis://:@marie-redis:6379/0
+      SECRET_KEY: ""
+      STORAGE_TYPE: local
+    image: langgenius/dify-api:0.6.11
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 5001
+        published: "5001"
+        protocol: tcp
+    restart: unless-stopped
+  marie-db:
+    container_name: marie-db
+    environment:
+      POSTGRES_DB: dify
+      POSTGRES_PASSWORD: ""
+      POSTGRES_USER: dify
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U dify -d dify
+      timeout: 5s
+      interval: 10s
+      retries: 10
+      start_period: 20s
+    image: postgres:15-alpine
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: marie_db_data
+        target: /var/lib/postgresql/data
+        volume: {}
+  marie-redis:
+    command:
+      - redis-server
+      - --requirepass
+    container_name: marie-redis
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - -a
+        - ""
+        - ping
+      timeout: 5s
+      interval: 10s
+      retries: 10
+    image: redis:7-alpine
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+  marie-web:
+    container_name: marie-web
+    depends_on:
+      marie-api:
+        condition: service_started
+        required: true
+    environment:
+      APP_API_URL: http://localhost:5001
+      CONSOLE_API_URL: http://localhost:5001
+    image: langgenius/dify-web:0.6.11
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3002"
+        protocol: tcp
+    restart: unless-stopped
+  marie-worker:
+    container_name: marie-worker
+    depends_on:
+      marie-db:
+        condition: service_healthy
+        required: true
+      marie-redis:
+        condition: service_healthy
+        required: true
+    environment:
+      DATABASE_URL: postgresql://dify:@marie-db:5432/dify
+      MODE: worker
+      REDIS_URL: redis://:@marie-redis:6379/0
+      SECRET_KEY: ""
+      STORAGE_TYPE: local
+    image: langgenius/dify-api:0.6.11
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+  mongo:
+    command:
+      - mongod
+      - --oplogSize
+      - "128"
+      - --replSet
+      - rs0
+    container_name: mongo
+    image: mongo:6
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: mongo_data
+        target: /data/db
+        volume: {}
+  mongo-init-replica:
+    command:
+      - bash
+      - -c
+      - 'sleep 5 && mongosh --host mongo --eval "rs.initiate({_id: ''rs0'', members: [{_id: 0, host: ''mongo:27017''}]})"'
+    depends_on:
+      mongo:
+        condition: service_started
+        required: true
+    image: mongo:6
+    networks:
+      intellicare-net: null
+    restart: on-failure
+  node-exporter:
+    command:
+      - --path.procfs=/host/proc
+      - --path.rootfs=/rootfs
+      - --path.sysfs=/host/sys
+      - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
+    container_name: intellicare-node-exporter
+    image: prom/node-exporter:v1.7.0
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /proc
+        target: /host/proc
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /sys
+        target: /host/sys
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: /
+        target: /rootfs
+        read_only: true
+        bind:
+          create_host_path: true
+  ollama:
+    container_name: intellicare-ollama
+    environment:
+      OLLAMA_HOST: 0.0.0.0
+      OLLAMA_ORIGINS: '*'
+    healthcheck:
+      test:
+        - CMD
+        - ollama
+        - list
+      timeout: 10s
+      interval: 15s
+      retries: 5
+      start_period: 30s
+    image: ollama/ollama:latest
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 11434
+        published: "11434"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: ollama_models
+        target: /root/.ollama
+        volume: {}
+  postgres:
+    container_name: intellicare-postgres
+    environment:
+      POSTGRES_DB: intellicare_staging
+      POSTGRES_PASSWORD: IC_Staging#Pg2025
+      POSTGRES_USER: intellicare_staging
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U intellicare_staging -d intellicare_staging
+      timeout: 5s
+      interval: 10s
+      retries: 5
+      start_period: 30s
+    image: pgvector/pgvector:pg16
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
+        volume: {}
+      - type: bind
+        source: C:\Users\egara\INTELLICARE\infra\postgres\init.sql
+        target: /docker-entrypoint-initdb.d/init.sql
+        read_only: true
+        bind:
+          create_host_path: true
+  postgres-exporter:
+    container_name: intellicare-postgres-exporter
+    depends_on:
+      postgres:
+        condition: service_healthy
+        required: true
+    environment:
+      DATA_SOURCE_NAME: postgresql://intellicare_staging:IC_Staging#Pg2025@postgres:5432/intellicare_staging?sslmode=disable
+    image: prometheuscommunity/postgres-exporter:v0.15.0
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+  prometheus:
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.console.libraries=/etc/prometheus/console_libraries
+      - --web.console.templates=/etc/prometheus/consoles
+      - --storage.tsdb.retention.time=15d
+      - --web.enable-lifecycle
+    container_name: intellicare-prometheus
+    depends_on:
+      intellicare-service:
+        condition: service_started
+        required: true
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -q
+        - --spider
+        - http://localhost:9090/-/healthy
+      timeout: 5s
+      interval: 15s
+      retries: 3
+    image: prom/prometheus:v2.51.0
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 9090
+        published: "9090"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: C:\Users\egara\INTELLICARE\infra\prometheus\prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: volume
+        source: prometheus_data
+        target: /prometheus
+        volume: {}
+  redis:
+    command:
+      - redis-server
+      - --requirepass
+      - IC_Staging#Redis2025
+    container_name: intellicare-redis
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - -a
+        - IC_Staging#Redis2025
+        - ping
+      timeout: 5s
+      interval: 10s
+      retries: 5
+    image: redis:7-alpine
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 6379
+        published: "6379"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: redis_data
+        target: /data
+        volume: {}
+  redis-exporter:
+    container_name: intellicare-redis-exporter
+    depends_on:
+      redis:
+        condition: service_started
+        required: true
+    environment:
+      REDIS_ADDR: redis://redis:6379
+      REDIS_PASSWORD: IC_Staging#Redis2025
+    image: oliver006/redis_exporter:v1.59.0
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+  rocketchat:
+    container_name: rocketchat
+    depends_on:
+      mongo:
+        condition: service_started
+        required: true
+      mongo-init-replica:
+        condition: service_started
+        required: true
+    environment:
+      DEPLOY_PLATFORM: docker
+      MONGO_OPLOG_URL: mongodb://mongo:27017/local?replicaSet=rs0
+      MONGO_URL: mongodb://mongo:27017/rocketchat?replicaSet=rs0
+      PORT: "3001"
+      ROOT_URL: https://chat.intellicare.ia.br
+    image: rocket.chat:latest
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.rocketchat.entrypoints: websecure
+      traefik.http.routers.rocketchat.rule: Host(`chat.intellicare.ia.br`)
+      traefik.http.routers.rocketchat.tls.certresolver: letsencrypt
+      traefik.http.services.rocketchat.loadbalancer.server.port: "3001"
+    networks:
+      intellicare-net: null
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: rocketchat_uploads
+        target: /app/uploads
+        volume: {}
+  traefik:
+    command:
+      - --api.insecure=true
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge=true
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web
+      - --certificatesresolvers.letsencrypt.acme.email=egarabini@gmail.com
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --log.level=INFO
+      - --ping=true
+    container_name: intellicare-traefik
+    environment:
+      DOCKER_API_VERSION: "1.44"
+    healthcheck:
+      test:
+        - CMD
+        - traefik
+        - healthcheck
+        - --ping
+      timeout: 5s
+      interval: 10s
+      retries: 3
+    image: traefik:v2.11.31
+    networks:
+      intellicare-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8081"
+        protocol: tcp
+      - mode: ingress
+        target: 443
+        published: "8443"
+        protocol: tcp
+      - mode: ingress
+        target: 8080
+        published: "8090"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\egara\INTELLICARE\infra\letsencrypt
+        target: /letsencrypt
+        bind:
+          create_host_path: true
+networks:
+  intellicare-net:
+    name: intellicare_intellicare-net
+    driver: bridge
+volumes:
+  grafana_data:
+    name: intellicare_grafana_data
+  jasmin_data:
+    name: intellicare_jasmin_data
+  jitsi_jicofo:
+    name: intellicare_jitsi_jicofo
+  jitsi_jvb:
+    name: intellicare_jitsi_jvb
+  jitsi_prosody:
+    name: intellicare_jitsi_prosody
+  jitsi_web:
+    name: intellicare_jitsi_web
+  kestra_data:
+    name: intellicare_kestra_data
+  keycloak_data:
+    name: intellicare_keycloak_data
+  marie_db_data:
+    name: intellicare_marie_db_data
+  mongo_data:
+    name: intellicare_mongo_data
+  ollama_models:
+    name: intellicare_ollama_models
+  postgres_data:
+    name: intellicare_postgres_data
+  prometheus_data:
+    name: intellicare_prometheus_data
+  redis_data:
+    name: intellicare_redis_data
+  rocketchat_uploads:
+    name: intellicare_rocketchat_uploads

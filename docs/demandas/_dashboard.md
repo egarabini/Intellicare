@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-21 | Branch: main | Último commit: af3e66bb (DEM-064 Staging Clinical Squad Validation)
+> Atualizado: 2026-03-23 | Branch: main | Último commit: 81afeac (DEM-080 Assinatura Digital Receituário)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -67,6 +67,8 @@
 | DEM-063 | E2E Clinical Squad — 8 pytest (Florence, Oswaldo, Portal) + 5 Playwright (florence, oswaldo, paciente) = 13 testes E2E | `6708521` |
 | DEM-INF | Fix Redis pubsub — `redis_pubsub.py` usa `REDIS_PASSWORD_URLENC` em vez de senha bruta (fix `Port could not be cast` no staging) | `c7fabecc` |
 | DEM-INF | Fix ClinicoUI Docker build — `optimizeDeps.include: ['@tanstack/react-query']` em `vite.config.ts` (Vite SSR/Docker não pré-bundlava dependência) | `055e883` |
+| DEM-INF | Fix Portal Agentes — rename imagens `*_ia.png` → sem sufixo em `public/agents/`, referências atualizadas em `Agents.tsx` | `0807431` |
+| DEM-INF | Fix DEM-068 staging — Dockerfile copia `db/`+`tools/`, push_subscriptions criada, Kestra aceita `multipart/form-data` | `d7cc7cc8` |
 
 ¹ DEM-044 e DEM-045 compartilham o commit `d7a61dd` — arquivos de ambas as DEMs entraram agrupados na mesma entrega. Código verificado e funcional em ambas.
 ² DEM-049 incluiu antecipadamente `Channel.EMAIL` em `contracts.py` — DEV-1 (DEM-048) deve fazer `git pull --rebase` antes de commitar para evitar conflito nessa linha.
@@ -125,14 +127,47 @@
 
 ---
 
-## 🔄 Em execução — Sprint 2026-04-18
+## ✅ Sprint 2026-04-18 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-065 | Multi-tenant Avançado — `tenant_provisioner`, migration 015, TenantsManager + TenantConfigPage, suspend/reactivate, 16 testes | DEV-1 | `683c0f9` |
+| DEM-066 | Notificações Push PWA — migration 016, `push_sender.py`, endpoints subscribe/unsubscribe/vapid, `sw.js`+`manifest.json` ClinicoUI+GestorUI, toggle NotificationBell | DEV-2 | `98d0310f` |
+| DEM-067 | Kestra Flows Condicionais — 4 flows (fallback canal, branching resposta, retry backoff, urgência clínica), normalize_confirmation, 24 testes | CODEX | `5b7e1a42` |
+| DEM-068 | Staging Full Sync 2026-04-18 — provision ✅ push/subscribe ✅ Kestra trigger ✅ adapters ✅ Evolution open ✅ Florence ✅ | DEV-3/4 | `772a1dd` |
+
+---
+
+## ✅ Sprint 2026-04-25 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-071 | Linha do Tempo Clínica — timeline unificada encounters+notes+prescriptions+journeys, UNION ALL query, ClinicalTimeline.tsx | DEV-2 | `ef40df8` |
+| DEM-072 | Receituário Digital — template Jinja2 CFM/ANVISA, posologia formal, simple/special_control, WeasyPrint | DEV-1 | `7d1c6a9` |
+| DEM-073 | Prompt Versioning — migration 017 `prompt_templates`, `get_active_prompt()`, AdminUI PromptsPage, versionamento + rollback | CODEX | `60f2619` |
+| DEM-074 | Staging Sync 2026-04-25 — migration 017 ✅ timeline ✅ receituário ✅ prompts ✅ AdminUI ✅ 22/22 testes | DEV-1 | `33b7435` |
+
+---
+
+## ✅ Sprint 2026-05-02 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-075 | Marie Bootstrap — Dify stack, `marie_client.py`, `MARIE_ENABLED`, `cid10_rag` proof-of-concept | CODEX | `6ed6281` |
+| DEM-076 | Portal Paciente Avançado — timeline + receituário PacienteUI, filtro privacidade SOAP | DEV-2 | `8e5fa8a` |
+| DEM-077 | Oswaldo Interação Medicamentosa — checker estático + LLM fallback, `InteractionWarningBanner` | DEV-1 | `3105284` |
+| DEM-078 | Staging Sync 2026-05-02 — Marie UP ✅ interações ✅ portal ✅ 018 migration ✅ suite testes ✅ | DEV-1 | `a4b2b94` |
+
+---
+
+## 🚀 Sprint 2026-05-09 — Em execução
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-065 | Multi-tenant Avançado — `tenant_provisioner`, migration 015, TenantsManager + TenantConfigPage, suspend/reactivate, 16 testes | DEV-1 | ✅ `683c0f9` |
-| DEM-066 | Notificações Push PWA — `sw.js`, migration 016 `push_subscriptions`, `pywebpush`, VAPID | DEV-2 | ⏳ em execução |
-| DEM-067 | Kestra Flows Condicionais — 4 flows (fallback canal, branching resposta, retry backoff, urgência clínica), normalize_confirmation, 24 testes | CODEX | ✅ `5b7e1a42` |
-| DEM-068 | Staging Full Sync 2026-04-18 — validação DEMs 065–067 + smoke geral | DEV-3/4 | ⏳ aguarda DEV-1+2+CODEX |
+| DEM-079 | Florence via Marie RAG — workflow `florence_soap_rag`, SOAP contextualizado com timeline, `MARIE_ENABLED` ativo | CODEX | ✅ `868cf09` |
+| DEM-080 | Assinatura Digital Receituário — ICP-Brasil A1 (.pfx), `pyhanko`, endpoint upload certificado, PDF assinado | DEV-1 | ✅ `81afeac` |
+| DEM-081 | GestorUI KPIs Clínicos — dashboard prescrições/médico, interações detectadas, notas Florence, jornadas CarePlanner | DEV-2 | 🔄 Em execução |
+| DEM-082 | Staging Sync 2026-05-09 — Marie ativo, PDF assinado, KPIs, suite testes | DEV-1 | ⏳ Aguarda DEM-079/080/081 |
 
 ---
 
@@ -140,7 +175,7 @@
 
 | DEM | Módulo | Descrição | Gatilho |
 |-----|--------|-----------|---------|
-| DEM-069 | **Marie** (Orquestradora IA) | Bootstrap Dify como microsserviço parceiro — `marie_client.py`, flag `MARIE_ENABLED`, migração do primeiro flow Oswaldo prescrição → Marie RAG | Prompts alterados >1x/semana **ou** demanda RAG longitudinal (FHIR/histórico >6 meses) **ou** >3 etapas LLM encadeadas em Florence/Oswaldo |
+| DEM-069 | **Marie** (Orquestradora IA) | Bootstrap Dify como microsserviço parceiro — `marie_client.py`, flag `MARIE_ENABLED`, migração do primeiro flow Oswaldo prescrição → Marie RAG | ✅ **Gatilho atingido** — DEM-075 em execução |
 | DEM-070 | **MinIO** (Storage Médico) | Object storage S3-compatible self-hosted — `storage.py`, buckets por tenant, presigned URLs, isolamento LGPD | Primeira demanda de upload de exame real (DICOM/laudo/ECG) **ou** PDFs clínicos precisarem ser persistidos **ou** pressão de anexos WhatsApp no PostgreSQL |
 
 > **ADR Marie:** `docs/adr/ADR-002-marie-dify-orchestrator.md` — Marie Curie: cria os instrumentos para medir o invisível. Processa históricos complexos e RAG antes de entregar resposta validada ao Oswaldo/Florence. Não substitui — **amplifica**.

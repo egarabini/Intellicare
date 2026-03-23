@@ -131,3 +131,52 @@ docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
   ```
 - Apos troca de imagem, recriar a instancia do zero (DELETE + POST create) porque
   sessoes anteriores ficam com estado invalido no Postgres/Redis.
+
+---
+
+## Kestra 0.20 — trigger de flow usa `multipart/form-data`, não JSON
+
+### Situação real (DEM-068)
+- `POST /api/v1/executions` no Kestra 0.20 retorna `415 Unsupported Media Type` quando chamado com `Content-Type: application/json`.
+- O Kestra 0.20 espera `multipart/form-data` para criação de execuções via API REST.
+
+### Fix
+```python
+# modules/careplanner/integrations.py
+# ❌ Errado
+response = await client.post(url, json=payload)
+
+# ✅ Correto
+response = await client.post(url, data=payload)
+# httpx: data= envia como multipart/form-data
+```
+
+---
+
+## Dockerfile — copiar `db/` e `tools/` do pacote core
+
+### Situação real (DEM-068)
+- `tenant_provisioner.py` usa `from tools.scripts.tenant_provisioner import ...`
+- Se o Dockerfile não copiar `db/` e `tools/` para dentro do container, o import falha com `ModuleNotFoundError` em runtime — sem erro visível no build.
+
+### Fix
+Garantir que o Dockerfile inclui os diretórios do pacote core além de `intellicare_core/`:
+```dockerfile
+COPY packages/intellicare-core/db/ ./db/
+COPY packages/intellicare-core/tools/ ./tools/
+```
+
+---
+
+## Schema drift `deleted_at` — migrations precisam rodar no staging antes do deploy
+
+### Situação real (DEM-068)
+- `tenant_guard.py` e `admin/service.py` filtravam por `deleted_at` que não existia no staging.
+- O staging estava com a tabela `platform.tenant_config` sem a coluna adicionada na migration 015.
+
+### Fix correto
+Rodar a migration no banco do staging **antes** de subir o novo código:
+```bash
+docker compose exec intellicare-service alembic upgrade head
+```
+Nunca adicionar tolerância a colunas ausentes no código Python — isso esconde drift de schema.

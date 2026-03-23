@@ -310,6 +310,23 @@ async def generate_receituario(ctx: TenantContext, prescription_id: int, ptype: 
     if prof and prof.get("id"):
         pdf_bytes = await _try_sign_pdf(ctx, pdf_bytes, prof["id"])
 
+    # Hook DEM-081: Persistir quantidade de interações (KPI)
+    try:
+        from modules.oswaldo.interactions import check_interactions
+        from intellicare_core.db.session import tenant_session
+        from sqlalchemy import text
+        medications = [item.drug for item in rx.items]
+        if len(medications) > 1:
+            warnings, _ = await check_interactions(medications)
+            if warnings:
+                async with tenant_session(ctx) as db:
+                    await db.execute(
+                        text("UPDATE prescriptions SET interaction_warnings_count = :count WHERE id = :id"),
+                        {"count": len(warnings), "id": rx.id}
+                    )
+    except Exception as e:
+        logger.error("Erro ao verificar interações/salvar KPI durante receituário: %s", e)
+
     return pdf_bytes
 
 

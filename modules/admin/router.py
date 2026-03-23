@@ -44,8 +44,12 @@ from .schemas import (
     TenantUsersResponse,
     UserInviteRequest,
     UserInviteResponse,
+    ClinicalKPIsResponse,
 )
 from .service import TenantService
+from .kpis import get_clinical_kpis
+from datetime import date
+from uuid import UUID
 
 router = APIRouter(tags=["admin"])
 _service = TenantService()
@@ -498,3 +502,14 @@ async def report_tenants(actor: AdminRequired) -> Response:
         media_type="application/pdf",
         headers={"Content-Disposition": 'attachment; filename="tenants-ativos.pdf"'}
     )
+
+
+@router.get("/kpis/clinical", response_model=ClinicalKPIsResponse)
+async def clinical_kpis(
+    start: date,
+    end: date,
+    professional_id: UUID | None = None,
+    actor: TenantContext = Depends(require_role("GESTOR")),
+) -> ClinicalKPIsResponse:
+    return await get_clinical_kpis(actor, start, end, professional_id)
+

@@ -6,6 +6,14 @@ CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
+DO $$
+BEGIN
+   IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'intellicare') THEN
+      CREATE ROLE intellicare LOGIN PASSWORD 'intellicare_dev_password';
+   END IF;
+END
+$$;
+
 -- Banco do Keycloak
 CREATE DATABASE keycloak
     WITH OWNER = intellicare

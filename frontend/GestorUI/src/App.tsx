@@ -29,6 +29,7 @@ import {
   IconBuilding,
   IconUserShield,
   IconMessage,
+  IconChartBar,
 } from '@tabler/icons-react'
 
 import { AuthProvider } from './auth/AuthProvider'
@@ -49,6 +50,7 @@ import { RelatoriosPage } from './pages/RelatoriosPage'
 import { CareplannerDashboard } from './pages/CareplannerDashboard'
 import { CareplannerJourneyDetail } from './pages/CareplannerJourneyDetail'
 import { CareplannerTemplates } from './pages/CareplannerTemplates'
+import { IndicadoresPage } from './pages/IndicadoresPage'
 import { NotificationBell } from './components/NotificationBell'
 import { useNotifications } from './hooks/useNotifications'
 
@@ -115,6 +117,7 @@ function AppRoutes() {
     return (
       <>
         <MantineNavLink component={NavLink} to="/dashboard" label="Dashboard" leftSection={<IconDashboard size="1rem"/>} />
+        <MantineNavLink component={NavLink} to="/indicadores" label="Indicadores Clínicos" leftSection={<IconChartBar size="1rem"/>} />
         <MantineNavLink
           component={NavLink}
           to="/careplanner"
@@ -172,6 +175,7 @@ function AppRoutes() {
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/indicadores" element={<IndicadoresPage />} />
             <Route path="/careplanner" element={<CareplannerDashboard />} />
             <Route path="/careplanner/jornadas/:id" element={<CareplannerJourneyDetail />} />
             <Route path="/careplanner/templates" element={<CareplannerTemplates />} />
