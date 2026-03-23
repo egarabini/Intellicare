@@ -61,6 +61,7 @@ COPY modules/ modules/
 COPY configs/ configs/
 COPY db/ db/
 COPY tools/ tools/
+COPY data/ data/
 
 # Sobrescrever o static/ vazio com os arquivos buildados no stage Node
 COPY --from=frontend-builder \
