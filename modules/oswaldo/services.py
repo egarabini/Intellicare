@@ -304,4 +304,28 @@ async def generate_receituario(ctx: TenantContext, prescription_id: int, ptype: 
         "issued_date_extenso": rx.created_at.strftime("%d de %B de %Y") if rx.created_at else ""
     }
 
-    return render_pdf("receituario.html", context)
+    pdf_bytes = render_pdf("receituario.html", context)
+
+    # Assinar digitalmente se profissional tem certificado A1 cadastrado
+    if prof and prof.get("id"):
+        pdf_bytes = await _try_sign_pdf(ctx, pdf_bytes, prof["id"])
+
+    return pdf_bytes
+
+
+async def _try_sign_pdf(ctx: TenantContext, pdf_bytes: bytes, professional_id: int) -> bytes:
+    """Tenta assinar o PDF se o profissional tem certificado. Nunca bloqueia a geração."""
+    try:
+        cert = await repository.get_professional_certificate(ctx, professional_id)
+        if not cert:
+            return pdf_bytes
+
+        from intellicare_core.crypto import decrypt_bytes, decrypt_text
+        from modules.oswaldo.pdf_signer import sign_pdf
+
+        pfx_bytes = decrypt_bytes(cert["pfx_encrypted"])
+        pfx_password = decrypt_text(cert["password_hash"])
+        return sign_pdf(pfx_bytes=pfx_bytes, pfx_password=pfx_password, pdf_bytes=pdf_bytes)
+    except Exception as e:
+        logger.warning("Assinatura digital falhou para professional_id=%s: %s", professional_id, e)
+        return pdf_bytes

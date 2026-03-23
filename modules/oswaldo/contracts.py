@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal
 
 
@@ -105,3 +105,15 @@ class CheckInteractionsRequest(BaseModel):
 class CheckInteractionsResponse(BaseModel):
     warnings: list[InteractionWarning]
     checked_pairs: int
+
+
+class CertificateUploadResponse(BaseModel):
+    subject_name: str | None
+    valid_until: date | None
+    uploaded_at: datetime
+
+
+class CertificateStatusOut(BaseModel):
+    has_certificate: bool
+    subject_name: str | None = None
+    valid_until: date | None = None

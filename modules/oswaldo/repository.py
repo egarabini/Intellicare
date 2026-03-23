@@ -102,3 +102,52 @@ async def get_patient_by_id(ctx: TenantContext, patient_id: str) -> dict | None:
             {"id": int(patient_id)}
         )).mappings().first()
     return dict(row) if row else None
+
+
+async def get_professional_certificate(ctx: TenantContext, professional_id: int) -> dict | None:
+    async with tenant_session(ctx) as db:
+        row = (await db.execute(
+            text("SELECT * FROM professional_certificates WHERE professional_id = :pid"),
+            {"pid": professional_id}
+        )).mappings().first()
+    return dict(row) if row else None
+
+
+async def upsert_professional_certificate(
+    ctx: TenantContext,
+    professional_id: int,
+    pfx_encrypted: bytes,
+    password_hash: str,
+    subject_name: str,
+    valid_until,
+) -> dict:
+    async with tenant_session(ctx) as db:
+        row = (await db.execute(
+            text("""
+            INSERT INTO professional_certificates
+              (professional_id, pfx_encrypted, password_hash, subject_name, valid_until)
+            VALUES (:pid, :pfx, :pwd, :subj, :vu)
+            ON CONFLICT (professional_id)
+            DO UPDATE SET pfx_encrypted = :pfx, password_hash = :pwd,
+                          subject_name = :subj, valid_until = :vu,
+                          uploaded_at = NOW()
+            RETURNING *
+            """),
+            {
+                "pid": professional_id,
+                "pfx": pfx_encrypted,
+                "pwd": password_hash,
+                "subj": subject_name,
+                "vu": valid_until,
+            }
+        )).mappings().first()
+    return dict(row)
+
+
+async def delete_professional_certificate(ctx: TenantContext, professional_id: int) -> bool:
+    async with tenant_session(ctx) as db:
+        result = await db.execute(
+            text("DELETE FROM professional_certificates WHERE professional_id = :pid"),
+            {"pid": professional_id}
+        )
+    return result.rowcount > 0

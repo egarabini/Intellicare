@@ -50,6 +50,8 @@ class Settings(BaseSettings):
     environment: str = "development"
     log_level: str = "DEBUG"
 
+    server_encryption_key: str = "CHANGE_ME_GENERATE_WITH_FERNET"
+
     vapid_public_key: str = ""
     vapid_private_key: str = ""
     vapid_subject: str = "mailto:admin@intellicare.ia.br"

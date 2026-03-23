@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, UploadFile, File, Form
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.contracts.errors import api_error
 from intellicare_core.auth.jwt import get_current_tenant, require_role
 from modules.oswaldo.contracts import (
     CreatePrescriptionRequest, Prescription, CID10Result,
     OswaldoSuggestRequest, OswaldoSuggestion,
-    CheckInteractionsRequest, CheckInteractionsResponse
+    CheckInteractionsRequest, CheckInteractionsResponse,
+    CertificateUploadResponse, CertificateStatusOut,
 )
 from modules.oswaldo import repository
 from modules.oswaldo import services as oswaldo_service
@@ -110,3 +111,80 @@ async def api_check_interactions(
         raise api_error(403, "forbidden", "Role 'CLINICO' necessaria")
     warnings, pairs_count = await check_interactions(req.medications)
     return CheckInteractionsResponse(warnings=warnings, checked_pairs=pairs_count)
+
+
+# ── DEM-080: Certificado Digital ──────────────────────────────────────────────
+
+@router.post("/professionals/me/certificate", status_code=201, response_model=CertificateUploadResponse)
+async def upload_certificate(
+    file: UploadFile = File(...),
+    password: str = Form(...),
+    ctx: TenantContext = Depends(require_role("CLINICO")),
+):
+    """Upload do certificado A1 (.pfx) do profissional logado."""
+    if not file.filename or not file.filename.lower().endswith(".pfx"):
+        raise api_error(400, "invalid_file", "Apenas arquivos .pfx sao aceitos")
+
+    pfx_bytes = await file.read()
+    if len(pfx_bytes) > 50_000:
+        raise api_error(400, "file_too_large", "Certificado excede 50KB")
+
+    from modules.oswaldo.pdf_signer import extract_certificate_info
+    try:
+        cert_info = extract_certificate_info(pfx_bytes, password)
+    except Exception:
+        raise api_error(400, "invalid_certificate", "Certificado invalido ou senha incorreta")
+
+    prof = await repository.get_professional_by_keycloak_id(ctx, ctx.user_id)
+    if not prof:
+        raise api_error(404, "not_found", "Profissional nao encontrado")
+
+    from intellicare_core.crypto import encrypt_bytes, encrypt_text
+    row = await repository.upsert_professional_certificate(
+        ctx,
+        professional_id=prof["id"],
+        pfx_encrypted=encrypt_bytes(pfx_bytes),
+        password_hash=encrypt_text(password),
+        subject_name=cert_info["subject_name"],
+        valid_until=cert_info["valid_until"],
+    )
+    return CertificateUploadResponse(
+        subject_name=row["subject_name"],
+        valid_until=row["valid_until"],
+        uploaded_at=row["uploaded_at"],
+    )
+
+
+@router.get("/professionals/me/certificate", response_model=CertificateStatusOut)
+async def get_certificate_status(
+    ctx: TenantContext = Depends(require_role("CLINICO")),
+):
+    """Verifica se o profissional tem certificado digital cadastrado."""
+    prof = await repository.get_professional_by_keycloak_id(ctx, ctx.user_id)
+    if not prof:
+        raise api_error(404, "not_found", "Profissional nao encontrado")
+
+    cert = await repository.get_professional_certificate(ctx, prof["id"])
+    if not cert:
+        return CertificateStatusOut(has_certificate=False)
+
+    return CertificateStatusOut(
+        has_certificate=True,
+        subject_name=cert["subject_name"],
+        valid_until=cert["valid_until"],
+    )
+
+
+@router.delete("/professionals/me/certificate", status_code=204)
+async def delete_certificate(
+    ctx: TenantContext = Depends(require_role("CLINICO")),
+):
+    """Remove o certificado digital do profissional logado."""
+    prof = await repository.get_professional_by_keycloak_id(ctx, ctx.user_id)
+    if not prof:
+        raise api_error(404, "not_found", "Profissional nao encontrado")
+
+    deleted = await repository.delete_professional_certificate(ctx, prof["id"])
+    if not deleted:
+        raise api_error(404, "not_found", "Certificado nao encontrado")
+    return Response(status_code=204)
