@@ -371,3 +371,17 @@ class AdminUserOut(BaseModel):
     last_login_at: datetime | None
     created_at: datetime
     temporary_password: str | None = None
+
+
+# ---------------------------------------------------------------------------
+# GestorUI KPIs
+# ---------------------------------------------------------------------------
+
+class ClinicalKPIsResponse(BaseModel):
+    encounters: int
+    notes: int
+    prescriptions: int
+    interactions_detected: int
+    journeys: dict[str, int]
+    top_professionals: list[dict]
+    interactions_by_day: list[dict]
