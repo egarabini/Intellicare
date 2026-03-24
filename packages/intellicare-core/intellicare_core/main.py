@@ -53,6 +53,7 @@ Instrumentator(
 
 loader = ModuleLoader(app)
 loader.load("admin")
+loader.load("identity")
 loader.load("financeiro")
 loader.load("programas")
 loader.load("vector")
