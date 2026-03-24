@@ -6,8 +6,11 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
 
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from intellicare_core.auth.jwt import require_role
 from intellicare_core.contracts.base import TenantContext
+from intellicare_core.db.session import get_platform_db
 from intellicare_core.pdf.renderer import render_pdf
 from modules.slm.service import SLMService
 from intellicare_core.auth.jwt import get_current_tenant
@@ -36,8 +39,12 @@ async def search_cid10(ctx: Clinico, q: str, limit: int = 10):
     return await _svc.search_cid10(q, limit)
 
 @router.post("/patients", status_code=201)
-async def create_patient(p: PatientCreate, ctx: Clinico):
-    return await _svc.create_patient(ctx, p.model_dump())
+async def create_patient(
+    p: PatientCreate,
+    ctx: Clinico,
+    platform_db: AsyncSession = Depends(get_platform_db),
+):
+    return await _svc.create_patient(ctx, p.model_dump(), platform_db=platform_db)
 
 @router.get("/my-agenda")
 async def my_agenda(ctx: Clinico, date: str | None = None, from_: str | None = None, to: str | None = None):
@@ -52,8 +59,12 @@ async def my_agenda(ctx: Clinico, date: str | None = None, from_: str | None = N
         return await _svc.get_agenda(ctx, ctx.user_id, str(d.today()), str(d.today()))
 
 @router.get("/patients/{pid}/profile")
-async def patient_profile(pid: UUID, ctx: Clinico):
-    return await _svc.get_patient_profile(ctx, pid)
+async def patient_profile(
+    pid: UUID,
+    ctx: Clinico,
+    platform_db: AsyncSession = Depends(get_platform_db),
+):
+    return await _svc.get_patient_profile(ctx, pid, platform_db=platform_db)
 
 @router.patch("/patients/{pid}/clinical")
 async def update_clinical(pid: UUID, p: PatientClinicalUpdate, ctx: Clinico):
@@ -172,8 +183,11 @@ async def paciente_programs(ctx: Paciente):
 
 
 @router.get("/paciente/me")
-async def paciente_me(ctx: Paciente):
-    return await _svc.paciente_me(ctx)
+async def paciente_me(
+    ctx: Paciente,
+    platform_db: AsyncSession = Depends(get_platform_db),
+):
+    return await _svc.paciente_me(ctx, platform_db=platform_db)
 
 
 @router.get("/paciente/me/journeys", response_model=list[PacienteJourneyItem])

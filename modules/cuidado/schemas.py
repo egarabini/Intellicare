@@ -35,6 +35,7 @@ class PatientResponse(BaseModel):
     last_encounter: Optional[date] = None
     encounter_count: int = 0
     programs: list[str] = []
+    pessoa_id: Optional[UUID] = None
 
 class PatientClinicalUpdate(BaseModel):
     allergies: Optional[str] = None

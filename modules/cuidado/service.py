@@ -2,10 +2,12 @@
 from __future__ import annotations
 
 import logging
+import re
 from collections.abc import Iterable
 from uuid import UUID
 
 from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from intellicare_core.contracts.base import TenantContext
 from intellicare_core.db.session import tenant_session, async_session_maker
@@ -106,18 +108,45 @@ class CuidadoService:
     # Pacientes
     # ------------------------------------------------------------------
 
-    async def create_patient(self, ctx: TenantContext, data: dict) -> dict:
+    async def create_patient(
+        self,
+        ctx: TenantContext,
+        data: dict,
+        platform_db: AsyncSession | None = None,
+    ) -> dict:
+        from modules.identity.services import find_or_create_by_cpf
+        from modules.identity.schemas import PessoaFisicaIn
+        from modules.identity.repository import register_tenant_link
+
         patient_name_column = await self._patient_name_column(ctx)
         insert_data = dict(data)
         if patient_name_column == "name" and "full_name" in insert_data:
             insert_data["name"] = insert_data.pop("full_name")
 
+        pessoa_id = None
+        cpf_raw = insert_data.get("cpf")
+
+        if cpf_raw and platform_db is not None:
+            cpf_clean = re.sub(r"\D", "", cpf_raw)
+            if len(cpf_clean) == 11:
+                pessoa = await find_or_create_by_cpf(
+                    PessoaFisicaIn(
+                        nome_completo=insert_data.get("full_name") or insert_data.get("name") or "",
+                        cpf=cpf_clean,
+                        data_nascimento=insert_data.get("birth_date"),
+                    )
+                )
+                pessoa_id = pessoa["id"]
+                await register_tenant_link(platform_db, pessoa_id, ctx.tenant_id)
+
+        insert_data["pessoa_id"] = str(pessoa_id) if pessoa_id else None
+
         async with tenant_session(ctx) as db:
             row = (
                 await db.execute(
                     text(
-                        f"INSERT INTO patients ({patient_name_column},cpf,birth_date,sex,phone,email,address) "
-                        f"VALUES (:{patient_name_column},:cpf,:birth_date,:sex,:phone,:email,:address) RETURNING *"
+                        f"INSERT INTO patients ({patient_name_column},cpf,birth_date,sex,phone,email,address,pessoa_id) "
+                        f"VALUES (:{patient_name_column},:cpf,:birth_date,:sex,:phone,:email,:address,:pessoa_id) RETURNING *"
                     ),
                     insert_data,
                 )
@@ -147,17 +176,28 @@ class CuidadoService:
                 ).mappings().all()
         return await self._map_rows(rows)
 
-    async def get_patient_profile(self, ctx: TenantContext, patient_id: UUID) -> dict:
+    async def get_patient_profile(
+        self, ctx: TenantContext, patient_id: UUID,
+        platform_db: AsyncSession | None = None,
+    ) -> dict:
+        from modules.identity.repository import get_pessoa_by_id
+
         name_select = await self._patient_name_select(ctx)
         async with tenant_session(ctx) as db:
             row = (await db.execute(
-                text(f"SELECT id, {name_select}, cpf, birth_date, sex, phone, email, health_plan, allergies, medications, active, created_at FROM patients WHERE id = :pid"),
+                text(f"SELECT id, {name_select}, cpf, birth_date, sex, phone, email, health_plan, allergies, medications, active, created_at, pessoa_id FROM patients WHERE id = :pid"),
                 {"pid": str(patient_id)}
             )).mappings().first()
             if not row:
                 raise ValueError("Paciente não encontrado")
 
             p_dict = dict(row)
+
+            if p_dict.get("pessoa_id") and platform_db is not None:
+                canonical = await get_pessoa_by_id(p_dict["pessoa_id"])
+                if canonical:
+                    p_dict["name"] = canonical.get("nome_completo", p_dict.get("name"))
+                    p_dict["cpf"] = canonical.get("cpf", p_dict.get("cpf"))
 
             res = (await db.execute(
                 text("SELECT count(*) as cnt, max(opened_at) as last_enc FROM encounters WHERE patient_id = :pid"),
@@ -166,7 +206,7 @@ class CuidadoService:
 
             p_dict["encounter_count"] = res["cnt"] if res else 0
             p_dict["last_encounter"] = res["last_enc"].date() if res and res["last_enc"] else None
-            p_dict["programs"] = [] # Not directly cross-referenced in Cuidado for now.
+            p_dict["programs"] = []
 
             return p_dict
 
@@ -639,7 +679,11 @@ class CuidadoService:
             )).mappings().all()
         return [dict(r) for r in rows]
 
-    async def paciente_me(self, ctx: TenantContext) -> dict:
+    async def paciente_me(
+        self, ctx: TenantContext, platform_db: AsyncSession | None = None,
+    ) -> dict:
+        from modules.identity.repository import get_pessoa_by_id
+
         pid = await self._get_patient_id_for_user(ctx)
         if not pid:
             return {
@@ -650,10 +694,18 @@ class CuidadoService:
         patient_name_select = await self._patient_name_select(ctx, out="full_name")
         async with tenant_session(ctx) as db:
             row = (await db.execute(
-                text(f"SELECT {patient_name_select}, cpf, birth_date, email, phone, health_plan FROM patients WHERE id = :pid"),
+                text(f"SELECT {patient_name_select}, cpf, birth_date, email, phone, health_plan, pessoa_id FROM patients WHERE id = :pid"),
                 {"pid": str(pid)},
             )).mappings().first()
-        return dict(row) if row else {"full_name": "Paciente"}
+        result = dict(row) if row else {"full_name": "Paciente"}
+
+        if result.get("pessoa_id") and platform_db is not None:
+            canonical = await get_pessoa_by_id(result["pessoa_id"])
+            if canonical:
+                result["full_name"] = canonical.get("nome_completo", result.get("full_name"))
+                result["cpf"] = canonical.get("cpf", result.get("cpf"))
+
+        return result
 
     async def paciente_update_me(self, ctx: TenantContext, data: dict) -> dict:
         pid = await self._get_patient_id_for_user(ctx)

@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from uuid import UUID
+import uuid
 
 from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from intellicare_core.db.session import get_engine
 from .schemas import PessoaFisicaIn
@@ -33,7 +34,7 @@ async def get_pessoa_by_cpf(cpf: str) -> dict | None:
     return dict(row) if row else None
 
 
-async def get_pessoa_by_id(pessoa_id: UUID | str) -> dict | None:
+async def get_pessoa_by_id(pessoa_id: uuid.UUID | str) -> dict | None:
     async with get_engine().connect() as conn:
         result = await conn.execute(
             text(
@@ -120,3 +121,25 @@ async def create_pessoa_fisica(payload: PessoaFisicaIn, cpf_clean: str) -> dict:
         )
         row = result.mappings().first()
     return dict(row)
+
+
+async def register_tenant_link(
+    db: AsyncSession,
+    pessoa_id: uuid.UUID,
+    tenant_slug: str,
+) -> None:
+    """
+    Upsert: se o vínculo já existe (mesmo pessoa_id + tenant_slug),
+    apenas reativa (ativo=True). Não duplica.
+    """
+    await db.execute(
+        text(
+            """
+            INSERT INTO platform.pessoa_estabelecimento (pessoa_id, tenant_slug, ativo)
+            VALUES (:pessoa_id, :tenant_slug, TRUE)
+            ON CONFLICT (pessoa_id, tenant_slug)
+            DO UPDATE SET ativo = TRUE, data_desvinculo = NULL
+            """
+        ),
+        {"pessoa_id": str(pessoa_id), "tenant_slug": tenant_slug},
+    )

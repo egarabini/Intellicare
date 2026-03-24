@@ -89,3 +89,18 @@ async def check_db_connection() -> bool:
         return True
     except Exception:
         return False
+
+
+async def get_platform_db() -> AsyncGenerator[AsyncSession, None]:
+    """Session scoped to platform schema — FastAPI Depends() compatible (bare generator)."""
+    factory = async_sessionmaker(
+        bind=get_engine(), class_=AsyncSession, expire_on_commit=False,
+    )
+    async with factory() as session:
+        await session.execute(text("SET search_path TO platform, public"))
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
