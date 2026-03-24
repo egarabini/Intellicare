@@ -264,9 +264,19 @@ services:
       - "5001:5001"
     environment:
       MODE: api
-      DATABASE_URL: postgresql://dify:${MARIE_DB_PASSWORD}@marie-db:5432/dify
-      REDIS_URL: redis://:${MARIE_REDIS_PASSWORD}@marie-redis:6379/0
+      MIGRATION_ENABLED: "true"
+      DB_HOST: marie-db
+      DB_PORT: 5432
+      DB_USERNAME: dify
+      DB_PASSWORD: ${MARIE_DB_PASSWORD}
+      DB_DATABASE: dify
+      REDIS_HOST: marie-redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${MARIE_REDIS_PASSWORD}
+      REDIS_DB: 0
+      CELERY_BROKER_URL: redis://:${MARIE_REDIS_PASSWORD}@marie-redis:6379/1
       SECRET_KEY: ${MARIE_SECRET_KEY}
+      SERVER_ENCRYPTION_KEY: ${SERVER_ENCRYPTION_KEY}
       STORAGE_TYPE: local
     depends_on:
       marie-db:
@@ -282,9 +292,18 @@ services:
     restart: unless-stopped
     environment:
       MODE: worker
-      DATABASE_URL: postgresql://dify:${MARIE_DB_PASSWORD}@marie-db:5432/dify
-      REDIS_URL: redis://:${MARIE_REDIS_PASSWORD}@marie-redis:6379/0
+      DB_HOST: marie-db
+      DB_PORT: 5432
+      DB_USERNAME: dify
+      DB_PASSWORD: ${MARIE_DB_PASSWORD}
+      DB_DATABASE: dify
+      REDIS_HOST: marie-redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${MARIE_REDIS_PASSWORD}
+      REDIS_DB: 0
+      CELERY_BROKER_URL: redis://:${MARIE_REDIS_PASSWORD}@marie-redis:6379/1
       SECRET_KEY: ${MARIE_SECRET_KEY}
+      SERVER_ENCRYPTION_KEY: ${SERVER_ENCRYPTION_KEY}
       STORAGE_TYPE: local
     depends_on:
       marie-db:

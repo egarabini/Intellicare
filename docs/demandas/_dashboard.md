@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-23 | Branch: main | Último commit: 81afeac (DEM-080 Assinatura Digital Receituário)
+> Atualizado: 2026-03-23 | Branch: main | Último commit: bd33879 (DEM-081 GestorUI KPIs Clínicos)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -165,9 +165,9 @@
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
 | DEM-079 | Florence via Marie RAG — workflow `florence_soap_rag`, SOAP contextualizado com timeline, `MARIE_ENABLED` ativo | CODEX | ✅ `868cf09` |
-| DEM-080 | Assinatura Digital Receituário — ICP-Brasil A1 (.pfx), `pyhanko`, endpoint upload certificado, PDF assinado | DEV-1 | ✅ `81afeac` |
-| DEM-081 | GestorUI KPIs Clínicos — dashboard prescrições/médico, interações detectadas, notas Florence, jornadas CarePlanner | DEV-2 | 🔄 Em execução |
-| DEM-082 | Staging Sync 2026-05-09 — Marie ativo, PDF assinado, KPIs, suite testes | DEV-1 | ⏳ Aguarda DEM-079/080/081 |
+| DEM-080 | Assinatura Digital Receituário — ICP-Brasil A1 (.pfx), `pyhanko`, endpoint upload certificado, PDF assinado | DEV-1 | ✅ `b9f9749` |
+| DEM-081 | GestorUI KPIs Clínicos — dashboard prescrições/médico, interações detectadas, notas Florence, jornadas CarePlanner | DEV-2 | ✅ `bd33879` |
+| DEM-082 | Staging Sync 2026-05-09 — Marie ativo, PDF assinado, KPIs, suite testes | DEV-1 | 🔄 Em execução |
 
 ---
 

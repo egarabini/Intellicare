@@ -55,12 +55,21 @@ async def get_clinical_kpis(
         """), {"start": start, "end": end})
         interactions = interactions_res.scalar()
 
-        journeys_res = await db.execute(text("""
-            SELECT status, COUNT(*) FROM journeys
-            WHERE created_at::date BETWEEN :start AND :end
-            GROUP BY status
-        """), {"start": start, "end": end})
-        journeys = journeys_res.fetchall()
+        journeys: list = []
+        has_journeys = await db.execute(text("""
+            SELECT EXISTS(
+                SELECT 1 FROM information_schema.tables
+                WHERE table_schema = current_schema()
+                  AND table_name = 'journeys'
+            )
+        """))
+        if has_journeys.scalar():
+            journeys_res = await db.execute(text("""
+                SELECT status, COUNT(*) FROM journeys
+                WHERE created_at::date BETWEEN :start AND :end
+                GROUP BY status
+            """), {"start": start, "end": end})
+            journeys = journeys_res.fetchall()
 
         top_professionals_res = await db.execute(text(f"""
             SELECT p.name, COUNT(pr.id) as total

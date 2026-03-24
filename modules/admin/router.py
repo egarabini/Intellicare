@@ -509,7 +509,7 @@ async def clinical_kpis(
     start: date,
     end: date,
     professional_id: UUID | None = None,
-    actor: TenantContext = Depends(require_role("GESTOR")),
+    actor: TenantContext = Depends(require_role("TENANT_GESTOR")),
 ) -> ClinicalKPIsResponse:
     return await get_clinical_kpis(actor, start, end, professional_id)
 

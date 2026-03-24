@@ -13,3 +13,8 @@ A demanda GestorUI KPIs Clínicos (DEM-081) foi executada e concluída com êxit
 - Arquitetura de `App.tsx` reestruturada para suportar hooks e providers encapsulados para as rotas com autenticação KeyCloak OIDC. 
 
 O módulo está habilitado para deployment e os commits de homologação se estendem aos repositórios.
+
+---
+
+**Commit em origin/main:** `bd33879` (cherry-pick de worktree limpo — hash original local: `81cb29d`)
+Push: `git push origin HEAD:main` ✅ confirmado via `.tmp_push_fix`

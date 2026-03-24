@@ -4,7 +4,7 @@ demanda: DEM-080
 titulo: Assinatura Digital Receituário
 status: concluida
 dev: DEV-1
-commit: 81afeac
+commit: b9f9749
 data: 2026-03-23
 ---
 
@@ -16,7 +16,7 @@ data: 2026-03-23
 feat(receituario): assinatura digital ICP-Brasil A1 — pyhanko, upload certificado, sign_pdf
 ```
 
-Hash: `81afeac` | 14 arquivos, +684 linhas | Push: `git push origin HEAD:main` ✅ confirmado
+Hash: `b9f9749` | 14 arquivos, +684 linhas | Push: `git push origin HEAD:main` ✅ confirmado (cherry-pick de worktree limpo — hash original local: `81afeac`)
 
 ---
 
