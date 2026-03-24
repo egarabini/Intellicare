@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-23 | Branch: main | Último commit: bd33879 (DEM-081 GestorUI KPIs Clínicos)
+> Atualizado: 2026-03-23 | Branch: main | Último commit: e19230a (DEM-083 ADR-004 + Identity Foundation)
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -160,14 +160,25 @@
 
 ---
 
-## 🚀 Sprint 2026-05-09 — Em execução
+## ✅ Sprint 2026-05-09 — Concluída
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-079 | Florence via Marie RAG — workflow `florence_soap_rag`, SOAP contextualizado com timeline, `MARIE_ENABLED` ativo | CODEX | `868cf09` |
+| DEM-080 | Assinatura Digital Receituário — ICP-Brasil A1 (.pfx), `pyhanko`, endpoint upload certificado, PDF assinado | DEV-1 | `b9f9749` |
+| DEM-081 | GestorUI KPIs Clínicos — dashboard prescrições/médico, interações detectadas, notas Florence, jornadas CarePlanner | DEV-2 | `bd33879` |
+| DEM-082 | Staging Sync 2026-05-09 — Marie ativo, PDF assinado, KPIs, migrations 019/020, 7/7 testes | DEV-1 | `edfd613` |
+
+---
+
+## 🚀 Sprint 2026-05-16 — Em execução
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-079 | Florence via Marie RAG — workflow `florence_soap_rag`, SOAP contextualizado com timeline, `MARIE_ENABLED` ativo | CODEX | ✅ `868cf09` |
-| DEM-080 | Assinatura Digital Receituário — ICP-Brasil A1 (.pfx), `pyhanko`, endpoint upload certificado, PDF assinado | DEV-1 | ✅ `b9f9749` |
-| DEM-081 | GestorUI KPIs Clínicos — dashboard prescrições/médico, interações detectadas, notas Florence, jornadas CarePlanner | DEV-2 | ✅ `bd33879` |
-| DEM-082 | Staging Sync 2026-05-09 — Marie ativo, PDF assinado, KPIs, suite testes | DEV-1 | 🔄 Em execução |
+| DEM-083 | ADR-004 + Identity Foundation — `platform.pessoa*`, migration 021, identity service, find-or-create CPF | CODEX | ✅ `e19230a` |
+| DEM-084 | Patient Identity Integration — `paciente.pessoa_id`, find-or-create no cadastro, vínculo LGPD | DEV-2 | 🔄 Em execução |
+| DEM-085 | Saneamento Técnico — git audit CODEX, Redis auth CarePlanner, clinical_notes UUID, test fix | DEV-1 | ⏳ Aguarda início |
+| DEM-086 | Staging Sync 2026-05-16 — migrations 021/022/023, smokes identity, regressão | DEV-1 | ⏳ Aguarda DEM-083/084/085 |
 
 ---
 

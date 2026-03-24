@@ -63,6 +63,9 @@ docs/generated/*.md
 # Worktrees
 .worktrees/
 
+# Arquivos Pessoais e Rascunhos
+estudos/
+
 # Build artifacts / logs (não versionar)
 frontend/**/*.txt
 tests/e2e/report/

@@ -18,8 +18,9 @@ _redis_pool: aioredis.Redis | None = None
 
 
 def _get_redis_url() -> str:
+    from urllib.parse import quote
     s = get_settings()
-    redis_pass = os.getenv("REDIS_PASSWORD_URLENC") or s.redis_password
+    redis_pass = os.getenv("REDIS_PASSWORD_URLENC") or quote(s.redis_password, safe="")
     return f"redis://:{redis_pass}@{s.redis_host}:{s.redis_port}/0"
 
 

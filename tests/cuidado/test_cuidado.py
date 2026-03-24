@@ -60,7 +60,7 @@ def test_patient_create_invalid_sex():
 def test_patient_response():
     uid = uuid4()
     r = PatientResponse(
-        id=uid, full_name="Ana", active=True,
+        id=uid, name="Ana", active=True,
         created_at=datetime(2026, 1, 1, 12, 0, 0),
     )
     assert r.id == uid

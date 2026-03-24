@@ -446,7 +446,7 @@ services:
       KEYCLOAK_INTERNAL_URL: http://keycloak:8080
       # Variáveis de app
       DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      REDIS_URL: redis://:${REDIS_PASSWORD_URLENC:-${REDIS_PASSWORD}}@redis:6379/0
       KEYCLOAK_URL: ${KEYCLOAK_INTERNAL_URL}
       KEYCLOAK_REALM: ${KEYCLOAK_REALM}
       KEYCLOAK_CLIENT_ID: ${KEYCLOAK_CLIENT_ID}
