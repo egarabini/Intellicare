@@ -62,5 +62,5 @@ O IntelliCare organiza operacao assistencial e gestao clinica em uma plataforma 
 
 ## O que esta fora de escopo nesta versao
 
-- Esta documentacao cobre as entregas ate `DEM-074`; itens posteriores devem ser tratados como evolucao.
+- Esta documentacao cobre as entregas ate `DEM-090` (sprint 2026-05-23); itens posteriores devem ser tratados como evolucao.
 - Qualquer funcionalidade nao citada explicitamente nos guias por perfil deve ser tratada como futura ou interna.

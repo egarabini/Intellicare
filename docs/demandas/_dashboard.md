@@ -252,10 +252,11 @@ Remove-Item -Path "C:\Users\egara\INTELLICARE\.tmp_staging_fix" -Recurse -Force
 
 `git worktree list` já está limpo — isso é apenas housekeeping do filesystem.
 
-### 🟡 DEV-4 catch-up
+### ✅ DEV-4 catch-up
 
-Aplicar `DOCUMENTACAO/SPRINTS/CATCHUP_DEV4_CONSOLIDADO.md` — 5 blocos, 12 ações.
-Após conclusão, marcar todos os DELTAs como `✅ Aplicado` em `DOCUMENTACAO/SPRINTS/README.md`.
+~~Aplicar `DOCUMENTACAO/SPRINTS/CATCHUP_DEV4_CONSOLIDADO.md` — 5 blocos, 12 ações.~~
+Concluído em 2026-03-25. Blocos 1–4 já estavam aplicados; Bloco 5 (sprint 2026-05-23) aplicado agora.
+Todos os DELTAs marcados como `✅ Aplicado` em `DOCUMENTACAO/SPRINTS/README.md`.
 
 ### ✅ Concluído nesta sessão (2026-03-25)
 

@@ -1,6 +1,6 @@
 # Manual do Usuario - IntelliCare (Versao Completa)
 
-Documento consolidado para treinamento e operacao dos perfis do IntelliCare, com base no que ja foi desenvolvido ate a `DEM-074`.
+Documento consolidado para treinamento e operacao dos perfis do IntelliCare, com base no que ja foi desenvolvido ate a `DEM-090` (sprint 2026-05-23).
 
 ---
 

@@ -4,10 +4,10 @@
 ## Manual do Usuario
 ### Versao Pronta para Impressao
 
-**Versao:** Sprint 2026-04-18 — Concluída (DEMs 065–068)  
-**Base funcional:** DEM-074  
-**Status de staging clinico:** Sprint 2026-04-25 concluida  
-**Data:** 2026-03-21
+**Versao:** Sprint 2026-05-23 — Concluída (DEMs 065–090)  
+**Base funcional:** DEM-090  
+**Status de staging clinico:** Sprint 2026-05-30 concluida (DEM-091 VPS Deploy)  
+**Data:** 2026-03-25
 
 ---
 

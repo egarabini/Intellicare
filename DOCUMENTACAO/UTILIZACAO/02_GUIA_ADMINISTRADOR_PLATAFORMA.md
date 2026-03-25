@@ -95,3 +95,22 @@ No menu `Tenants`, o Admin opera pela tela **Gestao de Tenants** (`TenantsManage
 ## 2.5 Portal de Agentes
 
 > As imagens dos agentes foram renomeadas — o sufixo `_ia` foi removido. Padrão atual: `agente_florence.png`, `agente_oswaldo.png`, `agente_marie.png` (sem `_ia`). Não afeta a interface visual.
+
+## 2.6 Identidade Centralizada
+
+Nova página disponível em AdminUI → "Identidade" (`/admin-ui/identity`).
+
+### Cards de totais
+- Total de pessoas cadastradas na plataforma
+- Vínculos por estabelecimento
+- Cobertura percentual
+
+### Tabela por tenant
+- Pacientes e profissionais com/sem identidade vinculada
+- Percentual de cobertura por tenant
+
+### Botão "Reconciliar identidades"
+- Processa registros existentes que têm CPF mas ainda não têm vínculo de identidade central
+- Exige confirmação antes de executar
+- Retorna relatório: quantos registros foram processados e vinculados
+- Operação idempotente: pode ser executada mais de uma vez sem risco

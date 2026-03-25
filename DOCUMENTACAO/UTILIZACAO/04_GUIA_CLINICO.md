@@ -165,3 +165,10 @@ Fluxo:
 - Quando preenchido, o sistema garante que o mesmo paciente não será duplicado entre estabelecimentos IntelliCare.
 - O paciente recebe um identificador único que o acompanha em toda a rede.
 - Não há mudança visual no formulário — o comportamento é automático e transparente.
+
+## 4.9 Cadastro de Profissionais
+
+**CPF recomendado no cadastro de profissional:**
+- Igualmente ao cadastro de pacientes, o CPF de profissionais agora conecta ao sistema de identidade central.
+- Quando preenchido, o profissional é reconhecido em todos os estabelecimentos da rede.
+- Comportamento transparente — sem mudança visual no formulário.
