@@ -35,6 +35,7 @@ class Settings(BaseSettings):
     keycloak_internal_url: str = ""
     keycloak_realm: str = "intellicare"
     keycloak_client_id: str = "intellicare-service"
+    keycloak_issuer_url: str = ""
 
     ollama_host: str = "0.0.0.0"
     ollama_api_url: str = "http://localhost:11434"
@@ -76,6 +77,13 @@ class Settings(BaseSettings):
     def keycloak_base_url(self) -> str:
         """URL interna (docker) tem prioridade sobre a externa."""
         return self.keycloak_internal_url or self.keycloak_url
+
+    @property
+    def keycloak_issuer(self) -> str:
+        """Issuer esperado nos tokens JWT (claim 'iss')."""
+        if self.keycloak_issuer_url:
+            return self.keycloak_issuer_url
+        return f"{self.keycloak_base_url}/realms/{self.keycloak_realm}"
 
     @property
     def keycloak_jwks_url(self) -> str:

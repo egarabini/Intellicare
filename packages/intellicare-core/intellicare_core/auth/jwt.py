@@ -36,7 +36,7 @@ def _refresh_jwks() -> dict[str, Any]:
     return _get_jwks()
 
 
-def _decode_with_jwks(token: str, jwks: dict[str, Any]) -> dict[str, Any]:
+def _decode_with_jwks(token: str, jwks: dict[str, Any], *, issuer: str | None = None) -> dict[str, Any]:
     headers = jwt.get_unverified_header(token)
     kid = headers.get("kid")
     if not kid:
@@ -47,22 +47,30 @@ def _decode_with_jwks(token: str, jwks: dict[str, Any]) -> dict[str, Any]:
             continue
 
         public_key = jwk.construct(key_dict)
+        decode_opts: dict[str, Any] = {"verify_aud": False}
+        kwargs: dict[str, Any] = {
+            "algorithms": [key_dict.get("alg", "RS256")],
+            "options": decode_opts,
+        }
+        if issuer:
+            kwargs["issuer"] = issuer
         return jwt.decode(
             token,
             public_key.to_pem().decode(),
-            algorithms=[key_dict.get("alg", "RS256")],
-            options={"verify_aud": False},
+            **kwargs,
         )
 
     raise JWTError("matching jwk not found")
 
 
 async def verify_token(token: str) -> TenantContext:
+    settings = get_settings()
+    issuer = settings.keycloak_issuer
     try:
-        payload = _decode_with_jwks(token, _get_jwks())
+        payload = _decode_with_jwks(token, _get_jwks(), issuer=issuer)
     except (JWTError, httpx.HTTPError):
         try:
-            payload = _decode_with_jwks(token, _refresh_jwks())
+            payload = _decode_with_jwks(token, _refresh_jwks(), issuer=issuer)
         except (JWTError, httpx.HTTPError) as exc:
             raise api_error(401, "invalid_token", "Token JWT invalido ou expirado") from exc
 
