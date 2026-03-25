@@ -229,6 +229,7 @@ class ClinicalTimelineResponse(BaseModel):
 
 class ProfessionalCreate(BaseModel):
     name: str
+    cpf: Optional[str] = None
     council_type: Literal["CRM", "COREN", "CRO", "CRP", "CREFITO", "other"]
     council_number: str
     specialty: str
@@ -239,6 +240,7 @@ class ProfessionalCreate(BaseModel):
 
 class ProfessionalUpdate(BaseModel):
     name: Optional[str] = None
+    cpf: Optional[str] = None
     council_type: Optional[Literal["CRM", "COREN", "CRO", "CRP", "CREFITO", "other"]] = None
     council_number: Optional[str] = None
     specialty: Optional[str] = None
@@ -258,6 +260,7 @@ class ProfessionalOut(BaseModel):
     groups: list[str] = []
     status: str
     keycloak_id: Optional[str] = None
+    pessoa_id: Optional[UUID] = None
 
 
 class GroupCreate(BaseModel):

@@ -879,15 +879,30 @@ class CuidadoService:
             """), params)).mappings().all()
         return [dict(r) for r in rows]
 
-    async def create_professional(self, ctx: TenantContext, data: dict) -> dict:
+    async def create_professional(self, ctx: TenantContext, data: dict, platform_db=None) -> dict:
+        pessoa_id = None
+        if data.get("cpf") and platform_db is not None:
+            from modules.identity.services import find_or_create_by_cpf
+            from modules.identity.schemas import PessoaFisicaIn
+            import re
+            cpf_digits = re.sub(r'\D', '', data["cpf"])
+            if cpf_digits:
+                payload = PessoaFisicaIn(nome_completo=data["name"], cpf=cpf_digits)
+                record = await find_or_create_by_cpf(payload)
+                pessoa_id = str(record["id"])
+                
+        # Removemos o cpf para não quebrar o insert se a tabela não tiver a coluna
+        safe_data = {k: v for k, v in data.items() if k != "cpf"}
+        safe_data["pessoa_id"] = pessoa_id
+        
         async with tenant_session(ctx) as db:
             row = (await db.execute(
                 text("""
-                    INSERT INTO professionals (name, council_type, council_number, specialty, unit_id, phone, email)
-                    VALUES (:name, :council_type, :council_number, :specialty, :unit_id, :phone, :email)
+                    INSERT INTO professionals (name, council_type, council_number, specialty, unit_id, phone, email, pessoa_id)
+                    VALUES (:name, :council_type, :council_number, :specialty, :unit_id, :phone, :email, :pessoa_id)
                     RETURNING *
                 """),
-                data,
+                safe_data,
             )).mappings().first()
         return dict(row)
 
@@ -912,14 +927,39 @@ class CuidadoService:
                 raise LookupError("Profissional não encontrado")
         return dict(row)
 
-    async def update_professional(self, ctx: TenantContext, prof_id: int, data: dict) -> dict:
+    async def update_professional(self, ctx: TenantContext, prof_id: int, data: dict, platform_db=None) -> dict:
         if not data:
             return await self.get_professional(ctx, prof_id)
-        set_clause = ", ".join([f"{k} = :{k}" for k in data.keys()])
+            
+        pessoa_id = None
+        if data.get("cpf") and platform_db is not None:
+            from modules.identity.services import find_or_create_by_cpf
+            from modules.identity.schemas import PessoaFisicaIn
+            import re
+            cpf_digits = re.sub(r'\D', '', data["cpf"])
+            
+            nome_completo = data.get("name")
+            if not nome_completo:
+                current = await self.get_professional(ctx, prof_id)
+                nome_completo = current.get("name", "Profissional")
+                
+            if cpf_digits:
+                payload = PessoaFisicaIn(nome_completo=nome_completo, cpf=cpf_digits)
+                record = await find_or_create_by_cpf(payload)
+                pessoa_id = str(record["id"])
+                
+        safe_data = {k: v for k, v in data.items() if k != "cpf"}
+        if pessoa_id:
+            safe_data["pessoa_id"] = pessoa_id
+            
+        if not safe_data:
+            return await self.get_professional(ctx, prof_id)
+            
+        set_clause = ", ".join([f"{k} = :{k}" for k in safe_data.keys()])
         async with tenant_session(ctx) as db:
             row = (await db.execute(
                 text(f"UPDATE professionals SET {set_clause}, updated_at = now() WHERE id = :pid RETURNING *"),
-                {"pid": prof_id, **data},
+                {"pid": prof_id, **safe_data},
             )).mappings().first()
             if not row:
                 raise LookupError("Profissional não encontrado")

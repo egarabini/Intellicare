@@ -294,8 +294,12 @@ async def list_professionals(ctx: Clinico, unit_id: int | None = None,
 
 
 @router.post("/professionals", status_code=201)
-async def create_professional(body: ProfessionalCreate, ctx: Clinico):
-    return await _svc.create_professional(ctx, body.model_dump())
+async def create_professional(
+    body: ProfessionalCreate, 
+    ctx: Clinico,
+    platform_db: AsyncSession = Depends(get_platform_db),
+):
+    return await _svc.create_professional(ctx, body.model_dump(), platform_db=platform_db)
 
 
 @router.get("/professionals/{prof_id}")
@@ -307,9 +311,14 @@ async def get_professional(prof_id: int, ctx: Clinico):
 
 
 @router.patch("/professionals/{prof_id}")
-async def update_professional(prof_id: int, body: ProfessionalUpdate, ctx: Clinico):
+async def update_professional(
+    prof_id: int, 
+    body: ProfessionalUpdate, 
+    ctx: Clinico,
+    platform_db: AsyncSession = Depends(get_platform_db),
+):
     try:
-        return await _svc.update_professional(ctx, prof_id, body.model_dump(exclude_unset=True))
+        return await _svc.update_professional(ctx, prof_id, body.model_dump(exclude_unset=True), platform_db=platform_db)
     except LookupError as e:
         raise HTTPException(404, str(e))
 
