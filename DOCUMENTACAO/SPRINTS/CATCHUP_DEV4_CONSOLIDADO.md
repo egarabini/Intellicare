@@ -131,11 +131,11 @@ Atualizar cabeçalho/versão em `MANUAL_USUARIO_INTELLICARE_COMPLETO.md` e `PRON
 
 ---
 
-## BLOCO 5 — Sprint 2026-05-23 (em andamento)
+## BLOCO 5 — Sprint 2026-05-23 ✅ Encerrada
 
 > Arquivo: `DELTA_SPRINT_2026_05_23.md`
 > DEMs: DEM-088 (Identidade profissional), DEM-089 (Painel identidade AdminUI)
-> ⚠️ Sprint ainda em andamento — aplicar após confirmação de encerramento
+> Sprint encerrada em 2026-03-25 — aplicar agora
 
 ### Ação 5.1 — Guia do módulo Clínico (seção de cadastro de profissionais)
 **CPF recomendado no cadastro de profissional**:

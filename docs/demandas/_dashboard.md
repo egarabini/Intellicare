@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-25 | Branch: main | Último commit: 6abf345 (DEM-087 Finalizacao) | Sprint ativa: 2026-05-23
+> Atualizado: 2026-03-25 | Branch: main | Último commit: 0eae002 (hotfix DEM-089 list_tenants) | Sprint: 2026-05-30 🔄 Em andamento
 
 ---
 
@@ -200,14 +200,23 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ---
 
-## 🔄 Sprint 2026-05-23 — Em andamento
+## ✅ Sprint 2026-05-23 — Concluída
 
 | DEM | Título | Dev | Commit |
 |-----|--------|-----|--------|
 | DEM-087 | Infra Identity Fix — JWT issuer alignment + Traefik `/api/identity/*` | DEV-1 | `6abf345` ✅ |
 | DEM-088 | Professional Identity Integration — `professionals.pessoa_id`, migration 024 | DEV-2 | `159bfe4` ✅ |
 | DEM-089 | Identity Reconciliation + Admin View — backfill pacientes legados + IdentityPage AdminUI | CODEX | `3a9f386` ✅ |
-| DEM-090 | Staging Sync 2026-05-23 — migrations 024, smoke identity E2E completo | DEV-1 | — |
+| DEM-090 | Staging Sync 2026-05-23 — migration 024, intellicare-service healthy, 2/6 smokes (4 skip Keycloak) | DEV-1 | `30b30ec` ✅ |
+| hotfix | DEM-089 list_tenants: `deleted_at` → `status = 'active'` — reconcile 200, 100/100 pacientes vinculados | CODEX | `0eae002` ✅ |
+
+---
+
+## 🔄 Sprint 2026-05-30 — Em andamento
+
+| DEM | Título | Dev | Status | Commit |
+|-----|--------|-----|--------|--------|
+| DEM-091 | VPS Deploy 2026-05-30 — sync origin/main + smoke 6/6 | DEV-1 | ⏳ Pendente | — |
 
 ---
 
@@ -233,26 +242,48 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ## Ações pendentes
 
-**Staging — aplicar DEM-030 a DEM-036 (statics novos incluídos no build):**
+### 🔴 VPS deploy — DEV-1 (bloqueia DEM-090 6/6 smokes)
+
+O VPS ainda roda código antigo. Após PR/push de `0eae002` já estar em `origin/main`, executar no servidor:
+
 ```bash
-cd /opt/intellicare && git pull origin main
+cd /opt/intellicare
+git pull origin main
 docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
-  build --no-cache intellicare-service
+  build --no-cache --no-deps intellicare-service
 docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
-  up -d intellicare-service
+  up -d --no-deps intellicare-service
 ```
 
-**⚠️ Gitignore — artefatos de build entraram nos commits DEM-035/036:**
-Adicionar ao `.gitignore` (ou ao `frontend/.gitignore`):
-```
-frontend/AdminUI/build_admin.txt
-frontend/AdminUI/build_out.txt
-tests/e2e/report/
+Após o deploy, reexecutar:
+```bash
+pytest packages/intellicare-core/tests/test_staging_sync_2026_05_23.py -v
+# esperado: 6/6 passed
 ```
 
-**Produção — DNS subdomínios (Eduardo):**
+Registrar hash resultante na DEM-091 (Sprint 2026-05-30).
+
+### 🟡 Worktrees obsoletos — cleanup manual (Windows)
+
+```bash
+# No repositório local:
+git worktree remove .tmp_dem082 --force
+git worktree remove .tmp_staging_fix --force
+git worktree prune
+
+# Se .tmp_push083 persistir (diretório vazio):
+rmdir .tmp_push083
 ```
-A  admin.intellicare.ia.br   → IP do VPS de produção
-A  api.intellicare.ia.br     → IP do VPS de produção
-A  auth.intellicare.ia.br    → IP do VPS de produção
-```
+
+### 🟡 DEV-4 catch-up
+
+Aplicar `DOCUMENTACAO/SPRINTS/CATCHUP_DEV4_CONSOLIDADO.md` — 5 blocos, 12 ações.
+Após conclusão, marcar todos os DELTAs como `✅ Aplicado` em `DOCUMENTACAO/SPRINTS/README.md`.
+
+### ✅ Concluído nesta sessão (2026-03-25)
+
+- Keycloak restart loop resolvido — causa raiz: `intellicare-service` usando `infra/.env` em vez de `infra/.env.staging`
+- `POST /identity/pessoas → 201` validado localmente
+- DEM-089 hotfix: `WHERE deleted_at IS NULL` → `WHERE status = 'active'` (`0eae002`) — reconcile 200, 100/100 pacientes
+- Migration 024 aplicada manualmente em staging
+- 405 em `https://api.intellicare.ia.br` → confirmado ser VPS desatualizado, não código local
