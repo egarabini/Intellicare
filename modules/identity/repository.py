@@ -143,3 +143,70 @@ async def register_tenant_link(
         ),
         {"pessoa_id": str(pessoa_id), "tenant_slug": tenant_slug},
     )
+
+
+async def list_tenants() -> list[dict]:
+    async with get_engine().connect() as conn:
+        rows = (
+            await conn.execute(
+                text(
+                    """
+                    SELECT slug, status
+                    FROM public.tenants
+                    WHERE deleted_at IS NULL
+                    ORDER BY slug
+                    """
+                )
+            )
+        ).mappings().all()
+    return [dict(row) for row in rows]
+
+
+async def count_pessoas_fisicas() -> int:
+    async with get_engine().connect() as conn:
+        total = await conn.execute(text("SELECT COUNT(*) FROM platform.pessoa_fisica"))
+    return int(total.scalar_one() or 0)
+
+
+async def table_exists(schema: str, table_name: str) -> bool:
+    async with get_engine().connect() as conn:
+        result = await conn.execute(
+            text(
+                """
+                SELECT EXISTS (
+                    SELECT 1
+                    FROM information_schema.tables
+                    WHERE table_schema = :schema
+                      AND table_name = :table_name
+                )
+                """
+            ),
+            {"schema": schema, "table_name": table_name},
+        )
+    return bool(result.scalar_one())
+
+
+async def column_exists(schema: str, table_name: str, column_name: str) -> bool:
+    async with get_engine().connect() as conn:
+        result = await conn.execute(
+            text(
+                """
+                SELECT EXISTS (
+                    SELECT 1
+                    FROM information_schema.columns
+                    WHERE table_schema = :schema
+                      AND table_name = :table_name
+                      AND column_name = :column_name
+                )
+                """
+            ),
+            {"schema": schema, "table_name": table_name, "column_name": column_name},
+        )
+    return bool(result.scalar_one())
+
+
+async def first_existing_column(schema: str, table_name: str, candidates: list[str]) -> str | None:
+    for column_name in candidates:
+        if await column_exists(schema, table_name, column_name):
+            return column_name
+    return None
