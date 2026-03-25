@@ -1,0 +1,4 @@
+[main 76d19de] feat/identity: patient identity integration DEM-084 - pessoa_id em paciente, find-or-create CPF, vinculo LGPD
+ 8 files changed, 433 insertions(+), 18 deletions(-)
+ create mode 100644 db/tenant_migrations/022_paciente_pessoa_id.sql
+ create mode 100644 tests/test_patient_identity.py

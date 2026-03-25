@@ -4,7 +4,7 @@
 ## Manual do Usuario
 ### Versao Pronta para Impressao
 
-**Versao:** 1.0  
+**Versao:** Sprint 2026-04-18 — Concluída (DEMs 065–068)  
 **Base funcional:** DEM-074  
 **Status de staging clinico:** Sprint 2026-04-25 concluida  
 **Data:** 2026-03-21
@@ -112,6 +112,18 @@ Este manual foi escrito para uso pratico em operacao e treinamento, cobrindo as 
 - SMS
 - E-mail
 
+### Estado atual da plataforma (sprint 2026-04-18)
+
+| Módulo | Smoke staging | Observação |
+|--------|-------------|------------|
+| Florence (notas IA) | ✅ 200 | |
+| Oswaldo (prescrições IA) | ✅ 200 | |
+| CarePlanner (jornadas) | ✅ trigger 202 | Kestra com flows condicionais ativos |
+| Push PWA (notificações) | ✅ subscribe 201 | ClinicoUI + GestorUI |
+| Multi-tenant (provisioning) | ✅ provision 201 | Suspend/reactivate funcionais |
+| WhatsApp Evolution | ✅ state: open | |
+| Health adapters | ✅ 200 | |
+
 ---
 <div style="page-break-after: always;"></div>
 
@@ -144,6 +156,10 @@ Resultado esperado:
 
 - Acesso em `AdminUI` -> `Prompts IA`.
 - Permite editar prompt, salvar nova versao, ativar versao e fazer rollback.
+
+### Portal de Agentes
+
+> As imagens dos agentes foram renomeadas — o sufixo `_ia` foi removido. Padrão atual: `agente_florence.png`, `agente_oswaldo.png`, `agente_marie.png` (sem `_ia`). Não afeta a interface visual.
 
 ### Prints desta secao
 
@@ -191,6 +207,8 @@ Resultado esperado:
 
 - retorno com `execution_id`;
 - jornada visivel na listagem por status.
+
+> **Nota:** Flows condicionais validados em staging (2026-03-21): fallback de canal WA→Email ativo, confirmação via WhatsApp automática, retry com backoff (2h→6h→24h).
 
 ### Notificacoes push (DEM-066)
 

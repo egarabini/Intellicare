@@ -91,3 +91,7 @@ No menu `Tenants`, o Admin opera pela tela **Gestao de Tenants** (`TenantsManage
 - Revisar dashboard ao menos 1 vez por dia.
 - Exportar PDF de tenants para fechamento semanal.
 - Usar auditoria para rastrear mudancas sensiveis.
+
+## 2.5 Portal de Agentes
+
+> As imagens dos agentes foram renomeadas — o sufixo `_ia` foi removido. Padrão atual: `agente_florence.png`, `agente_oswaldo.png`, `agente_marie.png` (sem `_ia`). Não afeta a interface visual.

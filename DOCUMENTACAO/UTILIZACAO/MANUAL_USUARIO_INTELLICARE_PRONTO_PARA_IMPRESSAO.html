@@ -148,7 +148,7 @@
       <h1>INTELLICARE</h1>
       <h2>Manual do Usuario</h2>
       <div class="meta">
-        <p><strong>Versao:</strong> 1.0</p>
+        <p><strong>Versao:</strong> Sprint 2026-04-18 — Concluída (DEMs 065–068)</p>
         <p><strong>Base funcional:</strong> DEM-074</p>
         <p><strong>Status staging clinico:</strong> Sprint 2026-04-25 concluida</p>
         <p><strong>Data:</strong> 2026-03-21</p>
@@ -218,6 +218,25 @@
         <li><strong>oswaldo:</strong> CID-10 e prescricao assistida.</li>
         <li><strong>careplanner:</strong> jornadas por Rocket.Chat, WhatsApp, SMS e e-mail.</li>
       </ul>
+      <h3>Estado atual da plataforma (sprint 2026-04-18)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th align="left">Módulo</th>
+            <th align="left">Smoke staging</th>
+            <th align="left">Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Florence (notas IA)</td><td>✅ 200</td><td></td></tr>
+          <tr><td>Oswaldo (prescrições IA)</td><td>✅ 200</td><td></td></tr>
+          <tr><td>CarePlanner (jornadas)</td><td>✅ trigger 202</td><td>Kestra com flows condicionais ativos</td></tr>
+          <tr><td>Push PWA (notificações)</td><td>✅ subscribe 201</td><td>ClinicoUI + GestorUI</td></tr>
+          <tr><td>Multi-tenant (provisioning)</td><td>✅ provision 201</td><td>Suspend/reactivate funcionais</td></tr>
+          <tr><td>WhatsApp Evolution</td><td>✅ state: open</td><td></td></tr>
+          <tr><td>Health adapters</td><td>✅ 200</td><td></td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section id="admin" class="section">
@@ -234,6 +253,8 @@
         <li>Acesso em <code>AdminUI</code> -> menu <code>Prompts IA</code>.</li>
         <li>Permite editar, versionar, ativar versao e rollback de prompts clinicos.</li>
       </ul>
+      <h3>Portal de Agentes</h3>
+      <blockquote>As imagens dos agentes foram renomeadas — o sufixo <code>_ia</code> foi removido. Padrão atual: <code>agente_florence.png</code>, <code>agente_oswaldo.png</code>, <code>agente_marie.png</code> (sem <code>_ia</code>). Não afeta a interface visual.</blockquote>
       <div class="print-slot">[INSERIR PRINT 01 - Dashboard Admin]</div>
       <div class="print-slot">[INSERIR PRINT 02 - Lista de Tenants]</div>
       <div class="print-slot">[INSERIR PRINT 03 - Novo Tenant (vazio)]</div>
@@ -252,6 +273,7 @@
         <li>Preencher contato correto (telefone E.164 ou e-mail).</li>
         <li>Iniciar jornada e acompanhar status no painel.</li>
       </ul>
+      <blockquote><strong>Nota:</strong> Flows condicionais validados em staging (2026-03-21): fallback de canal WA→Email ativo, confirmação via WhatsApp automática, retry com backoff (2h→6h→24h).</blockquote>
       <h3>Notificacoes push (DEM-066)</h3>
       <ul>
         <li>No <code>NotificationBell</code>, usar o toggle para ativar/desativar push.</li>

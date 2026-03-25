@@ -28,6 +28,14 @@ No `ClinicoUI`:
 - elementos de autenticidade (ex.: QR code, quando habilitado no ambiente);
 - area de assinatura.
 
+## Certificado Digital
+
+- **Para ativar:** Perfil → "Certificado Digital" → enviar arquivo `.pfx` + senha do certificado
+- **Após upload:** todos os receituários gerados terão assinatura digital embutida no PDF
+- **Para remover:** botão "Remover" na mesma seção
+- O receituário é gerado normalmente mesmo sem certificado — assinatura é opcional
+- **Para validade jurídica:** o certificado deve ser emitido por AC credenciada ICP-Brasil. Certificados de teste mostram aviso no Adobe Reader
+
 ## Impressao
 
 - o PDF abre em nova aba;

@@ -68,9 +68,11 @@ Uso recomendado: revisar os ultimos eventos antes de iniciar o encontro atual.
 - `A` Avaliacao
 - `P` Plano
 
-### Recurso IA
+### Recurso IA (Sugestão IA)
 
-- Botao `Sugerir SOAP com IA` com base no motivo da consulta.
+- O botão "Sugestão IA" está disponível na EncounterView e agiliza o preenchimento.
+- A sugestão agora considera o **histórico longitudinal** do paciente (últimos encontros, notas, prescrições) — gerando um resultado mais personalizado.
+- Quando MARIE_ENABLED está ativo, a sugestão pode levar 2–5s a mais — comportamento esperado, não é erro.
 - Em fallback por regra, a tela sinaliza baixa confianca para revisao manual.
 
 ### Exemplo preenchido (SOAP)
@@ -117,6 +119,14 @@ Fluxo:
 3. Abrir PDF em nova aba.
 4. Imprimir com `Ctrl + P`.
 
+### Alertas de Interação Medicamentosa
+
+- O alerta aparece automaticamente ao prescrever dois ou mais medicamentos com interação conhecida
+- Cores: vermelho (GRAVE), amarelo (MODERADO), azul (LEVE)
+- Como agir: avaliar clinicamente → clicar "Entendido — manter prescrição" se intencional
+- O alerta **não impede** a prescrição — decisão sempre do médico
+- Alertas marcados "por IA" devem ser confirmados com fontes clínicas antes de ignorar
+
 ## 4.5 Jornadas no contexto clinico
 
 - Tela de jornadas permite filtro `Minhas Jornadas`.
@@ -147,3 +157,11 @@ Fluxo:
 - Priorizar preenchimento completo do SOAP em casos complexos.
 - Fechar encontro apenas apos validar conduta final.
 - Usar PDF clinico para referencia e continuidade de cuidado.
+
+## 4.8 Cadastro de Pacientes
+
+**CPF recomendado no cadastro:**
+- O campo CPF no cadastro de paciente agora é recomendado (não obrigatório).
+- Quando preenchido, o sistema garante que o mesmo paciente não será duplicado entre estabelecimentos IntelliCare.
+- O paciente recebe um identificador único que o acompanha em toda a rede.
+- Não há mudança visual no formulário — o comportamento é automático e transparente.

@@ -1,0 +1,64 @@
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-0b1joiga/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-27tk0hcq/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-3fvrjnz2/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-3iw2pcgm/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-3_7iw1w3/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-7dvb63px/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-akkv7c_3/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-fpvw996q/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-ghl4dyx8/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-jalwt83f/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-jmbvfa3v/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-kmc7be8j/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-lwzgl8lj/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-p4quoqvj/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-qeoksmcd/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-tqi_v8ew/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-uvwgzk2q/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-xwg1ougy/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-yw1z750b/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-zbnsx43b/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-_s5koz3g/': Permission denied
+warning: could not open directory 'pytest-cache-files-0oullrfi/': Permission denied
+warning: could not open directory 'pytest-cache-files-1d8p8syw/': Permission denied
+warning: could not open directory 'pytest-cache-files-88nbr82q/': Permission denied
+warning: could not open directory 'pytest-cache-files-9runkyty/': Permission denied
+warning: could not open directory 'pytest-cache-files-ibhw6y62/': Permission denied
+warning: could not open directory 'pytest-cache-files-kqbk4dyg/': Permission denied
+warning: could not open directory 'pytest-cache-files-wlqncnte/': Permission denied
+warning: could not open directory 'pytest-cache-files-_0vlgjjd/': Permission denied
+warning: could not open directory '.tmp/pip-build-tracker-jppxpj48/': Permission denied
+warning: could not open directory '.tmp/pip-ephem-wheel-cache-xtl4b01b/': Permission denied
+warning: could not open directory '.tmp/pip-install-wyboefsh/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-43hmxayn/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-jcguzsy1/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-ju838gfr/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-p90ax45h/': Permission denied
+warning: could not open directory 'packages/intellicare-core/pytest-cache-files-rbtiyu7h/': Permission denied
+warning: could not open directory 'pytest-cache-files-ak9walh1/': Permission denied
+ M .tmp_staging_fix
+ M DOCUMENTACAO/SPRINTS/README.md
+ M docs/demandas/DEM-085_SANEAMENTO_TECNICO/05_FINALIZACAO.md
+ M docs/demandas/_dashboard.md
+ M modules/cuidado/router.py
+ M modules/cuidado/schemas.py
+ M modules/cuidado/service.py
+ M modules/identity/repository.py
+ M packages/intellicare-core/intellicare_core/db/__init__.py
+ M packages/intellicare-core/intellicare_core/db/session.py
+?? .tmp_dem082/
+?? DOCUMENTACAO/SPRINTS/DELTA_SPRINT_2026_05_09.md
+?? DOCUMENTACAO/SPRINTS/SPRINT_2026_05_09.md
+?? db/tenant_migrations/022_paciente_pessoa_id.sql
+?? docker_up.txt
+?? docs/demandas/DEM-082_STAGING_SYNC_2026_05_09/05_FINALIZACAO.md
+?? docs/demandas/DEM-083_IDENTITY_FOUNDATION/
+?? docs/demandas/DEM-084_PATIENT_IDENTITY/
+?? docs/demandas/DEM-085_SANEAMENTO_TECNICO/01_FUNCIONAL.md
+?? docs/demandas/DEM-085_SANEAMENTO_TECNICO/02_TECNICA.md
+?? docs/demandas/DEM-085_SANEAMENTO_TECNICO/03_PLANO.md
+?? docs/demandas/DEM-086_STAGING_SYNC_2026_05_16/
+?? git_status.txt
+?? test_err.txt
+?? test_out.txt
+?? tests/test_patient_identity.py

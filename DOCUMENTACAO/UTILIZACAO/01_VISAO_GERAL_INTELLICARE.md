@@ -48,6 +48,18 @@ O IntelliCare organiza operacao assistencial e gestao clinica em uma plataforma 
 - Atendimento/agenda: status operacional por consulta (ex.: em andamento, realizado).
 - Prescricao: status de assinatura/estado da prescricao.
 
+## Estado atual da plataforma (sprint 2026-04-18)
+
+| Módulo | Smoke staging | Observação |
+|--------|-------------|------------|
+| Florence (notas IA) | ✅ 200 | |
+| Oswaldo (prescrições IA) | ✅ 200 | |
+| CarePlanner (jornadas) | ✅ trigger 202 | Kestra com flows condicionais ativos |
+| Push PWA (notificações) | ✅ subscribe 201 | ClinicoUI + GestorUI |
+| Multi-tenant (provisioning) | ✅ provision 201 | Suspend/reactivate funcionais |
+| WhatsApp Evolution | ✅ state: open | |
+| Health adapters | ✅ 200 | |
+
 ## O que esta fora de escopo nesta versao
 
 - Esta documentacao cobre as entregas ate `DEM-074`; itens posteriores devem ser tratados como evolucao.

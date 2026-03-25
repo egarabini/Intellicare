@@ -44,17 +44,12 @@
 - `FAILED`: falha de envio.
 - `EXPIRED`: expirou sem resposta.
 
-## 5.3 Historico Clinico
+## 5.3 Historico Clinico (Meu Histórico)
 
-### Conteudo exibido
-
-- Linha do tempo por data da consulta
-- Nome do profissional
-- Resumo compartilhavel da consulta
-
-### Regra de privacidade
-
-- Informacoes internas de avaliacao clinica nao sao exibidas ao paciente.
+- **Como acessar**: Portal do Paciente → "Meu Histórico"
+- **O que aparece**: consultas, notas Florence (sem partes internas), prescrições, jornadas de acompanhamento
+- **Como baixar receituário**: clicar em "Baixar Receituário" na prescrição → PDF em nova aba
+- **Privacidade**: o paciente vê o que foi compartilhado pelo médico, não as anotações internas SOAP-A
 
 ## 5.4 Agenda, dados e contato
 

@@ -57,6 +57,18 @@ Referencias de apoio:
 4. Gestor/clinico acompanham jornadas.
 5. Paciente acompanha agenda, jornadas e historico compartilhavel.
 
+### 3.3 Estado atual da plataforma (sprint 2026-04-18)
+
+| Módulo | Smoke staging | Observação |
+|--------|-------------|------------|
+| Florence (notas IA) | ✅ 200 | |
+| Oswaldo (prescrições IA) | ✅ 200 | |
+| CarePlanner (jornadas) | ✅ trigger 202 | Kestra com flows condicionais ativos |
+| Push PWA (notificações) | ✅ subscribe 201 | ClinicoUI + GestorUI |
+| Multi-tenant (provisioning) | ✅ provision 201 | Suspend/reactivate funcionais |
+| WhatsApp Evolution | ✅ state: open | |
+| Health adapters | ✅ 200 | |
+
 ---
 
 ## 4) Perfil: Administrador da Plataforma (AdminUI)
@@ -102,7 +114,11 @@ Resultado esperado:
 - O Admin pode editar prompts, salvar nova versao, ativar versao e fazer rollback.
 - Prompts principais: `florence_soap`, `florence_free_text`, `oswaldo_prescription`, `oswaldo_cid10`.
 
-### 4.4 Prints desta secao
+### 4.4 Portal de Agentes
+
+> As imagens dos agentes foram renomeadas — o sufixo `_ia` foi removido. Padrão atual: `agente_florence.png`, `agente_oswaldo.png`, `agente_marie.png` (sem `_ia`). Não afeta a interface visual.
+
+### 4.5 Prints desta secao
 
 `[INSERIR PRINT 01 AQUI - Dashboard Admin]`
 
@@ -167,6 +183,8 @@ Resultado esperado:
 
 - retorno com `execution_id`;
 - jornada aparece no painel e evolui por status.
+
+> **Nota:** Flows condicionais validados em staging (2026-03-21): fallback de canal WA→Email ativo, confirmação via WhatsApp automática, retry com backoff (2h→6h→24h).
 
 ### 5.4 Notificacoes push (DEM-066)
 
@@ -399,7 +417,7 @@ Alertas:
 
 ## 12) Controle de versao do manual
 
-- Versao: `1.0`
+- Versao: `Sprint 2026-04-18 — Concluída (DEMs 065–068)`
 - Base funcional: `DEM-074`
 - Status sprint mais recente: `2026-04-25 concluida`
 - Local do arquivo: `DOCUMENTACAO/UTILIZACAO/MANUAL_USUARIO_INTELLICARE_COMPLETO.md`

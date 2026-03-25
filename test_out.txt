@@ -1,0 +1,204 @@
+...............................................EEEEEEEEEEEEEEEEEEEEEEEEE [ 41%]
+EEEEEEEE................................................................ [ 82%]
+...............................                                          [100%]
+=================================== ERRORS ====================================
+_____ ERROR at setup of test_confirm_nonexistent_appointment_returns_404 ______
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+______ ERROR at setup of test_cancel_nonexistent_appointment_returns_404 ______
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+________________ ERROR at setup of test_token_contem_tenant_id ________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+____________ ERROR at setup of test_gestor_acessa_gestor_endpoint _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+________________ ERROR at setup of test_gestor_negado_em_admin ________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+________________ ERROR at setup of test_sem_token_retorna_401 _________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+____________ ERROR at setup of test_create_and_retrieve_soap_note _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+____________ ERROR at setup of test_florence_suggest_fills_fields _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+______________ ERROR at setup of test_grafana_alert_rules_count _______________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_______________ ERROR at setup of test_grafana_alert_rules_uids _______________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+______________________ ERROR at setup of test_api_health ______________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_________________ ERROR at setup of test_admin_module_health __________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+___________________ ERROR at setup of test_keycloak_health ____________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_____________ ERROR at setup of test_dados_isolados_entre_tenants _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_________________ ERROR at setup of test_create_notification __________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+__________________ ERROR at setup of test_list_notifications __________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+________________ ERROR at setup of test_mark_notification_read ________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_________________ ERROR at setup of test_delete_notification __________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_____________ ERROR at setup of test_notifications_stream_header ______________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_____________ ERROR at setup of test_cid10_search_returns_results _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_____________ ERROR at setup of test_create_and_list_prescription _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+______________ ERROR at setup of test_oswaldo_suggest_rule_based ______________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+________________ ERROR at setup of test_patient_sees_journeys _________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_______________ ERROR at setup of test_patient_notes_no_soap_a ________________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+______ ERROR at setup of test_clinical_role_cannot_access_patient_portal ______
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_______________ ERROR at setup of test_ingest_e_busca_semantica _______________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+___________ ERROR at setup of test_admin_report_tenants_returns_pdf ___________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+________ ERROR at setup of test_gestor_report_appointments_returns_pdf ________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+_________ ERROR at setup of test_clinico_report_patients_returns_pdf __________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+__________ ERROR at setup of test_report_unauthenticated_returns_401 __________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+____________ ERROR at setup of test_report_wrong_role_returns_403 _____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+______________ ERROR at setup of test_schema_criado_no_postgres _______________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+___________ ERROR at setup of test_tenant_suspenso_bloqueia_acesso ____________
+E   httpcore.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+
+The above exception was the direct cause of the following exception:
+E   httpx.ConnectError: [WinError 10061] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente
+=========================== short test summary info ===========================
+ERROR tests/e2e/test_appointments_e2e.py::test_confirm_nonexistent_appointment_returns_404
+ERROR tests/e2e/test_appointments_e2e.py::test_cancel_nonexistent_appointment_returns_404
+ERROR tests/e2e/test_auth.py::test_token_contem_tenant_id - httpx.ConnectErro...
+ERROR tests/e2e/test_auth.py::test_gestor_acessa_gestor_endpoint - httpx.Conn...
+ERROR tests/e2e/test_auth.py::test_gestor_negado_em_admin - httpx.ConnectErro...
+ERROR tests/e2e/test_auth.py::test_sem_token_retorna_401 - httpx.ConnectError...
+ERROR tests/e2e/test_florence_e2e.py::test_create_and_retrieve_soap_note - ht...
+ERROR tests/e2e/test_florence_e2e.py::test_florence_suggest_fills_fields - ht...
+ERROR tests/e2e/test_grafana_e2e.py::test_grafana_alert_rules_count - httpx.C...
+ERROR tests/e2e/test_grafana_e2e.py::test_grafana_alert_rules_uids - httpx.Co...
+ERROR tests/e2e/test_health.py::test_api_health - httpx.ConnectError: [WinErr...
+ERROR tests/e2e/test_health.py::test_admin_module_health - httpx.ConnectError...
+ERROR tests/e2e/test_health.py::test_keycloak_health - httpx.ConnectError: [W...
+ERROR tests/e2e/test_isolation.py::test_dados_isolados_entre_tenants - httpx....
+ERROR tests/e2e/test_notifications_e2e.py::test_create_notification - httpx.C...
+ERROR tests/e2e/test_notifications_e2e.py::test_list_notifications - httpx.Co...
+ERROR tests/e2e/test_notifications_e2e.py::test_mark_notification_read - http...
+ERROR tests/e2e/test_notifications_e2e.py::test_delete_notification - httpx.C...
+ERROR tests/e2e/test_notifications_e2e.py::test_notifications_stream_header
+ERROR tests/e2e/test_oswaldo_e2e.py::test_cid10_search_returns_results - http...
+ERROR tests/e2e/test_oswaldo_e2e.py::test_create_and_list_prescription - http...
+ERROR tests/e2e/test_oswaldo_e2e.py::test_oswaldo_suggest_rule_based - httpx....
+ERROR tests/e2e/test_portal_clinical_e2e.py::test_patient_sees_journeys - htt...
+ERROR tests/e2e/test_portal_clinical_e2e.py::test_patient_notes_no_soap_a - h...
+ERROR tests/e2e/test_portal_clinical_e2e.py::test_clinical_role_cannot_access_patient_portal
+ERROR tests/e2e/test_rag.py::test_ingest_e_busca_semantica - httpx.ConnectErr...
+ERROR tests/e2e/test_reports_e2e.py::test_admin_report_tenants_returns_pdf - ...
+ERROR tests/e2e/test_reports_e2e.py::test_gestor_report_appointments_returns_pdf
+ERROR tests/e2e/test_reports_e2e.py::test_clinico_report_patients_returns_pdf
+ERROR tests/e2e/test_reports_e2e.py::test_report_unauthenticated_returns_401
+ERROR tests/e2e/test_reports_e2e.py::test_report_wrong_role_returns_403 - htt...
+ERROR tests/e2e/test_tenant_flow.py::test_schema_criado_no_postgres - httpx.C...
+ERROR tests/e2e/test_tenant_flow.py::test_tenant_suspenso_bloqueia_acesso - h...
+142 passed, 33 errors in 44.58s

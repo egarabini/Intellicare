@@ -4,7 +4,7 @@ Este pacote foi criado para uso operacional dos perfis do IntelliCare e cobre o 
 
 ## Escopo desta versao
 
-- Cobertura funcional: entregas concluidas ate `DEM-074`.
+- cobertura funcional: sprint 2026-04-18 concluída — DEMs 065 a 068 validadas em staging (entregas concluidas ate DEM-074).
 - Sprint 2026-04-25 aplicada (DEM-071 a DEM-074).
 - Modulos considerados: `admin`, `gestor`, `cuidado` (ClinicoUI + PacienteUI), `florence`, `oswaldo`, `careplanner`.
 

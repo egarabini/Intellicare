@@ -1,6 +1,24 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-23 | Branch: main | Último commit: e19230a (DEM-083 ADR-004 + Identity Foundation)
+> Atualizado: 2026-03-25 | Branch: main | Último commit: 6abf345 (DEM-087 Finalizacao) | Sprint ativa: 2026-05-23
+
+---
+
+## ⚠️ Processo obrigatório por DEM
+
+Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas sem esses arquivos **não são aceitas**:
+
+| Arquivo | Quando | Conteúdo mínimo |
+|---------|--------|-----------------|
+| `01_FUNCIONAL.md` | Criado pelo ARQUITETO | Escopo, critério de aceite — não alterar |
+| `02_TECNICA.md` | Criado pelo ARQUITETO | Spec técnica — atualizar se houver divergência do real |
+| `03_PLANO.md` | **Dev cria/confirma ANTES de implementar** | Passos, gotchas, restrições — deve existir antes do primeiro commit |
+| `04_DIARIO.md` | **Dev preenche DURANTE a implementação** | Decisões tomadas, problemas encontrados, adaptações ao código real |
+| `05_FINALIZACAO.md` | **Dev cria ao entregar** | Commit hash, testes passando, o que mudou vs spec |
+
+> **Regra de aceite:** o ARQUITETO só registra o hash no dashboard quando `04_DIARIO.md` e `05_FINALIZACAO.md` existirem e tiverem conteúdo real — não placeholders.
+
+---
 
 ## ✅ Concluídas (DEMs 000–025)
 
@@ -171,14 +189,25 @@
 
 ---
 
-## 🚀 Sprint 2026-05-16 — Em execução
+## ✅ Sprint 2026-05-16 — Concluída
 
-| DEM | Título | Dev | Status |
+| DEM | Título | Dev | Commit |
 |-----|--------|-----|--------|
-| DEM-083 | ADR-004 + Identity Foundation — `platform.pessoa*`, migration 021, identity service, find-or-create CPF | CODEX | ✅ `e19230a` |
-| DEM-084 | Patient Identity Integration — `paciente.pessoa_id`, find-or-create no cadastro, vínculo LGPD | DEV-2 | 🔄 Em execução |
-| DEM-085 | Saneamento Técnico — git audit CODEX, Redis auth CarePlanner, clinical_notes UUID, test fix | DEV-1 | ⏳ Aguarda início |
-| DEM-086 | Staging Sync 2026-05-16 — migrations 021/022/023, smokes identity, regressão | DEV-1 | ⏳ Aguarda DEM-083/084/085 |
+| DEM-083 | ADR-004 + Identity Foundation — `platform.pessoa*`, migration 021, identity service, find-or-create CPF | CODEX | `e19230a` |
+| DEM-084 | Patient Identity Integration — `paciente.pessoa_id`, find-or-create no cadastro, vínculo LGPD | DEV-2 | `76d19de` |
+| DEM-085 | Saneamento Técnico — git audit CODEX, Redis auth CarePlanner, clinical_notes UUID, test fix | DEV-1 | `362e682` |
+| DEM-086 | Staging Sync 2026-05-16 — migrations 021/022/023, identity smoke, patient pessoa_id confirmado | DEV-1 | `57520f2` |
+
+---
+
+## 🔄 Sprint 2026-05-23 — Em andamento
+
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-087 | Infra Identity Fix — JWT issuer alignment + Traefik `/api/identity/*` | DEV-1 | `6abf345` ✅ |
+| DEM-088 | Professional Identity Integration — `professionals.pessoa_id`, migration 024 | DEV-2 | `159bfe4` ✅ |
+| DEM-089 | Identity Reconciliation + Admin View — backfill pacientes legados + IdentityPage AdminUI | CODEX | `3a9f386` ✅ |
+| DEM-090 | Staging Sync 2026-05-23 — migrations 024, smoke identity E2E completo | DEV-1 | — |
 
 ---
 

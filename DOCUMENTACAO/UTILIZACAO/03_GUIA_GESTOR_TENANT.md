@@ -67,6 +67,8 @@ Acao sugerida: se consultas sobem e equipe nao sobe, revisar alocacao de profiss
 - Jornada entra na lista com status inicial.
 - Evolucao de status conforme canal e resposta do paciente.
 
+> **Nota:** Flows condicionais validados em staging (2026-03-21): fallback de canal WA→Email ativo, confirmação via WhatsApp automática, retry com backoff (2h→6h→24h).
+
 ## 3.3 Templates de mensagem
 
 - Gestor pode trabalhar com templates ativos por canal.
