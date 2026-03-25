@@ -153,7 +153,7 @@ async def list_tenants() -> list[dict]:
                     """
                     SELECT slug, status
                     FROM public.tenants
-                    WHERE deleted_at IS NULL
+                    WHERE status = 'active'
                     ORDER BY slug
                     """
                 )
