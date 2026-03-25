@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-25 | Branch: main | Último commit: 0eae002 (hotfix DEM-089 list_tenants) | Sprint: 2026-05-30 🔄 Em andamento
+> Atualizado: 2026-03-25 | Branch: main | Último commit: a40dce8 (docs: fechamento pendencias + DEM-091) | Sprint: 2026-05-30 ✅ Concluída
 
 ---
 
@@ -212,11 +212,11 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ---
 
-## 🔄 Sprint 2026-05-30 — Em andamento
+## ✅ Sprint 2026-05-30 — Concluída
 
-| DEM | Título | Dev | Status | Commit |
-|-----|--------|-----|--------|--------|
-| DEM-091 | VPS Deploy 2026-05-30 — sync origin/main + smoke 6/6 | DEV-1 | ⏳ Pendente | — |
+| DEM | Título | Dev | Commit |
+|-----|--------|-----|--------|
+| DEM-091 | VPS Deploy 2026-05-30 — reset hard origin/main, 6/6 smokes, worktrees limpos | DEV-1 | `a40dce8` ✅ |
 
 ---
 
@@ -242,38 +242,15 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ## Ações pendentes
 
-### 🔴 VPS deploy — DEV-1 (bloqueia DEM-090 6/6 smokes)
+### 🟡 .tmp_staging_fix — remoção final (requer admin)
 
-O VPS ainda roda código antigo. Após PR/push de `0eae002` já estar em `origin/main`, executar no servidor:
+Diretório físico persiste com ~28 junction points de pytest-cache. Requer PowerShell elevado:
 
-```bash
-cd /opt/intellicare
-git pull origin main
-docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
-  build --no-cache --no-deps intellicare-service
-docker compose --env-file infra/.env.staging -f infra/docker-compose.yml \
-  up -d --no-deps intellicare-service
+```powershell
+Remove-Item -Path "C:\Users\egara\INTELLICARE\.tmp_staging_fix" -Recurse -Force
 ```
 
-Após o deploy, reexecutar:
-```bash
-pytest packages/intellicare-core/tests/test_staging_sync_2026_05_23.py -v
-# esperado: 6/6 passed
-```
-
-Registrar hash resultante na DEM-091 (Sprint 2026-05-30).
-
-### 🟡 Worktrees obsoletos — cleanup manual (Windows)
-
-```bash
-# No repositório local:
-git worktree remove .tmp_dem082 --force
-git worktree remove .tmp_staging_fix --force
-git worktree prune
-
-# Se .tmp_push083 persistir (diretório vazio):
-rmdir .tmp_push083
-```
+`git worktree list` já está limpo — isso é apenas housekeeping do filesystem.
 
 ### 🟡 DEV-4 catch-up
 

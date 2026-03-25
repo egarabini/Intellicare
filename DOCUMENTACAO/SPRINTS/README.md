@@ -26,7 +26,7 @@
 | `DELTA_SPRINT_2026_05_16.md` | 2026-05-16 | ✅ Aplicado | Atualização UTILIZACAO por DEV-4 (cadastro CPF centralizado) + ação Eduardo (Keycloak PLATFORM_ADMIN) |
 | `SPRINT_2026_05_23.md` | 2026-05-23 | ✅ Concluída | DEM-087✅ DEM-088✅ DEM-089✅ DEM-090✅ |
 | `DELTA_SPRINT_2026_05_23.md` | 2026-05-23 | ⏳ Pendente | Atualização UTILIZACAO por DEV-4 (profissional CPF centralizado + AdminUI identity page) |
-| `SPRINT_2026_05_30.md` | 2026-05-30 | 🔄 Em andamento | DEM-091 (VPS Deploy) |
+| `SPRINT_2026_05_30.md` | 2026-05-30 | ✅ Concluída | DEM-091✅ (VPS Deploy — 6/6 smokes) |
 
 ---
 
