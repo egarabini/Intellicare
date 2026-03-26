@@ -666,6 +666,33 @@ services:
     networks:
       - intellicare-net
 
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: intellicare-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "True"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - intellicare-net
+    depends_on:
+      postgres:
+        condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pgadmin.rule=Host(`pgadmin.intellicare.ia.br`)"
+      - "traefik.http.routers.pgadmin.entrypoints=websecure"
+      - "traefik.http.routers.pgadmin.tls.certresolver=letsencrypt"
+      - "traefik.http.services.pgadmin.loadbalancer.server.port=80"
+      - "traefik.http.routers.pgadmin-http.rule=Host(`pgadmin.intellicare.ia.br`)"
+      - "traefik.http.routers.pgadmin-http.entrypoints=web"
+      - "traefik.http.routers.pgadmin-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.pgadmin-http.service=pgadmin"
+
   listmonk:
     image: listmonk/listmonk:v3.0.0
     container_name: intellicare-listmonk
@@ -692,6 +719,7 @@ volumes:
   postgres_data:
   redis_data:
   keycloak_data:
+  pgadmin_data:
   ollama_models:
   prometheus_data:
   grafana_data:

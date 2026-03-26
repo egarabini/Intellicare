@@ -220,6 +220,14 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ---
 
+## 🔄 Sprint 2026-05-30 (continuação) — Em andamento
+
+| DEM | Título | Dev | Status | Commit |
+|-----|--------|-----|--------|--------|
+| DEM-092 | pgAdmin + Keycloak Admin Access — pgAdmin no stack, URL/credenciais KC documentadas | DEV-1 | ⏳ Pendente | — |
+
+---
+
 ## 🔬 Backlog Estratégico — aguarda gatilho
 
 | DEM | Módulo | Descrição | Gatilho |
