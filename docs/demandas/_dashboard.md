@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-25 | Branch: main | Último commit: a40dce8 (docs: fechamento pendencias + DEM-091) | Sprint: 2026-05-30 ✅ Concluída
+> Atualizado: 2026-03-25 | Branch: main | Último commit: 8e0f897 (feat: pgAdmin DEM-092) | Sprint: 2026-05-30 ✅ Concluída
 
 ---
 
@@ -217,14 +217,7 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 | DEM | Título | Dev | Commit |
 |-----|--------|-----|--------|
 | DEM-091 | VPS Deploy 2026-05-30 — reset hard origin/main, 6/6 smokes, worktrees limpos | DEV-1 | `a40dce8` ✅ |
-
----
-
-## 🔄 Sprint 2026-05-30 (continuação) — Em andamento
-
-| DEM | Título | Dev | Status | Commit |
-|-----|--------|-----|--------|--------|
-| DEM-092 | pgAdmin + Keycloak Admin Access — pgAdmin no stack, URL/credenciais KC documentadas | DEV-1 | ⏳ Pendente | — |
+| DEM-092 | pgAdmin + Keycloak Admin Access — pgAdmin no stack, URL/credenciais KC documentadas | DEV-1 | `8e0f897` ✅ |
 
 ---
 
