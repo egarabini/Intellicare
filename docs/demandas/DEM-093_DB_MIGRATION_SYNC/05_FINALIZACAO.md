@@ -2,7 +2,7 @@
 
 ## Entrega
 
-- **Commit:** (pendente — a preencher após execução no VPS)
+- **Commit de execução:** `d16ccf4` — `docs(dem-093): record vps migration sync execution`
 - **Data:** 2026-03-26
 - **Dev:** CODEX + Eduardo (handoff ARQUITETO) — execução no VPS staging
 

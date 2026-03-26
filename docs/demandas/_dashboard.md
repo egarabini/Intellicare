@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-25 | Branch: main | Último commit: 8e0f897 (feat: pgAdmin DEM-092) | Sprint: 2026-05-30 ✅ Concluída
+> Atualizado: 2026-03-26 | Branch: main | Último commit: d16ccf4 (docs(dem-093): record vps migration sync execution) | Sprint: 2026-06-06 ⏳ Em andamento
 
 ---
 
@@ -221,6 +221,14 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ---
 
+## ⏳ Sprint 2026-06-06 — Em andamento
+
+| DEM | Título | Dev | Status |
+|-----|--------|-----|--------|
+| DEM-093 | DB Migration Sync Staging — migrations 005/006/017/019/020/022/023/024 aplicadas no VPS, health OK; rerun formal 1.2/1.3 ainda pendente | CODEX + Eduardo | ✅ `d16ccf4` |
+
+---
+
 ## 🔬 Backlog Estratégico — aguarda gatilho
 
 | DEM | Módulo | Descrição | Gatilho |
@@ -242,6 +250,15 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 | `paciente.alfa` | `Demo@1234` | PacienteUI — `http://127.0.0.1:9000/paciente-ui/` |
 
 ## Ações pendentes
+
+### 🟡 DEM-093 — rerun formal da validação PostgreSQL ainda pendente
+
+As migrations do banco staging foram aplicadas no VPS e o `intellicare-service` voltou saudável em `2026-03-26` (`d16ccf4`).
+
+Pendente para fechamento integral da seção PostgreSQL do plano de validação:
+
+- Reexecutar formalmente os itens 1.2 e 1.3 de `DOCUMENTACAO/VALIDACAO/PLANO_VALIDACAO_STAGING_2026_03_25.md`
+- Decidir o tratamento de `platform.keycloak_user_mapping`, que continua ausente e não é criada pela `021_pessoa_identity.sql` versionada
 
 ### 🟡 .tmp_staging_fix — remoção final (requer admin)
 
