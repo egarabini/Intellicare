@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-26 | Branch: main | Último commit: d16ccf4 (docs(dem-093): record vps migration sync execution) | Sprint: 2026-06-06 ⏳ Em andamento
+> Atualizado: 2026-03-26 | Branch: main | Último commit: b25391b (docs(dem-093): finalize and register dashboard) | Sprint: 2026-06-06 ⏳ Em andamento
 
 ---
 
@@ -225,7 +225,8 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-093 | DB Migration Sync Staging — migrations 005/006/017/019/020/022/023/024 aplicadas no VPS, health OK; rerun formal 1.2/1.3 ainda pendente | CODEX + Eduardo | ✅ `d16ccf4` |
+| DEM-093 | DB Migration Sync Staging — migrations 005/006/017/019/020/022/023/024 aplicadas no VPS, health OK; rerun formal 1.2/1.3 ainda pendente | CODEX + Eduardo | ✅ `b25391b` |
+| DEM-INF | Fix Keycloak proxy headers — `KC_PROXY_HEADERS: xforwarded` + `KC_HOSTNAME` no compose (Admin Console gerava URLs `http://` atrás de Traefik HTTPS) | Eduardo | ✅ VPS OK (`/admin/` 302) — pendente commit |
 
 ---
 
@@ -251,14 +252,24 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ## Ações pendentes
 
-### 🟡 DEM-093 — rerun formal da validação PostgreSQL ainda pendente
+### ✅ DEM-093 — migrations aplicadas no VPS (`b25391b`)
 
-As migrations do banco staging foram aplicadas no VPS e o `intellicare-service` voltou saudável em `2026-03-26` (`d16ccf4`).
+Banco staging sincronizado em 2026-03-26. Divergências registradas em `04_DIARIO.md`:
+- `021_pessoa_identity.sql` não contém `CREATE SCHEMA platform` — schema foi criado manualmente no VPS; **migration precisa ser corrigida no código**
+- `public.prompt_templates` usa coluna `prompt_key`, não `name` — verificação do 03_PLANO.md precisa ser corrigida
+- `platform.keycloak_user_mapping` ausente — não é criada por nenhuma migration versionada atual
 
-Pendente para fechamento integral da seção PostgreSQL do plano de validação:
+### ✅ Fix Keycloak Admin Console — aplicado no VPS em 2026-03-26
 
-- Reexecutar formalmente os itens 1.2 e 1.3 de `DOCUMENTACAO/VALIDACAO/PLANO_VALIDACAO_STAGING_2026_03_25.md`
-- Decidir o tratamento de `platform.keycloak_user_mapping`, que continua ausente e não é criada pela `021_pessoa_identity.sql` versionada
+`KC_PROXY_HEADERS: xforwarded` + `KC_HOSTNAME` adicionados ao `docker-compose.yml`. `KC_HOSTNAME=auth.intellicare.ia.br` inserido no `infra/.env.staging` do VPS. `https://auth.intellicare.ia.br/admin/` → 302 ✅. **Pendente commit do `docker-compose.yml` para `origin/main`.**
+
+### 🟡 Rerun formal da validação 1.2/1.3 ainda pendente
+
+Reexecutar os itens das seções 1.2/1.3 de `DOCUMENTACAO/VALIDACAO/PLANO_VALIDACAO_STAGING_2026_03_25.md` agora que o banco está sincronizado.
+
+### 🟡 `platform.keycloak_user_mapping` — definir responsável
+
+A tabela não é criada pela `021_pessoa_identity.sql` versionada. Definir: (a) adicionar à migration 021 ou (b) criar nova migration 025. Ver `docs/demandas/DEM-093_DB_MIGRATION_SYNC/04_DIARIO.md`.
 
 ### 🟡 .tmp_staging_fix — remoção final (requer admin)
 

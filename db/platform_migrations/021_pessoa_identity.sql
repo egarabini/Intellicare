@@ -1,3 +1,5 @@
+CREATE SCHEMA IF NOT EXISTS platform;
+
 CREATE TABLE IF NOT EXISTS platform.pessoa (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     tipo VARCHAR(10) NOT NULL CHECK (tipo IN ('FISICA', 'JURIDICA')),

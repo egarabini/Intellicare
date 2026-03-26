@@ -12,7 +12,7 @@
 | Serviço | URL | Usuário | Senha |
 |---------|-----|---------|-------|
 | pgAdmin | `http://[VPS]:5050` ou porta mapeada | (ver .env.staging) | — |
-| Keycloak Admin | `https://auth.intellicare.ia.br/` | `admin` | (ver KC_ADMIN_PASSWORD) |
+| Keycloak Admin | `https://auth.intellicare.ia.br/admin/` | `admin` | (ver KC_ADMIN_PASSWORD) |
 | AdminUI | `https://admin.intellicare.ia.br/admin-ui/` | `platform-admin` | `Admin@2025!` |
 | GestorUI | `https://api.intellicare.ia.br/gestor-ui/` | `gestor.alfa` | `Demo@1234` |
 | ClinicoUI | `https://api.intellicare.ia.br/clinico-ui/` | `dr.silva` | `Demo@1234` |
@@ -25,43 +25,46 @@
 ## 1. PostgreSQL — Estrutura e Acesso
 
 ### 1.1 Acesso via pgAdmin
-- [ ] pgAdmin carrega sem erro
-- [ ] Conexão ao servidor `postgres` estabelecida
-- [ ] Database `intellicare_staging` visível
+- [x] pgAdmin carrega sem erro
+- [x] Conexão ao servidor `postgres` estabelecida
+- [x] Database `intellicare_staging` visível
 
 ### 1.2 Schema `public` — tabelas de plataforma
-- [ ] `public.tenants` — listagem de tenants cadastrados (campo `status`: active/suspended)
-- [ ] `public.pessoa` — registros de identidade centralizada (migration 021)
-- [ ] `public.pessoa_fisica` — CPFs cadastrados
-- [ ] `public.keycloak_user_mapping` — vínculos Keycloak ↔ pessoa
-- [ ] `public.prompt_templates` — templates IA versionados (migration 017)
-- [ ] `public.professional_certificates` — certificados A1 (migration 019)
+- [x] `public.tenants` — listagem de tenants cadastrados (campo `status`: active/suspended)
+- [x] `public.prompt_templates` — 4 seeds ativos; coluna chave: `prompt_key` (não `name`) — DEM-093 ✅
+
+### 1.2b Schema `platform` — identidade centralizada (ADR-004)
+- [x] `platform.pessoa` — tabela existe (021 reaplicada após criação manual de schema) — DEM-093 ✅
+- [x] `platform.pessoa_fisica` — tabela existe — DEM-093 ✅
+- [!] `platform.keycloak_user_mapping` — **ausente** — não criada por nenhuma migration versionada; pendente definição (migration 021 ou nova 025)
 
 ### 1.3 Schema tenant — tabelas clínicas
-Selecionar o schema do tenant `alfa` (ou equivalente):
-- [ ] `professionals` — coluna `pessoa_id UUID` presente (migration 024)
-- [ ] `pacientes` — coluna `pessoa_id UUID` presente (migration 022)
-- [ ] `encounters` — coluna `clinical_notes_id UUID` (migration 023 fix)
-- [ ] `prescriptions` — `interaction_count` presente (migration 020)
-- [ ] `clinical_notes` — tabela Florence (migration 013)
-- [ ] `push_subscriptions` — tabela notificações PWA (migration 016)
+Schema `tenant_clinica_alfa` (DEM-093 aplicada em 2026-03-26):
+- [x] `professionals` — tabela existe (migration 005) — DEM-093 ✅
+- [x] `professionals` — coluna `pessoa_id UUID` presente (migration 024) — DEM-093 ✅
+- [x] `patients` — coluna `pessoa_id UUID` presente (migration 022) — DEM-093 ✅
+- [x] `clinical_notes` — tabela Florence existe (migration 013)
+- [x] `clinical_notes` — coluna `encounter_id` tipo `uuid` — migration 023 aplicada — DEM-093 ✅
+- [x] `prescriptions` — coluna `interaction_warnings_count INTEGER DEFAULT 0` — DEM-093 ✅
+- [x] `professional_certificates` — tabela existe (migration 019) — DEM-093 ✅
+- [x] `push_subscriptions` — tabela notificações PWA (migration 016)
 
 ### 1.4 Backup
-- [ ] Comando de backup executável:
+- [x] Comando de backup executável:
 ```bash
 docker exec intellicare-postgres pg_dump \
   -U intellicare_staging intellicare_staging \
   -Fc -f /tmp/backup_$(date +%Y%m%d).dump
 docker cp intellicare-postgres:/tmp/backup_$(date +%Y%m%d).dump ./
 ```
-- [ ] Arquivo `.dump` gerado com tamanho > 0
+- [x] Arquivo `.dump` gerado com tamanho > 0
 
 ---
 
 ## 2. Keycloak — Administração e Roles
 
 ### 2.1 Acesso ao Admin Console
-- [ ] `https://auth.intellicare.ia.br/` → redireciona para console
+- [ ] `https://auth.intellicare.ia.br/admin/` → carrega Keycloak Admin Console
 - [ ] Login com credenciais admin
 - [ ] Realm `intellicare` selecionado
 
