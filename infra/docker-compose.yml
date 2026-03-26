@@ -58,7 +58,8 @@ services:
       KC_HEALTH_ENABLED: "true"
       KC_METRICS_ENABLED: "true"
       KC_PROXY_HEADERS: xforwarded
-      KC_HOSTNAME: ${KC_HOSTNAME:-auth.intellicare.ia.br}
+      KC_HOSTNAME_URL: ${KC_HOSTNAME_URL:-https://auth.intellicare.ia.br}
+      KC_HOSTNAME_ADMIN_URL: ${KC_HOSTNAME_URL:-https://auth.intellicare.ia.br}
       KC_HOSTNAME_STRICT: "false"
     volumes:
       - keycloak_data:/opt/keycloak/data
