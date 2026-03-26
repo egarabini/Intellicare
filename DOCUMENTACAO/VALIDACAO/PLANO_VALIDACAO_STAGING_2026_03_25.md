@@ -36,7 +36,7 @@
 ### 1.2b Schema `platform` — identidade centralizada (ADR-004)
 - [x] `platform.pessoa` — tabela existe (021 reaplicada após criação manual de schema) — DEM-093 ✅
 - [x] `platform.pessoa_fisica` — tabela existe — DEM-093 ✅
-- [!] `platform.keycloak_user_mapping` — **ausente** — não criada por nenhuma migration versionada; pendente definição (migration 021 ou nova 025)
+- [x] `platform.keycloak_user_mapping` — migration 025 aplicada no VPS em 2026-03-26 (`sub + realm -> pessoa_id`) — rerun formal 1.2b ✅
 
 ### 1.3 Schema tenant — tabelas clínicas
 Schema `tenant_clinica_alfa` (DEM-093 aplicada em 2026-03-26):
