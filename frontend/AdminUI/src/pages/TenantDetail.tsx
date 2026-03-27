@@ -1,5 +1,6 @@
-import { useParams } from 'react-router-dom'
-import { Badge, Loader, Paper, Stack, Switch, Table, Text, Title } from '@mantine/core'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Badge, Button, Group, Loader, Paper, Stack, Switch, Table, Text, Title } from '@mantine/core'
+import { IconArrowLeft } from '@tabler/icons-react'
 import { notifications } from '@mantine/notifications'
 
 import { StatusBadge } from '../components/StatusBadge'
@@ -7,6 +8,7 @@ import { useTenant, useTenantUsers } from '../hooks/useTenants'
 import { useTenantModules, useUpdateTenantModule } from '../hooks/useModules'
 
 export function TenantDetail() {
+  const navigate = useNavigate()
   const { slug = '' } = useParams()
   const tenantQuery = useTenant(slug)
   const usersQuery = useTenantUsers(slug)
@@ -48,6 +50,12 @@ export function TenantDetail() {
 
   return (
     <Stack gap="lg">
+      <Group>
+        <Button variant="subtle" color="gray" leftSection={<IconArrowLeft size={16} />} onClick={() => navigate(-1)} px={4}>
+          Voltar
+        </Button>
+      </Group>
+
       <Stack gap={4}>
         <Title order={2}>{tenant.name}</Title>
         <Text c="dimmed" ff="monospace">
