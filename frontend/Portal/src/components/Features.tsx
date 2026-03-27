@@ -36,7 +36,7 @@ export function Features() {
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl">
         {FEATURES.map((feature) => (
           <Card key={feature.title} shadow="sm" padding="lg" radius="md" withBorder>
-            <ThemeIcon size={48} radius="md" variant="gradient" gradient={{ from: 'teal', to: 'blue', deg: 60 }}>
+            <ThemeIcon size={48} radius="md" variant="gradient" gradient={{ from: 'intelliTeal', to: 'intelliBlue', deg: 60 }}>
               <feature.icon size={24} />
             </ThemeIcon>
             <Title order={3} mt="md">{feature.title}</Title>

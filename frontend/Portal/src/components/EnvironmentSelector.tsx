@@ -25,7 +25,7 @@ interface Environment {
   description: string;
   role: string;
   href: string;
-  icon: React.ComponentType<{ size?: number; stroke?: number }>;
+  icon: any;
   color: string;
   badge: string;
 }

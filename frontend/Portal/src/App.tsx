@@ -1,5 +1,7 @@
 import { MantineProvider, Box } from '@mantine/core';
 import '@mantine/core/styles.css';
+import { theme } from './theme';
+import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Agents } from './components/Agents';
 import { Features } from './components/Features';
@@ -9,13 +11,22 @@ import { Footer } from './components/Footer';
 
 export default function App() {
   return (
-    <MantineProvider>
+    <MantineProvider theme={theme}>
+      <Header />
       <Box>
         <Hero />
-        <Agents />
-        <Features />
-        <AboutUs />
-        <Contact />
+        <Box component="section" id="features">
+          <Features />
+        </Box>
+        <Box component="section" id="agents">
+          <Agents />
+        </Box>
+        <Box component="section" id="about">
+          <AboutUs />
+        </Box>
+        <Box component="section" id="contact">
+          <Contact />
+        </Box>
         <Footer />
       </Box>
     </MantineProvider>

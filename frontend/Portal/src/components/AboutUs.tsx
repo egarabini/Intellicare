@@ -1,17 +1,21 @@
-import { Container, Title, Text, Paper, Group, Avatar, Stack } from '@mantine/core';
+import { Container, Title, Text, Paper, SimpleGrid, ThemeIcon, Stack } from '@mantine/core';
+import { IconShieldLock, IconBrain, IconUsers } from '@tabler/icons-react';
 
-const TEAM = [
+const VALUES = [
   {
-    name: 'Dr. Elara Vance',
-    role: 'CEO & Co-fundadora',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
-    description: 'Médica e entusiasta de tecnologia, apaixonada por revolucionar o atendimento ao paciente com o poder da IA.',
+    icon: IconShieldLock,
+    title: 'Privacidade por Design',
+    description: 'Nossa arquitetura multi-tenant e IA local garantem que os dados sensíveis nunca saiam do seu controle.',
   },
   {
-    name: 'Jaxon "Jax" Riley',
-    role: 'CTO & Co-fundador',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704e',
-    description: 'Arquiteto de software com mais de uma década de experiência na construção de sistemas de saúde escaláveis e seguros.',
+    icon: IconBrain,
+    title: 'IA Ética e Local',
+    description: 'Implementamos modelos de IA que rodam na sua infraestrutura, garantindo soberania e segurança dos dados.',
+  },
+  {
+    icon: IconUsers,
+    title: 'Cuidado Centrado na Pessoa',
+    description: 'A tecnologia é uma ferramenta para potencializar o cuidado humano, focando na jornada e bem-estar do paciente.',
   },
 ];
 
@@ -31,17 +35,17 @@ export function AboutUs() {
         </Text>
       </Paper>
 
-      <Title order={3} ta="center" mt={60} mb="xl">Conheça os Fundadores</Title>
-      <Group justify="center" gap="xl">
-        {TEAM.map((member) => (
-          <Stack key={member.name} align="center" maw={300}>
-            <Avatar src={member.avatar} size={120} radius="50%" />
-            <Title order={4} mt="md">{member.name}</Title>
-            <Text c="teal" fw={700}>{member.role}</Text>
-            <Text ta="center" size="sm" c="dimmed">{member.description}</Text>
+      <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl" mt={60}>
+        {VALUES.map((value) => (
+          <Stack key={value.title} align="center">
+            <ThemeIcon size={64} radius="50%" variant="gradient" gradient={{ from: 'intelliTeal', to: 'intelliBlue', deg: 60 }}>
+              <value.icon size={32} />
+            </ThemeIcon>
+            <Title order={4} mt="md" ta="center">{value.title}</Title>
+            <Text ta="center" size="sm" c="dimmed">{value.description}</Text>
           </Stack>
         ))}
-      </Group>
+      </SimpleGrid>
     </Container>
   );
 }

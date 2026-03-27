@@ -1,0 +1,35 @@
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--mantine-color-body);
+    border-bottom: rem(1px) solid transparent;
+    transition: box-shadow 0.3s ease;
+  }
+  
+.scrolled {
+    box-shadow: var(--mantine-shadow-sm);
+}
+  
+.inner {
+    height: rem(60);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.link {
+    display: block;
+    line-height: 1;
+    padding: rem(8) rem(12);
+    border-radius: var(--mantine-radius-sm);
+    text-decoration: none;
+    color: var(--mantine-color-text);
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 500;
+
+    &:hover {
+        background-color: var(--mantine-color-gray-0);
+    }
+}

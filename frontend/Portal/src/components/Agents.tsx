@@ -12,7 +12,7 @@ const AGENTS = [
     name: 'Oswaldo',
     role: 'Interoperabilidade e FHIR',
     description: 'Leitura, estruturacao e intercambio de dados clinicos com padroes de interoperabilidade em saude.',
-    color: 'blue',
+    color: 'intelliBlue',
     image: '/agents/agente_oswaldo.png',
   },
   {
@@ -94,9 +94,7 @@ export function Agents() {
         {AGENTS.map((agent) => (
           <Card key={agent.name} shadow="sm" padding="lg" radius="lg" withBorder>
             <Card.Section
-              style={{
-                background: 'linear-gradient(180deg, rgba(15,118,110,0.08) 0%, rgba(30,58,95,0.02) 100%)',
-              }}
+              bg="intelliTeal.0"
             >
               <Image
                 src={agent.image}

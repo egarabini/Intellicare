@@ -14,9 +14,8 @@ export function Contact() {
         <div>
           <Title order={3} mb="xl">Informações de Contato</Title>
           <Stack>
-            <Text><strong>Email:</strong> contato@intellicare.health</Text>
-            <Text><strong>Telefone:</strong> +55 (11) 99999-9999</Text>
-            <Text><strong>Endereço:</strong> Av. Paulista, 1234, São Paulo - SP</Text>
+            <Text><strong>Email:</strong> contato@intellicare.ia.br</Text>
+            <Text><strong>Disponibilidade:</strong> Resposta em até 24h</Text>
           </Stack>
         </div>
         <div>
@@ -41,7 +40,7 @@ export function Contact() {
                 rows={6}
               />
               <Group justify="flex-end" mt="md">
-                <Button type="submit" size="lg">Enviar Mensagem</Button>
+                <Button type="submit" size="lg" color="intelliTeal">Enviar Mensagem</Button>
               </Group>
             </Stack>
           </form>
