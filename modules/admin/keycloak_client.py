@@ -82,7 +82,18 @@ class KeycloakAdminClient:
             "GET",
             f"/admin/realms/{KC_REALM}/groups/{group_id}/members",
         )
-        return response.json()
+        users = response.json()
+        
+        import asyncio
+        async def _fetch_roles(u: dict[str, Any]) -> None:
+            uid = u["id"]
+            resp = await self._request("GET", f"/admin/realms/{KC_REALM}/users/{uid}/role-mappings/realm")
+            u["realmRoles"] = [r["name"] for r in resp.json()]
+            
+        if users:
+            await asyncio.gather(*(_fetch_roles(u) for u in users))
+            
+        return users
 
     async def get_tenant_group_id(self, slug: str) -> str | None:
         response = await self._request(
