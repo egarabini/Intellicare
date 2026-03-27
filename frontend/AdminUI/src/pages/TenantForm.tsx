@@ -5,6 +5,7 @@ import { useForm } from '@mantine/form'
 import { notifications } from '@mantine/notifications'
 
 import { useCreateTenant, useTenant, useUpdateTenant } from '../hooks/useTenants'
+import { TenantUsers } from './TenantUsers'
 
 type TenantFormValues = {
   name: string
@@ -156,6 +157,8 @@ export function TenantEditForm() {
           </Stack>
         </form>
       </Paper>
+
+      <TenantUsers />
     </Stack>
   )
 }
