@@ -488,6 +488,7 @@ services:
       - "traefik.http.routers.intellicare-api.service=intellicare-api"
       - "traefik.http.services.intellicare-api.loadbalancer.server.port=8000"
       # Rota por subdomínio (produção) — redirect raiz para o path correto do frontend
+      # -- ADMIN
       - "traefik.http.routers.intellicare-admin.rule=Host(`admin.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-admin.entrypoints=websecure"
       - "traefik.http.routers.intellicare-admin.tls.certresolver=letsencrypt"
@@ -497,12 +498,63 @@ services:
       - "traefik.http.middlewares.admin-ui-redirect.redirectregex.regex=^(https://admin\\.intellicare\\.ia\\.br)/?$$"
       - "traefik.http.middlewares.admin-ui-redirect.redirectregex.replacement=$${1}/admin-ui/"
       - "traefik.http.middlewares.admin-ui-redirect.redirectregex.permanent=false"
+      
+      # -- GESTOR
+      - "traefik.http.routers.intellicare-gestor.rule=Host(`gestor.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-gestor.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-gestor.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.intellicare-gestor.service=intellicare-gestor"
+      - "traefik.http.routers.intellicare-gestor.middlewares=gestor-ui-redirect"
+      - "traefik.http.services.intellicare-gestor.loadbalancer.server.port=8000"
+      - "traefik.http.middlewares.gestor-ui-redirect.redirectregex.regex=^(https://gestor\\.intellicare\\.ia\\.br)/?$$"
+      - "traefik.http.middlewares.gestor-ui-redirect.redirectregex.replacement=$${1}/gestor-ui/"
+      - "traefik.http.middlewares.gestor-ui-redirect.redirectregex.permanent=false"
+
+      # -- CLINICO
+      - "traefik.http.routers.intellicare-clinico.rule=Host(`clinico.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-clinico.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-clinico.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.intellicare-clinico.service=intellicare-clinico"
+      - "traefik.http.routers.intellicare-clinico.middlewares=clinico-ui-redirect"
+      - "traefik.http.services.intellicare-clinico.loadbalancer.server.port=8000"
+      - "traefik.http.middlewares.clinico-ui-redirect.redirectregex.regex=^(https://clinico\\.intellicare\\.ia\\.br)/?$$"
+      - "traefik.http.middlewares.clinico-ui-redirect.redirectregex.replacement=$${1}/clinico-ui/"
+      - "traefik.http.middlewares.clinico-ui-redirect.redirectregex.permanent=false"
+
+      # -- PACIENTE
+      - "traefik.http.routers.intellicare-paciente.rule=Host(`paciente.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-paciente.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-paciente.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.intellicare-paciente.service=intellicare-paciente"
+      - "traefik.http.routers.intellicare-paciente.middlewares=paciente-ui-redirect"
+      - "traefik.http.services.intellicare-paciente.loadbalancer.server.port=8000"
+      - "traefik.http.middlewares.paciente-ui-redirect.redirectregex.regex=^(https://paciente\\.intellicare\\.ia\\.br)/?$$"
+      - "traefik.http.middlewares.paciente-ui-redirect.redirectregex.replacement=$${1}/paciente-ui/"
+      - "traefik.http.middlewares.paciente-ui-redirect.redirectregex.permanent=false"
+
       # Redirect HTTP → HTTPS
       - "traefik.http.routers.intellicare-admin-http.rule=Host(`admin.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-admin-http.entrypoints=web"
       - "traefik.http.routers.intellicare-admin-http.middlewares=redirect-to-https"
       - "traefik.http.routers.intellicare-admin-http.service=intellicare-admin"
+      
+      - "traefik.http.routers.intellicare-gestor-http.rule=Host(`gestor.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-gestor-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-gestor-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.intellicare-gestor-http.service=intellicare-gestor"
+
+      - "traefik.http.routers.intellicare-clinico-http.rule=Host(`clinico.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-clinico-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-clinico-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.intellicare-clinico-http.service=intellicare-clinico"
+
+      - "traefik.http.routers.intellicare-paciente-http.rule=Host(`paciente.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-paciente-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-paciente-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.intellicare-paciente-http.service=intellicare-paciente"
+
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      
       - "traefik.http.routers.intellicare-api-http.rule=Host(`api.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-api-http.entrypoints=web"
       - "traefik.http.routers.intellicare-api-http.middlewares=redirect-to-https"

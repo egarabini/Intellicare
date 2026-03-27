@@ -64,33 +64,35 @@ docker cp intellicare-postgres:/tmp/backup_$(date +%Y%m%d).dump ./
 ## 2. Keycloak — Administração e Roles
 
 ### 2.1 Acesso ao Admin Console
-- [ ] `https://auth.intellicare.ia.br/admin/` → carrega Keycloak Admin Console
-- [ ] Login com credenciais admin
-- [ ] Realm `intellicare` selecionado
+- [x] `https://auth.intellicare.ia.br/admin/` → carrega Keycloak Admin Console (302 redirect confirmado — DEM-INF ✅)
+- [x] Login com credenciais admin
+- [x] Realm `intellicare` selecionado
 
 ### 2.2 Roles definidas
-- [ ] Role `platform-admin` existe em Realm Roles
-- [ ] Role `gestor` existe
-- [ ] Role `clinico` existe
-- [ ] Role `paciente` existe
+- [x] Role `PLATFORM_ADMIN` existe em Realm Roles
+- [x] Role `TENANT_GESTOR` existe
+- [x] Role `CLINICO` existe
+- [x] Role `PACIENTE` existe
 
 ### 2.3 Usuários e atribuições
-- [ ] `platform-admin` → role `platform-admin` atribuída
-- [ ] `gestor.alfa` → role `gestor` atribuída
-- [ ] `dr.silva` → role `clinico` atribuída
-- [ ] `paciente.alfa` → role `paciente` atribuída
+- [x] `platform-admin` → role `PLATFORM_ADMIN` atribuída
+- [x] `gestor.alfa` → role `TENANT_GESTOR` atribuída
+- [x] `dr.silva` → role `CLINICO` atribuída
+- [x] `paciente.alfa` → role `PACIENTE` atribuída
 
 ### 2.4 Clients registrados
-- [ ] `intellicare-service` (backend service account)
-- [ ] `adminui` (frontend AdminUI)
-- [ ] `gestorui` (frontend GestorUI)
-- [ ] `clinicoui` (frontend ClinicoUI)
-- [ ] `pacienteui` (frontend PacienteUI)
-- [ ] `portal` (Portal)
+- [x] `admin-cli` (Keycloak admin CLI)
+- [x] `admin-ui` (frontend AdminUI)
+- [x] `clinico-ui` (frontend ClinicoUI)
+- [x] `gestor-ui` (frontend GestorUI)
+- [x] `paciente-ui` (frontend PacienteUI)
+- [x] `intellicare-frontend` (frontend genérico)
+- [x] `intellicare-service` (backend service account)
+- [x] `portal` (Portal público)
 
 ### 2.5 JWT Issuer
-- [ ] `GET https://auth.intellicare.ia.br/realms/intellicare/.well-known/openid-configuration` → 200
-- [ ] Campo `issuer` bate com `KEYCLOAK_ISSUER_URL` no `.env.staging`
+- [x] `GET https://auth.intellicare.ia.br/realms/intellicare/.well-known/openid-configuration` → 200
+- [x] Campo `issuer`: `https://auth.intellicare.ia.br/realms/intellicare` — DEM-INF ✅ (`1fa8b8d`)
 
 ---
 
@@ -99,43 +101,44 @@ docker cp intellicare-postgres:/tmp/backup_$(date +%Y%m%d).dump ./
 > URL: `https://admin.intellicare.ia.br/admin-ui/` | Login: `platform-admin`
 
 ### 3.1 Acesso
-- [ ] Login bem-sucedido → dashboard carrega
-- [ ] Menu lateral visível: Tenants, Modules, Users, Prompts, Identity
+- [x] Login bem-sucedido → **fix aplicado** (`c4ceaee`) — `.env.production` criado, rebuild via Docker Compose no VPS
+  - Bundle confirmado: `authority:"https://auth.intellicare.ia.br/realms/intellicare"` ✅
+- [x] Menu lateral visível: Tenants, Modules, Users, Prompts, Identity
 
 ### 3.2 Tenants
-- [ ] Lista de tenants carrega (GET /admin/tenants → 200)
-- [ ] Tenant `alfa` aparece com status `active`
-- [ ] Ação **Suspender** tenant → status muda para `suspended`
-- [ ] Ação **Reativar** tenant → status volta para `active`
+- [x] Lista de tenants carrega (GET /admin/tenants → 200)
+- [x] Tenant `alfa` aparece com status `active`
+- [x] Ação **Suspender** tenant → status muda para `suspended`
+- [x] Ação **Reativar** tenant → status volta para `active`
 
 ### 3.3 Módulos
-- [ ] Página de módulos carrega
-- [ ] Toggle de módulo funciona (enable/disable)
+- [x] Página de módulos carrega
+- [x] Toggle de módulo funciona (enable/disable)
 
 ### 3.4 Usuários Admin
-- [ ] Lista de usuários admin carrega
-- [ ] Campo de senha admin editável
+- [x] Lista de usuários admin carrega
+- [x] Campo de senha admin editável
 
 ### 3.5 Prompt Templates
-- [ ] Lista de templates carrega (migration 017)
-- [ ] Versão atual visível
-- [ ] Rollback para versão anterior disponível
+- [!] Lista de templates carrega (migration 017)
+- [!] Versão atual visível
+- [!] Rollback para versão anterior disponível
 
 ### 3.6 Identidade Centralizada (DEM-089)
-- [ ] Página `/admin-ui/identity` carrega
-- [ ] Cards de totais: total pessoas, vínculos por tenant
-- [ ] Tabela por tenant com pacientes e profissionais vinculados
-- [ ] Botão "Reconciliar identidades" presente
-- [ ] Clicar reconciliar → retorna JSON `{"processed": N, "linked": N, "skipped": 0, "errors": []}`
+- [x] Página `/admin-ui/identity` carrega
+- [x] Cards de totais: total pessoas, vínculos por tenant
+- [!] Tabela por tenant com pacientes e profissionais vinculados
+- [!] Botão "Reconciliar identidades" presente
+- [!] Clicar reconciliar → retorna JSON `{"processed": N, "linked": N, "skipped": 0, "errors": []}`
 
 ---
 
 ## 4. GestorUI — Gestão do Estabelecimento
 
-> URL: `https://api.intellicare.ia.br/gestor-ui/` | Login: `gestor.alfa`
+> URL: `https://gestor.intellicare.ia.br/gestor-ui/` | Login: `gestor.alfa`
 
 ### 4.1 Acesso
-- [ ] Login bem-sucedido → dashboard carrega
+- [!] Login bem-sucedido → dashboard carrega
 - [ ] Menu lateral: Dashboard, Unidades, Usuários, CarePlanner, Indicadores, Relatórios
 
 ### 4.2 Dashboard principal
@@ -365,7 +368,8 @@ curl http://localhost:8082/instance/fetchInstances \
 
 | # | Área | Item | Sintoma | Ação |
 |---|------|------|---------|------|
-| | | | | |
+| 1 | 3. AdminUI | 3.1 Login loop | `GET /admin-ui/undefined/realms/...` 404 — VITE_KEYCLOAK_URL undefined no bundle | ✅ Fix `c4ceaee` — `.env.production` + rebuild Docker |
+| 2 | 3. AdminUI | 3.2 API Tenants falha  | `list_tenants` falhava com 500 silencioso devido a falta de `deleted_at` na API  | ✅ Fix: Migration 026 aplicada p/ ADD COLUMN `deleted_at` em `public.tenants` |
 
 ---
 
