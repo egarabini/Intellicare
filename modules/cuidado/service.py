@@ -227,6 +227,9 @@ class CuidadoService:
     # ------------------------------------------------------------------
 
     async def get_agenda(self, ctx: TenantContext, clinician_id: str, from_date: str, to_date: str) -> list[dict]:
+        if not await self._table_exists(ctx, "appointments"):
+            return []
+
         patient_name_expr = await self._patient_name_expr(ctx)
         async with tenant_session(ctx) as db:
             rows = (await db.execute(
