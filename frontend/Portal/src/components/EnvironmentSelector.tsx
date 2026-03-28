@@ -82,6 +82,10 @@ const getEnvUrl = (subdomain: string, path: string) => {
   if (typeof window === 'undefined') return path;
   const hostname = window.location.hostname;
   if (hostname === 'localhost' || hostname.startsWith('127.')) {
+    // Evita o SPA fallback do Vite dev server enviando para o backend (8000) caso não estejamos nele.
+    if (window.location.port !== '8000') {
+      return `http://${hostname}:8000${path}`;
+    }
     return path;
   }
   // Remove possible subdomains to get root domain: e.g. intellicare.ia.br
