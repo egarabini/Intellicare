@@ -11,8 +11,8 @@ export default defineConfig({
   server: {
     port: 5175,
     proxy: {
-      '/gestor': 'http://localhost:8000',
-      '/vector': 'http://localhost:8000',
+      '^/gestor(?:/|$)': 'http://localhost:8000',
+      '^/vector(?:/|$)': 'http://localhost:8000',
     },
   },
 })

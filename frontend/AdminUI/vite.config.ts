@@ -11,8 +11,8 @@ export default defineConfig({
   server: {
     port: 5174,
     proxy: {
-      '/admin': 'http://localhost:8000',
-      '/health': 'http://localhost:8000',
+      '^/admin(?:/|$)': 'http://localhost:8000',
+      '^/health(?:/|$)': 'http://localhost:8000',
     },
   },
 })

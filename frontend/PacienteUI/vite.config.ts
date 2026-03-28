@@ -11,9 +11,8 @@ export default defineConfig({
   server: {
     port: 5177,
     proxy: {
-      '/cuidado': 'http://localhost:9000',
-      '/health': 'http://localhost:9000',
+      '^/cuidado(?:/|$)': 'http://localhost:9000',
+      '^/health(?:/|$)': 'http://localhost:9000',
     },
   },
 })
-

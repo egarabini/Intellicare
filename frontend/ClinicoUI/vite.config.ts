@@ -13,11 +13,11 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/cuidado': 'http://localhost:8000',
-      '/gestor': 'http://localhost:8000',
-      '/slm': 'http://localhost:8000',
-      '/vector': 'http://localhost:8000',
-      '/auth': 'http://localhost:8000',
+      '^/cuidado(?:/|$)': 'http://localhost:8000',
+      '^/gestor(?:/|$)': 'http://localhost:8000',
+      '^/slm(?:/|$)': 'http://localhost:8000',
+      '^/vector(?:/|$)': 'http://localhost:8000',
+      '^/auth(?:/|$)': 'http://localhost:8000',
     },
   },
 })
