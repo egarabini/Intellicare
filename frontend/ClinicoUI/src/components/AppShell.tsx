@@ -1,4 +1,4 @@
-import { AppShell, NavLink, Group, Avatar, Text, Badge, Title } from '@mantine/core';
+import { AppShell, NavLink, Group, Avatar, Text, Badge, Title, Button } from '@mantine/core';
 import { IconHome, IconCalendar, IconUsers, IconRobot, IconSettings, IconUsersGroup, IconStethoscope, IconHeartbeat } from '@tabler/icons-react';
 import { useAuth } from 'react-oidc-context';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -39,6 +39,9 @@ export function ClinicoShell({ children }: { children: React.ReactNode }) {
           <Group gap="sm">
             <NotificationBell />
             <Text size="sm" c="dimmed">{name as string}</Text>
+            <Button size="xs" variant="subtle" onClick={() => void auth.signoutRedirect()}>
+              Sair
+            </Button>
           </Group>
         </Group>
       </AppShell.Header>
