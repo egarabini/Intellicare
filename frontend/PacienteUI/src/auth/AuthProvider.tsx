@@ -1,11 +1,12 @@
 import React from 'react'
 import { AuthProvider as OidcAuthProvider, AuthProviderProps } from 'react-oidc-context'
+import { getPortalUrl } from '../../../shared/authUrls'
 
 const oidcConfig: AuthProviderProps = {
   authority: `${import.meta.env.VITE_KEYCLOAK_URL}/realms/intellicare`,
   client_id: 'paciente-ui',
   redirect_uri: `${window.location.origin}/paciente-ui/`,
-  post_logout_redirect_uri: `${window.location.origin}/`,
+  post_logout_redirect_uri: getPortalUrl(),
   scope: 'openid profile email',
   userStore: undefined,
   onSigninCallback: () => {
@@ -16,4 +17,3 @@ const oidcConfig: AuthProviderProps = {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   return <OidcAuthProvider {...oidcConfig}>{children}</OidcAuthProvider>
 }
-
