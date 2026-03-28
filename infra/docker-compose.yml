@@ -676,28 +676,25 @@ services:
     image: traefik:v2.11.31
     container_name: intellicare-traefik
     restart: unless-stopped
-    environment:
-      DOCKER_API_VERSION: "1.44"
     command:
-      - "--api.insecure=true"
-      - "--api.dashboard=true"
+      - "--api.insecure=false"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.letsencrypt.acme.email=egarabini@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL:-admin@intellicare.ia.br}"
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
       - "--log.level=INFO"
       - "--ping=true"
     ports:
-      - "8081:80"
-      - "8443:443"
+      - "80:80"
+      - "443:443"
       - "${TRAEFIK_DASHBOARD_PORT}:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./letsencrypt:/letsencrypt
+      - letsencrypt_data:/letsencrypt
     networks:
       - intellicare-net
     healthcheck:
@@ -777,23 +774,27 @@ services:
     networks:
       - intellicare-net
 
+# ── Volumes ────────────────────────────────────────────────────
 volumes:
   postgres_data:
   redis_data:
   keycloak_data:
   pgadmin_data:
+  kestra_data:
   ollama_models:
   prometheus_data:
   grafana_data:
-  kestra_data:
   mongo_data:
-  marie_db_data:
   rocketchat_uploads:
+  marie_db_data:
   jitsi_web:
   jitsi_prosody:
   jitsi_jicofo:
   jitsi_jvb:
   jasmin_data:
+  letsencrypt_data:
+
+# ── Networks ───────────────────────────────────────────────────
 
 networks:
   intellicare-net:
