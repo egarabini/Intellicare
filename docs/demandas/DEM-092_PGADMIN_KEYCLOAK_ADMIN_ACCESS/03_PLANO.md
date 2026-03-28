@@ -85,3 +85,10 @@ curl -I https://pgadmin.intellicare.ia.br/
 - Se o certificado não emitir: verificar que o DNS `pgadmin.intellicare.ia.br` já propagou (`nslookup pgadmin.intellicare.ia.br`)
 - Se pgAdmin não conectar ao postgres: verificar que `PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"` está no compose (permite salvar senhas sem master password adicional)
 - Keycloak `start-dev` mode: o console de admin é totalmente funcional mesmo em dev mode — não é uma limitação
+
+## Fase 2 — Dev Local
+
+- [x] Expor `pgadmin` em `localhost:5050`
+- [x] Padronizar `PGADMIN_EMAIL` e `PGADMIN_PASSWORD` no ambiente local
+- [x] Pré-cadastrar `IntelliCare Local PostgreSQL` via `servers.local.json`
+- [x] Tornar o cadastro declarativo com reload no startup do container

@@ -23,3 +23,11 @@ Credenciais: via `docker exec intellicare-keycloak env | grep KEYCLOAK_ADMIN`
 
 - Email: `admin@intellicare.ia.br`
 - Password: `IC_PgAdmin#2026!Stg` *(registrado em `.env.staging` do VPS — não entra no git)*
+
+## Fase 2 — pgAdmin Local
+
+1. `pgadmin` publicado em `localhost:5050`
+2. `PGADMIN_EMAIL` corrigido para domínio válido (`admin@intellicare.ia.br`) para evitar restart loop
+3. `PGADMIN_PASSWORD` padronizado no `infra/.env` e `infra/.env.example`
+4. `infra/pgadmin/servers.local.json` criado com bootstrap do servidor `IntelliCare Local PostgreSQL`
+5. `PGADMIN_REPLACE_SERVERS_ON_STARTUP=True` habilitado para manter o cadastro declarativo

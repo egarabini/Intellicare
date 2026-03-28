@@ -64,6 +64,24 @@ Após login, criar servidor manualmente ou usar o "servers.json" pré-configurad
 
 > Alternativa: pre-seed via arquivo `servers.json` montado como volume para que a conexão apareça automaticamente pós-login.
 
+## 1.1 Fase 2 — pgAdmin local com PostgreSQL pré-cadastrado
+
+Para desenvolvimento local, o `pgadmin` passa a ser publicado em `http://localhost:5050` e recebe o servidor PostgreSQL já cadastrado no startup.
+
+### Ajustes
+
+- Porta local `5050:80` no serviço `pgadmin`
+- `PGADMIN_EMAIL` e `PGADMIN_PASSWORD` padronizados no `infra/.env` e `infra/.env.example`
+- Arquivo `infra/pgadmin/servers.local.json` montado em `/pgadmin4/servers.json`
+- `PGADMIN_SERVER_JSON_FILE=/pgadmin4/servers.json`
+- `PGADMIN_REPLACE_SERVERS_ON_STARTUP=True`
+
+### Resultado esperado
+
+- Login local em `http://localhost:5050`
+- Servidor `IntelliCare Local PostgreSQL` já visível na árvore do pgAdmin
+- Conexão interna usando hostname Docker `postgres`
+
 ---
 
 ## 2. Keycloak Admin Console — Diagnóstico e Acesso

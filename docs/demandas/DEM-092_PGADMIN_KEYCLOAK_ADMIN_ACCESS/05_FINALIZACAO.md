@@ -35,3 +35,10 @@ Sem alteração de código. URL correta documentada:
 - [x] URL e credenciais Keycloak Admin documentadas em `02_TECNICA.md`
 - [ ] Conexão ao servidor PostgreSQL criada no pgAdmin (Eduardo — pós-login, uma vez)
 - [ ] Keycloak Admin Console validado por Eduardo (`https://auth.intellicare.ia.br/admin/`)
+
+## Fase 2 — Dev Local
+
+- [x] `http://localhost:5050` publicado para acesso local ao pgAdmin
+- [x] Credenciais locais padronizadas em `infra/.env` e `infra/.env.example`
+- [x] Servidor PostgreSQL local pré-cadastrado via `servers.local.json`
+- [x] Bootstrap configurado de forma declarativa no startup do container

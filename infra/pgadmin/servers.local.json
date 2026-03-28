@@ -1,0 +1,18 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "IntelliCare Local PostgreSQL",
+      "Group": "IntelliCare",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "intellicare_staging",
+      "Username": "intellicare_staging",
+      "Shared": true,
+      "ConnectionParameters": {
+        "sslmode": "prefer",
+        "connect_timeout": 10
+      },
+      "PasswordExecCommand": "printf '%s' 'intellicare_dev_password'"
+    }
+  }
+}
