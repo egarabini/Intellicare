@@ -124,6 +124,14 @@ function AppRoutes() {
           <Group gap="sm">
             <NotificationBell />
             <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
+            <Button
+              variant="light"
+              color="red"
+              leftSection={<IconLogout size={16} />}
+              onClick={() => auth.signoutRedirect()}
+            >
+              Sair
+            </Button>
           </Group>
         </Group>
       </AppShell.Header>
