@@ -3,6 +3,11 @@ export function getPortalUrl() {
     return '/'
   }
 
+  const configuredPortalUrl = import.meta.env.VITE_PORTAL_URL?.trim()
+  if (configuredPortalUrl) {
+    return configuredPortalUrl.endsWith('/') ? configuredPortalUrl : `${configuredPortalUrl}/`
+  }
+
   const { hostname, origin } = window.location
 
   if (hostname === 'localhost' || hostname.startsWith('127.')) {

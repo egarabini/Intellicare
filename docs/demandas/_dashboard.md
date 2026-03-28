@@ -228,6 +228,7 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 | DEM-093 | DB Migration Sync Staging — migrations 005/006/017/019/020/022/023/024 + 025(keycloak_user_mapping) aplicadas; rerun 1.2/1.2b/1.3 ✅ concluído | CODEX + Eduardo | ✅ `cc62729` |
 | DEM-INF | Fix Keycloak proxy headers — `KC_HOSTNAME_URL` + `KC_HOSTNAME_ADMIN_URL` no compose (issuer retornava `http://`) | Eduardo | ✅ `1fa8b8d` — issuer `https://` confirmado no VPS ✅ |
 | DEM-094 | Portal: Identidade Visual IntelliCare — tema Mantine compartilhado, Header/Navbar, tokens, refatoração componentes, Guia Visual | GEMINI | ⏳ Spec pronta — aguarda 03_PLANO |
+| DEM-095 | Vite Proxy Padronizado — Fase 1: match exato nos proxies; Fase 2: logout volta ao Portal; Fase 3: `PORTAL_URL`/`VITE_PORTAL_URL` alinhados ao Keycloak | CODEX | ✅ `ca02c52`, `60c552f`, commit da Fase 3 |
 
 ---
 

@@ -498,8 +498,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": [f"{ADMIN_UI_URL}/*", f"{SERVICE_BASE_URL}/admin-ui/*", f"{SERVICE_BASE_URL}/"],
-            "webOrigins": [ADMIN_UI_URL, SERVICE_BASE_URL],
+            "redirectUris": [f"{ADMIN_UI_URL}/*", f"{PORTAL_URL}/*", f"{SERVICE_BASE_URL}/admin-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [ADMIN_UI_URL, PORTAL_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
@@ -515,8 +515,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": False,
-            "redirectUris": [f"{GESTOR_UI_URL}/*", f"{SERVICE_BASE_URL}/gestor-ui/*", f"{SERVICE_BASE_URL}/"],
-            "webOrigins": [GESTOR_UI_URL, SERVICE_BASE_URL],
+            "redirectUris": [f"{GESTOR_UI_URL}/*", f"{PORTAL_URL}/*", f"{SERVICE_BASE_URL}/gestor-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [GESTOR_UI_URL, PORTAL_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
@@ -532,8 +532,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": True,
-            "redirectUris": [f"{CLINICO_UI_URL}/*", f"{SERVICE_BASE_URL}/clinico-ui/*", f"{SERVICE_BASE_URL}/"],
-            "webOrigins": [CLINICO_UI_URL, SERVICE_BASE_URL],
+            "redirectUris": [f"{CLINICO_UI_URL}/*", f"{PORTAL_URL}/*", f"{SERVICE_BASE_URL}/clinico-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [CLINICO_UI_URL, PORTAL_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
@@ -565,8 +565,8 @@ def main(args: argparse.Namespace) -> None:
             "publicClient": True,
             "standardFlowEnabled": True,
             "directAccessGrantsEnabled": True,
-            "redirectUris": [f"{PACIENTE_UI_URL}/*", f"{SERVICE_BASE_URL}/paciente-ui/*", f"{SERVICE_BASE_URL}/"],
-            "webOrigins": [PACIENTE_UI_URL, SERVICE_BASE_URL],
+            "redirectUris": [f"{PACIENTE_UI_URL}/*", f"{PORTAL_URL}/*", f"{SERVICE_BASE_URL}/paciente-ui/*", f"{SERVICE_BASE_URL}/"],
+            "webOrigins": [PACIENTE_UI_URL, PORTAL_URL, SERVICE_BASE_URL],
             "protocolMappers": [realm_roles_mapper_payload(), tenant_id_mapper_payload()],
         },
     )
