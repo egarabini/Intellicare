@@ -475,12 +475,21 @@ services:
       - "traefik.http.routers.intellicare.rule=Host(`localhost`)"
       - "traefik.http.routers.intellicare.service=intellicare"
       - "traefik.http.services.intellicare.loadbalancer.server.port=8000"
-      # Portal (raiz + www)
-      - "traefik.http.routers.intellicare-portal.rule=Host(`intellicare.ia.br`) || Host(`www.intellicare.ia.br`)"
+      # Portal (apex — intellicare.ia.br)
+      - "traefik.http.routers.intellicare-portal.rule=Host(`intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-portal.entrypoints=websecure"
       - "traefik.http.routers.intellicare-portal.tls.certresolver=letsencrypt"
       - "traefik.http.routers.intellicare-portal.service=intellicare-portal"
       - "traefik.http.services.intellicare-portal.loadbalancer.server.port=8000"
+      # Portal (www → redirect canônico para apex, cert próprio)
+      - "traefik.http.routers.intellicare-www.rule=Host(`www.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-www.entrypoints=websecure"
+      - "traefik.http.routers.intellicare-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.intellicare-www.service=intellicare-portal"
+      - "traefik.http.routers.intellicare-www.middlewares=www-to-apex"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.regex=^https://www\\.intellicare\\.ia\\.br/(.*)"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.replacement=https://intellicare.ia.br/$${1}"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.permanent=true"
       # API
       - "traefik.http.routers.intellicare-api.rule=Host(`api.intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-api.entrypoints=websecure"
@@ -559,10 +568,14 @@ services:
       - "traefik.http.routers.intellicare-api-http.entrypoints=web"
       - "traefik.http.routers.intellicare-api-http.middlewares=redirect-to-https"
       - "traefik.http.routers.intellicare-api-http.service=intellicare-api"
-      - "traefik.http.routers.intellicare-portal-http.rule=Host(`intellicare.ia.br`) || Host(`www.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-portal-http.rule=Host(`intellicare.ia.br`)"
       - "traefik.http.routers.intellicare-portal-http.entrypoints=web"
       - "traefik.http.routers.intellicare-portal-http.middlewares=redirect-to-https"
       - "traefik.http.routers.intellicare-portal-http.service=intellicare-portal"
+      - "traefik.http.routers.intellicare-www-http.rule=Host(`www.intellicare.ia.br`)"
+      - "traefik.http.routers.intellicare-www-http.entrypoints=web"
+      - "traefik.http.routers.intellicare-www-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.intellicare-www-http.service=intellicare-portal"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -775,11 +788,11 @@ services:
       - intellicare-net
 
 # ── Volumes ────────────────────────────────────────────────────
+
 volumes:
   postgres_data:
   redis_data:
   keycloak_data:
-  pgadmin_data:
   kestra_data:
   ollama_models:
   prometheus_data:
@@ -791,8 +804,9 @@ volumes:
   jitsi_prosody:
   jitsi_jicofo:
   jitsi_jvb:
-  jasmin_data:
   letsencrypt_data:
+  jasmin_data:
+  pgadmin_data:
 
 # ── Networks ───────────────────────────────────────────────────
 
