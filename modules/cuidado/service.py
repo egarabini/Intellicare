@@ -750,10 +750,17 @@ class CuidadoService:
     async def paciente_clinic_info(self, ctx: TenantContext) -> dict:
         async with tenant_session(ctx) as db:
             row = (await db.execute(
-                text("SELECT name, phone, address, email, business_hours as hours FROM unit_profile LIMIT 1"),
+                text("SELECT * FROM unit_profile LIMIT 1"),
             )).mappings().first()
         if row:
-            return dict(row)
+            data = dict(row)
+            return {
+                "name": data.get("name"),
+                "phone": data.get("phone"),
+                "address": data.get("address"),
+                "email": data.get("email"),
+                "hours": data.get("business_hours"),
+            }
         return {"name": ctx.tenant_id, "phone": None, "address": None, "email": None, "hours": None}
 
     # ------------------------------------------------------------------
