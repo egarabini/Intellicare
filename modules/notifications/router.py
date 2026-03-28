@@ -7,7 +7,7 @@ import logging
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, Query, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, Depends, Query, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse
 from sse_starlette.sse import EventSourceResponse
 
@@ -88,47 +88,11 @@ async def unread_count(ctx: Authenticated) -> UnreadCountResponse:
     return UnreadCountResponse(count=count)
 
 
-@router.get("/{notification_id}", response_model=NotificationResponse)
-async def get_notification(
-    notification_id: UUID,
-    ctx: Authenticated,
-) -> NotificationResponse:
-    """Retorna detalhe de uma notificacao."""
-    notif = await _service.get_by_id(ctx, notification_id)
-    if not notif:
-        raise api_error(404, "not_found", "Notificacao nao encontrada")
-    return NotificationResponse(**notif)
-
-
-@router.patch("/{notification_id}/read")
-async def mark_read(
-    notification_id: UUID,
-    ctx: Authenticated,
-) -> dict:
-    """Marca notificacao como lida."""
-    found = await _service.mark_read(ctx, notification_id)
-    if not found:
-        raise api_error(404, "not_found", "Notificacao nao encontrada ou ja lida")
-    return {"status": "ok"}
-
-
 @router.patch("/read-all")
 async def mark_all_read(ctx: Authenticated) -> dict:
     """Marca todas as notificacoes como lidas."""
     count = await _service.mark_all_read(ctx)
     return {"status": "ok", "marked": count}
-
-
-@router.delete("/{notification_id}")
-async def delete_notification(
-    notification_id: UUID,
-    ctx: Authenticated,
-) -> dict:
-    """Remove uma notificacao."""
-    found = await _service.delete(ctx, notification_id)
-    if not found:
-        raise api_error(404, "not_found", "Notificacao nao encontrada")
-    return {"status": "deleted"}
 
 
 # ── Preferences ──────────────────────────────────────────────
@@ -188,14 +152,28 @@ async def unsubscribe_push(
 # ── SSE (Server-Sent Events) ────────────────────────────────
 
 @router.get("/stream")
-async def notification_stream(ctx: Authenticated):
+async def notification_stream(
+    request: Request,
+    token: str | None = Query(default=None),
+):
     """
     Endpoint SSE para notificacoes em tempo real.
 
     Uso: GET /notifications/stream
     Header: Authorization: Bearer {token}
+    Ou: /notifications/stream?token={token}
     Accept: text/event-stream
     """
+    auth_token = token
+    if not auth_token:
+        authorization = request.headers.get("authorization", "")
+        if authorization.lower().startswith("bearer "):
+            auth_token = authorization[7:].strip()
+
+    if not auth_token:
+        raise api_error(401, "missing_token", "Token JWT obrigatorio")
+
+    ctx = await get_current_tenant(auth_token)
 
     async def _event_generator():
         heartbeat_interval = 30  # seconds
@@ -294,3 +272,39 @@ async def notification_websocket(websocket: WebSocket, token: str = Query(...)):
             task.cancel()
     finally:
         logger.info("WebSocket desconectado: tenant=%s user=%s", ctx.tenant_id, ctx.user_id)
+
+
+@router.get("/{notification_id}", response_model=NotificationResponse)
+async def get_notification(
+    notification_id: UUID,
+    ctx: Authenticated,
+) -> NotificationResponse:
+    """Retorna detalhe de uma notificacao."""
+    notif = await _service.get_by_id(ctx, notification_id)
+    if not notif:
+        raise api_error(404, "not_found", "Notificacao nao encontrada")
+    return NotificationResponse(**notif)
+
+
+@router.patch("/{notification_id}/read")
+async def mark_read(
+    notification_id: UUID,
+    ctx: Authenticated,
+) -> dict:
+    """Marca notificacao como lida."""
+    found = await _service.mark_read(ctx, notification_id)
+    if not found:
+        raise api_error(404, "not_found", "Notificacao nao encontrada ou ja lida")
+    return {"status": "ok"}
+
+
+@router.delete("/{notification_id}")
+async def delete_notification(
+    notification_id: UUID,
+    ctx: Authenticated,
+) -> dict:
+    """Remove uma notificacao."""
+    found = await _service.delete(ctx, notification_id)
+    if not found:
+        raise api_error(404, "not_found", "Notificacao nao encontrada")
+    return {"status": "deleted"}

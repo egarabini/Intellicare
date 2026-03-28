@@ -167,3 +167,30 @@ async def test_expired_subscription_auto_removed(client: AsyncClient, monkeypatc
     serv = NotificationService()
     subs = await serv.get_push_subscriptions(_mock_ctx(), MOCK_UUID)
     assert not any(s["endpoint"] == "https://fcm.googleapis.com/fcm/send/expired_ep" for s in subs)
+
+
+@pytest.mark.asyncio
+async def test_sse_stream_accepts_query_token(client: AsyncClient, monkeypatch):
+    async def fake_get_current_tenant(token: str) -> TenantContext:
+        assert token == "query-token"
+        return _mock_ctx()
+
+    async def fake_subscribe_user(tenant_id: str, user_id: str):
+        assert tenant_id == TENANT_SLUG
+        assert user_id == MOCK_UUID
+        yield {"id": str(uuid4()), "title": "Nova notificação"}
+
+    monkeypatch.setattr("modules.notifications.router.get_current_tenant", fake_get_current_tenant)
+    monkeypatch.setattr("modules.notifications.router.subscribe_user", fake_subscribe_user)
+
+    async with client.stream(
+        "GET",
+        "/api/v1/notifications/stream?token=query-token",
+        headers={"accept": "text/event-stream"},
+    ) as resp:
+        body = await resp.aread()
+
+    assert resp.status_code == 200
+    assert b"event: notification" in body
+    payload = body.decode("utf-8")
+    assert '"title": "Nova notifica\\u00e7\\u00e3o"' in payload
