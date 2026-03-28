@@ -26,6 +26,10 @@ function arrayBufferToBase64(buffer: ArrayBuffer | null) {
   return window.btoa(binary)
 }
 
+function getServiceWorkerUrl() {
+  return new URL('sw.js', window.location.origin + import.meta.env.BASE_URL).toString()
+}
+
 export function usePushNotifications() {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [isSupported, setIsSupported] = useState(false)
@@ -42,7 +46,7 @@ export function usePushNotifications() {
 
   const checkSubscription = async () => {
     try {
-      const registration = await navigator.serviceWorker.register('/sw.js')
+      const registration = await navigator.serviceWorker.register(getServiceWorkerUrl())
       const subscription = await registration.pushManager.getSubscription()
       setIsSubscribed(!!subscription)
     } catch (err) {

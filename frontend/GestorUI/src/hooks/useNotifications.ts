@@ -20,6 +20,10 @@ interface UseNotificationsResult {
   careplannerUnread: number
 }
 
+interface NotificationListResponse {
+  items: AppNotification[]
+}
+
 export function useNotifications(): UseNotificationsResult {
   const auth = useAuth()
   const [notifications, setNotifications] = useState<AppNotification[]>([])
@@ -34,8 +38,8 @@ export function useNotifications(): UseNotificationsResult {
 
   const fetchNotifications = useCallback(async () => {
     try {
-      const { data } = await api.get<AppNotification[]>('/notifications/?limit=20')
-      setNotifications(data)
+      const { data } = await api.get<NotificationListResponse>('/notifications/?limit=20')
+      setNotifications(Array.isArray(data?.items) ? data.items : [])
     } catch (err: any) {
       if (err?.response?.status === 404) setAvailable(false)
     }

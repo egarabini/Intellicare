@@ -11,6 +11,10 @@ export interface AppNotification {
   category?: string
 }
 
+interface NotificationListResponse {
+  items: AppNotification[]
+}
+
 export function useNotifications() {
   const auth = useAuth()
   const [notifications, setNotifications] = useState<AppNotification[]>([])
@@ -22,8 +26,8 @@ export function useNotifications() {
 
   const fetchNotifications = useCallback(async () => {
     try {
-      const { data } = await api.get<AppNotification[]>('/notifications/?limit=20')
-      setNotifications(data)
+      const { data } = await api.get<NotificationListResponse>('/notifications/?limit=20')
+      setNotifications(Array.isArray(data?.items) ? data.items : [])
     } catch (err: any) {
       if (err?.response?.status === 404) setAvailable(false)
     }
