@@ -78,13 +78,21 @@ const ENVIRONMENTS: Environment[] = [
   },
 ];
 
+const LOCAL_DEV_PORTS: Record<string, string> = {
+  admin: '5174',
+  gestor: '5175',
+  clinico: '5173',
+  paciente: '5177',
+};
+
 const getEnvUrl = (subdomain: string, path: string) => {
   if (typeof window === 'undefined') return path;
   const hostname = window.location.hostname;
   if (hostname === 'localhost' || hostname.startsWith('127.')) {
-    // Evita o SPA fallback do Vite dev server enviando para o backend (8000) caso não estejamos nele.
-    if (window.location.port !== '8000') {
-      return `http://${hostname}:8000${path}`;
+    // Redireciona para os servidores Vite isolados de desenvolvimento local
+    const devPort = LOCAL_DEV_PORTS[subdomain];
+    if (devPort) {
+      return `http://${hostname}:${devPort}${path}`;
     }
     return path;
   }
