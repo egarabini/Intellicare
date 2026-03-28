@@ -62,13 +62,35 @@ class CuidadoService:
     async def _patient_has_user_id(self, ctx: TenantContext) -> bool:
         return "user_id" in await self._get_patient_columns(ctx)
 
-    async def _table_exists(self, ctx: TenantContext, table_name: str) -> bool:
+    async def _table_exists(
+        self,
+        ctx: TenantContext,
+        table_name: str,
+        db: AsyncSession | None = None,
+    ) -> bool:
         cache_key = (ctx.schema, table_name)
         cached = self._table_exists_cache.get(cache_key)
         if cached is not None:
             return cached
 
-        async with tenant_session(ctx) as db:
+        if db is None:
+            async with tenant_session(ctx) as db_session:
+                exists = (
+                    await db_session.execute(
+                        text(
+                            """
+                            SELECT EXISTS (
+                                SELECT 1
+                                FROM information_schema.tables
+                                WHERE table_schema = :schema
+                                  AND table_name = :table_name
+                            )
+                            """
+                        ),
+                        {"schema": ctx.schema, "table_name": table_name},
+                    )
+                ).scalar()
+        else:
             exists = (
                 await db.execute(
                     text(
@@ -1115,7 +1137,7 @@ class CuidadoService:
                 })
 
             # 4) Care Tasks (CarePlanner)
-            has_care = await self._table_exists(ctx, db, "care_tasks")
+            has_care = await self._table_exists(ctx, "care_tasks", db)
             if has_care:
                 task_rows = (await db.execute(
                     text("""
@@ -1178,18 +1200,3 @@ class CuidadoService:
         result["items"] = self._apply_portal_privacy_filter(result["items"])
         return result
 
-    async def _table_exists(self, ctx: TenantContext, db, table_name: str) -> bool:
-        cache_key = (ctx.schema, table_name)
-        cached = self._table_exists_cache.get(cache_key)
-        if cached is not None:
-            return cached
-        row = (await db.execute(
-            text("""
-                SELECT 1 FROM information_schema.tables
-                WHERE table_schema = :schema AND table_name = :tbl
-            """),
-            {"schema": ctx.schema, "tbl": table_name},
-        )).first()
-        exists = row is not None
-        self._table_exists_cache[cache_key] = exists
-        return exists
