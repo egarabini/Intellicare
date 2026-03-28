@@ -1,6 +1,6 @@
 # IntelliCare V3 — Dashboard de Demandas
 
-> Atualizado: 2026-03-26 | Branch: main | Último commit: b25391b (docs(dem-093): finalize and register dashboard) | Sprint: 2026-06-06 ⏳ Em andamento
+> Atualizado: 2026-03-26 | Branch: main | Último commit: cc62729 (feat(platform): migration 025 keycloak_user_mapping) | Sprint: 2026-06-06 ⏳ Em andamento
 
 ---
 
@@ -225,7 +225,7 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 | DEM | Título | Dev | Status |
 |-----|--------|-----|--------|
-| DEM-093 | DB Migration Sync Staging — migrations 005/006/017/019/020/022/023/024 aplicadas no VPS, health OK; rerun formal 1.2/1.3 ainda pendente | CODEX + Eduardo | ✅ `b25391b` |
+| DEM-093 | DB Migration Sync Staging — migrations 005/006/017/019/020/022/023/024 + 025(keycloak_user_mapping) aplicadas; rerun 1.2/1.2b/1.3 ✅ concluído | CODEX + Eduardo | ✅ `cc62729` |
 | DEM-INF | Fix Keycloak proxy headers — `KC_HOSTNAME_URL` + `KC_HOSTNAME_ADMIN_URL` no compose (issuer retornava `http://`) | Eduardo | ✅ `1fa8b8d` — issuer `https://` confirmado no VPS ✅ |
 | DEM-094 | Portal: Identidade Visual IntelliCare — tema Mantine compartilhado, Header/Navbar, tokens, refatoração componentes, Guia Visual | GEMINI | ⏳ Spec pronta — aguarda 03_PLANO |
 
@@ -253,34 +253,13 @@ Todo dev que executa uma DEM **deve** produzir os 5 arquivos abaixo. Entregas se
 
 ## Ações pendentes
 
-### ✅ DEM-093 — migrations aplicadas no VPS (`b25391b`)
+### ✅ PostgreSQL staging — banco 100% sincronizado (`cc62729`)
 
-Banco staging sincronizado em 2026-03-26. Divergências registradas em `04_DIARIO.md`:
-- `021_pessoa_identity.sql` não contém `CREATE SCHEMA platform` — schema foi criado manualmente no VPS; **migration precisa ser corrigida no código**
-- `public.prompt_templates` usa coluna `prompt_key`, não `name` — verificação do 03_PLANO.md precisa ser corrigida
-- `platform.keycloak_user_mapping` ausente — não é criada por nenhuma migration versionada atual
+Concluído em 2026-03-26. Todas as migrations aplicadas (DEM-093 + 025). Rerun formal das seções 1.2, 1.2b e 1.3 do `PLANO_VALIDACAO_STAGING_2026_03_25.md` fechado — todos os itens `[x]`. Divergências registradas em `DEM-093/04_DIARIO.md` e corrigidas no código (`021` + `03_PLANO` + `02_TECNICA`).
 
 ### ✅ Fix Keycloak issuer HTTPS — concluído (`1fa8b8d`)
 
-`KC_HOSTNAME_URL=https://auth.intellicare.ia.br` no compose e no `.env.staging`. Issuer `.well-known` retorna `https://auth.intellicare.ia.br/realms/intellicare` ✅. Warnings de variáveis ausentes (`MARIE_*`, `SERVER_ENCRYPTION_KEY`, `LISTMONK_*`) no `docker compose` são esperados — serviços opcionais não configurados neste ambiente.
-
-### ✅ Migration 025 + rerun formal 1.2/1.3 — concluído
-
-`db/platform_migrations/025_keycloak_user_mapping.sql` criada e aplicada no VPS em 2026-03-26. `platform.keycloak_user_mapping` agora existe no staging; rerun formal da seção 1.2b fechado no plano de validação.
-
-```bash
-docker exec -i intellicare-postgres psql \
-  -U intellicare_staging intellicare_staging \
-  < db/platform_migrations/025_keycloak_user_mapping.sql
-
-# Verificação:
-docker exec intellicare-postgres psql \
-  -U intellicare_staging intellicare_staging \
-  -c "\dt platform.*"
-# Esperado: platform.keycloak_user_mapping presente
-```
-
-Após apply: marcar `[ ] → [x]` em `PLANO_VALIDACAO_STAGING` seção 1.2b e fechar o rerun formal.
+`KC_HOSTNAME_URL=https://auth.intellicare.ia.br` no compose e no `.env.staging`. Issuer retorna `https://` ✅.
 
 ### 🟡 .tmp_staging_fix — remoção final (requer admin)
 

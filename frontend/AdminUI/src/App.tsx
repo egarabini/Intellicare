@@ -28,6 +28,7 @@ import { AdminUsersPage } from './pages/AdminUsersPage'
 import { PromptsPage } from './pages/PromptsPage'
 import { IdentityPage } from './pages/IdentityPage'
 import { NotificationBell } from './components/NotificationBell'
+import { theme } from './theme'
 
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
@@ -135,7 +136,7 @@ function AppRoutes() {
     >
       <AppShell.Header>
         <Group h="100%" px="lg" justify="space-between">
-          <Title order={4} c="blue">IntelliCare Admin</Title>
+          <Title order={4}>IntelliCare Admin</Title>
           <Group gap="sm">
             <NotificationBell />
             <Text size="sm" c="dimmed">{auth.user?.profile?.email as string}</Text>
@@ -172,7 +173,7 @@ export default function App() {
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
-        <MantineProvider>
+        <MantineProvider theme={theme}>
           <Notifications />
           <BrowserRouter basename="/admin-ui">
             <AppRoutes />

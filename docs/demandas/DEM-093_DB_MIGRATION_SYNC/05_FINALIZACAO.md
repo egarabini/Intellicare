@@ -37,7 +37,7 @@
 - [x] `clinical_notes.encounter_id` — tipo UUID
 - [x] `professionals.pessoa_id` — coluna UUID presente
 - [x] `curl https://api.intellicare.ia.br/health` → serviço saudável
-- [ ] Plano de Validação seções 1.2 e 1.3 re-executadas com todos os itens ✅
+- [x] Plano de Validação seções 1.2, 1.2b e 1.3 re-executadas com todos os itens ✅ — migration 025 (`cc62729`) aplicada para `platform.keycloak_user_mapping`
 
 ## Observações
 

@@ -24,7 +24,8 @@ interface Environment {
   label: string;
   description: string;
   role: string;
-  href: string;
+  subdomain: string;
+  path: string;
   icon: any;
   color: string;
   badge: string;
@@ -36,7 +37,8 @@ const ENVIRONMENTS: Environment[] = [
     label: 'Administrativo',
     description: 'Gestão da plataforma, servidores, módulos, financeiro e usuários administradores.',
     role: 'PLATFORM_ADMIN',
-    href: '/admin-ui/',
+    subdomain: 'admin',
+    path: '/admin-ui/',
     icon: IconShieldLock,
     color: 'violet',
     badge: 'Plataforma',
@@ -46,7 +48,8 @@ const ENVIRONMENTS: Environment[] = [
     label: 'Gestor',
     description: 'Controle do tenant: unidades de saúde, equipes, usuários e relatórios de uso.',
     role: 'TENANT_GESTOR',
-    href: '/gestor-ui/',
+    subdomain: 'gestor',
+    path: '/gestor-ui/',
     icon: IconBuildingHospital,
     color: 'blue',
     badge: 'Tenant',
@@ -56,7 +59,8 @@ const ENVIRONMENTS: Environment[] = [
     label: 'Clínico',
     description: 'Agenda, prontuário eletrônico, CID-10, AI Assistant e gestão de profissionais.',
     role: 'CLINICO',
-    href: '/clinico-ui/',
+    subdomain: 'clinico',
+    path: '/clinico-ui/',
     icon: IconStethoscope,
     color: 'teal',
     badge: 'Assistência',
@@ -66,12 +70,26 @@ const ENVIRONMENTS: Environment[] = [
     label: 'Portal do Paciente',
     description: 'Histórico de consultas, documentos, agendamentos e acesso ao perfil pessoal.',
     role: 'PACIENTE',
-    href: '/paciente-ui/',
+    subdomain: 'paciente',
+    path: '/paciente-ui/',
     icon: IconUser,
     color: 'green',
     badge: 'Paciente',
   },
 ];
+
+const getEnvUrl = (subdomain: string, path: string) => {
+  if (typeof window === 'undefined') return path;
+  const hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname.startsWith('127.')) {
+    return path;
+  }
+  // Remove possible subdomains to get root domain: e.g. intellicare.ia.br
+  const rootDomain = hostname.split('.').slice(-3).join('.') === 'intellicare.ia.br' 
+    ? 'intellicare.ia.br' 
+    : hostname; 
+  return `https://${subdomain}.${rootDomain}${path}`;
+};
 
 interface EnvironmentSelectorProps {
   opened: boolean;
@@ -104,7 +122,7 @@ export function EnvironmentSelector({ opened, onClose }: EnvironmentSelectorProp
           return (
             <Anchor
               key={env.id}
-              href={env.href}
+              href={getEnvUrl(env.subdomain, env.path)}
               underline="never"
               onMouseEnter={() => setHovered(env.id)}
               onMouseLeave={() => setHovered(null)}

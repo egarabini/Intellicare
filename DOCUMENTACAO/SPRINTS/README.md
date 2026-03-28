@@ -27,7 +27,7 @@
 | `SPRINT_2026_05_23.md` | 2026-05-23 | ✅ Concluída | DEM-087✅ DEM-088✅ DEM-089✅ DEM-090✅ |
 | `DELTA_SPRINT_2026_05_23.md` | 2026-05-23 | ✅ Aplicado | Atualização UTILIZACAO por DEV-4 (profissional CPF centralizado + AdminUI identity page) |
 | `SPRINT_2026_05_30.md` | 2026-05-30 | ✅ Concluída | DEM-091✅ DEM-092✅ (VPS Deploy + pgAdmin) |
-| `SPRINT_2026_06_06.md` | 2026-06-06 | ⏳ Em planejamento | DEM-093 (DB Migration Sync Staging) |
+| `SPRINT_2026_06_06.md` | 2026-06-06 | ⏳ Em andamento | DEM-093✅ DEM-INF(KC)✅ DEM-094⏳ (Portal Visual — GEMINI) |
 
 ---
 

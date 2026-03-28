@@ -1,9 +1,0 @@
-chore(staging): sync 2026-05-23 — identity expansion (DEM-090)
-
-- git pull + rebuild --no-cache --no-deps intellicare-service ✅
-- migration 024 applied on startup: professionals.pessoa_id ✅
-- intellicare-service healthy ✅
-- Keycloak restart loop pendente (delta infra — Eduardo)
-- JWT/Traefik smokes dependentes do Keycloak: registrados no 04_DIARIO.md
-- AdminUI /admin-ui/identity: SPA fallback confirmado via index.html
-- 6 testes: test_staging_sync_2026_05_23.py
