@@ -81,9 +81,15 @@ class PatientUpdate(BaseModel):
     phone: Optional[str] = None
     health_plan: Optional[str] = None
 
-class PatientResponse(PatientCreate):
+class PatientResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
     id: UUID
+    name: str
+    cpf: str
+    birth_date: date
+    email: Optional[EmailStr] = None
+    phone: Optional[str] = None
+    health_plan: Optional[str] = None
     active: bool
     created_at: datetime
     updated_at: datetime
