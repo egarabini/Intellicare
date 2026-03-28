@@ -68,7 +68,7 @@ export function InvoiceList() {
               <Table.Tr key={inv.id}>
                 <Table.Td><Text size="xs" c="dimmed">{inv.id}</Text></Table.Td>
                 <Table.Td>{new Date(inv.created_at).toLocaleDateString()}</Table.Td>
-                <Table.Td>{inv.amount.toFixed(2)}</Table.Td>
+                <Table.Td>{Number(inv.amount ?? 0).toFixed(2)}</Table.Td>
                 <Table.Td>
                   <Badge color={inv.status === 'paid' ? 'green' : inv.status === 'overdue' ? 'red' : 'orange'}>
                     {inv.status}

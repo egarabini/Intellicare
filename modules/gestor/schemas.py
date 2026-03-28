@@ -124,12 +124,12 @@ class ProgramCreate(BaseModel):
 
 class ProgramResponse(ProgramCreate):
     model_config = ConfigDict(from_attributes=True)
-    id: UUID
+    id: int
     active: bool
     created_at: datetime
 
 class CoverageReport(BaseModel):
-    program_id: UUID
+    program_id: int
     program_name: str
     eligible_patients: int
     enrolled_patients: int

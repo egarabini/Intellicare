@@ -4,6 +4,7 @@ from __future__ import annotations
 import logging
 
 from sqlalchemy import text
+from sqlalchemy.exc import ProgrammingError
 from datetime import date, datetime
 import csv
 import io
@@ -30,6 +31,12 @@ class GestorService:
         data.setdefault("health_plan", None)
         data.setdefault("updated_at", data.get("created_at"))
         return data
+
+    @staticmethod
+    def _is_missing_relation(exc: Exception, relation_name: str) -> bool:
+        if not isinstance(exc, ProgrammingError):
+            return False
+        return relation_name in str(exc).lower() and "does not exist" in str(exc).lower()
 
     async def get_profile(self, ctx: TenantContext) -> dict | None:
         async with tenant_session(ctx) as db:
@@ -126,7 +133,7 @@ class GestorService:
                     text(
                         f"""
                         SELECT id, full_name, cpf, birth_date, sex, phone, email,
-                               address, allergies, medications, active, created_at
+                               address, active, created_at
                         FROM patients
                         WHERE {where}
                         ORDER BY full_name
@@ -145,7 +152,7 @@ class GestorService:
                     text(
                         """
                         SELECT id, full_name, cpf, birth_date, sex, phone, email,
-                               address, allergies, medications, active, created_at
+                               address, active, created_at
                         FROM patients
                         WHERE id = :pid
                         """
@@ -168,7 +175,7 @@ class GestorService:
                         INSERT INTO patients (full_name, cpf, birth_date, phone, email)
                         VALUES (:full_name, :cpf, :birth_date, :phone, :email)
                         RETURNING id, full_name, cpf, birth_date, sex, phone, email,
-                                  address, allergies, medications, active, created_at
+                                  address, active, created_at
                         """
                     ),
                     {
@@ -208,7 +215,7 @@ class GestorService:
                         SET {set_clause}
                         WHERE id = :pid
                         RETURNING id, full_name, cpf, birth_date, sex, phone, email,
-                                  address, allergies, medications, active, created_at
+                                  address, active, created_at
                         """
                     ),
                     update_data,
@@ -235,7 +242,18 @@ class GestorService:
             params["cid"] = clinician_id
 
         async with tenant_session(ctx) as db:
-            rows = (await db.execute(text(f"SELECT * FROM appointments WHERE {where} ORDER BY scheduled_at"), params)).mappings().all()
+            try:
+                rows = (
+                    await db.execute(
+                        text(f"SELECT * FROM appointments WHERE {where} ORDER BY scheduled_at"),
+                        params,
+                    )
+                ).mappings().all()
+            except Exception as exc:
+                if self._is_missing_relation(exc, "appointments"):
+                    await db.rollback()
+                    return []
+                raise
         return [dict(r) for r in rows]
 
     async def create_appointment(self, ctx: TenantContext, data: AppointmentCreate) -> dict:
@@ -324,7 +342,8 @@ class GestorService:
     
     async def list_invoices(self, ctx: TenantContext, page: int = 1, size: int = 20, status: str | None = None, from_date: date | None = None, to_date: date | None = None) -> list[dict]:
         where = "1=1"
-        params = {"limit": size, "offset": (page - 1) * size}
+        params = {"limit": size, "offset": (page - 1) * size, "tenant_slug": ctx.tenant_id}
+        where += " AND tenant_slug = :tenant_slug"
         if status:
             where += " AND status = :status"
             params["status"] = status
@@ -336,13 +355,47 @@ class GestorService:
             params["to_date"] = to_date
 
         async with tenant_session(ctx) as db:
-            # We'll need a mock invoices table if it doesn't exist, here we assume it was created by the finance module
-            rows = (await db.execute(text(f"SELECT * FROM invoices WHERE {where} ORDER BY created_at DESC LIMIT :limit OFFSET :offset"), params)).mappings().all()
+            rows = (
+                await db.execute(
+                    text(
+                        f"""
+                        SELECT
+                            id,
+                            amount_brl::numeric AS amount,
+                            status,
+                            created_at,
+                            paid_at
+                        FROM public.invoices
+                        WHERE {where}
+                        ORDER BY created_at DESC
+                        LIMIT :limit OFFSET :offset
+                        """
+                    ),
+                    params,
+                )
+            ).mappings().all()
         return [dict(r) for r in rows]
 
     async def export_invoices_csv(self, ctx: TenantContext) -> str:
         async with tenant_session(ctx) as db:
-            rows = (await db.execute(text("SELECT id, amount, status, created_at, paid_at FROM invoices ORDER BY created_at DESC"))).mappings().all()
+            rows = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT
+                            id,
+                            amount_brl::numeric AS amount,
+                            status,
+                            created_at,
+                            paid_at
+                        FROM public.invoices
+                        WHERE tenant_slug = :tenant_slug
+                        ORDER BY created_at DESC
+                        """
+                    ),
+                    {"tenant_slug": ctx.tenant_id},
+                )
+            ).mappings().all()
             
             output = io.StringIO()
             writer = csv.DictWriter(output, fieldnames=["id", "amount", "status", "created_at", "paid_at"])
@@ -353,7 +406,26 @@ class GestorService:
             
     async def mark_invoice_paid(self, ctx: TenantContext, invoice_id: str) -> dict | None:
         async with tenant_session(ctx) as db:
-            row = (await db.execute(text("UPDATE invoices SET status = 'paid', paid_at = NOW() WHERE id = :id AND status != 'paid' RETURNING *"), {"id": invoice_id})).mappings().first()
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        UPDATE public.invoices
+                        SET status = 'paid', paid_at = NOW()
+                        WHERE id = :id
+                          AND tenant_slug = :tenant_slug
+                          AND status != 'paid'
+                        RETURNING
+                            id,
+                            amount_brl::numeric AS amount,
+                            status,
+                            created_at,
+                            paid_at
+                        """
+                    ),
+                    {"id": invoice_id, "tenant_slug": ctx.tenant_id},
+                )
+            ).mappings().first()
         return dict(row) if row else None
 
     # -------------------------------------------------------------------------
@@ -503,7 +575,7 @@ class GestorService:
             pct = (enrolled / eligible * 100) if eligible and eligible > 0 else 0.0
             
             return {
-                "program_id": program_id,
+                "program_id": int(program_id),
                 "program_name": prog,
                 "eligible_patients": eligible,
                 "enrolled_patients": enrolled,
