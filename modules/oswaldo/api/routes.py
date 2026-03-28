@@ -146,7 +146,7 @@ async def upload_certificate(
 async def get_certificate_status(ctx: TenantContext = Depends(require_role("CLINICO"))):
     prof = await repository.get_professional_by_keycloak_id(ctx, ctx.user_id)
     if not prof:
-        raise api_error(404, "not_found", "Profissional nao encontrado")
+        return CertificateStatusOut(has_certificate=False)
     cert = await repository.get_professional_certificate(ctx, prof["id"])
     if not cert:
         return CertificateStatusOut(has_certificate=False)
