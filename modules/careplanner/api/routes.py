@@ -18,6 +18,20 @@ from ..services import CareplannerService, build_careplanner_service
 router = APIRouter()
 
 
+def _has_any_role(ctx: TenantContext, *roles: str) -> bool:
+    return any(ctx.has_role(role) for role in roles)
+
+
+def _ensure_gestor_or_clinico(ctx: TenantContext) -> None:
+    if not _has_any_role(ctx, "TENANT_GESTOR", "GESTOR", "CLINICO"):
+        raise api_error(403, "forbidden", "Role 'TENANT_GESTOR', 'GESTOR' ou 'CLINICO' necessaria")
+
+
+def _ensure_gestor(ctx: TenantContext) -> None:
+    if not _has_any_role(ctx, "TENANT_GESTOR", "GESTOR"):
+        raise api_error(403, "forbidden", "Role 'TENANT_GESTOR' ou 'GESTOR' necessaria")
+
+
 class OpenTaskRequest(BaseModel):
     kestra_execution_id: str
     patient_ref: str
@@ -248,8 +262,7 @@ async def get_video_session(
     ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
-    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
-        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    _ensure_gestor_or_clinico(ctx)
     return await service.get_video_session_info(ctx, correlation_id)
 
 
@@ -276,8 +289,7 @@ async def get_task(
     ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
-    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
-        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    _ensure_gestor_or_clinico(ctx)
     return await service.get_task_details(ctx, correlation_id)
 
 
@@ -288,8 +300,7 @@ async def list_tasks(
     ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
-    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
-        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    _ensure_gestor_or_clinico(ctx)
     return await service.list_tasks(ctx, status_filter=status_filter, page=page)
 
 
@@ -308,8 +319,7 @@ async def get_journey_by_appointment(
     service: CareplannerService = Depends(get_service),
 ) -> dict:
     """Retorna a jornada CarePlanner ativa vinculada a um agendamento."""
-    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
-        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    _ensure_gestor_or_clinico(ctx)
     task = await service.repo.get_task_by_appointment(ctx, appointment_id)
     if not task:
         raise api_error(404, "not_found", "Nenhuma jornada ativa para este agendamento")
@@ -336,8 +346,7 @@ async def trigger_journey(
     Requer role GESTOR ou CLINICO.
     Retorna o execution_id do Kestra e o correlation_id gerado pelo IntelliCare.
     """
-    if not ctx.has_role("GESTOR") and not ctx.has_role("CLINICO"):
-        raise api_error(403, "forbidden", "Role 'GESTOR' ou 'CLINICO' necessaria")
+    _ensure_gestor_or_clinico(ctx)
     return await service.trigger_journey(ctx, body)
 
 
@@ -354,9 +363,10 @@ async def list_templates_route(
 @router.post("/templates", status_code=status.HTTP_201_CREATED)
 async def create_template(
     body: TemplateCreateRequest,
-    ctx: TenantContext = Depends(require_role("GESTOR")),
+    ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
+    _ensure_gestor(ctx)
     from ..contracts import CareTemplateCreate, Channel
     payload = CareTemplateCreate(
         template_code=body.template_code,
@@ -372,9 +382,10 @@ async def create_template(
 async def update_template(
     template_id: UUID,
     body: TemplateUpdateRequest,
-    ctx: TenantContext = Depends(require_role("GESTOR")),
+    ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
+    _ensure_gestor(ctx)
     return await service.update_template_record(
         ctx, template_id, body.content, body.variables, body.active
     )
@@ -383,7 +394,8 @@ async def update_template(
 @router.patch("/templates/{template_id}/toggle", status_code=status.HTTP_200_OK)
 async def toggle_template(
     template_id: UUID,
-    ctx: TenantContext = Depends(require_role("GESTOR")),
+    ctx: TenantContext = Depends(get_current_tenant),
     service: CareplannerService = Depends(get_service),
 ) -> dict:
+    _ensure_gestor(ctx)
     return await service.toggle_template(ctx, template_id)

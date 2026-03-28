@@ -23,6 +23,14 @@ class GestorService:
     def __init__(self) -> None:
         self._kc = KeycloakAdminClient()
 
+    @staticmethod
+    def _patient_row_to_dict(row) -> dict:
+        data = dict(row)
+        data["name"] = data.pop("full_name", data.get("name"))
+        data.setdefault("health_plan", None)
+        data.setdefault("updated_at", data.get("created_at"))
+        return data
+
     async def get_profile(self, ctx: TenantContext) -> dict | None:
         async with tenant_session(ctx) as db:
             row = (
@@ -109,17 +117,43 @@ class GestorService:
         where = "1=1"
         params = {"limit": size, "offset": (page - 1) * size}
         if q:
-            where += " AND name ILIKE :q OR cpf ILIKE :q OR email ILIKE :q"
+            where += " AND (full_name ILIKE :q OR cpf ILIKE :q OR email ILIKE :q)"
             params["q"] = f"%{q}%"
 
         async with tenant_session(ctx) as db:
-            rows = (await db.execute(text(f"SELECT * FROM patients WHERE {where} ORDER BY name LIMIT :limit OFFSET :offset"), params)).mappings().all()
-        return [dict(r) for r in rows]
+            rows = (
+                await db.execute(
+                    text(
+                        f"""
+                        SELECT id, full_name, cpf, birth_date, sex, phone, email,
+                               address, allergies, medications, active, created_at
+                        FROM patients
+                        WHERE {where}
+                        ORDER BY full_name
+                        LIMIT :limit OFFSET :offset
+                        """
+                    ),
+                    params,
+                )
+            ).mappings().all()
+        return [self._patient_row_to_dict(r) for r in rows]
 
     async def get_patient(self, ctx: TenantContext, patient_id: str) -> dict | None:
         async with tenant_session(ctx) as db:
-            row = (await db.execute(text("SELECT * FROM patients WHERE id = :pid"), {"pid": patient_id})).mappings().first()
-        return dict(row) if row else None
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT id, full_name, cpf, birth_date, sex, phone, email,
+                               address, allergies, medications, active, created_at
+                        FROM patients
+                        WHERE id = :pid
+                        """
+                    ),
+                    {"pid": patient_id},
+                )
+            ).mappings().first()
+        return self._patient_row_to_dict(row) if row else None
 
     async def create_patient(self, ctx: TenantContext, data: PatientCreate) -> dict:
         async with tenant_session(ctx) as db:
@@ -127,12 +161,26 @@ class GestorService:
             if exists:
                 raise ValueError("CPF já cadastrado")
             
-            row = (await db.execute(text("""
-                INSERT INTO patients (name, cpf, birth_date, email, phone, health_plan)
-                VALUES (:name, :cpf, :birth_date, :email, :phone, :health_plan)
-                RETURNING *
-            """), data.model_dump())).mappings().first()
-        return dict(row)
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        INSERT INTO patients (full_name, cpf, birth_date, phone, email)
+                        VALUES (:full_name, :cpf, :birth_date, :phone, :email)
+                        RETURNING id, full_name, cpf, birth_date, sex, phone, email,
+                                  address, allergies, medications, active, created_at
+                        """
+                    ),
+                    {
+                        "full_name": data.name,
+                        "cpf": data.cpf,
+                        "birth_date": data.birth_date,
+                        "phone": data.phone,
+                        "email": data.email,
+                    },
+                )
+            ).mappings().first()
+        return self._patient_row_to_dict(row)
 
     async def update_patient(self, ctx: TenantContext, patient_id: str, data: PatientUpdate) -> dict | None:
         update_data = {k: v for k, v in data.model_dump().items() if v is not None}
@@ -145,12 +193,28 @@ class GestorService:
                 if exists:
                     raise ValueError("CPF já cadastrado")
 
+            if "name" in update_data:
+                update_data["full_name"] = update_data.pop("name")
+            update_data.pop("health_plan", None)
+
             set_clause = ", ".join([f"{k} = :{k}" for k in update_data.keys()])
-            set_clause += ", updated_at = NOW()"
             update_data["pid"] = patient_id
             
-            row = (await db.execute(text(f"UPDATE patients SET {set_clause} WHERE id = :pid RETURNING *"), update_data)).mappings().first()
-        return dict(row) if row else None
+            row = (
+                await db.execute(
+                    text(
+                        f"""
+                        UPDATE patients
+                        SET {set_clause}
+                        WHERE id = :pid
+                        RETURNING id, full_name, cpf, birth_date, sex, phone, email,
+                                  address, allergies, medications, active, created_at
+                        """
+                    ),
+                    update_data,
+                )
+            ).mappings().first()
+        return self._patient_row_to_dict(row) if row else None
 
     async def delete_patient(self, ctx: TenantContext, patient_id: str) -> None:
         async with tenant_session(ctx) as db:
