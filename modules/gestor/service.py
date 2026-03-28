@@ -298,29 +298,102 @@ class GestorService:
     
     async def list_programs(self, ctx: TenantContext) -> list[dict]:
         async with tenant_session(ctx) as db:
-            rows = (await db.execute(text("SELECT * FROM programs ORDER BY name"))).mappings().all()
+            rows = (
+                await db.execute(
+                    text(
+                        """
+                        SELECT
+                            id,
+                            name,
+                            description,
+                            NULL::TEXT AS eligibility_criteria,
+                            active,
+                            created_at
+                        FROM health_programs
+                        ORDER BY name
+                        """
+                    )
+                )
+            ).mappings().all()
         return [dict(r) for r in rows]
 
     async def create_program(self, ctx: TenantContext, data: ProgramCreate) -> dict:
         async with tenant_session(ctx) as db:
-            row = (await db.execute(text("""
-                INSERT INTO programs (name, description, eligibility_criteria)
-                VALUES (:name, :description, :eligibility_criteria)
-                RETURNING *
-            """), data.model_dump())).mappings().first()
+            row = (
+                await db.execute(
+                    text(
+                        """
+                        INSERT INTO health_programs (name, description)
+                        VALUES (:name, :description)
+                        RETURNING
+                            id,
+                            name,
+                            description,
+                            NULL::TEXT AS eligibility_criteria,
+                            active,
+                            created_at
+                        """
+                    ),
+                    {
+                        "name": data.name,
+                        "description": data.description,
+                    },
+                )
+            ).mappings().first()
         return dict(row)
 
     async def update_program(self, ctx: TenantContext, program_id: str, data: dict) -> dict | None:
-        update_data = {k: v for k, v in data.items() if v is not None}
+        update_data = {
+            k: v
+            for k, v in data.items()
+            if v is not None and k in {"name", "description", "active", "target_count"}
+        }
         if not update_data:
             async with tenant_session(ctx) as db:
-                row = (await db.execute(text("SELECT * FROM programs WHERE id = :id"), {"id": program_id})).mappings().first()
+                row = (
+                    await db.execute(
+                        text(
+                            """
+                            SELECT
+                                id,
+                                name,
+                                description,
+                                NULL::TEXT AS eligibility_criteria,
+                                active,
+                                created_at
+                            FROM health_programs
+                            WHERE id = :id
+                            """
+                        ),
+                        {"id": program_id},
+                    )
+                ).mappings().first()
                 return dict(row) if row else None
         
         async with tenant_session(ctx) as db:
             set_clause = ", ".join([f"{k} = :{k}" for k in update_data.keys()])
+            if set_clause:
+                set_clause += ", updated_at = NOW()"
             update_data["id"] = program_id
-            row = (await db.execute(text(f"UPDATE programs SET {set_clause} WHERE id = :id RETURNING *"), update_data)).mappings().first()
+            row = (
+                await db.execute(
+                    text(
+                        f"""
+                        UPDATE health_programs
+                        SET {set_clause}
+                        WHERE id = :id
+                        RETURNING
+                            id,
+                            name,
+                            description,
+                            NULL::TEXT AS eligibility_criteria,
+                            active,
+                            created_at
+                        """
+                    ),
+                    update_data,
+                )
+            ).mappings().first()
         return dict(row) if row else None
 
     async def get_program_patients(self, ctx: TenantContext, program_id: str) -> list[dict]:
@@ -349,7 +422,12 @@ class GestorService:
 
     async def get_coverage_report(self, ctx: TenantContext, program_id: str) -> dict | None:
         async with tenant_session(ctx) as db:
-            prog = (await db.execute(text("SELECT name FROM programs WHERE id = :pid"), {"pid": program_id})).scalar()
+            prog = (
+                await db.execute(
+                    text("SELECT name FROM health_programs WHERE id = :pid"),
+                    {"pid": program_id},
+                )
+            ).scalar()
             if not prog:
                 return None
                 
