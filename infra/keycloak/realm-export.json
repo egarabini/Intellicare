@@ -110,7 +110,7 @@
       "attributes" : { }
     } ],
     "client" : {
-      "intellicare-service" : [ ],
+      "paciente-ui" : [ ],
       "realm-management" : [ {
         "id" : "1c683a25-76b3-4bc6-9b7a-f3d483bfdc03",
         "name" : "manage-users",
@@ -240,7 +240,7 @@
         "composite" : true,
         "composites" : {
           "client" : {
-            "realm-management" : [ "manage-users", "impersonation", "manage-clients", "view-users", "view-realm", "query-users", "view-clients", "query-groups", "query-realms", "create-client", "manage-realm", "query-clients", "view-authorization", "view-identity-providers", "view-events", "manage-identity-providers", "manage-authorization", "manage-events" ]
+            "realm-management" : [ "manage-users", "impersonation", "manage-clients", "view-users", "view-realm", "query-users", "query-groups", "view-clients", "query-realms", "create-client", "manage-realm", "query-clients", "view-authorization", "view-identity-providers", "view-events", "manage-authorization", "manage-identity-providers", "manage-events" ]
           }
         },
         "clientRole" : true,
@@ -279,9 +279,7 @@
         "containerId" : "758e69e6-b96a-4d18-a355-f7ce5b491b69",
         "attributes" : { }
       } ],
-      "intellicare-frontend" : [ ],
       "security-admin-console" : [ ],
-      "admin-cli" : [ ],
       "admin-ui" : [ ],
       "account-console" : [ ],
       "broker" : [ {
@@ -293,6 +291,12 @@
         "containerId" : "6c09b340-f0fc-4d9f-80c0-6ef899c17683",
         "attributes" : { }
       } ],
+      "gestor-ui" : [ ],
+      "intellicare-service" : [ ],
+      "intellicare-frontend" : [ ],
+      "admin-cli" : [ ],
+      "clinico-ui" : [ ],
+      "portal" : [ ],
       "account" : [ {
         "id" : "a315aabb-6992-4727-8eee-e3d4107a66e4",
         "name" : "view-applications",
@@ -371,6 +375,36 @@
     }
   },
   "groups" : [ {
+    "id" : "5bcd4023-c0c6-4490-80f1-ef235805448e",
+    "name" : "tenant_clinica_alfa",
+    "path" : "/tenant_clinica_alfa",
+    "subGroups" : [ ],
+    "attributes" : {
+      "tenant_id" : [ "clinica_alfa" ]
+    },
+    "realmRoles" : [ ],
+    "clientRoles" : { }
+  }, {
+    "id" : "3bc57f4f-8f62-4fcd-8aa7-cd02c5ba4a99",
+    "name" : "tenant_clinica_smoke",
+    "path" : "/tenant_clinica_smoke",
+    "subGroups" : [ ],
+    "attributes" : {
+      "tenant_id" : [ "clinica_smoke" ]
+    },
+    "realmRoles" : [ ],
+    "clientRoles" : { }
+  }, {
+    "id" : "5cd4caef-cb29-4b0b-a0e3-0a7e5579d576",
+    "name" : "tenant_consultorio_gamma",
+    "path" : "/tenant_consultorio_gamma",
+    "subGroups" : [ ],
+    "attributes" : {
+      "tenant_id" : [ "consultorio_gamma" ]
+    },
+    "realmRoles" : [ ],
+    "clientRoles" : { }
+  }, {
     "id" : "c99ceabd-46ea-4e40-be1a-1a58c6ae60fa",
     "name" : "tenant_dev",
     "path" : "/tenant_dev",
@@ -379,6 +413,16 @@
       "tenant_id" : [ "dev" ]
     },
     "realmRoles" : [ "TENANT_GESTOR", "CLINICO" ],
+    "clientRoles" : { }
+  }, {
+    "id" : "c5b621d4-db68-4c4b-9a86-19fbb7db2b7c",
+    "name" : "tenant_hospital_beta",
+    "path" : "/tenant_hospital_beta",
+    "subGroups" : [ ],
+    "attributes" : {
+      "tenant_id" : [ "hospital_beta" ]
+    },
+    "realmRoles" : [ ],
     "clientRoles" : { }
   } ],
   "defaultRole" : {
@@ -421,6 +465,439 @@
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister" : false,
   "webAuthnPolicyPasswordlessAcceptableAaguids" : [ ],
   "webAuthnPolicyPasswordlessExtraOrigins" : [ ],
+  "users" : [ {
+    "id" : "69d7dc34-e960-482d-9ca5-36c95f2ea1b8",
+    "username" : "clinico-dev",
+    "firstName" : "Clinico",
+    "lastName" : "Dev",
+    "email" : "clinico-dev@intellicare.dev",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585953262,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "979cede2-4120-4906-864a-bb52fb9e531d",
+      "type" : "password",
+      "createdDate" : 1773585953931,
+      "secretData" : "{\"value\":\"xQv1JX/2ix/RNL3rF1T0v3/E4tkzFS5Gwip8Ikxh556kvJrAFRHU5BOUU6vgm1jEFxFyi8NfFFNvOpfOlkLmhw==\",\"salt\":\"OxjFrKvylRzjxcpBoiY/hg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_dev" ]
+  }, {
+    "id" : "18a04d36-e73f-434c-828c-63186ec78b6f",
+    "username" : "dr.almeida",
+    "firstName" : "Sofia",
+    "lastName" : "Almeida",
+    "email" : "dr.almeida@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585963731,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "4a8bc13a-4dbb-400c-aa79-21dcd5333404",
+      "type" : "password",
+      "createdDate" : 1773588017534,
+      "secretData" : "{\"value\":\"v3D0riqI2LwEuin7LAFOiIb+1dNLMJx/YLD97fBieXfr1nt3gfU4USlDaDaPlZeh8WVVc0xkSZPWXnjydP+KAw==\",\"salt\":\"0MCIkJkQdsv2hNy8MBrSng==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_hospital_beta" ]
+  }, {
+    "id" : "da69243e-dab0-4b06-b9a3-54c93e8e0f19",
+    "username" : "dr.castro",
+    "firstName" : "Andre",
+    "lastName" : "Castro",
+    "email" : "dr.castro@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585969240,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "76d2dfe1-d4eb-445c-bb8c-937e786bdeaf",
+      "type" : "password",
+      "createdDate" : 1773588020785,
+      "secretData" : "{\"value\":\"YKI+/lpkyx4zX22q8X9NszkcqovPySUl2Y5uLk7tMb7//QAQoDigbo7zhZpxfZR4m1hsTJSDHoOyOc5+gyf/IQ==\",\"salt\":\"tOcW55yOVA9o5Tj9MRmMAg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_consultorio_gamma" ]
+  }, {
+    "id" : "a50182c3-a53c-49cc-8631-b3e67e7b7edc",
+    "username" : "dr.costa",
+    "firstName" : "Lucia",
+    "lastName" : "Costa",
+    "email" : "dr.costa@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585961441,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "a842281a-500a-4389-bf0a-fe3d800eec12",
+      "type" : "password",
+      "createdDate" : 1773588016290,
+      "secretData" : "{\"value\":\"Nr/rbi6Jfwz3G8yQ/7sEGPFGtLCvY7eF2kCC9JJhyja99TfJG5LZv5yIFH+QlrTWtkgwE/DQHzwojZtLx+MdfQ==\",\"salt\":\"4Zzxwzq4iaA39zjaEYEJyA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_hospital_beta" ]
+  }, {
+    "id" : "39839ccc-2c64-4d1e-b7dc-eb0dd982301f",
+    "username" : "dr.ferreira",
+    "firstName" : "Bruno",
+    "lastName" : "Ferreira",
+    "email" : "dr.ferreira@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585962617,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "f0acb079-ecb0-4428-bb8b-fbf07539251f",
+      "type" : "password",
+      "createdDate" : 1773588016967,
+      "secretData" : "{\"value\":\"0cs40/OI9u8EpojjOMcor4Nv8SoJMGukJByWhYdz9vX1KQrbVLiC5+zPyPjAEez/ccuuiKjXTaE6ZkX653qvMw==\",\"salt\":\"VgM4N/afQ3cMb8e4Jc42cQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_hospital_beta" ]
+  }, {
+    "id" : "2244eabe-aa2d-4296-b931-f6a8f17c0307",
+    "username" : "dr.mendes",
+    "firstName" : "Renata",
+    "lastName" : "Mendes",
+    "email" : "dr.mendes@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585968195,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "f3d67204-f966-4ea2-9614-440b68676e1e",
+      "type" : "password",
+      "createdDate" : 1773588020148,
+      "secretData" : "{\"value\":\"sZHWcuxIqHdGvsc1DRlMh+sRXhjjxp2FOldXRM/N4IJZaH9/bT8IuAZktntmP22YZEQX9tK2IOca6HcxTgGClg==\",\"salt\":\"VzXCvrL4b+oM3jbbmzxELQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_consultorio_gamma" ]
+  }, {
+    "id" : "886823a9-96e7-425c-8c8c-604c3caa3bc7",
+    "username" : "dr.oliveira",
+    "firstName" : "Paulo",
+    "lastName" : "Oliveira",
+    "email" : "dr.oliveira@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585957819,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "cb5f2805-8e61-4c09-9ba0-1c8ddc94ded2",
+      "type" : "password",
+      "createdDate" : 1773588014395,
+      "secretData" : "{\"value\":\"OVWGfsUdA0aNuf1ABS6er9ypEgX33I/GgbbffSefyEY5ThXj6VagzB8DlqwG71OCJqnfPs2IlxbqtdVqpTVvSw==\",\"salt\":\"3gsncHZAvoFCjjTkH8V1mA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_clinica_alfa" ]
+  }, {
+    "id" : "2813f20b-ed11-47ca-a11d-e7e14e32ab3a",
+    "username" : "dr.rocha",
+    "firstName" : "Felipe",
+    "lastName" : "Rocha",
+    "email" : "dr.rocha@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585967146,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "4e956ff4-d0a1-4baa-af69-2355fd1c8f69",
+      "type" : "password",
+      "createdDate" : 1773588019523,
+      "secretData" : "{\"value\":\"56YWTeg2UKz1HhYTv3AnvO7yHkh9QBE3E/RAIKhZsd5dVTpKTeB17Wq00R9w1VihA4FNL1UHyWEsGEYBTFiK5A==\",\"salt\":\"ln24n+CeCMQk74rrZ4ut3A==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_consultorio_gamma" ]
+  }, {
+    "id" : "cbff3884-afbd-44e9-a539-c2e244ba46cc",
+    "username" : "dr.santos",
+    "firstName" : "Maria",
+    "lastName" : "Santos",
+    "email" : "dr.santos@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585956723,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "accf0f7a-ee2b-41f2-8c63-2a3b5f6c46b3",
+      "type" : "password",
+      "createdDate" : 1773588013718,
+      "secretData" : "{\"value\":\"gnanLxZ9SpDhb3uesgH1s9AL0lnz/4UJ5ZVgFoamX4KiH/PTFlqGOamP4+hTW4/wmDYA6PEsB7LIhSbRl0UTzg==\",\"salt\":\"2MOHCfBvdgt5FaQOdzS3uQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_clinica_alfa" ]
+  }, {
+    "id" : "915940a9-b0cb-4a29-8c4f-9dd19e480ad3",
+    "username" : "dr.silva",
+    "firstName" : "Carlos",
+    "lastName" : "Silva",
+    "email" : "dr.silva@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585955637,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "a4a122e1-5b6c-4e9a-964c-22bc106cf366",
+      "type" : "password",
+      "createdDate" : 1773588013124,
+      "secretData" : "{\"value\":\"RqmLzvb9ca6ioyMzIqrSbg1SCmxCsSxH8baL51Mh/I4ZyY8NWL9pZL32zrsCWKSlEnZLfBP1jFDsVC5rZqJRgQ==\",\"salt\":\"YCmbwuH/EeRemhigia1Fmw==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "CLINICO" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_clinica_alfa" ]
+  }, {
+    "id" : "3d8254b8-baac-4d31-ba39-48a107c78cd0",
+    "username" : "egarabini@gmail.com",
+    "firstName" : "Eduardo",
+    "lastName" : "Garabini",
+    "email" : "egarabini@gmail.com",
+    "emailVerified" : false,
+    "createdTimestamp" : 1774606252637,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "9cccd638-e6c5-4a6b-87a1-c97934b41cc2",
+      "type" : "password",
+      "createdDate" : 1774606253114,
+      "secretData" : "{\"value\":\"1UzvZ3upTAK31W8DuvOOgoLsikOgYn3znAY4CoG6XW5OhBEx4TH3xsYLQ4rLHZWZf/+qDgfgnUhDfPy01gq1Qg==\",\"salt\":\"a38vhmDcLYFXL6oPQ/yVPA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ "UPDATE_PASSWORD" ],
+    "realmRoles" : [ "PLATFORM_ADMIN", "default-roles-intellicare" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "6b00d5d1-0e2d-4e3e-9917-197aea32f48b",
+    "username" : "gestor.alfa",
+    "firstName" : "Ana",
+    "lastName" : "Gestora",
+    "email" : "gestor.alfa@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585954545,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "627211f4-c283-40c4-986a-1bb5af352787",
+      "type" : "password",
+      "createdDate" : 1773588012429,
+      "secretData" : "{\"value\":\"4dPoQcuu/YtjdeabPsn1xLN0mbwrwkk63VsN1pOlfz0ggcroJfMJKJZ30HUlKvDpq4lDcjVRbWqzU7vcfrgYcA==\",\"salt\":\"Yoi6UVQMPzDTGjcerWefDA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "TENANT_GESTOR" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_clinica_alfa" ]
+  }, {
+    "id" : "0e23228f-16d9-48da-bada-ef0b120ec2fe",
+    "username" : "gestor.beta",
+    "firstName" : "Pedro",
+    "lastName" : "Gestor",
+    "email" : "gestor.beta@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585960313,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "e8302a8c-2c0b-4715-b65e-29f3a5ddd54f",
+      "type" : "password",
+      "createdDate" : 1773588015720,
+      "secretData" : "{\"value\":\"4tw8vCRXJCDVoIJfHb/3NydTR71gy+C7uZgvJ9PdfLNhrsIoR3MVK5sTrsYV+pn/debe403u1cZ/DDw48IogvA==\",\"salt\":\"E7ETJRx3f/evWM9Rmd9HOQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "TENANT_GESTOR" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_hospital_beta" ]
+  }, {
+    "id" : "8c04cff5-2396-4ef6-817f-34f247cee50a",
+    "username" : "gestor-dev",
+    "firstName" : "Gestor",
+    "lastName" : "Dev",
+    "email" : "gestor-dev@intellicare.dev",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585952184,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "ce99049a-53ea-4acc-81e3-ecae66371b15",
+      "type" : "password",
+      "createdDate" : 1773585952840,
+      "secretData" : "{\"value\":\"k0EYO4zBk/2i9pvPVdMlqw/eDlfpZvlkq/Ms0CxHT16VtC1lDt3pW2SoqDKlunNrPK9aaBRCT96F05aA31jCaQ==\",\"salt\":\"va4KTrzvASk0SHSHcN4z0g==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "TENANT_GESTOR" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_dev" ]
+  }, {
+    "id" : "a9bef843-e800-46c8-91da-23827bfe810f",
+    "username" : "gestor.gamma",
+    "firstName" : "Lucas",
+    "lastName" : "Gestor",
+    "email" : "gestor.gamma@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585966130,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "531eba0f-c23b-40b6-bfc3-5f2e788d0468",
+      "type" : "password",
+      "createdDate" : 1773588018895,
+      "secretData" : "{\"value\":\"1rkmAhaIdHI48S2M2GzBLmxXvTbBP9gYorVFg4NIwn6zfFmz/c1MeSJ52RFgdgk6CF7EsInIZbfP/jVr/gN+AA==\",\"salt\":\"zF7X/6CkukKX6u60D/MVcg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare", "TENANT_GESTOR" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_consultorio_gamma" ]
+  }, {
+    "id" : "7b69f40b-6f6d-4f44-aa93-d07d403224b3",
+    "username" : "paciente.alfa",
+    "firstName" : "Joao",
+    "lastName" : "Paciente",
+    "email" : "paciente.alfa@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585958934,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "1f63ee19-610a-4316-b832-eee4b855a1e0",
+      "type" : "password",
+      "createdDate" : 1773588014971,
+      "secretData" : "{\"value\":\"rgyWakcEYxWUgAblS++aqWoSfrWihKMAZflFqV9IEcRBcwGQLz8WA0vS3HXpUeBnb8GGxVd3LrEUG4ePXVxFMw==\",\"salt\":\"1yNA4vteZyRnfvG56bUJQg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "PACIENTE", "default-roles-intellicare" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_clinica_alfa" ]
+  }, {
+    "id" : "feceaefe-af93-442b-a612-063f8d2136a1",
+    "username" : "paciente.beta",
+    "firstName" : "Maria",
+    "lastName" : "Paciente",
+    "email" : "paciente.beta@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585964839,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "d44bcd81-cc29-458c-b7b7-a16c873691a8",
+      "type" : "password",
+      "createdDate" : 1773588018100,
+      "secretData" : "{\"value\":\"lV0Go/ujNc5vVlTuc6TvCb8/SoHg5wl0BQanGgNKhkk5b9SQcoJTPJWgcuSb5ApdwEZB64ZpKSNy5bWfre379A==\",\"salt\":\"oXNdYn/tvbufebSrlBo+JA==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "PACIENTE", "default-roles-intellicare" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_hospital_beta" ]
+  }, {
+    "id" : "9e66b6aa-0aea-48d6-b854-ad64c469ecbf",
+    "username" : "paciente.gamma",
+    "firstName" : "Ana",
+    "lastName" : "Paciente",
+    "email" : "paciente.gamma@demo.intellicare",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585970369,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "f65086c2-1dbb-4c33-ad3a-b1eb566d29cf",
+      "type" : "password",
+      "createdDate" : 1773588021378,
+      "secretData" : "{\"value\":\"Tcti1BRzgQ8Q8VyFu+mXc4O6AIrbMCSrFHI7yZ3aEd/VvL83IfVFGpAoBRBgiKYCHrXkXx41rbr4E3+xI9835g==\",\"salt\":\"H+Fgm4ISMv7EQKYjGFQQhQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "PACIENTE", "default-roles-intellicare" ],
+    "notBefore" : 0,
+    "groups" : [ "/tenant_consultorio_gamma" ]
+  }, {
+    "id" : "762c7d5e-623b-4f88-b9b1-87db4c582f08",
+    "username" : "platform-admin",
+    "firstName" : "Platform",
+    "lastName" : "Admin",
+    "email" : "platform-admin@intellicare.dev",
+    "emailVerified" : true,
+    "createdTimestamp" : 1773585951206,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "d0d5e74b-aacd-4aba-b38a-bdb32746fbc0",
+      "type" : "password",
+      "createdDate" : 1773585951888,
+      "secretData" : "{\"value\":\"8cZ0LmDwe/8MCZyx8yeCLm7WkDT2JJj0E0COV2ZpM8/0lKYofT28TQ4r72ZOTxK0BntonsD0qCNvOb3Kwhfdpg==\",\"salt\":\"zE5RRCnhe2mewR09AZnlFw==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "PLATFORM_ADMIN", "default-roles-intellicare" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "85e69565-4097-4be2-91c9-b548e83edc3b",
+    "username" : "service-account-intellicare-service",
+    "emailVerified" : false,
+    "createdTimestamp" : 1773585926949,
+    "enabled" : true,
+    "totp" : false,
+    "serviceAccountClientId" : "intellicare-service",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-intellicare" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ],
   "scopeMappings" : [ {
     "clientScope" : "offline_access",
     "roles" : [ "offline_access" ]
@@ -520,7 +997,9 @@
     "publicClient" : true,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
@@ -534,8 +1013,8 @@
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "http://localhost:8000/admin-ui/*", "http://localhost:5174/*" ],
-    "webOrigins" : [ "http://localhost:8000", "http://localhost:5174" ],
+    "redirectUris" : [ "https://admin.intellicare.ia.br/*", "https://intellicare.ia.br/", "https://intellicare.ia.br/admin-ui/*" ],
+    "webOrigins" : [ "https://intellicare.ia.br", "https://admin.intellicare.ia.br" ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
@@ -546,10 +1025,41 @@
     "publicClient" : true,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : true,
     "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "fcb7487c-7a6a-4c90-b227-4186035872cd",
+      "name" : "realm-roles-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-realm-role-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "multivalued" : "true",
+        "userinfo.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "realm_access.roles",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "ae5e8f58-df0e-4859-8e8d-0771b19d347e",
+      "name" : "tenant_id-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-attribute-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "userinfo.token.claim" : "true",
+        "user.attribute" : "tenant_id",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "tenant_id",
+        "jsonType.label" : "String"
+      }
+    } ],
     "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
@@ -572,10 +1082,142 @@
     "publicClient" : false,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
+    "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "4f7e7e72-9f3e-4759-82db-4af8819fac95",
+    "clientId" : "clinico-ui",
+    "name" : "Clinico UI",
+    "description" : "",
+    "rootUrl" : "",
+    "adminUrl" : "",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "https://intellicare.ia.br/*", "https://clinico.intellicare.ia.br/clinico-ui/*", "https://intellicare.ia.br/" ],
+    "webOrigins" : [ "https://clinico.intellicare.ia.br" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : false,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "851a3eb0-8586-43df-bfb4-4287c00f253f",
+      "name" : "tenant_id-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-attribute-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "userinfo.token.claim" : "true",
+        "user.attribute" : "tenant_id",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "tenant_id",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "29468e93-4689-4d58-82ce-8f11d01214b5",
+      "name" : "realm-roles-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-realm-role-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "multivalued" : "true",
+        "userinfo.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "realm_access.roles",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "01c8fed6-765d-4d9b-bc4b-ddee49e90973",
+    "clientId" : "gestor-ui",
+    "name" : "Gestor UI",
+    "description" : "",
+    "rootUrl" : "",
+    "adminUrl" : "",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "https://intellicare.ia.br/*", "https://gestor.intellicare.ia.br/gestor-ui/*", "https://intellicare.ia.br/" ],
+    "webOrigins" : [ "https://gestor.intellicare.ia.br" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : false,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "50c93bb5-26d3-4843-aad3-1fbdea0be9f7",
+      "name" : "realm-roles-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-realm-role-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "multivalued" : "true",
+        "userinfo.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "realm_access.roles",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "4fd2f8bb-661c-4ff4-ae79-8ac3eee7fdd1",
+      "name" : "tenant_id-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-attribute-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "userinfo.token.claim" : "true",
+        "user.attribute" : "tenant_id",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "tenant_id",
+        "jsonType.label" : "String"
+      }
+    } ],
     "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
@@ -586,7 +1228,7 @@
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "http://localhost:3000/*", "http://localhost:5173/*" ],
+    "redirectUris" : [ "http://localhost:5173/*", "http://localhost:3000/*" ],
     "webOrigins" : [ "http://localhost:3000", "http://localhost:5173" ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -598,7 +1240,9 @@
     "publicClient" : true,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : true,
     "nodeReRegistrationTimeout" : -1,
@@ -612,9 +1256,9 @@
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "secret" : "CHANGE_ME_ON_DEPLOY",
-    "redirectUris" : [ "http://localhost:8000/*" ],
-    "webOrigins" : [ "http://localhost:8000" ],
+    "secret" : "staging-client-secret-2025",
+    "redirectUris" : [ "https://intellicare.ia.br/*" ],
+    "webOrigins" : [ "https://intellicare.ia.br" ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
@@ -641,6 +1285,7 @@
       "config" : {
         "user.session.note" : "clientAddress",
         "introspection.token.claim" : "true",
+        "userinfo.token.claim" : "true",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
         "claim.name" : "clientAddress",
@@ -655,6 +1300,7 @@
       "config" : {
         "user.session.note" : "client_id",
         "introspection.token.claim" : "true",
+        "userinfo.token.claim" : "true",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
         "claim.name" : "client_id",
@@ -669,6 +1315,7 @@
       "config" : {
         "user.session.note" : "clientHost",
         "introspection.token.claim" : "true",
+        "userinfo.token.claim" : "true",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
         "claim.name" : "clientHost",
@@ -692,6 +1339,97 @@
     "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
+    "id" : "6c3716be-3e50-4846-bd2f-291abe1b8cba",
+    "clientId" : "paciente-ui",
+    "name" : "Paciente UI",
+    "description" : "",
+    "rootUrl" : "",
+    "adminUrl" : "",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "https://paciente.intellicare.ia.br/paciente-ui/*", "https://intellicare.ia.br/*", "https://intellicare.ia.br/" ],
+    "webOrigins" : [ "https://paciente.intellicare.ia.br" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : false,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "210318a9-96fa-4369-9066-4a53156c0a18",
+      "name" : "realm-roles-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-realm-role-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "multivalued" : "true",
+        "userinfo.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "realm_access.roles",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "d0afd0e8-6d5f-4f6e-a60c-180be1802afe",
+      "name" : "tenant_id-mapper",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usermodel-attribute-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "userinfo.token.claim" : "true",
+        "user.attribute" : "tenant_id",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "tenant_id",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "41ecab50-1673-406d-aa40-81983b330f9f",
+    "clientId" : "portal",
+    "name" : "IntelliCare Portal",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "https://intellicare.ia.br/*" ],
+    "webOrigins" : [ "https://intellicare.ia.br" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : false,
+    "protocol" : "openid-connect",
+    "attributes" : { },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "roles", "profile", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
     "id" : "758e69e6-b96a-4d18-a355-f7ce5b491b69",
     "clientId" : "realm-management",
     "name" : "${client_realm-management}",
@@ -711,7 +1449,9 @@
     "publicClient" : false,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
@@ -813,7 +1553,8 @@
       "config" : {
         "id.token.claim" : "true",
         "introspection.token.claim" : "true",
-        "access.token.claim" : "true"
+        "access.token.claim" : "true",
+        "userinfo.token.claim" : "true"
       }
     } ]
   }, {
@@ -875,6 +1616,7 @@
       "config" : {
         "introspection.token.claim" : "true",
         "multivalued" : "true",
+        "userinfo.token.claim" : "true",
         "user.attribute" : "foo",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
@@ -1300,7 +2042,7 @@
       "subType" : "authenticated",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "saml-role-list-mapper", "saml-user-property-mapper", "oidc-full-name-mapper", "saml-user-attribute-mapper", "oidc-usermodel-property-mapper", "oidc-address-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-usermodel-attribute-mapper" ]
+        "allowed-protocol-mapper-types" : [ "oidc-usermodel-property-mapper", "oidc-usermodel-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-role-list-mapper", "saml-user-attribute-mapper", "oidc-address-mapper", "oidc-full-name-mapper", "saml-user-property-mapper" ]
       }
     }, {
       "id" : "b24e7326-fba1-4ede-b277-1aee89216af6",
@@ -1309,7 +2051,7 @@
       "subType" : "anonymous",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "oidc-usermodel-property-mapper", "saml-role-list-mapper", "oidc-address-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-user-attribute-mapper", "oidc-usermodel-attribute-mapper", "saml-user-property-mapper", "oidc-full-name-mapper" ]
+        "allowed-protocol-mapper-types" : [ "saml-role-list-mapper", "oidc-address-mapper", "saml-user-attribute-mapper", "oidc-usermodel-property-mapper", "saml-user-property-mapper", "oidc-full-name-mapper", "oidc-usermodel-attribute-mapper", "oidc-sha256-pairwise-sub-mapper" ]
       }
     }, {
       "id" : "b5eb9f02-68b8-4d91-9131-f8513dc7098f",
@@ -1951,8 +2693,12 @@
     "cibaExpiresIn" : "120",
     "cibaAuthRequestedUserHint" : "login_hint",
     "oauth2DeviceCodeLifespan" : "600",
+    "clientOfflineSessionMaxLifespan" : "0",
     "oauth2DevicePollingInterval" : "5",
+    "clientSessionIdleTimeout" : "0",
     "parRequestUriLifespan" : "60",
+    "clientSessionMaxLifespan" : "0",
+    "clientOfflineSessionIdleTimeout" : "0",
     "cibaInterval" : "5",
     "realmReusableOtpCode" : "false"
   },
