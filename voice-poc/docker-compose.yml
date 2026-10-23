@@ -1,0 +1,81 @@
+# ============================================================================
+# POC — Painel de Ala Hospitalar com Voz (Ollama + Open WebUI)
+# ============================================================================
+# Acesso:
+#   https://voice.intellicare.ia.br  → via Traefik do IntelliCare
+#       (requer rota em traefik/dynamic/routes-intellicare.yml — ver README.md)
+#   http://localhost:3080            → acesso direto, sem proxy (teste local)
+#
+# Requisitos:
+#   - Stack IntelliCare no ar (cria a rede externa intellicare_intellicare-network)
+#   - DNS: voice.intellicare.ia.br → IP do servidor (ou wildcard *.intellicare.ia.br)
+#
+# Para rodar em ambiente TOTALMENTE separado (sem a rede do IntelliCare),
+# troque a seção "networks" do fim do arquivo (instrução no README.md).
+
+services:
+  # ── Ollama — IA local (LLM para o chat do painel) ─────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: voice-poc-ollama
+    restart: unless-stopped
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_ORIGINS=*
+      - OLLAMA_KEEP_ALIVE=30m
+      - OLLAMA_MAX_LOADED_MODELS=1
+      - OLLAMA_NUM_PARALLEL=2
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - intellicare-network
+    # GPU NVIDIA (descomente se o host tiver driver + nvidia-container-toolkit):
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # ── Open WebUI — interface de chat com voz (STT/TTS integrados) ───────────
+  # STT: Whisper local (modelo baixado no primeiro uso — configurável em
+  #      Painel Admin → Configurações → Áudio).
+  # TTS: Web Speech API do navegador (sem custo, funciona no Chrome/Edge).
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: voice-poc-webui
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      # Autenticação habilitada: o 1º usuário a registrar-se vira admin.
+      # Obrigatório, pois o subdomínio fica exposto publicamente via Traefik.
+      - WEBUI_AUTH=True
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:?Crie um .env com WEBUI_SECRET_KEY (ex: openssl rand -hex 32)}
+      - ENABLE_RAG_WEB_SEARCH=False
+    volumes:
+      - open_webui_data:/app/backend/data
+    ports:
+      - "127.0.0.1:3080:8080" # bind local apenas; exposição pública é pelo Traefik
+    networks:
+      - intellicare-network
+
+volumes:
+  ollama_data:
+  open_webui_data:
+
+networks:
+  intellicare-network:
+    external: true
+    name: intellicare_intellicare-network
+
+# ── Ambiente separado (sem IntelliCare) ─────────────────────────────────────
+# Substitua o bloco "networks" acima por:
+#
+# networks:
+#   intellicare-network:
+#     driver: bridge
+#
+# e remova/ajuste a rota do Traefik (o acesso será só por localhost:3080).
