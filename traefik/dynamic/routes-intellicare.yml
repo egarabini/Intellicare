@@ -5,6 +5,7 @@
 #
 # Subdomain routing:
 #   admin.intellicare.ia.br   → intellicare-admin:8010
+#   gestor.intellicare.ia.br  → intellicare-gestor:8011
 #   portal.intellicare.ia.br  → intellicare-portal:80
 #   api.intellicare.ia.br     → path-based → modules
 
@@ -17,6 +18,17 @@ http:
       entryPoints:
         - websecure
       service: admin-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - api-chain
+
+    # ── Gestor Panel ──────────────────────────────────────────
+    gestor:
+      rule: "Host(`gestor.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: gestor-svc
       tls:
         certResolver: letsencrypt
       middlewares:
@@ -200,6 +212,15 @@ http:
       middlewares:
         - security-headers
 
+    # ── POC Painel de Ala (voz) — voice.intellicare.ia.br ─────
+    voice-poc:
+      rule: "Host(`voice.intellicare.ia.br`)"
+      entryPoints:
+        - websecure
+      service: voice-poc-svc
+      tls:
+        certResolver: letsencrypt
+
   # ── Services ────────────────────────────────────────────────
   services:
 
@@ -346,3 +367,8 @@ http:
           path: /health/ready
           interval: 30s
           timeout: 5s
+
+    voice-poc-svc:
+      loadBalancer:
+        servers:
+          - url: "http://voice-poc-webui:8080"
