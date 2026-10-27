@@ -221,9 +221,9 @@ http:
       tls:
         certResolver: letsencrypt
 
-    # ── Whisper STT — stt.careplanner.com.br (whitelist IP) ───
+    # ── Whisper STT — stt.saudeplanner.com.br (whitelist IP) ───
     stt-whisper:
-      rule: "Host(`stt.careplanner.com.br`)"
+      rule: "Host(`stt.saudeplanner.com.br`)"
       entryPoints:
         - websecure
       service: stt-whisper-svc

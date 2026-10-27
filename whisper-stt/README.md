@@ -1,4 +1,4 @@
-# Whisper STT — stt.careplanner.com.br
+# Whisper STT — stt.saudeplanner.com.br
 
 Serviço de transcrição de áudio (faster-whisper large-v3-turbo, CPU int8) isolado
 em Docker, atrás de Nginx com whitelist de IP.
@@ -50,14 +50,14 @@ sudo cp nginx-whisper.conf /etc/nginx/sites-available/whisper
 sudo ln -sf /etc/nginx/sites-available/whisper /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 
-# 5. SSL (DNS de stt.careplanner.com.br precisa apontar para esta VPS)
-sudo certbot --nginx -d stt.careplanner.com.br
+# 5. SSL (DNS de stt.saudeplanner.com.br precisa apontar para esta VPS)
+sudo certbot --nginx -d stt.saudeplanner.com.br
 ```
 
 ## Uso
 
 ```bash
-curl -X POST https://stt.careplanner.com.br/transcrever \
+curl -X POST https://stt.saudeplanner.com.br/transcrever \
      -H "Authorization: Bearer <token>" \
      -F "file=@audio.ogg"
 # → {"texto": "...", "idioma": "pt", "duracao": 12.34}
