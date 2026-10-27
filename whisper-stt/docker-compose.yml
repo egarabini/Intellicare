@@ -18,7 +18,9 @@ services:
       - NUM_WORKERS=1
       - VAD_FILTER=0             # VAD custa ~7s nesta CPU; ligue p/ áudios com silêncio
       - MAX_UPLOAD_BYTES=26214400
-      # - STT_BEARER_TOKEN=troque-por-um-token-para-exigir-bearer
+      # Token Bearer: definido no .env local do servidor (mesmo diretório, fora
+      # do git). Vazio = autenticação só por whitelist de IP.
+      - STT_BEARER_TOKEN=${STT_BEARER_TOKEN:-}
     networks:
       - intellicare-network
     deploy:
