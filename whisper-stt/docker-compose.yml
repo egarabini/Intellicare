@@ -12,10 +12,11 @@ services:
     volumes:
       - whisper_models:/app/models
     environment:
-      - DEFAULT_MODEL=turbo
-      - CPU_THREADS=12
+      - DEFAULT_MODEL=small      # benchmark 27/10: small=6s, medium=22s, turbo=29s (áudio 7s)
+      - CPU_THREADS=4            # 12 threads fazem thrashing na EPYC compartilhada (53s!)
       - BEAM_SIZE=1
       - NUM_WORKERS=1
+      - VAD_FILTER=0             # VAD custa ~7s nesta CPU; ligue p/ áudios com silêncio
       - MAX_UPLOAD_BYTES=26214400
       # - STT_BEARER_TOKEN=troque-por-um-token-para-exigir-bearer
     networks:

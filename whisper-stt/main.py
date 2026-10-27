@@ -28,6 +28,9 @@ MAX_UPLOAD_BYTES = int(os.getenv("MAX_UPLOAD_BYTES", str(25 * 1024 * 1024)))  # 
 # Token Bearer opcional: se STT_BEARER_TOKEN estiver definido, exige
 # "Authorization: Bearer <token>"; se vazio, endpoint aberto (whitelist de IP only)
 STT_BEARER_TOKEN = os.getenv("STT_BEARER_TOKEN", "")
+# VAD (Silero) custa ~7s extras nesta CPU — desligado por padrão; ligue para
+# áudios com muito silêncio (VAD_FILTER=1)
+VAD_FILTER = os.getenv("VAD_FILTER", "0") == "1"
 
 models: dict[str, WhisperModel] = {}
 
@@ -85,7 +88,7 @@ async def transcrever_audio(
         language=language,
         beam_size=BEAM_SIZE,
         initial_prompt=prompt or None,
-        vad_filter=True,  # pula silêncio: menos compute em perguntas curtas
+        vad_filter=VAD_FILTER,
     )
     texto_final = " ".join(segment.text for segment in segments)
     elapsed = time.perf_counter() - started
