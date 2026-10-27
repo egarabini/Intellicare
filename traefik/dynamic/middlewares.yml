@@ -113,9 +113,10 @@ http:
           - security-headers
           - compress
 
-    # ── Whitelist STT — só o servidor autorizado consome o Whisper ──────────
+    # ── Whitelist STT — só IPs autorizados consomem o Whisper ───────────────
     stt-whitelist:
       ipAllowList:
         sourceRange:
           - 158.220.99.24/32
+          - 201.71.203.233/32   # máquina local do dev (validação)
           - 127.0.0.1/32
