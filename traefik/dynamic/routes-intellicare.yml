@@ -221,6 +221,17 @@ http:
       tls:
         certResolver: letsencrypt
 
+    # ── Whisper STT — stt.careplanner.com.br (whitelist IP) ───
+    stt-whisper:
+      rule: "Host(`stt.careplanner.com.br`)"
+      entryPoints:
+        - websecure
+      service: stt-whisper-svc
+      tls:
+        certResolver: letsencrypt
+      middlewares:
+        - stt-whitelist
+
   # ── Services ────────────────────────────────────────────────
   services:
 
@@ -372,3 +383,8 @@ http:
       loadBalancer:
         servers:
           - url: "http://voice-poc-webui:8080"
+
+    stt-whisper-svc:
+      loadBalancer:
+        servers:
+          - url: "http://whisper-service:8000"

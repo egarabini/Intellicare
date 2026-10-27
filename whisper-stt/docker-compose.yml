@@ -1,0 +1,31 @@
+services:
+  whisper-service:
+    build: .
+    image: whisper-stt:latest
+    container_name: whisper-service
+    restart: always
+    # SEM porta publicada no host — acessível apenas pela rede interna do
+    # Docker. O Traefik (com whitelist de IP) é o único caminho de entrada;
+    # o bind 127.0.0.1 fica como atalho para testes no próprio host.
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - whisper_models:/app/models
+    environment:
+      - MODEL_SIZE=deepdml/faster-whisper-large-v3-turbo
+      - CPU_THREADS=10
+      - MAX_UPLOAD_BYTES=26214400
+    networks:
+      - intellicare-network
+    deploy:
+      resources:
+        limits:
+          memory: 12G
+
+volumes:
+  whisper_models:
+
+networks:
+  intellicare-network:
+    external: true
+    name: intellicare_intellicare-network
