@@ -12,9 +12,12 @@ services:
     volumes:
       - whisper_models:/app/models
     environment:
-      - MODEL_SIZE=deepdml/faster-whisper-large-v3-turbo-ct2
-      - CPU_THREADS=10
+      - DEFAULT_MODEL=turbo
+      - CPU_THREADS=12
+      - BEAM_SIZE=1
+      - NUM_WORKERS=1
       - MAX_UPLOAD_BYTES=26214400
+      # - STT_BEARER_TOKEN=troque-por-um-token-para-exigir-bearer
     networks:
       - intellicare-network
     deploy:
