@@ -8,7 +8,7 @@ from faster_whisper import WhisperModel
 
 app = FastAPI(title="Whisper STT", version="1.0.0")
 
-MODEL_SIZE = os.getenv("MODEL_SIZE", "deepdml/faster-whisper-large-v3-turbo")
+MODEL_SIZE = os.getenv("MODEL_SIZE", "deepdml/faster-whisper-large-v3-turbo-ct2")
 CPU_THREADS = int(os.getenv("CPU_THREADS", "10"))
 
 # Carregado uma única vez no boot (container dedicado a isso)

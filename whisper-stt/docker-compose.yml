@@ -12,7 +12,7 @@ services:
     volumes:
       - whisper_models:/app/models
     environment:
-      - MODEL_SIZE=deepdml/faster-whisper-large-v3-turbo
+      - MODEL_SIZE=deepdml/faster-whisper-large-v3-turbo-ct2
       - CPU_THREADS=10
       - MAX_UPLOAD_BYTES=26214400
     networks:
